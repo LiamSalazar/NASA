@@ -1,0 +1,16 @@
+[project]
+name = "nasa-fire-ai"
+version = "0.1.0"
+description = "Ontology-grounded NASA spacecraft fire-safety evidence assistant"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.7", "rdflib>=7", "pyshacl>=0.26", "pymupdf>=1.24", "numpy>=1.26", "streamlit>=1.38", "openai>=1.40", "python-dotenv>=1.0", "pyyaml>=6.0"]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

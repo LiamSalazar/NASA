@@ -1,0 +1,452 @@
+@prefix fs: <https://example.org/nasa-fire-safety#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fs: a owl:Ontology ;
+    rdfs:label "NASA Fire Safety Evidence Ontology v0.1" .
+
+fs:AtmosphereCondition a owl:Class ;
+    rdfs:subClassOf fs:ExperimentalCondition .
+
+fs:Blowoff a owl:Class ;
+    rdfs:subClassOf fs:CombustionPhenomenon .
+
+fs:Extinction a owl:Class ;
+    rdfs:subClassOf fs:CombustionPhenomenon .
+
+fs:FlameGrowth a owl:Class ;
+    rdfs:subClassOf fs:CombustionPhenomenon .
+
+fs:FlameSpread a owl:Class ;
+    rdfs:subClassOf fs:CombustionPhenomenon .
+
+fs:FlowCondition a owl:Class ;
+    rdfs:subClassOf fs:ExperimentalCondition .
+
+fs:Geometry a owl:Class .
+
+fs:GravityCondition a owl:Class ;
+    rdfs:subClassOf fs:ExperimentalCondition .
+
+fs:Ignition a owl:Class ;
+    rdfs:subClassOf fs:CombustionPhenomenon .
+
+fs:Measurement a owl:Class .
+
+fs:PressureCondition a owl:Class ;
+    rdfs:subClassOf fs:ExperimentalCondition .
+
+fs:Publication a owl:Class .
+
+fs:Quenching a owl:Class ;
+    rdfs:subClassOf fs:CombustionPhenomenon .
+
+fs:StableBurning a owl:Class ;
+    rdfs:subClassOf fs:CombustionPhenomenon .
+
+fs:belongTo a owl:ObjectProperty .
+
+fs:canonicalValue a owl:DatatypeProperty .
+
+fs:concerns a owl:ObjectProperty .
+
+fs:conditionType a owl:DatatypeProperty .
+
+fs:configuration-design-criterion a fs:DesignCriterion ;
+    fs:evidenceRef "E-safety-configuration-design-criterion" ;
+    fs:reportedBy fs:ntrs-20150020937 ;
+    fs:scopeApplicability "Crewed spacecraft fire control" ;
+    fs:text "It means controlling the quantity and configuration of such materials to eliminate potential fire propagation paths and thus ensure that any fire would be small, localized, and isolated, and would self-extinguish without harm to the crew." .
+
+fs:configuration-guidance a fs:Guidance ;
+    fs:evidenceRef "E-safety-configuration-guidance" ;
+    fs:reportedBy fs:ntrs-20150020937 ;
+    fs:scopeApplicability "Payload hardware flammability assessment" ;
+    fs:text "The document provides guidance in conducting the flammability assessments required for payload hardware by SSP 51700." .
+
+fs:evidenceRef a owl:DatatypeProperty .
+
+fs:guidance-ntrs-20150020937 a fs:Guidance ;
+    fs:evidenceRef "E-ntrs-20150020937-2-0" ;
+    fs:text "The document provides guidance in conducting the flammability assessments required for payload hardware by SSP 51700, \"Payload Safety Policy and Requirements for the International Space Station\"." .
+
+fs:hasCondition a owl:ObjectProperty .
+
+fs:hasIntervention a owl:ObjectProperty .
+
+fs:hasMeasurement a owl:ObjectProperty .
+
+fs:hasObservation a owl:ObjectProperty .
+
+fs:hasRun a owl:ObjectProperty .
+
+fs:madeOf a owl:ObjectProperty .
+
+fs:nasa_conclusion-ntrs-20205007829 a fs:NASAConclusion ;
+    fs:evidenceRef "E-ntrs-20205007829-14-0" ;
+    fs:text "What is the perceived risk for a spacecraft fire?  Programs that have conducted probabilistic risk assessments have generally rated the fire risk very low – Depending on assumptions, risk of Loss of Vehicle by a fire could be on the order of 1 in 300,000 to 1 in 3,000,000 To a Program Manager, low probabilities indicate a fire event is very unlikely – In some cases, there is no real belief that a fire could occur  This drives decisions that impact how a vehicle program addresses the fire risk beginning in the design phase – Flammability and material control – Isolation from ignition sources – Detection – Suppression  This trend will probably continue unless we provide a clear set of requirements and/or guidelines that all Programs need to follow 14" .
+
+fs:observesPhenomenon a owl:ObjectProperty .
+
+fs:open_question-ntrs-20205007829 a fs:NASAIdentifiedOpenQuestion ;
+    fs:evidenceRef "E-ntrs-20205007829-2-0" ;
+    fs:text "Operating in the Lunar Vicinity (proving ground) After 2030 Leaving the Earth-Moon System and Reaching Mars Orbit Now 2020s EXPANDING HUMAN PRESENCE IN PARTNERSHIP CREATING ECONOMIC OPPORTUNITIES, ADVANCING TECHNOLOGIES, AND ENABLING DISCOVERY No matter the mission or the destination, each will present unique fire safety challenges for spacecraft or habitats Spacecraft designers and mission operations personnel will (generally) not realize the extent of the fire safety question they need answered until a solution is needed (quickly) 2" .
+
+fs:psi-25 a fs:Investigation ;
+    fs:evidenceRef "E-psi-25-metadata" ;
+    fs:hasRun fs:psi-25-B1 ;
+    fs:title "BASS-II" .
+
+fs:reportedBy a owl:ObjectProperty .
+
+fs:saffire-suppression-conclusion a fs:NASAConclusion ;
+    fs:concerns fs:psi-98 ;
+    fs:evidenceRef "E-safety-saffire-suppression-conclusion" ;
+    fs:reportedBy fs:ntrs-20205007829 ;
+    fs:supportedBy fs:saffire-iv-flow-off-observation ;
+    fs:text "In a spacecraft, suppressant could have been used to ‘knock down’ the fire but wasn’t held at the desired concentration long enough for surface to cool." .
+
+fs:saffire-suppression-open-question a fs:NASAIdentifiedOpenQuestion ;
+    fs:concerns fs:psi-98 ;
+    fs:evidenceRef "E-safety-saffire-suppression-open-question" ;
+    fs:reportedBy fs:ntrs-20205007829 ;
+    fs:scopeApplicability "Qualification of spacecraft fire suppression under micro- or partial-gravity and suppressant concentration/hold time" ;
+    fs:supportedBy fs:saffire-iv-flow-off-observation ;
+    fs:text "Additional focused tests may be required to develop guidance on these questions." .
+
+fs:std-6001-applicability a fs:Requirement ;
+    fs:evidenceRef "E-safety-std-6001-applicability" ;
+    fs:reportedBy fs:nasa-std-6001 ;
+    fs:scopeApplicability "Materials intended for stated uses" ;
+    fs:text "Materials intended for use in space vehicles, specified test facilities, and contractually specified Ground Support Equipment (GSE) shall meet the requirements of this NASA Technical Standard." .
+
+fs:std-6001-worst-case-test a fs:TestCriterion ;
+    fs:evidenceRef "E-safety-std-6001-worst-case-test" ;
+    fs:reportedBy fs:nasa-std-6001 ;
+    fs:scopeApplicability "Required material tests" ;
+    fs:text "Required tests shall be conducted on materials in their worst-case exposure conditions and representative use thicknesses and product forms." .
+
+fs:suppression-system-implication a fs:SafetyImplication ;
+    fs:evidenceRef "E-safety-suppression-system-implication" ;
+    fs:reportedBy fs:ntrs-20205007829 ;
+    fs:scopeApplicability "Fire suppression" ;
+    fs:text "Given that a fire may propagate in spite of early detection and initial response, there is a possibility that an active fire suppression system will need to be activated." .
+
+fs:usesSample a owl:ObjectProperty .
+
+fs:value a owl:DatatypeProperty .
+
+fs:DesignCriterion a owl:Class ;
+    rdfs:subClassOf fs:NormativeStatement .
+
+fs:Intervention a owl:Class .
+
+fs:NASAStandard a owl:Class .
+
+fs:Observation a owl:Class .
+
+fs:Requirement a owl:Class ;
+    rdfs:subClassOf fs:NormativeStatement .
+
+fs:SafetyImplication a owl:Class ;
+    rdfs:subClassOf fs:SafetyKnowledge .
+
+fs:TestCriterion a owl:Class ;
+    rdfs:subClassOf fs:NormativeStatement .
+
+fs:material-100-micron-pmma-film---2-cm-wide a fs:Material .
+
+fs:psi-25-B1 a fs:ExperimentalRun ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:hasCondition fs:psi-25-B1-air_display,
+        fs:psi-25-B1-fan_display,
+        fs:psi-25-B1-final_oxygen,
+        fs:psi-25-B1-flow_restrictor,
+        fs:psi-25-B1-gmt,
+        fs:psi-25-B1-initial_oxygen,
+        fs:psi-25-B1-total_frames_shot ;
+    fs:usesSample fs:psi-25-B1-sample .
+
+fs:psi-25-B1-air_display a fs:ExperimentalCondition ;
+    fs:conditionType "air_display" ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:reportedValue 5e+00 .
+
+fs:psi-25-B1-fan_display a fs:ExperimentalCondition ;
+    fs:conditionType "fan_display" ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:reportedValue 6.2e+01 .
+
+fs:psi-25-B1-final_oxygen a fs:ExperimentalCondition ;
+    fs:canonicalUnit "fraction" ;
+    fs:canonicalValue 2.22e-01 ;
+    fs:conditionType "final_oxygen" ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:reportedUnit "%" ;
+    fs:reportedValue 2.22e+01 .
+
+fs:psi-25-B1-flow_restrictor a fs:ExperimentalCondition ;
+    fs:conditionType "flow_restrictor" ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:reportedValue 2e+00 .
+
+fs:psi-25-B1-gmt a fs:ExperimentalCondition ;
+    fs:conditionType "gmt" ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:reportedValue 5e+01 .
+
+fs:psi-25-B1-initial_oxygen a fs:ExperimentalCondition ;
+    fs:canonicalUnit "fraction" ;
+    fs:canonicalValue 2.22e-01 ;
+    fs:conditionType "initial_oxygen" ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:reportedUnit "%" ;
+    fs:reportedValue 2.22e+01 .
+
+fs:psi-25-B1-sample a fs:Sample ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:madeOf fs:material-100-micron-pmma-film---2-cm-wide .
+
+fs:psi-25-B1-total_frames_shot a fs:ExperimentalCondition ;
+    fs:conditionType "total_frames_shot" ;
+    fs:evidenceRef "E-psi-25-table-B1" ;
+    fs:reportedValue 5.7e+01 .
+
+fs:psi-98-S1 a fs:ExperimentalRun ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:hasCondition fs:psi-98-S1-burn_time,
+        fs:psi-98-S1-flow_direction,
+        fs:psi-98-S1-flow_velocity,
+        fs:psi-98-S1-gravity,
+        fs:psi-98-S1-ignition_power,
+        fs:psi-98-S1-ignition_time,
+        fs:psi-98-S1-oxygen,
+        fs:psi-98-S1-sample_length,
+        fs:psi-98-S1-sample_thickness,
+        fs:psi-98-S1-sample_width ;
+    fs:usesSample fs:psi-98-S1-sample .
+
+fs:psi-98-S1-burn_time a fs:ExperimentalCondition ;
+    fs:canonicalUnit "s" ;
+    fs:canonicalValue 4.2e+02 ;
+    fs:conditionType "burn_time" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedUnit "s" ;
+    fs:reportedValue 4.2e+02 .
+
+fs:psi-98-S1-flow_direction a fs:ExperimentalCondition ;
+    fs:conditionType "flow_direction" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedValue "Concurrent" .
+
+fs:psi-98-S1-flow_velocity a fs:ExperimentalCondition ;
+    fs:canonicalUnit "m/s" ;
+    fs:canonicalValue 2e-01 ;
+    fs:conditionType "flow_velocity" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedUnit "cm/s" ;
+    fs:reportedValue 2e+01 .
+
+fs:psi-98-S1-gravity a fs:ExperimentalCondition ;
+    fs:conditionType "gravity" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedValue "microgravity" .
+
+fs:psi-98-S1-ignition_power a fs:ExperimentalCondition ;
+    fs:canonicalUnit "W" ;
+    fs:canonicalValue 1.82e+02 ;
+    fs:conditionType "ignition_power" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedUnit "W" ;
+    fs:reportedValue 1.82e+02 .
+
+fs:psi-98-S1-ignition_time a fs:ExperimentalCondition ;
+    fs:canonicalUnit "s" ;
+    fs:canonicalValue 8e+00 ;
+    fs:conditionType "ignition_time" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedUnit "s" ;
+    fs:reportedValue 8e+00 .
+
+fs:psi-98-S1-oxygen a fs:ExperimentalCondition ;
+    fs:canonicalLowerValue 2.15e-01 ;
+    fs:canonicalUnit "fraction" ;
+    fs:canonicalUpperValue 2.17e-01 ;
+    fs:conditionType "oxygen" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedLowerValue 2.15e+01 ;
+    fs:reportedUnit "%" ;
+    fs:reportedUpperValue 2.17e+01 ;
+    fs:reportedValue "21.5 - 21.7" .
+
+fs:psi-98-S1-sample a fs:Sample ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:geometry "rectangular fabric sheet" ;
+    fs:madeOf fs:material-sibal-fabric .
+
+fs:psi-98-S1-sample_length a fs:ExperimentalCondition ;
+    fs:canonicalUnit "m" ;
+    fs:canonicalValue 4.06e-01 ;
+    fs:conditionType "sample_length" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedUnit "cm" ;
+    fs:reportedValue 4.06e+01 .
+
+fs:psi-98-S1-sample_thickness a fs:ExperimentalCondition ;
+    fs:canonicalUnit "m" ;
+    fs:canonicalValue 3.7e-03 ;
+    fs:conditionType "sample_thickness" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedUnit "cm" ;
+    fs:reportedValue 3.7e-01 .
+
+fs:psi-98-S1-sample_width a fs:ExperimentalCondition ;
+    fs:canonicalUnit "m" ;
+    fs:canonicalValue 9.4e-01 ;
+    fs:conditionType "sample_width" ;
+    fs:evidenceRef "E-psi-98-table-S1" ;
+    fs:reportedUnit "cm" ;
+    fs:reportedValue 9.4e+01 .
+
+fs:psi-98-S2 a fs:ExperimentalRun ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:hasCondition fs:psi-98-S2-burn_time,
+        fs:psi-98-S2-flow_direction,
+        fs:psi-98-S2-flow_velocity,
+        fs:psi-98-S2-gravity,
+        fs:psi-98-S2-ignition_power,
+        fs:psi-98-S2-ignition_time,
+        fs:psi-98-S2-oxygen,
+        fs:psi-98-S2-sample_length,
+        fs:psi-98-S2-sample_thickness,
+        fs:psi-98-S2-sample_width ;
+    fs:usesSample fs:psi-98-S2-sample .
+
+fs:psi-98-S2-burn_time a fs:ExperimentalCondition ;
+    fs:canonicalUnit "s" ;
+    fs:canonicalValue 7e+01 ;
+    fs:conditionType "burn_time" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedUnit "s" ;
+    fs:reportedValue 7e+01 .
+
+fs:psi-98-S2-flow_direction a fs:ExperimentalCondition ;
+    fs:conditionType "flow_direction" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedValue "Opposed" .
+
+fs:psi-98-S2-flow_velocity a fs:ExperimentalCondition ;
+    fs:canonicalUnit "m/s" ;
+    fs:canonicalValue 2e-01 ;
+    fs:conditionType "flow_velocity" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedUnit "cm/s" ;
+    fs:reportedValue 2e+01 .
+
+fs:psi-98-S2-gravity a fs:ExperimentalCondition ;
+    fs:conditionType "gravity" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedValue "microgravity" .
+
+fs:psi-98-S2-ignition_power a fs:ExperimentalCondition ;
+    fs:canonicalUnit "W" ;
+    fs:canonicalValue 1.82e+02 ;
+    fs:conditionType "ignition_power" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedUnit "W" ;
+    fs:reportedValue 1.82e+02 .
+
+fs:psi-98-S2-ignition_time a fs:ExperimentalCondition ;
+    fs:canonicalUnit "s" ;
+    fs:canonicalValue 8e+00 ;
+    fs:conditionType "ignition_time" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedUnit "s" ;
+    fs:reportedValue 8e+00 .
+
+fs:psi-98-S2-oxygen a fs:ExperimentalCondition ;
+    fs:canonicalUnit "fraction" ;
+    fs:canonicalValue 2.15e-01 ;
+    fs:conditionType "oxygen" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:isApproximate true ;
+    fs:reportedUnit "%" ;
+    fs:reportedValue "~ 21.5" .
+
+fs:psi-98-S2-sample a fs:Sample ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:geometry "rectangular fabric sheet" ;
+    fs:madeOf fs:material-sibal-fabric .
+
+fs:psi-98-S2-sample_length a fs:ExperimentalCondition ;
+    fs:canonicalUnit "m" ;
+    fs:canonicalValue 4.06e-01 ;
+    fs:conditionType "sample_length" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedUnit "cm" ;
+    fs:reportedValue 4.06e+01 .
+
+fs:psi-98-S2-sample_thickness a fs:ExperimentalCondition ;
+    fs:canonicalUnit "m" ;
+    fs:canonicalValue 3.7e-03 ;
+    fs:conditionType "sample_thickness" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedUnit "cm" ;
+    fs:reportedValue 3.7e-01 .
+
+fs:psi-98-S2-sample_width a fs:ExperimentalCondition ;
+    fs:canonicalUnit "m" ;
+    fs:canonicalValue 9.4e-01 ;
+    fs:conditionType "sample_width" ;
+    fs:evidenceRef "E-psi-98-table-S2" ;
+    fs:reportedUnit "cm" ;
+    fs:reportedValue 9.4e+01 .
+
+fs:saffire-iv-flow-off-20s a fs:Intervention ;
+    fs:evidenceRef "E-safety-saffire-intervention" ;
+    fs:text "For the Saffire-IV PMMA sample, we turned off the flow for 20 seconds." .
+
+fs:Guidance a owl:Class ;
+    rdfs:subClassOf fs:NormativeStatement .
+
+fs:Investigation a owl:Class .
+
+fs:Material a owl:Class .
+
+fs:NASAConclusion a owl:Class .
+
+fs:NASAIdentifiedOpenQuestion a owl:Class ;
+    rdfs:subClassOf fs:SafetyKnowledge .
+
+fs:material-sibal-fabric a fs:Material .
+
+fs:nasa-std-6001 a fs:NASAStandard ;
+    fs:evidenceRef "E-nasa-std-6001-1-0" ;
+    fs:title "NASA-STD-6001" .
+
+fs:psi-98 a fs:Investigation ;
+    fs:evidenceRef "E-psi-98-metadata" ;
+    fs:hasIntervention fs:saffire-iv-flow-off-20s ;
+    fs:hasObservation fs:saffire-iv-flow-off-observation ;
+    fs:hasRun fs:psi-98-S1,
+        fs:psi-98-S2 ;
+    fs:title "Saffire-I" .
+
+fs:ExperimentalRun a owl:Class .
+
+fs:SafetyKnowledge a owl:Class .
+
+fs:Sample a owl:Class .
+
+fs:saffire-iv-flow-off-observation a fs:Observation ;
+    fs:evidenceRef "E-safety-saffire-observation" ;
+    fs:text "The fire didn’t extinguish and began to grow when we turned the flow back on." .
+
+fs:NormativeStatement a owl:Class ;
+    rdfs:subClassOf fs:SafetyKnowledge .
+
+fs:CombustionPhenomenon a owl:Class .
+
+fs:ExperimentalCondition a owl:Class .
+

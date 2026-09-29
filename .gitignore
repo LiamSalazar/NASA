@@ -1,0 +1,27 @@
+# Python environments and tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Generated local application state (rebuild with scripts)
+data/index/*.sqlite
+data/index/*.sqlite-*
+data/index/*.npy
+data/index/*.npz
+
+# Streamlit and editor state
+.streamlit/secrets.toml
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
