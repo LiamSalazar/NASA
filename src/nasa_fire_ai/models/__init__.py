@@ -57,6 +57,23 @@ class ObservationRecord(EvidenceBacked):
     text: str
 
 
+class MeasurementObservationRecord(EvidenceBacked):
+    """A numeric observation reported by a source, never an inferred value."""
+
+    id: str
+    measurement: str
+    reported_value: float | str
+    reported_unit: str | None = None
+
+
+class ReportedExperimentalObservationRecord(EvidenceBacked):
+    """A qualitative experimental observation explicitly reported by NASA."""
+
+    id: str
+    text: str
+    phenomenon: str | None = None
+
+
 class ExperimentalRunRecord(EvidenceBacked):
     id: str
     investigation_id: str

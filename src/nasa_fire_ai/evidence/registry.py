@@ -1,5 +1,6 @@
 import re
 import sqlite3
+from datetime import UTC, datetime
 from pathlib import Path
 
 
@@ -16,6 +17,14 @@ class EvidenceRegistry:
         CREATE TABLE IF NOT EXISTS passages(evidence_id TEXT PRIMARY KEY, document_id TEXT, page INTEGER, section TEXT, text TEXT, start_offset INTEGER, end_offset INTEGER, raw_file TEXT, checksum TEXT);
         CREATE TABLE IF NOT EXISTS evidence_refs(evidence_id TEXT PRIMARY KEY, source_id TEXT);
         CREATE VIRTUAL TABLE IF NOT EXISTS passages_fts USING fts5(evidence_id UNINDEXED, text);""")
+        # Operational ingestion state intentionally stays outside the RDF domain graph.
+        self.db.executescript("""
+        CREATE TABLE IF NOT EXISTS ingestion_batches(batch_id TEXT PRIMARY KEY, source_id TEXT, created_at TEXT, status TEXT, notes TEXT);
+        CREATE TABLE IF NOT EXISTS source_artifacts(artifact_id TEXT PRIMARY KEY, batch_id TEXT, source_id TEXT, investigation_id TEXT, document_id TEXT, source_type TEXT, canonical_url TEXT, doi TEXT, retrieval_timestamp TEXT, source_version TEXT, filename TEXT, mime_type TEXT, file_size INTEGER, sha256 TEXT, retrieval_status TEXT);
+        CREATE TABLE IF NOT EXISTS candidate_records(candidate_id TEXT PRIMARY KEY, batch_id TEXT, candidate_type TEXT, payload_json TEXT, evidence_id TEXT, status TEXT, validation_error TEXT, fingerprint TEXT UNIQUE);
+        CREATE TABLE IF NOT EXISTS review_queue(review_id TEXT PRIMARY KEY, batch_id TEXT, candidate_id TEXT, reason TEXT, status TEXT, detail_json TEXT, created_at TEXT);
+        CREATE TABLE IF NOT EXISTS extraction_cache(cache_key TEXT PRIMARY KEY, response_json TEXT, status TEXT, created_at TEXT);
+        """)
         self.db.commit()
 
     def add_source(self, row: dict):
@@ -62,3 +71,43 @@ class EvidenceRegistry:
             "SELECT * FROM passages WHERE evidence_id=?", (evidence_id,)
         ).fetchone()
         return dict(row) if row else None
+
+    def begin_batch(self, batch_id: str, source_id: str, notes: str = ""):
+        self.db.execute(
+            "INSERT OR IGNORE INTO ingestion_batches VALUES (?,?,?,?,?)",
+            (batch_id, source_id, datetime.now(UTC).isoformat(), "INGESTED", notes),
+        )
+        self.db.commit()
+
+    def add_artifact(self, row: dict):
+        columns = ", ".join(row)
+        self.db.execute(
+            f"INSERT OR IGNORE INTO source_artifacts ({columns}) VALUES ({','.join('?' for _ in row)})",
+            tuple(row.values()),
+        )
+        self.db.commit()
+
+    def add_candidate(self, row: dict):
+        columns = ", ".join(row)
+        self.db.execute(
+            f"INSERT OR IGNORE INTO candidate_records ({columns}) VALUES ({','.join('?' for _ in row)})",
+            tuple(row.values()),
+        )
+        self.db.commit()
+
+    def review(
+        self, review_id: str, batch_id: str, candidate_id: str, reason: str, detail_json: str
+    ):
+        self.db.execute(
+            "INSERT OR IGNORE INTO review_queue VALUES (?,?,?,?,?,?,?)",
+            (
+                review_id,
+                batch_id,
+                candidate_id,
+                reason,
+                "PENDING",
+                detail_json,
+                datetime.now(UTC).isoformat(),
+            ),
+        )
+        self.db.commit()

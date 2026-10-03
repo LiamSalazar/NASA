@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -23,6 +24,8 @@ classes = {
     "ConditionRecord": FS.ExperimentalCondition,
     "InterventionRecord": FS.Intervention,
     "ObservationRecord": FS.Observation,
+    "MeasurementObservationRecord": FS.MeasurementObservation,
+    "ReportedExperimentalObservationRecord": FS.ReportedExperimentalObservation,
 }
 for r in records:
     node = FS[r.get("id", r.get("statement_id"))]
@@ -59,7 +62,9 @@ for r in records:
     elif r["type"] == "ObservationRecord":
         g.add((FS["psi-98"], FS.hasObservation, node))
     if r["type"] == "SampleRecord":
-        material = FS["material-" + r["material"].lower().replace(" ", "-")]
+        # Raw reported material labels can contain quotes/slashes. Keep the
+        # original label in canonical JSON; use a deterministic safe RDF local name.
+        material = FS["material-" + re.sub(r"[^a-z0-9]+", "-", r["material"].lower()).strip("-")]
         g.add((material, RDF.type, FS.Material))
         g.add((node, FS.madeOf, material))
         if r.get("geometry"):

@@ -25,19 +25,23 @@ for source in manifest:
         {
             "source_id": source["source_id"],
             "source_type": source["source_type"],
-            "nasa_id": source["nasa_identifier"],
-            "title": source["title"],
-            "doi": source["doi"],
-            "url": source["canonical_url"],
-            "retrieved_at": source["retrieval_timestamp"],
-            "filename": source["filename"],
-            "sha256": source["sha256"],
-            "mime_type": source["mime_type"],
-            "status": source["status"],
+            "nasa_id": source.get("nasa_identifier"),
+            "title": source.get("title", source.get("document_id", source["source_id"])),
+            "doi": source.get("doi"),
+            "url": source.get("canonical_url"),
+            "retrieved_at": source.get("retrieval_timestamp"),
+            "filename": source.get("filename"),
+            "sha256": source.get("sha256"),
+            "mime_type": source.get("mime_type"),
+            "status": source.get("status"),
         }
     )
-    reg.add_document(source["source_id"], source["source_id"], source["title"])
-    if source["status"] != "fetched":
+    reg.add_document(
+        source["source_id"],
+        source["source_id"],
+        source.get("title", source.get("document_id", source["source_id"])),
+    )
+    if source.get("status") != "fetched":
         continue
     path = raw / source["filename"]
     source_passage_count = 0
@@ -72,7 +76,7 @@ for source in manifest:
     # do not manufacture conditions, observations, or run rows from it.
     if source_passage_count == 0:
         eid = f"E-{source['source_id']}-metadata"
-        text = f"NASA source metadata: {source['title']} ({source['nasa_identifier']})."
+        text = f"NASA source metadata: {source.get('title', source.get('document_id', source['source_id']))} ({source.get('nasa_identifier', source['source_id'])})."
         row = {
             "evidence_id": eid,
             "document_id": source["source_id"],
@@ -245,5 +249,19 @@ if safety_records_path.exists():
                 }
             )
     records.extend(safety_records)
+phase1_records_path = canonical / "phase1_published.json"
+if phase1_records_path.exists():
+    records.extend(json.loads(phase1_records_path.read_text()))
+# Legacy curated gold may overlap a generalized re-ingestion (PSI-25 B1).
+# Keep the first, curated record and never emit duplicate stable domain IDs.
+deduplicated = []
+seen_ids = set()
+for record in records:
+    record_id = record.get("id", record.get("statement_id"))
+    if record_id in seen_ids:
+        continue
+    seen_ids.add(record_id)
+    deduplicated.append(record)
+records = deduplicated
 (canonical / "records.json").write_text(json.dumps(records, indent=2))
 print(json.dumps({"records": len(records), "passages": len(all_passages)}, indent=2))
