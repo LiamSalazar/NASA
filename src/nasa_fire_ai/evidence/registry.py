@@ -47,8 +47,11 @@ class EvidenceRegistry:
             "INSERT OR REPLACE INTO passages VALUES (:evidence_id,:document_id,:page,:section,:text,:start_offset,:end_offset,:raw_file,:checksum)",
             row,
         )
+        # FTS5 has no primary-key semantics: delete first so re-ingestion cannot
+        # leave stale duplicate searchable rows for the same evidence ID.
+        self.db.execute("DELETE FROM passages_fts WHERE evidence_id=?", (row["evidence_id"],))
         self.db.execute(
-            "INSERT OR REPLACE INTO passages_fts(evidence_id,text) VALUES (?,?)",
+            "INSERT INTO passages_fts(evidence_id,text) VALUES (?,?)",
             (row["evidence_id"], row["text"]),
         )
         self.db.commit()
@@ -72,6 +75,13 @@ class EvidenceRegistry:
         ).fetchone()
         return dict(row) if row else None
 
+    def rebuild_fts(self):
+        self.db.execute("DELETE FROM passages_fts")
+        self.db.execute(
+            "INSERT INTO passages_fts(evidence_id,text) SELECT evidence_id,text FROM passages"
+        )
+        self.db.commit()
+
     def begin_batch(self, batch_id: str, source_id: str, notes: str = ""):
         self.db.execute(
             "INSERT OR IGNORE INTO ingestion_batches VALUES (?,?,?,?,?)",
@@ -90,7 +100,7 @@ class EvidenceRegistry:
     def add_candidate(self, row: dict):
         columns = ", ".join(row)
         self.db.execute(
-            f"INSERT OR IGNORE INTO candidate_records ({columns}) VALUES ({','.join('?' for _ in row)})",
+            f"INSERT OR REPLACE INTO candidate_records ({columns}) VALUES ({','.join('?' for _ in row)})",
             tuple(row.values()),
         )
         self.db.commit()

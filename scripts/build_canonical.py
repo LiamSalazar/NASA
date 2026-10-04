@@ -252,6 +252,9 @@ if safety_records_path.exists():
 phase1_records_path = canonical / "phase1_published.json"
 if phase1_records_path.exists():
     records.extend(json.loads(phase1_records_path.read_text()))
+phase1_documents_path = canonical / "phase1_documents.json"
+if phase1_documents_path.exists():
+    records.extend(json.loads(phase1_documents_path.read_text()))
 # Legacy curated gold may overlap a generalized re-ingestion (PSI-25 B1).
 # Keep the first, curated record and never emit duplicate stable domain IDs.
 deduplicated = []

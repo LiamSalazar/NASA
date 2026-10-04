@@ -57,6 +57,7 @@ def test_unknown_or_ambiguous_term_requires_review(tmp_path):
         source_document="d",
         extraction_method="llm",
         term="new term",
+        evidence_span="source",
     )
     assert validate_candidate(candidate, registry)[0] == "REVIEW_REQUIRED"
 
@@ -83,6 +84,7 @@ def test_high_risk_requirement_requires_source_context(tmp_path):
         evidence_id="E",
         source_document="d",
         extraction_method="llm",
+        evidence_span="shall",
     )
     assert validate_candidate(candidate, registry)[0] == "REVIEW_REQUIRED"
 

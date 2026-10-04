@@ -79,3 +79,26 @@ sources:
     ingestion_priority: tier_1_or_2
     ingestion_status: not_ingested
     notes: No investigation identifier is asserted until verified from an official NASA endpoint.
+  - source_id: ntrs-20150023456
+    canonical_name: FLEX Experiment Data Archive
+    family: FLEX
+    nasa_identifier: '20150023456'
+    source_system: NTRS
+    canonical_url: https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf?attachment=true
+    source_type: technical_report
+    document_availability: PDF
+    structured_data_availability: documentary_archive_only
+    relevant_scientific_topics: [liquid_fuel, droplet, extinction, flame_size]
+    ingestion_status: HOLDOUT_FIRST_PASS
+    corpus_role: holdout
+  - source_id: ntrs-20200000361
+    canonical_name: Solid Fuel Ignition and Extinction (SoFIE) Project on ISS
+    family: SoFIE
+    nasa_identifier: '20200000361'
+    source_system: NTRS
+    canonical_url: https://ntrs.nasa.gov/api/citations/20200000361/downloads/20200000361.pdf?attachment=true
+    source_type: technical_report
+    document_availability: PDF
+    relevant_scientific_topics: [solid_fuel, PMMA, oxygen, pressure, flow, ignition, extinction]
+    ingestion_status: DOCUMENTS_INGESTED
+    corpus_role: development

@@ -37,8 +37,6 @@ fs:Measurement a owl:Class .
 fs:PressureCondition a owl:Class ;
     rdfs:subClassOf fs:ExperimentalCondition .
 
-fs:Publication a owl:Class .
-
 fs:Quenching a owl:Class ;
     rdfs:subClassOf fs:CombustionPhenomenon .
 
@@ -86,6 +84,14 @@ fs:madeOf a owl:ObjectProperty .
 fs:nasa_conclusion-ntrs-20205007829 a fs:NASAConclusion ;
     fs:evidenceRef "E-ntrs-20205007829-14-0" ;
     fs:text "What is the perceived risk for a spacecraft fire?  Programs that have conducted probabilistic risk assessments have generally rated the fire risk very low – Depending on assumptions, risk of Loss of Vehicle by a fire could be on the order of 1 in 300,000 to 1 in 3,000,000 To a Program Manager, low probabilities indicate a fire event is very unlikely – In some cases, there is no real belief that a fire could occur  This drives decisions that impact how a vehicle program addresses the fire risk beginning in the design phase – Flammability and material control – Isolation from ignition sources – Detection – Suppression  This trend will probably continue unless we provide a clear set of requirements and/or guidelines that all Programs need to follow 14" .
+
+fs:ntrs-20150023456 a fs:Publication ;
+    fs:evidenceRef "E-00112a77abbb5bab" ;
+    fs:title "FLEX Experiment Data Archive" .
+
+fs:ntrs-20200000361 a fs:Publication ;
+    fs:evidenceRef "E-113f8cab761cc6f4" ;
+    fs:title "Solid Fuel Ignition and Extinction (SoFIE) Project on ISS" .
 
 fs:observesPhenomenon a owl:ObjectProperty .
 
@@ -6728,6 +6734,8 @@ fs:NASAConclusion a owl:Class .
 
 fs:NASAIdentifiedOpenQuestion a owl:Class ;
     rdfs:subClassOf fs:SafetyKnowledge .
+
+fs:Publication a owl:Class .
 
 fs:material-1-mm-thick-pmma-2-cm-wide a fs:Material .
 

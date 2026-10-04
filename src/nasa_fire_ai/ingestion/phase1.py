@@ -155,11 +155,11 @@ class CandidateRecord(BaseModel):
         "CandidateIntervention",
         "CandidateNASAConclusion",
         "CandidateSafetyImplication",
+        "CandidateOpenQuestion",
         "CandidateRequirement",
         "CandidateGuidance",
         "CandidateDesignCriterion",
         "CandidateTestCriterion",
-        "CandidateOpenQuestion",
         "CandidatePublicationRelation",
         "CandidateOntologyConcept",
     ]
@@ -173,6 +173,7 @@ class CandidateRecord(BaseModel):
     prompt_version: str | None = None
     term: str | None = None
     source_context: str | None = None
+    evidence_span: str | None = None
 
     @model_validator(mode="after")
     def requires_explicit_evidence(self):
@@ -180,6 +181,8 @@ class CandidateRecord(BaseModel):
             not self.normalized_text and self.candidate_type != "CandidateOntologyConcept"
         ):
             raise ValueError("candidate requires evidence and explicit extracted text")
+        if self.extraction_method == "llm" and not self.evidence_span:
+            raise ValueError("LLM candidate requires exact evidence_span")
         return self
 
 
@@ -249,13 +252,10 @@ def segment_document(
             passage = text[start : start + 4000]
             if len(passage) < 80:
                 continue
-            eid = stable_id(
-                "E",
-                document_id,
-                str(page),
-                str(start),
-                hashlib.sha256(passage.encode()).hexdigest(),
-            )
+            # Text extraction can vary in harmless whitespace/order across
+            # PyMuPDF versions. Identity is the immutable artifact checksum +
+            # document/page/offset, not an extractor rendering of the passage.
+            eid = stable_id("E", document_id, str(page), str(start))
             registry.add_passage(
                 {
                     "evidence_id": eid,
@@ -375,8 +375,11 @@ def validate_candidate(
         "CandidateNASAConclusion",
         "CandidateSafetyImplication",
     }
-    if candidate.candidate_type in high_risk and not candidate.source_context:
-        return "REVIEW_REQUIRED", "high-risk statement lacks source-type/section context"
+    if candidate.candidate_type in high_risk:
+        if candidate.extraction_method == "llm":
+            return "REVIEW_REQUIRED", "LLM-classified high-risk statement requires human review"
+        if not candidate.source_context:
+            return "REVIEW_REQUIRED", "high-risk statement lacks source-type/section context"
     return "VALIDATED", None
 
 
