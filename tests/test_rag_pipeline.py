@@ -19,11 +19,12 @@ def test_offline_parser_known_vocabulary_and_numeric_constraint():
     assert intent.flow_velocity.value == 20 and intent.flow_velocity.unit == "cm/s"
 
 
-def test_combined_bundle_has_direct_evidence_and_open_question():
+def test_combined_bundle_keeps_safety_documentary_evidence_out_of_direct():
     result = bundle(
         "PMMA microgravity suppression what was observed and what open question remains"
     )
-    assert result.direct_evidence and result.nasa_identified_open_questions
+    assert not result.direct_evidence and result.no_direct_evidence
+    assert result.nasa_identified_open_questions
     assert result.interventions and result.experimental_observations
 
 

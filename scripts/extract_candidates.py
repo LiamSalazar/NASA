@@ -16,7 +16,7 @@ from nasa_fire_ai.config import Settings
 from nasa_fire_ai.evidence import EvidenceRegistry
 from nasa_fire_ai.ingestion.phase1 import CandidateRecord, stable_id, validate_candidate
 
-PROMPT_VERSION = "phase1-conservative-v1"
+PROMPT_VERSION = "phase1-rhetorical-v2"
 EXTRACTOR_VERSION = "nvidia-openai-v1"
 ALLOWED = {
     "MeasurementObservation": "CandidateMeasurementObservation",
@@ -33,7 +33,7 @@ ALLOWED = {
     "CandidateOntologyConcept": "CandidateOntologyConcept",
 }
 
-PROMPT = """You extract candidate records from a NASA passage. Return JSON only: {\"candidates\":[{\"proposed_type\": one allowed type, \"exact_evidence_span\": exact contiguous quote from passage, \"normalized_content\": concise faithful restatement, \"scope\": explicit scope or null, \"uncertainty\": explicit modality/uncertainty or null, \"term\": unknown/ambiguous term or null}]}. Allowed types: MeasurementObservation, ReportedExperimentalObservation, Intervention, NASAConclusion, SafetyImplication, Requirement, Guidance, DesignCriterion, TestCriterion, NASAIdentifiedOpenQuestion, PublicationRelation, CandidateOntologyConcept. Extract only explicitly stated information. Do not infer causes, applicability, recommendations, knowledge gaps, ontology concepts, or observations. Preserve negation, quantities, units, modality and authority. Return an empty list if unsupported."""
+PROMPT = """Extract only explicit NASA scientific/safety candidates. Return JSON only {\"candidates\":[{\"proposed_type\":type,\"exact_evidence_span\":contiguous quote,\"normalized_content\":faithful restatement,\"scope\":null|string,\"uncertainty\":null|string,\"modality\":null|string,\"negation\":true|false,\"term\":null|string}]}. Types: MeasurementObservation, ReportedExperimentalObservation, Intervention, NASAConclusion, SafetyImplication, Requirement, Guidance, DesignCriterion, TestCriterion, NASAIdentifiedOpenQuestion, PublicationRelation, CandidateOntologyConcept. Return [] often. A title/project name/topic/objective/theme/heading/noun phrase/infrastructure statement/planned capability/future benefit/relevance-impact statement is NOT a conclusion, observation, implication, or open question. Approach/Methods is not an observed result. A question/topic is an OpenQuestion only with explicit unresolved/further-work/knowledge-gap language. Results may support observations; Conclusions may support conclusions; a standard requirement section plus shall may support requirement. Preserve may/might/could/possible/shall/should/must, negation, scope, quantities and units. Never infer causality, applicability, recommendations, or ontology concepts."""
 
 
 def call(client, settings, text):
@@ -67,7 +67,7 @@ def main():
         print(json.dumps({"status": "PENDING_CONFIGURATION"}))
         return
     registry = EvidenceRegistry(settings.registry_path)
-    query = "SELECT * FROM passages WHERE document_id=?"
+    query = "SELECT p.*,s.source_type,s.nasa_id,s.title FROM passages p JOIN documents d ON d.document_id=p.document_id JOIN sources s ON s.source_id=d.source_id WHERE p.document_id=?"
     params = [args.document]
     if args.pages:
         query += f" AND page IN ({','.join('?' * len(args.pages))})"
@@ -128,9 +128,15 @@ def main():
                 extraction_method="llm",
                 extraction_model=settings.nvidia_extraction_model,
                 prompt_version=PROMPT_VERSION,
-                source_context=f"NTRS; {row['section'] or 'unlabeled section'}",
+                source_context=f"{row['source_type'] or 'unknown source'}; {row['section'] or 'unlabeled section'}",
                 term=item.get("term"),
                 evidence_span=span,
+                local_heading=row["section"],
+                source_type=row["source_type"],
+                scope=item.get("scope"),
+                uncertainty=item.get("uncertainty"),
+                modality=item.get("modality"),
+                negation=item.get("negation"),
             )
             status, error = validate_candidate(candidate, registry)
             stats["candidates"] += 1

@@ -24,7 +24,18 @@ class EvidenceRegistry:
         CREATE TABLE IF NOT EXISTS candidate_records(candidate_id TEXT PRIMARY KEY, batch_id TEXT, candidate_type TEXT, payload_json TEXT, evidence_id TEXT, status TEXT, validation_error TEXT, fingerprint TEXT UNIQUE);
         CREATE TABLE IF NOT EXISTS review_queue(review_id TEXT PRIMARY KEY, batch_id TEXT, candidate_id TEXT, reason TEXT, status TEXT, detail_json TEXT, created_at TEXT);
         CREATE TABLE IF NOT EXISTS extraction_cache(cache_key TEXT PRIMARY KEY, response_json TEXT, status TEXT, created_at TEXT);
+        CREATE TABLE IF NOT EXISTS document_metadata(document_id TEXT PRIMARY KEY, authors TEXT, publication_date TEXT, document_type TEXT, nasa_center TEXT, keywords TEXT, upstream_path TEXT, verification_status TEXT);
         """)
+        for column in (
+            "reviewer_note TEXT",
+            "reviewed_type TEXT",
+            "reviewed_at TEXT",
+            "original_type TEXT",
+        ):
+            try:
+                self.db.execute(f"ALTER TABLE review_queue ADD COLUMN {column}")
+            except sqlite3.OperationalError:
+                pass
         self.db.commit()
 
     def add_source(self, row: dict):
@@ -42,6 +53,25 @@ class EvidenceRegistry:
         )
         self.db.commit()
 
+    def add_document_metadata(self, document_id: str, row: dict):
+        """Store documentary provenance outside the scientific domain graph."""
+        self.db.execute(
+            """INSERT OR REPLACE INTO document_metadata
+            (document_id,authors,publication_date,document_type,nasa_center,keywords,upstream_path,verification_status)
+            VALUES (?,?,?,?,?,?,?,?)""",
+            (
+                document_id,
+                row.get("authors"),
+                row.get("publication_date"),
+                row.get("document_type"),
+                row.get("nasa_center"),
+                row.get("keywords"),
+                row.get("upstream_path"),
+                row.get("verification_status"),
+            ),
+        )
+        self.db.commit()
+
     def add_passage(self, row: dict):
         self.db.execute(
             "INSERT OR REPLACE INTO passages VALUES (:evidence_id,:document_id,:page,:section,:text,:start_offset,:end_offset,:raw_file,:checksum)",
@@ -54,6 +84,14 @@ class EvidenceRegistry:
             "INSERT INTO passages_fts(evidence_id,text) VALUES (?,?)",
             (row["evidence_id"], row["text"]),
         )
+        source = self.db.execute(
+            "SELECT source_id FROM documents WHERE document_id=?", (row["document_id"],)
+        ).fetchone()
+        if source:
+            self.db.execute(
+                "INSERT OR REPLACE INTO evidence_refs(evidence_id,source_id) VALUES (?,?)",
+                (row["evidence_id"], source[0]),
+            )
         self.db.commit()
 
     def search(self, query: str, eligible_ids: list[str] | None = None, limit=8):
@@ -109,7 +147,7 @@ class EvidenceRegistry:
         self, review_id: str, batch_id: str, candidate_id: str, reason: str, detail_json: str
     ):
         self.db.execute(
-            "INSERT OR IGNORE INTO review_queue VALUES (?,?,?,?,?,?,?)",
+            "INSERT OR IGNORE INTO review_queue(review_id,batch_id,candidate_id,reason,status,detail_json,created_at) VALUES (?,?,?,?,?,?,?)",
             (
                 review_id,
                 batch_id,
@@ -119,5 +157,35 @@ class EvidenceRegistry:
                 detail_json,
                 datetime.now(UTC).isoformat(),
             ),
+        )
+        self.db.commit()
+
+    def decide_review(
+        self, review_id: str, status: str, note: str = "", reviewed_type: str | None = None
+    ):
+        if status not in {"APPROVED", "REJECTED", "NEEDS_MAPPING", "AMBIGUOUS"}:
+            raise ValueError("invalid review status")
+        row = self.db.execute(
+            "SELECT candidate_id FROM review_queue WHERE review_id=?", (review_id,)
+        ).fetchone()
+        if row is None:
+            raise LookupError(review_id)
+        original = self.db.execute(
+            "SELECT candidate_type FROM candidate_records WHERE candidate_id=?", (row[0],)
+        ).fetchone()
+        self.db.execute(
+            "UPDATE review_queue SET status=?, reviewer_note=?, reviewed_type=?, reviewed_at=?, original_type=COALESCE(original_type,?) WHERE review_id=?",
+            (
+                status,
+                note,
+                reviewed_type,
+                datetime.now(UTC).isoformat(),
+                original[0] if original else None,
+                review_id,
+            ),
+        )
+        self.db.execute(
+            "UPDATE candidate_records SET status=?, validation_error=? WHERE candidate_id=?",
+            ("VALIDATED" if status == "APPROVED" else status, note or status, row[0]),
         )
         self.db.commit()

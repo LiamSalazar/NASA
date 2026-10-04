@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from nasa_fire_ai.config import Settings
 from nasa_fire_ai.evidence import EvidenceRegistry
 from nasa_fire_ai.ingestion import extract_pdf
+from nasa_fire_ai.ingestion.phase1 import stable_id
 
 ROOT = Path(__file__).resolve().parents[1]
 raw = ROOT / "data/raw"
@@ -41,6 +42,11 @@ for source in manifest:
         source["source_id"],
         source.get("title", source.get("document_id", source["source_id"])),
     )
+    # Phase-1 artifacts have already passed the versioned segmenter during
+    # ingestion. Re-segmenting them here used to create a competing identity
+    # scheme; legacy seed sources continue through this compatibility path.
+    if source.get("artifact_id"):
+        continue
     if source.get("status") != "fetched":
         continue
     path = raw / source["filename"]
@@ -56,7 +62,11 @@ for source in manifest:
             chunk = text[start : start + 4000]
             if len(chunk) < 100:
                 continue
-            eid = f"E-{source['source_id']}-{page}-{start}"
+            # Match the versioned document-segmentation identity.  This build
+            # path must not manufacture a second FTS identity scheme.
+            eid = stable_id(
+                "E", source["source_id"], source["sha256"], "segment-v2", str(page), str(start)
+            )
             row = {
                 "evidence_id": eid,
                 "document_id": source["source_id"],
@@ -255,6 +265,12 @@ if phase1_records_path.exists():
 phase1_documents_path = canonical / "phase1_documents.json"
 if phase1_documents_path.exists():
     records.extend(json.loads(phase1_documents_path.read_text()))
+reviewed_records_path = canonical / "phase1_reviewed.json"
+if reviewed_records_path.exists():
+    records.extend(json.loads(reviewed_records_path.read_text()))
+phase15_records_path = canonical / "phase15_structured.json"
+if phase15_records_path.exists():
+    records.extend(json.loads(phase15_records_path.read_text()))
 # Legacy curated gold may overlap a generalized re-ingestion (PSI-25 B1).
 # Keep the first, curated record and never emit duplicate stable domain IDs.
 deduplicated = []

@@ -193,6 +193,7 @@ class EvidenceBundle(BaseModel):
     nasa_identified_open_questions: list[dict] = []
     publications: list[dict] = []
     evidence_passages: list[dict] = []
+    discovery_candidates: list[dict] = []
     no_direct_evidence: bool = False
 
 
@@ -222,3 +223,35 @@ class ScientificAnswer(BaseModel):
     sources: list[dict] = []
     coverage_notes: list[str] = []
     comparison: ExperimentComparison | None = None
+    discovery_candidates: list[dict] = []
+
+
+class SemanticResolutionResult(BaseModel):
+    status: Literal[
+        "RESOLVED_CANONICAL", "RESOLVED_SAFE_ALIAS", "SEMANTIC_CANDIDATE", "AMBIGUOUS", "UNKNOWN"
+    ]
+    query_term: str
+    canonical_ids: list[str] = []
+    candidates: list[dict] = []
+    reason: str
+
+
+class DiscoveryCandidate(BaseModel):
+    candidate_id: str
+    query: str
+    evidence_id: str
+    source_id: str
+    document_id: str
+    page: int | None = None
+    section: str | None = None
+    passage: str
+    vector_score: float | None = None
+    bm25_rank: int | None = None
+    bm25_score: float | None = None
+    hybrid_rank: int | None = None
+    matched_canonical_concepts: list[str] = []
+    known_structured_overlaps: list[str] = []
+    known_structured_differences: list[str] = []
+    ambiguities: list[str] = []
+    reason_for_discovery: str
+    authority: Literal["SYSTEM_SUGGESTED"] = "SYSTEM_SUGGESTED"

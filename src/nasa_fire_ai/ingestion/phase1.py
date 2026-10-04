@@ -174,6 +174,18 @@ class CandidateRecord(BaseModel):
     term: str | None = None
     source_context: str | None = None
     evidence_span: str | None = None
+    local_heading: str | None = None
+    source_type: str | None = None
+    scope: str | None = None
+    uncertainty: str | None = None
+    modality: str | None = None
+    negation: bool | None = None
+    reported_value: float | str | None = None
+    reported_unit: str | None = None
+    reported_range: str | None = None
+    approximation_marker: bool | None = None
+    canonical_value: float | None = None
+    canonical_unit: str | None = None
 
     @model_validator(mode="after")
     def requires_explicit_evidence(self):
@@ -235,6 +247,15 @@ def append_raw_manifest(
 def segment_document(
     path: Path, source_id: str, document_id: str, registry: EvidenceRegistry
 ) -> list[str]:
+    artifact_checksum = checksum(path)
+    # Completed versioned segments are immutable for an immutable raw artifact.
+    # Reuse them instead of reopening a large PDF on unchanged re-ingestion.
+    cached = registry.db.execute(
+        "SELECT evidence_id FROM passages WHERE document_id=? AND checksum=? AND evidence_id LIKE 'E-%' ORDER BY page,start_offset",
+        (document_id, artifact_checksum),
+    ).fetchall()
+    if cached:
+        return [row[0] for row in cached]
     pages = (
         extract_pdf(path)
         if path.suffix.lower() == ".pdf"
@@ -255,7 +276,11 @@ def segment_document(
             # Text extraction can vary in harmless whitespace/order across
             # PyMuPDF versions. Identity is the immutable artifact checksum +
             # document/page/offset, not an extractor rendering of the passage.
-            eid = stable_id("E", document_id, str(page), str(start))
+            # Versioned identity: stable for an unchanged artifact/segmentation,
+            # distinct for a NASA artifact checksum change.
+            eid = stable_id(
+                "E", document_id, artifact_checksum, "segment-v2", str(page), str(start)
+            )
             registry.add_passage(
                 {
                     "evidence_id": eid,
@@ -266,7 +291,7 @@ def segment_document(
                     "start_offset": start,
                     "end_offset": start + len(passage),
                     "raw_file": str(path),
-                    "checksum": checksum(path),
+                    "checksum": artifact_checksum,
                 }
             )
             ids.append(eid)
@@ -380,6 +405,21 @@ def validate_candidate(
             return "REVIEW_REQUIRED", "LLM-classified high-risk statement requires human review"
         if not candidate.source_context:
             return "REVIEW_REQUIRED", "high-risk statement lacks source-type/section context"
+    if (
+        candidate.extraction_method == "llm"
+        and candidate.candidate_type == "CandidateReportedExperimentalObservation"
+    ):
+        return "REVIEW_REQUIRED", "LLM reported observation requires human review in Phase 1"
+    if candidate.extraction_method == "llm" and candidate.candidate_type == "CandidateIntervention":
+        text = (candidate.evidence_span or "").lower()
+        if candidate.local_heading and candidate.local_heading.lower() in {
+            "approach",
+            "methods",
+            "relevance/impact",
+        }:
+            return "REVIEW_REQUIRED", "method/approach text is not a performed intervention"
+        if not re.search(r"\b(turned|used|applied|performed|stopped)\b", text):
+            return "REVIEW_REQUIRED", "intervention lacks explicit performed-action wording"
     return "VALIDATED", None
 
 

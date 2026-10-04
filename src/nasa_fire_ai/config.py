@@ -20,6 +20,11 @@ class Settings:
     nvidia_api_key: str | None = os.getenv("NVIDIA_API_KEY")
     nvidia_base_url: str | None = os.getenv("NVIDIA_BASE_URL")
     nvidia_extraction_model: str | None = os.getenv("NVIDIA_EXTRACTION_MODEL")
+    nvidia_embedding_model: str = os.getenv("NVIDIA_EMBEDDING_MODEL", "nvidia/nemotron-3-embed-1b")
+    embedding_preprocessing_version: str = "phase2-v1"
+    # Optional advisory routing only. It never grants semantic classifiers any
+    # authority to publish claims, alter DIRECT matching, or mutate the KG.
+    semantic_classifier_backend: str = os.getenv("SEMANTIC_CLASSIFIER_BACKEND", "rule")
 
     @property
     def registry_path(self) -> Path:

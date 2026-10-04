@@ -63,15 +63,10 @@ def build_bundle(
         {"id": m.run["id"], "matches": m.matches, "evidence_ids": m.run.get("evidence_ids", [])}
         for m in direct
     ]
-    if relevant_safety and interventions:
-        direct_items.extend(
-            {
-                "id": record["id"],
-                "matches": ["direct documentary experiment context"],
-                "evidence_ids": _ref_ids(record),
-            }
-            for record in interventions
-        )
+    # A retrieved intervention is NASA-backed documentary evidence, but it is
+    # not a structured DIRECT match merely because a safety query mentioned
+    # PMMA or suppression. Keep it in ``interventions``/``evidence_passages``;
+    # DIRECT remains the deterministic canonical-constraint result only.
     return EvidenceBundle(
         query_intent=intent,
         direct_evidence=direct_items,
