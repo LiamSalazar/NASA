@@ -55,3 +55,21 @@ def render_answer(answer: ScientificAnswer) -> str:
             for source in answer.sources
         ]
     )
+
+
+def render_grounded(draft, answer: ScientificAnswer, detail_level: str = "standard") -> str:
+    """Render an already validated draft; this function adds no scientific content."""
+    lines = [draft.answer_summary]
+    if answer.direct_evidence_status == "NO_DIRECT_EVIDENCE":
+        lines.append(
+            "No direct evidence matching all requested conditions is indexed in the current corpus."
+        )
+    claims = draft.claims[:2] if detail_level == "concise" else draft.claims
+    for claim in claims:
+        citations = ", ".join(claim.evidence_ids)
+        lines.append(f"- {claim.text} [{citations}]")
+    if draft.limitations:
+        lines.append("Limitations: " + " ".join(draft.limitations))
+    if answer.coverage_notes:
+        lines.append("Coverage: " + " ".join(answer.coverage_notes))
+    return "\n".join(lines)

@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -129,6 +129,81 @@ class NumericFilter(BaseModel):
     unit: str | None = None
 
 
+class ProposedEntityMention(BaseModel):
+    """An untrusted linguistic proposal, retained for review and validation."""
+
+    raw_span: str
+    entity_type_candidate: str
+    canonical_candidate: str | None = None
+    resolution_status: Literal["CANDIDATE", "AMBIGUOUS", "UNKNOWN"] = "CANDIDATE"
+    candidate_ids: list[str] = []
+
+
+class ProposedNumericConstraint(BaseModel):
+    field_candidate: Literal["oxygen", "pressure", "flow_velocity"]
+    operator_candidate: Literal["<", "<=", "=", ">=", ">"] = "="
+    raw_numeric_span: str
+    value: float | None = None
+    reported_unit: str | None = None
+    lower_value: float | None = None
+    upper_value: float | None = None
+    is_approximate: bool = False
+
+
+class ProposedQueryIntent(BaseModel):
+    """LLM/deterministic proposal; it is never accepted by retrieval directly."""
+
+    schema_version: str = "phase3-proposed-v1"
+    query_mode: str = "general_search"
+    materials: list[ProposedEntityMention] = []
+    investigations: list[ProposedEntityMention] = []
+    gravity_conditions: list[ProposedEntityMention] = []
+    phenomena: list[ProposedEntityMention] = []
+    safety_intents: list[str] = []
+    requested_information: list[str] = []
+    numeric_constraints: list[ProposedNumericConstraint] = []
+    flow_direction: str | None = None
+    comparison_targets: list[str] = []
+    source_constraints: list[str] = []
+    raw_unresolved_terms: list[str] = []
+    ambiguities: list[str] = []
+    clarification_required: bool = False
+    interpretation_metadata: dict[str, Any] = {}
+    # Phase-3 repair: minimal linguistic contract used by the live adapter.
+    # Canonical fields above remain available for deterministic/fallback proposals.
+    query_mode_candidate: str | None = None
+    mentions: list[str] = []
+    unresolved_terms: list[str] = []
+    ambiguity_candidates: list[str] = []
+
+
+class ValidatedQueryIntent(BaseModel):
+    """The sole Phase-3 query contract allowed into deterministic retrieval."""
+
+    schema_version: str = "phase3-validated-v1"
+    intent: "QueryIntent"
+    raw_query: str
+    raw_unresolved_terms: list[str] = []
+    ambiguities: list[str] = []
+    clarification_required: bool = False
+    clarification: str | None = None
+    comparison_targets: list[str] = []
+    validation_actions: list[str] = []
+    ontology_digest: str
+    lexicon_digest: str
+
+
+class ConversationContext(BaseModel):
+    """Validated referents only; generated chat prose is intentionally excluded."""
+
+    current_investigation: str | None = None
+    current_run_ids: list[str] = []
+    current_material: str | None = None
+    current_gravity: str | None = None
+    comparison_targets: list[str] = []
+    previous_intent: ValidatedQueryIntent | None = None
+
+
 class QueryIntent(BaseModel):
     query_mode: Literal[
         "general_search", "experiment_search", "safety_search", "combined_search", "compare"
@@ -195,6 +270,10 @@ class EvidenceBundle(BaseModel):
     evidence_passages: list[dict] = []
     discovery_candidates: list[dict] = []
     no_direct_evidence: bool = False
+    coverage_notes: list[str] = []
+    comparison: "ExperimentComparison | None" = None
+    retrieval_metadata: dict[str, Any] = {}
+    authority_metadata: dict[str, Any] = {}
 
 
 class ExperimentComparison(BaseModel):
@@ -224,6 +303,68 @@ class ScientificAnswer(BaseModel):
     coverage_notes: list[str] = []
     comparison: ExperimentComparison | None = None
     discovery_candidates: list[dict] = []
+    generated_claims: list["GroundedClaim"] = []
+
+
+class GroundedClaim(BaseModel):
+    claim_id: str
+    text: str
+    epistemic_type: Literal[
+        "observed_result",
+        "tested_intervention",
+        "nasa_conclusion",
+        "safety_implication",
+        "requirement",
+        "guidance",
+        "design_criterion",
+        "test_criterion",
+        "open_question",
+        "related_evidence_notice",
+        "no_direct_evidence_notice",
+    ] = "observed_result"
+    relationship_status: Literal["DIRECT", "RELATED", "SAFETY", "NO_DIRECT"] = "SAFETY"
+    authority: Literal["NASA_BACKED", "SYSTEM_SUGGESTED", "RESEARCHER_CURATED"] = "NASA_BACKED"
+    evidence_ids: list[str] = []
+    scope: str | None = None
+    modality: str | None = None
+    negation: bool = False
+
+    @model_validator(mode="after")
+    def evidence_is_required_except_for_status_notice(self):
+        if self.epistemic_type != "no_direct_evidence_notice" and not self.evidence_ids:
+            raise ValueError("Grounded scientific claims require evidence_ids")
+        return self
+
+
+class GroundedAnswerDraft(BaseModel):
+    schema_version: str = "phase3-grounded-draft-v1"
+    answer_summary: str
+    claims: list[GroundedClaim] = []
+    limitations: list[str] = []
+    coverage_notes: list[str] = []
+    clarification: str | None = None
+    provider_metadata: dict[str, Any] = {}
+
+
+class ExecutionTrace(BaseModel):
+    raw_query: str
+    proposed_intent: ProposedQueryIntent | None = None
+    validated_intent: ValidatedQueryIntent | None = None
+    validation_actions: list[str] = []
+    fallback_status: list[str] = []
+    evidence_ids: list[str] = []
+    grounding_valid: bool | None = None
+    model_metadata: dict[str, Any] = {}
+    latency_ms: dict[str, float] = {}
+
+
+class AnswerResponse(BaseModel):
+    answer: ScientificAnswer
+    rendered_answer: str
+    validated_intent: ValidatedQueryIntent
+    evidence_bundle: EvidenceBundle
+    draft: GroundedAnswerDraft | None = None
+    trace: ExecutionTrace
 
 
 class SemanticResolutionResult(BaseModel):

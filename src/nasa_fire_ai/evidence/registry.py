@@ -1,3 +1,4 @@
+import json
 import re
 import sqlite3
 from datetime import UTC, datetime
@@ -25,6 +26,7 @@ class EvidenceRegistry:
         CREATE TABLE IF NOT EXISTS review_queue(review_id TEXT PRIMARY KEY, batch_id TEXT, candidate_id TEXT, reason TEXT, status TEXT, detail_json TEXT, created_at TEXT);
         CREATE TABLE IF NOT EXISTS extraction_cache(cache_key TEXT PRIMARY KEY, response_json TEXT, status TEXT, created_at TEXT);
         CREATE TABLE IF NOT EXISTS document_metadata(document_id TEXT PRIMARY KEY, authors TEXT, publication_date TEXT, document_type TEXT, nasa_center TEXT, keywords TEXT, upstream_path TEXT, verification_status TEXT);
+        CREATE TABLE IF NOT EXISTS phase3_cache(cache_key TEXT PRIMARY KEY, cache_kind TEXT, payload_json TEXT, created_at TEXT);
         """)
         for column in (
             "reviewer_note TEXT",
@@ -36,6 +38,20 @@ class EvidenceRegistry:
                 self.db.execute(f"ALTER TABLE review_queue ADD COLUMN {column}")
             except sqlite3.OperationalError:
                 pass
+        self.db.commit()
+
+    def get_phase3_cache(self, cache_key: str, cache_kind: str) -> dict | None:
+        row = self.db.execute(
+            "SELECT payload_json FROM phase3_cache WHERE cache_key=? AND cache_kind=?",
+            (cache_key, cache_kind),
+        ).fetchone()
+        return json.loads(row[0]) if row else None
+
+    def set_phase3_cache(self, cache_key: str, cache_kind: str, payload: dict):
+        self.db.execute(
+            "INSERT OR REPLACE INTO phase3_cache VALUES (?,?,?,?)",
+            (cache_key, cache_kind, json.dumps(payload), datetime.now(UTC).isoformat()),
+        )
         self.db.commit()
 
     def add_source(self, row: dict):
@@ -110,6 +126,15 @@ class EvidenceRegistry:
     def resolve(self, evidence_id: str):
         row = self.db.execute(
             "SELECT * FROM passages WHERE evidence_id=?", (evidence_id,)
+        ).fetchone()
+        return dict(row) if row else None
+
+    def source_metadata(self, evidence_id: str) -> dict | None:
+        row = self.db.execute(
+            """SELECT s.source_id, s.source_type, s.nasa_id, s.title, s.url
+            FROM evidence_refs er JOIN sources s ON s.source_id=er.source_id
+            WHERE er.evidence_id=?""",
+            (evidence_id,),
         ).fetchone()
         return dict(row) if row else None
 

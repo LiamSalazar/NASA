@@ -59,6 +59,8 @@ def build_bundle(
             if registry.resolve(evidence_id)
         ]
     passages = list({passage["evidence_id"]: passage for passage in passages}.values())
+    for passage in passages:
+        passage["source_metadata"] = registry.source_metadata(passage["evidence_id"])
     direct_items = [
         {"id": m.run["id"], "matches": m.matches, "evidence_ids": m.run.get("evidence_ids", [])}
         for m in direct

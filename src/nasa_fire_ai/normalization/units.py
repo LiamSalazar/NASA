@@ -15,6 +15,7 @@ def normalize(value: float, unit: str) -> tuple[float, str]:
         "mm": (0.001, "m"),
         "m": (1, "m"),
         "w": (1, "W"),
+        "k": (1, "K"),
         "s": (1, "s"),
     }
     if u not in table:

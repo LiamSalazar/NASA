@@ -20,6 +20,9 @@ class Settings:
     nvidia_api_key: str | None = os.getenv("NVIDIA_API_KEY")
     nvidia_base_url: str | None = os.getenv("NVIDIA_BASE_URL")
     nvidia_extraction_model: str | None = os.getenv("NVIDIA_EXTRACTION_MODEL")
+    nvidia_phase3_model: str = os.getenv(
+        "NVIDIA_PHASE3_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b"
+    )
     nvidia_embedding_model: str = os.getenv("NVIDIA_EMBEDDING_MODEL", "nvidia/nemotron-3-embed-1b")
     embedding_preprocessing_version: str = "phase2-v1"
     # Optional advisory routing only. It never grants semantic classifiers any
