@@ -1,0 +1,49 @@
+{
+  "version": "holdout-metadata-v2",
+  "status": "FROZEN_METADATA_ONLY",
+  "history": [
+    {
+      "version": "holdout-metadata-v1",
+      "selected": {
+        "structured": "PSI-99_SAFFIRE-II",
+        "documentary": "ntrs-20150023456"
+      },
+      "status": "INVALIDATED",
+      "reason": "PREVIOUSLY_EXPOSED_SOURCE",
+      "evidence": [
+        "PSI-99 is present in data/eda/experimental_tables.json and scripts/phase15_import_profile.py",
+        "ntrs-20150023456 appears in the Evidence Registry/retrieval baselines and Phase 1 holdout reports"
+      ]
+    }
+  ],
+  "replacement_selection": {
+    "version": "holdout-metadata-v2",
+    "selection_rule": "metadata-only: exclude sources present in local raw/cache, Evidence Registry, canonical corpus, reports, evaluation/gold, or semantic/profile artifacts; sort eligible official catalog identifiers; select the first eligible structured PSI accession and first eligible official NTRS citation",
+    "selected": {
+      "structured": {
+        "source_id": "PSI-142_Quantitative_Studies_of_Cool_Flame_Trans",
+        "accession": "PSI-142",
+        "source_system": "NASA PSI",
+        "metadata": {
+          "title": "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames",
+          "sub_area": "Spacecraft Fire Safety",
+          "files_total": "3",
+          "gb_total": "0.0",
+          "url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-142"
+        }
+      },
+      "documentary": {
+        "source_id": "ntrs-20250001364",
+        "ntrs_id": "20250001364",
+        "source_system": "NTRS",
+        "metadata": {
+          "title": "Fire and Flame Research in the International Space Station\u2019s Combustion Integrated Rack",
+          "document_type": "conference paper",
+          "official_url": "https://ntrs.nasa.gov/citations/20250001364"
+        }
+      }
+    },
+    "detailed_content_used_for_selection": false,
+    "digest": "799d9b377ceae900a362577ced1a44d9b4f90ccc72dd2cf8978de29fd97edbb5"
+  }
+}

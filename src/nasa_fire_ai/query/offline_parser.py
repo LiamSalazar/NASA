@@ -52,9 +52,10 @@ def parse_query(text: str) -> QueryIntent:
         lower,
     )
     if match:
-        flow = NumericFilter(
-            operator=match.group(1) or "=", value=float(match.group(2)), unit=match.group(3)
+        operator = {"below": "<", "under": "<", "at most": "<=", "no more than": "<="}.get(
+            match.group(1) or "=", match.group(1) or "="
         )
+        flow = NumericFilter(operator=operator, value=float(match.group(2)), unit=match.group(3))
     mode = (
         "compare"
         if "compare" in lower

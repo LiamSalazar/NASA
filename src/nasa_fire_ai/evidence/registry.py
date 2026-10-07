@@ -27,6 +27,7 @@ class EvidenceRegistry:
         CREATE TABLE IF NOT EXISTS extraction_cache(cache_key TEXT PRIMARY KEY, response_json TEXT, status TEXT, created_at TEXT);
         CREATE TABLE IF NOT EXISTS document_metadata(document_id TEXT PRIMARY KEY, authors TEXT, publication_date TEXT, document_type TEXT, nasa_center TEXT, keywords TEXT, upstream_path TEXT, verification_status TEXT);
         CREATE TABLE IF NOT EXISTS phase3_cache(cache_key TEXT PRIMARY KEY, cache_kind TEXT, payload_json TEXT, created_at TEXT);
+        CREATE TABLE IF NOT EXISTS semantic_staging(candidate_id TEXT PRIMARY KEY, candidate_type TEXT, raw_label TEXT, payload_json TEXT, source_id TEXT, evidence_id TEXT, resolution_status TEXT, review_status TEXT, created_at TEXT);
         """)
         for column in (
             "reviewer_note TEXT",
@@ -39,6 +40,44 @@ class EvidenceRegistry:
             except sqlite3.OperationalError:
                 pass
         self.db.commit()
+
+    def stage_semantic_candidate(self, row: dict):
+        """Operational review state only; it cannot mutate the canonical graph."""
+        required = {"candidate_id", "candidate_type", "raw_label", "resolution_status"}
+        missing = required - set(row)
+        if missing:
+            raise ValueError(f"staging candidate missing: {sorted(missing)}")
+        allowed = {
+            "UNKNOWN",
+            "KNOWN_AMBIGUOUS",
+            "CANDIDATE_NEW_CONCEPT",
+            "CANDIDATE_ALIAS",
+            "CANDIDATE_RELATION",
+            "REJECTED",
+        }
+        if row["resolution_status"] not in allowed:
+            raise ValueError("staging records cannot be canonical")
+        self.db.execute(
+            "INSERT OR REPLACE INTO semantic_staging VALUES (?,?,?,?,?,?,?,?,?)",
+            (
+                row["candidate_id"],
+                row["candidate_type"],
+                row["raw_label"],
+                json.dumps(row),
+                row.get("source_id"),
+                row.get("evidence_id"),
+                row["resolution_status"],
+                row.get("review_status", "PENDING"),
+                datetime.now(UTC).isoformat(),
+            ),
+        )
+        self.db.commit()
+
+    def staged_semantic_candidates(self) -> list[dict]:
+        rows = self.db.execute(
+            "SELECT payload_json FROM semantic_staging ORDER BY candidate_id"
+        ).fetchall()
+        return [json.loads(row[0]) for row in rows]
 
     def get_phase3_cache(self, cache_key: str, cache_kind: str) -> dict | None:
         row = self.db.execute(

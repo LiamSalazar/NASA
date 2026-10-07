@@ -3,7 +3,7 @@ from pathlib import Path
 
 from nasa_fire_ai.evidence import EvidenceRegistry
 from nasa_fire_ai.models import EvidenceBundle, QueryIntent
-from nasa_fire_ai.query import classify_runs
+from nasa_fire_ai.query.matching import classify_runs
 
 
 def _ref_ids(record):

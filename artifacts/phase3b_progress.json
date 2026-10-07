@@ -1,0 +1,39 @@
+{
+  "phase_version": "phase3b-v1",
+  "completed_steps": ["v2_foundation", "dynamic_property_test"],
+  "holdout_freeze": "frozen_metadata_only_v2:799d9b377ceae900a362577ced1a44d9b4f90ccc72dd2cf8978de29fd97edbb5",
+  "holdout_history": [
+    {
+      "manifest_version": "v1",
+      "structured": "PSI-99_SAFFIRE-II",
+      "documentary": "ntrs-20150023456",
+      "status": "INVALIDATED",
+      "reason": "PREVIOUSLY_EXPOSED_SOURCE",
+      "evidence": [
+        "data/eda/experimental_tables.json profiles PSI-99",
+        "data/eda/phase15_retrieval_baseline.json and Phase 1 reports include FLEX"
+      ]
+    }
+  ],
+  "generic_staging": "implemented_unvalidated_holdout",
+  "generic_profiler": "implemented_unvalidated_holdout",
+  "v2_planner": "implemented_prefirstpass_v1",
+  "prefirstpass_freeze": "frozen:artifacts/phase3b_prefirstpass_freeze.json",
+  "blind_first_pass": "complete:artifacts/phase3b_holdout_first_pass.json",
+  "post_holdout_changes": "none",
+  "next_dependency_ready_step": "none: closure evaluated; retain V2 as experimental until a registry-driven KG/SPARQL executor replaces the legacy compatibility adapter",
+  "quality_after_first_pass": {
+    "ruff": "pass",
+    "pytest": "67 passed",
+    "shacl": "conforms",
+    "canonical_entities": 3831,
+    "rdf_triples": 24014,
+    "documents": 286,
+    "fts_passages": 6055,
+    "staging_records_added": 4
+  },
+  "v1_v2_parity": {"DIRECT": 1.0, "RELATED": 1.0, "EVIDENCE_ELIGIBILITY": 1.0},
+  "contract_coverage": {"v1": 0.8297872340425532, "v2": 1.0},
+  "holdout_query_probes": "complete:artifacts/phase3b_holdout_query_probes.json",
+  "closure": "complete-with-no-go: V2 remains experimental; READY_FOR_PHASE_4=NO"
+}
