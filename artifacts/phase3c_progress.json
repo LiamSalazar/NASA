@@ -1,0 +1,13 @@
+{
+  "phase_version": "phase3c-v1",
+  "status": "BENCHMARKING",
+  "phase3b_baseline_references": ["docs/PHASE3B_FINAL_CLOSURE.md", "artifacts/phase3b_prefirstpass_freeze.json", "artifacts/phase3b_v1_v2_parity.json"],
+  "completed_tasks": ["read_phase3b_history", "inspect_v2_compatibility_execution", "native_semantic_model", "legacy_projection", "native_executor", "generic_ingestion", "dynamic_benchmark", "reviewed_gold", "compositional_gold", "native_freeze", "postfreeze_stress", "parity_first_and_second_pass", "holdout_selection", "documentary_blind_first_pass", "documentary_holdout_queries", "baseline_integrity_and_bm25"],
+  "pending_tasks": ["finish_live_interpreter", "interpreter_metrics", "deterministic_parser_comparison", "structured_holdout_availability_resolution", "synthesis", "end_to_end", "final_quality", "closure"],
+  "benchmark_progress": {"dynamic": "230/230", "postfreeze": "125/125", "parity_second_pass": {"direct": "39/39", "related": "39/39", "evidence_ids": "9/39"}, "bm25": "historical baseline reproduced N=40", "live": "resumable JSONL; transient NVIDIA timeouts preserved"},
+  "holdout_status": "TWO_DOCUMENTARY_INGESTED; FOUR_ELIGIBLE_PSI_CANDIDATES_EXPOSE_NO_CSV",
+  "architecture_digests": {"original_freeze": "artifacts/phase3c_native_freeze.json", "active_repaired_freeze": "artifacts/phase3c_native_freeze_second_pass.json"},
+  "evaluation_digests": {"reviewed_gold": "ea8caaf39176542b183db4137a4ead144005211a9fd687ed1659bd5aaaad047f", "compositional_gold": "fcc3396f17fd24883dc2e967e8de79d1998fe7603634a0451c021819c40863de", "holdout_manifest": "b46cbf080a74b2a7ebeca8d36972afed8e8e35cbc554099671da37b910d39781"},
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "prompt_versions": {"interpreter": "phase3c-minimal-v1", "synthesis": "phase3-synthesis-v1"}
+}

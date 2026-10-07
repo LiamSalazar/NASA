@@ -16,7 +16,7 @@ Operator = Literal["EQ", "NEQ", "LT", "LTE", "GT", "GTE", "BETWEEN", "APPROX", "
 class GenericValue(BaseModel):
     """Reported and normalized value form, never a property-specific field."""
 
-    reported_value: float | str | None = None
+    reported_value: float | str | list[float | str] | None = None
     reported_unit: str | None = None
     canonical_value: float | None = None
     canonical_unit: str | None = None
@@ -24,6 +24,7 @@ class GenericValue(BaseModel):
     upper: float | None = None
     approximate: bool = False
     raw_expression: str | None = None
+    tolerance: float | None = Field(default=None, ge=0)
 
     @model_validator(mode="after")
     def valid_shape(self):
@@ -61,6 +62,8 @@ class QueryIntentV2(BaseModel):
     source_constraints: list[str] = []
     unresolved_mentions: list[str] = []
     conversation_reference: str | None = None
+    clarification_required: bool = False
+    ambiguities: list[str] = []
 
 
 @dataclass(frozen=True)
@@ -73,11 +76,24 @@ class PropertyDefinition:
     status: Literal["CANONICAL", "CANDIDATE_NEW_CONCEPT"] = "CANONICAL"
 
 
+@dataclass(frozen=True)
+class RelationDefinition:
+    relation_id: str
+    closed_world: bool = False
+    selection_scope: bool = False
+    status: str = "CANONICAL"
+
+
 class SemanticRegistry:
     """Semantic data may grow here without changing the QueryIntentV2 shape."""
 
-    def __init__(self, properties=None, target_classes=None, information_classes=None):
+    def __init__(
+        self, properties=None, target_classes=None, information_classes=None, relations=None
+    ):
         self.properties = {x.property_id: x for x in properties or []}
+        self.relations = {x.relation_id: x for x in relations or []}
+        self.entities: set[str] = set()
+        self.class_metadata: dict[str, dict] = {}
         self.target_classes = target_classes or {
             "ExperimentalRun",
             "Investigation",
@@ -101,6 +117,9 @@ class SemanticRegistry:
     def register(self, definition: PropertyDefinition) -> None:
         self.properties[definition.property_id] = definition
 
+    def register_relation(self, definition: RelationDefinition) -> None:
+        self.relations[definition.relation_id] = definition
+
     def register_target_class(self, class_id: str) -> None:
         self.target_classes.add(class_id)
 
@@ -117,6 +136,8 @@ class SemanticRegistry:
         if len(matches) != 1:
             return ("AMBIGUOUS" if len(matches) > 1 else "UNKNOWN", None)
         candidate = matches[0]
+        if candidate.status != "CANONICAL":
+            return "UNKNOWN", None
         if unit and candidate.canonical_unit:
             try:
                 _, canonical = normalize(1.0, unit)
@@ -134,21 +155,43 @@ class SemanticRegistry:
         if definition.datatype == "categorical":
             if constraint.operator not in {"EQ", "NEQ", "IN"}:
                 raise ValueError("operator incompatible with categorical property")
+            if value.reported_unit or value.canonical_unit or value.lower is not None:
+                raise ValueError("categorical properties cannot have units or numeric bounds")
+            if constraint.operator == "IN" and not isinstance(value.reported_value, list):
+                raise ValueError("IN requires explicit values")
             return value
         if constraint.operator == "BETWEEN" and value.lower is None:
             raise ValueError("BETWEEN requires a range")
         if value.reported_value is not None and not isinstance(value.reported_value, (int, float)):
-            raise ValueError("numeric property requires numeric value")
+            if constraint.operator == "IN" and isinstance(value.reported_value, list):
+                if not all(isinstance(x, (int, float)) for x in value.reported_value):
+                    raise ValueError("numeric IN requires numeric values")
+            else:
+                raise ValueError("numeric property requires numeric value")
+        if value.canonical_unit and value.canonical_unit != definition.canonical_unit:
+            raise ValueError("incompatible canonical unit")
         if value.reported_unit:
+            sample = value.reported_value
+            if isinstance(sample, list):
+                sample = sample[0] if sample else 0
             converted, canonical = normalize(
-                float(value.reported_value or value.lower or 0), value.reported_unit
+                float(sample if sample is not None else value.lower or 0), value.reported_unit
             )
-            if definition.canonical_unit and canonical != definition.canonical_unit:
+            if canonical != definition.canonical_unit:
                 raise ValueError("incompatible unit dimension")
             value.canonical_value, value.canonical_unit = converted, canonical
+            if isinstance(value.reported_value, list):
+                # Keep the original reported list; evaluation converts each member.
+                value.canonical_value = None
             if value.lower is not None:
                 value.lower = normalize(value.lower, value.reported_unit)[0]
                 value.upper = normalize(value.upper, value.reported_unit)[0]
+            if value.tolerance is not None:
+                value.tolerance = normalize(value.tolerance, value.reported_unit)[0]
+        elif definition.canonical_unit and not value.canonical_unit:
+            raise ValueError("numeric dimensional value requires a unit")
+        if constraint.operator not in {"BETWEEN", "IN"} and _number(value) is None:
+            raise ValueError("numeric property requires numeric value")
         return value
 
     def validate_intent(self, intent: QueryIntentV2) -> None:
@@ -192,11 +235,34 @@ def evaluate_constraint(
         )
         same = candidate.reported_value in values
         return "MATCH" if (same if constraint.operator != "NEQ" else not same) else "DIFFER"
+    # Validate and normalize the candidate independently; never compare unlike units.
+    try:
+        if candidate.lower is not None:
+            return "UNKNOWN"  # A reported interval is not a point observation.
+        candidate = registry.validate(
+            PropertyConstraintV2(property_id=constraint.property_id, operator="EQ", value=candidate)
+        )
+    except ValueError:
+        return "INVALID"
     left, right = _number(candidate), _number(query)
     if left is None:
         return "UNKNOWN"
     if constraint.operator == "BETWEEN":
         return "MATCH" if query.lower <= left <= query.upper else "DIFFER"
+    if constraint.operator == "IN":
+        if not isinstance(query.reported_value, list):
+            return "INVALID"
+        values = [
+            normalize(float(x), query.reported_unit)[0] if query.reported_unit else float(x)
+            for x in query.reported_value
+        ]
+        return "MATCH" if left in values else "DIFFER"
+    if constraint.operator == "APPROX":
+        if query.lower is not None:
+            return "MATCH" if query.lower <= left <= query.upper else "DIFFER"
+        if query.tolerance is None or right is None:
+            return "UNKNOWN"
+        return "MATCH" if abs(left - right) <= query.tolerance else "DIFFER"
     if right is None:
         return "UNKNOWN"
     checks = {
@@ -206,7 +272,6 @@ def evaluate_constraint(
         "LTE": left <= right,
         "GT": left > right,
         "GTE": left >= right,
-        "APPROX": abs(left - right) <= max(abs(right) * 0.05, 1e-12),
     }
     return "MATCH" if checks.get(constraint.operator, False) else "DIFFER"
 

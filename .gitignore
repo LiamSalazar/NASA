@@ -17,6 +17,23 @@ data/index/*.sqlite-*
 data/index/*.npy
 data/index/*.npz
 
+# Rebuildable evaluation databases; retain JSON/JSONL results and RDF snapshots
+artifacts/**/*.sqlite
+artifacts/**/*.sqlite-*
+artifacts/**/*.db
+artifacts/**/*.db-*
+
+# Downloaded holdout binaries remain local; manifests/checksums/metadata are versioned
+artifacts/phase3c_holdout_acquisition/*.pdf
+
+# Python packaging/build output
+build/
+dist/
+*.egg-info/
+.coverage
+.coverage.*
+htmlcov/
+
 # Streamlit and editor state
 .streamlit/secrets.toml
 .vscode/

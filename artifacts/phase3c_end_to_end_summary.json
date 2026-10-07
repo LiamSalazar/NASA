@@ -1,0 +1,91 @@
+{
+  "accepted_citations": 0,
+  "accepted_claims": 0,
+  "cases": 14,
+  "generated_claims": 31,
+  "limitations": [
+    "No structured holdout available; its planned case is reported unavailable",
+    "Exact quotation gate rejects unreviewed paraphrases; no independently reviewed prose-level violation gold",
+    "Interpreter timings reuse persisted responses, not repeated full serial API executions"
+  ],
+  "metrics": {
+    "direct_related_correct": {
+      "denominator": 14,
+      "estimate": 0.42857142857142855,
+      "numerator": 6,
+      "status": "MEASURED",
+      "wilson95": [
+        0.21380798904474121,
+        0.6740935542034926
+      ]
+    },
+    "generative_success": {
+      "denominator": 14,
+      "estimate": 0.0,
+      "numerator": 0,
+      "status": "MEASURED",
+      "wilson95": [
+        1.3877787807814457e-17,
+        0.2153108027376358
+      ]
+    },
+    "interpretation_success": {
+      "denominator": 14,
+      "estimate": 0.0,
+      "numerator": 0,
+      "status": "MEASURED",
+      "wilson95": [
+        1.3877787807814457e-17,
+        0.2153108027376358
+      ]
+    },
+    "latency": {
+      "max_ms": 54636.093023000285,
+      "median_ms": 19170.021795999673,
+      "n": 13,
+      "p95_ms": 54636.093023000285
+    },
+    "planning_success": {
+      "denominator": 14,
+      "estimate": 0.9285714285714286,
+      "numerator": 13,
+      "status": "MEASURED",
+      "wilson95": [
+        0.6853129557584889,
+        0.9872777847521093
+      ]
+    },
+    "retrieval_correct": {
+      "denominator": 14,
+      "estimate": 0.14285714285714285,
+      "numerator": 2,
+      "status": "MEASURED",
+      "wilson95": [
+        0.040093921271464966,
+        0.39941379496970353
+      ]
+    },
+    "safe_fallback": {
+      "denominator": 14,
+      "estimate": 1.0,
+      "numerator": 14,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7846891972623643,
+        1
+      ]
+    },
+    "safe_system_success": {
+      "denominator": 14,
+      "estimate": 0.0,
+      "numerator": 0,
+      "status": "MEASURED",
+      "wilson95": [
+        1.3877787807814457e-17,
+        0.2153108027376358
+      ]
+    }
+  },
+  "rejected_claims": 31,
+  "visible_unsupported_claims": 0
+}

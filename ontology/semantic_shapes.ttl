@@ -1,0 +1,14 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sem: <https://example.org/nasa-fire-safety/semantic/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sem:ValueShape a sh:NodeShape ; sh:targetClass sem:SemanticValue ;
+  sh:property [ sh:path sem:subject ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path sem:measuredProperty ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path sem:value ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path sem:evidenceRef ; sh:minCount 1 ] .
+sem:RelationShape a sh:NodeShape ; sh:targetClass sem:SemanticRelation ;
+  sh:property [ sh:path sem:subject ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path sem:relation ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path sem:object ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path sem:evidenceRef ; sh:minCount 1 ] .

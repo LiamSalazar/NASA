@@ -1,0 +1,93 @@
+{
+  "audit": {
+    "caveat": "Static identifier-reference audit plus runtime forbidden-call mocks; not formal whole-program proof",
+    "forbidden_native_references": {
+      "LEGACY_PROPERTY_METADATA": 0,
+      "LEGACY_RELATION_METADATA": 0,
+      "build_bundle_from_v1_as_v2": 0,
+      "build_bundle_v2": 0,
+      "classify_runs": 0
+    },
+    "legacy_source_semantic_components_retained": 3,
+    "legacy_source_semantic_mappings_retained": 16,
+    "property_specific_native_branches": 0,
+    "source_id_specific_native_branches": 0
+  },
+  "baseline_counts": {
+    "documents": 286,
+    "evidence_refs": 5209,
+    "passages": 6055,
+    "passages_fts": 6055,
+    "semantic_staging": 4,
+    "sources": 282
+  },
+  "bm25": {
+    "MRR": {
+      "denominator": 40,
+      "estimate": 0.7225694444444445,
+      "numerator": 28.90277777777778
+    },
+    "Recall@1": {
+      "denominator": 40,
+      "estimate": 0.625,
+      "numerator": 25,
+      "status": "MEASURED",
+      "wilson95": [
+        0.47032439137301096,
+        0.7577702083276673
+      ]
+    },
+    "Recall@10": {
+      "denominator": 40,
+      "estimate": 0.9,
+      "numerator": 36,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7694822477247771,
+        0.9604204713173936
+      ]
+    },
+    "Recall@3": {
+      "denominator": 40,
+      "estimate": 0.85,
+      "numerator": 34,
+      "status": "MEASURED",
+      "wilson95": [
+        0.709276756335103,
+        0.9293881228267964
+      ]
+    },
+    "Recall@5": {
+      "denominator": 40,
+      "estimate": 0.85,
+      "numerator": 34,
+      "status": "MEASURED",
+      "wilson95": [
+        0.709276756335103,
+        0.9293881228267964
+      ]
+    }
+  },
+  "canonical_run_records": 405,
+  "canonical_shacl": true,
+  "canonical_triples": 24014,
+  "db_integrity": "ok",
+  "digests": {
+    "data/canonical/graph.ttl": "745a2dcf3e0317c6dcc8bdf34b4bf991b57c89f81208d629d8f96fcf40add319",
+    "data/canonical/records.json": "2f3eb5bebe6c6ea6c5fe0e1ff84049dae3a8921900e9c386a43c7ebcba7dbd3d",
+    "data/canonical/runs.json": "410c8def553f0cc7900fdd921d38e07ba54e68b757a4412fcc8a238f9743477c"
+  },
+  "fts_duplicates": 0,
+  "fts_missing": 0,
+  "legacy_execution_runs": 2,
+  "missing_document_refs": 0,
+  "native_shacl": true,
+  "native_triples": 9674,
+  "scientific_state": {
+    "historical_results_modified": false,
+    "limitation": "405 canonical runs exist; generic scientific values projected from the two-row legacy execution view only",
+    "new_scientific_aliases_added": false,
+    "raw_files_modified": false,
+    "staging_to_direct": false
+  }
+}

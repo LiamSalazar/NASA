@@ -1,0 +1,31 @@
+version: phase3c-registry-v1
+authority: "Existing canonical records, domain/lexicon.yaml and ontology/fire_safety.ttl; additive identities recorded for review"
+entities: [PMMA, SIBAL Fabric, microgravity, psi-98, psi-25]
+properties:
+  - {property_id: AirflowVelocity, dimension: velocity, canonical_unit: m/s, aliases: [airflow velocity, airflow, air flow, flow velocity, forced flow]}
+  - {property_id: OxygenConcentration, dimension: fraction, canonical_unit: fraction, aliases: [oxygen concentration, oxygen, O2]}
+  - {property_id: Pressure, dimension: pressure, canonical_unit: Pa, aliases: [pressure]}
+  - {property_id: FlowDirection, dimension: none, canonical_unit: null, datatype: categorical, aliases: [flow direction]}
+relations:
+  - {relation_id: hasMaterial, closed_world: true}
+  - {relation_id: hasGravityCondition, closed_world: true}
+  - {relation_id: belongsToInvestigation, selection_scope: true}
+  - {relation_id: belongsToExperimentFamily}
+  - {relation_id: hasPhenomenon}
+classes:
+  ExperimentalRun: {target: true, information: true}
+  Investigation: {target: true}
+  ExperimentFamily: {target: true}
+  Measurement: {target: true, information: true}
+  Publication: {target: true, information: true, bundle_field: publications, documentary: true}
+  Document: {target: true, documentary: true, bundle_field: publications}
+  SafetyStatement: {target: true}
+  ReportedObservation: {information: true, bundle_field: experimental_observations}
+  Intervention: {information: true, bundle_field: interventions}
+  NASAConclusion: {information: true, bundle_field: nasa_conclusions}
+  SafetyImplication: {information: true, bundle_field: safety_implications}
+  Requirement: {information: true, bundle_field: requirements}
+  Guidance: {information: true, bundle_field: guidance}
+  DesignCriterion: {information: true, bundle_field: design_test_criteria}
+  TestCriterion: {information: true, bundle_field: design_test_criteria}
+  OpenQuestion: {information: true, bundle_field: nasa_identified_open_questions}

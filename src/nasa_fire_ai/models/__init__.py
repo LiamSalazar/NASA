@@ -274,6 +274,7 @@ class EvidenceBundle(BaseModel):
     comparison: "ExperimentComparison | None" = None
     retrieval_metadata: dict[str, Any] = {}
     authority_metadata: dict[str, Any] = {}
+    semantic_records: list[dict] = []
 
 
 class ExperimentComparison(BaseModel):
