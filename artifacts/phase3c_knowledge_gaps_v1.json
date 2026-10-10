@@ -1,0 +1,67 @@
+[
+  {
+    "gap": "3808 explicit run/investigation/sample/condition foreign keys absent from native associations",
+    "earliest_stage": "G_GRAPH_PROJECTION",
+    "status": "CORRECTED_OPT_IN",
+    "evidence": "phase3c_knowledge_coverage_cases_v1.json"
+  },
+  {
+    "gap": "Specimen description used as material identity",
+    "earliest_stage": "E_NORMALIZATION",
+    "status": "PARTIAL_CORRECTION",
+    "resolved_approved_aliases": 70,
+    "total_samples": 405
+  },
+  {
+    "gap": "2314 scalar fields lack executable property mapping",
+    "earliest_stage": "F_SEMANTIC_REGISTRY",
+    "status": "REVIEW_REQUIRED",
+    "note": "Condition entities are now represented; their unknown property semantics remain unresolved."
+  },
+  {
+    "gap": "Acrylic/PMMA nomenclature present in documents but no approved family taxonomy",
+    "earliest_stage": "C_EXTRACTION_AND_I_AUTHORITY",
+    "status": "STAGED",
+    "evidence_ids": [
+      "E-751f8e0f5230aa68"
+    ]
+  },
+  {
+    "gap": "Historical generator links Saffire-IV source observation to psi-98 Saffire-I",
+    "earliest_stage": "G_GRAPH_PROJECTION",
+    "severity": "HIGH",
+    "status": "GENERATOR_CORRECTED_HISTORICAL_GRAPH_QUARANTINED",
+    "note": "Native enrichment reads explicit canonical records, not historical instance edges."
+  },
+  {
+    "gap": "13 predicates in original graph lack ontology declarations",
+    "earliest_stage": "D_ONTOLOGY",
+    "status": "REVIEW_REQUIRED",
+    "terms": [
+      "https://example.org/nasa-fire-safety#canonicalLowerValue",
+      "https://example.org/nasa-fire-safety#canonicalUnit",
+      "https://example.org/nasa-fire-safety#canonicalUpperValue",
+      "https://example.org/nasa-fire-safety#geometry",
+      "https://example.org/nasa-fire-safety#isApproximate",
+      "https://example.org/nasa-fire-safety#reportedLowerValue",
+      "https://example.org/nasa-fire-safety#reportedUnit",
+      "https://example.org/nasa-fire-safety#reportedUpperValue",
+      "https://example.org/nasa-fire-safety#reportedValue",
+      "https://example.org/nasa-fire-safety#scopeApplicability",
+      "https://example.org/nasa-fire-safety#supportedBy",
+      "https://example.org/nasa-fire-safety#text",
+      "https://example.org/nasa-fire-safety#title"
+    ]
+  },
+  {
+    "gap": "Only 8/282 sources have canonical records",
+    "earliest_stage": "C_EXTRACTION",
+    "status": "INCOMPLETE_INVENTORY",
+    "note": "Presence metric, not completeness or relevance of every passage."
+  },
+  {
+    "gap": "Two official sources acquired and parsed but require scientific extraction review",
+    "earliest_stage": "A_SOURCE_COVERAGE",
+    "status": "ACQUIRED_ISOLATED_REVIEW_REQUIRED"
+  }
+]

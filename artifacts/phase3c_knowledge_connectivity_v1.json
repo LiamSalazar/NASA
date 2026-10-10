@@ -1,0 +1,54 @@
+{
+  "credentials_detected": {
+    "NVIDIA": true,
+    "Jev": true
+  },
+  "requests": [
+    {
+      "provider": "NVIDIA",
+      "execution_mode": "NEW_LIVE_REQUEST",
+      "calls": 1,
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "status": "PASS",
+      "structured_output": {
+        "status": "ok"
+      },
+      "usage": {
+        "latency_ms": 600.559163998696,
+        "input_tokens": 31,
+        "output_tokens": 5
+      },
+      "http_status": 200,
+      "latency_ms": 628.7984439986758
+    },
+    {
+      "provider": "Jev",
+      "execution_mode": "NEW_LIVE_REQUEST",
+      "calls": 1,
+      "model_alias": "jev-latest",
+      "status": "PASS",
+      "http_status": 200,
+      "structured_output": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "status": {
+            "type": "choice",
+            "choice": "OK",
+            "confidence": 1.0,
+            "probabilities": {
+              "OK": 1.0,
+              "OTHER": 0.0
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 323,
+          "output_tokens": 31
+        }
+      },
+      "parsed_label": "OK",
+      "confidence": 1.0,
+      "latency_ms": 296.6703399870312
+    }
+  ]
+}

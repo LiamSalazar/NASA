@@ -1,0 +1,851 @@
+{
+  "artifacts": {
+    "coverage": "artifacts/phase3c_final_repair_coverage_v1.json",
+    "e2e_cases": "artifacts/phase3c_final_repair_e2e_cases_v6.jsonl",
+    "interpreter_cases": "artifacts/phase3c_final_repair_interpreter_cases_v6.jsonl",
+    "relevance_review": "artifacts/phase3c_final_repair_scientific_relevance_review_v2.json",
+    "retrieval_cases": "artifacts/phase3c_final_repair_objective_retrieval_v2.jsonl",
+    "structured_candidates": "artifacts/phase3c_final_repair_structured_candidates_v2.json"
+  },
+  "baseline": "artifacts/phase3c_final_repair_baseline.json",
+  "blockers": [
+    "Standalone query exactness is 11/41 and requested-information recall remains 34/50; approve a reviewed language contract before any default-path change.",
+    "No genuinely new eligible structured NASA combustion dataset was acquired; generalization beyond prior PSI/NTRS exposures remains limited.",
+    "Eight end-to-end cases remain REVIEW_REQUIRED for scientific relevance; no independent human relevance review was performed.",
+    "Grounded synthesis still rejects paraphrases without independent fidelity gold; end-to-end full objective success remains 2/20."
+  ],
+  "bm25_regression": {
+    "gold_digest": "eb3f6fe122a234aa6c079d6fd5f71f74fd9cc1b51abdab24d7d2f8fc7f9cdf48",
+    "method": "Existing FTS5/BM25; source-backed gold; no vector retrieval.",
+    "metrics": {
+      "MRR": {
+        "denominator": 40,
+        "estimate": 0.726736111111111,
+        "numerator": 29.069444444444443
+      },
+      "Recall@1": {
+        "denominator": 40,
+        "estimate": 0.625,
+        "numerator": 25,
+        "status": "MEASURED",
+        "wilson95": [
+          0.47032439137301096,
+          0.7577702083276673
+        ]
+      },
+      "Recall@10": {
+        "denominator": 40,
+        "estimate": 0.9,
+        "numerator": 36,
+        "status": "MEASURED",
+        "wilson95": [
+          0.7694822477247771,
+          0.9604204713173936
+        ]
+      },
+      "Recall@3": {
+        "denominator": 40,
+        "estimate": 0.85,
+        "numerator": 34,
+        "status": "MEASURED",
+        "wilson95": [
+          0.709276756335103,
+          0.9293881228267964
+        ]
+      },
+      "Recall@5": {
+        "denominator": 40,
+        "estimate": 0.85,
+        "numerator": 34,
+        "status": "MEASURED",
+        "wilson95": [
+          0.709276756335103,
+          0.9293881228267964
+        ]
+      }
+    },
+    "n": 40,
+    "per_case": [
+      {
+        "case_id": "doc-01",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-02",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-03",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-04",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-05",
+        "rank": 2
+      },
+      {
+        "case_id": "doc-06",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-07",
+        "rank": null
+      },
+      {
+        "case_id": "doc-08",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-09",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-10",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-11",
+        "rank": 3
+      },
+      {
+        "case_id": "doc-12",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-13",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-14",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-15",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-16",
+        "rank": 2
+      },
+      {
+        "case_id": "doc-17",
+        "rank": null
+      },
+      {
+        "case_id": "doc-18",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-19",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-20",
+        "rank": null
+      },
+      {
+        "case_id": "doc-21",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-22",
+        "rank": 2
+      },
+      {
+        "case_id": "doc-23",
+        "rank": 9
+      },
+      {
+        "case_id": "doc-24",
+        "rank": 3
+      },
+      {
+        "case_id": "doc-25",
+        "rank": 8
+      },
+      {
+        "case_id": "doc-26",
+        "rank": 3
+      },
+      {
+        "case_id": "doc-27",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-28",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-29",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-30",
+        "rank": 3
+      },
+      {
+        "case_id": "doc-31",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-32",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-33",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-34",
+        "rank": 1
+      },
+      {
+        "case_id": "doc-35",
+        "rank": 2
+      },
+      {
+        "case_id": "safety-36",
+        "rank": 1
+      },
+      {
+        "case_id": "safety-37",
+        "rank": 1
+      },
+      {
+        "case_id": "safety-38",
+        "rank": null
+      },
+      {
+        "case_id": "safety-39",
+        "rank": 1
+      },
+      {
+        "case_id": "safety-40",
+        "rank": 2
+      }
+    ],
+    "version": "final-repair-bm25-v1"
+  },
+  "coverage": {
+    "broken_native_evidence_ids": [],
+    "counts": {
+      "broken_evidence_refs": 0,
+      "conditions": 682,
+      "eligible_runs": 405,
+      "evidence_refs_retained": 424,
+      "invalid_units": 0,
+      "measurements": 0,
+      "missing_original_values": 0,
+      "projected_runs": 405,
+      "relations": 812,
+      "runs_with_unresolved": 405,
+      "runs_without_values": 2,
+      "total_runs": 405,
+      "unknown_fields_staged": 2314
+    },
+    "native_triples": 20447,
+    "raw_canonical_digest_checks": true,
+    "staging_provenance_complete": {
+      "denominator": 2314,
+      "estimate": 1.0,
+      "numerator": 2314,
+      "status": "MEASURED",
+      "wilson95": [
+        0.9983426567826392,
+        1
+      ]
+    },
+    "unit_conversion": {
+      "factor_to_Pa": 133.322387415,
+      "identity_basis": "Existing declarative pressure->Pressure mapping plus registered pressure dimension",
+      "property": "Pressure",
+      "records": 274,
+      "source_values_preserved": true,
+      "unit": "mmHg"
+    },
+    "unresolved_by_field": {
+      "air_display": 1,
+      "burn_time": 268,
+      "burning_rate": 258,
+      "fan_display": 1,
+      "final_co": 119,
+      "final_co2": 122,
+      "flow_restrictor": 1,
+      "gmt": 1,
+      "ignition_power": 2,
+      "ignition_time": 2,
+      "initial_carbon_dioxide": 274,
+      "initial_co": 125,
+      "initial_co2": 126,
+      "initial_droplet_diameter": 262,
+      "initial_helium": 274,
+      "initial_nitrogen": 274,
+      "sample_length": 2,
+      "sample_thickness": 2,
+      "sample_width": 2,
+      "total_frames_shot": 1,
+      "visible_flame_extinction_diameter": 197
+    },
+    "unresolved_by_root_reason": {
+      "no approved property mapping": 2314
+    },
+    "version": "post-repair-v1"
+  },
+  "decisions": {
+    "GENERALIZATION_DECISION": "LIMITED",
+    "GENERIC_INGESTION_DECISION": "REVISE",
+    "GROUNDED_SYNTHESIS_DECISION": "REVISE",
+    "JEV_TRIAGE_DECISION": "KEEP_OPTIONAL",
+    "NATIVE_V2_EXECUTOR_DECISION": "REVISE",
+    "QUERYINTERPRETER_V2_DECISION": "REVISE",
+    "READY_FOR_PHASE_4": "NO",
+    "V2_DEFAULT_PATH_DECISION": "KEEP_EXPERIMENTAL"
+  },
+  "end_to_end": {
+    "cases": 20,
+    "full_objective_success": {
+      "denominator": 20,
+      "estimate": 0.1,
+      "numerator": 2,
+      "status": "MEASURED",
+      "wilson95": [
+        0.027866481213768224,
+        0.3010336452284873
+      ]
+    },
+    "generation": "No new synthesis calls; earlier bounded synthesis gate is unchanged.",
+    "interpretation_exact": {
+      "denominator": 20,
+      "estimate": 0.3,
+      "numerator": 6,
+      "status": "MEASURED",
+      "wilson95": [
+        0.1454772448676043,
+        0.5189728183535235
+      ]
+    },
+    "language_latency": "NOT_MEASURED: persisted live extraction reused",
+    "native_latency": {
+      "max_ms": 152.27446400240296,
+      "median_ms": 74.22006800334202,
+      "n": 20,
+      "p95_ms": 146.28719200118212
+    },
+    "objective_evidence_recovery": {
+      "denominator": 12,
+      "estimate": 0.9166666666666666,
+      "numerator": 11,
+      "status": "MEASURED",
+      "wilson95": [
+        0.646120088858883,
+        0.9851349055950829
+      ]
+    },
+    "planning_guard_pass": {
+      "denominator": 20,
+      "estimate": 1.0,
+      "numerator": 20,
+      "status": "MEASURED",
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ]
+    },
+    "review_required_cases": 8,
+    "useful_fallback": {
+      "denominator": 20,
+      "estimate": 0.55,
+      "numerator": 11,
+      "status": "MEASURED",
+      "wilson95": [
+        0.34208534245034233,
+        0.7418021417443759
+      ]
+    },
+    "version": "POST_REPAIR-v6"
+  },
+  "historical_baseline_digest_audit": {
+    "changed": [
+      "domain/query_language_v2.yaml",
+      "domain/semantic_registry.yaml",
+      "src/nasa_fire_ai/ingestion/semantic.py",
+      "src/nasa_fire_ai/models/__init__.py",
+      "src/nasa_fire_ai/normalization/units.py",
+      "src/nasa_fire_ai/query/native.py",
+      "src/nasa_fire_ai/query/native_interpreter.py",
+      "src/nasa_fire_ai/query/v2.py",
+      "src/nasa_fire_ai/services/native.py"
+    ],
+    "expected": 466,
+    "missing": [],
+    "unchanged": 457
+  },
+  "interpreter": {
+    "case_trace_file": "artifacts/phase3c_final_repair_interpreter_cases_v6.jsonl",
+    "field_analysis": "Raw proposals, original resolved intent, repaired intent and reviewed expected fields coexist per case for layer attribution.",
+    "field_metrics": {
+      "ambiguities": {
+        "f1": 0.9333333333333333,
+        "fn": 0,
+        "fp": 1,
+        "precision": 0.875,
+        "recall": 1.0,
+        "tp": 7
+      },
+      "comparison_correctness": {
+        "denominator": 6,
+        "estimate": 1.0,
+        "numerator": 6,
+        "status": "SMALL_N",
+        "wilson95": [
+          0.6096657120978346,
+          1
+        ]
+      },
+      "entity_constraints": {
+        "f1": 0.9571428571428572,
+        "fn": 2,
+        "fp": 10,
+        "precision": 0.9305555555555556,
+        "recall": 0.9852941176470589,
+        "tp": 134
+      },
+      "numeric_fields": {
+        "approximation": {
+          "denominator": 13,
+          "estimate": 1.0,
+          "numerator": 13,
+          "status": "MEASURED",
+          "wilson95": [
+            0.7719046276458016,
+            0.9999999999999999
+          ]
+        },
+        "numeric_value": {
+          "denominator": 60,
+          "estimate": 0.9166666666666666,
+          "numerator": 55,
+          "status": "MEASURED",
+          "wilson95": [
+            0.8193105798166558,
+            0.9638795433982692
+          ]
+        },
+        "operator": {
+          "denominator": 60,
+          "estimate": 0.9666666666666667,
+          "numerator": 58,
+          "status": "MEASURED",
+          "wilson95": [
+            0.886362257256914,
+            0.9908106807438021
+          ]
+        },
+        "range": {
+          "denominator": 26,
+          "estimate": 0.5769230769230769,
+          "numerator": 15,
+          "status": "MEASURED",
+          "wilson95": [
+            0.3894861374659171,
+            0.7445555668634343
+          ]
+        },
+        "unit": {
+          "denominator": 60,
+          "estimate": 0.9666666666666667,
+          "numerator": 58,
+          "status": "MEASURED",
+          "wilson95": [
+            0.886362257256914,
+            0.9908106807438021
+          ]
+        }
+      },
+      "operation_accuracy": {
+        "denominator": 101,
+        "estimate": 0.9702970297029703,
+        "numerator": 98,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9162825657200278,
+          0.9898475193494145
+        ]
+      },
+      "property_constraints": {
+        "f1": 0.7627118644067796,
+        "fn": 15,
+        "fp": 13,
+        "precision": 0.7758620689655172,
+        "recall": 0.75,
+        "tp": 45
+      },
+      "requested_information": {
+        "f1": 0.8095238095238095,
+        "fn": 16,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 0.68,
+        "tp": 34
+      },
+      "source_constraints": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 10
+      },
+      "targets": {
+        "f1": 1.0,
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 101
+      },
+      "unresolved_mentions": {
+        "f1": 0.5862068965517241,
+        "fn": 7,
+        "fp": 17,
+        "precision": 0.5,
+        "recall": 0.7083333333333334,
+        "tp": 17
+      }
+    },
+    "groups": {
+      "historical_compositional": {
+        "exact": {
+          "denominator": 30,
+          "estimate": 0.3333333333333333,
+          "numerator": 10,
+          "status": "MEASURED",
+          "wilson95": [
+            0.19230498083676134,
+            0.5121994835545616
+          ]
+        },
+        "failure_root_causes": {
+          "ABSTENTION_OR_UNKNOWN_RESOLUTION": 1,
+          "ENTITY_RESOLUTION": 5,
+          "OTHER_FIELD_OR_EXACT_CANONICALIZATION": 10,
+          "PROPERTY_OR_NUMERIC_RESOLUTION": 14
+        },
+        "n": 30,
+        "valid": {
+          "denominator": 30,
+          "estimate": 1.0,
+          "numerator": 30,
+          "status": "MEASURED",
+          "wilson95": [
+            0.8864866068260312,
+            0.9999999999999999
+          ]
+        }
+      },
+      "new_compositional": {
+        "exact": {
+          "denominator": 30,
+          "estimate": 0.9333333333333333,
+          "numerator": 28,
+          "status": "MEASURED",
+          "wilson95": [
+            0.7867654163738308,
+            0.9815229762087295
+          ]
+        },
+        "failure_root_causes": {
+          "ABSTENTION_OR_UNKNOWN_RESOLUTION": 2,
+          "OTHER_FIELD_OR_EXACT_CANONICALIZATION": 28
+        },
+        "n": 30,
+        "valid": {
+          "denominator": 30,
+          "estimate": 1.0,
+          "numerator": 30,
+          "status": "MEASURED",
+          "wilson95": [
+            0.8864866068260312,
+            0.9999999999999999
+          ]
+        }
+      },
+      "standalone": {
+        "exact": {
+          "denominator": 41,
+          "estimate": 0.2682926829268293,
+          "numerator": 11,
+          "status": "MEASURED",
+          "wilson95": [
+            0.1569496404781167,
+            0.41933533107076637
+          ]
+        },
+        "failure_root_causes": {
+          "ABSTENTION_OR_UNKNOWN_RESOLUTION": 12,
+          "DETERMINISTIC_INFO_RESOLUTION": 12,
+          "ENTITY_RESOLUTION": 1,
+          "MODEL_INFO_EXTRACTION": 4,
+          "OTHER_FIELD_OR_EXACT_CANONICALIZATION": 11,
+          "PROPERTY_OR_NUMERIC_RESOLUTION": 1
+        },
+        "n": 41,
+        "valid": {
+          "denominator": 41,
+          "estimate": 1.0,
+          "numerator": 41,
+          "status": "MEASURED",
+          "wilson95": [
+            0.9143324298155681,
+            0.9999999999999999
+          ]
+        }
+      }
+    },
+    "new_model_calls": 0,
+    "version": "POST_DETERMINISTIC_RESOLUTION_REPAIR-v6"
+  },
+  "native_freeze": "artifacts/phase3c_final_repair_native_freeze_v4.json",
+  "native_freeze_digest": "56853ebb21c8710c260ef6f63bf4ad33ce84236ea5e2a7504f447747c7c544cd",
+  "objective_retrieval": {
+    "direct_set_match": {
+      "denominator": 2,
+      "estimate": 1.0,
+      "numerator": 2,
+      "status": "SMALL_N",
+      "wilson95": [
+        0.34238022750665303,
+        1
+      ]
+    },
+    "exact_evidence_set": {
+      "denominator": 11,
+      "estimate": 0.7272727272727273,
+      "numerator": 8,
+      "status": "MEASURED",
+      "wilson95": [
+        0.43435469882387084,
+        0.902539407099751
+      ]
+    },
+    "gold_limitations": [
+      "Twelve objective probes, not independently reviewed topical paraphrase relevance",
+      "No invented scientist review",
+      "Review packet required for subjective relevance and paraphrase retrieval"
+    ],
+    "latency": {
+      "max_ms": 121.44640600308776,
+      "median_ms": 59.02491300366819,
+      "n": 12,
+      "p95_ms": 121.44640600308776
+    },
+    "n": 12,
+    "related_set_match": {
+      "denominator": 1,
+      "estimate": 1.0,
+      "numerator": 1,
+      "status": "SMALL_N",
+      "wilson95": [
+        0.20654931437723745,
+        1
+      ]
+    },
+    "required_evidence_recovery": {
+      "denominator": 11,
+      "estimate": 1.0,
+      "numerator": 11,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7411670330319684,
+        1
+      ]
+    },
+    "source_metadata_valid": {
+      "denominator": 12,
+      "estimate": 1.0,
+      "numerator": 12,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7575059933447592,
+        1
+      ]
+    },
+    "version": "POST_REPAIR-v2"
+  },
+  "quality": {
+    "all_commands_pass": true,
+    "broken_evidence_refs": 0,
+    "canonical_shacl": true,
+    "commands": [
+      {
+        "command": [
+          "uv",
+          "run",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "exit_code": 0,
+        "output_tail": "218 files already formatted\n"
+      },
+      {
+        "command": [
+          "uv",
+          "run",
+          "ruff",
+          "check",
+          "."
+        ],
+        "exit_code": 0,
+        "output_tail": "All checks passed!\n"
+      },
+      {
+        "command": [
+          "uv",
+          "run",
+          "pytest",
+          "-q"
+        ],
+        "exit_code": 0,
+        "output_tail": "........................................................................ [ 79%]\n...................                                                      [100%]\n=============================== warnings summary ===============================\ntests/test_native_semantic.py: 197 warnings\n  /home/liam/NASA/.venv/lib/python3.12/site-packages/rdflib/graph.py:2340: DeprecationWarning: Dataset.default_context is deprecated, use Dataset.default_graph instead.\n    if context == self.default_context:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n91 passed, 197 warnings in 4.98s\n"
+      }
+    ],
+    "db_integrity": "ok",
+    "duplicate_fts_rows": 0,
+    "dynamic_property_benchmarks": {
+      "artifacts/phase3c_dynamic_property_benchmark.json": {
+        "case_count": 230,
+        "categorical_properties": 10,
+        "latency": {
+          "bm25_ranking": {
+            "max_ms": 0.2185240000471822,
+            "median_ms": 0.04734899994218722,
+            "n": 230,
+            "p95_ms": 0.10939799994957866
+          },
+          "bundle_build": {
+            "max_ms": 1.0728119996201713,
+            "median_ms": 0.03805500000453321,
+            "n": 230,
+            "p95_ms": 0.07608000032632845
+          },
+          "kg_execution": {
+            "max_ms": 0.882541000009951,
+            "median_ms": 0.39335850010502327,
+            "n": 230,
+            "p95_ms": 0.5632349998450081
+          },
+          "planning": {
+            "max_ms": 3.4146510001846764,
+            "median_ms": 1.0419205000289367,
+            "n": 230,
+            "p95_ms": 2.1977040000820125
+          },
+          "total": {
+            "max_ms": 4.010076000213303,
+            "median_ms": 1.5828784999030177,
+            "n": 230,
+            "p95_ms": 2.724202000081277
+          }
+        },
+        "metrics": {
+          "class_execution": {
+            "denominator": 5,
+            "estimate": 1.0,
+            "numerator": 5,
+            "status": "SMALL_N",
+            "wilson95": [
+              0.5655175352168251,
+              1
+            ]
+          },
+          "direct_correctness": {
+            "denominator": 230,
+            "estimate": 1.0,
+            "numerator": 230,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9835723791663494,
+              1
+            ]
+          },
+          "execution": {
+            "denominator": 230,
+            "estimate": 1.0,
+            "numerator": 230,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9835723791663494,
+              1
+            ]
+          },
+          "related_correctness": {
+            "denominator": 230,
+            "estimate": 1.0,
+            "numerator": 230,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9835723791663494,
+              1
+            ]
+          }
+        },
+        "native_guard": "PASS",
+        "numeric_properties": 25
+      }
+    },
+    "foreign_key_violations": 0,
+    "historical_baseline_changed_or_missing": [
+      "domain/query_language_v2.yaml",
+      "domain/semantic_registry.yaml",
+      "src/nasa_fire_ai/ingestion/semantic.py",
+      "src/nasa_fire_ai/models/__init__.py",
+      "src/nasa_fire_ai/normalization/units.py",
+      "src/nasa_fire_ai/query/native.py",
+      "src/nasa_fire_ai/query/native_interpreter.py",
+      "src/nasa_fire_ai/query/v2.py",
+      "src/nasa_fire_ai/services/native.py"
+    ],
+    "historical_baseline_files_unchanged": 457,
+    "missing_document_references": 0,
+    "missing_fts_rows": 0,
+    "native_generic_shacl": true,
+    "notes": [
+      "FTS integrity checked by row coverage and uniqueness; no write/repair command was issued.",
+      "Staging integrity includes projection provenance completeness from the coverage artifact."
+    ],
+    "projection_integrity": {
+      "broken_evidence_refs": 0,
+      "conditions": 682,
+      "eligible_runs": 405,
+      "evidence_refs_retained": 424,
+      "invalid_units": 0,
+      "measurements": 0,
+      "missing_original_values": 0,
+      "projected_runs": 405,
+      "relations": 812,
+      "runs_with_unresolved": 405,
+      "runs_without_values": 2,
+      "total_runs": 405,
+      "unknown_fields_staged": 2314
+    },
+    "raw_and_canonical_source_integrity": {
+      "canonical_run_source_modified": false,
+      "projection_additive_only": true,
+      "raw_files_modified": false
+    },
+    "registry_counts": {
+      "documents": 286,
+      "passages": 6055,
+      "semantic_staging": 4,
+      "sources": 282
+    },
+    "version": "final-repair-quality-v1"
+  },
+  "status": "CLOSED_ENGINEERING_WITH_READINESS_BLOCKERS",
+  "version": "phase3c-final-repair-results-v1"
+}

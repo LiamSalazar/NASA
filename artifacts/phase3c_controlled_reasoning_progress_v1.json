@@ -1,0 +1,82 @@
+{
+  "phase_version": "phase3c-controlled-semantic-reasoning-v1",
+  "status": "IMPLEMENTATION_AND_EXPOSED_ABLATION_COMPLETE; REPOSITORY_GATES_PASS; HUMAN_REVIEW_PENDING",
+  "baseline_references": [
+    "artifacts/phase3c_final_repair_baseline.json",
+    "artifacts/phase3c_final_repair_results.json",
+    "artifacts/phase3c_final_repair_e2e_cases_v6.jsonl",
+    "docs/PHASE3C_FINAL_READINESS_DECISION.md"
+  ],
+  "completed_tasks": [
+    "inspect_current_implementation_and_documents3cPropose_review_material",
+    "recompute_16_requested_information_gold_discrepancies_without_mutating_gold",
+    "implement_opt_in_constraint_preserving_query_expansion",
+    "implement_candidate_whitelisted_contextual_reranking_and_verbatim_span_gate",
+    "implement_contextual_candidate_separation_from_DIRECT_RELATED_and_grounding_whitelist",
+    "implement_generic_same_relation_multi_value_clarification",
+    "connect_controlled_reasoning_to_natural_language_service_boundary",
+    "render_source-backed_comparisons_with_unknown_conditions_and_no_causal_inference",
+    "audit_recorded_page_versus_verified_physical_pdf_page",
+    "run_live_20_case_A_B_C_D_exposed_regression",
+    "run_compact_reranker_replay_without_repeating_expansion_or_Jev_calls",
+    "prepare_11_case_blank_independent_scientific_relevance_review_packet",
+    "run_4_case_pipeline_smoke_replay_using_persisted_live_interpreter_receipts",
+    "run_targeted_tests",
+    "run_full_repository_quality_and_scientific_integrity_gates",
+    "write_versioned_final_results_and_iteration_report"
+  ],
+  "pending_tasks": [
+    "independent_domain_reviewer_adjudicates_gold_and_11_case_relevance_packet",
+    "source-backed independent retrieval evaluation after human relevance labels",
+    "obtain verifiable local PDF/page map for NTRS 20040053586 if physical page citation is required"
+  ],
+  "benchmark_progress": {
+    "gold_reconciliation": "artifacts/phase3c_controlled_gold_reconciliation_proposed_v1.json; 16 proposals; none approved",
+    "ablation_gold": "evals/phase3c_controlled_e2e_regression_gold_v1.json; exposed regression; immutable",
+    "ablation_analysis": "artifacts/phase3c_controlled_ablation_analysis_v1.json",
+    "rerank_first_pass": "artifacts/phase3c_controlled_e2e_ablation_cases_v1.jsonl",
+    "rerank_compact_pass": "artifacts/phase3c_controlled_e2e_ablation_cases_v4.jsonl",
+    "review_packet": "artifacts/phase3c_controlled_scientific_relevance_review_packet_v2.json; 11 cases; blank human fields",
+    "pipeline_replay": "artifacts/phase3c_controlled_pipeline_replay_v3.jsonl; four cases; replay, not independent accuracy",
+    "final_results": "artifacts/phase3c_controlled_reasoning_final_results_v1.json",
+    "final_report": "docs/PHASE3C_CONTROLLED_REASONING_FINAL_REPORT.md",
+    "final_integrity": "artifacts/phase3c_controlled_integrity_v1.json; PASS",
+    "controlled_extension": "Artifacts 230/230 and 125/125 unchanged; not repeated"
+  },
+  "holdout_status": "Historical Phase 3C holdout results preserved; no new controlled-reasoning holdout selected or claimed.",
+  "architecture_digests": {
+    "controlled_reasoning_module_sha256": "see artifacts/phase3c_controlled_ablation_analysis_v1.json code_digests",
+    "native_interpreter_module_sha256": "see artifacts/phase3c_controlled_ablation_analysis_v1.json code_digests",
+    "native_service_module_sha256": "see artifacts/phase3c_controlled_ablation_analysis_v1.json code_digests"
+  },
+  "evaluation_digests": {
+    "frozen_e2e_gold": "e2e3005c3ac268749cae5564ece7974f94a64819a0006cf025b5152e17e14a76",
+    "interpreter_receipts_source": "2b3d51719ec24be2f81cbc58fd4072f868c695f1f5a210ef50d60781579c4f6d",
+    "compact_ablation_result": "see artifacts/phase3c_controlled_ablation_analysis_v1.json"
+  },
+  "model_and_prompts": {
+    "nvidia_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "expansion_prompt": "phase3c-controlled-discovery-v1",
+    "rerank_initial_prompt": "phase3c-contextual-rerank-v1",
+    "rerank_compact_prompt": "phase3c-contextual-rerank-v4",
+    "jev_alias": "jev-latest",
+    "observed_jev_model": "jev-1.13.0",
+    "credentials": "runtime environment only; never persisted"
+  },
+    "targeted_tests": "30 passed in controlled reasoning, corrective and grounding modules",
+  "repository_gates": {
+    "ruff_format": "PASS; 246 files checked",
+    "ruff_check": "PASS",
+    "pytest": "PASS; 103 passed; 197 rdflib deprecation warnings",
+    "integrity_artifact": "artifacts/phase3c_controlled_integrity_v1.json",
+    "integrity_status": "PASS",
+    "canonical_and_native_shacl": "PASS",
+    "sqlite_integrity": "ok; 0 foreign-key violations",
+    "evidence_registry": "282 sources; 286 documents; 6,055 passages and FTS rows; no missing/orphan rows",
+    "native_graph": "20,447 triples; 0 broken evidence refs",
+    "staging": "4 rows; 0 incomplete provenance/state",
+    "historical_eval_and_data_digests": "unchanged",
+    "baseline_code_digest_differences": "9 expected pre-existing/current implementation paths; no artifact/raw/canonical-data differences"
+  },
+  "next_task": "Independent scientific reviewer adjudicates the proposed gold and 11-case relevance packet. Keep Phase 4 readiness NO until relevance review, independent retrieval scoring, and physical-page provenance needs are resolved."
+}

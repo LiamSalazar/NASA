@@ -1,0 +1,135 @@
+{
+  "version": "phase3c-controlled-integrity-v1",
+  "freeze": "artifacts/phase3c_controlled_native_freeze_v1.json",
+  "changed_after_freeze": [],
+  "historical_baseline_mismatch_count": 9,
+  "historical_baseline_mismatch_paths": [
+    "domain/query_language_v2.yaml",
+    "domain/semantic_registry.yaml",
+    "src/nasa_fire_ai/ingestion/semantic.py",
+    "src/nasa_fire_ai/models/__init__.py",
+    "src/nasa_fire_ai/normalization/units.py",
+    "src/nasa_fire_ai/query/native.py",
+    "src/nasa_fire_ai/query/native_interpreter.py",
+    "src/nasa_fire_ai/query/v2.py",
+    "src/nasa_fire_ai/services/native.py"
+  ],
+  "historical_eval_or_data_mismatch_paths": [],
+  "historical_benchmark_artifacts_intact": true,
+  "canonical_raw_files_unchanged": true,
+  "database": {
+    "integrity_check": "ok",
+    "foreign_key_violations": 0
+  },
+  "evidence_registry_counts": {
+    "sources": 282,
+    "documents": 286,
+    "passages": 6055,
+    "passages_fts": 6055,
+    "semantic_staging": 4
+  },
+  "evidence_integrity": {
+    "missing_fts_rows": 0,
+    "orphan_passages": 0,
+    "broken_native_evidence_refs": [],
+    "fts_integrity_check": "PASS"
+  },
+  "semantic_graph": {
+    "triples": 20447,
+    "shacl_conforms": true,
+    "broken_evidence_refs": 0
+  },
+  "canonical_graph_shacl_conforms": true,
+  "staging": {
+    "rows": 4,
+    "incomplete_provenance_or_state": 0
+  },
+  "dynamic_property_regression": {
+    "existing_artifact": "artifacts/phase3c_final_repair_extensibility_v1.json",
+    "recorded_results": {
+      "architecture_freeze": "artifacts/phase3c_final_repair_native_freeze_v4.json",
+      "dynamic_property_benchmarks": {
+        "dynamic_properties": {
+          "case_count": 230,
+          "categorical_properties": 10,
+          "direct_correctness": {
+            "denominator": 230,
+            "estimate": 1.0,
+            "numerator": 230,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9835723791663494,
+              1
+            ]
+          },
+          "execution": {
+            "denominator": 230,
+            "estimate": 1.0,
+            "numerator": 230,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9835723791663494,
+              1
+            ]
+          },
+          "native_guard": "PASS",
+          "numeric_properties": 25,
+          "registered_classes": 5,
+          "related_correctness": {
+            "denominator": 230,
+            "estimate": 1.0,
+            "numerator": 230,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9835723791663494,
+              1
+            ]
+          },
+          "source_artifact": "artifacts/phase3c_dynamic_property_benchmark.json"
+        },
+        "post_freeze_new_registry": {
+          "case_count": 125,
+          "categorical_properties": 7,
+          "direct_correctness": {
+            "denominator": 125,
+            "estimate": 1.0,
+            "numerator": 125,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9701846062916737,
+              1
+            ]
+          },
+          "execution": {
+            "denominator": 125,
+            "estimate": 1.0,
+            "numerator": 125,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9701846062916737,
+              1
+            ]
+          },
+          "native_guard": "PASS",
+          "numeric_properties": 13,
+          "registered_classes": 5,
+          "related_correctness": {
+            "denominator": 125,
+            "estimate": 1.0,
+            "numerator": 125,
+            "status": "MEASURED",
+            "wilson95": [
+              0.9701846062916737,
+              1
+            ]
+          },
+          "source_artifact": "artifacts/phase3c_postfreeze_extensibility.json"
+        }
+      },
+      "no_property_specific_code_changes_between_cases": true,
+      "version": "final-repair-extensibility-v1"
+    },
+    "rerun": false
+  },
+  "status": "PASS"
+}

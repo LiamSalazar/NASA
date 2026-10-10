@@ -7,6 +7,7 @@ evidence locations remain in EvidenceRegistry; graph references are opaque evide
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass
 from time import perf_counter
 from urllib.parse import quote, unquote
@@ -14,6 +15,7 @@ from urllib.parse import quote, unquote
 from rdflib import RDF, Graph, Literal, Namespace, URIRef
 
 from nasa_fire_ai.models import EvidenceBundle, ExperimentComparison, QueryIntent
+from nasa_fire_ai.query.evidence_selection import select_information
 from nasa_fire_ai.query.v2 import (
     GenericValue,
     QueryIntentV2,
@@ -39,6 +41,12 @@ class SemanticGraph:
         self.registry = registry
         self.graph = graph if graph is not None else Graph()
 
+    def explore_route(self, start, steps, evidence_registry, **budgets):
+        """Explore validated associations without changing QueryIntentV2 or eligibility."""
+        from nasa_fire_ai.query.ontology_navigation import navigate
+
+        return navigate(self, start, steps, evidence_registry, **budgets)
+
     def add_entity(self, entity_id, class_id, evidence_ids, source_ids=(), payload=None):
         if class_id not in self.registry.target_classes | self.registry.information_classes:
             raise LookupError(class_id)
@@ -46,6 +54,7 @@ class SemanticGraph:
             raise ValueError("canonical entities require evidence")
         subject = node(entity_id)
         self.registry.entities.add(entity_id)
+        self.registry.source_ids.update(source_ids)
         self.graph.add((subject, RDF.type, node(class_id)))
         self.graph.add((subject, NS.canonical, Literal(True)))
         for eid in evidence_ids:
@@ -74,7 +83,16 @@ class SemanticGraph:
         for eid in evidence_ids:
             self.graph.add((record, NS.evidenceRef, Literal(eid)))
 
-    def add_value(self, record_id, subject, property_id, value, evidence_ids, qualifiers=None):
+    def add_value(
+        self,
+        record_id,
+        subject,
+        property_id,
+        value,
+        evidence_ids,
+        qualifiers=None,
+        class_id="Measurement",
+    ):
         if subject not in self.registry.entities:
             raise LookupError(subject)
         if not evidence_ids:
@@ -100,7 +118,7 @@ class SemanticGraph:
             self.graph.add((record, NS.evidenceRef, Literal(eid)))
         self.add_entity(
             record_id,
-            "Measurement",
+            class_id,
             evidence_ids,
             self.sources(subject),
             {
@@ -116,8 +134,19 @@ class SemanticGraph:
     def entities(self):
         return sorted({identity(s) for s in self.graph.subjects(NS.canonical, Literal(True))})
 
-    def classes(self, subject):
-        return {identity(x) for x in self.graph.objects(node(subject), RDF.type)}
+    def classes(self, subject, include_ancestors=False):
+        classes = set(self.graph.objects(node(subject), RDF.type))
+        if include_ancestors:
+            from rdflib import RDFS
+
+            from nasa_fire_ai.query.ontology_navigation import schema_closure
+
+            classes = {
+                parent
+                for cls in classes
+                for parent in schema_closure(self.graph, cls, RDFS.subClassOf)
+            }
+        return {identity(x) for x in classes}
 
     def relations(self, subject, relation):
         return {
@@ -128,6 +157,11 @@ class SemanticGraph:
         }
 
     def values(self, subject, property_id):
+        if (node(subject), NS.measuredProperty, node(property_id)) in self.graph:
+            return [
+                GenericValue.model_validate_json(str(x))
+                for x in self.graph.objects(node(subject), NS.value)
+            ]
         return [
             GenericValue.model_validate_json(str(value))
             for record in self.graph.subjects(NS.subject, node(subject))
@@ -135,8 +169,38 @@ class SemanticGraph:
             for value in self.graph.objects(record, NS.value)
         ]
 
+    def value_records(self, subject, property_id):
+        """Return values with source qualifiers intact for context-aware matching."""
+        records = []
+        if (node(subject), NS.measuredProperty, node(property_id)) in self.graph:
+            candidates = [node(subject)]
+        else:
+            candidates = [
+                record
+                for record in self.graph.subjects(NS.subject, node(subject))
+                if (record, NS.measuredProperty, node(property_id)) in self.graph
+            ]
+        for record in candidates:
+            values = self.graph.objects(record, NS.value)
+            qualifiers = self.graph.value(record, NS.qualifiers)
+            parsed = json.loads(str(qualifiers)) if qualifiers else {}
+            for value in values:
+                records.append(
+                    {
+                        "value": GenericValue.model_validate_json(str(value)),
+                        "qualifiers": parsed,
+                        "evidence_ids": sorted(
+                            str(e) for e in self.graph.objects(record, NS.evidenceRef)
+                        ),
+                    }
+                )
+        return records
+
     def evidence(self, subject):
-        return sorted(str(x) for x in self.graph.objects(node(subject), NS.evidenceRef))
+        records = {node(subject), *self.graph.subjects(NS.subject, node(subject))}
+        return sorted(
+            {str(x) for record in records for x in self.graph.objects(record, NS.evidenceRef)}
+        )
 
     def sources(self, subject):
         return {identity(x) for x in self.graph.objects(node(subject), NS.source)}
@@ -153,7 +217,9 @@ class NativeSemanticQueryPlan:
     documentary: bool
 
 
-def compile_native(intent: QueryIntentV2, store: SemanticGraph) -> NativeSemanticQueryPlan:
+def compile_native(
+    intent: QueryIntentV2, store: SemanticGraph, schema_hierarchical=False
+) -> NativeSemanticQueryPlan:
     store.registry.validate_intent(intent)
     for c in intent.entity_constraints:
         if c.relation not in store.registry.relations:
@@ -171,8 +237,12 @@ def compile_native(intent: QueryIntentV2, store: SemanticGraph) -> NativeSemanti
     )
     candidates = []
     for subject in store.entities():
+        if intent.comparison and subject not in intent.comparison.operands:
+            continue
         target_classes = intent.targets or intent.requested_information
-        if target_classes and not store.classes(subject).intersection(target_classes):
+        if target_classes and not store.classes(
+            subject, include_ancestors=schema_hierarchical
+        ).intersection(target_classes):
             continue
         if intent.source_constraints and not store.sources(subject).intersection(
             intent.source_constraints
@@ -189,11 +259,13 @@ def compile_native(intent: QueryIntentV2, store: SemanticGraph) -> NativeSemanti
     return NativeSemanticQueryPlan(intent, candidates, documentary)
 
 
-def classify_native(subject, intent, store):
+def classify_native(subject, intent, store, taxonomy_paths=None, related_policy=False):
+    taxonomy_paths = taxonomy_paths or {}
     detail = {
         "matches": [],
         "differs": [],
         "unknown": [],
+        "invalid": [],
         "unresolved": list(intent.unresolved_mentions),
     }
     for c in intent.entity_constraints:
@@ -205,9 +277,19 @@ def classify_native(subject, intent, store):
             if actual or store.registry.relations[c.relation].closed_world
             else "unknown"
         )
+        verified_paths = [taxonomy_paths.get((c.relation, c.entity_id), {}).get(a) for a in actual]
+        if any(path and path["category_match"] for path in verified_paths):
+            outcome = "matches"
         detail[outcome].append(f"{c.relation}={c.entity_id}")
     for c in intent.property_constraints:
-        values = store.values(subject, c.property_id)
+        records = store.value_records(subject, c.property_id)
+        if c.qualifiers:
+            records = [
+                row
+                for row in records
+                if all(row["qualifiers"].get(k) == v for k, v in c.qualifiers.items())
+            ]
+        values = [row["value"] for row in records]
         outcomes = {evaluate_constraint(c, v, store.registry) for v in values}
         # Conflicting or unavailable observations cannot establish an exact match.
         outcome = (
@@ -215,19 +297,41 @@ def classify_native(subject, intent, store):
             if outcomes == {"MATCH"}
             else "differs"
             if outcomes == {"DIFFER"}
+            else "invalid"
+            if "INVALID" in outcomes
             else "unknown"
         )
         detail[outcome].append(c.property_id)
     required = bool(intent.entity_constraints or intent.property_constraints)
     blocked = bool(
         detail["differs"]
+        or detail["invalid"]
         or detail["unknown"]
         or detail["unresolved"]
         or intent.clarification_required
     )
     if required and not blocked:
         return "DIRECT", detail
-    return ("RELATED" if detail["matches"] else "NO_DIRECT"), detail
+    path_overlap = any(
+        taxonomy_paths.get((c.relation, c.entity_id), {}).get(actual)
+        for c in intent.entity_constraints
+        for actual in store.relations(subject, c.relation)
+    )
+    if taxonomy_paths or related_policy:
+        anchors = set(
+            store.registry.selection_policy.get("related", {}).get("anchor_relations", [])
+        )
+        requested_anchors = [c for c in intent.entity_constraints if c.relation in anchors]
+        if requested_anchors and not any(
+            c.entity_id in store.relations(subject, c.relation)
+            or any(
+                taxonomy_paths.get((c.relation, c.entity_id), {}).get(actual)
+                for actual in store.relations(subject, c.relation)
+            )
+            for c in requested_anchors
+        ):
+            return "NO_DIRECT", detail
+    return ("RELATED" if detail["matches"] or path_overlap else "NO_DIRECT"), detail
 
 
 @dataclass(frozen=True)
@@ -238,29 +342,179 @@ class NativeExecutionResult:
     latency_ms: dict[str, float]
 
 
-def execute_native(intent, query, store, evidence_registry, limit=8):
+def execute_native(
+    intent,
+    query,
+    store,
+    evidence_registry,
+    limit=8,
+    hierarchical=None,
+    relational=None,
+):
     started = perf_counter()
-    plan = compile_native(intent, store)
+    plan = compile_native(
+        intent,
+        store,
+        schema_hierarchical=os.getenv("ONTOLOGY_GRAPH_ENRICHMENT_ENABLED", "false").lower()
+        == "true",
+    )
+    hierarchical = (
+        hierarchical
+        if hierarchical is not None
+        else os.getenv("HIERARCHICAL_SEMANTIC_RETRIEVAL_ENABLED", "false").lower()
+        in {"true", "1", "yes"}
+    )
+    relational = (
+        relational
+        if relational is not None
+        else os.getenv("RELATIONAL_RELATED_RETRIEVAL_ENABLED", "false").lower()
+        in {"true", "1", "yes"}
+    )
+    taxonomy_paths, traversal_receipts = {}, []
+    expansion_error = None
+    if hierarchical:
+        from nasa_fire_ai.query.hierarchy import traverse
+
+        try:
+            for constraint in intent.entity_constraints:
+                # Selection-scoped identity restrictions remain exact.
+                if store.registry.relations[constraint.relation].selection_scope:
+                    continue
+                receipt = traverse(
+                    store, constraint.entity_id, constraint.relation, evidence_registry
+                )
+                taxonomy_paths[(constraint.relation, constraint.entity_id)] = receipt["paths"]
+                traversal_receipts.append({"dimension": constraint.relation, **receipt})
+        except (ValueError, LookupError, KeyError, TypeError) as exc:
+            taxonomy_paths = {}
+            expansion_error = type(exc).__name__
     compiled = perf_counter()
     direct, related = [], []
+    provenance_exclusions = []
     for subject in plan.candidate_entity_ids:
-        status, detail = classify_native(subject, intent, store)
+        if hierarchical or relational:
+            refs = store.evidence(subject)
+            if not refs or any(evidence_registry.resolve(eid) is None for eid in refs):
+                provenance_exclusions.append(
+                    {"subject": subject, "reason": "unresolvable_experimental_evidence"}
+                )
+                continue
+            if intent.source_constraints and any(
+                (evidence_registry.source_metadata(eid) or {}).get("source_id")
+                not in intent.source_constraints
+                for eid in refs
+            ):
+                provenance_exclusions.append(
+                    {"subject": subject, "reason": "cross_source_evidence"}
+                )
+                continue
+        status, detail = classify_native(
+            subject, intent, store, taxonomy_paths, hierarchical or relational
+        )
         item = {"id": subject, **detail, "evidence_ids": store.evidence(subject)}
         if status == "DIRECT":
             direct.append(item)
         elif status == "RELATED":
             related.append(item)
+    if hierarchical or relational:
+        from nasa_fire_ai.query.hierarchy import constraint_explanation
+
+        for item in direct + related:
+            item["relationship_explanation"] = constraint_explanation(
+                item["id"], intent, store, taxonomy_paths, item
+            )
+        related.sort(
+            key=lambda item: (-item["relationship_explanation"]["ranking_score"], item["id"])
+        )
     selected = {x["id"] for x in direct + related}
     if plan.documentary:
         # Topic constraints are documentary ranking terms, never canonical run matches.
         selected.update(plan.candidate_entity_ids)
     if not intent.entity_constraints and not intent.property_constraints:
         selected.update(plan.candidate_entity_ids)
+    if intent.clarification_required or (
+        intent.unresolved_mentions
+        and not (intent.entity_constraints or intent.property_constraints)
+    ):
+        selected.clear()
+        direct, related = [], []
+    # Documentary evidence is complementary to KG matches, not constrained by
+    # the existence of a matching run. Scientific epistemic records are selected
+    # by registry class and lexical evidence relevance; never appended globally.
+    scientific_classes = {
+        c
+        for c, meta in store.registry.class_metadata.items()
+        if meta.get("bundle_field") and not meta.get("documentary")
+    }
+    requested_science = scientific_classes.intersection(intent.requested_information)
+    measurement_only = (
+        bool(intent.requested_information) and not requested_science and not plan.documentary
+    )
+    all_documentary = sorted(
+        {
+            eid
+            for subject in store.entities()
+            if (
+                not intent.source_constraints
+                or store.sources(subject).intersection(intent.source_constraints)
+            )
+            and any(
+                store.registry.class_metadata.get(c, {}).get("documentary")
+                for c in store.classes(subject)
+            )
+            for eid in store.evidence(subject)
+        }
+    )
+    documentary_passages = []
+    if (
+        not measurement_only
+        and not requested_science
+        and not intent.clarification_required
+        and not (
+            intent.unresolved_mentions
+            and not intent.entity_constraints
+            and not intent.property_constraints
+        )
+    ):
+        documentary_passages = evidence_registry.search(
+            query, eligible_ids=all_documentary, limit=limit
+        )
+    info_selected, info_trace = select_information(intent, query, store, evidence_registry)
+    if requested_science:
+        # Run matches remain diagnostic, not a substitute for the requested class.
+        selected = set(info_selected)
+        direct, related = [], []
+        for s in info_selected:
+            status, detail = classify_native(
+                s, intent, store, taxonomy_paths, hierarchical or relational
+            )
+            detail["matches"].append("reviewed requested information class")
+            if not intent.entity_constraints and not intent.property_constraints:
+                status = "DIRECT"
+            elif status == "NO_DIRECT":
+                if hierarchical or relational:
+                    continue  # Topical class alone cannot establish scientific relatedness.
+                status = "RELATED"
+            item = {"id": s, **detail, "evidence_ids": store.evidence(s)}
+            (direct if status == "DIRECT" else related).append(item)
+    if (hierarchical or relational) and requested_science:
+        from nasa_fire_ai.query.hierarchy import constraint_explanation
+
+        for item in direct + related:
+            item["relationship_explanation"] = constraint_explanation(
+                item["id"], intent, store, taxonomy_paths, item
+            )
     # Documentary semantics retain the document target. Structured overlap may
     # select publications; plain documentary search uses eligible document evidence.
     records = {}
     generic_records = []
-    for subject in selected:
+    # Conditions preserve subject linkage, original units and context at the
+    # bundle boundary, without converting them to observations.
+    for subject in sorted(selected):
+        for record in store.graph.subjects(NS.subject, node(subject)):
+            if (record, RDF.type, NS.SemanticValue) in store.graph:
+                generic_records.append(store.payload(identity(record)))
+    for subject in sorted(selected):
         for cls in store.classes(subject):
             if intent.requested_information and cls not in intent.requested_information:
                 continue
@@ -272,11 +526,38 @@ def execute_native(intent, query, store, evidence_registry, limit=8):
             )
     eligible = sorted({eid for subject in selected for eid in store.evidence(subject)})
     executed = perf_counter()
-    passages = (
+    ranked_passages = (
         evidence_registry.search(query, eligible_ids=eligible, limit=limit) if eligible else []
     )
+    passages = list(ranked_passages)
+    if requested_science:
+        # FTS text need not repeat the query topic (which may be in its section).
+        # Keep one resolvable reference per reviewed selected statement before BM25.
+        structured = [
+            passage
+            for subject in info_selected
+            if (
+                passage := next(
+                    (
+                        evidence_registry.resolve(eid)
+                        for eid in store.evidence(subject)
+                        if evidence_registry.resolve(eid)
+                    ),
+                    None,
+                )
+            )
+            is not None
+        ]
+        passage_map = {p["evidence_id"]: p for p in structured + passages}
+        passages = list(passage_map.values())[:limit]
     if eligible and not passages:
         passages = [p for eid in eligible if (p := evidence_registry.resolve(eid))][:limit]
+    # Preserve structured evidence and documentary discoveries; do not turn
+    # lexical passages into canonical DIRECT or RELATED scientific facts.
+    merged = {p["evidence_id"]: p for p in passages}
+    merged.update({p["evidence_id"]: p for p in documentary_passages})
+    passages = list(merged.values())
+    eligible = sorted(set(eligible) | {p["evidence_id"] for p in documentary_passages})
     for passage in passages:
         passage["source_metadata"] = evidence_registry.source_metadata(passage["evidence_id"])
     ranked = perf_counter()
@@ -313,6 +594,55 @@ def execute_native(intent, query, store, evidence_registry, limit=8):
             "executor": "native-rdf-v1",
             "query_intent_v2": intent.model_dump(mode="json"),
             "vectors_enabled": False,
+            "hierarchical_retrieval": {
+                "enabled": hierarchical,
+                "load_errors": getattr(store, "taxonomy_load_errors", []),
+                "receipts": traversal_receipts,
+                "error": expansion_error,
+            },
+            "relational_related": {"enabled": relational},
+            "provenance_exclusions": provenance_exclusions,
+            "selection_trace": {
+                "requested_information": intent.requested_information,
+                "initial_kg_candidates": plan.candidate_entity_ids,
+                "information_candidates": info_trace,
+                "selected_information": info_selected,
+                "documentary_candidates": [p["evidence_id"] for p in documentary_passages],
+                "documentary_candidate_trace": [
+                    {
+                        "evidence_id": p["evidence_id"],
+                        "rank": rank,
+                        "bm25_score": p.get("score"),
+                        "eligible": p["evidence_id"] in all_documentary,
+                        "source_metadata": evidence_registry.source_metadata(p["evidence_id"]),
+                    }
+                    for rank, p in enumerate(documentary_passages, 1)
+                ],
+                "ranked_passage_candidates": [
+                    {
+                        "evidence_id": p["evidence_id"],
+                        "rank": rank,
+                        "bm25_score": p.get("score"),
+                        "eligible": p["evidence_id"] in eligible,
+                        "source_metadata": evidence_registry.source_metadata(p["evidence_id"]),
+                    }
+                    for rank, p in enumerate(ranked_passages, 1)
+                ],
+                "final_evidence_ids": [p["evidence_id"] for p in passages],
+                "no_direct_reason": (
+                    "clarification_required"
+                    if intent.clarification_required
+                    else "unresolved_mentions"
+                    if intent.unresolved_mentions
+                    else "no_class_topic_source_eligible_evidence"
+                    if requested_science and not info_selected
+                    else "required_canonical_constraint_not_fully_matched"
+                    if intent.entity_constraints or intent.property_constraints
+                    else "no_canonical_direct_record"
+                )
+                if not direct
+                else None,
+            },
         },
         authority_metadata={"canonical_only": True, "staging_can_establish_direct": False},
         semantic_records=generic_records,

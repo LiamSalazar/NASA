@@ -45,6 +45,8 @@ def semantic_signature(value):
     value = json.loads(json.dumps(value))
     for c in value.get("property_constraints", []):
         c["value"].pop("raw_expression", None)
+        if not c.get("qualifiers"):
+            c.pop("qualifiers", None)
     for key in (
         "targets",
         "entity_constraints",

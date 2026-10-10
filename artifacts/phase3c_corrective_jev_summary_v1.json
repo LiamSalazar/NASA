@@ -1,0 +1,156 @@
+{
+  "version": "POST_CORRECTION-v1",
+  "model": "jev-latest",
+  "completed": 30,
+  "planned": 30,
+  "A": {
+    "accuracy": 0.8667,
+    "precision": 0.8571,
+    "recall": 0.6667,
+    "f1": 0.75,
+    "false_positive_rate": 0.0476,
+    "false_negative_rate": 0.3333,
+    "counts": {
+      "tp": 6,
+      "fp": 1,
+      "tn": 20,
+      "fn": 3
+    }
+  },
+  "B": {
+    "accuracy": 0.9333,
+    "precision": 0.8889,
+    "recall": 0.8889,
+    "f1": 0.8889,
+    "false_positive_rate": 0.0476,
+    "false_negative_rate": 0.1111,
+    "counts": {
+      "tp": 8,
+      "fp": 1,
+      "tn": 20,
+      "fn": 1
+    }
+  },
+  "review_budget_positive_yield": {
+    "A_rules": {
+      "5": {
+        "numerator": 4,
+        "denominator": 5,
+        "estimate": 0.8,
+        "wilson95": [
+          0.37553462976252533,
+          0.9637758913675698
+        ],
+        "status": "SMALL_N"
+      },
+      "10": {
+        "numerator": 7,
+        "denominator": 10,
+        "estimate": 0.7,
+        "wilson95": [
+          0.39677814746114537,
+          0.8922087325936989
+        ],
+        "status": "MEASURED"
+      },
+      "20": {
+        "numerator": 7,
+        "denominator": 20,
+        "estimate": 0.35,
+        "wilson95": [
+          0.18119182410108206,
+          0.5671457233147638
+        ],
+        "status": "MEASURED"
+      }
+    },
+    "B_jev": {
+      "5": {
+        "numerator": 5,
+        "denominator": 5,
+        "estimate": 1.0,
+        "wilson95": [
+          0.5655175352168251,
+          1
+        ],
+        "status": "SMALL_N"
+      },
+      "10": {
+        "numerator": 8,
+        "denominator": 10,
+        "estimate": 0.8,
+        "wilson95": [
+          0.49016247153664183,
+          0.9433178485456247
+        ],
+        "status": "MEASURED"
+      },
+      "20": {
+        "numerator": 9,
+        "denominator": 20,
+        "estimate": 0.45,
+        "wilson95": [
+          0.2581978582556243,
+          0.6579146575496577
+        ],
+        "status": "MEASURED"
+      }
+    },
+    "C_rules_plus_advisory": {
+      "5": {
+        "numerator": 5,
+        "denominator": 5,
+        "estimate": 1.0,
+        "wilson95": [
+          0.5655175352168251,
+          1
+        ],
+        "status": "SMALL_N"
+      },
+      "10": {
+        "numerator": 9,
+        "denominator": 10,
+        "estimate": 0.9,
+        "wilson95": [
+          0.5958499732047615,
+          0.9821237869049271
+        ],
+        "status": "MEASURED"
+      },
+      "20": {
+        "numerator": 9,
+        "denominator": 20,
+        "estimate": 0.45,
+        "wilson95": [
+          0.2581978582556243,
+          0.6579146575496577
+        ],
+        "status": "MEASURED"
+      }
+    }
+  },
+  "latency": {
+    "n": 30,
+    "median_ms": 185.93688500004646,
+    "p95_ms": 302.7971890005574,
+    "max_ms": 305.95167800129275
+  },
+  "support": {
+    "DesignCriterion": 1,
+    "Guidance": 1,
+    "Intervention": 1,
+    "NASAConclusion": 1,
+    "NASAIdentifiedOpenQuestion": 1,
+    "NONE": 21,
+    "ReportedExperimentalObservation": 1,
+    "Requirement": 1,
+    "SafetyImplication": 1,
+    "TestCriterion": 1
+  },
+  "D_nemotron": "NOT_EVALUATED: no equivalent independently reviewed candidate-extraction outputs",
+  "relevant_evidence_omitted": 0,
+  "hard_filter": false,
+  "cost": "NOT_AVAILABLE",
+  "decision": "INCONCLUSIVE",
+  "limitation": "Small imbalanced reviewed set. Review priority is simulated, not a human workload study."
+}

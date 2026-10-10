@@ -1,0 +1,957 @@
+[
+  {
+    "case_id": "qi03",
+    "accepted": [
+      {
+        "query": "SIBAL Fabric microgravity investigation psi-98 reported observations",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "SIBAL Fabric microgravity experiment measurements oxygen concentration",
+        "accepted": false,
+        "reason": "added_registered_property:OxygenConcentration"
+      },
+      {
+        "query": "SIBAL Fabric microgravity test airflow velocity flow direction",
+        "accepted": false,
+        "reason": "added_registered_property:AirflowVelocity"
+      },
+      {
+        "query": "SIBAL Fabric microgravity investigation psi-98 reported observations",
+        "accepted": false,
+        "reason": "added_registered_entity:psi-98"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "SIBAL Fabric microgravity investigation psi-98 reported observations",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi11",
+    "accepted": [],
+    "rejected": [
+      {
+        "query": "SIBAL Fabric microgravity airflow velocity >= 20 cm/s",
+        "accepted": false,
+        "reason": "hard_anchor_missing:[[['flow']]]"
+      },
+      {
+        "query": "SIBAL Fabric microgravity airflow velocity > 20 cm/s",
+        "accepted": false,
+        "reason": "numeric_operator_changed"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi12",
+    "accepted": [],
+    "rejected": [
+      {
+        "query": "Compare psi-98-S1 and psi-98-S2 airflow velocity and oxygen concentration measurements",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      },
+      {
+        "query": "Compare psi-98-S1 and psi-98-S2 pressure and flow direction conditions",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      },
+      {
+        "query": "Compare psi-98-S1 and psi-98-S2 microgravity experiment reports and safety implications",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi14",
+    "accepted": [
+      {
+        "query": "NASA SAFFIRE-I PMMA microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "NASA BASS-II SIBAL Fabric microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "NASA SAFFIRE-II PMMA microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "NASA SAFFIRE-I PMMA microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "accepted": false,
+        "reason": "added_registered_entity:PMMA"
+      },
+      {
+        "query": "NASA BASS-II SIBAL Fabric microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "accepted": false,
+        "reason": "added_registered_entity:SIBAL Fabric"
+      },
+      {
+        "query": "NASA SAFFIRE-II PMMA microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "accepted": false,
+        "reason": "added_registered_entity:PMMA"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "NASA SAFFIRE-I PMMA microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "NASA BASS-II SIBAL Fabric microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "NASA SAFFIRE-II PMMA microgravity airflow velocity oxygen concentration pressure flow direction reported observations safety implications",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi16",
+    "accepted": [],
+    "rejected": [
+      {
+        "query": "NASA fire safety requirements for PMMA and SIBAL Fabric experimental runs in microgravity",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      },
+      {
+        "query": "NASA fire safety requirements for SAFFIRE-I and BASS-II experiments regarding airflow velocity and oxygen concentration",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      },
+      {
+        "query": "NASA fire safety requirements for BASS-II experiments with pressure and flow direction constraints",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi17",
+    "accepted": [
+      {
+        "query": "NASA fire safety experiments PMMA microgravity airflow velocity oxygen concentration pressure flow direction safety implication guidance",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "NASA fire safety guidance documents experimental run conditions airflow velocity oxygen concentration pressure flow direction microgravity",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "NASA fire safety experiments PMMA microgravity airflow velocity oxygen concentration pressure flow direction safety implication guidance",
+        "accepted": false,
+        "reason": "added_registered_entity:PMMA"
+      },
+      {
+        "query": "NASA SAFFIRE-I BASS-II fire safety experiment data measurements reported observations conclusions safety impact requirements",
+        "accepted": false,
+        "reason": "hard_anchor_missing:[[['guidance'], ['guidance'], ['guidelines']]]"
+      },
+      {
+        "query": "NASA fire safety guidance documents experimental run conditions airflow velocity oxygen concentration pressure flow direction microgravity",
+        "accepted": false,
+        "reason": "added_registered_entity:microgravity"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "NASA fire safety experiments PMMA microgravity airflow velocity oxygen concentration pressure flow direction safety implication guidance",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "NASA fire safety guidance documents experimental run conditions airflow velocity oxygen concentration pressure flow direction microgravity",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi18",
+    "accepted": [
+      {
+        "query": "NASA SAFFIRE-I microgravity PMMA open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "NASA BASS-II airflow velocity oxygen concentration pressure flow direction experiment open question",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "NASA fire-safety experiment microgravity PMMA SIBAL Fabric open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "NASA SAFFIRE-I microgravity PMMA open question safety implication",
+        "accepted": false,
+        "reason": "added_registered_entity:PMMA"
+      },
+      {
+        "query": "NASA BASS-II airflow velocity oxygen concentration pressure flow direction experiment open question",
+        "accepted": false,
+        "reason": "added_registered_entity:psi-25"
+      },
+      {
+        "query": "NASA fire-safety experiment microgravity PMMA SIBAL Fabric open question safety implication",
+        "accepted": false,
+        "reason": "added_registered_entity:PMMA"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "NASA SAFFIRE-I microgravity PMMA open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "NASA BASS-II airflow velocity oxygen concentration pressure flow direction experiment open question",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "NASA fire-safety experiment microgravity PMMA SIBAL Fabric open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi19",
+    "accepted": [
+      {
+        "query": "PMMA acrylic fire experiments SAFFIRE-I psi-98 airflow velocity oxygen concentration pressure flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "BASS-II BASS acrylic fire tests microgravity airflow velocity oxygen concentration pressure flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "PMMA acrylic fire experiments SAFFIRE-I psi-98 airflow velocity oxygen concentration pressure flow direction",
+        "accepted": false,
+        "reason": "added_registered_entity:PMMA"
+      },
+      {
+        "query": "BASS-II BASS acrylic fire tests microgravity airflow velocity oxygen concentration pressure flow direction",
+        "accepted": false,
+        "reason": "added_registered_entity:microgravity"
+      },
+      {
+        "query": "SIBAL Fabric fire experiments microgravity airflow velocity oxygen concentration pressure flow direction",
+        "accepted": false,
+        "reason": "hard_anchor_missing:[[['acrylic']]]"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "PMMA acrylic fire experiments SAFFIRE-I psi-98 airflow velocity oxygen concentration pressure flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "BASS-II BASS acrylic fire tests microgravity airflow velocity oxygen concentration pressure flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi20",
+    "accepted": [],
+    "rejected": [
+      {
+        "query": "AirflowVelocity microgravity psi-98",
+        "accepted": false,
+        "reason": "hard_anchor_missing:[[['velocity']]]"
+      },
+      {
+        "query": "OxygenConcentration psi-25",
+        "accepted": false,
+        "reason": "hard_anchor_missing:[[['velocity']]]"
+      },
+      {
+        "query": "FlowDirection psi-98",
+        "accepted": false,
+        "reason": "hard_anchor_missing:[[['velocity']]]"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi22",
+    "accepted": [
+      {
+        "query": "SAFFIRE-I xenon combustion experiment airflow velocity measurements",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "BASS-II xenon flame spread microgravity oxygen concentration pressure",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "Saffire I xenon combustion test reported observations safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "SAFFIRE-I xenon combustion experiment airflow velocity measurements",
+        "accepted": false,
+        "reason": "added_registered_entity:psi-98"
+      },
+      {
+        "query": "BASS-II xenon flame spread microgravity oxygen concentration pressure",
+        "accepted": false,
+        "reason": "added_registered_entity:microgravity"
+      },
+      {
+        "query": "Saffire I xenon combustion test reported observations safety implication",
+        "accepted": false,
+        "reason": "added_registered_entity:psi-98"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "SAFFIRE-I xenon combustion experiment airflow velocity measurements",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "BASS-II xenon flame spread microgravity oxygen concentration pressure",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "Saffire I xenon combustion test reported observations safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi24",
+    "accepted": [
+      {
+        "query": "PMMA tests microgravity psi-98 psi-25 airflow velocity oxygen concentration pressure flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "PMMA runs microgravity psi-98 psi-25 airflow velocity oxygen concentration pressure flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "PMMA experiments airflow velocity oxygen concentration pressure flow direction",
+        "accepted": false,
+        "reason": "added_registered_property:AirflowVelocity"
+      },
+      {
+        "query": "PMMA tests microgravity psi-98 psi-25 airflow velocity oxygen concentration pressure flow direction",
+        "accepted": false,
+        "reason": "added_registered_entity:microgravity"
+      },
+      {
+        "query": "PMMA runs microgravity psi-98 psi-25 airflow velocity oxygen concentration pressure flow direction",
+        "accepted": false,
+        "reason": "added_registered_entity:microgravity"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "PMMA tests microgravity psi-98 psi-25 airflow velocity oxygen concentration pressure flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "PMMA runs microgravity psi-98 psi-25 airflow velocity oxygen concentration pressure flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi27",
+    "accepted": [
+      {
+        "query": "SAFFIRE-I microgravity PMMA fire suppression reported observations",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "BASS-II microgravity PMMA fire suppression conclusions",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "NASA experiments microgravity PMMA fire suppression safety implication",
+        "accepted": false,
+        "reason": "added_information_class:ExperimentalRun"
+      },
+      {
+        "query": "SAFFIRE-I microgravity PMMA fire suppression reported observations",
+        "accepted": false,
+        "reason": "added_registered_entity:psi-98"
+      },
+      {
+        "query": "BASS-II microgravity PMMA fire suppression conclusions",
+        "accepted": false,
+        "reason": "added_registered_entity:psi-25"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "SAFFIRE-I microgravity PMMA fire suppression reported observations",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "BASS-II microgravity PMMA fire suppression conclusions",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi31",
+    "accepted": [
+      {
+        "query": "PMMA hasMaterial requirement SafetyImplication",
+        "accepted": true,
+        "reason": "hard_constraints_preserved"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "PMMA material requirement SafetyImplication experiment",
+        "accepted": false,
+        "reason": "added_information_class:ExperimentalRun"
+      },
+      {
+        "query": "PMMA requirement SafetyImplication experiment",
+        "accepted": false,
+        "reason": "added_information_class:ExperimentalRun"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi32",
+    "accepted": [],
+    "rejected": [],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi33",
+    "accepted": [
+      {
+        "query": "Saffire-I microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "BASS-II microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "SAFFIRE-I SIBAL Fabric PMMA microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "Saffire-I microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "accepted": false,
+        "reason": "added_registered_entity:microgravity"
+      },
+      {
+        "query": "BASS-II microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "accepted": false,
+        "reason": "added_registered_entity:microgravity"
+      },
+      {
+        "query": "SAFFIRE-I SIBAL Fabric PMMA microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "accepted": false,
+        "reason": "added_registered_entity:PMMA"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "Saffire-I microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "BASS-II microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "SAFFIRE-I SIBAL Fabric PMMA microgravity airflow velocity oxygen concentration pressure flow direction open question safety implication",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi42",
+    "accepted": [],
+    "rejected": [
+      {
+        "query": "PMMA SIBAL Fabric microgravity experiment run measurements",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      },
+      {
+        "query": "SAFFIRE-I microgravity material ignition PMMA SIBAL Fabric",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      },
+      {
+        "query": "BASS-II microgravity flame spread PMMA SIBAL Fabric",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi45",
+    "accepted": [
+      {
+        "query": "NASA conclusion Saffire-I PMMA microgravity airflow velocity",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "NASA conclusion BASS-II SIBAL Fabric microgravity pressure",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      },
+      {
+        "query": "NASA conclusion Saffire-I oxygen concentration flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null,
+        "accepted": true,
+        "reason": "exploratory_only_original_intent_unchanged",
+        "contract": "EXPLORATORY_DISCOVERY",
+        "canonical_effect": "NONE"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "NASA conclusion Saffire-I PMMA microgravity airflow velocity",
+        "accepted": false,
+        "reason": "added_registered_entity:PMMA"
+      },
+      {
+        "query": "NASA conclusion BASS-II SIBAL Fabric microgravity pressure",
+        "accepted": false,
+        "reason": "added_registered_entity:SIBAL Fabric"
+      },
+      {
+        "query": "NASA conclusion Saffire-I oxygen concentration flow direction",
+        "accepted": false,
+        "reason": "added_registered_entity:psi-98"
+      }
+    ],
+    "hypotheses": [
+      {
+        "query": "NASA conclusion Saffire-I PMMA microgravity airflow velocity",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "NASA conclusion BASS-II SIBAL Fabric microgravity pressure",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      },
+      {
+        "query": "NASA conclusion Saffire-I oxygen concentration flow direction",
+        "relationship": "UNVERIFIED_HYPOTHESIS",
+        "requested_concept": null,
+        "proposed_concept": null
+      }
+    ],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "comp01",
+    "accepted": [],
+    "rejected": [
+      {
+        "query": "Find microgravity experiments with PMMA material and airflow velocity 0.01 to 0.11 m/s",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      },
+      {
+        "query": "Find SAFFIRE-I and BASS-II test runs with PMMA and airflow 0.01-0.11 m/s in microgravity",
+        "accepted": false,
+        "reason": "numeric_operator_changed"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "comp11",
+    "accepted": [
+      {
+        "query": "Find experiments using PMMA in microgravity with airflow velocity 0.01 +/- 0.005 m/s",
+        "accepted": true,
+        "reason": "hard_constraints_preserved"
+      },
+      {
+        "query": "Find PMMA microgravity experiments with airflow 0.01 +/- 0.005 m/s",
+        "accepted": true,
+        "reason": "hard_constraints_preserved"
+      }
+    ],
+    "rejected": [
+      {
+        "query": "Find microgravity experiments with PMMA and airflow velocity 0.01 +/- 0.005 m/s",
+        "accepted": false,
+        "reason": "logical_grouping_changed"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  },
+  {
+    "case_id": "corrective-unseen-document",
+    "accepted": [],
+    "rejected": [
+      {
+        "query": "Find Document from source 20140011119 with entity PMMA",
+        "accepted": false,
+        "reason": "numeric_unit_dimension_changed"
+      },
+      {
+        "query": "Find Document from source 20140011119 with entity SIBAL Fabric",
+        "accepted": false,
+        "reason": "numeric_unit_dimension_changed"
+      }
+    ],
+    "hypotheses": [],
+    "error": null,
+    "execution_mode": "HISTORICAL_REPLAY_REVISED_POSTPROCESSING",
+    "original_prompt": "phase3c-controlled-discovery-v1",
+    "usage": {
+      "replayed": true
+    },
+    "new_calls": 0
+  }
+]

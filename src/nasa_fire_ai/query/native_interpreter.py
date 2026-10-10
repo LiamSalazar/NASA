@@ -33,7 +33,7 @@ class MinimalInterpretationV2(BaseModel):
     conversation_reference: str | None = None
 
 
-PROMPT_VERSION = "phase3c-minimal-v1"
+PROMPT_VERSION = "phase3c-minimal-final-repair-v1"
 SYSTEM_PROMPT = """Interpret the user's linguistic query. Return JSON only with these keys:
 operation (search/compare/explain), targets (raw class mentions), entities (raw mentions),
 properties (list of {label: raw property mention, expression: original numeric/categorical expression}),
@@ -41,29 +41,48 @@ requested_information (raw mentions), comparison_operands (raw mentions), source
 unknown (unrecognized terms), ambiguous (ambiguous terms), conversation_reference (string or null).
 Do not invent canonical ontology IDs, perform unit conversions, or add scientific constraints.
 Preserve numbers, units, inequalities, ranges, approximate wording and explicit +/- tolerance.
-Bare flow/velocity and acrylic require ambiguity preservation. Airflow velocity is distinct from
-flame-spread velocity. An unknown concept must remain unknown. No prose or additional keys."""
+Use lists of strings, never objects, for all mention lists except properties.
+Copy surface terms rather than classifying familiar terms as unknown. Omit absent mentions.
+targets means the kind of object requested (e.g. experiments, publications), NOT materials
+or the full query. entities contains separate material, investigation, gravity or run mentions.
+requested_information contains only explicitly requested genres (observations, conclusions,
+requirements, measurements, guidance, open questions); never repeat the entire question.
+For a bare constraint search, targets and requested_information may both be empty.
+Bare flow/velocity, Saffire and acrylic require ambiguity preservation. Airflow velocity is distinct from
+flame-spread velocity. An unknown concept must remain unknown. No prose or additional keys.
+sources contains only explicitly named source identifiers, never NASA, materials or investigations.
+A numeric filter alone is not a request for measurements. Copy both comparison operands;
+numeric filters are not operands. Preserve approximation words in expressions. Known
+ordinary request words are not unknown science. Use search for evidence lookup,
+compare only for genuine comparison, explain only for explicit explanation requests."""
 
 
 def parse_expression(expression, datatype, operators):
     if datatype == "categorical":
         return "EQ", GenericValue(reported_value=expression, raw_expression=expression)
     text = expression.strip().lower()
-    nums = re.findall(r"[-+]?\d+(?:\.\d+)?", text)
-    unit_match = re.search(r"cm/s|mm/s|m/s|kpa|pa|fraction|%|\bk\b|\bs\b|\bw\b|\bm\b", text)
+    number = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?"
+    range_match = re.search(rf"({number})\s*[-–]\s*({number})", text)
+    nums = re.findall(number, text)
+    unit_match = re.search(
+        r"cm/s|mm/s|m/s|mmhg|kpa|pa|fraction|percent|%|\bk\b|\bs\b|\bw\b|\bm\b", text
+    )
     unit = unit_match.group(0) if unit_match else None
+    unit = "%" if unit == "percent" else unit
     if not nums:
         raise ValueError("numeric expression has no value")
     value = GenericValue(
         reported_value=float(nums[0]), reported_unit=unit, raw_expression=expression
     )
-    if "between" in text or (len(nums) == 2 and re.search(r"\d\s*[-–]\s*\d", text)):
+    if "between" in text or range_match or re.search(r"\d\s+to\s+\d", text):
+        if range_match and "between" not in text:
+            nums = list(range_match.groups())
         if len(nums) != 2:
             raise ValueError("range requires two values")
         value.reported_value = None
         value.lower, value.upper = map(float, nums)
         return "BETWEEN", value
-    if any(x in text for x in ("about", "roughly", "approximately", "±", "+/-")):
+    if any(x in text for x in ("about", "roughly", "approximately", "approx", "~", "±", "+/-")):
         value.approximate = True
         if "±" in text or "+/-" in text:
             if len(nums) != 2:
@@ -76,33 +95,102 @@ def parse_expression(expression, datatype, operators):
     return "EQ", value
 
 
-def resolve_minimal(proposal, registry, language, context=None):
-    unresolved = list(proposal.unknown)
-    ambiguous = list(proposal.ambiguous)
-    entities = []
-    for mention in proposal.entities:
-        matches = [
+def resolve_minimal(proposal, registry, language, context=None, query=None):
+    def contains(text, label):
+        return bool(re.search(rf"(?<!\w){re.escape(label.lower())}(?!\w)", text.lower()))
+
+    def known_entities(text):
+        return [
             (eid, meta)
             for eid, meta in language["entity_mentions"].items()
-            if mention.lower() in {eid.lower(), *(a.lower() for a in meta["aliases"])}
+            if eid in registry.entities and any(contains(text, a) for a in [eid, *meta["aliases"]])
         ]
-        if len(matches) == 1 and matches[0][0] in registry.entities:
-            entities.append(
-                EntityConstraintV2(relation=matches[0][1]["relation"], entity_id=matches[0][0])
+
+    # Minimal proposals can contain a compound surface phrase. Split only using
+    # approved aliases, never language-model suggested scientific equivalence.
+    if query:
+        discovered = [
+            alias
+            for meta in language["entity_mentions"].values()
+            for alias in meta["aliases"]
+            if contains(query, alias)
+        ]
+        proposal = proposal.model_copy(
+            update={"entities": list(dict.fromkeys(proposal.entities + discovered))}
+        )
+
+    def resolve_operand(mention):
+        direct = [e for e in registry.entities if e.lower() == mention.lower()]
+        if len(direct) == 1:
+            return direct
+        investigations = [
+            e for e, meta in known_entities(mention) if meta["relation"] == "belongsToInvestigation"
+        ]
+        investigations += [
+            e
+            for e, meta in known_entities(query or "")
+            if meta["relation"] == "belongsToInvestigation"
+        ]
+        if context and context.current_investigation:
+            investigations.append(context.current_investigation)
+        suffix = re.search(r"\b([a-z]+\d+)\s*$", mention, re.IGNORECASE)
+        matches = [
+            e
+            for e in registry.entities
+            if suffix
+            and e.lower().endswith("-" + suffix[1].lower())
+            and (not investigations or any(e.startswith(i + "-") for i in investigations))
+        ]
+        return matches if len(matches) == 1 else []
+
+    unresolved = list(proposal.unknown)
+    ambiguous = list(proposal.ambiguous)
+    protected = {x.lower() for x in language.get("ambiguous_mentions", [])}
+    entities = []
+    for mention in proposal.entities:
+        if mention.lower() in protected:
+            ambiguous.append(mention)
+            continue
+        matches = known_entities(mention)
+        if matches:
+            entities.extend(
+                EntityConstraintV2(relation=meta["relation"], entity_id=eid)
+                for eid, meta in matches
             )
         else:
-            unresolved.append(mention)
+            if not resolve_operand(mention):
+                unresolved.append(mention)
     properties = []
+    resolved_property_mentions = set()
     for mention in proposal.properties:
+        if mention.label.lower() in protected:
+            ambiguous.append(mention.label)
+            continue
         status, pid = registry.resolve_property(mention.label)
         if status != "CANONICAL":
             (ambiguous if status == "AMBIGUOUS" else unresolved).append(mention.label)
             continue
+        resolved_property_mentions.add(mention.label.strip().lower())
         try:
+            expression = mention.expression
+            if query and not any(
+                w in expression.lower() for w in ("about", "roughly", "approx", "±", "+/-", "~")
+            ):
+                n = re.search(r"\d+(?:\.\d+)?", expression)
+                if n and re.search(
+                    rf"(?:about|roughly|approximately|approx\.?|~)\s*{re.escape(n[0])}(?!\d)",
+                    query,
+                    re.IGNORECASE,
+                ):
+                    expression = "approximately " + expression
             operator, value = parse_expression(
-                mention.expression, registry.properties[pid].datatype, language["operators"]
+                expression, registry.properties[pid].datatype, language["operators"]
             )
             c = PropertyConstraintV2(property_id=pid, operator=operator, value=value)
+            if query:
+                for qualifier, aliases in language.get("context_mentions", {}).items():
+                    if any(contains(query, a) for a in aliases):
+                        c.qualifiers["context"] = qualifier
             registry.validate(c)
             properties.append(c)
         except ValueError:
@@ -112,12 +200,24 @@ def resolve_minimal(proposal, registry, language, context=None):
         matches = [
             cid
             for cid, aliases in language["information_mentions"].items()
-            if mention.lower() in {cid.lower(), *(a.lower() for a in aliases)}
+            if cid != "ExperimentalRun" and any(contains(mention, a) for a in [cid, *aliases])
         ]
-        if len(matches) == 1:
+        if query:
+            matches = [
+                cid
+                for cid in matches
+                if any(contains(query, a) for a in [cid, *language["information_mentions"][cid]])
+            ]
+        if matches:
             information.extend(matches)
-        else:
+        elif not known_entities(mention):
             unresolved.append(mention)
+    if query:
+        information.extend(
+            cid
+            for cid, aliases in language["information_mentions"].items()
+            if cid != "ExperimentalRun" and any(contains(query, a) for a in aliases)
+        )
     targets = []
     for mention in proposal.targets:
         matches = [cid for cid in registry.target_classes if cid.lower() == mention.lower()]
@@ -127,26 +227,157 @@ def resolve_minimal(proposal, registry, language, context=None):
             if cid in registry.target_classes and mention.lower() in {a.lower() for a in aliases}
         ]
         if matches:
-            targets.append(matches[0])
-        else:
+            target = matches[0]
+            # Information classes can also be target classes in the registry.
+            # When the query carries run-level entity/property filters, those
+            # filters scope experimental records; the requested-information
+            # class controls which evidence is returned.
+            if (
+                target in information
+                and not registry.class_metadata.get(target, {}).get("documentary")
+                and (entities or properties)
+            ):
+                target = "ExperimentalRun"
+            targets.append(target)
+        elif (
+            not known_entities(mention)
+            and not resolve_operand(mention)
+            and not any(
+                contains(mention, a)
+                for aliases in language["information_mentions"].values()
+                for a in aliases
+            )
+        ):
             unresolved.append(mention)
     operands = []
-    for mention in proposal.comparison_operands:
-        matches = [
-            eid
-            for eid in registry.entities
-            if eid.lower() == mention.lower() or eid.lower().endswith("-" + mention.lower())
-        ]
+    for mention in proposal.comparison_operands if proposal.operation.lower() == "compare" else []:
+        if mention.lower() in protected:
+            ambiguous.append(mention)
+            continue
+        matches = resolve_operand(mention)
         if len(matches) == 1:
             operands.extend(matches)
         else:
             unresolved.append(mention)
-    if proposal.conversation_reference and context and context.current_investigation:
+    conversation_reference = proposal.conversation_reference
+    if context and query:
+        candidates = [
+            e
+            for e in context.current_run_ids
+            if re.search(rf"\b{re.escape(e.split('-')[-1])}\b", query, re.IGNORECASE)
+        ]
+        if (
+            not candidates
+            and re.search(r"\bsecond\b", query, re.IGNORECASE)
+            and len(context.current_run_ids) >= 2
+        ):
+            candidates = [context.current_run_ids[1]]
+        if len(candidates) == 1:
+            conversation_reference = candidates[0]
+            unresolved = [m for m in unresolved if not resolve_operand(m)]
+    if conversation_reference and context and context.current_investigation:
         entities.append(
             EntityConstraintV2(
                 relation="belongsToInvestigation", entity_id=context.current_investigation
             )
         )
+    # An implicit run target is a linguistic default, not a scientific inference.
+    # Explicit documentary targets take precedence and remain documentary searches.
+    if not targets:
+        documentary = [
+            c for c in information if registry.class_metadata.get(c, {}).get("documentary")
+        ]
+        targets = documentary or ["ExperimentalRun"]
+    if query:
+        # Reject any canonical association for a protected raw mention even when
+        # the language model replaced it with a plausible scientific identity.
+        raw = query.lower()
+        for mention in protected:
+            if re.search(rf"(?<!\w){re.escape(mention)}(?!\w)", raw):
+                qualified = any(
+                    mention in alias.lower() and alias.lower() != mention and alias.lower() in raw
+                    for p in registry.properties.values()
+                    for alias in p.aliases
+                ) or any(
+                    mention in alias.lower() and alias.lower() != mention and alias.lower() in raw
+                    for meta in language["entity_mentions"].values()
+                    for alias in meta["aliases"]
+                )
+                if not qualified:
+                    ambiguous.append(mention)
+                    # Ambiguity blocks DIRECT; no silently invented identity.
+                    scope = language.get("ambiguity_scopes", {}).get(mention, {})
+                    entities = [e for e in entities if e.relation not in scope.get("relations", [])]
+                    if scope.get("properties"):
+                        properties = []
+    exact_aliases = {
+        a.lower()
+        for eid, meta in language["entity_mentions"].items()
+        for a in [eid, *meta["aliases"]]
+    }
+    unresolved = [
+        x
+        for x in unresolved
+        if x.lower() not in exact_aliases and registry.resolve_property(x)[0] != "CANONICAL"
+    ]
+    entities = list({(e.relation, e.entity_id): e for e in entities}.values())
+    # QueryIntentV2 has no union/disjunction operator. Multiple canonical
+    # values in one relation slot therefore cannot safely be interpreted as
+    # a conjunctive filter over one entity. Preserve the recognized values,
+    # but require clarification unless the query already resolves an explicit
+    # comparison. This is relation-generic, not material- or source-specific.
+    relation_values: dict[str, set[str]] = {}
+    for constraint in entities:
+        relation_values.setdefault(constraint.relation, set()).add(constraint.entity_id)
+    grouping_ambiguities = []
+    if not (len(operands) >= 2 and proposal.operation.lower() == "compare"):
+        grouping_ambiguities = [
+            f"multiple_values_for_relation:{relation}"
+            for relation, values in relation_values.items()
+            if len(values) > 1
+        ]
+    # Reconcile contradictory slots using pre-existing authority and expressions
+    # actually validated. This does not resolve new scientific terms.
+    information_aliases = {
+        a.lower()
+        for cid, aliases in language["information_mentions"].items()
+        for a in [cid, *aliases]
+    }
+    validated_expressions = {
+        c.value.raw_expression.strip().lower() for c in properties if c.value.raw_expression
+    }
+    known = (
+        exact_aliases
+        | information_aliases
+        | validated_expressions
+        | {s.lower() for s in registry.source_ids}
+        | {s.lower() for s in language.get("non_scientific_mentions", [])}
+    )
+    unresolved = [x for x in unresolved if x.strip().lower() not in known]
+    normalized_ambiguous = []
+    for mention in ambiguous:
+        key = mention.strip().lower()
+        property_status, _ = registry.resolve_property(mention)
+        if key in resolved_property_mentions or property_status == "CANONICAL":
+            continue
+        if key in exact_aliases or key in information_aliases or key in known:
+            continue
+        if property_status == "UNKNOWN" and key not in protected:
+            unresolved.append(mention)
+            continue
+        normalized_ambiguous.append(mention)
+    ambiguous = list(dict.fromkeys([*normalized_ambiguous, *grouping_ambiguities]))
+    unresolved = list(dict.fromkeys(unresolved))
+    source_lookup = {s.lower(): s for s in registry.source_ids}
+    sources = [
+        source_lookup.get(s.lower(), s)
+        for s in proposal.sources
+        if s.lower() not in known or s.lower() in source_lookup
+    ]
+    if query:
+        raw_sources = re.findall(r"\bsource\s+(?:id\s+)?([\w.-]+)", query, re.IGNORECASE)
+        sources.extend(s for s in raw_sources if s in registry.source_ids)
+    sources = list(dict.fromkeys(sources))
     return QueryIntentV2(
         operation={"search": "SEARCH", "compare": "COMPARE", "explain": "EXPLAIN"}.get(
             proposal.operation.lower(), "SEARCH"
@@ -156,9 +387,9 @@ def resolve_minimal(proposal, registry, language, context=None):
         property_constraints=properties,
         requested_information=list(dict.fromkeys(information)),
         comparison=ComparisonV2(operands=operands) if len(operands) >= 2 else None,
-        source_constraints=proposal.sources,
+        source_constraints=sources,
         unresolved_mentions=list(dict.fromkeys(unresolved)),
         ambiguities=list(dict.fromkeys(ambiguous)),
         clarification_required=bool(ambiguous),
-        conversation_reference=proposal.conversation_reference,
+        conversation_reference=conversation_reference,
     )

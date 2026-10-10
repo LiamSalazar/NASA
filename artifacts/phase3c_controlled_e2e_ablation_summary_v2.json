@@ -1,0 +1,164 @@
+{
+  "version": "phase3c-controlled-e2e-ablation-summary-v2",
+  "status": "SECOND_PASS_BOUNDED_RERANK_PROMPT; FIRST_PASS_PRESERVED",
+  "gold_digest": "e2e3005c3ac268749cae5564ece7974f94a64819a0006cf025b5152e17e14a76",
+  "run_profile": "rerank-v2;candidate-budget-8;passage-chars-900;jev-replayed",
+  "N": 20,
+  "objective_identity_cases": 8,
+  "review_required_cases": 8,
+  "objective_no_direct_cases": 4,
+  "configurations": {
+    "A": {
+      "expected_identity_recall@1": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@3": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@5": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@10": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "mean_candidate_count": {
+        "n": 20,
+        "mean": 3.4
+      }
+    },
+    "B": {
+      "expected_identity_recall@1": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@3": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@5": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@10": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "mean_candidate_count": {
+        "n": 20,
+        "mean": 19.4
+      }
+    },
+    "C": {
+      "expected_identity_recall@1": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@3": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@5": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@10": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "mean_candidate_count": {
+        "n": 20,
+        "mean": 19.4
+      }
+    },
+    "D": {
+      "expected_identity_recall@1": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@3": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@5": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "expected_identity_recall@10": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+      },
+      "mean_candidate_count": {
+        "n": 20,
+        "mean": 19.4
+      }
+    }
+  },
+  "false_direct_on_objective_no_direct": {
+    "numerator": 0,
+    "denominator": 4,
+    "estimate": 0.0
+  },
+  "unscored_review_case_ids": [
+    "qi24",
+    "qi27",
+    "qi31",
+    "qi32",
+    "qi33",
+    "qi42",
+    "comp01",
+    "comp11"
+  ],
+  "precision_and_relevance": "NOT SCOREABLE: no complete independent evidence-relevance labels; human review fields remain blank in the review packet.",
+  "native_retrieval_latency_ms": {
+    "n": 20,
+    "median": 69.33858649426838,
+    "max": 144.30835499661043
+  },
+  "jev_role": "Rhetorical advisory only; no filtering or canonical evidence promotion.",
+  "first_pass_artifact": "artifacts/phase3c_controlled_e2e_ablation_cases_v1.jsonl",
+  "second_pass_changes": {
+    "classification": "GENERIC_BUG_FIX / PROMPT_AND_BUDGET_REDUCTION",
+    "candidate_budget": 8,
+    "max_passage_characters": 900,
+    "max_output_tokens": 1200,
+    "expansions": "replayed from immutable first pass; no repeat expansion calls",
+    "jev": "replayed from first-pass advisory receipts; no new Jev calls",
+    "native_direct_related": "recomputed by unchanged native executor"
+  }
+}

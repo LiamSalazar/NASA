@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "command": "uv run ruff format --check .",
+      "status": "PASS",
+      "files": 258
+    },
+    {
+      "command": "uv run ruff check .",
+      "status": "PASS"
+    },
+    {
+      "command": "uv run pytest -q",
+      "status": "PASS",
+      "passed": 128,
+      "rdflib_deprecation_warnings": 197
+    }
+  ],
+  "large_regression_suites_rerun": [
+    "230 dynamic-property cases",
+    "125 post-freeze registry cases",
+    "39 V1/V2 parity cases",
+    "20 exposed native/discovery regression cases",
+    "40 documentary source-identity cases"
+  ],
+  "live_api_tests": "NOT_EXECUTED_RUNTIME_KEYS_UNAVAILABLE",
+  "independent_scientific_adjudication": "PENDING"
+}

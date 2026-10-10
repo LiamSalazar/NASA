@@ -44,6 +44,7 @@ class PropertyConstraintV2(BaseModel):
     property_id: str
     operator: Operator
     value: GenericValue
+    qualifiers: dict[str, str] = {}
 
 
 class ComparisonV2(BaseModel):
@@ -93,7 +94,9 @@ class SemanticRegistry:
         self.properties = {x.property_id: x for x in properties or []}
         self.relations = {x.relation_id: x for x in relations or []}
         self.entities: set[str] = set()
+        self.source_ids: set[str] = set()
         self.class_metadata: dict[str, dict] = {}
+        self.selection_policy: dict = {}
         self.target_classes = target_classes or {
             "ExperimentalRun",
             "Investigation",
@@ -236,6 +239,14 @@ def evaluate_constraint(
         same = candidate.reported_value in values
         return "MATCH" if (same if constraint.operator != "NEQ" else not same) else "DIFFER"
     # Validate and normalize the candidate independently; never compare unlike units.
+    if (
+        candidate.reported_value is None
+        and candidate.canonical_value is None
+        and candidate.lower is None
+    ):
+        return "UNKNOWN"
+    if candidate.approximate:
+        return "UNKNOWN"  # Reported approximation is not an exact point observation.
     try:
         if candidate.lower is not None:
             return "UNKNOWN"  # A reported interval is not a point observation.
@@ -248,6 +259,22 @@ def evaluate_constraint(
     if left is None:
         return "UNKNOWN"
     if constraint.operator == "BETWEEN":
+        if query.raw_expression:
+            from nasa_fire_ai.query.expansion_contracts import numeric_expressions
+
+            ranges = [
+                x for x in numeric_expressions(query.raw_expression) if x.operator == "BETWEEN"
+            ]
+            if ranges:
+                bounds = ranges[0]
+                if left == query.lower and bounds.lower_inclusive is None:
+                    return "UNKNOWN"
+                if left == query.upper and bounds.upper_inclusive is None:
+                    return "UNKNOWN"
+                if (left == query.lower and bounds.lower_inclusive is False) or (
+                    left == query.upper and bounds.upper_inclusive is False
+                ):
+                    return "DIFFER"
         return "MATCH" if query.lower <= left <= query.upper else "DIFFER"
     if constraint.operator == "IN":
         if not isinstance(query.reported_value, list):

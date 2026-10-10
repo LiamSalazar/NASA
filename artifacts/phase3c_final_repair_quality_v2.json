@@ -1,0 +1,171 @@
+{
+  "all_commands_pass": true,
+  "broken_evidence_refs": 0,
+  "canonical_shacl": true,
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "output_tail": "218 files already formatted\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "output_tail": "All checks passed!\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output_tail": "........................................................................ [ 79%]\n...................                                                      [100%]\n=============================== warnings summary ===============================\ntests/test_native_semantic.py: 197 warnings\n  /home/liam/NASA/.venv/lib/python3.12/site-packages/rdflib/graph.py:2340: DeprecationWarning: Dataset.default_context is deprecated, use Dataset.default_graph instead.\n    if context == self.default_context:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n91 passed, 197 warnings in 4.98s\n"
+    }
+  ],
+  "db_integrity": "ok",
+  "duplicate_fts_rows": 0,
+  "dynamic_property_benchmarks": {
+    "artifacts/phase3c_dynamic_property_benchmark.json": {
+      "case_count": 230,
+      "categorical_properties": 10,
+      "latency": {
+        "bm25_ranking": {
+          "max_ms": 0.2185240000471822,
+          "median_ms": 0.04734899994218722,
+          "n": 230,
+          "p95_ms": 0.10939799994957866
+        },
+        "bundle_build": {
+          "max_ms": 1.0728119996201713,
+          "median_ms": 0.03805500000453321,
+          "n": 230,
+          "p95_ms": 0.07608000032632845
+        },
+        "kg_execution": {
+          "max_ms": 0.882541000009951,
+          "median_ms": 0.39335850010502327,
+          "n": 230,
+          "p95_ms": 0.5632349998450081
+        },
+        "planning": {
+          "max_ms": 3.4146510001846764,
+          "median_ms": 1.0419205000289367,
+          "n": 230,
+          "p95_ms": 2.1977040000820125
+        },
+        "total": {
+          "max_ms": 4.010076000213303,
+          "median_ms": 1.5828784999030177,
+          "n": 230,
+          "p95_ms": 2.724202000081277
+        }
+      },
+      "metrics": {
+        "class_execution": {
+          "denominator": 5,
+          "estimate": 1.0,
+          "numerator": 5,
+          "status": "SMALL_N",
+          "wilson95": [
+            0.5655175352168251,
+            1
+          ]
+        },
+        "direct_correctness": {
+          "denominator": 230,
+          "estimate": 1.0,
+          "numerator": 230,
+          "status": "MEASURED",
+          "wilson95": [
+            0.9835723791663494,
+            1
+          ]
+        },
+        "execution": {
+          "denominator": 230,
+          "estimate": 1.0,
+          "numerator": 230,
+          "status": "MEASURED",
+          "wilson95": [
+            0.9835723791663494,
+            1
+          ]
+        },
+        "related_correctness": {
+          "denominator": 230,
+          "estimate": 1.0,
+          "numerator": 230,
+          "status": "MEASURED",
+          "wilson95": [
+            0.9835723791663494,
+            1
+          ]
+        }
+      },
+      "native_guard": "PASS",
+      "numeric_properties": 25
+    }
+  },
+  "foreign_key_violations": 0,
+  "historical_baseline_changed_or_missing": [
+    "domain/query_language_v2.yaml",
+    "domain/semantic_registry.yaml",
+    "src/nasa_fire_ai/ingestion/semantic.py",
+    "src/nasa_fire_ai/models/__init__.py",
+    "src/nasa_fire_ai/normalization/units.py",
+    "src/nasa_fire_ai/query/native.py",
+    "src/nasa_fire_ai/query/native_interpreter.py",
+    "src/nasa_fire_ai/query/v2.py",
+    "src/nasa_fire_ai/services/native.py"
+  ],
+  "historical_baseline_files_unchanged": 457,
+  "missing_document_references": 0,
+  "missing_fts_rows": 0,
+  "native_generic_shacl": true,
+  "notes": [
+    "FTS integrity checked by row coverage and uniqueness; no write/repair command was issued.",
+    "Staging integrity includes projection provenance completeness from the coverage artifact."
+  ],
+  "projection_integrity": {
+    "broken_evidence_refs": 0,
+    "conditions": 682,
+    "eligible_runs": 405,
+    "evidence_refs_retained": 424,
+    "invalid_units": 0,
+    "measurements": 0,
+    "missing_original_values": 0,
+    "projected_runs": 405,
+    "relations": 812,
+    "runs_with_unresolved": 405,
+    "runs_without_values": 2,
+    "total_runs": 405,
+    "unknown_fields_staged": 2314
+  },
+  "raw_and_canonical_source_integrity": {
+    "canonical_run_source_modified": false,
+    "projection_additive_only": true,
+    "raw_files_modified": false
+  },
+  "registry_counts": {
+    "documents": 286,
+    "passages": 6055,
+    "semantic_staging": 4,
+    "sources": 282
+  },
+  "version": "final-repair-quality-v1"
+}

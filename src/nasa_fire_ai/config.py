@@ -4,7 +4,13 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
+
+def load_project_environment() -> None:
+    """One local configuration mechanism; explicit environment values take precedence."""
+    load_dotenv(Path(__file__).resolve().parents[2] / ".env", override=False)
+
+
+load_project_environment()
 
 
 @dataclass(frozen=True)
@@ -19,9 +25,11 @@ class Settings:
     llm_extraction_enabled: bool = os.getenv("LLM_EXTRACTION_ENABLED", "false").lower() == "true"
     nvidia_api_key: str | None = os.getenv("NVIDIA_API_KEY")
     nvidia_base_url: str | None = os.getenv("NVIDIA_BASE_URL")
-    nvidia_extraction_model: str | None = os.getenv("NVIDIA_EXTRACTION_MODEL")
+    nvidia_extraction_model: str | None = os.getenv(
+        "NVIDIA_EXTRACTION_MODEL", os.getenv("NVIDIA_MODEL")
+    )
     nvidia_phase3_model: str = os.getenv(
-        "NVIDIA_PHASE3_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b"
+        "NVIDIA_PHASE3_MODEL", os.getenv("NVIDIA_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b")
     )
     nvidia_embedding_model: str = os.getenv("NVIDIA_EMBEDDING_MODEL", "nvidia/nemotron-3-embed-1b")
     embedding_preprocessing_version: str = "phase2-v1"

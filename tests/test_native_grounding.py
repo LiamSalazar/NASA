@@ -20,6 +20,8 @@ def test_native_modality_strengthening_rejected():
     assert not validate_native_draft(draft, bundle).valid
     draft.claims[0].text = text
     assert validate_native_draft(draft, bundle).valid
+    assert draft.claims[0].epistemic_type == "source_quotation"
+    assert draft.claims[0].relationship_status == "DOCUMENTARY"
     draft.claims[0].evidence_ids = ["invented"]
     assert not validate_native_draft(draft, bundle).valid
 
@@ -55,3 +57,27 @@ def test_open_question_cannot_be_invented_from_an_observation():
         ],
     )
     assert not validate_native_draft(draft, bundle).valid
+
+
+def test_design_test_criterion_authority_is_not_an_observation():
+    bundle = EvidenceBundle(
+        query_intent=QueryIntent(),
+        no_direct_evidence=True,
+        design_test_criteria=[
+            {
+                "statement_type": "test_criterion",
+                "normalized_text": "Test at the worst case condition.",
+                "evidence_refs": [{"evidence_id": "E1"}],
+            }
+        ],
+    )
+    draft = GroundedAnswerDraft(
+        answer_summary="organization",
+        claims=[
+            GroundedClaim(
+                claim_id="c", text="Test at the worst case condition.", evidence_ids=["E1"]
+            )
+        ],
+    )
+    assert validate_native_draft(draft, bundle).valid
+    assert draft.claims[0].epistemic_type == "test_criterion"

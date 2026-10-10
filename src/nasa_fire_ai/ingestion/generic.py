@@ -25,6 +25,23 @@ class SemanticResolution:
     datatype: str
 
 
+def propose_table_role(profiles: list[ColumnProfile]) -> dict:
+    """Advisory structural role only: no header proves an executed experiment."""
+    labels = {p.normalized_label for p in profiles}
+    hints = {
+        "Publication": {"doi", "publication", "title", "authors"},
+        "MaterialInventory": {"material", "quantity", "inventory"},
+        "ExperimentalDesign": {"planned", "design", "configuration"},
+        "ExperimentalRun": {"run", "run id", "experiment id"},
+    }
+    roles = [role for role, terms in hints.items() if labels.intersection(terms)]
+    return {
+        "proposed_role": roles[0] if len(roles) == 1 else "UnresolvedTable",
+        "authority": "UNREVIEWED_STRUCTURAL_HINT",
+        "canonical": False,
+    }
+
+
 def resolve_column(profile: ColumnProfile, registry: SemanticRegistry) -> SemanticResolution:
     """Registry-only semantic proposal; unknowns deliberately remain unresolved."""
     status, property_id = registry.resolve_property(profile.normalized_label, profile.raw_unit)

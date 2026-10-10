@@ -1,0 +1,32 @@
+{
+  "version": "phase3c-controlled-native-freeze-v1",
+  "status": "FROZEN_AFTER_IMPLEMENTATION_BEFORE_FINAL_INTEGRITY_CHECKS",
+  "code_digests": {
+    "domain/semantic_registry.yaml": "a6b60955f5061a555fdf056d2f8981151ee004c4bbd3f5a3a031002d791b64dd",
+    "domain/query_language_v2.yaml": "390889bbc82d73f3c9a2716673710e5172a6745f7a02f992685689c2fb7042a8",
+    "ontology/shapes.ttl": "1aa9e56c96798cf0bd9efb818956df63eda4de2d2c5b98d8cb8c0cfb8194cf72",
+    "ontology/semantic_shapes.ttl": "19e72775df2ff07ab846d6d3f849b896a06d085072864c5b05194838d9d11b07",
+    "src/nasa_fire_ai/models/__init__.py": "86e85e5b5ac198e951a71d92b1ba040ec6ef8e5fac466b738b6f90e3771a8860",
+    "src/nasa_fire_ai/query/v2.py": "d705f1f0f7f6fa84a7f89a4fec45bd538dcd0b1039db65ecdc60c1d6930d6431",
+    "src/nasa_fire_ai/query/native.py": "ef1b7e3c20919d6c8e447648fbd782e3ced385b95d972323dfe0b9a6b01d9f30",
+    "src/nasa_fire_ai/query/native_interpreter.py": "3d7f4e604a124fd3dd897685cd0d139e2a0f4fd9300459997eda618de003c781",
+    "src/nasa_fire_ai/query/controlled_reasoning.py": "e65e5d47b222ee3da4af6582386d4c763f94267183823c059308c52f383a0d05",
+    "src/nasa_fire_ai/llm/native_interpreter.py": "2f3a78b9c19ba852b6dbdca90f9c9cffb0ed618afb695d330196857a89932c02",
+    "src/nasa_fire_ai/evidence/registry.py": "2d7a92a4976dec2fa969ddfed647cffbd2733758334f8a082a369b97dcc3a386",
+    "src/nasa_fire_ai/services/native.py": "073e3ac74702d2d85e7b6f6bbd4699c757df189b0920615ddd3364abe7858b71",
+    "src/nasa_fire_ai/services/grounding.py": "73d0f5793ce6de078bba0d5048335a92dab4d8202945ddeb8590fb687065cc58",
+    "scripts/phase3c_controlled_e2e.py": "c061ab0e2d247e81fe31efe4a45e866e8f0342c015017dc418e524a922248e1b",
+    "scripts/phase3c_controlled_analysis.py": "bb2a5601cec6bd322d3ae25ecd92bdbed1958200d8dc22658a8466d7d22e55fd"
+  },
+  "gold_digests": {
+    "evals/phase3c_controlled_e2e_regression_gold_v1.json": "1a42af0cdbc3052b3a3029e4b8a6ae670cfc3cb1926538ff7d5514a84a8a91a1",
+    "artifacts/phase3c_controlled_gold_reconciliation_proposed_v1.json": "9208cf936296c6e1cd0512c1d2f0f0e0ca5b9351168cd5dc7865606d6fd804f8"
+  },
+  "historical_phase3c_baseline": "artifacts/phase3c_final_repair_baseline.json",
+  "features_default_off": [
+    "SEMANTIC_QUERY_EXPANSION_ENABLED",
+    "CONTEXTUAL_RERANKING_ENABLED",
+    "JEV_ADVISORY_TRIAGE_ENABLED",
+    "SCIENTIFIC_PARAPHRASE_ENABLED"
+  ]
+}

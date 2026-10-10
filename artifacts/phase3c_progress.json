@@ -1,13 +1,146 @@
 {
   "phase_version": "phase3c-v1",
-  "status": "BENCHMARKING",
-  "phase3b_baseline_references": ["docs/PHASE3B_FINAL_CLOSURE.md", "artifacts/phase3b_prefirstpass_freeze.json", "artifacts/phase3b_v1_v2_parity.json"],
-  "completed_tasks": ["read_phase3b_history", "inspect_v2_compatibility_execution", "native_semantic_model", "legacy_projection", "native_executor", "generic_ingestion", "dynamic_benchmark", "reviewed_gold", "compositional_gold", "native_freeze", "postfreeze_stress", "parity_first_and_second_pass", "holdout_selection", "documentary_blind_first_pass", "documentary_holdout_queries", "baseline_integrity_and_bm25"],
-  "pending_tasks": ["finish_live_interpreter", "interpreter_metrics", "deterministic_parser_comparison", "structured_holdout_availability_resolution", "synthesis", "end_to_end", "final_quality", "closure"],
-  "benchmark_progress": {"dynamic": "230/230", "postfreeze": "125/125", "parity_second_pass": {"direct": "39/39", "related": "39/39", "evidence_ids": "9/39"}, "bm25": "historical baseline reproduced N=40", "live": "resumable JSONL; transient NVIDIA timeouts preserved"},
-  "holdout_status": "TWO_DOCUMENTARY_INGESTED; FOUR_ELIGIBLE_PSI_CANDIDATES_EXPOSE_NO_CSV",
-  "architecture_digests": {"original_freeze": "artifacts/phase3c_native_freeze.json", "active_repaired_freeze": "artifacts/phase3c_native_freeze_second_pass.json"},
-  "evaluation_digests": {"reviewed_gold": "ea8caaf39176542b183db4137a4ead144005211a9fd687ed1659bd5aaaad047f", "compositional_gold": "fcc3396f17fd24883dc2e967e8de79d1998fe7603634a0451c021819c40863de", "holdout_manifest": "b46cbf080a74b2a7ebeca8d36972afed8e8e35cbc554099671da37b910d39781"},
+  "status": "CORRECTIVE_EVALUATION_CLOSED_WITH_FAILED_READINESS_GATES",
+  "corrective_phase": {
+    "version": "phase3c-corrective-v1",
+    "status": "EVALUATION_CLOSED_WITH_FAILED_READINESS_GATES",
+    "completed": [
+      "pre_correction_digest_freeze",
+      "405_run_condition_projection",
+      "open_world_constraint_repair",
+      "SQL_eligible_BM25_filter",
+      "KG_documentary_integration",
+      "minimal_interpreter_resolution_repair",
+      "unreviewed_table_role_quarantine",
+      "deterministic_native_presentation",
+      "quotation_gate_preserved",
+      "corrective_native_freezes_v1_v2",
+      "12_objective_retrieval_probes",
+      "230_dynamic_and_125_postfreeze_cases",
+      "39_case_native_parity",
+      "30_live_jev_cases",
+      "native_scientific_integrity",
+      "71_live_interpreter_cases",
+      "20_native_end_to_end_cases_two_versioned_passes",
+      "bounded_live_synthesis",
+      "metadata_selected_holdout_first_pass",
+      "30_novel_compositions",
+      "field_error_matrix",
+      "review_packet",
+      "final_quality_gates",
+      "closure_decisions"
+    ],
+    "pending": [
+      "generic_genre_topic_retrieval_repair",
+      "requested_information_and_qualified_operand_resolution",
+      "measurement_context_selection_and_supported_unit_review",
+      "independent_relevance_and_paraphrase_review",
+      "meaningful_new_structured_combustion_holdout"
+    ],
+    "architecture_freeze": "artifacts/phase3c_corrective_native_freeze_v6.json",
+    "baseline_freeze": "artifacts/phase3c_corrective_baseline_v1.json",
+    "coverage": {
+      "eligible_runs": 405,
+      "projected_runs": 405,
+      "conditions": 408,
+      "relations": 812,
+      "unresolved_fields": 2588
+    },
+    "live_interpreter_resume": "uv run python scripts/phase3c_corrective_live.py interpreter",
+    "holdout_resume": "uv run python scripts/phase3c_corrective_holdout.py",
+    "credentials": "Environment only; never stored in this checkpoint",
+    "benchmark_summary": "artifacts/phase3c_corrective_benchmark_summary_v3.json",
+    "decisions": {
+      "GENERALIZATION_DECISION": "LIMITED",
+      "GENERIC_INGESTION_DECISION": "REVISE",
+      "GROUNDED_SYNTHESIS_DECISION": "REVISE",
+      "JEV_TRIAGE_DECISION": "KEEP_OPTIONAL",
+      "NATIVE_V2_EXECUTOR_DECISION": "REVISE",
+      "QUERYINTERPRETER_V2_DECISION": "REVISE",
+      "READY_FOR_PHASE_4": "NO",
+      "V2_DEFAULT_PATH_DECISION": "KEEP_EXPERIMENTAL"
+    },
+    "next_action": "Repair generic genre/topic retrieval and qualified operands; freeze a new corrective pass before re-evaluation. Phase 4 must not begin.",
+    "verification_command": "uv run python scripts/phase3c_corrective_finish.py"
+  },
+  "phase3b_baseline_references": [
+    "docs/PHASE3B_FINAL_CLOSURE.md",
+    "artifacts/phase3b_prefirstpass_freeze.json",
+    "artifacts/phase3b_v1_v2_parity.json"
+  ],
+  "completed_tasks": [
+    "read_phase3b_history",
+    "inspect_v2_compatibility_execution",
+    "native_semantic_model",
+    "legacy_projection",
+    "native_executor",
+    "generic_ingestion",
+    "dynamic_benchmark",
+    "reviewed_gold",
+    "compositional_gold",
+    "native_freeze",
+    "postfreeze_stress",
+    "parity_first_and_second_pass",
+    "holdout_selection",
+    "documentary_blind_first_pass",
+    "documentary_holdout_queries",
+    "baseline_integrity_and_bm25"
+  ],
+  "pending_tasks": [
+    "generic_genre_topic_retrieval_repair",
+    "requested_information_and_qualified_operand_resolution",
+    "measurement_context_selection_and_supported_unit_review",
+    "independent_relevance_and_paraphrase_review",
+    "meaningful_new_structured_combustion_holdout"
+  ],
+  "benchmark_progress": {
+    "corrective_summary": "artifacts/phase3c_corrective_benchmark_summary_v3.json",
+    "historical_results": "historical_phase3c_checkpoint"
+  },
+  "holdout_status": "ONE_NEW_UNRELATED_DOCUMENT; NO_NEW_STRUCTURED_EXPERIMENTAL_HOLDOUT",
+  "architecture_digests": {
+    "original_freeze": "artifacts/phase3c_native_freeze.json",
+    "active_repaired_freeze": "artifacts/phase3c_native_freeze_second_pass.json",
+    "corrective_final": "dbd6ffb19e4941a4e1bfce22f506da30e757b7116f998f03fa6cb3100352b65c"
+  },
+  "evaluation_digests": {
+    "reviewed_gold": "ea8caaf39176542b183db4137a4ead144005211a9fd687ed1659bd5aaaad047f",
+    "compositional_gold": "fcc3396f17fd24883dc2e967e8de79d1998fe7603634a0451c021819c40863de",
+    "holdout_manifest": "b46cbf080a74b2a7ebeca8d36972afed8e8e35cbc554099671da37b910d39781",
+    "corrective_summary": "177fa839f170e499faac76edd695386b437fd805a9ede5f9181e4bc6319f3ce9"
+  },
   "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
-  "prompt_versions": {"interpreter": "phase3c-minimal-v1", "synthesis": "phase3-synthesis-v1"}
+  "prompt_versions": {
+    "interpreter": "phase3c-minimal-v1",
+    "synthesis": "phase3-synthesis-v1"
+  },
+  "historical_phase3c_checkpoint": {
+    "benchmark_progress": {
+      "dynamic": "230/230",
+      "postfreeze": "125/125",
+      "parity_second_pass": {
+        "direct": "39/39",
+        "related": "39/39",
+        "evidence_ids": "9/39"
+      },
+      "bm25": "historical baseline reproduced N=40",
+      "live": "resumable JSONL; transient NVIDIA timeouts preserved"
+    },
+    "holdout_status": "TWO_DOCUMENTARY_INGESTED; FOUR_ELIGIBLE_PSI_CANDIDATES_EXPOSE_NO_CSV",
+    "architecture_digests": {
+      "original_freeze": "artifacts/phase3c_native_freeze.json",
+      "active_repaired_freeze": "artifacts/phase3c_native_freeze_second_pass.json",
+      "corrective_final": "dbd6ffb19e4941a4e1bfce22f506da30e757b7116f998f03fa6cb3100352b65c"
+    },
+    "pending_tasks": [
+      "finish_live_interpreter",
+      "interpreter_metrics",
+      "deterministic_parser_comparison",
+      "structured_holdout_availability_resolution",
+      "synthesis",
+      "end_to_end",
+      "final_quality",
+      "closure"
+    ]
+  }
 }

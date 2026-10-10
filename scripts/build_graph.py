@@ -54,13 +54,16 @@ for r in records:
         g.add((node, FS.reportedBy, FS[r["source_document"]]))
         if r.get("scope_applicability"):
             g.add((node, FS.scopeApplicability, Literal(r["scope_applicability"])))
-        if r["statement_id"].startswith("saffire-"):
-            g.add((node, FS.concerns, FS["psi-98"]))
-            g.add((node, FS.supportedBy, FS["saffire-iv-flow-off-observation"]))
-    elif r["type"] == "InterventionRecord":
-        g.add((FS["psi-98"], FS.hasIntervention, node))
-    elif r["type"] == "ObservationRecord":
-        g.add((FS["psi-98"], FS.hasObservation, node))
+        if r.get("investigation_id"):
+            g.add((node, FS.concerns, FS[r["investigation_id"]]))
+    elif r["type"] in {"InterventionRecord", "ObservationRecord"}:
+        if r.get("investigation_id"):
+            predicate = (
+                FS.hasIntervention if r["type"] == "InterventionRecord" else FS.hasObservation
+            )
+            g.add((FS[r["investigation_id"]], predicate, node))
+        if r.get("source_document"):
+            g.add((node, FS.reportedBy, FS[r["source_document"]]))
     if r["type"] == "SampleRecord":
         # Raw reported material labels can contain quotes/slashes. Keep the
         # original label in canonical JSON; use a deterministic safe RDF local name.

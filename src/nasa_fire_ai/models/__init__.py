@@ -242,6 +242,7 @@ class Claim(BaseModel):
         "open_question",
         "related_evidence_notice",
         "no_direct_evidence_notice",
+        "source_quotation",
     ]
     text: str
     evidence_ids: list[str] = []
@@ -259,6 +260,8 @@ class EvidenceBundle(BaseModel):
     direct_evidence: list[dict] = []
     related_evidence: list[dict] = []
     experimental_observations: list[dict] = []
+    measurements: list[dict] = []
+    conditions: list[dict] = []
     interventions: list[dict] = []
     nasa_conclusions: list[dict] = []
     safety_implications: list[dict] = []
@@ -323,7 +326,9 @@ class GroundedClaim(BaseModel):
         "related_evidence_notice",
         "no_direct_evidence_notice",
     ] = "observed_result"
-    relationship_status: Literal["DIRECT", "RELATED", "SAFETY", "NO_DIRECT"] = "SAFETY"
+    relationship_status: Literal["DIRECT", "RELATED", "SAFETY", "NO_DIRECT", "DOCUMENTARY"] = (
+        "SAFETY"
+    )
     authority: Literal["NASA_BACKED", "SYSTEM_SUGGESTED", "RESEARCHER_CURATED"] = "NASA_BACKED"
     evidence_ids: list[str] = []
     scope: str | None = None

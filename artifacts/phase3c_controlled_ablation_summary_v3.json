@@ -1,0 +1,134 @@
+{
+  "version": "phase3c-controlled-ablation-results-v3",
+  "status": "SECOND_PASS_AFTER_GENERIC_CONCEPT_EXPANSION_FILTER_FIX",
+  "gold_digest": "fda61fc7b5a81c0cd591fba1d977fe8bb2e0855e82982f68314ccef2c839892e",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "live_nemotron": true,
+  "N": 12,
+  "gold_status": "EXPOSED_REGRESSION_NOT_INDEPENDENT_RELEVANCE_GOLD",
+  "configuration_metrics": {
+    "A": {
+      "identity_recall_at_1": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recall_at_5": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recall_at_10": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recovered_anywhere": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      }
+    },
+    "B": {
+      "identity_recall_at_1": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recall_at_5": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recall_at_10": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recovered_anywhere": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      }
+    },
+    "C": {
+      "identity_recall_at_1": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recall_at_5": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recall_at_10": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recovered_anywhere": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      }
+    },
+    "D": {
+      "identity_recall_at_1": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recall_at_5": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recall_at_10": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      },
+      "identity_recovered_anywhere": {
+        "numerator": 11,
+        "denominator": 11,
+        "estimate": 1.0
+      }
+    }
+  },
+  "metrics_warning": "The frozen gold contains expected evidence identities, not complete relevance judgments. These are identity-recovery diagnostics only; precision and scientific relevance are not scoreable.",
+  "false_direct_promotions": {
+    "numerator": 0,
+    "denominator": 12,
+    "estimate": 0.0,
+    "basis": "controlled candidates never modify native DIRECT/RELATED fields"
+  },
+  "native_direct_ids_on_no_answer_cases": {
+    "numerator": 0,
+    "denominator": 1,
+    "interpretation": "No-answer correctness requires independent evidence relevance labels; this count only checks whether baseline canonical DIRECT remained empty."
+  },
+  "latency_ms": {
+    "native_total": {
+      "N": 12,
+      "median": 60.4982650038437,
+      "max": 124.30280199623667
+    },
+    "expansion": {
+      "N": 12,
+      "median": 2671.1564259967417,
+      "max": 16336.979726998834
+    },
+    "reranking": {
+      "N": 9,
+      "median": 10297.465772004216,
+      "max": 34969.72800399817
+    }
+  },
+  "api_cost": "not provided by response API",
+  "unreviewed_e2e_cases": "Preserved in existing review packet; not silently relabeled.",
+  "jev": "Not invoked by this runner unless explicitly configured through a separate adapter; prior Jev triage is not query-specific relevance truth.",
+  "run_profile": "strict-expansion-v3;rerank-budget-12;nvidia-rerank:1",
+  "first_pass": "artifacts/phase3c_controlled_ablation_cases_v1.jsonl",
+  "second_pass_changes": "Model expansion proposals replayed from immutable first pass; added registered concepts now rejected unless present in query or validated intent. Changed pools reranked live when requested; iteration 3 caps reranker input at 12 passages."
+}

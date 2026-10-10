@@ -1,0 +1,44 @@
+{
+  "pytest": {
+    "passed": 136,
+    "failed": 0
+  },
+  "ruff_check": "PASS",
+  "ruff_format_check": "PASS",
+  "dynamic_original": {
+    "numerator": 230,
+    "denominator": 230
+  },
+  "dynamic_postfreeze": {
+    "numerator": 125,
+    "denominator": 125
+  },
+  "identity_regressions": {
+    "numerator": 8,
+    "denominator": 8
+  },
+  "incorrect_DIRECT": {
+    "numerator": 0,
+    "denominator": 4
+  },
+  "immutable_files_checked": 630,
+  "changed_immutable_files": [],
+  "projection": {
+    "final_relation_count": 4769,
+    "final_graph_triples": 54767,
+    "native_shacl": true,
+    "approved_material_normalizations": 70,
+    "unresolved_descriptions_not_new_material_identities": 335,
+    "first_pass_graphs_superseded": [
+      "phase3c_knowledge_enriched_graph_v1.ttl",
+      "phase3c_knowledge_final_graph_v1.ttl"
+    ],
+    "reason": "Unresolved source descriptions must remain specimen payloads rather than approved material identities. First-pass files retained for error analysis."
+  },
+  "current_models": {
+    "phase3": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "extraction": "nvidia/nemotron-3.5-lightning-30b-a3b"
+  },
+  "env_protected": true,
+  "env_tracked": false
+}

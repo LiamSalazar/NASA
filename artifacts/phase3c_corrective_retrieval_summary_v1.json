@@ -1,0 +1,104 @@
+{
+  "authority": "Reviewed epistemic identities and immutable canonical records; no V1 predictions as gold",
+  "cases": 12,
+  "latency": {
+    "bm25_ranking": {
+      "max_ms": 35.81265300090308,
+      "median_ms": 21.68692950181139,
+      "n": 12,
+      "p95_ms": 35.81265300090308
+    },
+    "bundle_build": {
+      "max_ms": 1.2435700009518769,
+      "median_ms": 0.10848650163097773,
+      "n": 12,
+      "p95_ms": 1.2435700009518769
+    },
+    "kg_execution": {
+      "max_ms": 88.96790499784402,
+      "median_ms": 66.69955149845919,
+      "n": 12,
+      "p95_ms": 88.96790499784402
+    },
+    "planning": {
+      "max_ms": 10.31350799894426,
+      "median_ms": 9.08491900190711,
+      "n": 12,
+      "p95_ms": 10.31350799894426
+    },
+    "total": {
+      "max_ms": 134.06709999981103,
+      "median_ms": 100.49586400054977,
+      "n": 12,
+      "p95_ms": 134.06709999981103
+    }
+  },
+  "metrics": {
+    "MRR": {
+      "denominator": 11,
+      "estimate": 1.0,
+      "numerator": 11.0
+    },
+    "Recall@1": {
+      "denominator": 11,
+      "estimate": 1.0,
+      "numerator": 11,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7411670330319684,
+        1
+      ]
+    },
+    "Recall@10": {
+      "denominator": 11,
+      "estimate": 1.0,
+      "numerator": 11,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7411670330319684,
+        1
+      ]
+    },
+    "Recall@3": {
+      "denominator": 11,
+      "estimate": 1.0,
+      "numerator": 11,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7411670330319684,
+        1
+      ]
+    },
+    "Recall@5": {
+      "denominator": 11,
+      "estimate": 1.0,
+      "numerator": 11,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7411670330319684,
+        1
+      ]
+    },
+    "all_required_evidence": {
+      "denominator": 11,
+      "estimate": 1.0,
+      "numerator": 11,
+      "status": "MEASURED",
+      "wilson95": [
+        0.7411670330319684,
+        1
+      ]
+    },
+    "scientific_class_recovery": {
+      "denominator": 9,
+      "estimate": 1.0,
+      "numerator": 9,
+      "status": "SMALL_N",
+      "wilson95": [
+        0.7008549515804559,
+        1
+      ]
+    }
+  },
+  "precision_at_k": "NOT_MEASURED: exhaustive independent relevance gold unavailable"
+}

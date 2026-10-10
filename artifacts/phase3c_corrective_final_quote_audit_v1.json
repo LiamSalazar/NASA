@@ -1,0 +1,106 @@
+{
+  "cases": [
+    {
+      "case_id": "qi14",
+      "claims": [
+        {
+          "authority": "NASA_BACKED",
+          "claim_id": "c1",
+          "epistemic_type": "source_quotation",
+          "evidence_ids": [
+            "E-00b50e1206bbbdba"
+          ],
+          "modality": null,
+          "negation": false,
+          "relationship_status": "DOCUMENTARY",
+          "scope": null,
+          "text": "144,C01M101,11/16/10,9:42:08,Methanol,761.9,0.2,0.75,0.05,0,3.53,1.53,0.45,23.8,Extinction"
+        },
+        {
+          "authority": "NASA_BACKED",
+          "claim_id": "c2",
+          "epistemic_type": "source_quotation",
+          "evidence_ids": [
+            "E-00cd99c1b8790826"
+          ],
+          "modality": null,
+          "negation": false,
+          "relationship_status": "DOCUMENTARY",
+          "scope": null,
+          "text": "37,220R001,1/7/2010,19:08:46,Methanol,534.3,0.34,0.66,0,0,3.31,,0.72,10.7,Disruption"
+        }
+      ],
+      "errors": [],
+      "structured_valid": true,
+      "valid": true
+    },
+    {
+      "case_id": "qi16",
+      "claims": [
+        {
+          "authority": "NASA_BACKED",
+          "claim_id": "c1",
+          "epistemic_type": "source_quotation",
+          "evidence_ids": [
+            "E-safety-std-6001-applicability"
+          ],
+          "modality": null,
+          "negation": false,
+          "relationship_status": "DOCUMENTARY",
+          "scope": null,
+          "text": "Materials intended for use in space vehicles, specified test facilities, and contractually specified Ground Support Equipment (GSE) shall meet the requirements of this NASA Technical Standard."
+        }
+      ],
+      "errors": [
+        "c1: evidence outside EvidenceBundle: ['E-safety-std-6001-applicability']",
+        "c1: source quotation required; paraphrase fidelity unreviewed"
+      ],
+      "structured_valid": true,
+      "valid": false
+    },
+    {
+      "case_id": "qi17",
+      "claims": [],
+      "errors": [],
+      "structured_valid": true,
+      "valid": true
+    },
+    {
+      "case_id": "qi45",
+      "claims": [
+        {
+          "authority": "NASA_BACKED",
+          "claim_id": "c1",
+          "epistemic_type": "source_quotation",
+          "evidence_ids": [
+            "E-00b50e1206bbbdba"
+          ],
+          "modality": null,
+          "negation": false,
+          "relationship_status": "DOCUMENTARY",
+          "scope": null,
+          "text": "144,C01M101,11/16/10,9:42:08,Methanol,761.9,0.2,0.75,0.05,0,3.53,1.53,0.45,23.8,Extinction"
+        },
+        {
+          "authority": "NASA_BACKED",
+          "claim_id": "c2",
+          "epistemic_type": "source_quotation",
+          "evidence_ids": [
+            "E-00cd99c1b8790826"
+          ],
+          "modality": null,
+          "negation": false,
+          "relationship_status": "DOCUMENTARY",
+          "scope": null,
+          "text": "37,220R001,1/7/2010,19:08:46,Methanol,534.3,0.34,0.66,0,0,3.31,,0.72,10.7,Disruption"
+        }
+      ],
+      "errors": [],
+      "structured_valid": true,
+      "valid": true
+    }
+  ],
+  "limitation": "Only baseline receipts; reconstruction uses persisted V2 intent and empty documentary search text. Invalid reconstruction is not evidence of a live model error.",
+  "new_api_calls": 0,
+  "version": "OFFLINE_FINAL_METADATA_REVALIDATION"
+}

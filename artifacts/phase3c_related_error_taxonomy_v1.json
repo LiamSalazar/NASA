@@ -1,0 +1,489 @@
+{
+  "definitions": [
+    {
+      "type": "UNJUSTIFIED_MATERIAL_EQUIVALENCE",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "INCORRECT_FAMILY_MEMBERSHIP",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "UNSUPPORTED_ANCESTOR",
+      "severity": "HIGH",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "UNSUPPORTED_SIBLING",
+      "severity": "HIGH",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "WRONG_PHENOMENON",
+      "severity": "HIGH",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "GRAVITY_DIFFERENCE_AS_MATCH",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "WRONG_OXYGEN_OR_AIRFLOW",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "NUMERIC_BOUNDARY_ALTERATION",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "UNKNOWN_AS_DIFFER",
+      "severity": "HIGH",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "DESIGN_AS_OBSERVATION",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "FAMILY_CONCLUSION_TO_INDIVIDUAL",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "INDIVIDUAL_CONCLUSION_TO_FAMILY",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "IRRELEVANT_BROAD_EXPANSION",
+      "severity": "MEDIUM",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "FALSE_DIRECT",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "MISSING_USEFUL_RELATED",
+      "severity": "HIGH",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "UNSUPPORTED_CAUSAL_EXPLANATION",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "INVALID_CITATION",
+      "severity": "CRITICAL",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "UNVERIFIED_PHYSICAL_PAGE",
+      "severity": "HIGH",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "LLM_CONTRACT_FAILURE",
+      "severity": "MEDIUM",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "API_TIMEOUT",
+      "severity": "MEDIUM",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "MISLEADING_FALLBACK",
+      "severity": "HIGH",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    },
+    {
+      "type": "UNJUSTIFIED_AMBIGUITY_RESOLUTION",
+      "severity": "HIGH",
+      "scientific_adjudication": "PENDING_UNLESS_SYNTHETIC_TECHNICAL_FIXTURE"
+    }
+  ],
+  "case_errors": [
+    {
+      "case_id": "qi03",
+      "component": "equivalent_expansion",
+      "type": "added_registered_property:OxygenConcentration",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi03",
+      "component": "equivalent_expansion",
+      "type": "added_registered_property:AirflowVelocity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi03",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:psi-98",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi11",
+      "component": "equivalent_expansion",
+      "type": "hard_anchor_missing:[[['flow']]]",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi11",
+      "component": "equivalent_expansion",
+      "type": "numeric_operator_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi12",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi12",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi12",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi14",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:PMMA",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi14",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:SIBAL Fabric",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi14",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:PMMA",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi16",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi16",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi16",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi17",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:PMMA",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi17",
+      "component": "equivalent_expansion",
+      "type": "hard_anchor_missing:[[['guidance'], ['guidance'], ['guidelines']]]",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi17",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:microgravity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi18",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:PMMA",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi18",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:psi-25",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi18",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:PMMA",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi19",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:PMMA",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi19",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:microgravity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi19",
+      "component": "equivalent_expansion",
+      "type": "hard_anchor_missing:[[['acrylic']]]",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi20",
+      "component": "equivalent_expansion",
+      "type": "hard_anchor_missing:[[['velocity']]]",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi20",
+      "component": "equivalent_expansion",
+      "type": "hard_anchor_missing:[[['velocity']]]",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi20",
+      "component": "equivalent_expansion",
+      "type": "hard_anchor_missing:[[['velocity']]]",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi22",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:psi-98",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi22",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:microgravity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi22",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:psi-98",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi24",
+      "component": "scientific_adjudication",
+      "type": "SCIENTIFIC_RELEVANCE_PENDING",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "case_id": "qi24",
+      "component": "equivalent_expansion",
+      "type": "added_registered_property:AirflowVelocity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi24",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:microgravity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi24",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:microgravity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi27",
+      "component": "scientific_adjudication",
+      "type": "SCIENTIFIC_RELEVANCE_PENDING",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "case_id": "qi27",
+      "component": "equivalent_expansion",
+      "type": "added_information_class:ExperimentalRun",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi27",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:psi-98",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi27",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:psi-25",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi31",
+      "component": "scientific_adjudication",
+      "type": "SCIENTIFIC_RELEVANCE_PENDING",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "case_id": "qi31",
+      "component": "equivalent_expansion",
+      "type": "added_information_class:ExperimentalRun",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi31",
+      "component": "equivalent_expansion",
+      "type": "added_information_class:ExperimentalRun",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi32",
+      "component": "scientific_adjudication",
+      "type": "SCIENTIFIC_RELEVANCE_PENDING",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "case_id": "qi32",
+      "component": "reranker",
+      "type": "INCOMPATIBLE_REPLAY",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "case_id": "qi33",
+      "component": "scientific_adjudication",
+      "type": "SCIENTIFIC_RELEVANCE_PENDING",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "case_id": "qi33",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:microgravity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi33",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:microgravity",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi33",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:PMMA",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi42",
+      "component": "scientific_adjudication",
+      "type": "SCIENTIFIC_RELEVANCE_PENDING",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "case_id": "qi42",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi42",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi42",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi45",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:PMMA",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi45",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:SIBAL Fabric",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "qi45",
+      "component": "equivalent_expansion",
+      "type": "added_registered_entity:psi-98",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "comp01",
+      "component": "scientific_adjudication",
+      "type": "SCIENTIFIC_RELEVANCE_PENDING",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "case_id": "comp01",
+      "component": "reranker",
+      "type": "INCOMPATIBLE_REPLAY",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "case_id": "comp01",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "comp01",
+      "component": "equivalent_expansion",
+      "type": "numeric_operator_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "comp11",
+      "component": "scientific_adjudication",
+      "type": "SCIENTIFIC_RELEVANCE_PENDING",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "case_id": "comp11",
+      "component": "reranker",
+      "type": "INCOMPATIBLE_REPLAY",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "case_id": "comp11",
+      "component": "equivalent_expansion",
+      "type": "logical_grouping_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "corrective-unseen-document",
+      "component": "equivalent_expansion",
+      "type": "numeric_unit_dimension_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    },
+    {
+      "case_id": "corrective-unseen-document",
+      "component": "equivalent_expansion",
+      "type": "numeric_unit_dimension_changed",
+      "severity": "PREVENTED_CONSTRAINT_CHANGE"
+    }
+  ],
+  "no_scientific_error_rate_claim": true
+}

@@ -1,0 +1,1251 @@
+{
+  "version": "POST_CORRECTION-v1",
+  "live": true,
+  "reviewed": {
+    "n": 39,
+    "structured_valid": {
+      "numerator": 39,
+      "denominator": 39,
+      "estimate": 1.0,
+      "wilson95": [
+        0.9103331462924287,
+        1
+      ],
+      "status": "MEASURED"
+    },
+    "exact_match": {
+      "numerator": 6,
+      "denominator": 39,
+      "estimate": 0.15384615384615385,
+      "wilson95": [
+        0.07247472376982099,
+        0.29729463648926696
+      ],
+      "status": "MEASURED"
+    },
+    "operation": {
+      "numerator": 37,
+      "denominator": 39,
+      "estimate": 0.9487179487179487,
+      "wilson95": [
+        0.8311435995238639,
+        0.9858220445847259
+      ],
+      "status": "MEASURED"
+    },
+    "fields": {
+      "targets": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 0,
+        "precision": {
+          "numerator": 39,
+          "denominator": 39,
+          "estimate": 1.0,
+          "wilson95": [
+            0.9103331462924287,
+            1
+          ],
+          "status": "MEASURED"
+        },
+        "recall": {
+          "numerator": 39,
+          "denominator": 39,
+          "estimate": 1.0,
+          "wilson95": [
+            0.9103331462924287,
+            1
+          ],
+          "status": "MEASURED"
+        },
+        "f1": 1.0
+      },
+      "entity_constraints": {
+        "tp": 33,
+        "fp": 0,
+        "fn": 2,
+        "precision": {
+          "numerator": 33,
+          "denominator": 33,
+          "estimate": 1.0,
+          "wilson95": [
+            0.895730002457548,
+            1
+          ],
+          "status": "MEASURED"
+        },
+        "recall": {
+          "numerator": 33,
+          "denominator": 35,
+          "estimate": 0.9428571428571428,
+          "wilson95": [
+            0.8139294257983507,
+            0.9841868381428913
+          ],
+          "status": "MEASURED"
+        },
+        "f1": 0.9705882352941176
+      },
+      "property_constraints": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 1,
+        "precision": {
+          "numerator": 5,
+          "denominator": 5,
+          "estimate": 1.0,
+          "wilson95": [
+            0.5655175352168251,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "recall": {
+          "numerator": 5,
+          "denominator": 6,
+          "estimate": 0.8333333333333334,
+          "wilson95": [
+            0.43649717781352987,
+            0.9699466302516935
+          ],
+          "status": "SMALL_N"
+        },
+        "f1": 0.9090909090909091
+      },
+      "requested_information": {
+        "tp": 10,
+        "fp": 3,
+        "fn": 16,
+        "precision": {
+          "numerator": 10,
+          "denominator": 13,
+          "estimate": 0.7692307692307693,
+          "wilson95": [
+            0.49743624053272495,
+            0.9182047128150143
+          ],
+          "status": "MEASURED"
+        },
+        "recall": {
+          "numerator": 10,
+          "denominator": 26,
+          "estimate": 0.38461538461538464,
+          "wilson95": [
+            0.22428594435712798,
+            0.5746514991488447
+          ],
+          "status": "MEASURED"
+        },
+        "f1": 0.5128205128205128
+      }
+    },
+    "attributes": {
+      "comparison": {
+        "numerator": 2,
+        "denominator": 3,
+        "estimate": 0.6666666666666666,
+        "wilson95": [
+          0.2076596008020477,
+          0.9385080552796037
+        ],
+        "status": "SMALL_N"
+      },
+      "numeric_value": {
+        "numerator": 5,
+        "denominator": 6,
+        "estimate": 0.8333333333333334,
+        "wilson95": [
+          0.43649717781352987,
+          0.9699466302516935
+        ],
+        "status": "SMALL_N"
+      },
+      "operator": {
+        "numerator": 5,
+        "denominator": 6,
+        "estimate": 0.8333333333333334,
+        "wilson95": [
+          0.43649717781352987,
+          0.9699466302516935
+        ],
+        "status": "SMALL_N"
+      },
+      "unit": {
+        "numerator": 5,
+        "denominator": 6,
+        "estimate": 0.8333333333333334,
+        "wilson95": [
+          0.43649717781352987,
+          0.9699466302516935
+        ],
+        "status": "SMALL_N"
+      },
+      "range": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "approximation_preservation": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "ambiguity": {
+        "numerator": 36,
+        "denominator": 39,
+        "estimate": 0.9230769230769231,
+        "wilson95": [
+          0.7967892883204503,
+          0.9734926046962203
+        ],
+        "status": "MEASURED"
+      },
+      "unknown": {
+        "numerator": 12,
+        "denominator": 39,
+        "estimate": 0.3076923076923077,
+        "wilson95": [
+          0.18565932306911137,
+          0.4642125437414931
+        ],
+        "status": "MEASURED"
+      },
+      "clarification": {
+        "numerator": 35,
+        "denominator": 39,
+        "estimate": 0.8974358974358975,
+        "wilson95": [
+          0.7642114553714348,
+          0.9593866865533163
+        ],
+        "status": "MEASURED"
+      }
+    },
+    "overinterpretation": {
+      "numerator": 3,
+      "denominator": 39,
+      "estimate": 0.07692307692307693,
+      "wilson95": [
+        0.02650739530377974,
+        0.20321071167954996
+      ],
+      "status": "MEASURED"
+    },
+    "underinterpretation": {
+      "numerator": 18,
+      "denominator": 39,
+      "estimate": 0.46153846153846156,
+      "wilson95": [
+        0.31566885606727846,
+        0.6143055172948425
+      ],
+      "status": "MEASURED"
+    },
+    "deterministic_comparison": [
+      {
+        "case_id": "qi01",
+        "category": "exact",
+        "nemotron_exact": true,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi02",
+        "category": "safe_alias",
+        "nemotron_exact": true,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi03",
+        "category": "exact",
+        "nemotron_exact": true,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi04",
+        "category": "safe_alias",
+        "nemotron_exact": true,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi05",
+        "category": "exact",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi06",
+        "category": "safe_alias",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi07",
+        "category": "exact",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi08",
+        "category": "safe_alias",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi09",
+        "category": "numeric",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi10",
+        "category": "numeric",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi11",
+        "category": "numeric",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi12",
+        "category": "comparison",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi13",
+        "category": "comparison",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi14",
+        "category": "safety",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi15",
+        "category": "safety",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi16",
+        "category": "requirement",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi17",
+        "category": "guidance",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi18",
+        "category": "open_question",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi19",
+        "category": "ambiguous",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi20",
+        "category": "ambiguous",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi21",
+        "category": "ambiguous",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi22",
+        "category": "unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi23",
+        "category": "unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi24",
+        "category": "paraphrase",
+        "nemotron_exact": true,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi25",
+        "category": "paraphrase",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi26",
+        "category": "paraphrase",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi27",
+        "category": "multi_condition",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi31",
+        "category": "safety",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi32",
+        "category": "safety",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi33",
+        "category": "safety",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi34",
+        "category": "numeric",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi35",
+        "category": "numeric",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi37",
+        "category": "numeric",
+        "nemotron_exact": true,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi42",
+        "category": "multi_condition",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi44",
+        "category": "requested_information",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi45",
+        "category": "requested_information",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi48",
+        "category": "unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": true,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi49",
+        "category": "ambiguous",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi50",
+        "category": "multi_condition",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      }
+    ],
+    "fallback": {
+      "numerator": 0,
+      "denominator": 39,
+      "estimate": 0.0,
+      "wilson95": [
+        0,
+        0.08966685370757144
+      ],
+      "status": "MEASURED"
+    },
+    "latency": {
+      "n": 39,
+      "median_ms": 3064.94740099879,
+      "p95_ms": 17708.13608899698,
+      "max_ms": 20310.66399300107
+    },
+    "limitation": "Unsupported historical gap cases are not silently treated as reviewed field gold."
+  },
+  "conversational": {
+    "n": 2,
+    "structured_valid": {
+      "numerator": 2,
+      "denominator": 2,
+      "estimate": 1.0,
+      "wilson95": [
+        0.34238022750665303,
+        1
+      ],
+      "status": "SMALL_N"
+    },
+    "exact_match": {
+      "numerator": 0,
+      "denominator": 2,
+      "estimate": 0.0,
+      "wilson95": [
+        0,
+        0.6576197724933469
+      ],
+      "status": "SMALL_N"
+    },
+    "operation": {
+      "numerator": 1,
+      "denominator": 2,
+      "estimate": 0.5,
+      "wilson95": [
+        0.09453120573423074,
+        0.9054687942657693
+      ],
+      "status": "SMALL_N"
+    },
+    "fields": {
+      "targets": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "precision": {
+          "numerator": 2,
+          "denominator": 2,
+          "estimate": 1.0,
+          "wilson95": [
+            0.34238022750665303,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "recall": {
+          "numerator": 2,
+          "denominator": 2,
+          "estimate": 1.0,
+          "wilson95": [
+            0.34238022750665303,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "f1": 1.0
+      },
+      "entity_constraints": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "precision": {
+          "numerator": 0,
+          "denominator": 0,
+          "estimate": null,
+          "status": "NOT_APPLICABLE"
+        },
+        "recall": {
+          "numerator": 0,
+          "denominator": 2,
+          "estimate": 0.0,
+          "wilson95": [
+            0,
+            0.6576197724933469
+          ],
+          "status": "SMALL_N"
+        },
+        "f1": 0.0
+      },
+      "property_constraints": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": {
+          "numerator": 0,
+          "denominator": 0,
+          "estimate": null,
+          "status": "NOT_APPLICABLE"
+        },
+        "recall": {
+          "numerator": 0,
+          "denominator": 0,
+          "estimate": null,
+          "status": "NOT_APPLICABLE"
+        },
+        "f1": null
+      },
+      "requested_information": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": {
+          "numerator": 0,
+          "denominator": 0,
+          "estimate": null,
+          "status": "NOT_APPLICABLE"
+        },
+        "recall": {
+          "numerator": 0,
+          "denominator": 0,
+          "estimate": null,
+          "status": "NOT_APPLICABLE"
+        },
+        "f1": null
+      }
+    },
+    "attributes": {
+      "comparison": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "numeric_value": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "operator": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "unit": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "range": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "approximation_preservation": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "ambiguity": {
+        "numerator": 1,
+        "denominator": 2,
+        "estimate": 0.5,
+        "wilson95": [
+          0.09453120573423074,
+          0.9054687942657693
+        ],
+        "status": "SMALL_N"
+      },
+      "unknown": {
+        "numerator": 0,
+        "denominator": 2,
+        "estimate": 0.0,
+        "wilson95": [
+          0,
+          0.6576197724933469
+        ],
+        "status": "SMALL_N"
+      },
+      "clarification": {
+        "numerator": 1,
+        "denominator": 2,
+        "estimate": 0.5,
+        "wilson95": [
+          0.09453120573423074,
+          0.9054687942657693
+        ],
+        "status": "SMALL_N"
+      }
+    },
+    "overinterpretation": {
+      "numerator": 0,
+      "denominator": 2,
+      "estimate": 0.0,
+      "wilson95": [
+        0,
+        0.6576197724933469
+      ],
+      "status": "SMALL_N"
+    },
+    "underinterpretation": {
+      "numerator": 2,
+      "denominator": 2,
+      "estimate": 1.0,
+      "wilson95": [
+        0.34238022750665303,
+        1
+      ],
+      "status": "SMALL_N"
+    },
+    "deterministic_comparison": [
+      {
+        "case_id": "qi39",
+        "category": "context_followup",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "qi40",
+        "category": "context_followup",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      }
+    ],
+    "fallback": {
+      "numerator": 0,
+      "denominator": 2,
+      "estimate": 0.0,
+      "wilson95": [
+        0,
+        0.6576197724933469
+      ],
+      "status": "SMALL_N"
+    },
+    "latency": {
+      "n": 2,
+      "median_ms": 11923.16058599863,
+      "p95_ms": 17710.038682998857,
+      "max_ms": 17710.038682998857
+    },
+    "limitation": "Unsupported historical gap cases are not silently treated as reviewed field gold."
+  },
+  "compositional": {
+    "n": 30,
+    "structured_valid": {
+      "numerator": 30,
+      "denominator": 30,
+      "estimate": 1.0,
+      "wilson95": [
+        0.8864866068260312,
+        0.9999999999999999
+      ],
+      "status": "MEASURED"
+    },
+    "exact_match": {
+      "numerator": 1,
+      "denominator": 30,
+      "estimate": 0.03333333333333333,
+      "wilson95": [
+        0.005908590381612455,
+        0.16670390991409173
+      ],
+      "status": "MEASURED"
+    },
+    "operation": {
+      "numerator": 30,
+      "denominator": 30,
+      "estimate": 1.0,
+      "wilson95": [
+        0.8864866068260312,
+        0.9999999999999999
+      ],
+      "status": "MEASURED"
+    },
+    "fields": {
+      "targets": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 0,
+        "precision": {
+          "numerator": 30,
+          "denominator": 30,
+          "estimate": 1.0,
+          "wilson95": [
+            0.8864866068260312,
+            0.9999999999999999
+          ],
+          "status": "MEASURED"
+        },
+        "recall": {
+          "numerator": 30,
+          "denominator": 30,
+          "estimate": 1.0,
+          "wilson95": [
+            0.8864866068260312,
+            0.9999999999999999
+          ],
+          "status": "MEASURED"
+        },
+        "f1": 1.0
+      },
+      "entity_constraints": {
+        "tp": 60,
+        "fp": 10,
+        "fn": 0,
+        "precision": {
+          "numerator": 60,
+          "denominator": 70,
+          "estimate": 0.8571428571428571,
+          "wilson95": [
+            0.7566158011633325,
+            0.920510582829334
+          ],
+          "status": "MEASURED"
+        },
+        "recall": {
+          "numerator": 60,
+          "denominator": 60,
+          "estimate": 1.0,
+          "wilson95": [
+            0.93982814785791,
+            0.9999999999999998
+          ],
+          "status": "MEASURED"
+        },
+        "f1": 0.9230769230769231
+      },
+      "property_constraints": {
+        "tp": 16,
+        "fp": 13,
+        "fn": 14,
+        "precision": {
+          "numerator": 16,
+          "denominator": 29,
+          "estimate": 0.5517241379310345,
+          "wilson95": [
+            0.37547963210970914,
+            0.7158683197696281
+          ],
+          "status": "MEASURED"
+        },
+        "recall": {
+          "numerator": 16,
+          "denominator": 30,
+          "estimate": 0.5333333333333333,
+          "wilson95": [
+            0.36142299619873297,
+            0.6976761109230025
+          ],
+          "status": "MEASURED"
+        },
+        "f1": 0.5423728813559322
+      },
+      "requested_information": {
+        "tp": 0,
+        "fp": 24,
+        "fn": 0,
+        "precision": {
+          "numerator": 0,
+          "denominator": 24,
+          "estimate": 0.0,
+          "wilson95": [
+            1.3877787807814457e-17,
+            0.13797620467498017
+          ],
+          "status": "MEASURED"
+        },
+        "recall": {
+          "numerator": 0,
+          "denominator": 0,
+          "estimate": null,
+          "status": "NOT_APPLICABLE"
+        },
+        "f1": 0.0
+      }
+    },
+    "attributes": {
+      "comparison": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "numeric_value": {
+        "numerator": 26,
+        "denominator": 30,
+        "estimate": 0.8666666666666667,
+        "wilson95": [
+          0.703186733179637,
+          0.9469034451594526
+        ],
+        "status": "MEASURED"
+      },
+      "operator": {
+        "numerator": 29,
+        "denominator": 30,
+        "estimate": 0.9666666666666667,
+        "wilson95": [
+          0.8332960900859082,
+          0.9940914096183874
+        ],
+        "status": "MEASURED"
+      },
+      "unit": {
+        "numerator": 29,
+        "denominator": 30,
+        "estimate": 0.9666666666666667,
+        "wilson95": [
+          0.8332960900859082,
+          0.9940914096183874
+        ],
+        "status": "MEASURED"
+      },
+      "range": {
+        "numerator": 9,
+        "denominator": 20,
+        "estimate": 0.45,
+        "wilson95": [
+          0.2581978582556243,
+          0.6579146575496577
+        ],
+        "status": "MEASURED"
+      },
+      "approximation_preservation": {
+        "numerator": 10,
+        "denominator": 10,
+        "estimate": 1.0,
+        "wilson95": [
+          0.7224672001371107,
+          0.9999999999999999
+        ],
+        "status": "MEASURED"
+      },
+      "ambiguity": {
+        "numerator": 13,
+        "denominator": 30,
+        "estimate": 0.43333333333333335,
+        "wilson95": [
+          0.2737748557646652,
+          0.6080269299918639
+        ],
+        "status": "MEASURED"
+      },
+      "unknown": {
+        "numerator": 10,
+        "denominator": 30,
+        "estimate": 0.3333333333333333,
+        "wilson95": [
+          0.19230498083676134,
+          0.5121994835545616
+        ],
+        "status": "MEASURED"
+      },
+      "clarification": {
+        "numerator": 13,
+        "denominator": 30,
+        "estimate": 0.43333333333333335,
+        "wilson95": [
+          0.2737748557646652,
+          0.6080269299918639
+        ],
+        "status": "MEASURED"
+      }
+    },
+    "overinterpretation": {
+      "numerator": 28,
+      "denominator": 30,
+      "estimate": 0.9333333333333333,
+      "wilson95": [
+        0.7867654163738308,
+        0.9815229762087295
+      ],
+      "status": "MEASURED"
+    },
+    "underinterpretation": {
+      "numerator": 14,
+      "denominator": 30,
+      "estimate": 0.4666666666666667,
+      "wilson95": [
+        0.30232388907699753,
+        0.638577003801267
+      ],
+      "status": "MEASURED"
+    },
+    "deterministic_comparison": [
+      {
+        "case_id": "comp01",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp02",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp03",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp04",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp05",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp06",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp07",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp08",
+        "category": "two_entities_range",
+        "nemotron_exact": true,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp09",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp10",
+        "category": "two_entities_range",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp11",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp12",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp13",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp14",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp15",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp16",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp17",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp18",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp19",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp20",
+        "category": "two_entities_explicit_approximation",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp21",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp22",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp23",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp24",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp25",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp26",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp27",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp28",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp29",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      },
+      {
+        "case_id": "comp30",
+        "category": "two_entities_range_source_unknown",
+        "nemotron_exact": false,
+        "deterministic_exact": false,
+        "comparison_scope": "Current V1 deterministic parser adapted as input; no native execution involved"
+      }
+    ],
+    "fallback": {
+      "numerator": 0,
+      "denominator": 30,
+      "estimate": 0.0,
+      "wilson95": [
+        0,
+        0.11351339317396876
+      ],
+      "status": "MEASURED"
+    },
+    "latency": {
+      "n": 30,
+      "median_ms": 5235.706278501311,
+      "p95_ms": 28715.040117996978,
+      "max_ms": 38814.810441999725
+    },
+    "limitation": "Unsupported historical gap cases are not silently treated as reviewed field gold."
+  }
+}

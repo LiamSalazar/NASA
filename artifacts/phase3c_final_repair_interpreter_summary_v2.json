@@ -1,0 +1,93 @@
+{
+  "case_trace_file": "artifacts/phase3c_final_repair_interpreter_cases_v2.jsonl",
+  "field_analysis": "Raw proposals, original resolved intent, repaired intent and reviewed expected fields coexist per case for layer attribution.",
+  "groups": {
+    "historical_compositional": {
+      "exact": {
+        "denominator": 30,
+        "estimate": 0.0,
+        "numerator": 0,
+        "status": "MEASURED",
+        "wilson95": [
+          0,
+          0.11351339317396876
+        ]
+      },
+      "failure_root_causes": {
+        "PROPERTY_OR_NUMERIC_RESOLUTION": 30
+      },
+      "n": 30,
+      "valid": {
+        "denominator": 30,
+        "estimate": 1.0,
+        "numerator": 30,
+        "status": "MEASURED",
+        "wilson95": [
+          0.8864866068260312,
+          0.9999999999999999
+        ]
+      }
+    },
+    "new_compositional": {
+      "exact": {
+        "denominator": 30,
+        "estimate": 0.4,
+        "numerator": 12,
+        "status": "MEASURED",
+        "wilson95": [
+          0.24590628116801852,
+          0.5767963974667752
+        ]
+      },
+      "failure_root_causes": {
+        "ENTITY_RESOLUTION": 3,
+        "OTHER_FIELD_OR_EXACT_CANONICALIZATION": 9,
+        "PROPERTY_OR_NUMERIC_RESOLUTION": 18
+      },
+      "n": 30,
+      "valid": {
+        "denominator": 30,
+        "estimate": 1.0,
+        "numerator": 30,
+        "status": "MEASURED",
+        "wilson95": [
+          0.8864866068260312,
+          0.9999999999999999
+        ]
+      }
+    },
+    "standalone": {
+      "exact": {
+        "denominator": 41,
+        "estimate": 0.34146341463414637,
+        "numerator": 14,
+        "status": "MEASURED",
+        "wilson95": [
+          0.21558808257384846,
+          0.49450163480170306
+        ]
+      },
+      "failure_root_causes": {
+        "ABSTENTION_OR_UNKNOWN_RESOLUTION": 7,
+        "DETERMINISTIC_INFO_RESOLUTION": 10,
+        "ENTITY_RESOLUTION": 3,
+        "MODEL_INFO_EXTRACTION": 3,
+        "OTHER_FIELD_OR_EXACT_CANONICALIZATION": 13,
+        "PROPERTY_OR_NUMERIC_RESOLUTION": 5
+      },
+      "n": 41,
+      "valid": {
+        "denominator": 41,
+        "estimate": 1.0,
+        "numerator": 41,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9143324298155681,
+          0.9999999999999999
+        ]
+      }
+    }
+  },
+  "new_model_calls": 0,
+  "version": "POST_DETERMINISTIC_RESOLUTION_REPAIR-v2"
+}

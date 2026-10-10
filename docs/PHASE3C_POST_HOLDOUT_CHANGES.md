@@ -29,3 +29,25 @@ No planner, evaluator, classifier, query gold, raw source, or holdout graph was 
 Earlier projection artifacts are retained as pre-repair results and must not be used
 to claim original reported-unit preservation. A separate projection-repair freeze and
 parity result record the repair; it changes provenance, not scientific matching gold.
+
+R4, after the documentary first pass: GENERIC_SEMANTIC_ABSTRACTION. Native
+evidence selection now scopes evidence candidates by registered requested
+information class and query topic, and records authority, source location,
+eligibility, ranking, and no-direct reason. It does not add source-ID or
+benchmark-query branches. A frozen 12-case objective regression and 20-case
+service rerun are persisted separately.
+
+R5, after interpreter evaluation: GENERIC_BUG_FIX. Deterministic resolution now
+separates requested-information classes from target classes, clears ambiguity
+when an approved property alias resolves, and preserves unsupported terms as
+unresolved rather than canonical or ambiguous facts. Topic-only “suppression”
+and generic “safety” no longer imply the epistemic class SafetyImplication.
+Historical gold and the first deterministic re-resolution are unchanged; new
+versioned predictions report the second pass.
+
+R6, after native context/unit audit: GENERIC_FORMAT_SUPPORT. The existing
+approved Pressure mapping now supports the standard mmHg-to-Pa conversion; this
+does not establish new property identity or create observations. Constraint
+evaluation filters reported values by explicit context and preserves UNKNOWN
+when that context is absent. Initial/final context fixtures test this behavior.
+No holdout-specific scientific rule or new NASA measurement was added.

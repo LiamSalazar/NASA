@@ -57,8 +57,15 @@ class EvidenceRegistry:
         }
         if row["resolution_status"] not in allowed:
             raise ValueError("staging records cannot be canonical")
+        existing = self.db.execute(
+            "SELECT payload_json FROM semantic_staging WHERE candidate_id=?", (row["candidate_id"],)
+        ).fetchone()
+        if existing:
+            if json.loads(existing[0]) != row:
+                raise ValueError("candidate identity conflict; stage a versioned candidate instead")
+            return
         self.db.execute(
-            "INSERT OR REPLACE INTO semantic_staging VALUES (?,?,?,?,?,?,?,?,?)",
+            "INSERT INTO semantic_staging VALUES (?,?,?,?,?,?,?,?,?)",
             (
                 row["candidate_id"],
                 row["candidate_type"],
@@ -154,12 +161,25 @@ class EvidenceRegistry:
         # punctuation such as BASS-II cannot become an FTS operator.
         terms = re.findall(r"[A-Za-z0-9]+", query)
         fts_query = " OR ".join(f'"{term}"' for term in terms) or '""'
-        rows = self.db.execute(
-            "SELECT p.*, bm25(passages_fts) score FROM passages_fts JOIN passages p USING(evidence_id) WHERE passages_fts MATCH ? ORDER BY score LIMIT ?",
-            (fts_query, limit * 4),
-        ).fetchall()
+        if eligible_ids is not None and not eligible_ids:
+            return []
+        # Apply eligibility before ranking/truncation. JSON avoids SQLite's
+        # variable-count limit when a source has thousands of eligible passages.
+        clause = (
+            " AND p.evidence_id IN (SELECT value FROM json_each(?))"
+            if eligible_ids is not None
+            else ""
+        )
+        params = [fts_query]
         if eligible_ids is not None:
-            rows = [r for r in rows if r["evidence_id"] in eligible_ids]
+            params.append(json.dumps(eligible_ids))
+        params.append(limit * 4 if eligible_ids is None else limit)
+        rows = self.db.execute(
+            "SELECT p.*, bm25(passages_fts) score FROM passages_fts JOIN passages p USING(evidence_id) WHERE passages_fts MATCH ?"
+            + clause
+            + " ORDER BY score, p.evidence_id LIMIT ?",
+            params,
+        ).fetchall()
         return [dict(r) for r in rows[:limit]]
 
     def resolve(self, evidence_id: str):
@@ -171,8 +191,9 @@ class EvidenceRegistry:
     def source_metadata(self, evidence_id: str) -> dict | None:
         row = self.db.execute(
             """SELECT s.source_id, s.source_type, s.nasa_id, s.title, s.url
-            FROM evidence_refs er JOIN sources s ON s.source_id=er.source_id
-            WHERE er.evidence_id=?""",
+            FROM passages p JOIN documents d USING(document_id)
+            JOIN sources s ON s.source_id=d.source_id
+            WHERE p.evidence_id=?""",
             (evidence_id,),
         ).fetchone()
         return dict(row) if row else None

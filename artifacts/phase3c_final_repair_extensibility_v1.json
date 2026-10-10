@@ -1,0 +1,83 @@
+{
+  "architecture_freeze": "artifacts/phase3c_final_repair_native_freeze_v4.json",
+  "dynamic_property_benchmarks": {
+    "dynamic_properties": {
+      "case_count": 230,
+      "categorical_properties": 10,
+      "direct_correctness": {
+        "denominator": 230,
+        "estimate": 1.0,
+        "numerator": 230,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9835723791663494,
+          1
+        ]
+      },
+      "execution": {
+        "denominator": 230,
+        "estimate": 1.0,
+        "numerator": 230,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9835723791663494,
+          1
+        ]
+      },
+      "native_guard": "PASS",
+      "numeric_properties": 25,
+      "registered_classes": 5,
+      "related_correctness": {
+        "denominator": 230,
+        "estimate": 1.0,
+        "numerator": 230,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9835723791663494,
+          1
+        ]
+      },
+      "source_artifact": "artifacts/phase3c_dynamic_property_benchmark.json"
+    },
+    "post_freeze_new_registry": {
+      "case_count": 125,
+      "categorical_properties": 7,
+      "direct_correctness": {
+        "denominator": 125,
+        "estimate": 1.0,
+        "numerator": 125,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9701846062916737,
+          1
+        ]
+      },
+      "execution": {
+        "denominator": 125,
+        "estimate": 1.0,
+        "numerator": 125,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9701846062916737,
+          1
+        ]
+      },
+      "native_guard": "PASS",
+      "numeric_properties": 13,
+      "registered_classes": 5,
+      "related_correctness": {
+        "denominator": 125,
+        "estimate": 1.0,
+        "numerator": 125,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9701846062916737,
+          1
+        ]
+      },
+      "source_artifact": "artifacts/phase3c_postfreeze_extensibility.json"
+    }
+  },
+  "no_property_specific_code_changes_between_cases": true,
+  "version": "final-repair-extensibility-v1"
+}

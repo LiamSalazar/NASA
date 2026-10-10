@@ -6,6 +6,10 @@ from typing import Any
 
 import httpx
 
+from nasa_fire_ai.config import load_project_environment
+
+load_project_environment()
+
 
 @dataclass(frozen=True)
 class JevSettings:

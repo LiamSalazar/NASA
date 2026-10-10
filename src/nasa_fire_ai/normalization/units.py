@@ -10,6 +10,9 @@ def normalize(value: float, unit: str) -> tuple[float, str]:
         "m/s": (1, "m/s"),
         "mm/s": (0.001, "m/s"),
         "kpa": (1000, "Pa"),
+        # Conventional millimetres of mercury (0 °C), expressed in SI pascals.
+        # This is a unit conversion only; it does not establish property identity.
+        "mmhg": (133.322387415, "Pa"),
         "pa": (1, "Pa"),
         "cm": (0.01, "m"),
         "mm": (0.001, "m"),

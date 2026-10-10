@@ -1,0 +1,346 @@
+{
+  "status": "EXPOSED_REGRESSION_AND_SYNTHETIC_DEVELOPMENT",
+  "N": 20,
+  "historical_baseline": {
+    "version": "phase3c-controlled-e2e-ablation-summary-v4",
+    "status": "FOURTH_PASS_COMPACT_VERBATIM_SPAN_CONTRACT; EARLIER_PASSES_PRESERVED",
+    "gold_digest": "e2e3005c3ac268749cae5564ece7974f94a64819a0006cf025b5152e17e14a76",
+    "run_profile": "rerank-v4;compact-span-contract;candidate-budget-5;jev-replayed",
+    "N": 20,
+    "objective_identity_cases": 8,
+    "review_required_cases": 8,
+    "objective_no_direct_cases": 4,
+    "configurations": {
+      "A": {
+        "expected_identity_recall@1": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@3": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@5": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@10": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "mean_candidate_count": {
+          "n": 20,
+          "mean": 3.4
+        }
+      },
+      "B": {
+        "expected_identity_recall@1": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@3": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@5": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@10": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "mean_candidate_count": {
+          "n": 20,
+          "mean": 19.4
+        }
+      },
+      "C": {
+        "expected_identity_recall@1": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@3": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@5": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@10": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "mean_candidate_count": {
+          "n": 20,
+          "mean": 19.4
+        }
+      },
+      "D": {
+        "expected_identity_recall@1": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@3": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@5": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "expected_identity_recall@10": {
+          "numerator": 7,
+          "denominator": 8,
+          "estimate": 0.875,
+          "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+        },
+        "mean_candidate_count": {
+          "n": 20,
+          "mean": 19.4
+        }
+      }
+    },
+    "false_direct_on_objective_no_direct": {
+      "numerator": 0,
+      "denominator": 4,
+      "estimate": 0.0
+    },
+    "unscored_review_case_ids": [
+      "qi24",
+      "qi27",
+      "qi31",
+      "qi32",
+      "qi33",
+      "qi42",
+      "comp01",
+      "comp11"
+    ],
+    "precision_and_relevance": "NOT SCOREABLE: no complete independent evidence-relevance labels; human review fields remain blank in the review packet.",
+    "native_retrieval_latency_ms": {
+      "n": 20,
+      "median": 73.33983600256033,
+      "max": 153.14787300303578
+    },
+    "jev_role": "Rhetorical advisory only; no filtering or canonical evidence promotion.",
+    "first_pass_artifact": "artifacts/phase3c_controlled_e2e_ablation_cases_v1.jsonl",
+    "fourth_pass_changes": {
+      "classification": "GENERIC_BUG_FIX / PROMPT_AND_BUDGET_REDUCTION",
+      "candidate_budget": 5,
+      "max_passage_characters": 700,
+      "max_output_tokens": 900,
+      "required_verbatim_support_span_for_high_medium": true,
+      "expansions": "replayed from immutable first pass; no repeat expansion calls",
+      "jev": "replayed from first-pass advisory receipts; no new Jev calls",
+      "native_direct_related": "recomputed by unchanged native executor"
+    }
+  },
+  "configurations": {
+    "A": {
+      "required_identity_recovery": {
+        "numerator": 8,
+        "denominator": 8,
+        "estimate": 1.0,
+        "wilson95": [
+          0.6755924351161198,
+          1
+        ],
+        "status": "SMALL_N"
+      },
+      "false_direct_on_no_direct": {
+        "numerator": 0,
+        "denominator": 4,
+        "estimate": 0.0,
+        "wilson95": [
+          0,
+          0.4898908364545973
+        ],
+        "status": "SMALL_N"
+      },
+      "candidate_total": 76
+    },
+    "A_budget_matched": {
+      "required_identity_recovery": {
+        "numerator": 8,
+        "denominator": 8,
+        "estimate": 1.0,
+        "wilson95": [
+          0.6755924351161198,
+          1
+        ],
+        "status": "SMALL_N"
+      },
+      "false_direct_on_no_direct": {
+        "numerator": 0,
+        "denominator": 4,
+        "estimate": 0.0,
+        "wilson95": [
+          0,
+          0.4898908364545973
+        ],
+        "status": "SMALL_N"
+      },
+      "candidate_total": 760
+    },
+    "B": {
+      "required_identity_recovery": {
+        "numerator": 8,
+        "denominator": 8,
+        "estimate": 1.0,
+        "wilson95": [
+          0.6755924351161198,
+          1
+        ],
+        "status": "SMALL_N"
+      },
+      "false_direct_on_no_direct": {
+        "numerator": 0,
+        "denominator": 4,
+        "estimate": 0.0,
+        "wilson95": [
+          0,
+          0.4898908364545973
+        ],
+        "status": "SMALL_N"
+      },
+      "candidate_total": 72
+    },
+    "C": {
+      "required_identity_recovery": {
+        "numerator": 8,
+        "denominator": 8,
+        "estimate": 1.0,
+        "wilson95": [
+          0.6755924351161198,
+          1
+        ],
+        "status": "SMALL_N"
+      },
+      "false_direct_on_no_direct": {
+        "numerator": 0,
+        "denominator": 4,
+        "estimate": 0.0,
+        "wilson95": [
+          0,
+          0.4898908364545973
+        ],
+        "status": "SMALL_N"
+      },
+      "candidate_total": 577
+    },
+    "D": {
+      "required_identity_recovery": {
+        "numerator": 8,
+        "denominator": 8,
+        "estimate": 1.0,
+        "wilson95": [
+          0.6755924351161198,
+          1
+        ],
+        "status": "SMALL_N"
+      },
+      "false_direct_on_no_direct": {
+        "numerator": 0,
+        "denominator": 4,
+        "estimate": 0.0,
+        "wilson95": [
+          0,
+          0.4898908364545973
+        ],
+        "status": "SMALL_N"
+      },
+      "candidate_total": 577
+    },
+    "E": {
+      "required_identity_recovery": {
+        "numerator": 8,
+        "denominator": 8,
+        "estimate": 1.0,
+        "wilson95": [
+          0.6755924351161198,
+          1
+        ],
+        "status": "SMALL_N"
+      },
+      "false_direct_on_no_direct": {
+        "numerator": 0,
+        "denominator": 4,
+        "estimate": 0.0,
+        "wilson95": [
+          0,
+          0.4898908364545973
+        ],
+        "status": "SMALL_N"
+      },
+      "candidate_total": 577
+    }
+  },
+  "new_nemotron_calls": 0,
+  "new_jev_calls": 0,
+  "scientifically_reviewed_precision_at_5": {
+    "numerator": null,
+    "denominator": 0,
+    "status": "NOT_SCOREABLE_NO_EXPERT_LABELS",
+    "target": 0.9
+  },
+  "related_precision_recall": "NOT_SCOREABLE_NO_REVIEWED_CANDIDATE_UNIVERSE",
+  "end_to_end_usefulness": "PENDING_EXPERT_REVIEW",
+  "numeric_fidelity": {
+    "numerator": 9,
+    "denominator": 9,
+    "estimate": 1.0,
+    "wilson95": [
+      0.7008549515804559,
+      1
+    ],
+    "status": "SMALL_N"
+  },
+  "new_domain_taxonomy_edges": 0,
+  "new_model_inference_cost": 0,
+  "live_latency_and_selective_utility": "NOT_MEASURED_MISSING_RUNTIME_CREDENTIALS",
+  "latency_ms": {
+    "A_native": 77.638165501412,
+    "B_native": 98.54273050586926,
+    "synchronous_offline_evaluation": 447.88269049604423
+  },
+  "expansion_validation": {
+    "accepted": 27,
+    "rejected": 51
+  },
+  "reranking": {
+    "compatible_replays": 8,
+    "incompatible_inputs": 3,
+    "selectively_skipped": 9
+  }
+}

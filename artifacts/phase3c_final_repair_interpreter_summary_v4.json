@@ -1,0 +1,225 @@
+{
+  "case_trace_file": "artifacts/phase3c_final_repair_interpreter_cases_v4.jsonl",
+  "field_analysis": "Raw proposals, original resolved intent, repaired intent and reviewed expected fields coexist per case for layer attribution.",
+  "field_metrics": {
+    "ambiguities": {
+      "f1": 0.9333333333333333,
+      "fn": 0,
+      "fp": 1,
+      "precision": 0.875,
+      "recall": 1.0,
+      "tp": 7
+    },
+    "comparison_correctness": {
+      "denominator": 101,
+      "estimate": 1.0,
+      "numerator": 101,
+      "status": "MEASURED",
+      "wilson95": [
+        0.9633593536001439,
+        1
+      ]
+    },
+    "entity_constraints": {
+      "f1": 0.9571428571428572,
+      "fn": 2,
+      "fp": 10,
+      "precision": 0.9305555555555556,
+      "recall": 0.9852941176470589,
+      "tp": 134
+    },
+    "numeric_fields": {
+      "approximation": {
+        "denominator": 13,
+        "estimate": 1.0,
+        "numerator": 13,
+        "status": "MEASURED",
+        "wilson95": [
+          0.7719046276458016,
+          0.9999999999999999
+        ]
+      },
+      "numeric_value": {
+        "denominator": 60,
+        "estimate": 0.9166666666666666,
+        "numerator": 55,
+        "status": "MEASURED",
+        "wilson95": [
+          0.8193105798166558,
+          0.9638795433982692
+        ]
+      },
+      "operator": {
+        "denominator": 60,
+        "estimate": 0.9666666666666667,
+        "numerator": 58,
+        "status": "MEASURED",
+        "wilson95": [
+          0.886362257256914,
+          0.9908106807438021
+        ]
+      },
+      "range": {
+        "denominator": 26,
+        "estimate": 0.5769230769230769,
+        "numerator": 15,
+        "status": "MEASURED",
+        "wilson95": [
+          0.3894861374659171,
+          0.7445555668634343
+        ]
+      },
+      "unit": {
+        "denominator": 60,
+        "estimate": 0.9666666666666667,
+        "numerator": 58,
+        "status": "MEASURED",
+        "wilson95": [
+          0.886362257256914,
+          0.9908106807438021
+        ]
+      }
+    },
+    "operation_accuracy": {
+      "denominator": 101,
+      "estimate": 0.9702970297029703,
+      "numerator": 98,
+      "status": "MEASURED",
+      "wilson95": [
+        0.9162825657200278,
+        0.9898475193494145
+      ]
+    },
+    "property_constraints": {
+      "f1": 0.7627118644067796,
+      "fn": 15,
+      "fp": 13,
+      "precision": 0.7758620689655172,
+      "recall": 0.75,
+      "tp": 45
+    },
+    "requested_information": {
+      "f1": 0.6607142857142857,
+      "fn": 13,
+      "fp": 25,
+      "precision": 0.5967741935483871,
+      "recall": 0.74,
+      "tp": 37
+    },
+    "source_constraints": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 10
+    },
+    "targets": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 101
+    },
+    "unresolved_mentions": {
+      "f1": 0.5862068965517241,
+      "fn": 7,
+      "fp": 17,
+      "precision": 0.5,
+      "recall": 0.7083333333333334,
+      "tp": 17
+    }
+  },
+  "groups": {
+    "historical_compositional": {
+      "exact": {
+        "denominator": 30,
+        "estimate": 0.03333333333333333,
+        "numerator": 1,
+        "status": "MEASURED",
+        "wilson95": [
+          0.005908590381612455,
+          0.16670390991409173
+        ]
+      },
+      "failure_root_causes": {
+        "ABSTENTION_OR_UNKNOWN_RESOLUTION": 1,
+        "ENTITY_RESOLUTION": 5,
+        "OTHER_FIELD_OR_EXACT_CANONICALIZATION": 10,
+        "PROPERTY_OR_NUMERIC_RESOLUTION": 14
+      },
+      "n": 30,
+      "valid": {
+        "denominator": 30,
+        "estimate": 1.0,
+        "numerator": 30,
+        "status": "MEASURED",
+        "wilson95": [
+          0.8864866068260312,
+          0.9999999999999999
+        ]
+      }
+    },
+    "new_compositional": {
+      "exact": {
+        "denominator": 30,
+        "estimate": 0.9,
+        "numerator": 27,
+        "status": "MEASURED",
+        "wilson95": [
+          0.7437891742081593,
+          0.9654001112526658
+        ]
+      },
+      "failure_root_causes": {
+        "ABSTENTION_OR_UNKNOWN_RESOLUTION": 2,
+        "OTHER_FIELD_OR_EXACT_CANONICALIZATION": 28
+      },
+      "n": 30,
+      "valid": {
+        "denominator": 30,
+        "estimate": 1.0,
+        "numerator": 30,
+        "status": "MEASURED",
+        "wilson95": [
+          0.8864866068260312,
+          0.9999999999999999
+        ]
+      }
+    },
+    "standalone": {
+      "exact": {
+        "denominator": 41,
+        "estimate": 0.34146341463414637,
+        "numerator": 14,
+        "status": "MEASURED",
+        "wilson95": [
+          0.21558808257384846,
+          0.49450163480170306
+        ]
+      },
+      "failure_root_causes": {
+        "ABSTENTION_OR_UNKNOWN_RESOLUTION": 12,
+        "DETERMINISTIC_INFO_RESOLUTION": 10,
+        "ENTITY_RESOLUTION": 1,
+        "MODEL_INFO_EXTRACTION": 3,
+        "OTHER_FIELD_OR_EXACT_CANONICALIZATION": 14,
+        "PROPERTY_OR_NUMERIC_RESOLUTION": 1
+      },
+      "n": 41,
+      "valid": {
+        "denominator": 41,
+        "estimate": 1.0,
+        "numerator": 41,
+        "status": "MEASURED",
+        "wilson95": [
+          0.9143324298155681,
+          0.9999999999999999
+        ]
+      }
+    }
+  },
+  "new_model_calls": 0,
+  "version": "POST_DETERMINISTIC_RESOLUTION_REPAIR-v4"
+}

@@ -1,0 +1,95 @@
+{
+  "version": "phase3c-controlled-reasoning-final-results-v1",
+  "status": "ENGINEERING_GATES_PASS; INDEPENDENT_SCIENTIFIC_REVIEW_PENDING",
+  "gold": {
+    "reconciliation_artifact": "artifacts/phase3c_controlled_gold_reconciliation_proposed_v1.json",
+    "discrepancies": 16,
+    "structural_contract_corrections_proposed": 8,
+    "semantic_review_required": 7,
+    "unresolved": 1,
+    "approved": 0,
+    "historical_gold_modified": false
+  },
+  "ablation": {
+    "artifact": "artifacts/phase3c_controlled_e2e_ablation_summary_v4.json",
+    "gold_digest": "e2e3005c3ac268749cae5564ece7974f94a64819a0006cf025b5152e17e14a76",
+    "cases": 20,
+    "objective_identity_cases": 8,
+    "review_required_cases": 8,
+    "objective_no_direct_cases": 4,
+    "expected_identity_recall": {
+      "A_native": {"numerator": 7, "denominator": 8, "estimate": 0.875, "small_n": true},
+      "A_budget_matched": {"numerator": 7, "denominator": 8, "estimate": 0.875, "small_n": true},
+      "B_expansion": {"numerator": 7, "denominator": 8, "estimate": 0.875, "small_n": true},
+      "C_expansion_rerank": {"numerator": 7, "denominator": 8, "estimate": 0.875, "small_n": true},
+      "D_expansion_rerank_jev": {"numerator": 7, "denominator": 8, "estimate": 0.875, "small_n": true}
+    },
+    "false_direct_on_objective_no_direct": {"numerator": 0, "denominator": 4},
+    "independent_relevance_precision": "NOT_SCOREABLE; reviewer fields are blank",
+    "candidate_mean": {"A_native": 3.4, "A_budget_matched": 18.7, "B": 19.4, "C": 19.4, "D": 19.4}
+  },
+  "expansion": {
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "successful_model_outputs": 19,
+    "api_errors": 1,
+    "accepted_formulations": 7,
+    "rejected_formulations": 47,
+    "added_candidates_vs_budget_matched_lexical": "no objective expected-evidence recovery gain",
+    "latency_seconds": {"n": 19, "median": 2.335, "p95": 31.974, "max": 31.974},
+    "decision": "KEEP_EXPERIMENTAL"
+  },
+  "reranking": {
+    "prompt": "phase3c-contextual-rerank-v4",
+    "requests": 18,
+    "successful_with_usage": 14,
+    "api_or_parse_failures": 4,
+    "accepted_judgments": 61,
+    "high": 19,
+    "medium": 5,
+    "low": 33,
+    "uncertain": 4,
+    "high_medium_with_exact_verbatim_span": 24,
+    "discarded_proposals": 8,
+    "latency_seconds": {"n": 14, "median": 14.145, "p95": 28.129, "max": 28.129},
+    "usage_tokens": {"input": 23734, "output": 4938},
+    "decision": "KEEP_EXPERIMENTAL"
+  },
+  "jev": {
+    "requests": 25,
+    "configured_model": "jev-latest",
+    "observed_response_model": "jev-1.13.0",
+    "incremental_relevance_value": "NOT_ESTABLISHED; no independent relevance labels",
+    "decision": "KEEP_OPTIONAL"
+  },
+  "provenance": {
+    "audit": "artifacts/phase3c_controlled_provenance_audit_v1.json",
+    "raw_sources_modified": false,
+    "unverified_physical_page_citations_are_labeled": true
+  },
+  "integrity": {
+    "artifact": "artifacts/phase3c_controlled_integrity_v1.json",
+    "status": "PASS",
+    "canonical_shacl": true,
+    "native_shacl": true,
+    "sqlite": "ok",
+    "foreign_key_violations": 0,
+    "passages": 6055,
+    "fts_passages": 6055,
+    "orphan_passages": 0,
+    "native_graph_triples": 20447,
+    "broken_evidence_refs": 0,
+    "staging_rows": 4,
+    "incomplete_staging_rows": 0,
+    "historical_evaluation_raw_and_canonical_data_digests_unchanged": true
+  },
+  "quality": {"ruff_format": "PASS", "ruff_check": "PASS", "pytest": {"passed": 103, "warnings": 197}},
+  "decisions": {
+    "gold_reconciliation": "REVIEW_REQUIRED",
+    "nemotron_query_expansion": "KEEP_EXPERIMENTAL",
+    "nemotron_contextual_reranking": "KEEP_EXPERIMENTAL",
+    "jev_advisory": "KEEP_OPTIONAL",
+    "scientific_paraphrase": "KEEP_RESTRICTED",
+    "v2_default_path": "KEEP_EXPERIMENTAL",
+    "ready_for_phase_4": "NO"
+  }
+}

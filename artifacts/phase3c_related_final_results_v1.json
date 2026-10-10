@@ -1,0 +1,495 @@
+{
+  "status": "TECHNICAL_WORK_COMPLETE_SCIENTIFIC_AND_LIVE_API_GATES_PENDING",
+  "decisions": {
+    "HIERARCHICAL_RETRIEVAL_DECISION": "KEEP_EXPERIMENTAL",
+    "RELATIONAL_RELATED_DECISION": "KEEP_EXPERIMENTAL",
+    "EXPLORATORY_EXPANSION_DECISION": "KEEP_EXPERIMENTAL",
+    "NEMOTRON_RERANKING_DECISION": "KEEP_EXPERIMENTAL",
+    "JEV_ADVISORY_DECISION": "KEEP_OPTIONAL",
+    "GOLD_RECONCILIATION_DECISION": "REVIEW_REQUIRED",
+    "V2_DEFAULT_PATH_DECISION": "KEEP_EXPERIMENTAL",
+    "READY_FOR_PHASE_4": "NO"
+  },
+  "benchmark": {
+    "status": "EXPOSED_REGRESSION_AND_SYNTHETIC_DEVELOPMENT",
+    "N": 20,
+    "historical_baseline": {
+      "version": "phase3c-controlled-e2e-ablation-summary-v4",
+      "status": "FOURTH_PASS_COMPACT_VERBATIM_SPAN_CONTRACT; EARLIER_PASSES_PRESERVED",
+      "gold_digest": "e2e3005c3ac268749cae5564ece7974f94a64819a0006cf025b5152e17e14a76",
+      "run_profile": "rerank-v4;compact-span-contract;candidate-budget-5;jev-replayed",
+      "N": 20,
+      "objective_identity_cases": 8,
+      "review_required_cases": 8,
+      "objective_no_direct_cases": 4,
+      "configurations": {
+        "A": {
+          "expected_identity_recall@1": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@3": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@5": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@10": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "mean_candidate_count": {
+            "n": 20,
+            "mean": 3.4
+          }
+        },
+        "B": {
+          "expected_identity_recall@1": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@3": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@5": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@10": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "mean_candidate_count": {
+            "n": 20,
+            "mean": 19.4
+          }
+        },
+        "C": {
+          "expected_identity_recall@1": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@3": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@5": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@10": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "mean_candidate_count": {
+            "n": 20,
+            "mean": 19.4
+          }
+        },
+        "D": {
+          "expected_identity_recall@1": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@3": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@5": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "expected_identity_recall@10": {
+            "numerator": 7,
+            "denominator": 8,
+            "estimate": 0.875,
+            "status": "EXPOSED_OBJECTIVE_REGRESSION_NOT_COMPLETE_RELEVANCE_GOLD"
+          },
+          "mean_candidate_count": {
+            "n": 20,
+            "mean": 19.4
+          }
+        }
+      },
+      "false_direct_on_objective_no_direct": {
+        "numerator": 0,
+        "denominator": 4,
+        "estimate": 0.0
+      },
+      "unscored_review_case_ids": [
+        "qi24",
+        "qi27",
+        "qi31",
+        "qi32",
+        "qi33",
+        "qi42",
+        "comp01",
+        "comp11"
+      ],
+      "precision_and_relevance": "NOT SCOREABLE: no complete independent evidence-relevance labels; human review fields remain blank in the review packet.",
+      "native_retrieval_latency_ms": {
+        "n": 20,
+        "median": 73.33983600256033,
+        "max": 153.14787300303578
+      },
+      "jev_role": "Rhetorical advisory only; no filtering or canonical evidence promotion.",
+      "first_pass_artifact": "artifacts/phase3c_controlled_e2e_ablation_cases_v1.jsonl",
+      "fourth_pass_changes": {
+        "classification": "GENERIC_BUG_FIX / PROMPT_AND_BUDGET_REDUCTION",
+        "candidate_budget": 5,
+        "max_passage_characters": 700,
+        "max_output_tokens": 900,
+        "required_verbatim_support_span_for_high_medium": true,
+        "expansions": "replayed from immutable first pass; no repeat expansion calls",
+        "jev": "replayed from first-pass advisory receipts; no new Jev calls",
+        "native_direct_related": "recomputed by unchanged native executor"
+      }
+    },
+    "configurations": {
+      "A": {
+        "required_identity_recovery": {
+          "numerator": 8,
+          "denominator": 8,
+          "estimate": 1.0,
+          "wilson95": [
+            0.6755924351161198,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "false_direct_on_no_direct": {
+          "numerator": 0,
+          "denominator": 4,
+          "estimate": 0.0,
+          "wilson95": [
+            0,
+            0.4898908364545973
+          ],
+          "status": "SMALL_N"
+        },
+        "candidate_total": 76
+      },
+      "A_budget_matched": {
+        "required_identity_recovery": {
+          "numerator": 8,
+          "denominator": 8,
+          "estimate": 1.0,
+          "wilson95": [
+            0.6755924351161198,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "false_direct_on_no_direct": {
+          "numerator": 0,
+          "denominator": 4,
+          "estimate": 0.0,
+          "wilson95": [
+            0,
+            0.4898908364545973
+          ],
+          "status": "SMALL_N"
+        },
+        "candidate_total": 760
+      },
+      "B": {
+        "required_identity_recovery": {
+          "numerator": 8,
+          "denominator": 8,
+          "estimate": 1.0,
+          "wilson95": [
+            0.6755924351161198,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "false_direct_on_no_direct": {
+          "numerator": 0,
+          "denominator": 4,
+          "estimate": 0.0,
+          "wilson95": [
+            0,
+            0.4898908364545973
+          ],
+          "status": "SMALL_N"
+        },
+        "candidate_total": 72
+      },
+      "C": {
+        "required_identity_recovery": {
+          "numerator": 8,
+          "denominator": 8,
+          "estimate": 1.0,
+          "wilson95": [
+            0.6755924351161198,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "false_direct_on_no_direct": {
+          "numerator": 0,
+          "denominator": 4,
+          "estimate": 0.0,
+          "wilson95": [
+            0,
+            0.4898908364545973
+          ],
+          "status": "SMALL_N"
+        },
+        "candidate_total": 577
+      },
+      "D": {
+        "required_identity_recovery": {
+          "numerator": 8,
+          "denominator": 8,
+          "estimate": 1.0,
+          "wilson95": [
+            0.6755924351161198,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "false_direct_on_no_direct": {
+          "numerator": 0,
+          "denominator": 4,
+          "estimate": 0.0,
+          "wilson95": [
+            0,
+            0.4898908364545973
+          ],
+          "status": "SMALL_N"
+        },
+        "candidate_total": 577
+      },
+      "E": {
+        "required_identity_recovery": {
+          "numerator": 8,
+          "denominator": 8,
+          "estimate": 1.0,
+          "wilson95": [
+            0.6755924351161198,
+            1
+          ],
+          "status": "SMALL_N"
+        },
+        "false_direct_on_no_direct": {
+          "numerator": 0,
+          "denominator": 4,
+          "estimate": 0.0,
+          "wilson95": [
+            0,
+            0.4898908364545973
+          ],
+          "status": "SMALL_N"
+        },
+        "candidate_total": 577
+      }
+    },
+    "new_nemotron_calls": 0,
+    "new_jev_calls": 0,
+    "scientifically_reviewed_precision_at_5": {
+      "numerator": null,
+      "denominator": 0,
+      "status": "NOT_SCOREABLE_NO_EXPERT_LABELS",
+      "target": 0.9
+    },
+    "related_precision_recall": "NOT_SCOREABLE_NO_REVIEWED_CANDIDATE_UNIVERSE",
+    "end_to_end_usefulness": "PENDING_EXPERT_REVIEW",
+    "numeric_fidelity": {
+      "numerator": 9,
+      "denominator": 9,
+      "estimate": 1.0,
+      "wilson95": [
+        0.7008549515804559,
+        1
+      ],
+      "status": "SMALL_N"
+    },
+    "new_domain_taxonomy_edges": 0,
+    "new_model_inference_cost": 0,
+    "live_latency_and_selective_utility": "NOT_MEASURED_MISSING_RUNTIME_CREDENTIALS",
+    "latency_ms": {
+      "A_native": 77.638165501412,
+      "B_native": 98.54273050586926,
+      "synchronous_offline_evaluation": 447.88269049604423
+    },
+    "expansion_validation": {
+      "accepted": 27,
+      "rejected": 51
+    },
+    "reranking": {
+      "compatible_replays": 8,
+      "incompatible_inputs": 3,
+      "selectively_skipped": 9
+    }
+  },
+  "integrity": {
+    "synthetic_taxonomy_shacl": true,
+    "historical_changed_paths": [],
+    "historical_digests_preserved": true,
+    "canonical_shacl": true,
+    "native_shacl": true,
+    "sqlite_integrity": "ok",
+    "foreign_key_violations": 0,
+    "broken_evidence_references": [],
+    "missing_fts_rows": 0,
+    "orphan_passages": 0,
+    "counts": {
+      "sources": 282,
+      "documents": 286,
+      "passages": 6055,
+      "passages_fts": 6055
+    },
+    "native_graph_triples": 20447,
+    "native_checks_artifact_directory": "artifacts/phase3c_related_native_checks_v5",
+    "dynamic_extensibility_rerun": true,
+    "parity_rerun": true,
+    "fts_integrity_check": "PASS",
+    "status": "PASS",
+    "final_code_check": true,
+    "taxonomy_load_errors": [],
+    "taxonomy_shacl": true,
+    "projection_report": {
+      "total_runs": 405,
+      "eligible_runs": 405,
+      "projected_runs": 405,
+      "runs_without_values": 2,
+      "runs_with_unresolved": 405,
+      "conditions": 682,
+      "measurements": 0,
+      "relations": 812,
+      "invalid_units": 0,
+      "missing_original_values": 0,
+      "broken_evidence_refs": 0,
+      "unknown_fields_staged": 2314,
+      "evidence_refs_retained": 424
+    }
+  },
+  "quality": {
+    "commands": [
+      {
+        "command": "uv run ruff format --check .",
+        "status": "PASS",
+        "files": 258
+      },
+      {
+        "command": "uv run ruff check .",
+        "status": "PASS"
+      },
+      {
+        "command": "uv run pytest -q",
+        "status": "PASS",
+        "passed": 128,
+        "rdflib_deprecation_warnings": 197
+      }
+    ],
+    "large_regression_suites_rerun": [
+      "230 dynamic-property cases",
+      "125 post-freeze registry cases",
+      "39 V1/V2 parity cases",
+      "20 exposed native/discovery regression cases",
+      "40 documentary source-identity cases"
+    ],
+    "live_api_tests": "NOT_EXECUTED_RUNTIME_KEYS_UNAVAILABLE",
+    "independent_scientific_adjudication": "PENDING"
+  },
+  "artifacts": [
+    "artifacts/phase3c_related_baseline_manifest_v1.json",
+    "artifacts/phase3c_related_benchmark_summary_v1.json",
+    "artifacts/phase3c_related_cases_v1.json",
+    "artifacts/phase3c_related_code_manifest_v1.json",
+    "artifacts/phase3c_related_constraint_differences_v1.json",
+    "artifacts/phase3c_related_documentary_benchmark_v1.json",
+    "artifacts/phase3c_related_error_taxonomy_v1.json",
+    "artifacts/phase3c_related_errors_v1.json",
+    "artifacts/phase3c_related_expansions_v1.json",
+    "artifacts/phase3c_related_final_decisions_v1.json",
+    "artifacts/phase3c_related_gold_adjudication_proposal_v1.json",
+    "artifacts/phase3c_related_integrity_v1.json",
+    "artifacts/phase3c_related_integrity_v2.json",
+    "artifacts/phase3c_related_jev_comparisons_v1.json",
+    "artifacts/phase3c_related_nemotron_judgments_v1.json",
+    "artifacts/phase3c_related_numeric_operators_v1.json",
+    "artifacts/phase3c_related_projection_audit_v1.json",
+    "artifacts/phase3c_related_quality_v1.json",
+    "artifacts/phase3c_related_review_packet_v1.json",
+    "artifacts/phase3c_related_root_causes_v1.json",
+    "artifacts/phase3c_related_scientific_examples_v1.json",
+    "artifacts/phase3c_related_scientific_examples_v2.json",
+    "artifacts/phase3c_related_synthetic_fixtures_v1.json",
+    "artifacts/phase3c_related_taxonomy_v1.json",
+    "artifacts/phase3c_related_traversal_paths_v1.json"
+  ],
+  "reports": [
+    "docs/PHASE3C_EXPLORATORY_QUERY_VALIDATION.md",
+    "docs/PHASE3C_HIERARCHICAL_RETRIEVAL_EVALUATION.md",
+    "docs/PHASE3C_HIERARCHICAL_SEMANTIC_RETRIEVAL.md",
+    "docs/PHASE3C_RELATED_END_TO_END_RESULTS.md",
+    "docs/PHASE3C_RELATED_FINAL_DECISION.md",
+    "docs/PHASE3C_RELATED_SCIENTIFIC_ERROR_ANALYSIS.md",
+    "docs/PHASE3C_RELATIONAL_RELATED_SEMANTICS.md"
+  ],
+  "report_digests": {
+    "docs/PHASE3C_EXPLORATORY_QUERY_VALIDATION.md": "4a6985ae0523e75f15e36336c40d8cc5d03079798bf4d718a2cfd86a3ab4ca52",
+    "docs/PHASE3C_HIERARCHICAL_RETRIEVAL_EVALUATION.md": "f01836746542f4231ecbc29771fc49537dffd8ef2952b45b250ea61b9200ace5",
+    "docs/PHASE3C_HIERARCHICAL_SEMANTIC_RETRIEVAL.md": "4c0b177feb8af5e7ec3ca31fe8275b3e8f412dcc3e72e194fd92e080f1d52225",
+    "docs/PHASE3C_RELATED_END_TO_END_RESULTS.md": "09524136d9afe11792f4056e436d5ff6069f731dabdbaf92daf5c11f5b87fdf7",
+    "docs/PHASE3C_RELATED_FINAL_DECISION.md": "9e15f3f6626867110ebe03c727da5ca46428f84f8749312171b01c50dd900333",
+    "docs/PHASE3C_RELATED_SCIENTIFIC_ERROR_ANALYSIS.md": "3529fad75dcd618d8522706a286fe010a228ae3061362c22a8a06a860569e554",
+    "docs/PHASE3C_RELATIONAL_RELATED_SEMANTICS.md": "d4f5bf5b19b9c6eee0880f3910be0c0919190ac8303738affe8bcdc80e15184b"
+  },
+  "model_calls": {
+    "new_nemotron": 0,
+    "new_jev": 0,
+    "replay_inputs_marked": true,
+    "new_inference_spend": 0,
+    "live_latency": "UNMEASURED"
+  },
+  "review": {
+    "original_cases": 11,
+    "original_candidates": 224,
+    "additional_candidate_rows": 929,
+    "expert_labels_fabricated": false,
+    "scientific_precision": "NOT_SCOREABLE"
+  },
+  "remaining_blockers": [
+    "Approved NASA material-family taxonomy coverage",
+    "Independent scientific relevance and authority adjudication",
+    "Contract-owner gold adjudication",
+    "Live NVIDIA/Jev and selective-reranking utility tests",
+    "V1/V2 parity differences"
+  ]
+}

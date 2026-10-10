@@ -1,0 +1,83 @@
+[
+  {
+    "original": ">= 20 cm/s",
+    "expansion": "> 20 cm/s",
+    "expected": false,
+    "actual": [
+      false,
+      "numeric_operator_changed"
+    ]
+  },
+  {
+    "original": "<= 20 cm/s",
+    "expansion": "< 20 cm/s",
+    "expected": false,
+    "actual": [
+      false,
+      "numeric_operator_changed"
+    ]
+  },
+  {
+    "original": "= 10 cm/s",
+    "expansion": "= 0.10 m/s",
+    "expected": true,
+    "actual": [
+      true,
+      "typed_numeric_constraints_preserved"
+    ]
+  },
+  {
+    "original": ">= 20 cm/s",
+    "expansion": "at least 0.2 m/s",
+    "expected": true,
+    "actual": [
+      true,
+      "typed_numeric_constraints_preserved"
+    ]
+  },
+  {
+    "original": "between 0.01 and 0.11 m/s",
+    "expansion": "from 1 to 11 cm/s",
+    "expected": true,
+    "actual": [
+      true,
+      "typed_numeric_constraints_preserved"
+    ]
+  },
+  {
+    "original": "between 1 and 11 cm/s inclusive",
+    "expansion": "between 1 and 11 cm/s exclusive",
+    "expected": false,
+    "actual": [
+      false,
+      "numeric_range_inclusivity_changed"
+    ]
+  },
+  {
+    "original": "0.01 ± 0.005 m/s",
+    "expansion": "1 +/- 0.5 cm/s",
+    "expected": true,
+    "actual": [
+      true,
+      "typed_numeric_constraints_preserved"
+    ]
+  },
+  {
+    "original": "about 20 cm/s",
+    "expansion": "20 cm/s",
+    "expected": false,
+    "actual": [
+      false,
+      "numeric_operator_changed"
+    ]
+  },
+  {
+    "original": "0.01 ± 0.005 m/s",
+    "expansion": "0.01 m/s",
+    "expected": false,
+    "actual": [
+      false,
+      "numeric_operator_changed"
+    ]
+  }
+]

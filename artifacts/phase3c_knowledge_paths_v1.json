@@ -1,0 +1,666 @@
+[
+  {
+    "examined": 6,
+    "results": [
+      {
+        "classification": "RELATED",
+        "entity": "SIBAL Fabric",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "usesSample",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-sample"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1-sample",
+            "relation": "madeOf",
+            "semantics": "ASSOCIATION",
+            "to": "SIBAL Fabric"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "SIBAL Fabric",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "usesSample",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-sample"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2-sample",
+            "relation": "madeOf",
+            "semantics": "ASSOCIATION",
+            "to": "SIBAL Fabric"
+          }
+        ]
+      }
+    ],
+    "route": [
+      "hasRun",
+      "usesSample",
+      "madeOf"
+    ],
+    "start": "psi-98",
+    "truncated": false
+  },
+  {
+    "examined": 22,
+    "results": [
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-burn_time",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-burn_time"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-flow_direction",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-flow_direction"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-flow_velocity",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-flow_velocity"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-gravity",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-gravity"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-ignition_power",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-ignition_power"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-ignition_time",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-ignition_time"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-oxygen",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-oxygen"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-sample_length",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-sample_length"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-sample_thickness",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-sample_thickness"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S1-sample_width",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S1"
+            ],
+            "from": "psi-98-S1",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S1-sample_width"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-burn_time",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-burn_time"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-flow_direction",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-flow_direction"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-flow_velocity",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-flow_velocity"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-gravity",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-gravity"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-ignition_power",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-ignition_power"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-ignition_time",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-ignition_time"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-oxygen",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-oxygen"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-sample_length",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-sample_length"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-sample_thickness",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-sample_thickness"
+          }
+        ]
+      },
+      {
+        "classification": "RELATED",
+        "entity": "psi-98-S2-sample_width",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98",
+            "relation": "hasRun",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2"
+          },
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-psi-98-table-S2"
+            ],
+            "from": "psi-98-S2",
+            "relation": "hasCondition",
+            "semantics": "ASSOCIATION",
+            "to": "psi-98-S2-sample_width"
+          }
+        ]
+      }
+    ],
+    "route": [
+      "hasRun",
+      "hasCondition"
+    ],
+    "start": "psi-98",
+    "truncated": false
+  },
+  {
+    "examined": 1,
+    "results": [
+      {
+        "classification": "RELATED",
+        "entity": "ntrs-20205007829",
+        "limits": "Connectivity does not establish causality, inheritance or applicability.",
+        "path": [
+          {
+            "direction": "FORWARD",
+            "evidence_ids": [
+              "E-safety-saffire-observation"
+            ],
+            "from": "saffire-iv-flow-off-observation",
+            "relation": "reportedBy",
+            "semantics": "ASSOCIATION",
+            "to": "ntrs-20205007829"
+          }
+        ]
+      }
+    ],
+    "route": [
+      "reportedBy"
+    ],
+    "start": "saffire-iv-flow-off-observation",
+    "truncated": false
+  }
+]

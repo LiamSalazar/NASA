@@ -1,0 +1,3645 @@
+{
+  "all_commands_pass": true,
+  "broken_evidence_refs": 0,
+  "canonical_shacl": true,
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "output_tail": "218 files already formatted\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "output_tail": "All checks passed!\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output_tail": "........................................................................ [ 79%]\n...................                                                      [100%]\n=============================== warnings summary ===============================\ntests/test_native_semantic.py: 197 warnings\n  /home/liam/NASA/.venv/lib/python3.12/site-packages/rdflib/graph.py:2340: DeprecationWarning: Dataset.default_context is deprecated, use Dataset.default_graph instead.\n    if context == self.default_context:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n91 passed, 197 warnings in 5.03s\n"
+    }
+  ],
+  "db_integrity": "ok",
+  "duplicate_fts_rows": 0,
+  "dynamic_property_benchmarks": {
+    "artifacts/phase3c_dynamic_property_benchmark.json": {
+      "case_count": 230,
+      "cases": [
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.2185240000471822,
+            "bundle_build": 1.0728119996201713,
+            "kg_execution": 0.4631619999599934,
+            "planning": 0.29681300020456547,
+            "total": 2.0513109998319123
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_98a8eb643337d423e50fdc7d0170c542",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06262900024012197,
+            "bundle_build": 0.04389400010040845,
+            "kg_execution": 0.4144899999118934,
+            "planning": 0.15355000005001784,
+            "total": 0.6745630003024417
+          },
+          "operator": "LT",
+          "property_id": "Fixture_98a8eb643337d423e50fdc7d0170c542",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05156600036571035,
+            "bundle_build": 0.03648699976110947,
+            "kg_execution": 0.3942879998248827,
+            "planning": 0.12442400020518107,
+            "total": 0.6067650001568836
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_98a8eb643337d423e50fdc7d0170c542",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.048350999804824824,
+            "bundle_build": 0.035784999909083126,
+            "kg_execution": 0.39331000016318285,
+            "planning": 0.12361100016278215,
+            "total": 0.601057000039873
+          },
+          "operator": "GT",
+          "property_id": "Fixture_98a8eb643337d423e50fdc7d0170c542",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09640500002205954,
+            "bundle_build": 0.05763499984823284,
+            "kg_execution": 0.4264270000930992,
+            "planning": 0.16953300018940354,
+            "total": 0.7500000001527951
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_98a8eb643337d423e50fdc7d0170c542",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06055100038793171,
+            "bundle_build": 0.04456799979379866,
+            "kg_execution": 0.4184719996374042,
+            "planning": 0.16127100025187247,
+            "total": 0.6848620000710071
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_98a8eb643337d423e50fdc7d0170c542",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04593899984683958,
+            "bundle_build": 0.0378380000256584,
+            "kg_execution": 0.42119999989154167,
+            "planning": 0.11704200005624443,
+            "total": 0.6220189998202841
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_98a8eb643337d423e50fdc7d0170c542",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04510400003709947,
+            "bundle_build": 0.0376070001948392,
+            "kg_execution": 0.4113790000701556,
+            "planning": 0.13408199993136805,
+            "total": 0.6281720002334623
+          },
+          "operator": "IN",
+          "property_id": "Fixture_98a8eb643337d423e50fdc7d0170c542",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04769000042870175,
+            "bundle_build": 0.036779999845748534,
+            "kg_execution": 0.4016559996671276,
+            "planning": 0.19615300016084802,
+            "total": 0.6822790001024259
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_95160d490af508d6daec2d676b36aeaf",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04369299995232723,
+            "bundle_build": 0.035942000067734625,
+            "kg_execution": 0.396021999677032,
+            "planning": 0.19230900034017395,
+            "total": 0.6679660000372678
+          },
+          "operator": "LT",
+          "property_id": "Fixture_95160d490af508d6daec2d676b36aeaf",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04820000003746827,
+            "bundle_build": 0.03517699997246382,
+            "kg_execution": 0.38239799960138043,
+            "planning": 0.187869999990653,
+            "total": 0.6536449996019655
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_95160d490af508d6daec2d676b36aeaf",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04555100031211623,
+            "bundle_build": 0.03586100001484738,
+            "kg_execution": 0.377418999960355,
+            "planning": 0.18443099997966783,
+            "total": 0.6432620002669864
+          },
+          "operator": "GT",
+          "property_id": "Fixture_95160d490af508d6daec2d676b36aeaf",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.047311999878729694,
+            "bundle_build": 0.03397599994059419,
+            "kg_execution": 0.3794600002038351,
+            "planning": 0.18313300006411737,
+            "total": 0.6438810000872763
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_95160d490af508d6daec2d676b36aeaf",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04883300016444991,
+            "bundle_build": 0.03858299987768987,
+            "kg_execution": 0.3730270000232849,
+            "planning": 0.18004300000029616,
+            "total": 0.6404860000657209
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_95160d490af508d6daec2d676b36aeaf",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05451100014397525,
+            "bundle_build": 0.03560899995136424,
+            "kg_execution": 0.3894020001098397,
+            "planning": 0.17912099974637385,
+            "total": 0.6586429999515531
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_95160d490af508d6daec2d676b36aeaf",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04454400004760828,
+            "bundle_build": 0.03537200018399744,
+            "kg_execution": 0.40238400015368825,
+            "planning": 0.19352199979039142,
+            "total": 0.6758220001756854
+          },
+          "operator": "IN",
+          "property_id": "Fixture_95160d490af508d6daec2d676b36aeaf",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06461100019805599,
+            "bundle_build": 0.05574199985858286,
+            "kg_execution": 0.4577619997689908,
+            "planning": 0.27131300021210336,
+            "total": 0.849428000037733
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_bfe1922d70fc666907eda43b37cbbdc9",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.1034550000440504,
+            "bundle_build": 0.06226799996511545,
+            "kg_execution": 0.6678760000795592,
+            "planning": 0.48235999975076993,
+            "total": 1.315958999839495
+          },
+          "operator": "LT",
+          "property_id": "Fixture_bfe1922d70fc666907eda43b37cbbdc9",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.057077999827015446,
+            "bundle_build": 0.04686900001615868,
+            "kg_execution": 0.40405599975201767,
+            "planning": 0.272962000053667,
+            "total": 0.7809649996488588
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_bfe1922d70fc666907eda43b37cbbdc9",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.056693000260565896,
+            "bundle_build": 0.039042000025801826,
+            "kg_execution": 0.4211809996377269,
+            "planning": 0.25705400003062095,
+            "total": 0.7739699999547156
+          },
+          "operator": "GT",
+          "property_id": "Fixture_bfe1922d70fc666907eda43b37cbbdc9",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04690000014306861,
+            "bundle_build": 0.036482999803411076,
+            "kg_execution": 0.39859499975136714,
+            "planning": 0.24749700014581322,
+            "total": 0.72947499984366
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_bfe1922d70fc666907eda43b37cbbdc9",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04989199987903703,
+            "bundle_build": 0.03600800027925288,
+            "kg_execution": 0.39477700011048,
+            "planning": 0.263149999682355,
+            "total": 0.7438269999511249
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_bfe1922d70fc666907eda43b37cbbdc9",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.040843000078893965,
+            "bundle_build": 0.033972999972320395,
+            "kg_execution": 0.3660170000330254,
+            "planning": 0.2424829999654321,
+            "total": 0.6833160000496719
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_bfe1922d70fc666907eda43b37cbbdc9",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04548800006887177,
+            "bundle_build": 0.046582999857491814,
+            "kg_execution": 0.3807469997809676,
+            "planning": 0.24062500006039045,
+            "total": 0.7134429997677216
+          },
+          "operator": "IN",
+          "property_id": "Fixture_bfe1922d70fc666907eda43b37cbbdc9",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0537419996362587,
+            "bundle_build": 0.0680810003359511,
+            "kg_execution": 0.3937330002372619,
+            "planning": 0.3472739999779151,
+            "total": 0.8628300001873868
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_87c1cfe576d0870cbf03221d18c3bdc0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.049851999847305706,
+            "bundle_build": 0.03604000039558741,
+            "kg_execution": 0.38755500008846866,
+            "planning": 0.3093010000156937,
+            "total": 0.7827480003470555
+          },
+          "operator": "LT",
+          "property_id": "Fixture_87c1cfe576d0870cbf03221d18c3bdc0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.060323000070638955,
+            "bundle_build": 0.043294000079185935,
+            "kg_execution": 0.4074089997629926,
+            "planning": 0.3245309999329038,
+            "total": 0.8355569998457213
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_87c1cfe576d0870cbf03221d18c3bdc0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0659099996482837,
+            "bundle_build": 0.05814300038764486,
+            "kg_execution": 0.4152139999860083,
+            "planning": 0.3148820001115382,
+            "total": 0.8541490001334751
+          },
+          "operator": "GT",
+          "property_id": "Fixture_87c1cfe576d0870cbf03221d18c3bdc0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.11112599986518035,
+            "bundle_build": 0.05989100009173853,
+            "kg_execution": 0.4358989999673213,
+            "planning": 0.39696600015304284,
+            "total": 1.003882000077283
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_87c1cfe576d0870cbf03221d18c3bdc0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.08811300040179049,
+            "bundle_build": 0.057825999647320714,
+            "kg_execution": 0.6629089998568816,
+            "planning": 0.3622559997893404,
+            "total": 1.1711039996953332
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_87c1cfe576d0870cbf03221d18c3bdc0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05090200011181878,
+            "bundle_build": 0.044394999804353574,
+            "kg_execution": 0.41340100005982094,
+            "planning": 0.3332699998281896,
+            "total": 0.8419679998041829
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_87c1cfe576d0870cbf03221d18c3bdc0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04352199994173134,
+            "bundle_build": 0.03754699991986854,
+            "kg_execution": 0.40378899984716554,
+            "planning": 0.3100100002484396,
+            "total": 0.794867999957205
+          },
+          "operator": "IN",
+          "property_id": "Fixture_87c1cfe576d0870cbf03221d18c3bdc0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04337800010034698,
+            "bundle_build": 0.03568200008885469,
+            "kg_execution": 0.3838619995804038,
+            "planning": 0.38034500039429986,
+            "total": 0.8432670001639053
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_a80c005390faf8badc159f9719989ede",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042627999846445164,
+            "bundle_build": 0.03515900016282103,
+            "kg_execution": 0.37573100007648463,
+            "planning": 0.377991999812366,
+            "total": 0.8315099998981168
+          },
+          "operator": "LT",
+          "property_id": "Fixture_a80c005390faf8badc159f9719989ede",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04181700023764279,
+            "bundle_build": 0.0348199996551557,
+            "kg_execution": 0.3706190000229981,
+            "planning": 0.3560049999578041,
+            "total": 0.8032609998736007
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_a80c005390faf8badc159f9719989ede",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06527200002892641,
+            "bundle_build": 0.03665799977170536,
+            "kg_execution": 0.417030999869894,
+            "planning": 0.3982530001849227,
+            "total": 0.9172139998554485
+          },
+          "operator": "GT",
+          "property_id": "Fixture_a80c005390faf8badc159f9719989ede",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.045465999846783234,
+            "bundle_build": 0.03781700024774182,
+            "kg_execution": 0.38843500033181044,
+            "planning": 0.37776799990751897,
+            "total": 0.8494860003338545
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_a80c005390faf8badc159f9719989ede",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04756399994221283,
+            "bundle_build": 0.03748400013137143,
+            "kg_execution": 0.3855459999613231,
+            "planning": 0.3624229998422379,
+            "total": 0.8330169998771453
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_a80c005390faf8badc159f9719989ede",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04107400036446052,
+            "bundle_build": 0.03414999991946388,
+            "kg_execution": 0.38298699973893235,
+            "planning": 0.36609200014936505,
+            "total": 0.8243030001722218
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_a80c005390faf8badc159f9719989ede",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.059252000028209295,
+            "bundle_build": 0.03685199999381439,
+            "kg_execution": 0.39027999991958495,
+            "planning": 0.3798970001298585,
+            "total": 0.8662810000714671
+          },
+          "operator": "IN",
+          "property_id": "Fixture_a80c005390faf8badc159f9719989ede",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.17231699985131854,
+            "bundle_build": 0.07348000008278177,
+            "kg_execution": 0.7036769998194359,
+            "planning": 0.814364000234491,
+            "total": 1.7638379999880271
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_4f39249cbdbfbef883bbf59be3256853",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05316399983712472,
+            "bundle_build": 0.045122000301489606,
+            "kg_execution": 0.4036850000375125,
+            "planning": 0.45415700014928007,
+            "total": 0.9561280003254069
+          },
+          "operator": "LT",
+          "property_id": "Fixture_4f39249cbdbfbef883bbf59be3256853",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0424919999204576,
+            "bundle_build": 0.03579100030037807,
+            "kg_execution": 0.3836589999082207,
+            "planning": 0.4441780001798179,
+            "total": 0.9061200003088743
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_4f39249cbdbfbef883bbf59be3256853",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04216700017423136,
+            "bundle_build": 0.035757000205194345,
+            "kg_execution": 0.3784639998229977,
+            "planning": 0.42289700013498077,
+            "total": 0.8792850003374042
+          },
+          "operator": "GT",
+          "property_id": "Fixture_4f39249cbdbfbef883bbf59be3256853",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04179500001555425,
+            "bundle_build": 0.034220000088680536,
+            "kg_execution": 0.3705229996739945,
+            "planning": 0.42549900035737664,
+            "total": 0.8720370001356059
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_4f39249cbdbfbef883bbf59be3256853",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042270999983884394,
+            "bundle_build": 0.0345889998243365,
+            "kg_execution": 0.3777360002459318,
+            "planning": 0.42578300008244696,
+            "total": 0.8803790001365996
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_4f39249cbdbfbef883bbf59be3256853",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043448999804240884,
+            "bundle_build": 0.03595600037442637,
+            "kg_execution": 0.38115500001367764,
+            "planning": 0.42735799979709554,
+            "total": 0.8879179999894404
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_4f39249cbdbfbef883bbf59be3256853",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04188699995211209,
+            "bundle_build": 0.03891300002578646,
+            "kg_execution": 0.387027000215312,
+            "planning": 0.4293799997867609,
+            "total": 0.8972069999799714
+          },
+          "operator": "IN",
+          "property_id": "Fixture_4f39249cbdbfbef883bbf59be3256853",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.07098799960658653,
+            "bundle_build": 0.044518000322568696,
+            "kg_execution": 0.39126599995142897,
+            "planning": 0.547045000075741,
+            "total": 1.0538169999563252
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_32ab5061bfd7377f5291bfe34ece12bc",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05223700009082677,
+            "bundle_build": 0.04015599961348926,
+            "kg_execution": 0.38159399991855025,
+            "planning": 0.48866300039662747,
+            "total": 0.9626500000194937
+          },
+          "operator": "LT",
+          "property_id": "Fixture_32ab5061bfd7377f5291bfe34ece12bc",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0894009999683476,
+            "bundle_build": 0.06189600026118569,
+            "kg_execution": 0.5012799997530237,
+            "planning": 0.5014070002289372,
+            "total": 1.1539840002114943
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_32ab5061bfd7377f5291bfe34ece12bc",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.08639900033813319,
+            "bundle_build": 0.05772599979536608,
+            "kg_execution": 0.5632349998450081,
+            "planning": 0.891387000137911,
+            "total": 1.5987470001164183
+          },
+          "operator": "GT",
+          "property_id": "Fixture_32ab5061bfd7377f5291bfe34ece12bc",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05049800029155449,
+            "bundle_build": 0.04585799979395233,
+            "kg_execution": 0.41422499998589046,
+            "planning": 0.5230470001151843,
+            "total": 1.0336280001865816
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_32ab5061bfd7377f5291bfe34ece12bc",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04235200003677164,
+            "bundle_build": 0.03578899986678152,
+            "kg_execution": 0.387027000215312,
+            "planning": 0.5067299998700037,
+            "total": 0.9718979999888688
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_32ab5061bfd7377f5291bfe34ece12bc",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04609100005836808,
+            "bundle_build": 0.03517099958116887,
+            "kg_execution": 0.37693300009777886,
+            "planning": 0.48980500014295103,
+            "total": 0.9479999998802668
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_32ab5061bfd7377f5291bfe34ece12bc",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042146999930992024,
+            "bundle_build": 0.03577500001483713,
+            "kg_execution": 0.3916410000783799,
+            "planning": 0.48910499981502653,
+            "total": 0.9586679998392356
+          },
+          "operator": "IN",
+          "property_id": "Fixture_32ab5061bfd7377f5291bfe34ece12bc",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043034000100306,
+            "bundle_build": 0.03573200001483201,
+            "kg_execution": 0.3803009999501228,
+            "planning": 0.5476369997268193,
+            "total": 1.0067039997920801
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_b7a8401592cc749ba67d5c7dea738b34",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.041975999920396134,
+            "bundle_build": 0.03534000006766291,
+            "kg_execution": 0.3772109998863016,
+            "planning": 0.5436219998955494,
+            "total": 0.99814899976991
+          },
+          "operator": "LT",
+          "property_id": "Fixture_b7a8401592cc749ba67d5c7dea738b34",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042565000057948055,
+            "bundle_build": 0.034188999961770605,
+            "kg_execution": 0.36869799987471197,
+            "planning": 0.550809999822377,
+            "total": 0.9962619997168076
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_b7a8401592cc749ba67d5c7dea738b34",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.045074999889038736,
+            "bundle_build": 0.03612499995142571,
+            "kg_execution": 0.4038950000904151,
+            "planning": 0.5395670000325481,
+            "total": 1.0246619999634277
+          },
+          "operator": "GT",
+          "property_id": "Fixture_b7a8401592cc749ba67d5c7dea738b34",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.1719300003060198,
+            "bundle_build": 0.09120699996856274,
+            "kg_execution": 0.6662030000370578,
+            "planning": 0.8106239997687226,
+            "total": 1.739964000080363
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_b7a8401592cc749ba67d5c7dea738b34",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.07318200005101971,
+            "bundle_build": 0.051685000016732374,
+            "kg_execution": 0.42757999972309335,
+            "planning": 0.638213000001997,
+            "total": 1.1906599997928424
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_b7a8401592cc749ba67d5c7dea738b34",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04681700011133216,
+            "bundle_build": 0.038064999898779206,
+            "kg_execution": 0.37579699983325554,
+            "planning": 0.6176730003062403,
+            "total": 1.0783520001496072
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_b7a8401592cc749ba67d5c7dea738b34",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05007399977330351,
+            "bundle_build": 0.0528850000591774,
+            "kg_execution": 0.3974999999627471,
+            "planning": 0.5579550002039468,
+            "total": 1.0584139999991748
+          },
+          "operator": "IN",
+          "property_id": "Fixture_b7a8401592cc749ba67d5c7dea738b34",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.044036999952368205,
+            "bundle_build": 0.03545000026861089,
+            "kg_execution": 0.37151300011828425,
+            "planning": 0.610543999755464,
+            "total": 1.0615440000947274
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_c316fa7f1c24426803d750e1ace58b8e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04311200018491945,
+            "bundle_build": 0.03554999966581818,
+            "kg_execution": 0.39427000001523993,
+            "planning": 0.6038470000930829,
+            "total": 1.0767789999590605
+          },
+          "operator": "LT",
+          "property_id": "Fixture_c316fa7f1c24426803d750e1ace58b8e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04464799985726131,
+            "bundle_build": 0.03563600012057577,
+            "kg_execution": 0.3918870002053154,
+            "planning": 0.6175509997774498,
+            "total": 1.0897219999606023
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_c316fa7f1c24426803d750e1ace58b8e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.049792000027082395,
+            "bundle_build": 0.05330799967850908,
+            "kg_execution": 0.3972460003751621,
+            "planning": 0.628948999747081,
+            "total": 1.1292949998278345
+          },
+          "operator": "GT",
+          "property_id": "Fixture_c316fa7f1c24426803d750e1ace58b8e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06070000017643906,
+            "bundle_build": 0.04405599975143559,
+            "kg_execution": 0.4141310000704834,
+            "planning": 0.667085999793926,
+            "total": 1.185972999792284
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_c316fa7f1c24426803d750e1ace58b8e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.046534999910363695,
+            "bundle_build": 0.04076899995197891,
+            "kg_execution": 0.42786200037880917,
+            "planning": 0.6573979999302537,
+            "total": 1.1725640001714055
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_c316fa7f1c24426803d750e1ace58b8e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09139699977822602,
+            "bundle_build": 0.05934199998591794,
+            "kg_execution": 0.5082910001874552,
+            "planning": 1.19245999985651,
+            "total": 1.8514899998081091
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_c316fa7f1c24426803d750e1ace58b8e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05685299993274384,
+            "bundle_build": 0.04755100007969304,
+            "kg_execution": 0.4268040001988993,
+            "planning": 0.6717020000905904,
+            "total": 1.2029100003019266
+          },
+          "operator": "IN",
+          "property_id": "Fixture_c316fa7f1c24426803d750e1ace58b8e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04748899982587318,
+            "bundle_build": 0.04261999993104837,
+            "kg_execution": 0.4061470003762224,
+            "planning": 0.7167659996412112,
+            "total": 1.2130219997743552
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_0c9bf1d98aba82b1c8d0a5fd91fc1cf8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.045214999772724696,
+            "bundle_build": 0.036501000067801215,
+            "kg_execution": 0.45361000002230867,
+            "planning": 0.6954430000405409,
+            "total": 1.2307689999033755
+          },
+          "operator": "LT",
+          "property_id": "Fixture_0c9bf1d98aba82b1c8d0a5fd91fc1cf8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04405900017445674,
+            "bundle_build": 0.03669499983516289,
+            "kg_execution": 0.3972740000790509,
+            "planning": 0.7400670001516119,
+            "total": 1.2180950002402824
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_0c9bf1d98aba82b1c8d0a5fd91fc1cf8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043603999984043185,
+            "bundle_build": 0.035028000183956465,
+            "kg_execution": 0.3823860001830326,
+            "planning": 0.7153209999160026,
+            "total": 1.1763390002670349
+          },
+          "operator": "GT",
+          "property_id": "Fixture_0c9bf1d98aba82b1c8d0a5fd91fc1cf8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042161000237683766,
+            "bundle_build": 0.03466399994067615,
+            "kg_execution": 0.37209199990684283,
+            "planning": 0.6809510000493901,
+            "total": 1.1298680001345929
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_0c9bf1d98aba82b1c8d0a5fd91fc1cf8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0450519996775256,
+            "bundle_build": 0.03687900016302592,
+            "kg_execution": 0.40669200006959727,
+            "planning": 0.6665790001534333,
+            "total": 1.155202000063582
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_0c9bf1d98aba82b1c8d0a5fd91fc1cf8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.11389400015104911,
+            "bundle_build": 0.09181899986288045,
+            "kg_execution": 0.6913880001775397,
+            "planning": 1.069273999746656,
+            "total": 1.9663749999381253
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_0c9bf1d98aba82b1c8d0a5fd91fc1cf8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06368799995470908,
+            "bundle_build": 0.04612800012182561,
+            "kg_execution": 0.41218200021830853,
+            "planning": 0.7361579996540968,
+            "total": 1.25815599994894
+          },
+          "operator": "IN",
+          "property_id": "Fixture_0c9bf1d98aba82b1c8d0a5fd91fc1cf8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.052179999784129905,
+            "bundle_build": 0.042070000290550524,
+            "kg_execution": 0.43502500011527445,
+            "planning": 0.7528169999204692,
+            "total": 1.2820920001104241
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_a243860efc85300f985484da18b66d79",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05290099988997099,
+            "bundle_build": 0.03804500011028722,
+            "kg_execution": 0.37980000024617766,
+            "planning": 0.7478399998035457,
+            "total": 1.2185860000499815
+          },
+          "operator": "LT",
+          "property_id": "Fixture_a243860efc85300f985484da18b66d79",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04334799996286165,
+            "bundle_build": 0.03655199998320313,
+            "kg_execution": 0.3735250002137036,
+            "planning": 0.7387040000139677,
+            "total": 1.1921290001737361
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_a243860efc85300f985484da18b66d79",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043034000100306,
+            "bundle_build": 0.03881699967678287,
+            "kg_execution": 0.38599600020461367,
+            "planning": 0.7308320000447566,
+            "total": 1.198679000026459
+          },
+          "operator": "GT",
+          "property_id": "Fixture_a243860efc85300f985484da18b66d79",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043076000110886525,
+            "bundle_build": 0.035490999835019466,
+            "kg_execution": 0.3883019999193493,
+            "planning": 0.7397989998025878,
+            "total": 1.206667999667843
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_a243860efc85300f985484da18b66d79",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04376199967737193,
+            "bundle_build": 0.035304999983054586,
+            "kg_execution": 0.37805500005561044,
+            "planning": 0.7538019999628887,
+            "total": 1.2109239996789256
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_a243860efc85300f985484da18b66d79",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.048257000344165135,
+            "bundle_build": 0.03469699959168793,
+            "kg_execution": 0.3803659997174691,
+            "planning": 0.7271730000866228,
+            "total": 1.190492999739945
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_a243860efc85300f985484da18b66d79",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.12729900026897667,
+            "bundle_build": 0.08861000014803722,
+            "kg_execution": 0.7133409999369178,
+            "planning": 0.9254540000256384,
+            "total": 1.85470400037957
+          },
+          "operator": "IN",
+          "property_id": "Fixture_a243860efc85300f985484da18b66d79",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06620800013479311,
+            "bundle_build": 0.044315999730315525,
+            "kg_execution": 0.38839199987705797,
+            "planning": 0.8823380003377679,
+            "total": 1.3812540000799345
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_54c73fce3f9d8dbf5e02c23d9f8cbc17",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04873199986832333,
+            "bundle_build": 0.03762300002563279,
+            "kg_execution": 0.38989699987723725,
+            "planning": 0.900128000012046,
+            "total": 1.3763799997832393
+          },
+          "operator": "LT",
+          "property_id": "Fixture_54c73fce3f9d8dbf5e02c23d9f8cbc17",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.046704999931534985,
+            "bundle_build": 0.03694399993037223,
+            "kg_execution": 0.37870699998165946,
+            "planning": 0.8494970002175251,
+            "total": 1.3118530000610917
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_54c73fce3f9d8dbf5e02c23d9f8cbc17",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04975299998477567,
+            "bundle_build": 0.03541900014170096,
+            "kg_execution": 0.37753700007669977,
+            "planning": 0.7955189998938295,
+            "total": 1.2582280000970059
+          },
+          "operator": "GT",
+          "property_id": "Fixture_54c73fce3f9d8dbf5e02c23d9f8cbc17",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04553099961412954,
+            "bundle_build": 0.0350510003954696,
+            "kg_execution": 0.37305700016077026,
+            "planning": 0.799207000000024,
+            "total": 1.2528460001703934
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_54c73fce3f9d8dbf5e02c23d9f8cbc17",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04486299985728692,
+            "bundle_build": 0.03866099996230332,
+            "kg_execution": 0.3839480000351614,
+            "planning": 0.8003790003385802,
+            "total": 1.2678510001933319
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_54c73fce3f9d8dbf5e02c23d9f8cbc17",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04234300013195025,
+            "bundle_build": 0.03423099997235113,
+            "kg_execution": 0.3700620000017807,
+            "planning": 0.7857770001464814,
+            "total": 1.2324130002525635
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_54c73fce3f9d8dbf5e02c23d9f8cbc17",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.14846100020804442,
+            "bundle_build": 0.0992499999483698,
+            "kg_execution": 0.7100699999682547,
+            "planning": 1.1083919998782221,
+            "total": 2.066173000002891
+          },
+          "operator": "IN",
+          "property_id": "Fixture_54c73fce3f9d8dbf5e02c23d9f8cbc17",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.061129000187065685,
+            "bundle_build": 0.04745699970953865,
+            "kg_execution": 0.4441310002221144,
+            "planning": 0.9561379997649055,
+            "total": 1.5088549998836243
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_deaf2caf8c955ead7861bd8932278872",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.044207999962964095,
+            "bundle_build": 0.035352999930182705,
+            "kg_execution": 0.37738799983344506,
+            "planning": 0.8728620000511,
+            "total": 1.329810999777692
+          },
+          "operator": "LT",
+          "property_id": "Fixture_deaf2caf8c955ead7861bd8932278872",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04906699996354291,
+            "bundle_build": 0.034888000300270505,
+            "kg_execution": 0.3885950000039884,
+            "planning": 0.8812619998934679,
+            "total": 1.3538120001612697
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_deaf2caf8c955ead7861bd8932278872",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04355300006864127,
+            "bundle_build": 0.035303999993629986,
+            "kg_execution": 0.3909869997187343,
+            "planning": 0.8527600002707914,
+            "total": 1.322604000051797
+          },
+          "operator": "GT",
+          "property_id": "Fixture_deaf2caf8c955ead7861bd8932278872",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05262400009087287,
+            "bundle_build": 0.0459879997833923,
+            "kg_execution": 0.3833989999293408,
+            "planning": 0.8602130001236219,
+            "total": 1.3422239999272279
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_deaf2caf8c955ead7861bd8932278872",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04566899997371365,
+            "bundle_build": 0.036947999888070626,
+            "kg_execution": 0.3835500001514447,
+            "planning": 0.8600820001447573,
+            "total": 1.3262490001579863
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_deaf2caf8c955ead7861bd8932278872",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04298799967727973,
+            "bundle_build": 0.034751000384858344,
+            "kg_execution": 0.39023399995130603,
+            "planning": 0.8586740000282589,
+            "total": 1.326647000041703
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_deaf2caf8c955ead7861bd8932278872",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043387000005168375,
+            "bundle_build": 0.044348999836074654,
+            "kg_execution": 0.3965519999837852,
+            "planning": 0.8568620000914962,
+            "total": 1.3411499999165244
+          },
+          "operator": "IN",
+          "property_id": "Fixture_deaf2caf8c955ead7861bd8932278872",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09122200026467908,
+            "bundle_build": 0.0563749999855645,
+            "kg_execution": 0.43370799994590925,
+            "planning": 1.030736999837245,
+            "total": 1.612042000033398
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_0179e970f9cbf8d3edc39aad6603706d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04751799997393391,
+            "bundle_build": 0.03944299987779232,
+            "kg_execution": 0.388915000257839,
+            "planning": 1.0510419997444842,
+            "total": 1.5269179998540494
+          },
+          "operator": "LT",
+          "property_id": "Fixture_0179e970f9cbf8d3edc39aad6603706d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04390300000522984,
+            "bundle_build": 0.036376000025484245,
+            "kg_execution": 0.37793399997099186,
+            "planning": 0.9143309998762561,
+            "total": 1.372543999877962
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_0179e970f9cbf8d3edc39aad6603706d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0426490000791091,
+            "bundle_build": 0.03787600007854053,
+            "kg_execution": 0.3809189997809881,
+            "planning": 0.918501999876753,
+            "total": 1.3799459998153907
+          },
+          "operator": "GT",
+          "property_id": "Fixture_0179e970f9cbf8d3edc39aad6603706d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.041805999899224844,
+            "bundle_build": 0.03421600013098214,
+            "kg_execution": 0.3701129999171826,
+            "planning": 0.9019010003612493,
+            "total": 1.348036000308639
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_0179e970f9cbf8d3edc39aad6603706d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04245199988872628,
+            "bundle_build": 0.03468100021564169,
+            "kg_execution": 0.3809509998973226,
+            "planning": 0.9113070000239532,
+            "total": 1.3693910000256437
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_0179e970f9cbf8d3edc39aad6603706d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04191900006844662,
+            "bundle_build": 0.03438800013100263,
+            "kg_execution": 0.3731639999386971,
+            "planning": 0.9096829999180045,
+            "total": 1.3591540000561508
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_0179e970f9cbf8d3edc39aad6603706d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.1129749998654006,
+            "bundle_build": 0.08531499997843639,
+            "kg_execution": 0.6942670001990336,
+            "planning": 0.9846489997471508,
+            "total": 1.8772059997900215
+          },
+          "operator": "IN",
+          "property_id": "Fixture_0179e970f9cbf8d3edc39aad6603706d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.11993499992968282,
+            "bundle_build": 0.04766400024891482,
+            "kg_execution": 0.45843099997000536,
+            "planning": 1.056015999893134,
+            "total": 1.682046000041737
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_661b66c5dfe4248f025266c1cb2c65e8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.048209999931714265,
+            "bundle_build": 0.03568400006770389,
+            "kg_execution": 0.38198599986571935,
+            "planning": 1.0277030000906962,
+            "total": 1.4935829999558337
+          },
+          "operator": "LT",
+          "property_id": "Fixture_661b66c5dfe4248f025266c1cb2c65e8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04649599986805697,
+            "bundle_build": 0.03561899984561023,
+            "kg_execution": 0.38959800031079794,
+            "planning": 0.9875559999272809,
+            "total": 1.459268999951746
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_661b66c5dfe4248f025266c1cb2c65e8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04312000010031625,
+            "bundle_build": 0.03521899998304434,
+            "kg_execution": 0.3806249997069244,
+            "planning": 0.9747500002958986,
+            "total": 1.4337140000861837
+          },
+          "operator": "GT",
+          "property_id": "Fixture_661b66c5dfe4248f025266c1cb2c65e8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04277700008969987,
+            "bundle_build": 0.03551399959178525,
+            "kg_execution": 0.3764090001823206,
+            "planning": 0.9756049998941307,
+            "total": 1.4303049997579365
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_661b66c5dfe4248f025266c1cb2c65e8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.046968000333436066,
+            "bundle_build": 0.035987000046588946,
+            "kg_execution": 0.39240399974005413,
+            "planning": 0.9956889998647966,
+            "total": 1.4710479999848758
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_661b66c5dfe4248f025266c1cb2c65e8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06632399981754133,
+            "bundle_build": 0.046691000079590594,
+            "kg_execution": 0.4340619998401962,
+            "planning": 1.0459790000822977,
+            "total": 1.5930559998196259
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_661b66c5dfe4248f025266c1cb2c65e8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.10158300028706435,
+            "bundle_build": 0.061609000113094226,
+            "kg_execution": 0.5217429998083389,
+            "planning": 1.7285539997828892,
+            "total": 2.4134889999913867
+          },
+          "operator": "IN",
+          "property_id": "Fixture_661b66c5dfe4248f025266c1cb2c65e8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05657900010191952,
+            "bundle_build": 0.04307000017433893,
+            "kg_execution": 0.397550999878149,
+            "planning": 1.0927690000244183,
+            "total": 1.5899690001788258
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_71d1a26e1ff572f0c60219cacafc841f",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.045448999571817694,
+            "bundle_build": 0.03787800005738973,
+            "kg_execution": 0.4484800001591793,
+            "planning": 1.0423920002722298,
+            "total": 1.5741990000606165
+          },
+          "operator": "LT",
+          "property_id": "Fixture_71d1a26e1ff572f0c60219cacafc841f",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043352999909984646,
+            "bundle_build": 0.03848000005746144,
+            "kg_execution": 0.49635900040811975,
+            "planning": 1.0279429998263367,
+            "total": 1.6061350002019026
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_71d1a26e1ff572f0c60219cacafc841f",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043123000068590045,
+            "bundle_build": 0.03448799998295726,
+            "kg_execution": 0.3826580000350077,
+            "planning": 1.0414489997856435,
+            "total": 1.5017179998721986
+          },
+          "operator": "GT",
+          "property_id": "Fixture_71d1a26e1ff572f0c60219cacafc841f",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04345299976193928,
+            "bundle_build": 0.0356690002263349,
+            "kg_execution": 0.3762870001082774,
+            "planning": 1.059589000306005,
+            "total": 1.5149980004025565
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_71d1a26e1ff572f0c60219cacafc841f",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04402800004754681,
+            "bundle_build": 0.03566499981388915,
+            "kg_execution": 0.3942789999200613,
+            "planning": 1.0491819998605934,
+            "total": 1.5231539996420906
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_71d1a26e1ff572f0c60219cacafc841f",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09224999985235627,
+            "bundle_build": 0.06247300007089507,
+            "kg_execution": 0.5903270002818317,
+            "planning": 1.5310119997593574,
+            "total": 2.2760619999644405
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_71d1a26e1ff572f0c60219cacafc841f",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06242700010261615,
+            "bundle_build": 0.04971999987901654,
+            "kg_execution": 0.4497939999055234,
+            "planning": 1.1899900000571506,
+            "total": 1.7519309999443067
+          },
+          "operator": "IN",
+          "property_id": "Fixture_71d1a26e1ff572f0c60219cacafc841f",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.047386000005644746,
+            "bundle_build": 0.041121000322164036,
+            "kg_execution": 0.4504459998315724,
+            "planning": 1.1484709998512699,
+            "total": 1.687424000010651
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_00ada9112a43115161d9e1c86fe067a2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04483500015339814,
+            "bundle_build": 0.03707899986693519,
+            "kg_execution": 0.38254899982348434,
+            "planning": 1.1004420002791448,
+            "total": 1.5649050001229625
+          },
+          "operator": "LT",
+          "property_id": "Fixture_00ada9112a43115161d9e1c86fe067a2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04347599997345242,
+            "bundle_build": 0.03409900000406196,
+            "kg_execution": 0.3789150000557129,
+            "planning": 1.0880599998017715,
+            "total": 1.5445499998349987
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_00ada9112a43115161d9e1c86fe067a2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043295000068610534,
+            "bundle_build": 0.035415999718679814,
+            "kg_execution": 0.3927840002688754,
+            "planning": 1.087130999621877,
+            "total": 1.5586259996780427
+          },
+          "operator": "GT",
+          "property_id": "Fixture_00ada9112a43115161d9e1c86fe067a2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04634000015357742,
+            "bundle_build": 0.0353639998138533,
+            "kg_execution": 0.3867609998451371,
+            "planning": 1.1073229998146417,
+            "total": 1.5757879996272095
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_00ada9112a43115161d9e1c86fe067a2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06189699979586294,
+            "bundle_build": 0.058818000070459675,
+            "kg_execution": 0.44875499997942825,
+            "planning": 1.1189130000275327,
+            "total": 1.6883829998732836
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_00ada9112a43115161d9e1c86fe067a2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09689399985290947,
+            "bundle_build": 0.07608000032632845,
+            "kg_execution": 0.4244920000928687,
+            "planning": 1.3319899999260087,
+            "total": 1.9294560001981154
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_00ada9112a43115161d9e1c86fe067a2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05213700023887213,
+            "bundle_build": 0.047356999857584015,
+            "kg_execution": 0.4005529999631108,
+            "planning": 1.181397999971523,
+            "total": 1.6814450000310899
+          },
+          "operator": "IN",
+          "property_id": "Fixture_00ada9112a43115161d9e1c86fe067a2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04549999994196696,
+            "bundle_build": 0.038982000205578515,
+            "kg_execution": 0.3832150000562251,
+            "planning": 1.1842630001410726,
+            "total": 1.6519600003448431
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_9228058f4a644b2475d7e25a88d21765",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043977000132144894,
+            "bundle_build": 0.036513999930321006,
+            "kg_execution": 0.39375400001517846,
+            "planning": 1.1867540001730958,
+            "total": 1.6609990002507402
+          },
+          "operator": "LT",
+          "property_id": "Fixture_9228058f4a644b2475d7e25a88d21765",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04173900015302934,
+            "bundle_build": 0.03361100016263663,
+            "kg_execution": 0.3693999997267383,
+            "planning": 1.2015950001114106,
+            "total": 1.646345000153815
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_9228058f4a644b2475d7e25a88d21765",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.041881000015564496,
+            "bundle_build": 0.03491200004646089,
+            "kg_execution": 0.36730700003317907,
+            "planning": 1.1697640002239496,
+            "total": 1.613864000319154
+          },
+          "operator": "GT",
+          "property_id": "Fixture_9228058f4a644b2475d7e25a88d21765",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.10852199966393528,
+            "bundle_build": 0.08527199997843127,
+            "kg_execution": 0.6456500000240339,
+            "planning": 1.349972000298294,
+            "total": 2.1894159999646945
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_9228058f4a644b2475d7e25a88d21765",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.07959000004120753,
+            "bundle_build": 0.053248999847710365,
+            "kg_execution": 0.4515150003499002,
+            "planning": 1.4368600000125298,
+            "total": 2.021214000251348
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_9228058f4a644b2475d7e25a88d21765",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04584499993143254,
+            "bundle_build": 0.03913399996235967,
+            "kg_execution": 0.382409999929223,
+            "planning": 1.2370099998406658,
+            "total": 1.704398999663681
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_9228058f4a644b2475d7e25a88d21765",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04174800005785073,
+            "bundle_build": 0.03626099987741327,
+            "kg_execution": 0.38053800017223693,
+            "planning": 1.146500999766431,
+            "total": 1.605047999873932
+          },
+          "operator": "IN",
+          "property_id": "Fixture_9228058f4a644b2475d7e25a88d21765",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05367299991121399,
+            "bundle_build": 0.036129999898548704,
+            "kg_execution": 0.3844249999929161,
+            "planning": 1.2191850000817794,
+            "total": 1.6934129998844583
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_231204258be47359ab4727d9569ffbee",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04878799973084824,
+            "bundle_build": 0.050383000143483514,
+            "kg_execution": 0.38445400014097686,
+            "planning": 1.2174849998700665,
+            "total": 1.7011099998853751
+          },
+          "operator": "LT",
+          "property_id": "Fixture_231204258be47359ab4727d9569ffbee",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042408999888721155,
+            "bundle_build": 0.037494000025617424,
+            "kg_execution": 0.37078700006532017,
+            "planning": 1.2095279998902697,
+            "total": 1.6602179998699285
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_231204258be47359ab4727d9569ffbee",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.053748000027553644,
+            "bundle_build": 0.04118699962418759,
+            "kg_execution": 0.4873780003435968,
+            "planning": 1.233459999639308,
+            "total": 1.8157729996346461
+          },
+          "operator": "GT",
+          "property_id": "Fixture_231204258be47359ab4727d9569ffbee",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.07295200020962511,
+            "bundle_build": 0.04674499996326631,
+            "kg_execution": 0.39953699979378143,
+            "planning": 1.401469000029465,
+            "total": 1.9207029999961378
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_231204258be47359ab4727d9569ffbee",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05781900017609587,
+            "bundle_build": 0.04214899990984122,
+            "kg_execution": 0.3971819996877457,
+            "planning": 1.3021320000916603,
+            "total": 1.799281999865343
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_231204258be47359ab4727d9569ffbee",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.045153999963076785,
+            "bundle_build": 0.03740299962373683,
+            "kg_execution": 0.3731030001290492,
+            "planning": 1.2152160002187884,
+            "total": 1.6708759999346512
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_231204258be47359ab4727d9569ffbee",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042346999634901294,
+            "bundle_build": 0.035416000173427165,
+            "kg_execution": 0.399394000396569,
+            "planning": 1.2162549996901362,
+            "total": 1.6934119998950337
+          },
+          "operator": "IN",
+          "property_id": "Fixture_231204258be47359ab4727d9569ffbee",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04317999992053956,
+            "bundle_build": 0.03553000033207354,
+            "kg_execution": 0.4422980000526877,
+            "planning": 1.2643179998121923,
+            "total": 1.785326000117493
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_3494ecbf7403a8141322de6e0d59b26e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042262000079063,
+            "bundle_build": 0.037491000057343626,
+            "kg_execution": 0.38161399970704224,
+            "planning": 1.2714860004052753,
+            "total": 1.7328530002487241
+          },
+          "operator": "LT",
+          "property_id": "Fixture_3494ecbf7403a8141322de6e0d59b26e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0963170000432001,
+            "bundle_build": 0.06114999996498227,
+            "kg_execution": 0.4348940001364099,
+            "planning": 1.4589099996555888,
+            "total": 2.051270999800181
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_3494ecbf7403a8141322de6e0d59b26e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0644400001874601,
+            "bundle_build": 0.05874899989066762,
+            "kg_execution": 0.40825899986884906,
+            "planning": 1.4708250000694534,
+            "total": 2.00227300001643
+          },
+          "operator": "GT",
+          "property_id": "Fixture_3494ecbf7403a8141322de6e0d59b26e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.052055000196560286,
+            "bundle_build": 0.03804099969784147,
+            "kg_execution": 0.39032799986671307,
+            "planning": 1.3404229998741357,
+            "total": 1.8208469996352505
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_3494ecbf7403a8141322de6e0d59b26e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04318999981478555,
+            "bundle_build": 0.034840999887819635,
+            "kg_execution": 0.39774900005795644,
+            "planning": 1.284808000036719,
+            "total": 1.7605879997972806
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_3494ecbf7403a8141322de6e0d59b26e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043294000079185935,
+            "bundle_build": 0.036858999919786584,
+            "kg_execution": 0.3785160001825716,
+            "planning": 1.302910000049451,
+            "total": 1.761579000230995
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_3494ecbf7403a8141322de6e0d59b26e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04493999995247577,
+            "bundle_build": 0.03813200009972206,
+            "kg_execution": 0.3979180000897031,
+            "planning": 1.2920710000798863,
+            "total": 1.7730610002217873
+          },
+          "operator": "IN",
+          "property_id": "Fixture_3494ecbf7403a8141322de6e0d59b26e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05773800012320862,
+            "bundle_build": 0.04060499986735522,
+            "kg_execution": 0.4039099999317841,
+            "planning": 1.406945999860909,
+            "total": 1.909198999783257
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_9ccaea155543b4be825e6a68d3647183",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09607799984223675,
+            "bundle_build": 0.174482000147691,
+            "kg_execution": 0.49875000013344106,
+            "planning": 1.7241209998246632,
+            "total": 2.493430999948032
+          },
+          "operator": "LT",
+          "property_id": "Fixture_9ccaea155543b4be825e6a68d3647183",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05486700001711142,
+            "bundle_build": 0.04668099973059725,
+            "kg_execution": 0.40177200025937054,
+            "planning": 1.501278999967326,
+            "total": 2.004598999974405
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_9ccaea155543b4be825e6a68d3647183",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04597199995259871,
+            "bundle_build": 0.03853599991998635,
+            "kg_execution": 0.3866400002152659,
+            "planning": 1.3822959999743034,
+            "total": 1.8534440000621544
+          },
+          "operator": "GT",
+          "property_id": "Fixture_9ccaea155543b4be825e6a68d3647183",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04256000011082506,
+            "bundle_build": 0.03523299983498873,
+            "kg_execution": 0.39244099980351166,
+            "planning": 1.393151000229409,
+            "total": 1.8633849999787344
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_9ccaea155543b4be825e6a68d3647183",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04276199979358353,
+            "bundle_build": 0.034439000046404544,
+            "kg_execution": 0.39158300023700576,
+            "planning": 1.3696470000468253,
+            "total": 1.838431000123819
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_9ccaea155543b4be825e6a68d3647183",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042070000290550524,
+            "bundle_build": 0.04006299968750682,
+            "kg_execution": 0.3685510000650538,
+            "planning": 1.3264419999359234,
+            "total": 1.7771259999790345
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_9ccaea155543b4be825e6a68d3647183",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06939200011402136,
+            "bundle_build": 0.05875899978491361,
+            "kg_execution": 0.5454870001813106,
+            "planning": 1.372142000036547,
+            "total": 2.0457800001167925
+          },
+          "operator": "IN",
+          "property_id": "Fixture_9ccaea155543b4be825e6a68d3647183",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.08503699973516632,
+            "bundle_build": 0.053590000334224897,
+            "kg_execution": 0.48385700029029977,
+            "planning": 1.583330999892496,
+            "total": 2.205815000252187
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_adaf4d03fb53f5cbcf2713e259887931",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.052799999593844404,
+            "bundle_build": 0.04665300002670847,
+            "kg_execution": 0.4121910001231299,
+            "planning": 1.5446910001628567,
+            "total": 2.0563349999065395
+          },
+          "operator": "LT",
+          "property_id": "Fixture_adaf4d03fb53f5cbcf2713e259887931",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04768499957208405,
+            "bundle_build": 0.038153000332386,
+            "kg_execution": 0.3934070000468637,
+            "planning": 1.4834490002613165,
+            "total": 1.9626940002126503
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_adaf4d03fb53f5cbcf2713e259887931",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04534699974101386,
+            "bundle_build": 0.03593800011003623,
+            "kg_execution": 0.38738500006729737,
+            "planning": 1.4575019999938377,
+            "total": 1.9261719999121851
+          },
+          "operator": "GT",
+          "property_id": "Fixture_adaf4d03fb53f5cbcf2713e259887931",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04616700016413233,
+            "bundle_build": 0.03681599991978146,
+            "kg_execution": 0.40998699978445075,
+            "planning": 1.475932000175817,
+            "total": 1.9689020000441815
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_adaf4d03fb53f5cbcf2713e259887931",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043574000301305205,
+            "bundle_build": 0.03545599975041114,
+            "kg_execution": 0.4062019997945754,
+            "planning": 1.4593450000575103,
+            "total": 1.944576999903802
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_adaf4d03fb53f5cbcf2713e259887931",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.10205999979007174,
+            "bundle_build": 0.061456000366888475,
+            "kg_execution": 0.46840499999234453,
+            "planning": 2.0027310001751175,
+            "total": 2.6346520003244223
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_adaf4d03fb53f5cbcf2713e259887931",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.055499999689345714,
+            "bundle_build": 0.047962000280676875,
+            "kg_execution": 0.4287980000299285,
+            "planning": 1.571282999975665,
+            "total": 2.103542999975616
+          },
+          "operator": "IN",
+          "property_id": "Fixture_adaf4d03fb53f5cbcf2713e259887931",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06818599968028138,
+            "bundle_build": 0.039542000195069704,
+            "kg_execution": 0.3868600001624145,
+            "planning": 1.5364040000349632,
+            "total": 2.030992000072729
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_c86bddcdfa0aa5f8a1a24e4d65338064",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04484200007937034,
+            "bundle_build": 0.03582799990908825,
+            "kg_execution": 0.3789570000662934,
+            "planning": 1.5459669998563186,
+            "total": 2.0055939999110706
+          },
+          "operator": "LT",
+          "property_id": "Fixture_c86bddcdfa0aa5f8a1a24e4d65338064",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0450479997198272,
+            "bundle_build": 0.03555000012056553,
+            "kg_execution": 0.3755830002774019,
+            "planning": 1.4847479997115443,
+            "total": 1.9409289998293389
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_c86bddcdfa0aa5f8a1a24e4d65338064",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04714600027000415,
+            "bundle_build": 0.0382309999622521,
+            "kg_execution": 0.4101029999219463,
+            "planning": 1.4824949998910597,
+            "total": 1.9779750000452623
+          },
+          "operator": "GT",
+          "property_id": "Fixture_c86bddcdfa0aa5f8a1a24e4d65338064",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.10939799994957866,
+            "bundle_build": 0.07136800013540778,
+            "kg_execution": 0.45179800008554594,
+            "planning": 1.9516130000738485,
+            "total": 2.584177000244381
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_c86bddcdfa0aa5f8a1a24e4d65338064",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05597500012299861,
+            "bundle_build": 0.044534999688039534,
+            "kg_execution": 0.39579700023750775,
+            "planning": 1.5944619999572751,
+            "total": 2.090769000005821
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_c86bddcdfa0aa5f8a1a24e4d65338064",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042453999867575476,
+            "bundle_build": 0.03491200004646089,
+            "kg_execution": 0.37106700028743944,
+            "planning": 1.459728000099858,
+            "total": 1.9081610003013338
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_c86bddcdfa0aa5f8a1a24e4d65338064",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042425000174262095,
+            "bundle_build": 0.03621299993028515,
+            "kg_execution": 0.39862899984655087,
+            "planning": 1.4531520000673481,
+            "total": 1.9304190000184462
+          },
+          "operator": "IN",
+          "property_id": "Fixture_c86bddcdfa0aa5f8a1a24e4d65338064",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043109000216645654,
+            "bundle_build": 0.035753999782173196,
+            "kg_execution": 0.42797499963853625,
+            "planning": 1.518227000360639,
+            "total": 2.025064999997994
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_4932c0575aab059f4f0cb09a24303db8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042505000237724744,
+            "bundle_build": 0.03543899993019295,
+            "kg_execution": 0.39145299979281845,
+            "planning": 1.5385920000881015,
+            "total": 2.0079890000488376
+          },
+          "operator": "LT",
+          "property_id": "Fixture_4932c0575aab059f4f0cb09a24303db8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09472900001128437,
+            "bundle_build": 0.05907300010221661,
+            "kg_execution": 0.44550999973580474,
+            "planning": 2.1204820000093605,
+            "total": 2.719793999858666
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_4932c0575aab059f4f0cb09a24303db8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05417500005933107,
+            "bundle_build": 0.04445099966687849,
+            "kg_execution": 0.40399299996352056,
+            "planning": 1.6297289998874476,
+            "total": 2.1323479995771777
+          },
+          "operator": "GT",
+          "property_id": "Fixture_4932c0575aab059f4f0cb09a24303db8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04317799994169036,
+            "bundle_build": 0.03559200013114605,
+            "kg_execution": 0.38281799970718566,
+            "planning": 1.53894200002469,
+            "total": 2.000529999804712
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_4932c0575aab059f4f0cb09a24303db8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042518000100244535,
+            "bundle_build": 0.03922399992006831,
+            "kg_execution": 0.38022299986550934,
+            "planning": 1.536464000309934,
+            "total": 1.998429000195756
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_4932c0575aab059f4f0cb09a24303db8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04274200000509154,
+            "bundle_build": 0.0353619998350041,
+            "kg_execution": 0.3853230000459007,
+            "planning": 1.5276389999598905,
+            "total": 1.9910659998458868
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_4932c0575aab059f4f0cb09a24303db8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04502000001593842,
+            "bundle_build": 0.036500000078376615,
+            "kg_execution": 0.39244699974005925,
+            "planning": 1.5231380002660444,
+            "total": 1.9971050001004187
+          },
+          "operator": "IN",
+          "property_id": "Fixture_4932c0575aab059f4f0cb09a24303db8",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09231000012732693,
+            "bundle_build": 0.06250999967960524,
+            "kg_execution": 0.46010500000193133,
+            "planning": 2.100938000239694,
+            "total": 2.7158630000485573
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_aa3360fe9980e78a3bd7cd6ef6893f3e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.061017999996693106,
+            "bundle_build": 0.045943999793962575,
+            "kg_execution": 0.3939410003113153,
+            "planning": 1.8732969997472537,
+            "total": 2.3741999998492247
+          },
+          "operator": "LT",
+          "property_id": "Fixture_aa3360fe9980e78a3bd7cd6ef6893f3e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04414899967741803,
+            "bundle_build": 0.03588800018405891,
+            "kg_execution": 0.3762510000342445,
+            "planning": 1.5988750001270091,
+            "total": 2.0551630000227306
+          },
+          "operator": "LTE",
+          "property_id": "Fixture_aa3360fe9980e78a3bd7cd6ef6893f3e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04308600000513252,
+            "bundle_build": 0.035307999951328384,
+            "kg_execution": 0.3816399998868292,
+            "planning": 1.5767200002301252,
+            "total": 2.0367540000734152
+          },
+          "operator": "GT",
+          "property_id": "Fixture_aa3360fe9980e78a3bd7cd6ef6893f3e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04182700013188878,
+            "bundle_build": 0.03522099996189354,
+            "kg_execution": 0.38336599982358166,
+            "planning": 1.576061000378104,
+            "total": 2.036475000295468
+          },
+          "operator": "GTE",
+          "property_id": "Fixture_aa3360fe9980e78a3bd7cd6ef6893f3e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.046381000174733344,
+            "bundle_build": 0.037397999676613836,
+            "kg_execution": 0.39082500006770715,
+            "planning": 1.6195969997170323,
+            "total": 2.0942009996360866
+          },
+          "operator": "BETWEEN",
+          "property_id": "Fixture_aa3360fe9980e78a3bd7cd6ef6893f3e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.11044099983337219,
+            "bundle_build": 0.06354800007102313,
+            "kg_execution": 0.4862920000050508,
+            "planning": 2.187471000070218,
+            "total": 2.847751999979664
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_aa3360fe9980e78a3bd7cd6ef6893f3e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "numeric",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06574999997610576,
+            "bundle_build": 0.047001999973872444,
+            "kg_execution": 0.4424809999363788,
+            "planning": 1.8131880001419631,
+            "total": 2.36842100002832
+          },
+          "operator": "IN",
+          "property_id": "Fixture_aa3360fe9980e78a3bd7cd6ef6893f3e",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06882099978611222,
+            "bundle_build": 0.03863700021611294,
+            "kg_execution": 0.882541000009951,
+            "planning": 1.7052370003511896,
+            "total": 2.6952360003633657
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_4539fb38e0734f51b65d0a221d088426",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.044456000068748835,
+            "bundle_build": 0.03777499978241394,
+            "kg_execution": 0.33738899992385996,
+            "planning": 1.8284200000380224,
+            "total": 2.248039999813045
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_4539fb38e0734f51b65d0a221d088426",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.044209999941813294,
+            "bundle_build": 0.038622999909421196,
+            "kg_execution": 0.3496369999993476,
+            "planning": 1.6987710000648804,
+            "total": 2.1312409999154625
+          },
+          "operator": "IN",
+          "property_id": "Fixture_4539fb38e0734f51b65d0a221d088426",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09481600000071921,
+            "bundle_build": 0.07383599995591794,
+            "kg_execution": 0.48105599989867187,
+            "planning": 2.432013000088773,
+            "total": 3.081720999944082
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_6774c7aa3f1c39adf9f22cdea706bf9b",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.06174299960548524,
+            "bundle_build": 0.052150000101391925,
+            "kg_execution": 0.36530700026560226,
+            "planning": 1.9418209999457758,
+            "total": 2.4210209999182553
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_6774c7aa3f1c39adf9f22cdea706bf9b",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04508799975155853,
+            "bundle_build": 0.03870000000461005,
+            "kg_execution": 0.34815600020010606,
+            "planning": 1.826275999974314,
+            "total": 2.2582199999305885
+          },
+          "operator": "IN",
+          "property_id": "Fixture_6774c7aa3f1c39adf9f22cdea706bf9b",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04373699994175695,
+            "bundle_build": 0.03869600004691165,
+            "kg_execution": 0.3945769999518234,
+            "planning": 1.7769569999472878,
+            "total": 2.25396699988778
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_b4e6579f012ded5e994de641c4b28124",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.042688000121415826,
+            "bundle_build": 0.03548499989847187,
+            "kg_execution": 0.3282339998804673,
+            "planning": 1.7838270000538614,
+            "total": 2.1902339999542164
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_b4e6579f012ded5e994de641c4b28124",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.08643399996799417,
+            "bundle_build": 0.07699100024183281,
+            "kg_execution": 0.5607739999504702,
+            "planning": 1.8722760000855487,
+            "total": 2.596475000245846
+          },
+          "operator": "IN",
+          "property_id": "Fixture_b4e6579f012ded5e994de641c4b28124",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.09571800001140218,
+            "bundle_build": 0.05039200004830491,
+            "kg_execution": 0.502796000091621,
+            "planning": 2.009126999837463,
+            "total": 2.658032999988791
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_67ce78d024f12a7b8d0ac0d2bfec0c4d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.051420000090729445,
+            "bundle_build": 0.04189600031168084,
+            "kg_execution": 0.33860999974422157,
+            "planning": 1.9446960000095714,
+            "total": 2.3766220001562033
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_67ce78d024f12a7b8d0ac0d2bfec0c4d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.043013000322389416,
+            "bundle_build": 0.03701399964484153,
+            "kg_execution": 0.33164799970109016,
+            "planning": 1.8430640002407017,
+            "total": 2.254738999909023
+          },
+          "operator": "IN",
+          "property_id": "Fixture_67ce78d024f12a7b8d0ac0d2bfec0c4d",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04838699987885775,
+            "bundle_build": 0.036824999824602855,
+            "kg_execution": 0.3956600003220956,
+            "planning": 1.9456279997029924,
+            "total": 2.4264999997285486
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_bd293227ae6dff271bcfb1b506013eb0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.10310100014976342,
+            "bundle_build": 0.06696599984934437,
+            "kg_execution": 0.4964009999639529,
+            "planning": 2.436943000247993,
+            "total": 3.1034110002110538
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_bd293227ae6dff271bcfb1b506013eb0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.08107299981929827,
+            "bundle_build": 0.051933000122517115,
+            "kg_execution": 0.39349200005744933,
+            "planning": 2.1977040000820125,
+            "total": 2.724202000081277
+          },
+          "operator": "IN",
+          "property_id": "Fixture_bd293227ae6dff271bcfb1b506013eb0",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0553640002181055,
+            "bundle_build": 0.04394000006868737,
+            "kg_execution": 0.4053970001223206,
+            "planning": 2.0923239999319776,
+            "total": 2.597025000341091
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_c2ad83f6371614721e890fa799a08d67",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04894099993180134,
+            "bundle_build": 0.03776899984586635,
+            "kg_execution": 0.3321099998174759,
+            "planning": 1.9983050001428637,
+            "total": 2.4171249997380073
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_c2ad83f6371614721e890fa799a08d67",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04522700010056724,
+            "bundle_build": 0.03668899989861529,
+            "kg_execution": 0.3434709997236496,
+            "planning": 1.9387030001780658,
+            "total": 2.364089999900898
+          },
+          "operator": "IN",
+          "property_id": "Fixture_c2ad83f6371614721e890fa799a08d67",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.12577600000440725,
+            "bundle_build": 0.07533400003012503,
+            "kg_execution": 0.39431499999409425,
+            "planning": 3.4146510001846764,
+            "total": 4.010076000213303
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_a0b1e78cbd836a55aa4f4d2b9cbeffa2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05525799997485592,
+            "bundle_build": 0.0448179998784326,
+            "kg_execution": 0.3610920002756757,
+            "planning": 2.229132999673311,
+            "total": 2.6903009998022753
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_a0b1e78cbd836a55aa4f4d2b9cbeffa2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04438899986780598,
+            "bundle_build": 0.03754299996217014,
+            "kg_execution": 0.34548599978734273,
+            "planning": 2.0790840003428457,
+            "total": 2.5065019999601645
+          },
+          "operator": "IN",
+          "property_id": "Fixture_a0b1e78cbd836a55aa4f4d2b9cbeffa2",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04541099997368292,
+            "bundle_build": 0.03967200018450967,
+            "kg_execution": 0.401536000026681,
+            "planning": 2.103228999658313,
+            "total": 2.5898479998431867
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_7a6cbd7291c40451a3cfc731c6898e36",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.04285600016373792,
+            "bundle_build": 0.038689000120939454,
+            "kg_execution": 0.36030599994774093,
+            "planning": 2.096409999921889,
+            "total": 2.538261000154307
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_7a6cbd7291c40451a3cfc731c6898e36",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.10164800005441066,
+            "bundle_build": 0.08042499985094764,
+            "kg_execution": 0.43442700007290114,
+            "planning": 2.8906380002808874,
+            "total": 3.507138000259147
+          },
+          "operator": "IN",
+          "property_id": "Fixture_7a6cbd7291c40451a3cfc731c6898e36",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.08667800011608051,
+            "bundle_build": 0.062195999817049596,
+            "kg_execution": 0.49280299981546705,
+            "planning": 2.5792350002120656,
+            "total": 3.220911999960663
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_55d5e91d586e0f4c17f73b540df29d54",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.099485999726312,
+            "bundle_build": 0.07047100007184781,
+            "kg_execution": 0.4412500002217712,
+            "planning": 2.6241299997309397,
+            "total": 3.2353369997508707
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_55d5e91d586e0f4c17f73b540df29d54",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.07020599969109753,
+            "bundle_build": 0.06640200035690214,
+            "kg_execution": 0.3772340000978147,
+            "planning": 2.43932000012137,
+            "total": 2.9531620002671843
+          },
+          "operator": "IN",
+          "property_id": "Fixture_55d5e91d586e0f4c17f73b540df29d54",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.0984819998848252,
+            "bundle_build": 0.0655189996905392,
+            "kg_execution": 0.48535100040680845,
+            "planning": 2.890023999952973,
+            "total": 3.539375999935146
+          },
+          "operator": "EQ",
+          "property_id": "Fixture_45351eb00c648a500f777ddf42f659b1",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.10260799990646774,
+            "bundle_build": 0.07797999978720327,
+            "kg_execution": 0.4334539999035769,
+            "planning": 2.5028230002135388,
+            "total": 3.1168649998107867
+          },
+          "operator": "NEQ",
+          "property_id": "Fixture_45351eb00c648a500f777ddf42f659b1",
+          "related_correct": true
+        },
+        {
+          "compile": true,
+          "datatype": "categorical",
+          "direct_correct": true,
+          "latency_ms": {
+            "bm25_ranking": 0.05587399982687202,
+            "bundle_build": 0.04864000038651284,
+            "kg_execution": 0.3662389999590232,
+            "planning": 2.4727949999032717,
+            "total": 2.9435480000756797
+          },
+          "operator": "IN",
+          "property_id": "Fixture_45351eb00c648a500f777ddf42f659b1",
+          "related_correct": true
+        }
+      ],
+      "categorical_properties": 10,
+      "classes": [
+        {
+          "class_id": "Information_ea7a1b7fa24803ab63b97ccbc7bf5861",
+          "correct": true
+        },
+        {
+          "class_id": "Information_500a5d830e930464f11185150a0c91e3",
+          "correct": true
+        },
+        {
+          "class_id": "Information_d0fdfd93f89b27989ac1ed8cdfc17719",
+          "correct": true
+        },
+        {
+          "class_id": "Information_21588e37ab775efac6caeda682530898",
+          "correct": true
+        },
+        {
+          "class_id": "Information_47a10c57393ae33892b0ac9e68ac0344",
+          "correct": true
+        }
+      ],
+      "latency": {
+        "bm25_ranking": {
+          "max_ms": 0.2185240000471822,
+          "median_ms": 0.04734899994218722,
+          "n": 230,
+          "p95_ms": 0.10939799994957866
+        },
+        "bundle_build": {
+          "max_ms": 1.0728119996201713,
+          "median_ms": 0.03805500000453321,
+          "n": 230,
+          "p95_ms": 0.07608000032632845
+        },
+        "kg_execution": {
+          "max_ms": 0.882541000009951,
+          "median_ms": 0.39335850010502327,
+          "n": 230,
+          "p95_ms": 0.5632349998450081
+        },
+        "planning": {
+          "max_ms": 3.4146510001846764,
+          "median_ms": 1.0419205000289367,
+          "n": 230,
+          "p95_ms": 2.1977040000820125
+        },
+        "total": {
+          "max_ms": 4.010076000213303,
+          "median_ms": 1.5828784999030177,
+          "n": 230,
+          "p95_ms": 2.724202000081277
+        }
+      },
+      "metrics": {
+        "class_execution": {
+          "denominator": 5,
+          "estimate": 1.0,
+          "numerator": 5,
+          "status": "SMALL_N",
+          "wilson95": [
+            0.5655175352168251,
+            1
+          ]
+        },
+        "direct_correctness": {
+          "denominator": 230,
+          "estimate": 1.0,
+          "numerator": 230,
+          "status": "MEASURED",
+          "wilson95": [
+            0.9835723791663494,
+            1
+          ]
+        },
+        "execution": {
+          "denominator": 230,
+          "estimate": 1.0,
+          "numerator": 230,
+          "status": "MEASURED",
+          "wilson95": [
+            0.9835723791663494,
+            1
+          ]
+        },
+        "related_correctness": {
+          "denominator": 230,
+          "estimate": 1.0,
+          "numerator": 230,
+          "status": "MEASURED",
+          "wilson95": [
+            0.9835723791663494,
+            1
+          ]
+        }
+      },
+      "native_guard": "PASS",
+      "numeric_properties": 25
+    }
+  },
+  "foreign_key_violations": 0,
+  "historical_baseline_changed_or_missing": [
+    "domain/query_language_v2.yaml",
+    "domain/semantic_registry.yaml",
+    "src/nasa_fire_ai/ingestion/semantic.py",
+    "src/nasa_fire_ai/models/__init__.py",
+    "src/nasa_fire_ai/normalization/units.py",
+    "src/nasa_fire_ai/query/native.py",
+    "src/nasa_fire_ai/query/native_interpreter.py",
+    "src/nasa_fire_ai/query/v2.py",
+    "src/nasa_fire_ai/services/native.py"
+  ],
+  "historical_baseline_files_unchanged": 457,
+  "missing_document_references": 0,
+  "missing_fts_rows": 0,
+  "native_generic_shacl": true,
+  "notes": [
+    "FTS integrity checked by row coverage and uniqueness; no write/repair command was issued.",
+    "Staging integrity includes projection provenance completeness from the coverage artifact."
+  ],
+  "projection_integrity": {
+    "broken_evidence_refs": 0,
+    "conditions": 682,
+    "eligible_runs": 405,
+    "evidence_refs_retained": 424,
+    "invalid_units": 0,
+    "measurements": 0,
+    "missing_original_values": 0,
+    "projected_runs": 405,
+    "relations": 812,
+    "runs_with_unresolved": 405,
+    "runs_without_values": 2,
+    "total_runs": 405,
+    "unknown_fields_staged": 2314
+  },
+  "raw_and_canonical_source_integrity": {
+    "canonical_run_source_modified": false,
+    "projection_additive_only": true,
+    "raw_files_modified": false
+  },
+  "registry_counts": {
+    "documents": 286,
+    "passages": 6055,
+    "semantic_staging": 4,
+    "sources": 282
+  },
+  "version": "final-repair-quality-v1"
+}

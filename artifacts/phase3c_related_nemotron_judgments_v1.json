@@ -1,0 +1,668 @@
+[
+  {
+    "case_id": "qi03",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  },
+  {
+    "case_id": "qi11",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "version": "phase3c-contextual-rerank-v4",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cache_key": "bfa07140064df539688f645754dba6d2f7aff1dd8f7f3604e45a2f0596cbe7e8",
+    "judgments": [
+      {
+        "evidence_id": "E-psi-98-table-S2",
+        "candidate_relevance": "HIGH",
+        "supporting_span": "S2,SIBAL Fabric,0.37,40.6,94,20,~ 21.5,182,8,70,Opposed,S2C1,S2C2",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "FULL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-psi-98-table-S1",
+        "candidate_relevance": "HIGH",
+        "supporting_span": "S1,SIBAL Fabric,0.37,40.6,94,20,21.5 - 21.7,182,8,420,Concurrent,S1C1,S1C2",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "FULL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-ad149b6a9ce7f2f8",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-9df910ff0e083254",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      }
+    ],
+    "invalid": [
+      {
+        "evidence_id": "E-e46fe5384e39b62f",
+        "reason": "invalid_supporting_span"
+      }
+    ],
+    "error": null,
+    "usage": {
+      "replayed": true
+    },
+    "candidate_input_ids": [
+      "E-9df910ff0e083254",
+      "E-ad149b6a9ce7f2f8",
+      "E-e46fe5384e39b62f",
+      "E-psi-98-table-S1",
+      "E-psi-98-table-S2"
+    ],
+    "candidate_input_digest": "27f908794300fc39a1ec6defb4759c647bf7fa71a6dcd8babb2feb172a894792",
+    "execution_mode": "COMPATIBLE_HISTORICAL_REPLAY",
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi12",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  },
+  {
+    "case_id": "qi14",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  },
+  {
+    "case_id": "qi16",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  },
+  {
+    "case_id": "qi17",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  },
+  {
+    "case_id": "qi18",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  },
+  {
+    "case_id": "qi19",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "version": "phase3c-contextual-rerank-v4",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cache_key": "f664aa3825ba0ea357c04ff00612564d1c0131f1d938c3c3dcb3b45f461990b0",
+    "judgments": [
+      {
+        "evidence_id": "E-751f8e0f5230aa68",
+        "candidate_relevance": "HIGH",
+        "supporting_span": "Fuel: acrylic cylinders (PMMA)",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "FULL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-751f8e0f5230aa68",
+        "candidate_relevance": "HIGH",
+        "supporting_span": "Acrylic cylinders (PMMA) and engineering materials (sheets)",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "FULL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-751f8e0f5230aa68",
+        "candidate_relevance": "HIGH",
+        "supporting_span": "Acrylic cylinders (PMMA)",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "FULL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-6c0e7e8d8cd6a684",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-5bd57b27ffbad74e",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-5cd2680edc32b966",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      }
+    ],
+    "invalid": [
+      {
+        "evidence_id": "E-5212a18ab5fb37c1",
+        "reason": "missing_supporting_span"
+      }
+    ],
+    "error": null,
+    "usage": {
+      "replayed": true
+    },
+    "candidate_input_ids": [
+      "E-5212a18ab5fb37c1",
+      "E-5bd57b27ffbad74e",
+      "E-5cd2680edc32b966",
+      "E-6c0e7e8d8cd6a684",
+      "E-751f8e0f5230aa68"
+    ],
+    "candidate_input_digest": "3338a86e2cab322dca7be13fc21b222df89d2518c73f8ab4438f12e3e271a929",
+    "execution_mode": "COMPATIBLE_HISTORICAL_REPLAY",
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi20",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "version": "phase3c-contextual-rerank-v4",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cache_key": "eb2d4eea09f130b31db30c21fbf9d17f9cf4307b3a7b904cf9f2f56d0bc6ac38",
+    "judgments": [
+      {
+        "evidence_id": "E-f015fd1c68bc2514",
+        "candidate_relevance": "MEDIUM",
+        "supporting_span": "velocity also increases",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "PARTIAL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-33c2e43f4415cfcc",
+        "candidate_relevance": "MEDIUM",
+        "supporting_span": "velocity and scalar flow fields",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "PARTIAL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-587aaadf08b4a90a",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-a13ed12af241a260",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-d2cc0d6114e2fa84",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      }
+    ],
+    "invalid": [],
+    "error": null,
+    "usage": {
+      "replayed": true
+    },
+    "candidate_input_ids": [
+      "E-33c2e43f4415cfcc",
+      "E-587aaadf08b4a90a",
+      "E-a13ed12af241a260",
+      "E-d2cc0d6114e2fa84",
+      "E-f015fd1c68bc2514"
+    ],
+    "candidate_input_digest": "0b593289fad81813c82882215a080c029d9c77e43c9eafab72dd18fb64923f0f",
+    "execution_mode": "COMPATIBLE_HISTORICAL_REPLAY",
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi22",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "version": "phase3c-contextual-rerank-v4",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cache_key": "32ec9f348f976ff6542500f98b3fe9ef42140afcd21898063a2edf430ef13c51",
+    "judgments": [],
+    "invalid": [],
+    "error": "ValueError",
+    "usage": {
+      "replayed": true
+    },
+    "candidate_input_ids": [
+      "E-045f328ef5320400",
+      "E-1824841933f42274",
+      "E-5efa9f747b4179d1",
+      "E-7e4f9a0d4aab1af2",
+      "E-fe54424b99873f2f"
+    ],
+    "candidate_input_digest": "14c2940f537c787fe14a1c7a71e439db98fabe23fd5ba0d748bc15bea7b81919",
+    "execution_mode": "COMPATIBLE_HISTORICAL_REPLAY",
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi24",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "version": "phase3c-contextual-rerank-v4",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cache_key": "32cd0ac34d2f72d53e115e74cb130b8d0463499172e307c1b3841927de62a81f",
+    "judgments": [
+      {
+        "evidence_id": "E-eb2f8faa32b8e7b6",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-8579c969dc19765d",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      }
+    ],
+    "invalid": [
+      {
+        "evidence_id": "E-382165f1a4516fa8",
+        "reason": "invalid_supporting_span"
+      },
+      {
+        "evidence_id": "E-cf90bf6996c63f80",
+        "reason": "invalid_supporting_span"
+      },
+      {
+        "evidence_id": "E-1931d22b3ed2aaa0",
+        "reason": "invalid_supporting_span"
+      }
+    ],
+    "error": null,
+    "usage": {
+      "replayed": true
+    },
+    "candidate_input_ids": [
+      "E-1931d22b3ed2aaa0",
+      "E-382165f1a4516fa8",
+      "E-8579c969dc19765d",
+      "E-cf90bf6996c63f80",
+      "E-eb2f8faa32b8e7b6"
+    ],
+    "candidate_input_digest": "d0f6ef2144e8100b4a1370e1b64f9649ee638b0618bd00015a71f551ed5b7e16",
+    "execution_mode": "COMPATIBLE_HISTORICAL_REPLAY",
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi27",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "version": "phase3c-contextual-rerank-v4",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cache_key": "1618ac627cdeb392941123da06a47a36a3658afa9b3996c10f65eb3032e12cb8",
+    "judgments": [],
+    "invalid": [],
+    "error": "ValueError",
+    "usage": {
+      "replayed": true
+    },
+    "candidate_input_ids": [
+      "E-3bffec52ba3d9db2",
+      "E-7ab386873c223183",
+      "E-a86df6125a00a685",
+      "E-ae9ebc14b3783086",
+      "E-ec1cc297771dd55d"
+    ],
+    "candidate_input_digest": "1fe1c8602364e20e3b52c1c6e38c875c5a43bc06363e3b645f4c62363337b068",
+    "execution_mode": "COMPATIBLE_HISTORICAL_REPLAY",
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi31",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "version": "phase3c-contextual-rerank-v4",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cache_key": "bce14a5cfa3d8be67ab9ed07cb69c88c54ceb7a16e0a4eb0759e71661a444244",
+    "judgments": [
+      {
+        "evidence_id": "E-7f544fa359dbe355",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-5c31adcf49bda1cb",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-ffba2e1dadb77a0f",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-6eaaee921e00c930",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-47a6f8af3eb8b482",
+        "candidate_relevance": "HIGH",
+        "supporting_span": "PMMA",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "PARTIAL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      }
+    ],
+    "invalid": [],
+    "error": null,
+    "usage": {
+      "replayed": true
+    },
+    "candidate_input_ids": [
+      "E-47a6f8af3eb8b482",
+      "E-5c31adcf49bda1cb",
+      "E-6eaaee921e00c930",
+      "E-7f544fa359dbe355",
+      "E-ffba2e1dadb77a0f"
+    ],
+    "candidate_input_digest": "f5cfe2db7f12403fade1fa0893ba21b80320f68b0ab87fefd56397df1a2413f4",
+    "execution_mode": "COMPATIBLE_HISTORICAL_REPLAY",
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi32",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "judgments": [],
+    "error": "INCOMPATIBLE_HISTORICAL_INPUT",
+    "usage": {},
+    "execution_mode": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "qi33",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  },
+  {
+    "case_id": "qi42",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "version": "phase3c-contextual-rerank-v4",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "cache_key": "233958d1896f2df27e358b82a9be4c9e46abe133e6080b74496984ace5bb6063",
+    "judgments": [
+      {
+        "evidence_id": "E-psi-98-table-S2",
+        "candidate_relevance": "HIGH",
+        "supporting_span": "S2,SIBAL Fabric,0.37,40.6,94,20,~ 21.5,182,8,70,Opposed,S2C1,S2C2",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "FULL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-psi-98-table-S1",
+        "candidate_relevance": "HIGH",
+        "supporting_span": "S1,SIBAL Fabric,0.37,40.6,94,20,21.5 - 21.7,182,8,420,Concurrent,S1C1,S1C2",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "FULL",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-693782a7af9d2bb4",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-4c20c10324f64d91",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      },
+      {
+        "evidence_id": "E-b7e34ef42d95edd1",
+        "candidate_relevance": "LOW",
+        "supporting_span": "",
+        "constraint_assessments": [],
+        "proposed_evidence_role": "CONTEXTUAL",
+        "answer_support": "NONE",
+        "reasons": [],
+        "authority": "UNVERIFIED_MODEL_PROPOSAL",
+        "classification_effect": "NONE"
+      }
+    ],
+    "invalid": [],
+    "error": null,
+    "usage": {
+      "replayed": true
+    },
+    "candidate_input_ids": [
+      "E-4c20c10324f64d91",
+      "E-693782a7af9d2bb4",
+      "E-b7e34ef42d95edd1",
+      "E-psi-98-table-S1",
+      "E-psi-98-table-S2"
+    ],
+    "candidate_input_digest": "7acdcfa7d79ae83a716833c074f90558aaac82658a12300e22af3065f6416f29",
+    "execution_mode": "COMPATIBLE_HISTORICAL_REPLAY",
+    "new_calls": 0
+  },
+  {
+    "case_id": "qi45",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  },
+  {
+    "case_id": "comp01",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "judgments": [],
+    "error": "INCOMPATIBLE_HISTORICAL_INPUT",
+    "usage": {},
+    "execution_mode": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "comp11",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "ambiguous_or_documentary_pool"
+    },
+    "judgments": [],
+    "error": "INCOMPATIBLE_HISTORICAL_INPUT",
+    "usage": {},
+    "execution_mode": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "corrective-unseen-document",
+    "selective_policy": {
+      "enabled": true,
+      "reason": "adequate_deterministic_evidence"
+    },
+    "judgments": [],
+    "invalid": [],
+    "error": "disabled",
+    "usage": {}
+  }
+]
