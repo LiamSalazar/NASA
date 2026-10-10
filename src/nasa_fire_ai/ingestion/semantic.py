@@ -33,6 +33,11 @@ def load_semantic_registry(path: Path) -> SemanticRegistry:
     registry.class_metadata = data["classes"]
     registry.selection_policy = data.get("selection_policy", {})
     registry.entities.update(data.get("entities", []))
+    language_path = path.with_name("query_language_v2.yaml")
+    if language_path.exists():
+        registry.entity_mentions = yaml.safe_load(language_path.read_text()).get(
+            "entity_mentions", {}
+        )
     return registry
 
 
@@ -112,6 +117,18 @@ def project_legacy(root: Path, evidence_registry) -> SemanticGraph:
         enrich_native(
             store, records, evidence_registry, root / "ontology/fire_safety.ttl", mentions
         )
+        if os.getenv("SOURCE_KNOWLEDGE_ENRICHMENT_ENABLED", "false").lower() == "true":
+            from nasa_fire_ai.ingestion.enrichment import enrich_source_fields
+
+            enrich_source_fields(store, records, evidence_registry, root, mentions)
+    if os.getenv("PSI_STRUCTURED_PUBLICATION_ENABLED", "false").lower() == "true":
+        from nasa_fire_ai.ingestion.validated_psi import project_validated_psi
+
+        project_validated_psi(store, evidence_registry, root)
+    if os.getenv("FLEX_SOURCE_CORRECTIONS_ENABLED", "false").lower() == "true":
+        from nasa_fire_ai.ingestion.source_corrections import project_source_corrections
+
+        project_source_corrections(store, evidence_registry, root, records)
     return store
 
 
@@ -194,6 +211,23 @@ def project_canonical_conditions(store, records, config, evidence_registry):
                 and condition.get("reported_value") is not None
             ):
                 obj = str(condition["reported_value"])
+                if (
+                    os.getenv("NATIVE_SOURCE_CONTEXT_VALIDATION_ENABLED", "false").lower() == "true"
+                    and config["condition_relations"][kind] == "hasGravityCondition"
+                ):
+                    explicit = any(
+                        cell["original_header"].strip().lower() in {"gravity", "gravity condition"}
+                        and cell["original_value"].strip().lower() == obj.lower()
+                        for e in crefs
+                        for cell in evidence_registry.resolve(e).get("source_cells", [])
+                    )
+                    if not explicit:
+                        candidate["reason"] = (
+                            "gravity declaration lacks supporting source span or validated execution context"
+                        )
+                        staged.append(candidate)
+                        unresolved = True
+                        continue
                 store.registry.entities.add(obj)
                 store.add_relation(subject, config["condition_relations"][kind], obj, crefs)
                 report["relations"] += 1

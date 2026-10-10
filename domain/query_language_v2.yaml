@@ -6,7 +6,12 @@ entity_mentions:
   SIBAL Fabric: {relation: hasMaterial, aliases: [SIBAL Fabric, Sibal]}
   microgravity: {relation: hasGravityCondition, aliases: [microgravity, low-g]}
   psi-98: {relation: belongsToInvestigation, aliases: [SAFFIRE-I, Saffire I]}
-  psi-25: {relation: belongsToInvestigation, aliases: [BASS-II, BASS II, BASS]}
+  psi-25: {relation: belongsToInvestigation, aliases: [BASS-II, BASS II, Burning and Suppression of Solids-II]}
+  psi-26: {relation: belongsToInvestigation, aliases: [BASS, Burning and Suppression of Solids]}
+target_mentions:
+  Sample: [sample, samples, specimen, specimens]
+  Investigation: [investigation, investigations, study, studies]
+  ExperimentFamily: [experiment family, experiment families, investigation family, investigation families]
 information_mentions:
   ExperimentalRun: [experiments, experiment, tests, runs]
   Measurement: [measurements, measurement, measured, measure]
@@ -44,3 +49,6 @@ operators:
   less than: LT
   greater than: GT
   at least: GTE
+  no less than: GTE
+  not exceeding: LTE
+  does not exceed: LTE

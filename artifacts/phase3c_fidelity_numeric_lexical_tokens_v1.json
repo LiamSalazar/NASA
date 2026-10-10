@@ -1,0 +1,537 @@
+[
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "qi09",
+    "original_question": "PMMA microgravity airflow below 10 cm/s",
+    "raw_numeric_tokens": [
+      "10"
+    ],
+    "raw_unit_tokens": [
+      "w",
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.1,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "LT",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "below 10 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 10.0,
+      "tolerance": null,
+      "upper": 0.1,
+      "upper_inclusive": false
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "qi10",
+    "original_question": "PMMA low-g air flow at most 0.1 m/s",
+    "raw_numeric_tokens": [
+      "0.1"
+    ],
+    "raw_unit_tokens": [
+      "m/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.1,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "LTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "at most 0.1 m/s",
+      "reported_unit": "m/s",
+      "reported_value": 0.1,
+      "tolerance": null,
+      "upper": 0.1,
+      "upper_inclusive": true
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "qi11",
+    "original_question": "SIBAL Fabric microgravity flow velocity >= 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": 0.2,
+      "lower_inclusive": true,
+      "operator": "GTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": ">= 20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "qi34",
+    "original_question": "airflow < 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "LT",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "< 20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": 0.2,
+      "upper_inclusive": false
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "qi35",
+    "original_question": "air flow no more than 0.10 m/s",
+    "raw_numeric_tokens": [
+      "0.10"
+    ],
+    "raw_unit_tokens": [
+      "m/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.1,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "LTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "no more than 0.10 m/s",
+      "reported_unit": "m/s",
+      "reported_value": 0.1,
+      "tolerance": null,
+      "upper": 0.1,
+      "upper_inclusive": true
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "qi37",
+    "original_question": "about 20% oxygen",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "%"
+    ],
+    "typed_trace": {
+      "approximate": true,
+      "canonical_unit": "fraction",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "APPROX",
+      "physical_quantity": "fraction",
+      "property_id": "OxygenConcentration",
+      "raw_expression": "about 20%",
+      "reported_unit": "%",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "qi50",
+    "original_question": "Compare Saffire-I S1 and S2 at airflow 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "EQ",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-01",
+    "original_question": "airflow > 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": 0.2,
+      "lower_inclusive": false,
+      "operator": "GT",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "> 20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-02",
+    "original_question": "airflow >= 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": 0.2,
+      "lower_inclusive": true,
+      "operator": "GTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": ">= 20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-03",
+    "original_question": "airflow < 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "LT",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "< 20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": 0.2,
+      "upper_inclusive": false
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-04",
+    "original_question": "airflow <= 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "LTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "<= 20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": 0.2,
+      "upper_inclusive": true
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-05",
+    "original_question": "airflow = 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "EQ",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "= 20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-06",
+    "original_question": "airflow at least .2 m/s",
+    "raw_numeric_tokens": [
+      ".2"
+    ],
+    "raw_unit_tokens": [
+      "m/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": 0.2,
+      "lower_inclusive": true,
+      "operator": "GTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "at least .2 m/s",
+      "reported_unit": "m/s",
+      "reported_value": 0.2,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-07",
+    "original_question": "airflow not exceeding 200 mm/s",
+    "raw_numeric_tokens": [
+      "200"
+    ],
+    "raw_unit_tokens": [
+      "mm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "LTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "not exceeding 200 mm/s",
+      "reported_unit": "mm/s",
+      "reported_value": 200.0,
+      "tolerance": null,
+      "upper": 0.2,
+      "upper_inclusive": true
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-08",
+    "original_question": "airflow 2e1 cm/s",
+    "raw_numeric_tokens": [
+      "2e1"
+    ],
+    "raw_unit_tokens": [
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "EQ",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "2e1 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-09",
+    "original_question": "oxygen approximately 20 percent",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "percent"
+    ],
+    "typed_trace": {
+      "approximate": true,
+      "canonical_unit": "fraction",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "APPROX",
+      "physical_quantity": "fraction",
+      "property_id": "OxygenConcentration",
+      "raw_expression": "approximately 20 percent",
+      "reported_unit": "%",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-10",
+    "original_question": "airflow no less than 20 cm/s",
+    "raw_numeric_tokens": [
+      "20"
+    ],
+    "raw_unit_tokens": [
+      "s",
+      "cm/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": 0.2,
+      "lower_inclusive": true,
+      "operator": "GTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "no less than 20 cm/s",
+      "reported_unit": "cm/s",
+      "reported_value": 20.0,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-11",
+    "original_question": "airflow does not exceed 0.20 m/s",
+    "raw_numeric_tokens": [
+      "0.20"
+    ],
+    "raw_unit_tokens": [
+      "s",
+      "m/s"
+    ],
+    "typed_trace": {
+      "approximate": false,
+      "canonical_unit": "m/s",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "LTE",
+      "physical_quantity": "velocity",
+      "property_id": "AirflowVelocity",
+      "raw_expression": "does not exceed 0.20 m/s",
+      "reported_unit": "m/s",
+      "reported_value": 0.2,
+      "tolerance": null,
+      "upper": 0.2,
+      "upper_inclusive": true
+    }
+  },
+  {
+    "basis": "Literal tokens from preserved execution raw_expression; not a new interpreter or NASA assertion",
+    "case_id": "num-independent-12",
+    "original_question": "approximately 0.2 fraction oxygen",
+    "raw_numeric_tokens": [
+      "0.2"
+    ],
+    "raw_unit_tokens": [
+      "fraction"
+    ],
+    "typed_trace": {
+      "approximate": true,
+      "canonical_unit": "fraction",
+      "canonical_value": 0.2,
+      "logical_grouping": "CONJUNCTION; disjunction requires clarification",
+      "lower": null,
+      "lower_inclusive": null,
+      "operator": "APPROX",
+      "physical_quantity": "fraction",
+      "property_id": "OxygenConcentration",
+      "raw_expression": "approximately 0.2 fraction",
+      "reported_unit": "fraction",
+      "reported_value": 0.2,
+      "tolerance": null,
+      "upper": null,
+      "upper_inclusive": null
+    }
+  }
+]

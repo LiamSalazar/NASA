@@ -1,0 +1,56 @@
+{
+  "quality": [
+    {
+      "command": "uv run ruff format --check .",
+      "exit_code": 0,
+      "output": "artifacts/phase3c_enrichment_quality_0_v1.txt",
+      "summary": "291 files already formatted"
+    },
+    {
+      "command": "uv run ruff check .",
+      "exit_code": 0,
+      "output": "artifacts/phase3c_enrichment_quality_1_v1.txt",
+      "summary": "All checks passed!"
+    },
+    {
+      "command": "uv run pytest -q",
+      "exit_code": 0,
+      "output": "artifacts/phase3c_enrichment_quality_2_v1.txt",
+      "summary": "149 passed, 72924 warnings in 16.11s"
+    }
+  ],
+  "immutable_files_checked": 676,
+  "changed_immutable_files": [],
+  "secret_matches_outside_env": [],
+  "env_mode": "0o600",
+  "env_ignored": true,
+  "env_untracked": true,
+  "canonical_shacl": true,
+  "native_shacl": true,
+  "literal_shacl": true,
+  "sqlite_integrity": "ok",
+  "foreign_key_violations": [],
+  "fts_integrity": "PASS",
+  "fts_missing": 0,
+  "broken_graph_evidence": [],
+  "missing_previous_relations": [],
+  "current_condition_count": 2459,
+  "current_staging_count": 537,
+  "postfreeze_and_dynamic_suites": [
+    "phase3c_enrichment_native_checks_v1/phase3c_dynamic_property_benchmark.json",
+    "phase3c_enrichment_native_checks_v1/phase3c_postfreeze_extensibility.json"
+  ],
+  "changed_code_manifest": [
+    "src/nasa_fire_ai/query/controlled_reasoning.py",
+    "src/nasa_fire_ai/query/native.py",
+    "src/nasa_fire_ai/query/evidence_selection.py",
+    "src/nasa_fire_ai/query/native_interpreter.py",
+    "src/nasa_fire_ai/normalization/units.py",
+    "src/nasa_fire_ai/ingestion/semantic.py",
+    "src/nasa_fire_ai/ingestion/knowledge.py",
+    "src/nasa_fire_ai/ingestion/pdf.py",
+    "domain/semantic_registry.yaml",
+    "ontology/fire_safety.ttl"
+  ],
+  "status": "PASS"
+}

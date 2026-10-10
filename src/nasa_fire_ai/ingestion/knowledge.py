@@ -19,6 +19,10 @@ def normalize_mention(text, approved_mentions):
             for alias in aliases
         )
     }
+    if matches and re.search(
+        r"\b(?:not|without|compatible|like|mixture|blend|coated)\b", text, re.IGNORECASE
+    ):
+        return {"original": text, "identity": None, "status": "AMBIGUOUS"}
     return {
         "original": text,
         "identity": next(iter(matches)) if len(matches) == 1 else None,
@@ -139,16 +143,25 @@ def validate_relation_proposal(proposal, evidence_registry):
     metadata = evidence_registry.source_metadata(proposal["evidence_id"])
     if not evidence or not metadata or metadata["source_id"] != proposal["source_id"]:
         raise ValueError("source identity mismatch")
-    span = proposal["supporting_span"]
-    if not span or span not in evidence["text"]:
-        raise ValueError("supporting span is not exact source text")
+    from nasa_fire_ai.ingestion.source_spans import normalized_with_offsets, recover_span
+
+    located = recover_span(
+        evidence["text"], proposal["supporting_span"], proposal.get("span_start")
+    )
+    span = located["span"]
     if any(
-        not proposal[key] or proposal[key] not in span
+        not proposal[key]
+        or normalized_with_offsets(proposal[key])[0] not in normalized_with_offsets(span)[0]
         for key in ("subject_mention", "object_mention")
     ):
         raise ValueError("mention absent from supporting span")
     return {
         **proposal,
+        "model_supporting_span": proposal["supporting_span"],
+        "supporting_span": span,
+        "span_start": located["start"],
+        "span_end": located["end"],
+        "span_validation_method": located["method"],
         "mapping_status": "PENDING_VALIDATION",
         "review_status": "PENDING",
         "epistemic_status": "PROPOSED_EXPLICIT_SOURCE_STATEMENT",

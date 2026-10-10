@@ -1,0 +1,738 @@
+[
+  {
+    "example": "FLEX typed field access",
+    "source": {
+      "source_id": "psi-69",
+      "source_type": "PSI experimental table",
+      "nasa_id": "PSI-69",
+      "title": "Flame Extinguishment Experiment (FLEX)",
+      "url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-69"
+    },
+    "evidence": {
+      "evidence_id": "E-e58f5fab3654ce46",
+      "document_id": "psi-69-experimental-table",
+      "page": null,
+      "section": "Experimental table",
+      "text": "1,20CAL08,3/5/2009,17:22:03,Methanol,757.7,0.21,0.79,0,0,1.69,0.89,0.52,4.3,Disruption",
+      "start_offset": 2,
+      "end_offset": 2,
+      "raw_file": "data/raw/upstream_nasa_space_apps/psi/PSI-69_FLEX/Experimental table/PSI-69_Experimental table_FLEX.csv",
+      "checksum": "74addb771d6ec6765d285721bd35ec1ce3936d104e265f363aeba18c6c25743b"
+    },
+    "canonical_original": {
+      "type": "ConditionRecord",
+      "id": "psi-69-1-initial_droplet_diameter",
+      "kind": "initial_droplet_diameter",
+      "reported_value": 1.69,
+      "reported_unit": "mm",
+      "canonical_value": null,
+      "canonical_unit": null,
+      "evidence_refs": [
+        {
+          "evidence_id": "E-e58f5fab3654ce46",
+          "source_id": "psi-69",
+          "section": "Experimental table"
+        }
+      ]
+    },
+    "query_intent": {
+      "schema_version": "query-intent-v2",
+      "operation": "SEARCH",
+      "targets": [
+        "ExperimentalRun"
+      ],
+      "entity_constraints": [
+        {
+          "relation": "hasMaterial",
+          "entity_id": "Methanol"
+        }
+      ],
+      "property_constraints": [
+        {
+          "property_id": "source:initial_droplet_diameter",
+          "operator": "EQ",
+          "value": {
+            "reported_value": 1.69,
+            "reported_unit": "mm",
+            "canonical_value": null,
+            "canonical_unit": null,
+            "lower": null,
+            "upper": null,
+            "approximate": false,
+            "raw_expression": null,
+            "tolerance": null
+          },
+          "qualifiers": {}
+        }
+      ],
+      "requested_information": [],
+      "comparison": null,
+      "source_constraints": [],
+      "unresolved_mentions": [],
+      "conversation_reference": null,
+      "clarification_required": false,
+      "ambiguities": []
+    },
+    "subject_recovered_direct": true,
+    "ontology_mapping": {
+      "predicate": "conditionType/value",
+      "source_field": "initial_droplet_diameter",
+      "role": "INITIAL_SPECIMEN_CHARACTERISTIC"
+    },
+    "interpretation": "Reported initial specimen characteristic, not extinction diameter or newly verified observation."
+  },
+  {
+    "example": "Same material different specified airflow",
+    "query_intent": {
+      "schema_version": "query-intent-v2",
+      "operation": "SEARCH",
+      "targets": [
+        "ExperimentalRun"
+      ],
+      "entity_constraints": [
+        {
+          "relation": "hasMaterial",
+          "entity_id": "SIBAL Fabric"
+        }
+      ],
+      "property_constraints": [
+        {
+          "property_id": "AirflowVelocity",
+          "operator": "EQ",
+          "value": {
+            "reported_value": 30.0,
+            "reported_unit": "cm/s",
+            "canonical_value": null,
+            "canonical_unit": null,
+            "lower": null,
+            "upper": null,
+            "approximate": false,
+            "raw_expression": null,
+            "tolerance": null
+          },
+          "qualifiers": {}
+        }
+      ],
+      "requested_information": [],
+      "comparison": null,
+      "source_constraints": [
+        "psi-98"
+      ],
+      "unresolved_mentions": [],
+      "conversation_reference": null,
+      "clarification_required": false,
+      "ambiguities": []
+    },
+    "direct": [],
+    "related": [
+      {
+        "id": "psi-98-S1",
+        "matches": [
+          "hasMaterial=SIBAL Fabric"
+        ],
+        "differs": [
+          "AirflowVelocity"
+        ],
+        "unknown": [],
+        "invalid": [],
+        "unresolved": [],
+        "evidence_ids": [
+          "E-psi-98-table-S1"
+        ],
+        "relationship_explanation": {
+          "dimensions": [
+            {
+              "dimension": "hasMaterial",
+              "status": "MATCH",
+              "requested": "SIBAL Fabric",
+              "actual": [
+                "SIBAL Fabric"
+              ],
+              "relationships": [],
+              "evidence_ids": [
+                "E-psi-98-table-S1"
+              ],
+              "ranking_contribution": 9
+            },
+            {
+              "dimension": "AirflowVelocity",
+              "status": "DIFFER",
+              "invalid": false,
+              "requested": {
+                "property_id": "AirflowVelocity",
+                "operator": "EQ",
+                "value": {
+                  "reported_value": 30.0,
+                  "reported_unit": "cm/s",
+                  "canonical_value": null,
+                  "canonical_unit": null,
+                  "lower": null,
+                  "upper": null,
+                  "approximate": false,
+                  "raw_expression": null,
+                  "tolerance": null
+                },
+                "qualifiers": {}
+              },
+              "actual": [
+                {
+                  "value": {
+                    "reported_value": 20.0,
+                    "reported_unit": "cm/s",
+                    "canonical_value": 0.2,
+                    "canonical_unit": "m/s",
+                    "lower": null,
+                    "upper": null,
+                    "approximate": false,
+                    "raw_expression": null,
+                    "tolerance": null
+                  },
+                  "qualifiers": {
+                    "context": "reported_condition",
+                    "origin": "canonical_condition_projection",
+                    "original_record": {
+                      "canonical_lower_value": null,
+                      "canonical_unit": "m/s",
+                      "canonical_upper_value": null,
+                      "canonical_value": 0.2,
+                      "evidence_refs": [
+                        {
+                          "evidence_id": "E-psi-98-table-S1",
+                          "page": null,
+                          "section": "Experimental table",
+                          "source_id": "psi-98"
+                        }
+                      ],
+                      "id": "psi-98-S1-flow_velocity",
+                      "is_approximate": false,
+                      "kind": "flow_velocity",
+                      "reported_lower_value": null,
+                      "reported_unit": "cm/s",
+                      "reported_upper_value": null,
+                      "reported_value": 20.0,
+                      "type": "ConditionRecord"
+                    },
+                    "role": "reported_condition"
+                  },
+                  "evidence_ids": [
+                    "E-psi-98-table-S1"
+                  ]
+                }
+              ],
+              "ranking_contribution": -4
+            }
+          ],
+          "matching_constraints": [
+            {
+              "dimension": "hasMaterial",
+              "status": "MATCH",
+              "requested": "SIBAL Fabric",
+              "actual": [
+                "SIBAL Fabric"
+              ],
+              "relationships": [],
+              "evidence_ids": [
+                "E-psi-98-table-S1"
+              ],
+              "ranking_contribution": 9
+            }
+          ],
+          "differing_constraints": [
+            {
+              "dimension": "AirflowVelocity",
+              "status": "DIFFER",
+              "invalid": false,
+              "requested": {
+                "property_id": "AirflowVelocity",
+                "operator": "EQ",
+                "value": {
+                  "reported_value": 30.0,
+                  "reported_unit": "cm/s",
+                  "canonical_value": null,
+                  "canonical_unit": null,
+                  "lower": null,
+                  "upper": null,
+                  "approximate": false,
+                  "raw_expression": null,
+                  "tolerance": null
+                },
+                "qualifiers": {}
+              },
+              "actual": [
+                {
+                  "value": {
+                    "reported_value": 20.0,
+                    "reported_unit": "cm/s",
+                    "canonical_value": 0.2,
+                    "canonical_unit": "m/s",
+                    "lower": null,
+                    "upper": null,
+                    "approximate": false,
+                    "raw_expression": null,
+                    "tolerance": null
+                  },
+                  "qualifiers": {
+                    "context": "reported_condition",
+                    "origin": "canonical_condition_projection",
+                    "original_record": {
+                      "canonical_lower_value": null,
+                      "canonical_unit": "m/s",
+                      "canonical_upper_value": null,
+                      "canonical_value": 0.2,
+                      "evidence_refs": [
+                        {
+                          "evidence_id": "E-psi-98-table-S1",
+                          "page": null,
+                          "section": "Experimental table",
+                          "source_id": "psi-98"
+                        }
+                      ],
+                      "id": "psi-98-S1-flow_velocity",
+                      "is_approximate": false,
+                      "kind": "flow_velocity",
+                      "reported_lower_value": null,
+                      "reported_unit": "cm/s",
+                      "reported_upper_value": null,
+                      "reported_value": 20.0,
+                      "type": "ConditionRecord"
+                    },
+                    "role": "reported_condition"
+                  },
+                  "evidence_ids": [
+                    "E-psi-98-table-S1"
+                  ]
+                }
+              ],
+              "ranking_contribution": -4
+            }
+          ],
+          "unknown_constraints": [],
+          "source_evidence_ids": [
+            "E-psi-98-table-S1"
+          ],
+          "why_useful": "hasMaterial MATCH: requested SIBAL Fabric; actual ['SIBAL Fabric']; AirflowVelocity DIFFER: requested {'property_id': 'AirflowVelocity', 'operator': 'EQ', 'value': {'reported_value': 30.0, 'reported_unit': 'cm/s', 'canonical_value': None, 'canonical_unit': None, 'lower': None, 'upper': None, 'approximate': False, 'raw_expression': None, 'tolerance': None}, 'qualifiers': {}}; actual [{'value': {'reported_value': 20.0, 'reported_unit': 'cm/s', 'canonical_value': 0.2, 'canonical_unit': 'm/s', 'lower': None, 'upper': None, 'approximate': False, 'raw_expression': None, 'tolerance': None}, 'qualifiers': {'context': 'reported_condition', 'origin': 'canonical_condition_projection', 'original_record': {'canonical_lower_value': None, 'canonical_unit': 'm/s', 'canonical_upper_value': None, 'canonical_value': 0.2, 'evidence_refs': [{'evidence_id': 'E-psi-98-table-S1', 'page': None, 'section': 'Experimental table', 'source_id': 'psi-98'}], 'id': 'psi-98-S1-flow_velocity', 'is_approximate': False, 'kind': 'flow_velocity', 'reported_lower_value': None, 'reported_unit': 'cm/s', 'reported_upper_value': None, 'reported_value': 20.0, 'type': 'ConditionRecord'}, 'role': 'reported_condition'}, 'evidence_ids': ['E-psi-98-table-S1']}]",
+          "cannot_conclude": "Findings cannot be transferred across materials or conditions; category matches do not establish uniform family behavior.",
+          "ranking_factors": {
+            "MATCH": 1,
+            "DIFFER": 1,
+            "UNKNOWN": 0
+          },
+          "ranking_score": 5,
+          "ranking_policy": {
+            "anchor_relations": [
+              "hasMaterial",
+              "hasPhenomenon"
+            ],
+            "dimension_weights": {
+              "hasMaterial": 3,
+              "hasPhenomenon": 3,
+              "hasGravityCondition": 2,
+              "AirflowVelocity": 2,
+              "OxygenConcentration": 2,
+              "Pressure": 1
+            },
+            "match_weight": 3,
+            "difference_weight": -2,
+            "unknown_weight": -1
+          }
+        }
+      },
+      {
+        "id": "psi-98-S2",
+        "matches": [
+          "hasMaterial=SIBAL Fabric"
+        ],
+        "differs": [
+          "AirflowVelocity"
+        ],
+        "unknown": [],
+        "invalid": [],
+        "unresolved": [],
+        "evidence_ids": [
+          "E-psi-98-table-S2"
+        ],
+        "relationship_explanation": {
+          "dimensions": [
+            {
+              "dimension": "hasMaterial",
+              "status": "MATCH",
+              "requested": "SIBAL Fabric",
+              "actual": [
+                "SIBAL Fabric"
+              ],
+              "relationships": [],
+              "evidence_ids": [
+                "E-psi-98-table-S2"
+              ],
+              "ranking_contribution": 9
+            },
+            {
+              "dimension": "AirflowVelocity",
+              "status": "DIFFER",
+              "invalid": false,
+              "requested": {
+                "property_id": "AirflowVelocity",
+                "operator": "EQ",
+                "value": {
+                  "reported_value": 30.0,
+                  "reported_unit": "cm/s",
+                  "canonical_value": null,
+                  "canonical_unit": null,
+                  "lower": null,
+                  "upper": null,
+                  "approximate": false,
+                  "raw_expression": null,
+                  "tolerance": null
+                },
+                "qualifiers": {}
+              },
+              "actual": [
+                {
+                  "value": {
+                    "reported_value": 20.0,
+                    "reported_unit": "cm/s",
+                    "canonical_value": 0.2,
+                    "canonical_unit": "m/s",
+                    "lower": null,
+                    "upper": null,
+                    "approximate": false,
+                    "raw_expression": null,
+                    "tolerance": null
+                  },
+                  "qualifiers": {
+                    "context": "reported_condition",
+                    "origin": "canonical_condition_projection",
+                    "original_record": {
+                      "canonical_lower_value": null,
+                      "canonical_unit": "m/s",
+                      "canonical_upper_value": null,
+                      "canonical_value": 0.2,
+                      "evidence_refs": [
+                        {
+                          "evidence_id": "E-psi-98-table-S2",
+                          "page": null,
+                          "section": "Experimental table",
+                          "source_id": "psi-98"
+                        }
+                      ],
+                      "id": "psi-98-S2-flow_velocity",
+                      "is_approximate": false,
+                      "kind": "flow_velocity",
+                      "reported_lower_value": null,
+                      "reported_unit": "cm/s",
+                      "reported_upper_value": null,
+                      "reported_value": 20.0,
+                      "type": "ConditionRecord"
+                    },
+                    "role": "reported_condition"
+                  },
+                  "evidence_ids": [
+                    "E-psi-98-table-S2"
+                  ]
+                }
+              ],
+              "ranking_contribution": -4
+            }
+          ],
+          "matching_constraints": [
+            {
+              "dimension": "hasMaterial",
+              "status": "MATCH",
+              "requested": "SIBAL Fabric",
+              "actual": [
+                "SIBAL Fabric"
+              ],
+              "relationships": [],
+              "evidence_ids": [
+                "E-psi-98-table-S2"
+              ],
+              "ranking_contribution": 9
+            }
+          ],
+          "differing_constraints": [
+            {
+              "dimension": "AirflowVelocity",
+              "status": "DIFFER",
+              "invalid": false,
+              "requested": {
+                "property_id": "AirflowVelocity",
+                "operator": "EQ",
+                "value": {
+                  "reported_value": 30.0,
+                  "reported_unit": "cm/s",
+                  "canonical_value": null,
+                  "canonical_unit": null,
+                  "lower": null,
+                  "upper": null,
+                  "approximate": false,
+                  "raw_expression": null,
+                  "tolerance": null
+                },
+                "qualifiers": {}
+              },
+              "actual": [
+                {
+                  "value": {
+                    "reported_value": 20.0,
+                    "reported_unit": "cm/s",
+                    "canonical_value": 0.2,
+                    "canonical_unit": "m/s",
+                    "lower": null,
+                    "upper": null,
+                    "approximate": false,
+                    "raw_expression": null,
+                    "tolerance": null
+                  },
+                  "qualifiers": {
+                    "context": "reported_condition",
+                    "origin": "canonical_condition_projection",
+                    "original_record": {
+                      "canonical_lower_value": null,
+                      "canonical_unit": "m/s",
+                      "canonical_upper_value": null,
+                      "canonical_value": 0.2,
+                      "evidence_refs": [
+                        {
+                          "evidence_id": "E-psi-98-table-S2",
+                          "page": null,
+                          "section": "Experimental table",
+                          "source_id": "psi-98"
+                        }
+                      ],
+                      "id": "psi-98-S2-flow_velocity",
+                      "is_approximate": false,
+                      "kind": "flow_velocity",
+                      "reported_lower_value": null,
+                      "reported_unit": "cm/s",
+                      "reported_upper_value": null,
+                      "reported_value": 20.0,
+                      "type": "ConditionRecord"
+                    },
+                    "role": "reported_condition"
+                  },
+                  "evidence_ids": [
+                    "E-psi-98-table-S2"
+                  ]
+                }
+              ],
+              "ranking_contribution": -4
+            }
+          ],
+          "unknown_constraints": [],
+          "source_evidence_ids": [
+            "E-psi-98-table-S2"
+          ],
+          "why_useful": "hasMaterial MATCH: requested SIBAL Fabric; actual ['SIBAL Fabric']; AirflowVelocity DIFFER: requested {'property_id': 'AirflowVelocity', 'operator': 'EQ', 'value': {'reported_value': 30.0, 'reported_unit': 'cm/s', 'canonical_value': None, 'canonical_unit': None, 'lower': None, 'upper': None, 'approximate': False, 'raw_expression': None, 'tolerance': None}, 'qualifiers': {}}; actual [{'value': {'reported_value': 20.0, 'reported_unit': 'cm/s', 'canonical_value': 0.2, 'canonical_unit': 'm/s', 'lower': None, 'upper': None, 'approximate': False, 'raw_expression': None, 'tolerance': None}, 'qualifiers': {'context': 'reported_condition', 'origin': 'canonical_condition_projection', 'original_record': {'canonical_lower_value': None, 'canonical_unit': 'm/s', 'canonical_upper_value': None, 'canonical_value': 0.2, 'evidence_refs': [{'evidence_id': 'E-psi-98-table-S2', 'page': None, 'section': 'Experimental table', 'source_id': 'psi-98'}], 'id': 'psi-98-S2-flow_velocity', 'is_approximate': False, 'kind': 'flow_velocity', 'reported_lower_value': None, 'reported_unit': 'cm/s', 'reported_upper_value': None, 'reported_value': 20.0, 'type': 'ConditionRecord'}, 'role': 'reported_condition'}, 'evidence_ids': ['E-psi-98-table-S2']}]",
+          "cannot_conclude": "Findings cannot be transferred across materials or conditions; category matches do not establish uniform family behavior.",
+          "ranking_factors": {
+            "MATCH": 1,
+            "DIFFER": 1,
+            "UNKNOWN": 0
+          },
+          "ranking_score": 5,
+          "ranking_policy": {
+            "anchor_relations": [
+              "hasMaterial",
+              "hasPhenomenon"
+            ],
+            "dimension_weights": {
+              "hasMaterial": 3,
+              "hasPhenomenon": 3,
+              "hasGravityCondition": 2,
+              "AirflowVelocity": 2,
+              "OxygenConcentration": 2,
+              "Pressure": 1
+            },
+            "match_weight": 3,
+            "difference_weight": -2,
+            "unknown_weight": -1
+          }
+        }
+      }
+    ],
+    "sources": [
+      {
+        "source": {
+          "source_id": "psi-98",
+          "source_type": "PSI",
+          "nasa_id": "PSI-98",
+          "title": "Saffire-I",
+          "url": "https://lsda.jsc.nasa.gov/Experiment/PSI-98"
+        },
+        "passage": {
+          "evidence_id": "E-psi-98-table-S2",
+          "document_id": "psi-98-experimental-table",
+          "page": null,
+          "section": "Experimental table",
+          "text": "S2,SIBAL Fabric,0.37,40.6,94,20,~ 21.5,182,8,70,Opposed,S2C1,S2C2",
+          "start_offset": 272,
+          "end_offset": 337,
+          "raw_file": "psi/PSI-98_experimental_table.csv",
+          "checksum": "c01f29c62455f0a3b512290ab85e5687ecded326733189f002f580368402308d",
+          "score": -6.183245538474925,
+          "source_metadata": {
+            "source_id": "psi-98",
+            "source_type": "PSI",
+            "nasa_id": "PSI-98",
+            "title": "Saffire-I",
+            "url": "https://lsda.jsc.nasa.gov/Experiment/PSI-98"
+          }
+        }
+      },
+      {
+        "source": {
+          "source_id": "psi-98",
+          "source_type": "PSI",
+          "nasa_id": "PSI-98",
+          "title": "Saffire-I",
+          "url": "https://lsda.jsc.nasa.gov/Experiment/PSI-98"
+        },
+        "passage": {
+          "evidence_id": "E-psi-98-table-S1",
+          "document_id": "psi-98-experimental-table",
+          "page": null,
+          "section": "Experimental table",
+          "text": "S1,SIBAL Fabric,0.37,40.6,94,20,21.5 - 21.7,182,8,420,Concurrent,S1C1,S1C2",
+          "start_offset": 0,
+          "end_offset": 74,
+          "raw_file": "psi/PSI-98_experimental_table.csv",
+          "checksum": "c01f29c62455f0a3b512290ab85e5687ecded326733189f002f580368402308d",
+          "score": -6.169235779688841,
+          "source_metadata": {
+            "source_id": "psi-98",
+            "source_type": "PSI",
+            "nasa_id": "PSI-98",
+            "title": "Saffire-I",
+            "url": "https://lsda.jsc.nasa.gov/Experiment/PSI-98"
+          }
+        }
+      }
+    ],
+    "limits": "Source table condition context retained; no assertion of measured airflow response."
+  },
+  {
+    "example": "SoFIE acrylic nomenclature",
+    "source": {
+      "source_id": "ntrs-20200000361",
+      "source_type": "NTRS PRESENTATION",
+      "nasa_id": "20200000361",
+      "title": "Solid Fuel Ignition and Extinction (SoFIE) Project on ISS",
+      "url": "https://ntrs.nasa.gov/citations/20200000361"
+    },
+    "evidence": {
+      "evidence_id": "E-751f8e0f5230aa68",
+      "document_id": "ntrs-20200000361",
+      "page": 4,
+      "section": null,
+      "text": "SoFIE \u2014 Solid Fuel Ignition and Extinction\n4\nMaterial Ignition and Suppression Test (MIST); Carlos Fernandez-Pello: UC Berkeley\nFuel: acrylic cylinders (PMMA)\nSpacecraft Materials Microgravity Research on Flammability (SM\u03bcRF); Sandra Olson: NASA GRC\nAcrylic cylinders (PMMA) and engineering materials (sheets)\nNarrow Channel Apparatus (NCA); Fletcher Miller: San Diego State University\nThick acrylic (PMMA)\nResidence Time Driven Flame Spread (RTDFS); Subrata Bhattacharjee: San Diego State University\nThin acrylic sheets (PMMA)\nGrowth and Extinction Limit (GEL); James T\u2019ien: Case Western Reserve University\nAcrylic spheres (PMMA",
+      "start_offset": 0,
+      "end_offset": 629,
+      "raw_file": "/home/liam/NASA/data/raw/ntrs-20200000361.pdf",
+      "checksum": "dc42805d92fb9073cda48d76b9aa3fdf9fd26b7780d537a9e8e1b73ac433e7b0"
+    },
+    "physical_pdf_page_verified": false,
+    "interpretation": "Documentary fuel description supports context; no acrylic family equivalence or experimental behavior transfer."
+  },
+  {
+    "example": "Saffire observation",
+    "source": {
+      "source_id": "ntrs-20205007829",
+      "source_type": "NTRS",
+      "nasa_id": "20205007829",
+      "title": "Spacecraft Fire Safety Needs for Exploration",
+      "url": "https://ntrs.nasa.gov/api/citations/20205007829/downloads/Exploration%20Needs%20in%20Fire%20Safety_9-25-2020.pdf"
+    },
+    "evidence": {
+      "evidence_id": "E-safety-saffire-observation",
+      "document_id": "ntrs-20205007829",
+      "page": 16,
+      "section": "Fire Suppression Requirements",
+      "text": "The fire didn\u2019t extinguish and began to grow when we turned the flow back on.",
+      "start_offset": null,
+      "end_offset": null,
+      "raw_file": null,
+      "checksum": null
+    },
+    "physical_pdf_page_verified": false,
+    "interpretation": "Explicit observed fire behavior; active suppression implications remain separate."
+  },
+  {
+    "example": "Open question antecedent",
+    "source": {
+      "source_id": "local-ntrs-20205007829",
+      "source_type": "developer-supplied NASA document",
+      "nasa_id": "local-ntrs-20205007829",
+      "title": "local-ntrs-20205007829",
+      "url": "file:///home/liam/NASA/data/raw/ntrs-20205007829.pdf"
+    },
+    "evidence": {
+      "evidence_id": "E-ae9ebc14b3783086",
+      "document_id": "local-ntrs-20205007829",
+      "page": 16,
+      "section": null,
+      "text": "Fire Suppression Requirements\n\uf0a8How do you qualify a spacecraft fire suppression\nsystem?\n\uf0a8On Earth, there are test fires that you have to\ndemonstrate that your system can extinguish\n\uf0b7\nFor spacecraft, what is your likely fire?\n\uf0b7\nHow do you account for micro- or partial-gravity?\n\uf0a8For a fixed fire suppression system in a\ncompartment, what suppressant concentration must\nbe reached and how long must it be held there?\n\uf0b7\nFor the Saffire-IV PMMA sample, we turned off the\nflow for 20 seconds\n\uf0b7\nThe fire didn\u2019t extinguish and began to grow when we\nturned the flow back on\n\uf0d8In a spacecraft, suppressant could have been used\nto \u201cknock down\u201d the fire but wasn\u2019t held at the\ndesired concentration long enough for surface to cool\n\uf0a8Additional focused tests may be required to develop\nguidance on these questions\n16\nPMMA Sample\nSample card\nAbove: Deflagration as a\nresidual flame ignites MMA\nvapors on the top and bottom\nsurface\nRight: Decaying flame on\nthe upper surface when\nthe flow is off",
+      "start_offset": 0,
+      "end_offset": 979,
+      "raw_file": "/home/liam/NASA/data/raw/ntrs-20205007829.pdf",
+      "checksum": "769f062bb966340ee568170f39c311dee12a6a774a680137c3994a21e66c7b78"
+    },
+    "physical_pdf_page_verified": false,
+    "interpretation": "Source context contains question wording; its status as a NASA-identified open scientific question needs review."
+  },
+  {
+    "example": "Native specimen-to-material association",
+    "route": {
+      "results": [
+        {
+          "entity": "Methanol",
+          "path": [
+            {
+              "from": "psi-69-1-sample",
+              "to": "Methanol",
+              "relation": "madeOf",
+              "requested_relation": "madeOf",
+              "direction": "FORWARD",
+              "evidence_ids": [
+                "E-e58f5fab3654ce46"
+              ],
+              "semantics": "ASSOCIATION"
+            }
+          ],
+          "classification": "RELATED",
+          "limits": "Connectivity does not establish causality, inheritance or applicability."
+        }
+      ],
+      "examined": 1,
+      "truncated": false
+    },
+    "limits": "Association is not hierarchy, causal support or applicability."
+  },
+  {
+    "example": "Unresolved specimen",
+    "record": {
+      "sample_id": "psi-25-B3-sample",
+      "original_description": "100 micron film   2 cm wide",
+      "identity": null,
+      "disposition": "INSUFFICIENT_SOURCE_CONTEXT",
+      "dimensions": [
+        {
+          "attribute": "width",
+          "reported_value": "2",
+          "reported_unit": "cm",
+          "canonical_value": 0.02,
+          "canonical_unit": "m",
+          "source_span": "2 cm wide",
+          "start": 18,
+          "end": 27,
+          "role": "SPECIMEN_CHARACTERISTIC",
+          "publication_status": "REVIEW_REQUIRED"
+        }
+      ],
+      "evidence_ids": [
+        "E-6521d4ae320dbfec"
+      ],
+      "specimen_identity_preserved": true
+    },
+    "publication_status": "REVIEW_REQUIRED"
+  }
+]

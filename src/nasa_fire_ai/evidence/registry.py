@@ -28,6 +28,8 @@ class EvidenceRegistry:
         CREATE TABLE IF NOT EXISTS document_metadata(document_id TEXT PRIMARY KEY, authors TEXT, publication_date TEXT, document_type TEXT, nasa_center TEXT, keywords TEXT, upstream_path TEXT, verification_status TEXT);
         CREATE TABLE IF NOT EXISTS phase3_cache(cache_key TEXT PRIMARY KEY, cache_kind TEXT, payload_json TEXT, created_at TEXT);
         CREATE TABLE IF NOT EXISTS semantic_staging(candidate_id TEXT PRIMARY KEY, candidate_type TEXT, raw_label TEXT, payload_json TEXT, source_id TEXT, evidence_id TEXT, resolution_status TEXT, review_status TEXT, created_at TEXT);
+        CREATE TABLE IF NOT EXISTS evidence_locations(evidence_id TEXT PRIMARY KEY, location_json TEXT);
+        CREATE TABLE IF NOT EXISTS structured_cells(evidence_id TEXT, column_ordinal INTEGER, locator_json TEXT, PRIMARY KEY(evidence_id,column_ordinal));
         """)
         for column in (
             "reviewer_note TEXT",
@@ -186,7 +188,40 @@ class EvidenceRegistry:
         row = self.db.execute(
             "SELECT * FROM passages WHERE evidence_id=?", (evidence_id,)
         ).fetchone()
-        return dict(row) if row else None
+        if not row:
+            return None
+        result = dict(row)
+        location = self.db.execute(
+            "SELECT location_json FROM evidence_locations WHERE evidence_id=?", (evidence_id,)
+        ).fetchone()
+        if location:
+            result["structured_location"] = json.loads(location[0])
+            result["page_location_verified"] = (
+                result["structured_location"].get("physical_pdf_page") == result["page"]
+                and result["page"] is not None
+            )
+        cells = self.db.execute(
+            "SELECT locator_json FROM structured_cells WHERE evidence_id=? ORDER BY column_ordinal",
+            (evidence_id,),
+        ).fetchall()
+        if cells:
+            result["source_cells"] = [json.loads(cell[0]) for cell in cells]
+            result["offset_contract"] = result["source_cells"][0]["offset_contract"]
+        return result
+
+    def add_evidence_location(self, evidence_id: str, location: dict):
+        if self.resolve(evidence_id) is None:
+            raise ValueError("location requires an existing evidence ID")
+        encoded = json.dumps(location, sort_keys=True)
+        existing = self.db.execute(
+            "SELECT location_json FROM evidence_locations WHERE evidence_id=?", (evidence_id,)
+        ).fetchone()
+        if existing and existing[0] != encoded:
+            raise ValueError("conflicting evidence location")
+        self.db.execute(
+            "INSERT OR IGNORE INTO evidence_locations VALUES (?,?)", (evidence_id, encoded)
+        )
+        self.db.commit()
 
     def source_metadata(self, evidence_id: str) -> dict | None:
         row = self.db.execute(

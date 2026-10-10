@@ -1,0 +1,89 @@
+{
+  "observed": [
+    {
+      "component": "extraction",
+      "evidence_id": "E-safety-saffire-intervention",
+      "type": "LLM_SOURCE_SPAN_OR_MENTION_FAILURE",
+      "severity": "HIGH_IF_PUBLISHED",
+      "actual_effect": "REJECTED_NO_CANONICAL_PUBLICATION",
+      "details": {
+        "proposal": {
+          "subject_mention": "Saffire-IV PMMA sample",
+          "predicate_candidate": "turned off the flow",
+          "object_mention": "",
+          "supporting_span": "For the Saffire-IV PMMA sample, we turned off the flow for 20 seconds."
+        },
+        "reason": "mention absent from supporting span"
+      }
+    },
+    {
+      "component": "extraction",
+      "evidence_id": "E-ae9ebc14b3783086",
+      "type": "LLM_SOURCE_SPAN_OR_MENTION_FAILURE",
+      "severity": "HIGH_IF_PUBLISHED",
+      "actual_effect": "REJECTED_NO_CANONICAL_PUBLICATION",
+      "details": {
+        "proposal": {
+          "subject_mention": "For the Saffire-IV PMMA sample, we turned off the flow for 20 seconds",
+          "predicate_candidate": "The fire didn\u2019t extinguish and began to grow when we turned the flow back on",
+          "object_mention": "The fire didn\u2019t extinguish and began to grow when we turned the flow back on",
+          "supporting_span": "For the Saffire-IV PMMA sample, we turned off the flow for 20 seconds"
+        },
+        "reason": "mention absent from supporting span"
+      }
+    },
+    {
+      "component": "extraction",
+      "evidence_id": "E-psi-98-table-S2",
+      "type": "LLM_SOURCE_SPAN_OR_MENTION_FAILURE",
+      "severity": "HIGH_IF_PUBLISHED",
+      "actual_effect": "REJECTED_NO_CANONICAL_PUBLICATION",
+      "details": {
+        "proposal": {
+          "subject_mention": "S2",
+          "predicate_candidate": "SIBAL Fabric",
+          "object_mention": "0.37",
+          "supporting_span": "40.6,94,20,~ 21.5,182,8,70,Opposed,S2C1,S2C2"
+        },
+        "reason": "mention absent from supporting span"
+      }
+    },
+    {
+      "component": "exploratory_planning",
+      "case_id": "qi19",
+      "type": "SEMANTIC_SCOPE_ADDITION",
+      "severity": "MODERATE",
+      "actual_effect": "Initial equivalent expansion accepted; revised validator rejects; canonical intent unchanged."
+    },
+    {
+      "component": "graph_path_planning",
+      "type": "UNSUPPORTED_ENDPOINT_RELATION",
+      "severity": "MODERATE",
+      "actual_effect": "Model selected hasMaterial for a specimen; no such edge exists. Native route returns zero results, no invented edge."
+    },
+    {
+      "component": "reranking",
+      "type": "MISSING_SUPPORTING_SPAN",
+      "severity": "MODERATE",
+      "actual_effect": "One judgment rejected."
+    },
+    {
+      "component": "epistemic_contract",
+      "case_id": "qi49",
+      "type": "LEGACY_AMBIGUITY_LOSS",
+      "severity": "HIGH_IF_ATTRIBUTED",
+      "actual_effect": "Historical conversion retrieves PMMA runs for an equivalence question. Native validated intent retains ambiguity; contract review pending."
+    }
+  ],
+  "false_family_relations_published": 0,
+  "new_measured_observations_from_design": 0,
+  "invalid_canonical_evidence_references": 0,
+  "independent_related_relevance_errors": "UNMEASURED",
+  "review_required": [
+    "CO versus CO2",
+    "burning rate units",
+    "supportedBy semantics",
+    "93 specimen identities",
+    "epistemic and expanded-candidate usefulness"
+  ]
+}

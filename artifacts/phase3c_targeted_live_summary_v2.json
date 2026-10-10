@@ -1,0 +1,28 @@
+{
+  "providers": {
+    "NVIDIA": {
+      "new_calls": 12,
+      "failed_contracts": 1,
+      "known_input_tokens": 8976,
+      "known_output_tokens": 1768,
+      "median_latency_ms": 7331.865858999663,
+      "usage_completeness": "NVIDIA failed source-span contract lacks captured usage; Jev adapter does not expose token usage",
+      "scientific_incremental_value": "NOT_MEASURABLE"
+    },
+    "Jev": {
+      "new_calls": 6,
+      "failed_contracts": 0,
+      "known_input_tokens": 0,
+      "known_output_tokens": 0,
+      "median_latency_ms": 254.57840801391285,
+      "usage_completeness": "NVIDIA failed source-span contract lacks captured usage; Jev adapter does not expose token usage",
+      "scientific_incremental_value": "NOT_MEASURABLE"
+    }
+  },
+  "new_inference_only": true,
+  "canonical_model_facts_published": 0,
+  "cache_replay_note": "D/E/F pilot reuses compatible expansion/rerank contracts; F latency includes warm replay and is not a cold inference speed comparison",
+  "scientific_support_failures": 1,
+  "independently_reviewed_labels": 0,
+  "ranking_strategy_comparison": "deterministic weighted ordering versus selective contextual model proposals; no independent relevance labels"
+}

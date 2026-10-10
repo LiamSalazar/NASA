@@ -1,10 +1,42 @@
 """Class/authority/topic selection; lexical context never establishes scientific identity."""
 
+import os
 import re
 
 
 def words(text):
     return set(re.findall(r"[a-z0-9]+", str(text).lower()))
+
+
+def antecedent_context(trace, registry, limit=3):
+    """Recover documentary context without approving questions or physical page numbers."""
+    from nasa_fire_ai.ingestion.source_spans import recover_span
+
+    found = {}
+    for item in trace:
+        if "question_content_requires_source_antecedent_review" not in item["excluded"]:
+            continue
+        for eid in item["evidence_ids"]:
+            passage = registry.resolve(eid)
+            found[eid] = {**passage, "context_status": "ANTECEDENT_REVIEW_REQUIRED"}
+            source = registry.source_metadata(eid)["source_id"]
+            rows = registry.db.execute(
+                "SELECT p.evidence_id,p.text FROM passages p JOIN documents d USING(document_id) "
+                "WHERE d.source_id=? AND p.text LIKE '%?%' ORDER BY p.evidence_id",
+                (source,),
+            )
+            for row in rows:
+                try:
+                    recover_span(row["text"], passage["text"])
+                except ValueError:
+                    continue
+                found[row["evidence_id"]] = {
+                    **registry.resolve(row["evidence_id"]),
+                    "context_status": "ANTECEDENT_REVIEW_REQUIRED",
+                }
+                if len(found) >= limit:
+                    return list(found.values())
+    return list(found.values())
 
 
 def select_information(intent, query, store, evidence_registry):
@@ -76,10 +108,26 @@ def select_information(intent, query, store, evidence_registry):
             excluded.append("missing_evidence")
         if not topic_ok:
             excluded.append("no_topic_overlap")
+        # An anaphoric reference does not establish the content of a scientific question.
+        # Preserve the historical path unless source enrichment is explicitly enabled.
+        if (
+            os.getenv("SOURCE_KNOWLEDGE_ENRICHMENT_ENABLED", "false").lower() == "true"
+            and any(metadata.get(c, {}).get("reject_anaphoric_only") for c in classes)
+            and re.search(r"\b(?:these|those|such) questions\b", text, re.IGNORECASE)
+            and "?" not in text
+        ):
+            excluded.append("question_content_requires_source_antecedent_review")
         if intent.clarification_required or intent.unresolved_mentions:
             excluded.append("unresolved_query")
         own_overlap = topics & own
         context_overlap = overlap - own
+        # Same-page topic overlap is discovery context, not applicability of
+        # the statement itself. An observation needs its own topical support.
+        if topics and not own_overlap:
+            excluded.append("topic_only_in_documentary_context")
+        for topic, forms in policy.get("topical_wordforms", {}).items():
+            if words(query).intersection(forms) and not own.intersection(forms):
+                excluded.append(f"requested_topic_absent_from_statement_scope:{topic}")
         score = 3 * len(own_overlap) + len(context_overlap)
         topic_coverage = len(overlap) / len(topics) if topics else 1.0
         candidates.append(

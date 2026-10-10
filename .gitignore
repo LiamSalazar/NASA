@@ -5,6 +5,13 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+.cache/
+
+# Local logs, temporary files and editor swap files
+*.log
+*.tmp
+*.swp
+*.swo
 
 # Local configuration and secrets
 .env
@@ -16,6 +23,8 @@ data/index/*.sqlite
 data/index/*.sqlite-*
 data/index/*.npy
 data/index/*.npz
+data/index/*.wal
+data/index/*.shm
 
 # Rebuildable evaluation databases; retain JSON/JSONL results and RDF snapshots
 artifacts/**/*.sqlite

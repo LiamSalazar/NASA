@@ -65,10 +65,14 @@ def parse_expression(expression, datatype, operators):
     range_match = re.search(rf"({number})\s*[-–]\s*({number})", text)
     nums = re.findall(number, text)
     unit_match = re.search(
-        r"cm/s|mm/s|m/s|mmhg|kpa|pa|fraction|percent|%|\bk\b|\bs\b|\bw\b|\bm\b", text
+        r"mm(?:2|²|\^2)/s|m(?:2|²|\^2)/s|cm/s|mm/s|m/s|mmhg|kpa|pa|fraction|percent|%|\bcm\b|\bmm\b|\bum\b|µm|μm|\bppm\b|\bk\b|\bs\b|\bw\b|\bm\b",
+        text,
     )
     unit = unit_match.group(0) if unit_match else None
     unit = "%" if unit == "percent" else unit
+    units = re.findall(r"cm/s|mm/s|m/s|mmhg|kpa|pa|fraction|percent|%", text)
+    if len({"%" if u == "percent" else u for u in units}) > 1:
+        raise ValueError("mixed-unit expression requires explicit normalization")
     if not nums:
         raise ValueError("numeric expression has no value")
     value = GenericValue(
@@ -82,7 +86,9 @@ def parse_expression(expression, datatype, operators):
         value.reported_value = None
         value.lower, value.upper = map(float, nums)
         return "BETWEEN", value
-    if any(x in text for x in ("about", "roughly", "approximately", "approx", "~", "±", "+/-")):
+    if any(
+        x in text for x in ("about", "roughly", "approximately", "approx", "~", "≈", "±", "+/-")
+    ):
         value.approximate = True
         if "±" in text or "+/-" in text:
             if len(nums) != 2:
@@ -96,25 +102,92 @@ def parse_expression(expression, datatype, operators):
 
 
 def resolve_minimal(proposal, registry, language, context=None, query=None):
+    if query:
+        from nasa_fire_ai.query.numeric_mentions import literal_numeric_mentions
+
+        literal = literal_numeric_mentions(query, registry)
+        literal_ids = {row["property_id"] for row in literal}
+        # Raw, explicitly scoped numeric text takes precedence over linguistic
+        # proposals. Unknown unrelated properties remain unresolved.
+        retained = []
+        unsupported_numeric = []
+        for mention in proposal.properties:
+            status, pid = registry.resolve_property(mention.label)
+            if status == "CANONICAL" and registry.properties[pid].datatype == "numeric":
+                definition = registry.properties[pid]
+                explicitly_named = any(
+                    re.search(rf"(?<!\w){re.escape(alias)}(?!\w)", query, re.IGNORECASE)
+                    for alias in [pid, *definition.aliases]
+                )
+                if not explicitly_named:
+                    if not literal:
+                        unsupported_numeric.append("numeric_quantity_not_explicit_in_query")
+                    continue
+                if pid not in literal_ids and " ".join(
+                    mention.expression.lower().split()
+                ) not in " ".join(query.lower().split()):
+                    unsupported_numeric.append(
+                        "numeric_expression_or_unit_not_literal:" + mention.expression
+                    )
+                    continue
+            same_surface = any(
+                mention.label.lower() == row["label"].lower() + " velocity"
+                and mention.expression == row["expression"]
+                for row in literal
+            )
+            if pid not in literal_ids and not (status == "UNKNOWN" and same_surface):
+                retained.append(mention)
+        proposal = proposal.model_copy(
+            update={
+                "unknown": list(dict.fromkeys([*proposal.unknown, *unsupported_numeric])),
+                "properties": retained
+                + [
+                    PropertyMention(label=row["label"], expression=row["expression"])
+                    for row in literal
+                ],
+            }
+        )
+    language = {
+        **language,
+        "entity_mentions": {
+            **language["entity_mentions"],
+            **getattr(registry, "entity_mentions", {}),
+        },
+    }
+
     def contains(text, label):
         return bool(re.search(rf"(?<!\w){re.escape(label.lower())}(?!\w)", text.lower()))
 
     def known_entities(text):
-        return [
+        matches = [
             (eid, meta)
             for eid, meta in language["entity_mentions"].items()
             if eid in registry.entities and any(contains(text, a) for a in [eid, *meta["aliases"]])
         ]
+        # Suppress a shorter alias only when its occurrence is contained within
+        # a longer approved alias. Separate mentions still retain both identities.
+        spans = []
+        for eid, meta in matches:
+            for alias in [eid, *meta["aliases"]]:
+                spans.extend(
+                    (m.start(), m.end(), eid)
+                    for m in re.finditer(rf"(?<!\w){re.escape(alias.lower())}(?!\w)", text.lower())
+                )
+        retained = {
+            eid
+            for start, end, eid in spans
+            if not any(
+                a <= start and end <= b and (a < start or end < b)
+                for a, b, other in spans
+                if other != eid
+            )
+        }
+        return [(eid, meta) for eid, meta in matches if eid in retained]
 
     # Minimal proposals can contain a compound surface phrase. Split only using
     # approved aliases, never language-model suggested scientific equivalence.
     if query:
-        discovered = [
-            alias
-            for meta in language["entity_mentions"].values()
-            for alias in meta["aliases"]
-            if contains(query, alias)
-        ]
+        discovered = [eid for eid, _ in known_entities(query)]
         proposal = proposal.model_copy(
             update={"entities": list(dict.fromkeys(proposal.entities + discovered))}
         )
@@ -145,6 +218,8 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
 
     unresolved = list(proposal.unknown)
     ambiguous = list(proposal.ambiguous)
+    if query and literal and re.search(r"\b(?:or|either)\b", query, re.IGNORECASE):
+        ambiguous.append("numeric_disjunction_requires_clarification")
     protected = {x.lower() for x in language.get("ambiguous_mentions", [])}
     entities = []
     for mention in proposal.entities:
@@ -152,6 +227,9 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
             ambiguous.append(mention)
             continue
         matches = known_entities(mention)
+        if query:
+            raw_ids = {eid for eid, _ in known_entities(query)}
+            matches = [(eid, meta) for eid, meta in matches if eid in raw_ids]
         if matches:
             entities.extend(
                 EntityConstraintV2(relation=meta["relation"], entity_id=eid)
@@ -187,7 +265,10 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
                 expression, registry.properties[pid].datatype, language["operators"]
             )
             c = PropertyConstraintV2(property_id=pid, operator=operator, value=value)
-            if query:
+            intrinsic_context = registry.properties[pid].context
+            if intrinsic_context is not None:
+                c.qualifiers["context"] = intrinsic_context
+            elif query:
                 for qualifier, aliases in language.get("context_mentions", {}).items():
                     if any(contains(query, a) for a in aliases):
                         c.qualifiers["context"] = qualifier
@@ -218,12 +299,21 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
             for cid, aliases in language["information_mentions"].items()
             if cid != "ExperimentalRun" and any(contains(query, a) for a in aliases)
         )
+        if re.search(r"\bwhat\b.*\b(?:reported|reports|report)\b", query, re.IGNORECASE):
+            information.extend(
+                c
+                for c in ("ReportedObservation", "Intervention", "NASAConclusion")
+                if c in registry.information_classes
+            )
     targets = []
     for mention in proposal.targets:
         matches = [cid for cid in registry.target_classes if cid.lower() == mention.lower()]
         matches += [
             cid
-            for cid, aliases in language["information_mentions"].items()
+            for cid, aliases in {
+                **language["information_mentions"],
+                **language.get("target_mentions", {}),
+            }.items()
             if cid in registry.target_classes and mention.lower() in {a.lower() for a in aliases}
         ]
         if matches:
@@ -287,7 +377,12 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
         documentary = [
             c for c in information if registry.class_metadata.get(c, {}).get("documentary")
         ]
-        targets = documentary or ["ExperimentalRun"]
+        explicit_objects = [
+            cid
+            for cid, aliases in language.get("target_mentions", {}).items()
+            if query and cid in registry.target_classes and any(contains(query, a) for a in aliases)
+        ]
+        targets = explicit_objects or documentary or ["ExperimentalRun"]
     if query:
         # Reject any canonical association for a protected raw mention even when
         # the language model replaced it with a plausible scientific identity.
@@ -336,6 +431,14 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
             for relation, values in relation_values.items()
             if len(values) > 1
         ]
+        if (
+            query
+            and re.search(r"\b(?:family|series)\b", query, re.IGNORECASE)
+            and len(relation_values.get("belongsToInvestigation", set())) == 1
+            and "belongsToExperimentFamily" not in relation_values
+            and "ExperimentFamily" not in targets
+        ):
+            grouping_ambiguities.append("investigation_group_scope_unestablished")
     # Reconcile contradictory slots using pre-existing authority and expressions
     # actually validated. This does not resolve new scientific terms.
     information_aliases = {
@@ -356,6 +459,23 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
     unresolved = [x for x in unresolved if x.strip().lower() not in known]
     normalized_ambiguous = []
     for mention in ambiguous:
+        if mention == "numeric_disjunction_requires_clarification":
+            normalized_ambiguous.append(mention)
+            continue
+        if len(operands) >= 2 and known_entities(mention):
+            residual = mention.lower()
+            for eid, meta in known_entities(mention):
+                for alias in sorted([eid, *meta["aliases"]], key=len, reverse=True):
+                    residual = re.sub(rf"(?<!\w){re.escape(alias.lower())}(?!\w)", " ", residual)
+            mentioned_operands = 0
+            for operand in operands:
+                suffix = operand.rsplit("-", 1)[-1]
+                if contains(residual, suffix):
+                    mentioned_operands += 1
+                    residual = re.sub(rf"\b{re.escape(suffix.lower())}\b", " ", residual)
+            residual = re.sub(r"\b(?:and|versus|vs|compare)\b|[\s,/]+", "", residual)
+            if mentioned_operands == len(operands) and not residual:
+                continue
         key = mention.strip().lower()
         property_status, _ = registry.resolve_property(mention)
         if key in resolved_property_mentions or property_status == "CANONICAL":
@@ -378,6 +498,14 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
         raw_sources = re.findall(r"\bsource\s+(?:id\s+)?([\w.-]+)", query, re.IGNORECASE)
         sources.extend(s for s in raw_sources if s in registry.source_ids)
     sources = list(dict.fromkeys(sources))
+    from nasa_fire_ai.query.conceptual import is_conceptual_question
+
+    if query and is_conceptual_question(query):
+        # Existing EXPLAIN/documentary representation suffices. Unknown terms
+        # remain in the original question; no material equivalence is asserted.
+        return QueryIntentV2(
+            operation="EXPLAIN", targets=["Publication"], source_constraints=sources
+        )
     return QueryIntentV2(
         operation={"search": "SEARCH", "compare": "COMPARE", "explain": "EXPLAIN"}.get(
             proposal.operation.lower(), "SEARCH"

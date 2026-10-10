@@ -1,0 +1,22 @@
+{
+  "secret_scan_files": 683,
+  "secret_leaks": [],
+  "orphan_passages": 0,
+  "orphan_documents": 0,
+  "final_static_checks": [
+    {
+      "command": "uv run ruff format --check .",
+      "exit_code": 0,
+      "summary": "303 files already formatted"
+    },
+    {
+      "command": "uv run ruff check .",
+      "exit_code": 0,
+      "summary": "All checks passed!"
+    }
+  ],
+  "scientific_examples": "artifacts/phase3c_enrichment_scientific_examples_v1.json",
+  "component_errors": "artifacts/phase3c_enrichment_errors_v1.json",
+  "previous_full_quality": "artifacts/phase3c_enrichment_integrity_v1.json",
+  "status": "PASS"
+}

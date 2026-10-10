@@ -1,0 +1,46 @@
+{
+  "quality": [
+    {
+      "command": "uv run ruff format --check .",
+      "exit_code": 0,
+      "receipt": "artifacts/phase3c_targeted_quality_0_v5.txt"
+    },
+    {
+      "command": "uv run ruff check .",
+      "exit_code": 0,
+      "receipt": "artifacts/phase3c_targeted_quality_1_v5.txt"
+    },
+    {
+      "command": "uv run pytest -q",
+      "exit_code": 0,
+      "receipt": "artifacts/phase3c_targeted_quality_2_v5.txt"
+    }
+  ],
+  "immutable_files_checked": 746,
+  "changed_immutable_files": [],
+  "historical_gold_files_checked": 22,
+  "historical_benchmark_files_checked": 399,
+  "canonical_shacl": true,
+  "native_shacl": true,
+  "literal_shacl": true,
+  "sqlite_integrity": "ok",
+  "foreign_key_violations": [],
+  "manual_reference_checks": {
+    "passages_without_documents": 0,
+    "documents_without_sources": 0,
+    "cells_without_passages": 0,
+    "references_without_passages": 0,
+    "fts_missing": 0,
+    "fts_duplicates": 0,
+    "locations_without_passages": 0
+  },
+  "broken_graph_evidence": [],
+  "invalid_ontology_relations": [],
+  "secret_matches_outside_env": [],
+  "new_source_unit_accessors": "source:initial_carbon_dioxide, source:burning_rate (documented, opt-in)",
+  "independent_scientific_review": "PENDING",
+  "source_corrections": 532,
+  "canonical_runs_added": 111,
+  "canonical_samples_added": 19,
+  "status": "PASS"
+}

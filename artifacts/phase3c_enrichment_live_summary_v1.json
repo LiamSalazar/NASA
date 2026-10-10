@@ -1,0 +1,52 @@
+{
+  "new_calls": {
+    "NVIDIA": 13,
+    "Jev": 9
+  },
+  "replayed_provider_calls": 0,
+  "revised_historical_span_checks": 1,
+  "validated_relation_proposals": 4,
+  "rejected_relation_proposals": 3,
+  "proposals_published_as_canonical_science": 0,
+  "service_failures": 0,
+  "usage": {
+    "NVIDIA": {
+      "input_tokens": 7402,
+      "output_tokens": 2272,
+      "receipts_with_usage": 13,
+      "receipt_count": 13
+    },
+    "Jev": {
+      "input_tokens": 6870,
+      "output_tokens": 1162,
+      "receipts_with_usage": 9,
+      "receipt_count": 9
+    }
+  },
+  "median_latency_ms": {
+    "NVIDIA": 3973.0638159962837,
+    "Jev": 287.38909600360785
+  },
+  "equivalent_expansions_initially_accepted": 1,
+  "equivalent_expansions_initially_rejected": 8,
+  "exploratory_hypotheses": 9,
+  "equivalent_expansion_revalidation": [
+    {
+      "case_id": "qi19",
+      "query": "acrylic combustion NASA safety",
+      "original_live_verdict": "ACCEPTED",
+      "revised_verdict": "REJECTED",
+      "reason": "unverified_semantic_wording_change",
+      "new_calls": 0,
+      "execution_mode": "NEW_LIVE_RESPONSE_REVISED_DETERMINISTIC_VALIDATION"
+    }
+  ],
+  "rerank_invalid_judgments": 1,
+  "independent_relevance": "UNMEASURED; no expert labels",
+  "monetary_cost": "UNAVAILABLE",
+  "call_limit": {
+    "NVIDIA": 60,
+    "Jev": 30
+  },
+  "cache_note": "D/E may reuse live C/D responses within this campaign; warm latency is not cold model performance."
+}

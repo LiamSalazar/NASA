@@ -1,5 +1,7 @@
 version: phase3c-registry-v1
 selection_policy:
+  topical_wordforms:
+    suppression: [suppression, suppress, suppressing, suppressed]
   related:
     anchor_relations: [hasMaterial, hasPhenomenon]
     dimension_weights: {hasMaterial: 3, hasPhenomenon: 3, hasGravityCondition: 2, AirflowVelocity: 2, OxygenConcentration: 2, Pressure: 1}
@@ -8,7 +10,7 @@ selection_policy:
     unknown_weight: -1
   stop_words: [what, did, does, was, were, is, are, nasa, find, show, about, the, a, an, for, of, in, under, and, or, to, this, that, from, with, has, have, its, explicitly, identified]
 authority: "Existing canonical records, domain/lexicon.yaml and ontology/fire_safety.ttl; additive identities recorded for review"
-entities: [PMMA, SIBAL Fabric, microgravity, psi-98, psi-25]
+entities: [PMMA, SIBAL Fabric, microgravity, psi-98, psi-25, psi-26]
 properties:
   - {property_id: AirflowVelocity, dimension: velocity, canonical_unit: m/s, aliases: [airflow velocity, airflow, air flow, flow velocity, forced flow]}
   - {property_id: OxygenConcentration, dimension: fraction, canonical_unit: fraction, aliases: [oxygen concentration, oxygen, O2]}
@@ -21,6 +23,7 @@ relations:
   - {relation_id: belongsToExperimentFamily}
   - {relation_id: hasPhenomenon}
 classes:
+  Sample: {target: true}
   ExperimentalRun: {target: true, information: true, query_terms: [experiment, experiments, tests, runs]}
   Investigation: {target: true}
   ExperimentFamily: {target: true}
@@ -37,4 +40,4 @@ classes:
   Guidance: {information: true, bundle_field: guidance, query_terms: [guidance, guidelines]}
   DesignCriterion: {information: true, bundle_field: design_test_criteria}
   TestCriterion: {information: true, bundle_field: design_test_criteria}
-  OpenQuestion: {information: true, bundle_field: nasa_identified_open_questions, query_terms: [open questions, unresolved questions, future questions]}
+  OpenQuestion: {information: true, bundle_field: nasa_identified_open_questions, query_terms: [open questions, unresolved questions, future questions], reject_anaphoric_only: true}

@@ -1,0 +1,163 @@
+{
+  "Jev": {
+    "cached_inference_replays_executed": 0,
+    "fresh_calls": 4,
+    "known_input_tokens": 2172,
+    "known_output_tokens": 508,
+    "latency_ms": [
+      353.6943990038708,
+      191.9645130110439,
+      352.61471799458377,
+      173.16103700431995
+    ],
+    "new_canonical_facts": 0,
+    "scientific_precision": "NOT_MEASURABLE",
+    "unique_historical_interpretations": 0
+  },
+  "NVIDIA": {
+    "cached_inference_replays_executed": 35,
+    "fresh_calls": 5,
+    "known_input_tokens": 5312,
+    "known_output_tokens": 672,
+    "latency_ms": [
+      2041.6542530001607,
+      4294.00803198223,
+      2550.5970279918984,
+      12362.38268201123,
+      4628.363967000041
+    ],
+    "new_canonical_facts": 0,
+    "scientific_precision": "NOT_MEASURABLE",
+    "unique_historical_interpretations": 7
+  },
+  "earlier_pilot_harness_limitation": "v1 claimed page context, but adapter v4 ignored source_context; v2 transmits four registered source contexts and changes the cache key.",
+  "invalid_nemotron_exact_spans": 1,
+  "pilot": {
+    "D_deterministic_order": [
+      "E-safety-saffire-intervention",
+      "E-safety-saffire-observation",
+      "E-safety-saffire-suppression-open-question",
+      "E-safety-suppression-system-implication"
+    ],
+    "E_contextual_model": {
+      "cache_key": "e9a6451d9b2d9aaf10e30b516214ea0c30b6d434fbb053b5b4f3f6f09231ba05",
+      "candidate_input_digest": "f9bc3c19e433f063cc02951566880887bfdab05894eabda74bf56c807699951f",
+      "candidate_input_ids": [
+        "E-safety-saffire-intervention",
+        "E-safety-saffire-observation",
+        "E-safety-saffire-suppression-open-question",
+        "E-safety-suppression-system-implication"
+      ],
+      "effective_input_digest": "e019f08d607ed7593e4c96bd4384b8586a260996121a73108326daf8a7da6749",
+      "error": null,
+      "execution_mode": "NEW_INFERENCE",
+      "invalid": [
+        {
+          "evidence_id": "E-safety-saffire-suppression-open-question",
+          "reason": "missing_supporting_span"
+        }
+      ],
+      "judgments": [
+        {
+          "answer_support": "PARTIAL",
+          "authority": "UNVERIFIED_MODEL_PROPOSAL",
+          "candidate_relevance": "HIGH",
+          "classification_effect": "NONE",
+          "constraint_assessments": [],
+          "evidence_id": "E-safety-saffire-intervention",
+          "proposed_evidence_role": "CONTEXTUAL",
+          "reasons": [],
+          "supporting_span": "For the Saffire-IV PMMA sample, we turned off the \nflow for 20 seconds"
+        },
+        {
+          "answer_support": "PARTIAL",
+          "authority": "UNVERIFIED_MODEL_PROPOSAL",
+          "candidate_relevance": "HIGH",
+          "classification_effect": "NONE",
+          "constraint_assessments": [],
+          "evidence_id": "E-safety-saffire-observation",
+          "proposed_evidence_role": "CONTEXTUAL",
+          "reasons": [],
+          "supporting_span": "The fire didn\u2019t extinguish and began to grow when we \nturned the flow back on"
+        },
+        {
+          "answer_support": "NONE",
+          "authority": "UNVERIFIED_MODEL_PROPOSAL",
+          "candidate_relevance": "LOW",
+          "classification_effect": "NONE",
+          "constraint_assessments": [],
+          "evidence_id": "E-safety-suppression-system-implication",
+          "proposed_evidence_role": "CONTEXTUAL",
+          "reasons": [],
+          "supporting_span": ""
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "new_calls": 1,
+      "registered_source_context_ids": [
+        "E-safety-saffire-intervention",
+        "E-safety-saffire-observation",
+        "E-safety-saffire-suppression-open-question",
+        "E-safety-suppression-system-implication"
+      ],
+      "usage": {
+        "input_tokens": 2992,
+        "latency_ms": 4628.363967000041,
+        "output_tokens": 194
+      },
+      "version": "phase3c-contextual-rerank-v5"
+    },
+    "F_jev": "NOT_EXECUTED; existing rhetorical proposals do not resolve gravity applicability",
+    "candidate_budget": 4,
+    "canonical_eligibility_changes": 0,
+    "input_contains_original_page_context": true,
+    "intent": {
+      "ambiguities": [],
+      "clarification_required": false,
+      "comparison": null,
+      "conversation_reference": null,
+      "entity_constraints": [
+        {
+          "entity_id": "PMMA",
+          "relation": "hasMaterial"
+        },
+        {
+          "entity_id": "microgravity",
+          "relation": "hasGravityCondition"
+        }
+      ],
+      "operation": "SEARCH",
+      "property_constraints": [],
+      "requested_information": [
+        "ReportedObservation",
+        "Intervention",
+        "NASAConclusion"
+      ],
+      "schema_version": "query-intent-v2",
+      "source_constraints": [],
+      "targets": [
+        "ExperimentalRun"
+      ],
+      "unresolved_mentions": []
+    },
+    "new_raw_sources": 0,
+    "query": "What has NASA reported about suppressing PMMA fires in microgravity?",
+    "scientific_incremental_precision": "NOT_MEASURABLE",
+    "scientific_labels": 0,
+    "source_refs": [
+      "E-safety-saffire-intervention",
+      "E-safety-saffire-observation",
+      "E-safety-saffire-suppression-open-question",
+      "E-safety-suppression-system-implication"
+    ],
+    "v1_harness_limitation": "v1 supplied source_context but the v4 adapter omitted that field; v1's context declaration was inaccurate. v2 passes registered source context through the actual adapter."
+  },
+  "pilot_invalid_proposals": [
+    {
+      "evidence_id": "E-safety-saffire-suppression-open-question",
+      "reason": "missing_supporting_span"
+    }
+  ],
+  "redundant_jev_call": "Safety implication repeated once in v2 with identical passage; explicitly counted as fresh execution, not benefit",
+  "source_context_trials": "v1 lacked source path; v2 source file resolved but terminal punctuation prevented full-page reconstruction. These are diagnostic limitations, not scientific source absence. Final v3 PDF source packet resolves all four."
+}

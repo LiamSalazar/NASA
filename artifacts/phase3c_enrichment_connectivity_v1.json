@@ -1,0 +1,51 @@
+[
+  {
+    "provider": "NVIDIA",
+    "new_calls": 1,
+    "execution_mode": "NEW_LIVE_REQUEST",
+    "output": {
+      "status": "ok"
+    },
+    "usage": {
+      "latency_ms": 509.30080498801544,
+      "input_tokens": 29,
+      "output_tokens": 5
+    },
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "status": "PASS",
+    "latency_ms": 509.30881399835926
+  },
+  {
+    "provider": "Jev",
+    "new_calls": 1,
+    "execution_mode": "NEW_LIVE_REQUEST",
+    "output": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "epistemic_type": {
+          "type": "choice",
+          "choice": "NONE",
+          "confidence": 0.92,
+          "probabilities": {
+            "Intervention": 0.01,
+            "ReportedExperimentalObservation": 0.0,
+            "NASAConclusion": 0.0,
+            "SafetyImplication": 0.0,
+            "Requirement": 0.01,
+            "Guidance": 0.01,
+            "DesignCriterion": 0.0,
+            "TestCriterion": 0.04,
+            "NASAIdentifiedOpenQuestion": 0.0,
+            "NONE": 0.93
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 525,
+        "output_tokens": 125
+      }
+    },
+    "status": "PASS",
+    "latency_ms": 407.69123399513774
+  }
+]

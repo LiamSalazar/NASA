@@ -331,7 +331,16 @@ def classify_native(subject, intent, store, taxonomy_paths=None, related_policy=
             for c in requested_anchors
         ):
             return "NO_DIRECT", detail
-    return ("RELATED" if detail["matches"] or path_overlap else "NO_DIRECT"), detail
+    # For a numeric-only request, the same validated physical quantity with an
+    # explicit different value is an interpretable relationship. Previously a
+    # bound with no exact match lost all source-backed alternatives. Anchor
+    # checks above still protect required material/phenomenon scope.
+    numeric_difference = related_policy and any(
+        c.property_id in detail["differs"] for c in intent.property_constraints
+    )
+    return (
+        "RELATED" if detail["matches"] or path_overlap or numeric_difference else "NO_DIRECT"
+    ), detail
 
 
 @dataclass(frozen=True)
@@ -352,6 +361,27 @@ def execute_native(
     relational=None,
 ):
     started = perf_counter()
+    from nasa_fire_ai.query.conceptual import is_conceptual_question
+
+    conceptual = is_conceptual_question(query)
+    conceptual_support = {}
+    if conceptual:
+        from nasa_fire_ai.query.conceptual import approved_conceptual_support
+
+        conceptual_support = approved_conceptual_support(query, store, evidence_registry)
+        # Also protects lossy historical conversion when the original question
+        # is available. Experiment matches cannot answer terminology questions.
+        intent = QueryIntentV2(
+            operation="EXPLAIN",
+            targets=["Publication"],
+            source_constraints=intent.source_constraints,
+        )
+    if not conceptual:
+        grouped = execute_investigation_groups(
+            intent, query, store, evidence_registry, limit, hierarchical, relational
+        )
+        if grouped is not None:
+            return grouped
     plan = compile_native(
         intent,
         store,
@@ -421,12 +451,14 @@ def execute_native(
 
         for item in direct + related:
             item["relationship_explanation"] = constraint_explanation(
-                item["id"], intent, store, taxonomy_paths, item
+                item["id"], intent, store, taxonomy_paths, item, query=query
             )
         related.sort(
             key=lambda item: (-item["relationship_explanation"]["ranking_score"], item["id"])
         )
     selected = {x["id"] for x in direct + related}
+    if conceptual:
+        direct, related = [], []
     if plan.documentary:
         # Topic constraints are documentary ranking terms, never canonical run matches.
         selected.update(plan.candidate_entity_ids)
@@ -480,6 +512,15 @@ def execute_native(
             query, eligible_ids=all_documentary, limit=limit
         )
     info_selected, info_trace = select_information(intent, query, store, evidence_registry)
+    if conceptual:
+        for relation in conceptual_support.get("approved_relations", []):
+            documentary_passages.extend(
+                evidence_registry.resolve(eid) for eid in relation["evidence_ids"]
+            )
+    if os.getenv("SOURCE_KNOWLEDGE_ENRICHMENT_ENABLED", "false").lower() == "true":
+        from nasa_fire_ai.query.evidence_selection import antecedent_context
+
+        documentary_passages.extend(antecedent_context(info_trace, evidence_registry))
     if requested_science:
         # Run matches remain diagnostic, not a substitute for the requested class.
         selected = set(info_selected)
@@ -502,7 +543,7 @@ def execute_native(
 
         for item in direct + related:
             item["relationship_explanation"] = constraint_explanation(
-                item["id"], intent, store, taxonomy_paths, item
+                item["id"], intent, store, taxonomy_paths, item, query=query
             )
     # Documentary semantics retain the document target. Structured overlap may
     # select publications; plain documentary search uses eligible document evidence.
@@ -520,7 +561,23 @@ def execute_native(
                 continue
             field = store.registry.class_metadata.get(cls, {}).get("bundle_field")
             if field:
-                records.setdefault(field, []).append(store.payload(subject))
+                payload = store.payload(subject)
+                if subject in info_selected and (
+                    intent.entity_constraints or intent.property_constraints
+                ):
+                    from nasa_fire_ai.query.hierarchy import constraint_explanation
+
+                    _, scope_detail = classify_native(
+                        subject, intent, store, taxonomy_paths, hierarchical or relational
+                    )
+                    payload = {
+                        **payload,
+                        "scientific_applicability": constraint_explanation(
+                            subject, intent, store, taxonomy_paths, scope_detail, query=query
+                        ),
+                        "applicability_limit": "Topical statement selection does not establish every requested experimental condition",
+                    }
+                records.setdefault(field, []).append(payload)
             generic_records.append(
                 {"class_id": cls, **store.payload(subject), "evidence_ids": store.evidence(subject)}
             )
@@ -559,6 +616,9 @@ def execute_native(
     passages = list(merged.values())
     eligible = sorted(set(eligible) | {p["evidence_id"] for p in documentary_passages})
     for passage in passages:
+        resolved = evidence_registry.resolve(passage["evidence_id"])
+        if resolved:
+            passage.update(resolved)
         passage["source_metadata"] = evidence_registry.source_metadata(passage["evidence_id"])
     ranked = perf_counter()
     comparison = None
@@ -591,6 +651,13 @@ def execute_native(
         comparison=comparison,
         **records,
         retrieval_metadata={
+            "conceptual_query": {
+                "active": conceptual,
+                "original_question": query,
+                "equivalence_asserted": False,
+                "authority": "approved relations and source terminology only",
+                **conceptual_support,
+            },
             "executor": "native-rdf-v1",
             "query_intent_v2": intent.model_dump(mode="json"),
             "vectors_enabled": False,
@@ -650,6 +717,9 @@ def execute_native(
         if intent.unresolved_mentions
         else [],
     )
+    from nasa_fire_ai.query.related_presentation import group_related
+
+    bundle.retrieval_metadata["related_presentation"] = group_related(related, store)
     ended = perf_counter()
     return NativeExecutionResult(
         bundle,
@@ -662,4 +732,117 @@ def execute_native(
             "bundle_build": (ended - ranked) * 1000,
             "total": (ended - started) * 1000,
         },
+    )
+
+
+def execute_investigation_groups(
+    intent, query, store, evidence_registry, limit, hierarchical, relational
+):
+    """Bounded union for distinct investigation identities, preserving branch provenance."""
+    from dataclasses import replace
+
+    slots = {}
+    for constraint in intent.entity_constraints:
+        slots.setdefault(constraint.relation, []).append(constraint)
+    group_slots = [
+        relation
+        for relation, values in slots.items()
+        if len(values) > 1
+        and store.registry.relations.get(relation)
+        and store.registry.relations[relation].selection_scope
+    ]
+    if not (
+        len(group_slots) == 1
+        and len(slots[group_slots[0]]) <= 8
+        and not intent.comparison
+        and not intent.unresolved_mentions
+        and not any(
+            term in query.lower()
+            for term in (
+                "same experiment",
+                "single experiment",
+                "simultaneously",
+                "belongs to both",
+            )
+        )
+        and all(a.startswith("multiple_values_for_relation:") for a in intent.ambiguities)
+    ):
+        return None
+    relation = group_slots[0]
+    branches = []
+    for value in slots[relation]:
+        branch = intent.model_copy(
+            update={
+                "entity_constraints": [
+                    c for c in intent.entity_constraints if c.relation != relation
+                ]
+                + [value],
+                "ambiguities": [],
+                "clarification_required": False,
+            }
+        )
+        branches.append(
+            (
+                value.entity_id,
+                execute_native(
+                    branch, query, store, evidence_registry, limit, hierarchical, relational
+                ),
+            )
+        )
+    first = branches[0][1]
+    bundle = first.bundle.model_copy(deep=True)
+    for field in ("direct_evidence", "related_evidence"):
+        setattr(
+            bundle,
+            field,
+            [
+                {**item, "requested_group": group}
+                for group, result in branches
+                for item in getattr(result.bundle, field)
+            ],
+        )
+    for field in (
+        "semantic_records",
+        "experimental_observations",
+        "measurements",
+        "conditions",
+        "nasa_conclusions",
+        "safety_implications",
+        "requirements",
+        "guidance",
+        "design_test_criteria",
+        "nasa_identified_open_questions",
+        "interventions",
+        "publications",
+    ):
+        setattr(
+            bundle,
+            field,
+            [
+                {**item, "requested_group": group}
+                for group, result in branches
+                for item in getattr(result.bundle, field)
+            ],
+        )
+    passages = {
+        p["evidence_id"]: p for _, result in branches for p in result.bundle.evidence_passages
+    }
+    bundle.evidence_passages = list(passages.values())
+    bundle.no_direct_evidence = not bool(bundle.direct_evidence)
+    bundle.retrieval_metadata["query_intent_v2"] = intent.model_dump(mode="json")
+    bundle.retrieval_metadata["grouped_search"] = [
+        {"group": group, "no_direct": result.bundle.no_direct_evidence}
+        for group, result in branches
+    ]
+    from nasa_fire_ai.query.related_presentation import group_related
+
+    bundle.retrieval_metadata["related_presentation"] = group_related(
+        bundle.related_evidence, store
+    )
+    return replace(
+        first,
+        bundle=bundle,
+        eligible_evidence_ids=sorted(
+            {eid for _, result in branches for eid in result.eligible_evidence_ids}
+        ),
     )

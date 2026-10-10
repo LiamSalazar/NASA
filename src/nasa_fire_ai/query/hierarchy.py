@@ -7,6 +7,7 @@ or individual identity can satisfy a category/identity constraint.
 
 import hashlib
 import json
+import re
 from collections import deque
 from dataclasses import asdict, dataclass
 
@@ -188,7 +189,7 @@ def traverse(store, requested, scope, evidence_registry=None, max_depth=4, max_v
     return {"paths": results, "visits": visited, "budget_exhausted": exhausted or bool(queue)}
 
 
-def constraint_explanation(subject, intent, store, paths, detail):
+def constraint_explanation(subject, intent, store, paths, detail, query=None):
     dimensions = []
     for constraint in intent.entity_constraints:
         actual = sorted(store.relations(subject, constraint.relation))
@@ -246,7 +247,46 @@ def constraint_explanation(subject, intent, store, paths, detail):
             dimension_weights.get(dimension["dimension"], 1) * status_weights[dimension["status"]]
         )
     counts = {s: sum(d["status"] == s for d in dimensions) for s in ("MATCH", "DIFFER", "UNKNOWN")}
+    topic_terms = sorted(
+        {
+            term
+            for forms in store.registry.selection_policy.get("topical_wordforms", {}).values()
+            for term in forms
+            if query and re.search(rf"\b{re.escape(term)}\b", query, re.IGNORECASE)
+        }
+    )
     return {
+        "scientific_context": {
+            "requested_phenomenon_topic_terms": topic_terms,
+            "topic_term_authority": "LINGUISTIC_TOPIC_ONLY; not a canonical phenomenon assertion",
+            "requested_phenomena": [
+                c.entity_id for c in intent.entity_constraints if c.relation == "hasPhenomenon"
+            ],
+            "actual_phenomena": sorted(store.relations(subject, "hasPhenomenon")),
+            "phenomenon_status": (
+                "QUERY_PHENOMENON_UNMAPPED"
+                if topic_terms
+                and not any(c.relation == "hasPhenomenon" for c in intent.entity_constraints)
+                else "NOT_REQUESTED"
+                if not any(c.relation == "hasPhenomenon" for c in intent.entity_constraints)
+                else "SOURCE_RELATION_AVAILABLE"
+                if store.relations(subject, "hasPhenomenon")
+                else "UNKNOWN"
+            ),
+            "phenomenon_evidence_status": "SOURCE_RELATION_AVAILABLE"
+            if store.relations(subject, "hasPhenomenon")
+            else "UNKNOWN",
+            "actual_gravity": sorted(store.relations(subject, "hasGravityCondition")),
+            "measurement_context": sorted(
+                {
+                    row["qualifiers"].get("role", "UNKNOWN")
+                    for property_id in store.registry.properties
+                    for row in store.value_records(subject, property_id)
+                }
+            ),
+            "independent_usefulness": "UNADJUDICATED",
+            "scope_limit": "Constraint overlap establishes eligibility, not usefulness or claim transfer.",
+        },
         "dimensions": dimensions,
         "matching_constraints": [d for d in dimensions if d["status"] == "MATCH"],
         "differing_constraints": [d for d in dimensions if d["status"] == "DIFFER"],

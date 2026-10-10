@@ -74,6 +74,7 @@ class PropertyDefinition:
     canonical_unit: str | None
     datatype: Literal["numeric", "categorical"] = "numeric"
     aliases: list[str] = field(default_factory=list)
+    context: str | None = None
     status: Literal["CANONICAL", "CANDIDATE_NEW_CONCEPT"] = "CANONICAL"
 
 

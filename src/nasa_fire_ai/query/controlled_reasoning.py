@@ -21,12 +21,13 @@ from nasa_fire_ai.query.expansion_contracts import DiscoveryHypothesis, validate
 from nasa_fire_ai.query.native import execute_native
 
 PROMPT_VERSION = "phase3c-controlled-discovery-v2"
-RERANK_PROMPT_VERSION = "phase3c-contextual-rerank-v4"
+RERANK_PROMPT_VERSION = "phase3c-contextual-rerank-v5"
 MAX_EXPANSIONS = 3
 MAX_CANDIDATES = 40
 MAX_RERANK_CANDIDATES = 5
 MAX_JEV_CANDIDATES = 3
 MAX_PASSAGE_CHARS = 700
+MAX_SOURCE_CONTEXT_CHARS = 1400
 
 
 def _enabled(name: str) -> bool:
@@ -88,6 +89,22 @@ class RerankProposal(BaseModel):
 def _digest(payload: Any) -> str:
     encoded = json.dumps(payload, sort_keys=True, ensure_ascii=False, default=str).encode()
     return hashlib.sha256(encoded).hexdigest()
+
+
+def _registered_source_context(candidate):
+    """Bounded context from an operational, physically verified source locator."""
+    location = candidate.get("structured_location") or {}
+    if not location.get("physical_pdf_page") or not location.get("checksum"):
+        return None
+    context = location.get("context_before", "") + "\n" + location.get("context_after", "")
+    if not context.strip():
+        return None
+    return {
+        "text": context[:MAX_SOURCE_CONTEXT_CHARS],
+        "physical_pdf_page": location["physical_pdf_page"],
+        "source_digest": location["checksum"],
+        "authority": "DOCUMENTARY_CONTEXT_ONLY; does not establish run conditions",
+    }
 
 
 def _tokens(text: str) -> set[str]:
@@ -253,6 +270,63 @@ def validate_expansion(
     # contextual and cannot weaken the native intent.
     if len(expanded_tokens) < min(2, len(source_tokens)):
         return False, "insufficient_query_content"
+    # Unknown scientific wording cannot silently acquire an equivalence claim.
+    # Strip only typed quantities, approved synonyms and ordinary request words.
+    # Broader discovery remains available through the separate hypothesis contract.
+    remaining = [PATTERN.sub("", text.lower()) for text in (query, expanded)]
+    groups = []
+    if language:
+        groups.extend(
+            [entity_id, *meta.get("aliases", [])]
+            for entity_id, meta in language.get("entity_mentions", {}).items()
+        )
+        groups.extend(
+            [class_id, *aliases]
+            for class_id, aliases in language.get("information_mentions", {}).items()
+        )
+    groups.extend([pid, *meta.aliases] for pid, meta in registry.properties.items())
+    for aliases in groups:
+        if any(_tokens(a).issubset(source_tokens) for a in aliases if _tokens(a)):
+            for index, text in enumerate(remaining):
+                for alias in sorted(aliases, key=len, reverse=True):
+                    text = re.sub(r"(?<!\w)" + re.escape(alias.lower()) + r"(?!\w)", " ", text)
+                remaining[index] = text
+    request_words = {
+        "what",
+        "which",
+        "how",
+        "about",
+        "do",
+        "does",
+        "did",
+        "has",
+        "have",
+        "the",
+        "a",
+        "an",
+        "of",
+        "in",
+        "on",
+        "at",
+        "for",
+        "to",
+        "from",
+        "find",
+        "show",
+        "tell",
+        "me",
+        "us",
+        "please",
+        "evidence",
+        "information",
+        "research",
+        "results",
+        "and",
+        "or",
+    }
+    residuals = [_tokens(text) - request_words for text in remaining]
+    if residuals[0] != residuals[1]:
+        return False, "unverified_semantic_wording_change"
     return True, "hard_constraints_preserved"
 
 
@@ -414,7 +488,14 @@ class NemotronControlledReasoner:
                 self.model_identity,
                 query,
                 intent.model_dump(mode="json"),
-                [(c["evidence_id"], _digest(c.get("text", ""))) for c in candidates],
+                [
+                    (
+                        c["evidence_id"],
+                        _digest(c.get("text", "")),
+                        _digest(_registered_source_context(c)),
+                    )
+                    for c in candidates
+                ],
             ]
         )
         cached = self.cache.get(cache_key)
@@ -427,6 +508,8 @@ class NemotronControlledReasoner:
             "Do not decide canonical identity, DIRECT/RELATED, source authority, or scientific truth. "
             "HIGH or MEDIUM requires a verbatim span copied exactly from that candidate. "
             "LOW or UNCERTAIN may use an empty span. Do not invent IDs, quotes, or facts."
+            " Registered source context may resolve antecedents but never establish new run conditions. "
+            "Supporting spans must still be copied from the candidate's own text."
         )
         hard_constraints = {
             "entities": [c.model_dump(mode="json") for c in intent.entity_constraints],
@@ -446,6 +529,7 @@ class NemotronControlledReasoner:
                         "page": c.get("page"),
                         "section": c.get("section"),
                         "text": c.get("text", "")[:MAX_PASSAGE_CHARS],
+                        "registered_source_context": _registered_source_context(c),
                     }
                     for c in candidates
                 ],
@@ -529,8 +613,19 @@ class NemotronControlledReasoner:
             result["error"] = type(exc).__name__
         result["candidate_input_ids"] = sorted(ids)
         result["candidate_input_digest"] = _digest(
-            [(c["evidence_id"], _digest(c.get("text", ""))) for c in candidates]
+            [
+                (
+                    c["evidence_id"],
+                    _digest(c.get("text", "")),
+                    _digest(_registered_source_context(c)),
+                )
+                for c in candidates
+            ]
         )
+        result["effective_input_digest"] = _digest(json.loads(user))
+        result["registered_source_context_ids"] = [
+            c["evidence_id"] for c in candidates if _registered_source_context(c)
+        ]
         self.cache[cache_key] = result
         self._emit("contextual_reranking", result)
         return result

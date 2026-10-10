@@ -1,0 +1,62 @@
+{
+  "sources": 282,
+  "documents": 286,
+  "passages": 6055,
+  "canonical_record_types": {
+    "InvestigationRecord": 2,
+    "NASAStandard": 1,
+    "open_question": 1,
+    "nasa_conclusion": 1,
+    "guidance": 1,
+    "SampleRecord": 405,
+    "ExperimentalRunRecord": 405,
+    "ConditionRecord": 3002,
+    "InterventionRecord": 1,
+    "ObservationRecord": 1,
+    "SafetyStatementRecord": 9,
+    "PublicationRecord": 2
+  },
+  "before": {
+    "entities": 4110,
+    "relations": 4769,
+    "executable_conditions": 682,
+    "unmapped_fields": 2314,
+    "material_samples": 70
+  },
+  "after": {
+    "entities": 4112,
+    "relations": 5011,
+    "executable_conditions": 2459,
+    "unmapped_fields": 537,
+    "material_samples": 312,
+    "specimen_dispositions": {
+      "NORMALIZABLE_WITH_APPROVED_VOCABULARY": 312,
+      "INSUFFICIENT_SOURCE_CONTEXT": 57,
+      "REQUIRES_NEW_ALIAS": 36
+    },
+    "observed_measurements_added": 0,
+    "additional_canonical_materials": [
+      "Heptane",
+      "Methanol"
+    ]
+  },
+  "mapped_by_kind": {
+    "sample_thickness": 2,
+    "sample_length": 2,
+    "sample_width": 2,
+    "ignition_power": 2,
+    "ignition_time": 2,
+    "burn_time": 268,
+    "initial_co2": 126,
+    "initial_co": 125,
+    "final_co2": 122,
+    "final_co": 119,
+    "initial_nitrogen": 274,
+    "initial_helium": 274,
+    "initial_droplet_diameter": 262,
+    "visible_flame_extinction_diameter": 197
+  },
+  "native_shacl": true,
+  "literal_shacl": true,
+  "new_domain_range_entailments": 0
+}

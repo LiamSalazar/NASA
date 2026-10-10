@@ -1,0 +1,12 @@
+{
+  "after_regression": "PASS",
+  "before": "Incorrect DIRECT synthetic record returned",
+  "before_exit_code": 1,
+  "correction": "Only original literal scoped quantities are authoritative; missing unit remains unresolved; unrelated proposed numeric property is discarded",
+  "model_added_expression": "10 cm/s",
+  "model_added_property": "oxygen 20%",
+  "original_question": "PMMA airflow 10",
+  "raw_NASA_writes": 0,
+  "reproduction_command": "uv run pytest -q tests/test_numerical_fidelity.py -k missing_unit --tb=short",
+  "source_type": "SYNTHETIC_TEST_FIXTURE; not NASA"
+}

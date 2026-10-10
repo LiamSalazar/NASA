@@ -16,6 +16,15 @@ from nasa_fire_ai.services.grounding import GroundingResult, GroundingValidator
 
 
 def _source_location(passage):
+    location = passage.get("structured_location", {})
+    if location.get("physical_pdf_page"):
+        return (
+            f"PDF page {location['physical_pdf_page']}, table {location.get('table')}, "
+            f"row {location.get('row_identifier')}"
+        )
+    if passage.get("source_cells"):
+        cell = passage["source_cells"][0]
+        return f"{cell['table']}, row {cell['row_ordinal']}"
     if passage.get("page") is not None:
         if passage.get("page_location_verified") is True:
             return f"PDF page {passage['page']}"
@@ -99,6 +108,28 @@ def render_native(bundle):
         if bundle.no_direct_evidence
         else "Canonical evidence matching the validated constraints is listed below.",
     ]
+    for constraint in intent.get("property_constraints", []):
+        value = constraint["value"]
+        expression = (
+            value.get("raw_expression")
+            or f"{constraint['operator']} {value.get('reported_value')} {value.get('reported_unit') or ''}"
+        )
+        lines.append(f"Requested {constraint['property_id']}: {expression}.")
+        if constraint["operator"] == "APPROX" and value.get("tolerance") is None:
+            lines.append(
+                "Approximation has no specified tolerance; exact numeric applicability remains UNKNOWN."
+            )
+    if bundle.retrieval_metadata.get("conceptual_query", {}).get("active"):
+        lines[1] = (
+            "This is a terminology or relationship question. The cited documentation is "
+            "provided for interpretation; experiment matches do not establish equivalence. "
+            "Exact equivalence remains unestablished without an approved identity relation."
+        )
+        for relation in bundle.retrieval_metadata["conceptual_query"].get("approved_relations", []):
+            lines.append(
+                f"Approved relation: {relation['subject']} — {relation['predicate']} — {relation['object']} "
+                f"[{', '.join(relation['evidence_ids'])}]"
+            )
     if bundle.retrieval_metadata.get("grouped_search"):
         lines.append(
             "Results are grouped by each requested concept; these groups do not establish a single experiment satisfying all concepts simultaneously."
@@ -108,9 +139,14 @@ def render_native(bundle):
     for heading, items in (
         ("Direct evidence", bundle.direct_evidence),
         ("Related evidence", bundle.related_evidence),
+        (
+            "Source-backed specimens",
+            [r for r in bundle.semantic_records if r.get("class_id") == "Sample"],
+        ),
         ("Reported observations", bundle.experimental_observations),
+        ("Experimental interventions", bundle.interventions),
         ("Measurements", bundle.measurements),
-        ("Reported experimental conditions", bundle.conditions),
+        ("Reported conditions and source quantities", bundle.conditions),
         ("NASA conclusions", bundle.nasa_conclusions),
         ("NASA safety implications", bundle.safety_implications),
         ("Requirements", bundle.requirements),
@@ -120,11 +156,38 @@ def render_native(bundle):
     ):
         if not items:
             continue
+        if heading == "Related evidence":
+            groups = bundle.retrieval_metadata.get("related_presentation", {}).get("groups", [])
+            if groups:
+                representatives = {g["representative_id"] for g in groups}
+                items = [item for item in items if item.get("id") in representatives]
+                lines.append(
+                    f"Related evidence: {len(groups)} condition groups representing "
+                    f"{len(bundle.related_evidence)} candidates. All candidate IDs and citations "
+                    "remain available in the evidence bundle."
+                )
         lines.extend(["", f"## {heading}", ""])
         for item in items:
             text = item.get(
                 "normalized_text", item.get("text", item.get("description", item.get("id", "")))
             )
+            if isinstance(item.get("value"), dict) and item.get("property_id"):
+                label = item["property_id"].removeprefix("source:").replace("_", " ")
+                text = f"{label}: {_comparison_value(item['value'])}"
+                qualifiers = item.get("qualifiers", {})
+                if qualifiers.get("role") == "SOURCE_DERIVED_BURNING_RATE_CONSTANT":
+                    text += (
+                        " (fitted burning-rate constant; derived from diameter squared versus time)"
+                    )
+            elif item.get("class_id") == "Sample":
+                text = (
+                    f"{item.get('id')}; reported material: "
+                    f"{item.get('reported_material_description') or item.get('material') or 'not reported'}"
+                )
+                if qualifiers.get("source_unit_correction"):
+                    text += "; unit corroborated in the NASA report; original CSV unit: " + str(
+                        qualifiers.get("original_record", {}).get("reported_unit")
+                    )
             eids = item.get("evidence_ids", []) or [
                 r["evidence_id"] for r in item.get("evidence_refs", [])
             ]
@@ -134,6 +197,12 @@ def render_native(bundle):
                 else ""
             )
             lines.append(f"- {text}{group_label} [{', '.join(eids)}]")
+            if item.get("scientific_applicability"):
+                for dimension in item["scientific_applicability"]["dimensions"]:
+                    lines.append(
+                        f"  Statement applicability — {dimension['dimension']}: {dimension['status']}; requested: {dimension['requested']}; established: {dimension['actual']}."
+                    )
+                lines.append("  " + item["applicability_limit"])
             if "matches" in item:
                 lines.append(
                     f"  Matches: {item['matches']}; differs: {item['differs']}; unknown: {item['unknown']}; invalid: {item.get('invalid', [])}."
@@ -141,6 +210,33 @@ def render_native(bundle):
             explanation = item.get("relationship_explanation")
             if explanation:
                 for dimension in explanation["dimensions"]:
+                    if isinstance(dimension["requested"], dict) and dimension["requested"].get(
+                        "value"
+                    ):
+                        requested = dimension["requested"]
+                        value = requested["value"]
+                        wording = {
+                            "LT": "below",
+                            "LTE": "at most",
+                            "GT": "above",
+                            "GTE": "at least",
+                            "EQ": "equal to",
+                            "APPROX": "approximately",
+                        }.get(requested["operator"], requested["operator"])
+                        label = (
+                            dimension["dimension"]
+                            .replace("AirflowVelocity", "airflow")
+                            .replace("OxygenConcentration", "oxygen concentration")
+                        )
+                        reported = [
+                            f"{r['value']['reported_value']} {r['value']['reported_unit'] or ''}".strip()
+                            for r in dimension["actual"]
+                            if r["value"].get("reported_value") is not None
+                        ]
+                        if reported and dimension["status"] == "DIFFER":
+                            lines.append(
+                                f"  Requested {label}: {wording} {value['reported_value']} {value['reported_unit'] or ''}. Reported {label}: {', '.join(reported)}. This experiment is related but does not satisfy the requested {label} condition."
+                            )
                     lines.append(
                         f"  {dimension['dimension']}: {dimension['status']}; "
                         f"requested: {dimension['requested']}; actual: {dimension['actual']}."
@@ -177,6 +273,11 @@ def render_native(bundle):
                 f"- {source.get('title') or passage['document_id']} — {_source_location(passage)}: "
                 f"{passage['text']} [{passage['evidence_id']}]"
             )
+            context = (passage.get("structured_location") or {}).get("context_before")
+            if context and passage.get("context_status") == "ANTECEDENT_REVIEW_REQUIRED":
+                lines.append(
+                    f"  Exact source context for the incomplete reference: {context} [{passage['evidence_id']}]"
+                )
     if bundle.discovery_candidates:
         lines.extend(
             [
@@ -489,7 +590,9 @@ def answer_native_controlled_text(
     """
     try:
         if interpreter is None:
-            raise ProviderFailure("minimal interpreter not configured")
+            from nasa_fire_ai.query.numeric_mentions import DeterministicMinimalInterpreter
+
+            interpreter = DeterministicMinimalInterpreter(store.registry, language)
         proposal = interpreter.interpret_minimal(query)
         intent = resolve_minimal(proposal, store.registry, language, context, query=query)
     except (ProviderFailure, ValueError, LookupError):
@@ -514,13 +617,15 @@ def answer_native_text(
 ):
     """Native language-to-response boundary, with no V1 fallback execution.
 
-    Without a configured interpreter, ask for clarified/structured input. Scientific
-    records remain accessible through answer_native without an external API key.
+    Without a configured interpreter, use the conservative registry interpreter.
+    Ambiguous terms still require clarification without an external API key.
     A synthesis error never replaces the deterministic scientific presentation.
     """
     try:
         if interpreter is None:
-            raise ProviderFailure("minimal interpreter not configured")
+            from nasa_fire_ai.query.numeric_mentions import DeterministicMinimalInterpreter
+
+            interpreter = DeterministicMinimalInterpreter(store.registry, language)
         proposal = interpreter.interpret_minimal(query)
         intent = resolve_minimal(proposal, store.registry, language, context, query=query)
     except (ProviderFailure, ValueError, LookupError):
