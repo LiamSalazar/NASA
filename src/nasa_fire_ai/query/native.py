@@ -34,6 +34,11 @@ def identity(uri: URIRef) -> str:
     return unquote(str(uri).removeprefix(str(NS)))
 
 
+def canonical_record(graph, record):
+    states = {str(state) for state in graph.objects(record, NS.reviewState)}
+    return not states or states == {"APPROVED"}
+
+
 class SemanticGraph:
     """Additive graph with reified relations and values, independent of source format."""
 
@@ -82,6 +87,44 @@ class SemanticGraph:
             self.graph.add((record, pred, value))
         for eid in evidence_ids:
             self.graph.add((record, NS.evidenceRef, Literal(eid)))
+
+    def add_context_relation(self, statement, evidence_registry=None):
+        """Publish a reviewed context only through an existing canonical relation.
+
+        This intentionally rejects candidate model output and does not create a
+        predicate or ontology term from the statement itself.
+        """
+        from nasa_fire_ai.context import ContextStatus
+
+        if statement.canonical_review != "APPROVED" or evidence_registry is None:
+            raise ValueError(
+                "canonical publication requires explicit review and evidence validation"
+            )
+        if (
+            statement.conflicts
+            or statement.exceptions
+            or statement.applicability_conditions
+            or statement.quantifier not in {"ALL", "IDENTIFIED"}
+        ):
+            raise ValueError("unresolved scope cannot be published")
+        if any(evidence_registry.resolve(eid) is None for eid in statement.evidence_ids):
+            raise ValueError("unresolvable scientific evidence")
+
+        if statement.validation_status not in {
+            ContextStatus.EXPLICIT_LOCAL,
+            ContextStatus.VERIFIED_APPLICABLE_CONTEXT,
+        }:
+            raise ValueError("context statement is not validated for canonical publication")
+        if not statement.relation:
+            raise ValueError("context statement requires an approved ontology relation")
+        if len(statement.entity_ids) != 2:
+            raise ValueError("canonical context relation requires exactly two reviewed endpoints")
+        self.add_relation(
+            statement.entity_ids[0],
+            statement.relation,
+            statement.entity_ids[1],
+            statement.evidence_ids,
+        )
 
     def add_value(
         self,
@@ -152,6 +195,7 @@ class SemanticGraph:
         return {
             identity(obj)
             for record in self.graph.subjects(NS.subject, node(subject))
+            if canonical_record(self.graph, record)
             if (record, NS.relation, node(relation)) in self.graph
             for obj in self.graph.objects(record, NS.object)
         }
@@ -165,6 +209,7 @@ class SemanticGraph:
         return [
             GenericValue.model_validate_json(str(value))
             for record in self.graph.subjects(NS.subject, node(subject))
+            if canonical_record(self.graph, record)
             if (record, NS.measuredProperty, node(property_id)) in self.graph
             for value in self.graph.objects(record, NS.value)
         ]
@@ -178,6 +223,7 @@ class SemanticGraph:
             candidates = [
                 record
                 for record in self.graph.subjects(NS.subject, node(subject))
+                if canonical_record(self.graph, record)
                 if (record, NS.measuredProperty, node(property_id)) in self.graph
             ]
         for record in candidates:
@@ -197,7 +243,14 @@ class SemanticGraph:
         return records
 
     def evidence(self, subject):
-        records = {node(subject), *self.graph.subjects(NS.subject, node(subject))}
+        records = {
+            node(subject),
+            *(
+                r
+                for r in self.graph.subjects(NS.subject, node(subject))
+                if canonical_record(self.graph, r)
+            ),
+        }
         return sorted(
             {str(x) for record in records for x in self.graph.objects(record, NS.evidenceRef)}
         )
@@ -236,7 +289,12 @@ def compile_native(
         store.registry.class_metadata.get(t, {}).get("documentary") for t in intent.targets
     )
     candidates = []
-    for subject in store.entities():
+    from nasa_fire_ai.query.contextual import enabled
+
+    extra_entities = []
+    if enabled() and (layer := getattr(store, "context_layer", None)):
+        extra_entities = list(layer.entity_definitions)
+    for subject in sorted(set(store.entities()) | set(extra_entities)):
         if intent.comparison and subject not in intent.comparison.operands:
             continue
         target_classes = intent.targets or intent.requested_information
@@ -260,6 +318,9 @@ def compile_native(
 
 
 def classify_native(subject, intent, store, taxonomy_paths=None, related_policy=False):
+    from nasa_fire_ai.query.contextual import enabled
+
+    context_layer = getattr(store, "context_layer", None) if enabled() else None
     taxonomy_paths = taxonomy_paths or {}
     detail = {
         "matches": [],
@@ -270,6 +331,11 @@ def classify_native(subject, intent, store, taxonomy_paths=None, related_policy=
     }
     for c in intent.entity_constraints:
         actual = store.relations(subject, c.relation)
+        context_resolution = None
+        if context_layer:
+            contextual, context_resolution = context_layer.relations(subject, c.relation)
+            if not actual:
+                actual = contextual
         outcome = (
             "matches"
             if c.entity_id in actual
@@ -277,6 +343,12 @@ def classify_native(subject, intent, store, taxonomy_paths=None, related_policy=
             if actual or store.registry.relations[c.relation].closed_world
             else "unknown"
         )
+        if (
+            context_resolution
+            and not store.relations(subject, c.relation)
+            and context_resolution.status == "CONFLICTED"
+        ):
+            outcome = "unknown"
         verified_paths = [taxonomy_paths.get((c.relation, c.entity_id), {}).get(a) for a in actual]
         if any(path and path["category_match"] for path in verified_paths):
             outcome = "matches"
@@ -289,6 +361,8 @@ def classify_native(subject, intent, store, taxonomy_paths=None, related_policy=
                 for row in records
                 if all(row["qualifiers"].get(k) == v for k, v in c.qualifiers.items())
             ]
+        if not records and context_layer:
+            records = context_layer.values(subject, c.property_id, c.qualifiers)
         values = [row["value"] for row in records]
         outcomes = {evaluate_constraint(c, v, store.registry) for v in values}
         # Conflicting or unavailable observations cannot establish an exact match.
@@ -312,10 +386,17 @@ def classify_native(subject, intent, store, taxonomy_paths=None, related_policy=
     )
     if required and not blocked:
         return "DIRECT", detail
+
+    def applicable_relations(relation):
+        actual = store.relations(subject, relation)
+        if not actual and context_layer:
+            actual, _ = context_layer.relations(subject, relation)
+        return actual
+
     path_overlap = any(
         taxonomy_paths.get((c.relation, c.entity_id), {}).get(actual)
         for c in intent.entity_constraints
-        for actual in store.relations(subject, c.relation)
+        for actual in applicable_relations(c.relation)
     )
     if taxonomy_paths or related_policy:
         anchors = set(
@@ -323,10 +404,10 @@ def classify_native(subject, intent, store, taxonomy_paths=None, related_policy=
         )
         requested_anchors = [c for c in intent.entity_constraints if c.relation in anchors]
         if requested_anchors and not any(
-            c.entity_id in store.relations(subject, c.relation)
+            c.entity_id in applicable_relations(c.relation)
             or any(
                 taxonomy_paths.get((c.relation, c.entity_id), {}).get(actual)
-                for actual in store.relations(subject, c.relation)
+                for actual in applicable_relations(c.relation)
             )
             for c in requested_anchors
         ):
@@ -361,6 +442,13 @@ def execute_native(
     relational=None,
 ):
     started = perf_counter()
+    from nasa_fire_ai.query.contextual import enabled, prioritize, query_policy
+
+    context_layer = getattr(store, "context_layer", None) if enabled() else None
+    if context_layer:
+        context_layer.receipts = []
+        context_layer.interpret_query(query, intent)
+    policy = query_policy(query, intent, store)
     from nasa_fire_ai.query.conceptual import is_conceptual_question
 
     conceptual = is_conceptual_question(query)
@@ -500,7 +588,7 @@ def execute_native(
     documentary_passages = []
     if (
         not measurement_only
-        and not requested_science
+        and (not requested_science or context_layer is not None)
         and not intent.clarification_required
         and not (
             intent.unresolved_mentions
@@ -508,10 +596,17 @@ def execute_native(
             and not intent.property_constraints
         )
     ):
-        documentary_passages = evidence_registry.search(
-            query, eligible_ids=all_documentary, limit=limit
-        )
+        documentary_passages = prioritize(
+            evidence_registry.search(query, eligible_ids=all_documentary, limit=limit * 4),
+            query,
+            intent,
+            store,
+        )[:limit]
     info_selected, info_trace = select_information(intent, query, store, evidence_registry)
+    if context_layer and not conceptual:
+        info_selected = list(
+            dict.fromkeys(info_selected + context_layer.select_information(intent, query))
+        )
     if conceptual:
         for relation in conceptual_support.get("approved_relations", []):
             documentary_passages.extend(
@@ -537,6 +632,10 @@ def execute_native(
                     continue  # Topical class alone cannot establish scientific relatedness.
                 status = "RELATED"
             item = {"id": s, **detail, "evidence_ids": store.evidence(s)}
+            if context_layer and (limits := context_layer.request_limits(s, query)):
+                item["request_limits"] = limits
+                if status == "DIRECT":
+                    status = "RELATED"
             (direct if status == "DIRECT" else related).append(item)
     if (hierarchical or relational) and requested_science:
         from nasa_fire_ai.query.hierarchy import constraint_explanation
@@ -545,6 +644,24 @@ def execute_native(
             item["relationship_explanation"] = constraint_explanation(
                 item["id"], intent, store, taxonomy_paths, item, query=query
             )
+    if context_layer and requested_science:
+        selected = {item["id"] for item in direct + related}
+    if context_layer and policy.get("default_preference"):
+        preferred = set(policy["default_preference"])
+        predicate = policy["preference_relation"]
+        for item in direct + related:
+            values, resolution = context_layer.relations(item["id"], predicate)
+            values = store.relations(item["id"], predicate) or values
+            item["research_context"] = {
+                "values": sorted(values),
+                "status": resolution.status if resolution else "UNKNOWN",
+            }
+        direct.sort(
+            key=lambda item: -int(bool(preferred.intersection(item["research_context"]["values"])))
+        )
+        related.sort(
+            key=lambda item: -int(bool(preferred.intersection(item["research_context"]["values"])))
+        )
     # Documentary semantics retain the document target. Structured overlap may
     # select publications; plain documentary search uses eligible document evidence.
     records = {}
@@ -553,7 +670,9 @@ def execute_native(
     # bundle boundary, without converting them to observations.
     for subject in sorted(selected):
         for record in store.graph.subjects(NS.subject, node(subject)):
-            if (record, RDF.type, NS.SemanticValue) in store.graph:
+            if (record, RDF.type, NS.SemanticValue) in store.graph and canonical_record(
+                store.graph, record
+            ):
                 generic_records.append(store.payload(identity(record)))
     for subject in sorted(selected):
         for cls in store.classes(subject):
@@ -581,7 +700,18 @@ def execute_native(
             generic_records.append(
                 {"class_id": cls, **store.payload(subject), "evidence_ids": store.evidence(subject)}
             )
-    eligible = sorted({eid for subject in selected for eid in store.evidence(subject)})
+    contextual_statements = []
+    if context_layer:
+        for subject in selected:
+            contextual_statements.extend(
+                s
+                for s in context_layer.resolver.statements
+                if subject in s.entity_ids and subject not in s.exceptions
+            )
+    eligible = sorted(
+        {eid for subject in selected for eid in store.evidence(subject)}
+        | {eid for statement in contextual_statements for eid in statement.evidence_ids}
+    )
     executed = perf_counter()
     ranked_passages = (
         evidence_registry.search(query, eligible_ids=eligible, limit=limit) if eligible else []
@@ -613,6 +743,10 @@ def execute_native(
     # lexical passages into canonical DIRECT or RELATED scientific facts.
     merged = {p["evidence_id"]: p for p in passages}
     merged.update({p["evidence_id"]: p for p in documentary_passages})
+    for statement in contextual_statements:
+        for eid in statement.evidence_ids:
+            if passage := evidence_registry.resolve(eid):
+                merged[eid] = passage
     passages = list(merged.values())
     eligible = sorted(set(eligible) | {p["evidence_id"] for p in documentary_passages})
     for passage in passages:
@@ -660,6 +794,19 @@ def execute_native(
             },
             "executor": "native-rdf-v1",
             "query_intent_v2": intent.model_dump(mode="json"),
+            "context_policy": policy,
+            "scientific_context": {
+                "enabled": context_layer is not None,
+                "resolver_invoked": bool(context_layer and context_layer.receipts),
+                "applied_statements": [
+                    s.model_dump(mode="json")
+                    for s in {s.statement_id: s for s in contextual_statements}.values()
+                ],
+                "resolution_receipts": list(context_layer.receipts) if context_layer else [],
+                "rejected": context_layer.rejected if context_layer else [],
+                "canonical_mutation": False,
+                "model_receipts": list(context_layer.model_receipts) if context_layer else [],
+            },
             "vectors_enabled": False,
             "hierarchical_retrieval": {
                 "enabled": hierarchical,
@@ -749,7 +896,19 @@ def execute_investigation_groups(
         for relation, values in slots.items()
         if len(values) > 1
         and store.registry.relations.get(relation)
-        and store.registry.relations[relation].selection_scope
+        and (
+            store.registry.relations[relation].selection_scope
+            or (
+                relation
+                == store.registry.selection_policy.get("context", {}).get("preference_relation")
+                and any(
+                    term in query.lower()
+                    for term in store.registry.selection_policy.get("context", {}).get(
+                        "comparative_terms", []
+                    )
+                )
+            )
+        )
     ]
     if not (
         len(group_slots) == 1
@@ -834,6 +993,29 @@ def execute_investigation_groups(
         {"group": group, "no_direct": result.bundle.no_direct_evidence}
         for group, result in branches
     ]
+    bundle.retrieval_metadata["scientific_context"] = {
+        "enabled": any(
+            result.bundle.retrieval_metadata.get("scientific_context", {}).get("enabled")
+            for _, result in branches
+        ),
+        "resolver_invoked": any(
+            result.bundle.retrieval_metadata.get("scientific_context", {}).get("resolver_invoked")
+            for _, result in branches
+        ),
+        "applied_statements": list(
+            {
+                s["statement_id"]: s
+                for _, result in branches
+                for s in result.bundle.retrieval_metadata.get("scientific_context", {}).get(
+                    "applied_statements", []
+                )
+            }.values()
+        ),
+        "branches": [
+            {"group": group, **result.bundle.retrieval_metadata.get("scientific_context", {})}
+            for group, result in branches
+        ],
+    }
     from nasa_fire_ai.query.related_presentation import group_related
 
     bundle.retrieval_metadata["related_presentation"] = group_related(

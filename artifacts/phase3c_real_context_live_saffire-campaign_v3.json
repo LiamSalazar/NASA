@@ -1,0 +1,73 @@
+{
+  "input": {
+    "window": "saffire-campaign",
+    "query": "Identify experimental environment, material continuity, context changes, explicit exceptions, and relations for the supplied entity identities. Do not assign flight conditions to terrestrial comparisons or simulations. Include exact separate supporting spans for conditions and membership. Use source labels to distinguish ground and flight observation entities.",
+    "entities": [
+      "psi-98",
+      "psi-98-S1",
+      "psi-98-S2"
+    ],
+    "passages": [
+      {
+        "evidence_id": "E-context-db8ae7f514a0b5b5c410",
+        "text": "Experiment\n• The Saffire experiments investigated intentionally-set, large-scale fires inside a spacecraft. For safety,\nthey were conducted in unoccupied resupply vehicles for the International Space Station (ISS).\n• The vehicles launched to the ISS with Saffire stowed onboard. Saffire stayed in the resupply vehicle and\nremained dormant while the vehicle was berthed with the ISS and its supplies were unloaded. After all\nsupplies had been transferred, the crew carefully stowed ISS trash in the resupply vehicle, leaving\nadequate room for air circulation.\n• Once the vehicle departed ISS, the Saffire tests were completed and all data was relayed to Earth.\nFinally, the vehicle was guided for destructive re-entry into the Earth’s atmosphere.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Experiment"
+      },
+      {
+        "evidence_id": "E-context-7973df3a5b7f8b12b64d",
+        "text": "Saffire-I Description\nLarge sample (40.6 cm x 94 cm)\nFlow speed of 20 cm/s\nInitial oxygen concentration 21.7% (ISS reading)\n\n• Only concurrent-flow test was planned; opposed-flow test was a contingency.\n• Everything performed nominally for the first test which was allotted 420 s before\nthe air flow turned off.\n• About 90% of the fuel burned in the first test leaving 10% unburned, allowing a\nmeaningful opposed-flow test to be completed.\n\n14\n\nFuel characteristics (“SIBAL” fabric)\n75% cotton, 25% fiberglass blend\nSimple weave pattern (60 x 40 threads per inch)\nCotton and fiberglass fibers intermingled\nOverall area density: 18 mg/cm2\nFuel sizes (W x L): 40.6 x 94 cm and 5 x 29 cm\n\nSIBAL Fabric Results\n• 40.6-cm-wide concurrent-flow test: flame ignited across the bottom of the fuel\n‒ At ignition, the flame was mostly bright yellow and relatively vigorous but it soon developed a blue base and\na pattern of orange radiation coming from incandescent soot\n‒ Initially the flame length fluctuated at about 1.4 Hz before finally becoming more stable at about 90 s\n‒ After the flame had passed, exothermic surface smolder spots burning some of the leftover fuel were visible\n‒ The flame burned the entire allotted test time of about 7 min. at which point the air flow was shut off and\nthe flame immediately extinguished\n• 40.6-cm-wide opposed-flow test: flame ignited across the top of the fuel\n‒ There was a small but sufficient amount of fuel remaining after the concurrent-flow test of the first\nexperiment to permit an opposed-flow test\n‒ Only about 10% of the fuel remained after the concurrent test, but that was enough to make conclusions\nabout the opposed-flow flame spread and development\n• 5-cm-wide concurrent-flow tests: flame ignited across the bottom of the fuel\n‒ Two flow speeds tested; 20 and 25 cm/s",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Saffire-I Description and SIBAL results"
+      },
+      {
+        "evidence_id": "E-context-0bacb5f04c6c34659dcc",
+        "text": "Left: Flame base and pyrolysis position for concurrent and opposed-flow test in Saffire-1. Air flow speed was 20 cm/s.\n\nRight: Spread rate summary for cotton/fiberglass fabric burning in microgravity. Concurrent flames are shown to the\nleft of the origin, and opposed to the right.",
+        "role": "caption",
+        "source_id": "ntrs-20170008805",
+        "section": "Concurrent and opposed-flow comparison"
+      },
+      {
+        "evidence_id": "E-psi-98-table-S1",
+        "text": "S1,SIBAL Fabric,0.37,40.6,94,20,21.5 - 21.7,182,8,420,Concurrent,S1C1,S1C2",
+        "source_id": "psi-98",
+        "role": "table",
+        "section": "Experimental table"
+      },
+      {
+        "evidence_id": "E-psi-98-table-S2",
+        "text": "S2,SIBAL Fabric,0.37,40.6,94,20,~ 21.5,182,8,70,Opposed,S2C1,S2C2",
+        "source_id": "psi-98",
+        "role": "table",
+        "section": "Experimental table"
+      }
+    ],
+    "allowed_predicates": [
+      "hasGravityCondition",
+      "hasMaterial",
+      "hasCondition",
+      "OxygenConcentration",
+      "AirflowVelocity",
+      "belongsToInvestigation",
+      "concerns",
+      "hasObservation",
+      "hasIntervention"
+    ]
+  },
+  "input_digest": "6c9baa79c61ce200e4b62594357863c335c6e414f8cf9b30ab7ce475c1e3388d",
+  "proposals": [],
+  "execution": "FRESH_INFERENCE",
+  "prompt_version": "phase3c-context-interpreter-v1",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "usage": {
+    "completion_tokens": 3954,
+    "prompt_tokens": 1492,
+    "total_tokens": 5446,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "error": "ValidationError",
+  "latency_ms": 35985.031312011415
+}

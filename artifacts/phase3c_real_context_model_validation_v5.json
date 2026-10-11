@@ -1,0 +1,279 @@
+{
+  "execution": "DETERMINISTIC_VALIDATION_REPLAY_OF_FRESH_RECEIPTS",
+  "new_calls": 0,
+  "cases": [
+    {
+      "window": "mixed-pmma",
+      "proposal": {
+        "subject_entity": "context:bass-ground-rod-observation",
+        "candidate_predicate": "hasGravityCondition",
+        "object_value": "normal-gravity",
+        "source_statement": "1g tests have higher flame spread\nrates than \u03bcg.",
+        "supporting_text": "1g tests have higher flame spread rates than \u03bcg.",
+        "context_scope": "group",
+        "applicability_conditions": [],
+        "exceptions": [],
+        "evidence_ids": [
+          "E-context-d0e9f6c262d92e57e3bd"
+        ],
+        "validation_status": "ACCEPTED_FOR_REVIEW",
+        "support_spans": [
+          {
+            "evidence_id": "E-context-d0e9f6c262d92e57e3bd",
+            "text": "1g tests have higher flame spread\nrates than \u03bcg.",
+            "role": "condition",
+            "locator": {
+              "span": "1g tests have higher flame spread\nrates than \u03bcg.",
+              "start": 121,
+              "end": 169,
+              "method": "WHITESPACE_NFC"
+            }
+          }
+        ],
+        "conflicts": [],
+        "uncertainty": null,
+        "source_id": "ntrs-20160000593",
+        "quantifier": "IDENTIFIED",
+        "proposed_path": []
+      },
+      "reasons": [],
+      "status": "VERIFIED_CONTEXTUAL_APPLICABILITY",
+      "reference_statements": [
+        "gravity-context:bass-ground-rod-observation"
+      ],
+      "provenance_paths": [
+        [
+          {
+            "from": "context:bass-ground-rod-observation",
+            "to": "context:bass-ground-rods",
+            "relation": "concerns",
+            "basis": "EXPLICIT_SOURCE_IDENTITY",
+            "support_spans": [
+              {
+                "evidence_id": "E-context-d0e9f6c262d92e57e3bd",
+                "text": "There is a downward trend in flame\nspread rate as sample diameter increases\nfor both the 1g and \u03bcg (microgravity)\ntests. 1g tests have higher flame spread\nrates than \u03bcg.\n\n1g Black\n\nFlame Spread Rate [cm/sec]\n\nFlame spread rate as a function of\nsample diameter for both 1g and \u03bcg\ntests. 1g tests are in natural convection\nat 21% oxygen environments. Values for\n\u03bcg tests are averaged over flow velocity\nand oxygen concentration.",
+                "role": "caption",
+                "source_id": "ntrs-20160000593",
+                "section": "PMMA rod comparison"
+              },
+              {
+                "evidence_id": "E-context-87d3a70a788ae398fe4a",
+                "text": "Material Ignition and Suppression Test\nCarlos Fernandez-Pello, University of California, Berkeley\nObjective\n\nUnderstand the effect of space exploration atmospheres (SEA) on the piloted ignition under an\nexternal radiant flux of a representative combustible material, as well as on its fire suppression\ncharacteristics.\nStatus\n\u2015 Three different diameters (0.25\u201d, 0.375\u201d, 0.5\u201d) of black and clear PMMA rods were tested.\n\u2015 Oxygen concentrations between 16% to 21% and flow velocity between 0.4 cm/sec to 4\ncm/sec were tested. The total set of experiments yielded 54 unique flame spread rates.",
+                "role": "paragraph",
+                "source_id": "ntrs-20160000593",
+                "section": "Material Ignition and Suppression Test"
+              },
+              {
+                "evidence_id": "E-context-5227141f2aaa7feb2e37",
+                "text": "Approach\n\u2015 Microgravity combustion tests were performed aboard the International Space Station.\nActive crew support for real-time \u201clab partner\u201d operations.\n\n\u2015 The wind tunnel was installed in the Microgravity Science Glovebox which supplied power,\nimaging, and a level of containment.\n\u2015 Fuel samples were mounted inside a small wind tunnel which could impose airflow speeds\nup to 40 cm/s.\n\n\u2015 Main variables are airflow speed and oxygen concentration (oxygen varied below 21% by\nadding nitrogen).\n\u2015 Flame appearance, flame growth, and spread rates were determined in both the opposed\nand concurrent flow.",
+                "role": "paragraph",
+                "source_id": "ntrs-20160000593",
+                "section": "Approach"
+              }
+            ]
+          }
+        ]
+      ],
+      "independent_expert_label": null
+    },
+    {
+      "window": "mixed-pmma",
+      "proposal": {
+        "subject_entity": "context:bass-flight-rod-observation",
+        "candidate_predicate": "hasGravityCondition",
+        "object_value": "microgravity",
+        "source_statement": "\u03bcg (microgravity) tests are averaged over flow velocity and oxygen concentration.",
+        "supporting_text": "\u03bcg (microgravity) tests are averaged over flow velocity and oxygen concentration.",
+        "context_scope": "group",
+        "applicability_conditions": [],
+        "exceptions": [],
+        "evidence_ids": [
+          "E-context-d0e9f6c262d92e57e3bd"
+        ],
+        "validation_status": "REJECTED",
+        "support_spans": [
+          {
+            "evidence_id": "E-context-d0e9f6c262d92e57e3bd",
+            "text": "\u03bcg tests are averaged over flow velocity and oxygen concentration.",
+            "role": "condition"
+          }
+        ],
+        "conflicts": [],
+        "uncertainty": null,
+        "source_id": "ntrs-20160000593",
+        "quantifier": "IDENTIFIED",
+        "proposed_path": []
+      },
+      "reasons": [
+        "source_span_or_identifier_validation_failed"
+      ],
+      "status": "STAGED_CANDIDATE",
+      "reference_statements": [
+        "gravity-context:bass-flight-rod-observation"
+      ],
+      "provenance_paths": [
+        [
+          {
+            "from": "context:bass-flight-rod-observation",
+            "to": "context:bass-flight-rods",
+            "relation": "concerns",
+            "basis": "EXPLICIT_SOURCE_IDENTITY",
+            "support_spans": [
+              {
+                "evidence_id": "E-context-d0e9f6c262d92e57e3bd",
+                "text": "There is a downward trend in flame\nspread rate as sample diameter increases\nfor both the 1g and \u03bcg (microgravity)\ntests. 1g tests have higher flame spread\nrates than \u03bcg.\n\n1g Black\n\nFlame Spread Rate [cm/sec]\n\nFlame spread rate as a function of\nsample diameter for both 1g and \u03bcg\ntests. 1g tests are in natural convection\nat 21% oxygen environments. Values for\n\u03bcg tests are averaged over flow velocity\nand oxygen concentration.",
+                "role": "caption",
+                "source_id": "ntrs-20160000593",
+                "section": "PMMA rod comparison"
+              },
+              {
+                "evidence_id": "E-context-87d3a70a788ae398fe4a",
+                "text": "Material Ignition and Suppression Test\nCarlos Fernandez-Pello, University of California, Berkeley\nObjective\n\nUnderstand the effect of space exploration atmospheres (SEA) on the piloted ignition under an\nexternal radiant flux of a representative combustible material, as well as on its fire suppression\ncharacteristics.\nStatus\n\u2015 Three different diameters (0.25\u201d, 0.375\u201d, 0.5\u201d) of black and clear PMMA rods were tested.\n\u2015 Oxygen concentrations between 16% to 21% and flow velocity between 0.4 cm/sec to 4\ncm/sec were tested. The total set of experiments yielded 54 unique flame spread rates.",
+                "role": "paragraph",
+                "source_id": "ntrs-20160000593",
+                "section": "Material Ignition and Suppression Test"
+              },
+              {
+                "evidence_id": "E-context-5227141f2aaa7feb2e37",
+                "text": "Approach\n\u2015 Microgravity combustion tests were performed aboard the International Space Station.\nActive crew support for real-time \u201clab partner\u201d operations.\n\n\u2015 The wind tunnel was installed in the Microgravity Science Glovebox which supplied power,\nimaging, and a level of containment.\n\u2015 Fuel samples were mounted inside a small wind tunnel which could impose airflow speeds\nup to 40 cm/s.\n\n\u2015 Main variables are airflow speed and oxygen concentration (oxygen varied below 21% by\nadding nitrogen).\n\u2015 Flame appearance, flame growth, and spread rates were determined in both the opposed\nand concurrent flow.",
+                "role": "paragraph",
+                "source_id": "ntrs-20160000593",
+                "section": "Approach"
+              }
+            ]
+          }
+        ]
+      ],
+      "independent_expert_label": null
+    },
+    {
+      "window": "mixed-silicone",
+      "proposal": {
+        "subject_entity": "context:silicone-ground-observation",
+        "candidate_predicate": "hasGravityCondition",
+        "object_value": "normal-gravity",
+        "source_statement": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.",
+        "supporting_text": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from significant burn, to partial burn, to no burn.",
+        "context_scope": "group",
+        "applicability_conditions": [],
+        "exceptions": [],
+        "evidence_ids": [
+          "E-context-ec300b3756c4bd69021b"
+        ],
+        "validation_status": "ACCEPTED_FOR_REVIEW",
+        "support_spans": [
+          {
+            "evidence_id": "E-context-ec300b3756c4bd69021b",
+            "text": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.",
+            "role": "condition",
+            "locator": {
+              "span": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.",
+              "start": 106,
+              "end": 254,
+              "method": "WHITESPACE_NFC"
+            }
+          }
+        ],
+        "conflicts": [],
+        "uncertainty": null,
+        "source_id": "ntrs-20170008805",
+        "quantifier": "IDENTIFIED",
+        "proposed_path": []
+      },
+      "reasons": [],
+      "status": "VERIFIED_CONTEXTUAL_APPLICABILITY",
+      "reference_statements": [
+        "gravity-context:silicone-ground-observation"
+      ],
+      "provenance_paths": [
+        [
+          {
+            "from": "context:silicone-ground-observation",
+            "to": "context:silicone-ground",
+            "relation": "concerns",
+            "basis": "EXPLICIT_SOURCE_IDENTITY",
+            "support_spans": [
+              {
+                "evidence_id": "E-context-a79df97c23d629116824",
+                "text": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.\n\u2012 The 0.27-mm thick samples were almost always completely consumed\n\u2012 The 0.61-mm thickness burned on average 7.6 cm of the available 30 cm before extinguishing\n\u2012 The 1.03-mm thickness would not burn at all.\nDownward burning silicone sample (2-4) was 0.37 mm thick.\n\nIn downward burning, normal gravity tests, this thickness was completely consumed. The next higher\nthickness tested (0.61 mm) would not burn.",
+                "role": "paragraph",
+                "source_id": "ntrs-20170008805",
+                "section": "Saffire-II terrestrial reference tests"
+              }
+            ]
+          }
+        ]
+      ],
+      "independent_expert_label": null
+    },
+    {
+      "window": "mixed-silicone",
+      "proposal": {
+        "subject_entity": "context:silicone-flight-observation",
+        "candidate_predicate": "hasGravityCondition",
+        "object_value": "microgravity",
+        "source_statement": "Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?",
+        "supporting_text": "Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?",
+        "context_scope": "group",
+        "applicability_conditions": [],
+        "exceptions": [],
+        "evidence_ids": [
+          "E-context-ec300b3756c4bd69021b"
+        ],
+        "validation_status": "REJECTED",
+        "support_spans": [
+          {
+            "evidence_id": "E-context-ec300b3756c4bd69021b",
+            "text": "Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?",
+            "role": "condition"
+          }
+        ],
+        "conflicts": [],
+        "uncertainty": null,
+        "source_id": "ntrs-20170008805",
+        "quantifier": "IDENTIFIED",
+        "proposed_path": []
+      },
+      "reasons": [
+        "source_span_or_identifier_validation_failed",
+        "prospective_or_objective_quote_does_not_establish_execution"
+      ],
+      "status": "STAGED_CANDIDATE",
+      "reference_statements": [
+        "gravity-context:silicone-flight-observation"
+      ],
+      "provenance_paths": [
+        [
+          {
+            "from": "context:silicone-flight-observation",
+            "to": "context:silicone-flight",
+            "relation": "concerns",
+            "basis": "EXPLICIT_SOURCE_IDENTITY",
+            "support_spans": [
+              {
+                "evidence_id": "E-context-d86d030e275ce04b8b82",
+                "text": "Results were convincing although rather anticlimactic as none of the silicone samples burned.\nWhen the igniter was powered off, a tiny gas phase flame remained but did not spread and quickly\nextinguished. The igniters all appeared to function normally and the materials were clearly damaged in\nthe vicinities of the igniters.",
+                "role": "paragraph",
+                "source_id": "ntrs-20170008805",
+                "section": "Saffire-II silicone results"
+              },
+              {
+                "evidence_id": "E-context-ec300b3756c4bd69021b",
+                "text": "Saffire-2; Why Silicone?\nUpward burning silicone samples (2-1 to 2-3) were 0.27, 0.61, and 1.03 mm thick.\nIn upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.\n\u2012 The 0.27-mm thick samples were almost always completely consumed\n\u2012 The 0.61-mm thickness burned on average 7.6 cm of the available 30 cm before extinguishing\n\u2012 The 1.03-mm thickness would not burn at all.\nDownward burning silicone sample (2-4) was 0.37 mm thick.\n\nIn downward burning, normal gravity tests, this thickness was completely consumed. The next higher\nthickness tested (0.61 mm) would not burn.\n\nMicrogravity behavior was sought:\n\u2012 How much of the available fuel would be burned?\n\u2012 Would microgravity prove more or less favorable to flame spread?\n11\n\nSaffire-2; Silicone Results\nResults were convincing although rather anticlimactic as none of the silicone samples burned.\nWhen the igniter was powered off, a tiny gas phase flame remained but did not spread and quickly\nextinguished. The igniters all appeared to function normally and the materials were clearly damaged in\nthe vicinities of the igniters.\nIt was surprising that not even the thin sample could permit any flame spread, given that it was entirely\nconsumed in normal gravity. Previous experience with cellulosic fuels (paper and fabric) and even\nPMMA suggested that if a flame could persist in upward 1-g tests then it would also burn in\nmicrogravity at a moderate flow speed which was less than that typical in buoyant flow.\n\n12\n\nSaffire-2; Silicone Results (con\u2019t)\nThe behavior of silicone in microgravity is perplexing perhaps due to its complex burning:\n\u2012 Silicone produces fine silica powder as it burns, which could be deposited on the fuel and impede pyrolysis.\n\u2012 The relatively-larger buoyant flow speeds could sweep out the silica at a high enough rate so that it does\nnot hamper combustion.\n\u2012 Silicone fuel becomes quite irregular as it burns, cracking and flaking off in complex ways. The surface\nreaction details and geometrical effects could significantly impact the observed results. Buoyant flow might\naid the cracking and flaking processes which in turn could promote combustion as fresh fuel is exposed.\n\nMore work is needed to understand the differences between the normal and micro-g flammability of silicone.\n\n\u2022 It would be interesting to repeat these tests in microgravity but at a much higher flow speed of around 60\nto 80 cm/s, which is more typical of the level in 1-g.\n\u2022 Perhaps the nature of the buoyant boundary layer compared to the forced convection boundary layer is\ncontributing to the flammability differences.",
+                "role": "paragraph",
+                "source_id": "ntrs-20170008805",
+                "section": "Saffire-II silicone ground and flight tests"
+              }
+            ]
+          }
+        ]
+      ],
+      "independent_expert_label": null
+    }
+  ],
+  "eligible_model_records": [
+    "context:bass-ground-rod-observation",
+    "context:silicone-ground-observation"
+  ],
+  "policy": "reversible whitespace/NFC span recovery only; paraphrase and wrong scope rejected"
+}

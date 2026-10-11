@@ -1,0 +1,41 @@
+[
+  {
+    "command": [
+      "uv",
+      "run",
+      "ruff",
+      "format",
+      "--check",
+      "."
+    ],
+    "exit_code": 0,
+    "execution": "FRESH_LOCAL_EXECUTION",
+    "log": "artifacts/phase3c_real_context_format_v9.txt",
+    "sha256": "04e598550bb4d0009718c4a15062cef02bca075349cf8de6bdf29f214dfcd7d8"
+  },
+  {
+    "command": [
+      "uv",
+      "run",
+      "ruff",
+      "check",
+      "."
+    ],
+    "exit_code": 0,
+    "execution": "FRESH_LOCAL_EXECUTION",
+    "log": "artifacts/phase3c_real_context_lint_v9.txt",
+    "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  {
+    "command": [
+      "uv",
+      "run",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "execution": "FRESH_LOCAL_EXECUTION",
+    "log": "artifacts/phase3c_real_context_pytest_v9.txt",
+    "sha256": "05735038ee30831f5a309289eb7309747614a6ec44aa564ea935c7a62c2b27a8"
+  }
+]

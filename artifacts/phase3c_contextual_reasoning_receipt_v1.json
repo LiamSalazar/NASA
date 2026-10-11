@@ -1,0 +1,64 @@
+{
+  "artifact_version": "phase3c-contextual-reasoning-receipt-v1",
+  "implementation": {
+    "query_schema": "QueryIntentV2 preserved",
+    "native_executor": "preserved",
+    "parallel_ontology": false,
+    "canonical_model_proposals": false,
+    "raw_data_modified": false,
+    "default_context_policy": {
+      "context_type": "gravity",
+      "preferred_values": ["microgravity"],
+      "explicit_query_values_override": true,
+      "fact_inheritance": false
+    }
+  },
+  "scope_resolution": {
+    "statuses": [
+      "EXPLICIT_LOCAL",
+      "VERIFIED_APPLICABLE_CONTEXT",
+      "CONTEXTUAL_CANDIDATE",
+      "CONFLICTED",
+      "UNKNOWN",
+      "NOT_APPLICABLE"
+    ],
+    "precedence": "local_or_execution_then_group_then_campaign_then_document",
+    "conflict_policy": "preserve_and_abstain",
+    "exception_policy": "explicit_exception_overrides_broader_scope"
+  },
+  "model_validation": {
+    "provider": "existing NVIDIA adapter",
+    "proposal_only": true,
+    "requires_known_evidence_ids": true,
+    "requires_verbatim_supporting_text": true,
+    "fresh_inference_calls": 0,
+    "historical_replay": false
+  },
+  "tests": {
+    "pytest": "213 passed",
+    "ruff_format": "pass",
+    "ruff_check": "pass",
+    "new_context_scope_cases": 6,
+    "independent_scientific_relevance_labels": 0,
+    "independent_epistemic_labels": 0
+  },
+  "review_fields": {
+    "expert_context_scope_precision": null,
+    "expert_false_inheritance_rate": null,
+    "expert_direct_attribution_precision": null,
+    "reviewer": null,
+    "review_date": null
+  },
+  "decisions": {
+    "MICROGRAVITY_DEFAULT_POLICY": "ADOPT",
+    "CONTEXT_EXTRACTION": "KEEP_EXPERIMENTAL",
+    "SCIENTIFIC_SCOPE_RESOLUTION": "KEEP_EXPERIMENTAL",
+    "ONTOLOGY_CONTEXT_ALIGNMENT": "PARTIAL",
+    "GRAPH_CONTEXTUAL_REASONING": "KEEP_EXPERIMENTAL",
+    "NEMOTRON_CONTEXTUAL_VALUE": "INCONCLUSIVE",
+    "JEV_ADVISORY_VALUE": "INCONCLUSIVE",
+    "SCIENTIFIC_ATTRIBUTION": "REVIEW_REQUIRED",
+    "V2_DEFAULT_PATH": "KEEP_EXPERIMENTAL",
+    "READY_FOR_PHASE_4": "NO"
+  }
+}

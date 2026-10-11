@@ -29,7 +29,7 @@ def schema_closure(graph, concept, predicate, budget=64):
     return found
 
 
-def navigate(store, start, steps, evidence_registry, max_depth=5, budget=128):
+def navigate(store, start, steps, evidence_registry, max_depth=5, budget=128, allow_context=False):
     """Execute a declared route. Every edge and endpoint retains evidence IDs."""
     if len(steps) > max_depth or budget < 1:
         raise ValueError("route exceeds traversal budget")
@@ -58,7 +58,12 @@ def navigate(store, start, steps, evidence_registry, max_depth=5, budget=128):
                 if actual_relation is None or identity(actual_relation) not in eligible_relations:
                     continue
                 states = {str(s) for s in store.graph.objects(record, NS.reviewState)}
-                if states and states != {"APPROVED"}:
+                allowed_states = (
+                    {"APPROVED", "VERIFIED_CONTEXTUAL_APPLICABILITY"}
+                    if allow_context
+                    else {"APPROVED"}
+                )
+                if states and not states.issubset(allowed_states):
                     continue
                 examined += 1
                 if examined > budget:

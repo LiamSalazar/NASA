@@ -1,0 +1,14 @@
+F841 Local variable `identities` is assigned to but never used
+  --> scripts/phase3c_real_context_reports.py:55:5
+   |
+53 |     audit = read("gravity_audit", "v10")
+54 |     integrity = read("integrity")
+55 |     identities = read("identity_round_trips")
+   |     ^^^^^^^^^^
+56 |     model = read("model_validation", "v5")
+57 |     sources = read("answer_sources", "v10")
+   |
+help: Remove assignment to unused variable `identities`
+
+Found 1 error.
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).

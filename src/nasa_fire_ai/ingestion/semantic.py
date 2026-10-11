@@ -105,7 +105,10 @@ def project_legacy(root: Path, evidence_registry) -> SemanticGraph:
             load_taxonomy(store, yaml.safe_load(taxonomy_file.read_text()))
         except (yaml.YAMLError, ValueError, TypeError) as exc:
             store.taxonomy_load_errors.append({"reason": type(exc).__name__})
-    if os.getenv("ONTOLOGY_GRAPH_ENRICHMENT_ENABLED", "false").lower() == "true":
+    if (
+        os.getenv("ONTOLOGY_GRAPH_ENRICHMENT_ENABLED", "false").lower() == "true"
+        or os.getenv("SCIENTIFIC_CONTEXT_RESOLUTION_ENABLED", "false").lower() == "true"
+    ):
         from nasa_fire_ai.ingestion.knowledge import enrich_native
 
         language = yaml.safe_load((root / "domain/query_language_v2.yaml").read_text())
@@ -129,6 +132,16 @@ def project_legacy(root: Path, evidence_registry) -> SemanticGraph:
         from nasa_fire_ai.ingestion.source_corrections import project_source_corrections
 
         project_source_corrections(store, evidence_registry, root, records)
+    if os.getenv("SCIENTIFIC_CONTEXT_RESOLUTION_ENABLED", "false").lower() == "true":
+        from nasa_fire_ai.query.contextual import attach_context_layer
+
+        attach_context_layer(
+            store,
+            evidence_registry,
+            os.getenv(
+                "SCIENTIFIC_CONTEXT_INDEX", str(root / "data/index/scientific_context_v2.json")
+            ),
+        )
     return store
 
 
@@ -213,8 +226,8 @@ def project_canonical_conditions(store, records, config, evidence_registry):
                 obj = str(condition["reported_value"])
                 if (
                     os.getenv("NATIVE_SOURCE_CONTEXT_VALIDATION_ENABLED", "false").lower() == "true"
-                    and config["condition_relations"][kind] == "hasGravityCondition"
-                ):
+                    or os.getenv("SCIENTIFIC_CONTEXT_RESOLUTION_ENABLED", "false").lower() == "true"
+                ) and config["condition_relations"][kind] == "hasGravityCondition":
                     explicit = any(
                         cell["original_header"].strip().lower() in {"gravity", "gravity condition"}
                         and cell["original_value"].strip().lower() == obj.lower()

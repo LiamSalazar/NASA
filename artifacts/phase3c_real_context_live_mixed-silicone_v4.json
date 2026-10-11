@@ -1,0 +1,111 @@
+{
+  "input": {
+    "window": "mixed-silicone",
+    "query": "Identify the gravity context for the ground and flight observation entities from the supplied comparison passages. Propose at most two relations. Use hasGravityCondition, object_value normal-gravity or microgravity, context_scope group and quantifier IDENTIFIED. Quote the exact source words, preserving newlines. The names distinguish which group an entity represents; verify it from the documentary comparison rather than treating the investigation topic as a condition. Return a proposals array matching the required schema.",
+    "entities": [
+      "context:silicone-ground-observation",
+      "context:silicone-flight-observation"
+    ],
+    "passages": [
+      {
+        "evidence_id": "E-context-ec300b3756c4bd69021b",
+        "text": "Saffire-2; Why Silicone?\nUpward burning silicone samples (2-1 to 2-3) were 0.27, 0.61, and 1.03 mm thick.\nIn upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.\n‒ The 0.27-mm thick samples were almost always completely consumed\n‒ The 0.61-mm thickness burned on average 7.6 cm of the available 30 cm before extinguishing\n‒ The 1.03-mm thickness would not burn at all.\nDownward burning silicone sample (2-4) was 0.37 mm thick.\n\nIn downward burning, normal gravity tests, this thickness was completely consumed. The next higher\nthickness tested (0.61 mm) would not burn.\n\nMicrogravity behavior was sought:\n‒ How much of the available fuel would be burned?\n‒ Would microgravity prove more or less favorable to flame spread?\n11\n\nSaffire-2; Silicone Results\nResults were convincing although rather anticlimactic as none of the silicone samples burned.\nWhen the igniter was powered off, a tiny gas phase flame remained but did not spread and quickly\nextinguished. The igniters all appeared to function normally and the materials were clearly damaged in\nthe vicinities of the igniters.\nIt was surprising that not even the thin sample could permit any flame spread, given that it was entirely\nconsumed in normal gravity. Previous experience with cellulosic fuels (paper and fabric) and even\nPMMA suggested that if a flame could persist in upward 1-g tests then it would also burn in\nmicrogravity at a moderate flow speed which was less than that typical in buoyant flow.\n\n12\n\nSaffire-2; Silicone Results (con’t)\nThe behavior of silicone in microgravity is perplexing perhaps due to its complex burning:\n‒ Silicone produces fine silica powder as it burns, which could be deposited on the fuel and impede pyrolysis.\n‒ The relatively-larger buoyant flow speeds could sweep out the silica at a high enough rate so that it does\nnot hamper combustion.\n‒ Silicone fuel becomes quite irregular as it burns, cracking and flaking off in complex ways. The surface\nreaction details and geometrical effects could significantly impact the observed results. Buoyant flow might\naid the cracking and flaking processes which in turn could promote combustion as fresh fuel is exposed.\n\nMore work is needed to understand the differences between the normal and micro-g flammability of silicone.\n\n• It would be interesting to repeat these tests in microgravity but at a much higher flow speed of around 60\nto 80 cm/s, which is more typical of the level in 1-g.\n• Perhaps the nature of the buoyant boundary layer compared to the forced convection boundary layer is\ncontributing to the flammability differences.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Saffire-II silicone ground and flight tests"
+      },
+      {
+        "evidence_id": "E-context-a79df97c23d629116824",
+        "text": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.\n‒ The 0.27-mm thick samples were almost always completely consumed\n‒ The 0.61-mm thickness burned on average 7.6 cm of the available 30 cm before extinguishing\n‒ The 1.03-mm thickness would not burn at all.\nDownward burning silicone sample (2-4) was 0.37 mm thick.\n\nIn downward burning, normal gravity tests, this thickness was completely consumed. The next higher\nthickness tested (0.61 mm) would not burn.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Saffire-II terrestrial reference tests"
+      },
+      {
+        "evidence_id": "E-context-d86d030e275ce04b8b82",
+        "text": "Results were convincing although rather anticlimactic as none of the silicone samples burned.\nWhen the igniter was powered off, a tiny gas phase flame remained but did not spread and quickly\nextinguished. The igniters all appeared to function normally and the materials were clearly damaged in\nthe vicinities of the igniters.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Saffire-II silicone results"
+      }
+    ],
+    "allowed_predicates": [
+      "hasGravityCondition",
+      "hasMaterial",
+      "hasCondition",
+      "OxygenConcentration",
+      "AirflowVelocity",
+      "belongsToInvestigation",
+      "concerns",
+      "hasObservation",
+      "hasIntervention"
+    ]
+  },
+  "input_digest": "4d93a14f14dbb5b35ef614b7f989cdf31c528f96f44bcb4a9465b18895edb99f",
+  "proposals": [
+    {
+      "subject_entity": "context:silicone-ground-observation",
+      "candidate_predicate": "hasGravityCondition",
+      "object_value": "normal-gravity",
+      "source_statement": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from significant burn, to partial burn, to no burn.",
+      "supporting_text": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from significant burn, to partial burn, to no burn.",
+      "context_scope": "group",
+      "applicability_conditions": [],
+      "exceptions": [],
+      "evidence_ids": [
+        "E-context-ec300b3756c4bd69021b"
+      ],
+      "validation_status": "REJECTED",
+      "support_spans": [
+        {
+          "evidence_id": "E-context-ec300b3756c4bd69021b",
+          "text": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from significant burn, to partial burn, to no burn.",
+          "role": "condition"
+        }
+      ],
+      "conflicts": [],
+      "uncertainty": null,
+      "source_id": "ntrs-20170008805",
+      "quantifier": "IDENTIFIED",
+      "proposed_path": []
+    },
+    {
+      "subject_entity": "context:silicone-flight-observation",
+      "candidate_predicate": "hasGravityCondition",
+      "object_value": "microgravity",
+      "source_statement": "Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?",
+      "supporting_text": "Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?",
+      "context_scope": "group",
+      "applicability_conditions": [],
+      "exceptions": [],
+      "evidence_ids": [
+        "E-context-ec300b3756c4bd69021b"
+      ],
+      "validation_status": "REJECTED",
+      "support_spans": [
+        {
+          "evidence_id": "E-context-ec300b3756c4bd69021b",
+          "text": "Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?",
+          "role": "condition"
+        }
+      ],
+      "conflicts": [],
+      "uncertainty": null,
+      "source_id": "ntrs-20170008805",
+      "quantifier": "IDENTIFIED",
+      "proposed_path": []
+    }
+  ],
+  "execution": "FRESH_INFERENCE",
+  "prompt_version": "phase3c-context-interpreter-v1",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "usage": {
+    "completion_tokens": 634,
+    "prompt_tokens": 1689,
+    "total_tokens": 2323,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "raw_output": "{\n  \"proposals\": [\n    {\n      \"subject_entity\": \"context:silicone-ground-observation\",\n      \"candidate_predicate\": \"hasGravityCondition\",\n      \"object_value\": \"normal-gravity\",\n      \"source_statement\": \"In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from significant burn, to partial burn, to no burn.\",\n      \"supporting_text\": \"In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from significant burn, to partial burn, to no burn.\",\n      \"context_scope\": \"group\",\n      \"quantifier\": \"IDENTIFIED\",\n      \"applicability_conditions\": [],\n      \"exceptions\": [],\n      \"evidence_ids\": [\"E-context-ec300b3756c4bd69021b\"],\n      \"source_id\": \"ntrs-20170008805\",\n      \"support_spans\": [\n        {\n          \"evidence_id\": \"E-context-ec300b3756c4bd69021b\",\n          \"text\": \"In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from significant burn, to partial burn, to no burn.\",\n          \"role\": \"condition\"\n        }\n      ],\n      \"conflicts\": [],\n      \"proposed_path\": [],\n      \"uncertainty\": null\n    },\n    {\n      \"subject_entity\": \"context:silicone-flight-observation\",\n      \"candidate_predicate\": \"hasGravityCondition\",\n      \"object_value\": \"microgravity\",\n      \"source_statement\": \"Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?\",\n      \"supporting_text\": \"Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?\",\n      \"context_scope\": \"group\",\n      \"quantifier\": \"IDENTIFIED\",\n      \"applicability_conditions\": [],\n      \"exceptions\": [],\n      \"evidence_ids\": [\"E-context-ec300b3756c4bd69021b\"],\n      \"source_id\": \"ntrs-20170008805\",\n      \"support_spans\": [\n        {\n          \"evidence_id\": \"E-context-ec300b3756c4bd69021b\",\n          \"text\": \"Microgravity behavior was sought: How much of the available fuel would be burned? Would microgravity prove more or less favorable to flame spread?\",\n          \"role\": \"condition\"\n        }\n      ],\n      \"conflicts\": [],\n      \"proposed_path\": [],\n      \"uncertainty\": null\n    }\n  ]\n}",
+  "latency_ms": 12338.467708003009
+}

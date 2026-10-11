@@ -193,6 +193,12 @@ def constraint_explanation(subject, intent, store, paths, detail, query=None):
     dimensions = []
     for constraint in intent.entity_constraints:
         actual = sorted(store.relations(subject, constraint.relation))
+        context_resolution = None
+        from nasa_fire_ai.query.contextual import enabled
+
+        if not actual and enabled() and (layer := getattr(store, "context_layer", None)):
+            values, context_resolution = layer.relations(subject, constraint.relation)
+            actual = sorted(values)
         relations = [
             paths.get((constraint.relation, constraint.entity_id), {}).get(a) for a in actual
         ]
@@ -212,10 +218,15 @@ def constraint_explanation(subject, intent, store, paths, detail, query=None):
                 "actual": actual,
                 "relationships": relations,
                 "evidence_ids": store.evidence(subject),
+                "context_resolution": context_resolution.model_dump(mode="json")
+                if context_resolution
+                else None,
             }
         )
     for constraint in intent.property_constraints:
         records = store.value_records(subject, constraint.property_id)
+        if not records and enabled() and (layer := getattr(store, "context_layer", None)):
+            records = layer.values(subject, constraint.property_id, constraint.qualifiers)
         outcome = next(
             (
                 key

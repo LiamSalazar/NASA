@@ -430,6 +430,16 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
             f"multiple_values_for_relation:{relation}"
             for relation, values in relation_values.items()
             if len(values) > 1
+            and not (
+                relation == registry.selection_policy.get("context", {}).get("preference_relation")
+                and query
+                and any(
+                    term in query.lower()
+                    for term in registry.selection_policy.get("context", {}).get(
+                        "comparative_terms", []
+                    )
+                )
+            )
         ]
         if (
             query

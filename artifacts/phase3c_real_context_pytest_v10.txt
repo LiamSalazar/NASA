@@ -1,0 +1,36 @@
+...............................F........................................ [ 30%]
+........................................................................ [ 60%]
+........................................................................ [ 90%]
+.......................                                                  [100%]
+=================================== FAILURES ===================================
+___________ test_missing_structured_answer_still_has_contextual_rag ____________
+
+real_context = (<nasa_fire_ai.query.native.SemanticGraph object at 0x724819d77fe0>, <nasa_fire_ai.evidence.registry.EvidenceRegistry ...tion': 'hasGravityCondition', 'aliases': ['normal gravity', 'normal-gravity', 'terrestrial', '1-g', '1g']}, ...}, ...})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x724803329460>
+
+    def test_missing_structured_answer_still_has_contextual_rag(real_context, monkeypatch):
+        store, evidence, language = real_context
+        activate(monkeypatch)
+        response = answer_native_text(
+            "What unresolved questions did NASA identify about microgravity fire safety?",
+            store,
+            evidence,
+            language,
+        )
+        bundle = response.execution.bundle
+        assert not bundle.direct_evidence
+>       assert bundle.retrieval_metadata["selection_trace"]["documentary_candidates"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'scientific_evidence_selection'
+
+tests/test_contextual_end_to_end.py:324: KeyError
+=============================== warnings summary ===============================
+tests/test_native_semantic.py: 233 warnings
+tests/test_scientific_enrichment.py: 72727 warnings
+  /home/liam/NASA/.venv/lib/python3.12/site-packages/rdflib/graph.py:2340: DeprecationWarning: Dataset.default_context is deprecated, use Dataset.default_graph instead.
+    if context == self.default_context:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_contextual_end_to_end.py::test_missing_structured_answer_still_has_contextual_rag
+1 failed, 238 passed, 72960 warnings in 45.56s

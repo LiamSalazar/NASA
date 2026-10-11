@@ -1,0 +1,67 @@
+{
+  "input": {
+    "window": "intervention",
+    "query": "Identify experimental environment, material continuity, context changes, explicit exceptions, and relations for the supplied entity identities. Do not assign flight conditions to terrestrial comparisons or simulations. Include exact separate supporting spans for conditions and membership. Use source labels to distinguish ground and flight observation entities.",
+    "entities": [
+      "context:saffire-iv-pmma-test",
+      "context:saffire-iv-flow-intervention",
+      "context:saffire-iv-flow-observation",
+      "context:saffire-iv-suppression-question"
+    ],
+    "passages": [
+      {
+        "evidence_id": "E-context-80d7fc00aae08504c315",
+        "text": "Fire Suppression Requirements\nHow do you qualify a spacecraft fire suppression \nsystem? \nOn Earth, there are test fires that you have to \ndemonstrate that your system can extinguish\n\nFor spacecraft, what is your likely fire?\n\nHow do you account for micro- or partial-gravity?\nFor a fixed fire suppression system in a \ncompartment, what suppressant concentration must \nbe reached and how long must it be held there?\n\nFor the Saffire-IV PMMA sample, we turned off the \nflow for 20 seconds\n\nThe fire didn’t extinguish and began to grow when we \nturned the flow back on\nIn a spacecraft, suppressant could have been used \nto “knock down” the fire but wasn’t held at the \ndesired concentration long enough for surface to cool\nAdditional focused tests may be required to develop \nguidance on these questions\n16\nPMMA Sample\nSample card\nAbove: Deflagration as a \nresidual flame ignites MMA \nvapors on the top and bottom \nsurface\nRight: Decaying flame on \nthe upper surface when \nthe flow is off\n",
+        "role": "paragraph",
+        "source_id": "ntrs-20205007829",
+        "section": "Fire Suppression Requirements"
+      },
+      {
+        "evidence_id": "E-context-3b27486ede2bf8151a2f",
+        "text": "For the Saffire-IV PMMA sample, we turned off the \nflow for 20 seconds",
+        "role": "paragraph",
+        "source_id": "ntrs-20205007829",
+        "section": "Fire Suppression Requirements"
+      },
+      {
+        "evidence_id": "E-context-d1e50788b120206316a0",
+        "text": "The fire didn’t extinguish and began to grow when we \nturned the flow back on",
+        "role": "paragraph",
+        "source_id": "ntrs-20205007829",
+        "section": "Fire Suppression Requirements"
+      },
+      {
+        "evidence_id": "E-context-9df40cae8e6f693c2466",
+        "text": "For a fixed fire suppression system in a \ncompartment, what suppressant concentration must \nbe reached and how long must it be held there?",
+        "role": "paragraph",
+        "source_id": "ntrs-20205007829",
+        "section": "Fire Suppression Requirements"
+      }
+    ],
+    "allowed_predicates": [
+      "hasGravityCondition",
+      "hasMaterial",
+      "hasCondition",
+      "OxygenConcentration",
+      "AirflowVelocity",
+      "belongsToInvestigation",
+      "concerns",
+      "hasObservation",
+      "hasIntervention"
+    ]
+  },
+  "input_digest": "6cef8744c7cf154384bb4cd897784408889bbee77c2abdca46ab1b35a8499a9d",
+  "proposals": [],
+  "execution": "FRESH_INFERENCE",
+  "prompt_version": "phase3c-context-interpreter-v1",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "usage": {
+    "completion_tokens": 3242,
+    "prompt_tokens": 1037,
+    "total_tokens": 4279,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "error": "ValidationError",
+  "latency_ms": 14043.326800019713
+}

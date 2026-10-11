@@ -1,7 +1,18 @@
 version: phase3c-registry-v1
 selection_policy:
+  context:
+    dimensions: {hasGravityCondition: gravity, hasMaterial: material, AirflowVelocity: airflow, OxygenConcentration: oxygen, Pressure: pressure, hasCondition: apparatus, hasIntervention: intervention, hasPhenomenon: phenomenon}
+    preference_relation: hasGravityCondition
+    preferred_values: [microgravity]
+    preference_terms: [microgravity, low-gravity, low gravity, low-g]
+    comparative_terms: [compare, comparison, differ, distinguish, gravity affect, gravity change, gravity effects]
+    event_requirements:
+      restored: [restored, back on, restarted]
+      interrupted: [interrupted, turned off, shut off, cut off]
+    documented_join_terms: [observations support, support NASA]
   topical_wordforms:
     suppression: [suppression, suppress, suppressing, suppressed]
+    airflow: [airflow, flow]
   related:
     anchor_relations: [hasMaterial, hasPhenomenon]
     dimension_weights: {hasMaterial: 3, hasPhenomenon: 3, hasGravityCondition: 2, AirflowVelocity: 2, OxygenConcentration: 2, Pressure: 1}
@@ -10,7 +21,7 @@ selection_policy:
     unknown_weight: -1
   stop_words: [what, did, does, was, were, is, are, nasa, find, show, about, the, a, an, for, of, in, under, and, or, to, this, that, from, with, has, have, its, explicitly, identified]
 authority: "Existing canonical records, domain/lexicon.yaml and ontology/fire_safety.ttl; additive identities recorded for review"
-entities: [PMMA, SIBAL Fabric, microgravity, psi-98, psi-25, psi-26]
+entities: [PMMA, SIBAL Fabric, microgravity, normal-gravity, psi-98, psi-25, psi-26]
 properties:
   - {property_id: AirflowVelocity, dimension: velocity, canonical_unit: m/s, aliases: [airflow velocity, airflow, air flow, flow velocity, forced flow]}
   - {property_id: OxygenConcentration, dimension: fraction, canonical_unit: fraction, aliases: [oxygen concentration, oxygen, O2]}

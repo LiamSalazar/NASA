@@ -106,7 +106,7 @@ def render_native(bundle):
         "## Answer",
         "No DIRECT structured match was established. Documentary evidence and reviewed statements are listed separately."
         if bundle.no_direct_evidence
-        else "Canonical evidence matching the validated constraints is listed below.",
+        else "Source-backed evidence matching the validated constraints is listed below.",
     ]
     for constraint in intent.get("property_constraints", []):
         value = constraint["value"]
@@ -134,6 +134,40 @@ def render_native(bundle):
         lines.append(
             "Results are grouped by each requested concept; these groups do not establish a single experiment satisfying all concepts simultaneously."
         )
+    policy = bundle.retrieval_metadata.get("context_policy", {})
+    if policy.get("default_preference"):
+        lines.append(
+            "Research preference: "
+            + ", ".join(policy["default_preference"])
+            + ". Experimental conditions are established by the cited sources."
+        )
+    contexts = bundle.retrieval_metadata.get("scientific_context", {})
+    if contexts.get("applied_statements"):
+        lines.extend(["", "## Applicable scientific context", ""])
+        groups = {}
+        for statement in contexts["applied_statements"]:
+            key = (
+                statement["context_type"],
+                statement["value"],
+                statement["scope"],
+                statement.get("scope_entity"),
+            )
+            if key not in groups:
+                groups[key] = {**statement, "entity_ids": list(statement["entity_ids"])}
+            else:
+                groups[key]["entity_ids"] = list(
+                    dict.fromkeys(groups[key]["entity_ids"] + statement["entity_ids"])
+                )
+        for statement in groups.values():
+            entities = statement["entity_ids"]
+            labels = ", ".join(entities[:5]) + (
+                f" and {len(entities) - 5} other linked records" if len(entities) > 5 else ""
+            )
+            lines.append(
+                f"- {statement['context_type']}: {statement['value']}; applies to {labels}. The {statement['scope']} statement and verified membership establish applicability [{', '.join(statement['evidence_ids'])}]."
+            )
+            if statement.get("exceptions"):
+                lines.append("  Exceptions: " + ", ".join(statement["exceptions"]))
     if intent.get("ambiguities"):
         lines.append("Unresolved interpretations: " + ", ".join(intent["ambiguities"]))
     for heading, items in (
@@ -197,6 +231,8 @@ def render_native(bundle):
                 else ""
             )
             lines.append(f"- {text}{group_label} [{', '.join(eids)}]")
+            if item.get("request_limits"):
+                lines.append("  Applicability limits: " + "; ".join(item["request_limits"]))
             if item.get("scientific_applicability"):
                 for dimension in item["scientific_applicability"]["dimensions"]:
                     lines.append(

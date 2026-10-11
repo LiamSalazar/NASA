@@ -1,0 +1,104 @@
+{
+  "input": {
+    "window": "mixed-pmma",
+    "query": "Identify the gravity context for the ground and flight observation entities from the supplied comparison passages. Propose at most two relations. Use hasGravityCondition, object_value normal-gravity or microgravity, context_scope group and quantifier IDENTIFIED. Quote the exact source words, preserving newlines. The names distinguish which group an entity represents; verify it from the documentary comparison rather than treating the investigation topic as a condition. Return a proposals array matching the required schema.",
+    "entities": [
+      "context:bass-ground-rod-observation",
+      "context:bass-flight-rod-observation"
+    ],
+    "passages": [
+      {
+        "evidence_id": "E-context-87d3a70a788ae398fe4a",
+        "text": "Material Ignition and Suppression Test\nCarlos Fernandez-Pello, University of California, Berkeley\nObjective\n\nUnderstand the effect of space exploration atmospheres (SEA) on the piloted ignition under an\nexternal radiant flux of a representative combustible material, as well as on its fire suppression\ncharacteristics.\nStatus\n― Three different diameters (0.25”, 0.375”, 0.5”) of black and clear PMMA rods were tested.\n― Oxygen concentrations between 16% to 21% and flow velocity between 0.4 cm/sec to 4\ncm/sec were tested. The total set of experiments yielded 54 unique flame spread rates.",
+        "role": "paragraph",
+        "source_id": "ntrs-20160000593",
+        "section": "Material Ignition and Suppression Test"
+      },
+      {
+        "evidence_id": "E-context-d0e9f6c262d92e57e3bd",
+        "text": "There is a downward trend in flame\nspread rate as sample diameter increases\nfor both the 1g and μg (microgravity)\ntests. 1g tests have higher flame spread\nrates than μg.\n\n1g Black\n\nFlame Spread Rate [cm/sec]\n\nFlame spread rate as a function of\nsample diameter for both 1g and μg\ntests. 1g tests are in natural convection\nat 21% oxygen environments. Values for\nμg tests are averaged over flow velocity\nand oxygen concentration.",
+        "role": "caption",
+        "source_id": "ntrs-20160000593",
+        "section": "PMMA rod comparison"
+      }
+    ],
+    "allowed_predicates": [
+      "hasGravityCondition",
+      "hasMaterial",
+      "hasCondition",
+      "OxygenConcentration",
+      "AirflowVelocity",
+      "belongsToInvestigation",
+      "concerns",
+      "hasObservation",
+      "hasIntervention"
+    ]
+  },
+  "input_digest": "0d12fd8b79b93dad81258d939881acfdec9f082871963ad61599c7a146080412",
+  "proposals": [
+    {
+      "subject_entity": "context:bass-ground-rod-observation",
+      "candidate_predicate": "hasGravityCondition",
+      "object_value": "normal-gravity",
+      "source_statement": "1g tests have higher flame spread rates than μg.",
+      "supporting_text": "1g tests have higher flame spread rates than μg.",
+      "context_scope": "group",
+      "applicability_conditions": [],
+      "exceptions": [],
+      "evidence_ids": [
+        "E-context-d0e9f6c262d92e57e3bd"
+      ],
+      "validation_status": "REJECTED",
+      "support_spans": [
+        {
+          "evidence_id": "E-context-d0e9f6c262d92e57e3bd",
+          "text": "1g tests have higher flame spread rates than μg.",
+          "role": "condition"
+        }
+      ],
+      "conflicts": [],
+      "uncertainty": null,
+      "source_id": "ntrs-20160000593",
+      "quantifier": "IDENTIFIED",
+      "proposed_path": []
+    },
+    {
+      "subject_entity": "context:bass-flight-rod-observation",
+      "candidate_predicate": "hasGravityCondition",
+      "object_value": "microgravity",
+      "source_statement": "μg (microgravity) tests are averaged over flow velocity and oxygen concentration.",
+      "supporting_text": "μg (microgravity) tests are averaged over flow velocity and oxygen concentration.",
+      "context_scope": "group",
+      "applicability_conditions": [],
+      "exceptions": [],
+      "evidence_ids": [
+        "E-context-d0e9f6c262d92e57e3bd"
+      ],
+      "validation_status": "REJECTED",
+      "support_spans": [
+        {
+          "evidence_id": "E-context-d0e9f6c262d92e57e3bd",
+          "text": "μg tests are averaged over flow velocity and oxygen concentration.",
+          "role": "condition"
+        }
+      ],
+      "conflicts": [],
+      "uncertainty": null,
+      "source_id": "ntrs-20160000593",
+      "quantifier": "IDENTIFIED",
+      "proposed_path": []
+    }
+  ],
+  "execution": "FRESH_INFERENCE",
+  "prompt_version": "phase3c-context-interpreter-v1",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "usage": {
+    "completion_tokens": 526,
+    "prompt_tokens": 985,
+    "total_tokens": 1511,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "raw_output": "{\n  \"proposals\": [\n    {\n      \"subject_entity\": \"context:bass-ground-rod-observation\",\n      \"candidate_predicate\": \"hasGravityCondition\",\n      \"object_value\": \"normal-gravity\",\n      \"source_statement\": \"1g tests have higher flame spread rates than μg.\",\n      \"supporting_text\": \"1g tests have higher flame spread rates than μg.\",\n      \"context_scope\": \"group\",\n      \"quantifier\": \"IDENTIFIED\",\n      \"applicability_conditions\": [],\n      \"exceptions\": [],\n      \"evidence_ids\": [\"E-context-d0e9f6c262d92e57e3bd\"],\n      \"source_id\": \"ntrs-20160000593\",\n      \"support_spans\": [\n        {\n          \"evidence_id\": \"E-context-d0e9f6c262d92e57e3bd\",\n          \"text\": \"1g tests have higher flame spread rates than μg.\",\n          \"role\": \"condition\"\n        }\n      ],\n      \"conflicts\": [],\n      \"proposed_path\": [],\n      \"uncertainty\": null\n    },\n    {\n      \"subject_entity\": \"context:bass-flight-rod-observation\",\n      \"candidate_predicate\": \"hasGravityCondition\",\n      \"object_value\": \"microgravity\",\n      \"source_statement\": \"μg (microgravity) tests are averaged over flow velocity and oxygen concentration.\",\n      \"supporting_text\": \"μg (microgravity) tests are averaged over flow velocity and oxygen concentration.\",\n      \"context_scope\": \"group\",\n      \"quantifier\": \"IDENTIFIED\",\n      \"applicability_conditions\": [],\n      \"exceptions\": [],\n      \"evidence_ids\": [\"E-context-d0e9f6c262d92e57e3bd\"],\n      \"source_id\": \"ntrs-20160000593\",\n      \"support_spans\": [\n        {\n          \"evidence_id\": \"E-context-d0e9f6c262d92e57e3bd\",\n          \"text\": \"μg tests are averaged over flow velocity and oxygen concentration.\",\n          \"role\": \"condition\"\n        }\n      ],\n      \"conflicts\": [],\n      \"proposed_path\": [],\n      \"uncertainty\": null\n    }\n  ]\n}",
+  "latency_ms": 2897.1736039966345
+}

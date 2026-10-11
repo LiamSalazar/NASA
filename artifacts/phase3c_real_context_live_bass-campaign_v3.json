@@ -1,0 +1,81 @@
+{
+  "input": {
+    "window": "bass-campaign",
+    "query": "Identify experimental environment, material continuity, context changes, explicit exceptions, and relations for the supplied entity identities. Do not assign flight conditions to terrestrial comparisons or simulations. Include exact separate supporting spans for conditions and membership. Use source labels to distinguish ground and flight observation entities.",
+    "entities": [
+      "psi-25",
+      "psi-25-B1",
+      "psi-25-M17"
+    ],
+    "passages": [
+      {
+        "evidence_id": "E-context-5227141f2aaa7feb2e37",
+        "text": "Approach\n― Microgravity combustion tests were performed aboard the International Space Station.\nActive crew support for real-time “lab partner” operations.\n\n― The wind tunnel was installed in the Microgravity Science Glovebox which supplied power,\nimaging, and a level of containment.\n― Fuel samples were mounted inside a small wind tunnel which could impose airflow speeds\nup to 40 cm/s.\n\n― Main variables are airflow speed and oxygen concentration (oxygen varied below 21% by\nadding nitrogen).\n― Flame appearance, flame growth, and spread rates were determined in both the opposed\nand concurrent flow.",
+        "role": "paragraph",
+        "source_id": "ntrs-20160000593",
+        "section": "Approach"
+      },
+      {
+        "evidence_id": "E-context-24bfe372cd04dd961245",
+        "text": "Summary \nThe Burning and Suppression of Solids (BASS) experiment hardware is a small flow duct that \n\nprovides containment for small scale burning of solid samples within the Microgravity Science Glovebox \n(MSG) aboard the International Space Station (ISS). A video camera with a data overlay and a 35-mm \nstill camera record the combustion events. The controls (ignition, fan speed, etc.) are operated by an \nastronaut while the principal investigator team monitors the experiment from the ground and \ncommunicates directly with the astronaut. For the first time on ISS, BASS–II utilized MSG working \nvolume dilution with gaseous N2. We developed a perfectly stirred reactor model to determine the N2 flow \ntime and flow rate to obtain the desired reduced O2 concentration in the working volume for each test. We \ncalibrated the model with the Compound Specific Analyzer-Combustion Products (CSA-CP) O2 readings \noffset using the Major Constituents Analyzer reading of the ISS ambient atmosphere data for that day. \nThis worked out extremely well for operations, and added a new vital variable, ambient O2 level, to our \ntest matrices. The main variables tested in BASS–II were ambient O2 concentration, ventilation flow \nvelocity, and fuel type, thickness, and geometry. BASS–II also utilized the onboard CSA-CP for O2 and \nCO readings, and the Carbon Dioxide Monitor for CO2 readings before and after each test. Readings from \nthese sensors allow us to evaluate the completeness of the combustion. The O2 and CO2 readings before",
+        "role": "paragraph",
+        "source_id": "ntrs-20210011385",
+        "section": "Summary"
+      },
+      {
+        "evidence_id": "E-context-0a49239e2fb97b47c967",
+        "text": "Appendix A.—Test Matrices for Burning and Suppression Solids—II (BASS–II) \nThese summary test matrices are grouped by principal investigator with Bhattacharjee in Table A.1, Ferkul in Table A.2, Fernandez-Pello in Table A.3, Miller in Table A.4, Olson in Table A.5, and T’ien in Table A.6.",
+        "role": "section",
+        "source_id": "ntrs-20210011385",
+        "section": "Appendix A"
+      },
+      {
+        "evidence_id": "E-context-2de71d38c317717f3361",
+        "text": "ad, \nextinguished, burn time, color, etc.)c \n\n2/19/2014 \nGMT 2014 \n\n050 \n\n10:09:50 to \n10:10:16 \n\n7 B1 147 100-µm \nPMMA film, \n\n2 cm wide \n\nIntegral 2 Opposed 62 5 50 --- 8 NA N CL A –4 off --- F2 1,000 Cont 7 57 22.2 22.2 20.6 20.6 0.44 0.44 0 6 Ignited very quickly, turned flow o",
+        "role": "table",
+        "source_id": "ntrs-20210011385",
+        "section": "Appendix A run B1"
+      },
+      {
+        "evidence_id": "E-psi-25-table-B1",
+        "text": "Bhattacharjee,B1,2/19/2014,50,147,100 micron PMMA film   2 cm wide,2,62,5,50,57,22.2,22.2,0.44,0.44,0,6",
+        "source_id": "psi-25",
+        "role": "table",
+        "section": "Experimental table"
+      },
+      {
+        "evidence_id": "E-context-4eefc8331334df09dca5",
+        "text": "k; dry wipe would not wipe off; try \nMonday with some other—water? \n\n7/15/14 \nGMT 196 \n\n15:12:00 88 M17 166m 2-cm-wide\nPMMA, 2 \nmm thick \n\nIntegral 2 Opposed Fan pot 3.7, 1.7, \n1.5, 1.3, 0.8, 0.6, \n\n0.5, 0.3 \nextinction \n\n10, 5, 3, 0, \nextinction \n\n250 > \n50 > \n250 \n\n----------- NA ",
+        "role": "table",
+        "source_id": "ntrs-20210011385",
+        "section": "Appendix A run M17"
+      },
+      {
+        "evidence_id": "E-f9051a6418603bba",
+        "text": "Miller,M17,7/15/2014,196,166m,2 cm wide PMMA 2 mm thick,2,Fan pot 3.7   1.7   1.5   1.3   0.8   0.6   0.5   0.3ext,10   5   3   0ext,250>50>250,309,18.8,17.1,0.35,1.7,4,485",
+        "source_id": "psi-25",
+        "role": "table",
+        "section": "Experimental table"
+      }
+    ],
+    "allowed_predicates": [
+      "hasGravityCondition",
+      "hasMaterial",
+      "hasCondition",
+      "OxygenConcentration",
+      "AirflowVelocity",
+      "belongsToInvestigation",
+      "concerns",
+      "hasObservation",
+      "hasIntervention"
+    ]
+  },
+  "input_digest": "e7ea42b2398992d05d4722c849cd442547e97e8f042c095ae1ad240c1d81b677",
+  "proposals": [],
+  "execution": "FRESH_INFERENCE",
+  "prompt_version": "phase3c-context-interpreter-v1",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "usage": null,
+  "error": "APITimeoutError",
+  "latency_ms": 40439.84514600015
+}

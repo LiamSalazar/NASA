@@ -1,0 +1,58 @@
+{
+  "execution": "FRESH_HANDOFF_CHECK",
+  "historical": {
+    "checked": 950,
+    "changed": [],
+    "passed": true
+  },
+  "checks": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "output": "373 files already formatted\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "api_secret_matches": [],
+  "gravity_summary": {
+    "pilot_before_unknown": 70,
+    "pilot_after_unknown": 0,
+    "verified_microgravity_runs": 70,
+    "pilot_normal_gravity_runs": 0,
+    "pilot_partial_gravity_runs": 0,
+    "unknown_native_runs_outside_pilot": 335,
+    "verified_documentary_terrestrial_groups": 2,
+    "real_mixed_context_comparisons": 2,
+    "rejected_model_gravity_proposals": 2,
+    "false_inheritance_found_in_software_controls": 0,
+    "independent_false_inheritance_rate": null
+  },
+  "production_service": "artifacts/phase3c_real_context_production_service_v14.json",
+  "test_receipt": "artifacts/phase3c_real_context_pytest_v14.txt"
+}

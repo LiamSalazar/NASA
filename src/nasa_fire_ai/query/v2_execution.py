@@ -6,6 +6,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from nasa_fire_ai.context import DEFAULT_CONTEXT_POLICY
 from nasa_fire_ai.evidence import EvidenceRegistry
 from nasa_fire_ai.models import EvidenceBundle, QueryIntent
 from nasa_fire_ai.query.v2 import (
@@ -139,6 +140,9 @@ def build_bundle_v2(
     bundle.retrieval_metadata = {
         "query_intent_v2": intent_v2.model_dump(mode="json"),
         "v2_eligible_evidence_ids": planned.eligible_evidence_ids,
+        "context_policy": DEFAULT_CONTEXT_POLICY.for_query(
+            c.entity_id for c in intent_v2.entity_constraints if c.relation == "hasGravityCondition"
+        ),
     }
     return V2ExecutionResult(bundle, planned)
 

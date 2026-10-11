@@ -1,0 +1,75 @@
+{
+  "input": {
+    "window": "mixed-silicone",
+    "query": "Identify experimental environment, material continuity, context changes, explicit exceptions, and relations for the supplied entity identities. Do not assign flight conditions to terrestrial comparisons or simulations. Include exact separate supporting spans for conditions and membership. Use source labels to distinguish ground and flight observation entities.",
+    "entities": [
+      "context:silicone-ground",
+      "context:silicone-flight",
+      "context:silicone-ground-observation",
+      "context:silicone-flight-observation",
+      "context:silicone-conclusion"
+    ],
+    "passages": [
+      {
+        "evidence_id": "E-context-ec300b3756c4bd69021b",
+        "text": "Saffire-2; Why Silicone?\nUpward burning silicone samples (2-1 to 2-3) were 0.27, 0.61, and 1.03 mm thick.\nIn upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.\n‒ The 0.27-mm thick samples were almost always completely consumed\n‒ The 0.61-mm thickness burned on average 7.6 cm of the available 30 cm before extinguishing\n‒ The 1.03-mm thickness would not burn at all.\nDownward burning silicone sample (2-4) was 0.37 mm thick.\n\nIn downward burning, normal gravity tests, this thickness was completely consumed. The next higher\nthickness tested (0.61 mm) would not burn.\n\nMicrogravity behavior was sought:\n‒ How much of the available fuel would be burned?\n‒ Would microgravity prove more or less favorable to flame spread?\n11\n\nSaffire-2; Silicone Results\nResults were convincing although rather anticlimactic as none of the silicone samples burned.\nWhen the igniter was powered off, a tiny gas phase flame remained but did not spread and quickly\nextinguished. The igniters all appeared to function normally and the materials were clearly damaged in\nthe vicinities of the igniters.\nIt was surprising that not even the thin sample could permit any flame spread, given that it was entirely\nconsumed in normal gravity. Previous experience with cellulosic fuels (paper and fabric) and even\nPMMA suggested that if a flame could persist in upward 1-g tests then it would also burn in\nmicrogravity at a moderate flow speed which was less than that typical in buoyant flow.\n\n12\n\nSaffire-2; Silicone Results (con’t)\nThe behavior of silicone in microgravity is perplexing perhaps due to its complex burning:\n‒ Silicone produces fine silica powder as it burns, which could be deposited on the fuel and impede pyrolysis.\n‒ The relatively-larger buoyant flow speeds could sweep out the silica at a high enough rate so that it does\nnot hamper combustion.\n‒ Silicone fuel becomes quite irregular as it burns, cracking and flaking off in complex ways. The surface\nreaction details and geometrical effects could significantly impact the observed results. Buoyant flow might\naid the cracking and flaking processes which in turn could promote combustion as fresh fuel is exposed.\n\nMore work is needed to understand the differences between the normal and micro-g flammability of silicone.\n\n• It would be interesting to repeat these tests in microgravity but at a much higher flow speed of around 60\nto 80 cm/s, which is more typical of the level in 1-g.\n• Perhaps the nature of the buoyant boundary layer compared to the forced convection boundary layer is\ncontributing to the flammability differences.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Saffire-II silicone ground and flight tests"
+      },
+      {
+        "evidence_id": "E-context-a79df97c23d629116824",
+        "text": "In upward-burning, normal-gravity tests, these three thicknesses spanned the flammability limits from\nsignificant burn, to partial burn, to no burn.\n‒ The 0.27-mm thick samples were almost always completely consumed\n‒ The 0.61-mm thickness burned on average 7.6 cm of the available 30 cm before extinguishing\n‒ The 1.03-mm thickness would not burn at all.\nDownward burning silicone sample (2-4) was 0.37 mm thick.\n\nIn downward burning, normal gravity tests, this thickness was completely consumed. The next higher\nthickness tested (0.61 mm) would not burn.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Saffire-II terrestrial reference tests"
+      },
+      {
+        "evidence_id": "E-context-d86d030e275ce04b8b82",
+        "text": "Results were convincing although rather anticlimactic as none of the silicone samples burned.\nWhen the igniter was powered off, a tiny gas phase flame remained but did not spread and quickly\nextinguished. The igniters all appeared to function normally and the materials were clearly damaged in\nthe vicinities of the igniters.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Saffire-II silicone results"
+      },
+      {
+        "evidence_id": "E-context-320a94a6feadb020fea3",
+        "text": "Flammability of silicone in microgravity appears to be reduced compared to normal gravity, at least for the flow speeds tested.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Summary and Conclusions"
+      },
+      {
+        "evidence_id": "E-context-4679bc2d5e96d1425335",
+        "text": "Summary and Conclusions\n• For the first time, a large-scale fire was intentionally set inside a spacecraft while in orbit.\n• In addition, smaller samples of various materials were burned in a subsequent spaceflight.\n• Unlike 1-g, the results revealed that a steady flame could be achieved even for a wide sample burning in concurrent-flow.\n• The flames spread more slowly than prior tests in smaller ducts. This behavior of the flame demonstrated the importance of\nconfined spaces for potential spacecraft fires.\n• Flammability of silicone in microgravity appears to be reduced compared to normal gravity, at least for the flow speeds tested.\n• Nomex®, a common material used on the ISS and rated “safe,” could not be ignited even when bathed by a pilot flame.\nThere are plans for the Saffire project to continue with additional experiments examining the effects of enhanced oxygen at\nreduced pressure.\nResults will increase our knowledge of how a fire spreads in a large enclosure, and what effects the fire has on the spacecraft.\nThis understanding will influence vehicle design and materials screening, ultimately increasing the safety of the crew.",
+        "role": "paragraph",
+        "source_id": "ntrs-20170008805",
+        "section": "Summary and Conclusions"
+      }
+    ],
+    "allowed_predicates": [
+      "hasGravityCondition",
+      "hasMaterial",
+      "hasCondition",
+      "OxygenConcentration",
+      "AirflowVelocity",
+      "belongsToInvestigation",
+      "concerns",
+      "hasObservation",
+      "hasIntervention"
+    ]
+  },
+  "input_digest": "6f6d1f01fbf6331fd140ae9fc51069e7e07c88c0cdd9bfccd1ad76fe7ab958e5",
+  "proposals": [],
+  "execution": "FRESH_INFERENCE",
+  "prompt_version": "phase3c-context-interpreter-v1",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "usage": {
+    "completion_tokens": 1836,
+    "prompt_tokens": 1893,
+    "total_tokens": 3729,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "error": "ValidationError",
+  "latency_ms": 39591.78210797836
+}
