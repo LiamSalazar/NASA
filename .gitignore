@@ -25,6 +25,14 @@ data/index/*.npy
 data/index/*.npz
 data/index/*.wal
 data/index/*.shm
+# Generated contextual applicability indexes; source-backed receipts and reports
+# under artifacts/ remain versioned.
+data/index/scientific_context_*.json
+
+# Local test fixtures and execution scratch space
+artifacts/**/test-fixtures/
+artifacts/**/*.journal
+artifacts/**/*.sqlite-journal
 
 # Rebuildable evaluation databases; retain JSON/JSONL results and RDF snapshots
 artifacts/**/*.sqlite
