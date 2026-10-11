@@ -1,17 +1,17 @@
 from pathlib import Path
 
-import fitz
+import pymupdf
 
 
 def extract_pdf(path: Path):
-    doc = fitz.open(path)
-    return [(i + 1, page.get_text("text")) for i, page in enumerate(doc)]
+    with pymupdf.open(path) as doc:
+        return [(i + 1, page.get_text("text")) for i, page in enumerate(doc)]
 
 
 def extract_pdf_tables(path: Path, page_numbers=None):
     """Preserve detected cells and physical locators; scientific interpretation stays staged."""
     tables = []
-    with fitz.open(path) as doc:
+    with pymupdf.open(path) as doc:
         for index, page in enumerate(doc):
             if page_numbers is not None and index + 1 not in page_numbers:
                 continue

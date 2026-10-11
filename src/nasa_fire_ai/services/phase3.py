@@ -1,4 +1,4 @@
-"""Explicit, inspectable Phase-3 orchestration; there is no autonomous tool loop."""
+"""Phase-3 orchestration with an optional bounded native V2 investigation loop."""
 
 import hashlib
 import os
@@ -88,7 +88,7 @@ class Phase3AssistantService:
         if detail_level not in {"concise", "standard", "technical"}:
             raise ValueError("detail_level must be concise, standard, or technical")
         if os.getenv("NATIVE_V2_QUERY_ENABLED", "false").lower() == "true":
-            return self._answer_native_query(query, conversation_context)
+            return self._answer_native_query(query, conversation_context, detail_level)
         began = time.perf_counter()
         trace = ExecutionTrace(raw_query=query)
         key = self._cache_key(query, conversation_context)
@@ -178,7 +178,7 @@ class Phase3AssistantService:
             trace=trace,
         )
 
-    def _answer_native_query(self, query, context):
+    def _answer_native_query(self, query, context, detail_level="standard"):
         """Route the existing app/service envelope through the native V2 executor."""
         import yaml
 
@@ -186,12 +186,77 @@ class Phase3AssistantService:
         from nasa_fire_ai.models import QueryIntent, ScientificAnswer, ValidatedQueryIntent
         from nasa_fire_ai.services.native import answer_native_text
 
-        if not hasattr(self, "_native_store"):
+        signature = (
+            tuple(
+                tuple(row)
+                for row in self.registry.db.execute(
+                    "SELECT candidate_id,review_status,resolution_status FROM semantic_staging ORDER BY candidate_id"
+                )
+            ),
+            self.registry.db.execute("PRAGMA data_version").fetchone()[0],
+            tuple(
+                tuple(row)
+                for row in self.registry.db.execute(
+                    "SELECT source_id,status FROM sources ORDER BY source_id"
+                )
+            ),
+            tuple(
+                self.registry.db.execute(
+                    "SELECT (SELECT count(*) FROM documents),(SELECT max(rowid) FROM documents),(SELECT count(*) FROM passages),(SELECT max(rowid) FROM passages)"
+                ).fetchone()
+            ),
+            tuple(
+                (path.name, path.stat().st_mtime_ns, path.stat().st_size)
+                for path in sorted((self.root / "data/canonical").glob("*.json"))
+            ),
+            tuple(
+                (flag, os.getenv(flag, "false"))
+                for flag in (
+                    "SCIENTIFIC_CONTEXT_RESOLUTION_ENABLED",
+                    "SOURCE_KNOWLEDGE_ENRICHMENT_ENABLED",
+                    "ONTOLOGY_GRAPH_ENRICHMENT_ENABLED",
+                )
+            ),
+        )
+        if (
+            not hasattr(self, "_native_store")
+            or getattr(self, "_native_graph_signature", signature) != signature
+        ):
             self._native_store = project_legacy(self.root, self.registry)
+        self._native_graph_signature = signature
         language = yaml.safe_load((self.root / "domain/query_language_v2.yaml").read_text())
         response = answer_native_text(
             query, self._native_store, self.registry, language, context=context
         )
+        if os.getenv("AUTONOMOUS_RESEARCH_ENABLED", "false").lower() == "true":
+            from nasa_fire_ai.services.investigation import ResearchBudget, investigate
+
+            planner = None
+            if (
+                os.getenv("NEMOTRON_RESEARCH_PLANNING_ENABLED", "false").lower() == "true"
+                and self.settings.nvidia_api_key
+            ):
+                from nasa_fire_ai.llm.research import NvidiaResearchPlanner
+
+                planner = NvidiaResearchPlanner(
+                    self.settings.nvidia_api_key,
+                    self.settings.nvidia_base_url,
+                    self.settings.nvidia_phase3_model,
+                    self.registry,
+                )
+            investigate(
+                query,
+                response.execution,
+                self._native_store,
+                self.registry,
+                budget=ResearchBudget(
+                    max_rounds=int(os.getenv("RESEARCH_MAX_ROUNDS", "3")),
+                    max_actions=int(os.getenv("RESEARCH_MAX_ACTIONS", "8")),
+                    max_candidates=int(os.getenv("RESEARCH_MAX_CANDIDATES", "8")),
+                    timeout_seconds=float(os.getenv("RESEARCH_TIMEOUT_SECONDS", "30")),
+                ),
+                planner=planner,
+            )
         intent = response.execution.plan.intent
         # This is the established display envelope only. Execution has already
         # completed using QueryIntentV2 and the native graph.
@@ -226,6 +291,43 @@ class Phase3AssistantService:
             lexicon_digest=lexicon_digest(),
         )
         bundle = response.execution.bundle
+        bundle.retrieval_metadata["scientific_question"] = query
+        from nasa_fire_ai.ingestion.scientific_proposals import search_staged
+
+        bundle.retrieval_metadata["staged_scientific_knowledge"] = search_staged(
+            query, self.registry
+        )
+        rendered_answer = response.rendered_answer
+        if os.getenv("SCIENTIFIC_SYNTHESIS_ENABLED", "false").lower() == "true":
+            from nasa_fire_ai.services.scientific_synthesis import render_scientific
+
+            if (
+                os.getenv("NEMOTRON_SCIENTIFIC_SELECTION_ENABLED", "false").lower() == "true"
+                and self.settings.nvidia_api_key
+            ):
+                from nasa_fire_ai.llm.scientific_selection import NvidiaScientificSelector
+
+                selector = NvidiaScientificSelector(
+                    self.settings.nvidia_api_key,
+                    self.settings.nvidia_base_url,
+                    self.settings.nvidia_phase3_model,
+                )
+                bundle.retrieval_metadata["nemotron_scientific_selection"] = selector.select(
+                    query,
+                    bundle,
+                    synthesis=os.getenv("NEMOTRON_SCIENTIFIC_SYNTHESIS_ENABLED", "false").lower()
+                    == "true",
+                )
+            rendered_answer = render_scientific(bundle, detail_level=detail_level)
+        from nasa_fire_ai.models import GroundedClaim
+        from nasa_fire_ai.services.claim_verification import verify_claim
+
+        bundle.retrieval_metadata["claim_verification"] = [
+            verify_claim(GroundedClaim.model_validate(claim), bundle, self.registry)
+            for claim in bundle.retrieval_metadata.get("scientific_synthesis", {}).get(
+                "selected_claims", []
+            )
+        ]
         bundle.query_intent = display
         status = (
             "DIRECT_EVIDENCE"
@@ -253,6 +355,9 @@ class Phase3AssistantService:
             sources=bundle.evidence_passages,
             comparison=bundle.comparison,
             coverage_notes=bundle.coverage_notes,
+            generated_claims=bundle.retrieval_metadata.get("scientific_synthesis", {}).get(
+                "selected_claims", []
+            ),
         )
         trace = ExecutionTrace(
             raw_query=query,
@@ -262,12 +367,13 @@ class Phase3AssistantService:
             model_metadata={
                 "query_intent_v2": intent.model_dump(mode="json"),
                 "scientific_context": bundle.retrieval_metadata.get("scientific_context", {}),
+                "investigation": bundle.retrieval_metadata.get("investigation", {}),
             },
             latency_ms=response.execution.latency_ms,
         )
         return AnswerResponse(
             answer=answer,
-            rendered_answer=response.rendered_answer,
+            rendered_answer=rendered_answer,
             validated_intent=validated,
             evidence_bundle=bundle,
             trace=trace,

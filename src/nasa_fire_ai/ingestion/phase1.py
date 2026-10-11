@@ -133,10 +133,50 @@ class NTRSAdapter(HTTPMetadataAdapter):
     """NTRS adapter boundary; callers supply a verified NTRS identifier/URL."""
 
     def fetch_metadata(self, source_id: str) -> dict:
-        return {
-            "source_id": source_id,
-            "metadata_url": f"https://ntrs.nasa.gov/api/citations/{source_id}",
-        }
+        import httpx
+
+        if not source_id.isdecimal():
+            raise ValueError("NTRS identifier must be numeric")
+        response = httpx.get(f"https://ntrs.nasa.gov/api/citations/{source_id}", timeout=25)
+        response.raise_for_status()
+        metadata = response.json()
+        if str(metadata.get("id")) != source_id:
+            raise ValueError("NTRS returned a different citation identity")
+        return metadata
+
+    def discover(self, query: str | None = None) -> list[dict]:
+        import httpx
+
+        if not query:
+            return []
+        response = httpx.get(
+            "https://ntrs.nasa.gov/api/citations/search",
+            params={"q": query, "page.size": 12},
+            timeout=25,
+        )
+        response.raise_for_status()
+        return response.json().get("results", [])[:12]
+
+    def list_artifacts(self, source_id: str) -> list[Artifact]:
+        metadata = self.fetch_metadata(source_id)
+        return [
+            Artifact(
+                artifact_id=f"ntrs-{source_id}:{index}",
+                source_id=source_id,
+                source_type="NTRS",
+                document_id=f"ntrs-{source_id}",
+                canonical_url="https://ntrs.nasa.gov" + download["links"]["pdf"],
+                filename=f"ntrs-{source_id}-{index}.pdf",
+                source_version=metadata.get("modified"),
+                mime_type="application/pdf",
+            )
+            for index, download in enumerate(metadata.get("downloads", []))
+            if download.get("mimetype") == "application/pdf"
+            and download.get("links", {})
+            .get("pdf", "")
+            .startswith(f"/api/citations/{source_id}/downloads/")
+            and not download.get("draft")
+        ]
 
 
 class NASAStandardsAdapter(HTTPMetadataAdapter):

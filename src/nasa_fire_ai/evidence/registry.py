@@ -6,11 +6,15 @@ from pathlib import Path
 
 
 class EvidenceRegistry:
-    def __init__(self, path: Path):
-        path.parent.mkdir(parents=True, exist_ok=True)
-        self.db = sqlite3.connect(path)
+    def __init__(self, path: Path, *, read_only: bool = False):
+        if read_only:
+            self.db = sqlite3.connect(f"file:{path.resolve()}?mode=ro", uri=True)
+        else:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            self.db = sqlite3.connect(path)
         self.db.row_factory = sqlite3.Row
-        self.init()
+        if not read_only:
+            self.init()
 
     def init(self):
         self.db.executescript("""CREATE TABLE IF NOT EXISTS sources(source_id TEXT PRIMARY KEY, source_type TEXT, nasa_id TEXT, title TEXT, doi TEXT, url TEXT, retrieved_at TEXT, filename TEXT, sha256 TEXT, mime_type TEXT, status TEXT);
@@ -84,9 +88,12 @@ class EvidenceRegistry:
 
     def staged_semantic_candidates(self) -> list[dict]:
         rows = self.db.execute(
-            "SELECT payload_json FROM semantic_staging ORDER BY candidate_id"
+            "SELECT payload_json,resolution_status,review_status FROM semantic_staging ORDER BY candidate_id"
         ).fetchall()
-        return [json.loads(row[0]) for row in rows]
+        return [
+            {**json.loads(row[0]), "resolution_status": row[1], "review_status": row[2]}
+            for row in rows
+        ]
 
     def get_phase3_cache(self, cache_key: str, cache_kind: str) -> dict | None:
         row = self.db.execute(
@@ -177,7 +184,7 @@ class EvidenceRegistry:
             params.append(json.dumps(eligible_ids))
         params.append(limit * 4 if eligible_ids is None else limit)
         rows = self.db.execute(
-            "SELECT p.*, bm25(passages_fts) score FROM passages_fts JOIN passages p USING(evidence_id) WHERE passages_fts MATCH ?"
+            "SELECT p.*, bm25(passages_fts) score FROM passages_fts JOIN passages p USING(evidence_id) LEFT JOIN documents d USING(document_id) LEFT JOIN sources s ON s.source_id=d.source_id WHERE passages_fts MATCH ? AND COALESCE(s.status,'') NOT IN ('SUPERSEDED_DOCUMENT','ROLLED_BACK_DOCUMENT')"
             + clause
             + " ORDER BY score, p.evidence_id LIMIT ?",
             params,

@@ -1,6 +1,7 @@
 """Native scientist-facing boundary with conservative generation and offline fallback."""
 
 import json
+import os
 from dataclasses import dataclass
 
 from nasa_fire_ai.llm.interfaces import ProviderFailure
@@ -95,6 +96,10 @@ def _render_comparison(bundle):
 
 def render_native(bundle):
     """Readable deterministic presentation; science comes only from supplied data."""
+    if os.getenv("SCIENTIFIC_SYNTHESIS_ENABLED", "false").lower() == "true":
+        from nasa_fire_ai.services.scientific_synthesis import render_scientific
+
+        return render_scientific(bundle)
     intent = bundle.retrieval_metadata.get("query_intent_v2", {})
     if (
         intent.get("clarification_required")

@@ -6,7 +6,9 @@ scientific identity, DIRECT/RELATED status, or ontology facts.
 
 import hashlib
 import json
+import os
 import time
+import uuid
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from pathlib import Path
@@ -42,6 +44,7 @@ class NvidiaEmbeddingProvider(EmbeddingProvider):
     base_url: str = "https://integrate.api.nvidia.com/v1"
     model: str = "nvidia/nemotron-3-embed-1b"
     retries: int = 3
+    timeout_seconds: float = 90
     _dimension: int | None = None
 
     def model_identity(self) -> str:
@@ -69,14 +72,23 @@ class NvidiaEmbeddingProvider(EmbeddingProvider):
                     self.base_url.rstrip("/") + "/embeddings",
                     headers={"Authorization": f"Bearer {self.api_key}"},
                     json=payload,
-                    timeout=90,
+                    timeout=self.timeout_seconds,
                 )
                 if response.status_code in {429, 500, 502, 503, 504}:
                     time.sleep(2**attempt)
                     last_error = RuntimeError(f"NVIDIA embedding HTTP {response.status_code}")
                     continue
                 response.raise_for_status()
-                data = response.json().get("data", [])
+                result = response.json()
+                self.last_receipt = {
+                    "execution": "FRESH_INFERENCE",
+                    "model": self.model,
+                    "input_role": input_type,
+                    "inputs": len(texts),
+                    "usage": result.get("usage"),
+                    "http_status": response.status_code,
+                }
+                data = result.get("data", [])
                 vectors = [
                     item["embedding"] for item in sorted(data, key=lambda item: item["index"])
                 ]
@@ -189,43 +201,83 @@ class LocalVectorIndex:
     root: Path
     index_id: str
 
+    def _manifest(self):
+        return json.loads(self.metadata_path.read_text()) if self.metadata_path.exists() else {}
+
+    def _generation_path(self, kind, manifest):
+        name = manifest.get(f"{kind}_file", f"{self.index_id}.{kind}.npy")
+        if Path(name).name != name:
+            raise ValueError("Vector generation paths must stay within index directory")
+        return self.root / name
+
     @property
     def vectors_path(self) -> Path:
-        return self.root / f"{self.index_id}.vectors.npy"
+        return self._generation_path("vectors", self._manifest())
 
     @property
     def ids_path(self) -> Path:
-        return self.root / f"{self.index_id}.ids.npy"
+        return self._generation_path("ids", self._manifest())
 
     @property
     def metadata_path(self) -> Path:
         return self.root / f"{self.index_id}.metadata.json"
 
     def write(self, ids: list[str], vectors: list[list[float]], metadata: dict) -> None:
+        """Publish complete immutable generations via an atomic manifest swap.
+
+        Previous generations remain available for rollback and concurrent readers.
+        Interrupted preparation cannot change the current manifest.
+        """
+        if len(ids) != len(vectors) or len(set(ids)) != len(ids):
+            raise ValueError("Vector identity/length mismatch")
         self.root.mkdir(parents=True, exist_ok=True)
         matrix = np.asarray(vectors, dtype=np.float32)
         if matrix.size:
+            if (
+                matrix.ndim != 2
+                or not np.isfinite(matrix).all()
+                or (np.linalg.norm(matrix, axis=1) == 0).any()
+            ):
+                raise ValueError("Invalid embedding matrix")
             matrix /= np.linalg.norm(matrix, axis=1, keepdims=True).clip(min=1e-12)
-        np.save(self.vectors_path, matrix)
-        np.save(self.ids_path, np.asarray(ids, dtype=str))
-        self.metadata_path.write_text(
-            json.dumps(
-                {
-                    **metadata,
-                    "number_of_vectors": len(ids),
-                    "embedding_dimension": int(matrix.shape[1])
-                    if matrix.ndim == 2 and len(matrix)
-                    else None,
-                },
-                indent=2,
-            )
-            + "\n"
-        )
+        generation = uuid.uuid4().hex
+        vectors_file = f"{self.index_id}.{generation}.vectors.npy"
+        ids_file = f"{self.index_id}.{generation}.ids.npy"
+        for name, array in [(vectors_file, matrix), (ids_file, np.asarray(ids, dtype=str))]:
+            with (self.root / name).open("xb") as stream:
+                np.save(stream, array)
+                stream.flush()
+                os.fsync(stream.fileno())
+        temporary = self.root / f".{self.index_id}.{generation}.manifest.tmp"
+        value = {
+            **metadata,
+            "generation": generation,
+            "vectors_file": vectors_file,
+            "ids_file": ids_file,
+            "number_of_vectors": len(ids),
+            "embedding_dimension": int(matrix.shape[1])
+            if matrix.ndim == 2 and len(matrix)
+            else None,
+        }
+        with temporary.open("x") as stream:
+            json.dump(value, stream, indent=2)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, self.metadata_path)
+        descriptor = os.open(self.root, os.O_RDONLY)
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
 
     def sync(self, vectors_by_id: dict[str, list[float]], metadata: dict) -> dict[str, int]:
         """Update changed/new IDs and remove stale IDs without new embeddings for unchanged text."""
-        old_ids = list(np.load(self.ids_path)) if self.ids_path.exists() else []
-        old_vectors = np.load(self.vectors_path) if self.vectors_path.exists() else np.empty((0, 0))
+        manifest = self._manifest()
+        ids_path = self._generation_path("ids", manifest)
+        vectors_path = self._generation_path("vectors", manifest)
+        old_ids = list(np.load(ids_path)) if ids_path.exists() else []
+        old_vectors = np.load(vectors_path) if vectors_path.exists() else np.empty((0, 0))
         retained = {
             str(eid): old_vectors[i].tolist()
             for i, eid in enumerate(old_ids)
@@ -242,9 +294,14 @@ class LocalVectorIndex:
             if eid not in retained or not np.allclose(retained[eid], normalized(vector))
         )
         stale = len(old_ids) - len(retained)
-        # Exact local search uses one compact array. This rewrites local files but
-        # reuses cache vectors and never re-embeds unchanged passages.
-        self.write(list(vectors_by_id), [vectors_by_id[eid] for eid in vectors_by_id], metadata)
+        existing_metadata = (
+            json.loads(self.metadata_path.read_text()) if self.metadata_path.exists() else {}
+        )
+        metadata_changed = any(
+            existing_metadata.get(key) != value for key, value in metadata.items()
+        )
+        if changed or stale or metadata_changed or not self.metadata_path.exists():
+            self.write(list(vectors_by_id), [vectors_by_id[eid] for eid in vectors_by_id], metadata)
         return {
             "new_or_changed": changed,
             "stale_removed": stale,
@@ -254,8 +311,9 @@ class LocalVectorIndex:
     def search(
         self, query_vector: list[float], limit: int = 10, eligible_ids: set[str] | None = None
     ) -> list[tuple[str, float]]:
-        vectors = np.load(self.vectors_path)
-        ids = np.load(self.ids_path)
+        manifest = self._manifest()
+        vectors = np.load(self._generation_path("vectors", manifest))
+        ids = np.load(self._generation_path("ids", manifest))
         q = np.asarray(query_vector, dtype=np.float32)
         q /= max(float(np.linalg.norm(q)), 1e-12)
         scores = vectors @ q

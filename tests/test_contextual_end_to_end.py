@@ -94,6 +94,56 @@ def test_real_native_service_invokes_scope_resolver(real_context, monkeypatch):
     )
 
 
+def test_public_v2_service_renders_verified_claims_offline(real_context, monkeypatch, tmp_path):
+    from nasa_fire_ai.config import Settings
+    from nasa_fire_ai.services.phase3 import Phase3AssistantService
+
+    store, evidence, _ = real_context
+    activate(monkeypatch)
+    monkeypatch.setenv("NATIVE_V2_QUERY_ENABLED", "true")
+    monkeypatch.setenv("SCIENTIFIC_SYNTHESIS_ENABLED", "true")
+    monkeypatch.setenv("NEMOTRON_SCIENTIFIC_SELECTION_ENABLED", "false")
+    service = Phase3AssistantService(
+        root=ROOT, settings=Settings(root=tmp_path, nvidia_api_key=None)
+    )
+    service.registry = evidence
+    service._native_store = store
+    response = service.answer_query(
+        "What did NASA observe about PMMA combustion under microgravity?"
+    )
+    assert response.answer.generated_claims
+    assert response.evidence_bundle.retrieval_metadata["scientific_context"]["resolver_invoked"]
+    assert len(response.rendered_answer.split()) < 700
+    for claim in response.answer.generated_claims:
+        assert all(evidence.resolve(eid) for eid in claim.evidence_ids)
+        assert claim.validation_status == "VALIDATED_SUPPLIED_STATEMENT"
+    assert "microgravity" in response.rendered_answer
+    assert not store.relations("psi-25-B1", "hasGravityCondition")
+
+
+def test_public_v2_conditions_are_not_observed_outcomes(real_context, monkeypatch, tmp_path):
+    from nasa_fire_ai.config import Settings
+    from nasa_fire_ai.services.phase3 import Phase3AssistantService
+
+    store, evidence, _ = real_context
+    activate(monkeypatch)
+    monkeypatch.setenv("NATIVE_V2_QUERY_ENABLED", "true")
+    monkeypatch.setenv("SCIENTIFIC_SYNTHESIS_ENABLED", "true")
+    monkeypatch.setenv("NEMOTRON_SCIENTIFIC_SELECTION_ENABLED", "false")
+    service = Phase3AssistantService(
+        root=ROOT, settings=Settings(root=tmp_path, nvidia_api_key=None)
+    )
+    service.registry = evidence
+    service._native_store = store
+    response = service.answer_query("Which conditions applied to the Saffire-I experiments?")
+    assert "20.0 cm/s" in response.rendered_answer
+    assert "not observations" in response.rendered_answer
+    assert all(
+        claim.epistemic_type in {"experimental_condition", "reported_quantity"}
+        for claim in response.answer.generated_claims
+    )
+
+
 def test_real_observation_joins_material_and_earlier_environment(real_context, monkeypatch):
     store, evidence, language = real_context
     activate(monkeypatch)

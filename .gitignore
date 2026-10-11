@@ -25,9 +25,16 @@ data/index/*.npy
 data/index/*.npz
 data/index/*.wal
 data/index/*.shm
+data/index/consolidation_vectors/
 # Generated contextual applicability indexes; source-backed receipts and reports
 # under artifacts/ remain versioned.
 data/index/scientific_context_*.json
+data/index/autonomy_vectors/
+
+# Local autonomous/consolidation runs and downloaded research inputs
+artifacts/phase3c_autonomy_*
+artifacts/phase3c_consolidation_*
+data/raw/autonomous/
 
 # Local test fixtures and execution scratch space
 artifacts/**/test-fixtures/

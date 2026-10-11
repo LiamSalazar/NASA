@@ -90,7 +90,7 @@ class NvidiaStructuredClient:
         except (json.JSONDecodeError, IndexError, KeyError, TypeError) as exc:
             raise ProviderFailure("provider returned invalid structured JSON") from exc
         except Exception as exc:  # 429, timeout, and 5xx all trigger bounded fallback.
-            raise ProviderFailure(str(exc)) from exc
+            raise ProviderFailure("provider request failed: " + type(exc).__name__) from exc
 
 
 class NvidiaQueryInterpreter(NvidiaStructuredClient, QueryInterpreterLLM):

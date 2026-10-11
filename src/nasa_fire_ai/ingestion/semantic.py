@@ -79,7 +79,9 @@ def project_legacy(root: Path, evidence_registry) -> SemanticGraph:
         )
     project_canonical_conditions(store, records, config, evidence_registry)
     # Every registered document remains queryable as a document independently of runs.
-    for row in evidence_registry.db.execute("SELECT document_id,source_id,title FROM documents"):
+    for row in evidence_registry.db.execute(
+        "SELECT d.document_id,d.source_id,d.title FROM documents d LEFT JOIN sources s USING(source_id) WHERE COALESCE(s.status,'') NOT IN ('SUPERSEDED_DOCUMENT','ROLLED_BACK_DOCUMENT')"
+    ):
         refs = [
             r[0]
             for r in evidence_registry.db.execute(
@@ -142,6 +144,10 @@ def project_legacy(root: Path, evidence_registry) -> SemanticGraph:
                 "SCIENTIFIC_CONTEXT_INDEX", str(root / "data/index/scientific_context_v2.json")
             ),
         )
+    if os.getenv("SOURCE_KNOWLEDGE_ENRICHMENT_ENABLED", "false").lower() == "true":
+        from nasa_fire_ai.ingestion.scientific_proposals import project_staged
+
+        project_staged(store, evidence_registry)
     return store
 
 

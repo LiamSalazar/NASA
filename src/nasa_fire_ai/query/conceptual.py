@@ -48,3 +48,13 @@ def approved_conceptual_support(query, store, evidence):
         ),
         "interpretation_limit": "A registry alias lookup or specimen description does not establish a new family-to-polymer equivalence.",
     }
+
+
+def technical_topic_supported(query, text):
+    """Explicit linguistic topic modifiers cannot be satisfied by another topic.
+
+    This checks wording only. It establishes no scientific identity, causal
+    relation, applicability or equivalence, and cannot promote evidence.
+    """
+    modifiers = re.findall(r"\b([a-z]{6,})-(?:based|driven|induced)\b", query.lower())
+    return not modifiers or all(term in " ".join(str(text).lower().split()) for term in modifiers)

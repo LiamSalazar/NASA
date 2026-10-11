@@ -516,6 +516,14 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
         return QueryIntentV2(
             operation="EXPLAIN", targets=["Publication"], source_constraints=sources
         )
+    from nasa_fire_ai.services.investigation import question_kind
+
+    if query and question_kind(query, QueryIntentV2()) == "bibliographic":
+        return QueryIntentV2(
+            targets=["Publication"],
+            requested_information=["Publication"],
+            source_constraints=sources,
+        )
     return QueryIntentV2(
         operation={"search": "SEARCH", "compare": "COMPARE", "explain": "EXPLAIN"}.get(
             proposal.operation.lower(), "SEARCH"

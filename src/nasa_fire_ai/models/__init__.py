@@ -325,6 +325,9 @@ class GroundedClaim(BaseModel):
         "open_question",
         "related_evidence_notice",
         "no_direct_evidence_notice",
+        "source_quotation",
+        "experimental_condition",
+        "reported_quantity",
     ] = "observed_result"
     relationship_status: Literal["DIRECT", "RELATED", "SAFETY", "NO_DIRECT", "DOCUMENTARY"] = (
         "SAFETY"
@@ -334,6 +337,13 @@ class GroundedClaim(BaseModel):
     scope: str | None = None
     modality: str | None = None
     negation: bool = False
+    # Proof-carrying presentation, not a new canonical fact store.
+    scientific_entities: list[str] = []
+    support_spans: list[dict[str, Any]] = []
+    experimental_context: list[dict[str, Any]] = []
+    graph_paths: list[dict[str, Any]] = []
+    scope_limits: list[str] = []
+    validation_status: str = "UNVALIDATED"
 
     @model_validator(mode="after")
     def evidence_is_required_except_for_status_notice(self):
