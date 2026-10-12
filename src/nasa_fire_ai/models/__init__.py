@@ -314,6 +314,9 @@ class GroundedClaim(BaseModel):
     claim_id: str
     text: str
     epistemic_type: Literal[
+        "tentative_interpretation",
+        "hypothesis",
+        "derived_quantity",
         "observed_result",
         "tested_intervention",
         "nasa_conclusion",

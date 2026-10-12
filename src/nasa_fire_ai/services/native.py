@@ -36,7 +36,11 @@ def _source_location(passage):
 def _comparison_value(value):
     if isinstance(value, dict):
         if value.get("raw_expression"):
-            return str(value["raw_expression"])
+            expression = str(value["raw_expression"])
+            unit = value.get("reported_unit")
+            if unit and str(unit).lower() not in expression.lower():
+                expression += " " + str(unit)
+            return expression
         reported = value.get("reported_value")
         if reported is not None:
             unit = value.get("reported_unit")

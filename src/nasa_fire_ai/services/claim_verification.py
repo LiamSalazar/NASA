@@ -3,7 +3,7 @@
 from nasa_fire_ai.services.scientific_synthesis import validate_selected_claim
 
 
-def verify_claim(claim, bundle, registry):
+def verify_claim(claim, bundle, registry, *, store=None):
     missing = [eid for eid in claim.evidence_ids if registry.resolve(eid) is None]
     if missing:
         return {
@@ -13,6 +13,25 @@ def verify_claim(claim, bundle, registry):
             "missing_evidence_ids": missing,
         }
     errors = validate_selected_claim(claim, bundle)
+    if any(d.get("status") == "CONFLICTED" for d in claim.experimental_context):
+        errors.append("Conflicted scientific scope cannot be emitted as supported")
+    from nasa_fire_ai.services.scientific_synthesis import normalize
+
+    for span in claim.support_spans:
+        if span.get("reference_kind") == "supplied_structured_value" and store is not None:
+            supplied = span.get("structured_record", {})
+            trusted = store.payload(supplied.get("id", ""))
+            if not trusted or any(
+                supplied.get(key) != trusted.get(key)
+                for key in ("id", "subject", "property_id", "value", "qualifiers")
+            ):
+                errors.append("Structured quantity differs from validated graph source projection")
+        if span.get("reference_kind") == "exact_source_span":
+            original = registry.resolve(span["evidence_id"])
+            if not original or normalize(span.get("text", "")) not in normalize(
+                original.get("text", "")
+            ):
+                errors.append("Supplied span differs from immutable registry source")
     if errors:
         return {
             "claim_id": claim.claim_id,

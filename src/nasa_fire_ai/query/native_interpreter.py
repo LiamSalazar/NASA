@@ -153,6 +153,29 @@ def resolve_minimal(proposal, registry, language, context=None, query=None):
             **language["entity_mentions"],
             **getattr(registry, "entity_mentions", {}),
         },
+        "information_mentions": {
+            **language["information_mentions"],
+            **{
+                cid: list(
+                    dict.fromkeys(
+                        [
+                            *language["information_mentions"].get(cid, []),
+                            *meta.get("query_terms", []),
+                        ]
+                    )
+                )
+                for cid, meta in registry.class_metadata.items()
+                if meta.get("information") and meta.get("parent")
+            },
+        },
+        "target_mentions": {
+            **language.get("target_mentions", {}),
+            **{
+                cid: meta.get("query_terms", [])
+                for cid, meta in registry.class_metadata.items()
+                if meta.get("target") and meta.get("parent")
+            },
+        },
     }
 
     def contains(text, label):

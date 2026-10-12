@@ -29,11 +29,17 @@ def run_cycle(
     offline=False,
     model_enabled=False,
     max_sources=2,
+    max_model_calls=1,
     retries=1,
     timeout_seconds=120,
     adapter=None,
 ):
-    if not 1 <= max_sources <= 8 or not 0 <= retries <= 2 or not 0 < timeout_seconds <= 600:
+    if (
+        not 1 <= max_sources <= 8
+        or not 0 <= retries <= 2
+        or not 0 < timeout_seconds <= 600
+        or not 0 <= max_model_calls <= 8
+    ):
         raise ValueError("Maintenance budget outside bounded limits")
     started = time.monotonic()
     pipeline = KnowledgeMaintenance(root, registry, adapter)
@@ -45,6 +51,8 @@ def run_cycle(
         "failures": [],
         "discovery": [],
         "model_enabled": model_enabled,
+        "max_model_calls": max_model_calls,
+        "model_calls_consumed": 0,
         "scheduler_installed": False,
     }
     if not dry_run:
@@ -140,8 +148,10 @@ def run_cycle(
                         registry,
                         semantic_registry,
                         settings,
-                        model_enabled=model_enabled,
+                        model_enabled=model_enabled
+                        and receipt["model_calls_consumed"] < max_model_calls,
                     )
+                    receipt["model_calls_consumed"] += item["extraction"].get("new_model_calls", 0)
                 except (ValueError, RuntimeError, OSError, sqlite3.Error) as error:
                     item["extraction"] = {
                         "status": "QUARANTINED_EXTRACTION",

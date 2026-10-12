@@ -145,9 +145,13 @@ def project_legacy(root: Path, evidence_registry) -> SemanticGraph:
             ),
         )
     if os.getenv("SOURCE_KNOWLEDGE_ENRICHMENT_ENABLED", "false").lower() == "true":
-        from nasa_fire_ai.ingestion.scientific_proposals import project_staged
+        from nasa_fire_ai.ingestion.scientific_proposals import project_eligible, project_staged
 
+        project_eligible(store, evidence_registry, root)
         project_staged(store, evidence_registry)
+    from nasa_fire_ai.services.curation import project_active
+
+    project_active(store, evidence_registry, root)
     return store
 
 

@@ -34,6 +34,7 @@ relations:
   - {relation_id: belongsToExperimentFamily}
   - {relation_id: hasPhenomenon}
 classes:
+  Material: {target: true}
   Sample: {target: true}
   ExperimentalRun: {target: true, information: true, query_terms: [experiment, experiments, tests, runs]}
   Investigation: {target: true}

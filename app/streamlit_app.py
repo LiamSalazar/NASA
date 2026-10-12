@@ -1,9 +1,11 @@
+import os
 import sys
 from pathlib import Path
 
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from nasa_fire_ai.config import Settings
 from nasa_fire_ai.models import ConversationContext
 from nasa_fire_ai.services import Phase3AssistantService
 
@@ -12,13 +14,22 @@ st.title("NASA spacecraft fire-safety evidence assistant")
 st.caption(
     "Evidence assistant only — scientists make scientific interpretation and applicability judgments."
 )
+mode = st.radio("Workspace", ["Scientific questions", "Incorporate research"], horizontal=True)
+if mode == "Incorporate research":
+    from curation_view import show_curation
+
+    show_curation(Path(__file__).resolve().parents[1])
+    st.stop()
 if "phase3_context" not in st.session_state:
     st.session_state.phase3_context = None
 q = st.text_input(
     "Natural-language query", placeholder="Find microgravity PMMA evidence below 18% O2"
 )
 if q:
-    service = Phase3AssistantService(root=Path(__file__).resolve().parents[1])
+    workspace = Path(__file__).resolve().parents[1]
+    if os.getenv("NASA_CURATION_DEVELOPMENT", "false").lower() == "true":
+        workspace = Path(os.environ.get("NASA_CURATION_WORKSPACE", str(workspace)))
+    service = Phase3AssistantService(root=workspace, settings=Settings(root=workspace))
     response = service.answer_query(q, st.session_state.phase3_context)
     st.session_state.phase3_context = ConversationContext(
         current_investigation=(response.validated_intent.intent.investigations or [None])[0],

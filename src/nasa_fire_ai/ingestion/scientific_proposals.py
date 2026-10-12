@@ -8,13 +8,14 @@ retrievable with full original provenance while canonical publication continues.
 import hashlib
 import json
 import re
+from dataclasses import asdict
 from time import perf_counter
 
 from openai import OpenAIError
 
 from nasa_fire_ai.llm.interfaces import NvidiaStructuredClient
 
-CONTRACT = "scientific-exact-span-stage-v2"
+CONTRACT = "scientific-exact-span-stage-v5-dynamic-contracts-source-whitespace"
 
 
 def span_location(text, quote):
@@ -45,6 +46,8 @@ def validate_proposition(proposal, registry, semantic_registry):
             or not span_location(proposal.get("quote", ""), quantity["original_expression"])
         ):
             errors.append("QUANTITY_OR_UNIT_NOT_IN_EXACT_QUOTE")
+        elif not re.search(r"\d", quantity["original_expression"]):
+            errors.append("QUANTITY_EXPRESSION_HAS_NO_REPORTED_NUMBER")
     if proposal.get("gravity"):
         # Mention of gravity in a report is never experiment-level attribution.
         errors.append("GRAVITY_SCOPE_REQUIRES_EXPLICIT_EXPERIMENT_MEMBERSHIP")
@@ -53,7 +56,74 @@ def validate_proposition(proposal, registry, semantic_registry):
     return errors, source, location
 
 
-def stage_proposition(proposal, registry, semantic_registry):
+def publication_eligibility(proposal, errors, approved_records=()):
+    """Only trusted, previously adjudicated structures grant scientific authority.
+
+    approved_records comes from application-owned canonical projection, never a
+    model field or a caller's assertion that its own proposal is approved.
+    """
+    if errors:
+        return {"eligible": False, "tier": 4, "reasons": errors}
+    from nasa_fire_ai.services.scientific_synthesis import normalize
+
+    for record in approved_records:
+        if record["class_id"] != proposal.get("class_id"):
+            continue
+        if (
+            normalize(record["text"]) == normalize(proposal.get("quote", ""))
+            and proposal.get("evidence_id") in record["evidence_ids"]
+        ):
+            return {
+                "eligible": True,
+                "tier": 1,
+                "contract": "reviewed-canonical-statement-replay-v1",
+                "existing_record_id": record["id"],
+                "reasons": [
+                    "Exact unchanged statement, class, identity and evidence under existing reviewed projection"
+                ],
+            }
+    return {
+        "eligible": False,
+        "tier": 3 if proposal.get("scope", "").startswith("UNRESOLVED") else 2,
+        "reasons": [
+            "NO_APPROVED_NEW_PROSE_TO_EXPERIMENT_EPISTEMIC_PUBLICATION_CONTRACT",
+            "EXPERIMENT_GROUP_AND_EPISTEMIC_CLASSIFICATION_REQUIRE_SCIENTIFIC_REVIEW",
+        ],
+    }
+
+
+def approved_publication_records(root):
+    """Load the same reviewed canonical contract used by project_legacy."""
+    import yaml
+
+    canonical = root / "data/canonical/records.json"
+    config_path = root / "domain/legacy_semantic_projection.yaml"
+    if not canonical.exists() or not config_path.exists():
+        return []
+    config = yaml.safe_load(config_path.read_text())
+    result = []
+    for row in json.loads(canonical.read_text()):
+        if row["type"] not in config.get("reviewed_epistemic_record_types", []):
+            continue
+        cls = (
+            config["statement_classes"].get(row.get("statement_type"))
+            if row["type"] == "SafetyStatementRecord"
+            else config["record_classes"].get(row["type"])
+        )
+        if cls and row.get("text"):
+            result.append(
+                {
+                    "id": row.get("id", row.get("statement_id")),
+                    "class_id": cls,
+                    "text": row["text"],
+                    "evidence_ids": [ref["evidence_id"] for ref in row["evidence_refs"]],
+                    "payload": row,
+                }
+            )
+    return result
+
+
+def stage_proposition(proposal, registry, semantic_registry, *, approved_records=()):
     errors, source, location = validate_proposition(proposal, registry, semantic_registry)
     identity = hashlib.sha256(
         json.dumps({"contract": CONTRACT, "proposal": proposal}, sort_keys=True).encode()
@@ -61,6 +131,7 @@ def stage_proposition(proposal, registry, semantic_registry):
     status = "REJECTED" if errors else "STAGED_CANDIDATE"
     exact = source["text"][location[0] : location[1]] if location else None
     metadata = registry.source_metadata(proposal.get("evidence_id", "")) or {}
+    eligibility = publication_eligibility(proposal, errors, approved_records)
     row = {
         "candidate_id": f"science-{identity}",
         "candidate_type": proposal.get("class_id", "UNKNOWN"),
@@ -80,9 +151,9 @@ def stage_proposition(proposal, registry, semantic_registry):
             "source_digest": source.get("checksum") if source else None,
             "validation_status": status,
             "validation_errors": errors,
-            "publication_eligible": False,
-            "publication_reasons": errors
-            or ["EXPERIMENT_GROUP_AND_EPISTEMIC_CLASSIFICATION_REQUIRE_SCIENTIFIC_REVIEW"],
+            "publication_eligible": eligibility["eligible"],
+            "publication_reasons": eligibility["reasons"],
+            "publication_decision": eligibility,
             "epistemic_status": "PROPOSED_SOURCE_STATEMENT",
             "scientific_review": None,
             "actual_gravity": "UNRESOLVED",
@@ -97,9 +168,9 @@ def stage_proposition(proposal, registry, semantic_registry):
 def deterministic_propositions(passages, semantic_registry, limit=24):
     """Sentence proposals, deliberately not a scientific classification authority."""
     patterns = {
-        "ReportedObservation": r"\b(?:observed|continued to burn|continue to burn|reignit\w*|extinguished|extinguishment was|test showed)\b",
+        "ReportedObservation": r"\b(?:observed|continued to burn|continues to burn|continue to burn|maintained a flame|re-?ignit\w*|extinguished|extinguishment was|test showed)\b",
         "ExperimentalCondition": r"\b(?:test environment|testing was performed|tests were performed|maintained at|initial pressure)\b",
-        "NASAConclusion": r"\b(?:results indicate|results show|concluded|conclusion|study showed|study demonstrates)\b",
+        "NASAConclusion": r"\b(?:results indicate|results show|concluded|conclusion|study showed|study demonstrates|demonstrated that)\b",
         "OpenQuestion": r"\b(?:further research|future work|future research|additional research|not yet understood)\b",
         "Intervention": r"\b(?:nitrogen was then introduced|oxygen was reintroduced|depressurization was initiated)\b",
     }
@@ -112,7 +183,7 @@ def deterministic_propositions(passages, semantic_registry, limit=24):
                 continue
             for class_id, pattern in patterns.items():
                 if class_id in semantic_registry.class_metadata and re.search(
-                    pattern, quote, re.IGNORECASE
+                    pattern.replace(" ", r"\s+"), quote, re.IGNORECASE
                 ):
                     proposals.append(
                         {
@@ -150,9 +221,16 @@ def extract_source(
                     for p in pages
                 ],
                 "contract": CONTRACT,
-                "registry": sorted(semantic_registry.class_metadata),
+                "registry": {
+                    "classes": semantic_registry.class_metadata,
+                    "properties": [asdict(p) for p in semantic_registry.properties.values()],
+                    "relations": [asdict(r) for r in semantic_registry.relations.values()],
+                },
                 "model": settings.nvidia_phase3_model if model_enabled else None,
                 "max_items": max_items,
+                "approved_contract_digest": hashlib.sha256(
+                    json.dumps(approved_publication_records(settings.root), sort_keys=True).encode()
+                ).hexdigest(),
             },
             sort_keys=True,
         ).encode()
@@ -215,8 +293,8 @@ def extract_source(
                     },
                 ],
             )
-            output = json.loads(result.choices[0].message.content)
             model_receipt["usage"] = result.usage.model_dump() if result.usage else None
+            output = json.loads(result.choices[0].message.content)
             proposed = output.get("propositions", [])
             if (
                 not isinstance(proposed, list)
@@ -230,9 +308,12 @@ def extract_source(
             model_receipt["error_type"] = type(error).__name__
         model_receipt["latency_ms"] = (perf_counter() - started) * 1000
     rows = []
+    approved = approved_publication_records(settings.root)
     for proposal in proposals[:max_items]:
         try:
-            rows.append(stage_proposition(proposal, registry, semantic_registry))
+            rows.append(
+                stage_proposition(proposal, registry, semantic_registry, approved_records=approved)
+            )
         except (ValueError, TypeError, KeyError) as error:
             rows.append({"status": "QUARANTINED_ITEM", "error_type": type(error).__name__})
     receipt = {
@@ -251,7 +332,18 @@ def extract_source(
 
 def search_staged(query, registry, limit=8, source_ids=None):
     """Search existing proposal provenance; rejected records cannot become support."""
-    terms = {w.lower() for w in re.findall(r"[\w-]{4,}", query)}
+    from nasa_fire_ai.services.investigation import topic_terms
+
+    terms = set(topic_terms(query)) - {
+        "conditions",
+        "applied",
+        "recorded",
+        "reported",
+        "research",
+        "scientific",
+        "find",
+        "show",
+    }
     rows = []
     for candidate in registry.staged_semantic_candidates():
         proposal = candidate.get("proposal", {})
@@ -272,6 +364,45 @@ def search_staged(query, registry, limit=8, source_ids=None):
                 {**candidate, "retrieval_score": score, "applicability": "STAGED_NOT_CANONICAL"}
             )
     return sorted(rows, key=lambda r: (-r["retrieval_score"], r["candidate_id"]))[:limit]
+
+
+def project_eligible(store, registry, root):
+    """Replay already approved canonical statements under their existing identity.
+
+    No new prose interpretation is approved here. The trusted canonical input is
+    the authority, while staging and model eligibility fields remain untrusted.
+    """
+    approved = approved_publication_records(root)
+    by_id = {row["id"]: row for row in approved}
+    receipt = {
+        "contract": "reviewed-canonical-statement-replay-v1",
+        "replayed": [],
+        "rejected": [],
+        "new_scientific_facts": 0,
+    }
+    for candidate in registry.staged_semantic_candidates():
+        proposal = candidate.get("proposal", {})
+        if proposal.get("contract") != CONTRACT or not proposal.get("publication_eligible"):
+            continue
+        errors, _, _ = validate_proposition(proposal, registry, store.registry)
+        decision = publication_eligibility(proposal, errors, approved)
+        if not decision["eligible"]:
+            receipt["rejected"].append(candidate["candidate_id"])
+            continue
+        row = by_id[decision["existing_record_id"]]
+        if any(registry.resolve(eid) is None for eid in row["evidence_ids"]):
+            receipt["rejected"].append(candidate["candidate_id"])
+            continue
+        store.add_entity(
+            row["id"],
+            row["class_id"],
+            row["evidence_ids"],
+            [ref["source_id"] for ref in row["payload"]["evidence_refs"]],
+            row["payload"],
+        )
+        receipt["replayed"].append(row["id"])
+    store.publication_receipt = receipt
+    return receipt
 
 
 def project_staged(store, registry):

@@ -343,7 +343,5 @@ def test_research_replans_after_requirement_is_supported(corpus):
         "ReportedObservation",
         "Intervention",
     ]
-    assert any(
-        a["reason"] == "Requirement already supported by completed retrieval"
-        for a in receipt["rejected_actions"]
-    )
+    assert receipt["replanning_decisions"][1]["unresolved"] == ["Intervention"]
+    assert "E1" in receipt["replanning_decisions"][1]["evidence_ids"]

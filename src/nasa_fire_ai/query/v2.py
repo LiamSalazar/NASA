@@ -84,6 +84,12 @@ class RelationDefinition:
     closed_world: bool = False
     selection_scope: bool = False
     status: str = "CANONICAL"
+    domain: list[str] = field(default_factory=list)
+    range: list[str] = field(default_factory=list)
+    aliases: list[str] = field(default_factory=list)
+    direction: str = "source_to_target"
+    transitive: bool = False
+    inverse: str | None = None
 
 
 class SemanticRegistry:

@@ -36,7 +36,7 @@ def evidence_ids(record):
 def classification(record, bundle):
     subject = record.get("structured_record", {}).get("subject", record.get("id"))
     for status, rows in (("DIRECT", bundle.direct_evidence), ("RELATED", bundle.related_evidence)):
-        if any(row.get("id") == subject for row in rows):
+        if any(row.get("id") in {subject, record.get("id")} for row in rows):
             return status
     return "DOCUMENTARY"
 
@@ -45,7 +45,9 @@ def effective_context(record, bundle):
     dimensions = list(record.get("scientific_applicability", {}).get("dimensions", []))
     subject = record.get("structured_record", {}).get("subject", record.get("id"))
     for row in bundle.direct_evidence + bundle.related_evidence:
-        if row.get("id") == subject and row.get("research_context", {}).get("values"):
+        if row.get("id") in {subject, record.get("id")} and row.get("research_context", {}).get(
+            "values"
+        ):
             if not any(d.get("dimension") == "hasGravityCondition" for d in dimensions):
                 context = row["research_context"]
                 dimensions.append(
@@ -106,7 +108,7 @@ def condition_statements(bundle):
     eligible = {row.get("id") for row in bundle.direct_evidence}
     eligible |= {row.get("id") for row in bundle.related_evidence if row.get("matches")}
     for row in bundle.semantic_records:
-        if row.get("subject") not in eligible:
+        if row.get("subject") not in eligible and row.get("id") not in eligible:
             continue
         if (
             not row.get("property_id")
@@ -183,7 +185,15 @@ def validate_selected_claim(claim, bundle):
     """Check full statement identity, scope, type and references, not citations alone."""
     errors = []
     candidates = [
-        (row, epistemic) for field, epistemic, _ in CATEGORIES for row in getattr(bundle, field)
+        (
+            row,
+            row.get("epistemic", epistemic)
+            if row.get("epistemic")
+            in {"tentative_interpretation", "hypothesis", "derived_quantity"}
+            else epistemic,
+        )
+        for field, epistemic, _ in CATEGORIES
+        for row in getattr(bundle, field)
     ]
     candidates += [(row, quantity_kind(row)) for row in condition_statements(bundle)]
     if claim.epistemic_type == "source_quotation":
@@ -270,6 +280,18 @@ def select_claims(bundle, *, detail_level="standard"):
         )
     for inventory, epistemic, heading in inventories:
         for record in inventory:
+            record_epistemic = record.get("epistemic")
+            claim_epistemic = (
+                record_epistemic
+                if record_epistemic
+                in {"tentative_interpretation", "hypothesis", "derived_quantity"}
+                else epistemic
+            )
+            claim_heading = (
+                "Reported " + record_epistemic.replace("_", " ")
+                if claim_epistemic != epistemic
+                else heading
+            )
             text = record.get("normalized_text", record.get("text", ""))
             ids = evidence_ids(record)
             if not text or not ids:
@@ -280,14 +302,34 @@ def select_claims(bundle, *, detail_level="standard"):
             # An explicit technical modifier must occur in the selected statement,
             # rather than being satisfied by a different topic in the same corpus.
             from nasa_fire_ai.query.conceptual import technical_topic_supported
+            from nasa_fire_ai.services.investigation import scoped_topic_text, topic_applicable
 
             if not technical_topic_supported(
-                bundle.retrieval_metadata.get("scientific_question", ""), text
+                bundle.retrieval_metadata.get(
+                    "scientific_focus_question",
+                    bundle.retrieval_metadata.get("scientific_question", ""),
+                ),
+                text,
             ):
                 rejected.append(
                     {
                         "record": record.get("id"),
                         "reason": "Requested technical topic is absent from the proposed statement; no topic applicability inferred",
+                    }
+                )
+                continue
+            # Scope stays in identity: identical wording in different experiments
+            if not topic_applicable(
+                bundle.retrieval_metadata.get(
+                    "scientific_focus_question",
+                    bundle.retrieval_metadata.get("scientific_question", ""),
+                ),
+                scoped_topic_text(record),
+            ):
+                rejected.append(
+                    {
+                        "record": record.get("id"),
+                        "reason": "Requested phenomenon or validated material context absent",
                     }
                 )
                 continue
@@ -309,7 +351,15 @@ def select_claims(bundle, *, detail_level="standard"):
             claim = GroundedClaim(
                 claim_id="claim-" + hashlib.sha256(repr(key).encode()).hexdigest()[:16],
                 text=text,
-                epistemic_type=epistemic,
+                epistemic_type=claim_epistemic,
+                authority=record.get(
+                    "authority",
+                    "RESEARCHER_CURATED"
+                    if record.get("structured_record", {})
+                    .get("qualifiers", {})
+                    .get("curation_authority")
+                    else "NASA_BACKED",
+                ),
                 relationship_status=classification(record, bundle),
                 evidence_ids=ids,
                 scientific_entities=[record["id"]] if record.get("id") else [],
@@ -323,7 +373,7 @@ def select_claims(bundle, *, detail_level="standard"):
                 rejected.append({"record": record.get("id"), "reason": errors})
             else:
                 claim.validation_status = "VALIDATED_SUPPLIED_STATEMENT"
-                selected.append((heading, claim))
+                selected.append((claim_heading, claim))
     ordering = bundle.retrieval_metadata.get("nemotron_scientific_selection", {}).get(
         "accepted_claim_ids", []
     )
@@ -347,13 +397,35 @@ def select_claims(bundle, *, detail_level="standard"):
     }
 
 
-def render_scientific(bundle, *, detail_level="standard"):
+def render_scientific(bundle, *, detail_level="standard", registry=None, store=None):
     from nasa_fire_ai.services.intent_answers import render_intent_answer
 
-    specific = render_intent_answer(bundle, detail_level)
+    specific = render_intent_answer(bundle, detail_level, registry=registry)
     if specific is not None:
         return specific
     selected, receipt = select_claims(bundle, detail_level=detail_level)
+    if registry is not None:
+        from nasa_fire_ai.services.claim_verification import verify_claim
+
+        verification = [verify_claim(claim, bundle, registry, store=store) for _, claim in selected]
+        eligible = {
+            row["claim_id"]
+            for row in verification
+            if row["status"] in {"SUPPORTED", "SUPPORTED_WITH_LIMITATIONS"}
+        }
+        receipt["rejected"] += [
+            {"claim_id": row["claim_id"], "reason": row.get("errors", []), "gate": "FINAL_EMISSION"}
+            for row in verification
+            if row["claim_id"] not in eligible
+        ]
+        selected = [(heading, claim) for heading, claim in selected if claim.claim_id in eligible]
+        receipt["selected_claims"] = [claim.model_dump(mode="json") for _, claim in selected]
+        bundle.retrieval_metadata["claim_verification"] = verification
+        bundle.retrieval_metadata["final_emission_gate"] = {
+            "enforced": True,
+            "eligible_claim_ids": sorted(eligible),
+            "blocked": len(verification) - len(eligible),
+        }
     bundle.retrieval_metadata["scientific_synthesis"] = receipt
     lines = []
     intent = bundle.retrieval_metadata.get("query_intent_v2", {})
@@ -504,6 +576,10 @@ def render_scientific(bundle, *, detail_level="standard"):
     for candidate in bundle.retrieval_metadata.get("staged_scientific_knowledge", []):
         proposal = candidate["proposal"]
         text = normalize(proposal["original_wording"])
+        if registry is not None:
+            source = registry.resolve(candidate["evidence_id"])
+            if not source or text not in normalize(source.get("text", "")):
+                continue
         if text in seen_staged:
             continue
         if len(seen_staged) >= 2:

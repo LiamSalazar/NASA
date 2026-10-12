@@ -35,6 +35,9 @@ def main():
         "--offline", action="store_true", help="Reuse registered local source versions"
     )
     parser.add_argument("--max-sources", type=int, default=2)
+    parser.add_argument("--max-model-calls", type=int, default=1)
+    parser.add_argument("--retries", type=int, default=1)
+    parser.add_argument("--timeout-seconds", type=float, default=120)
     parser.add_argument(
         "--extract",
         action="store_true",
@@ -77,6 +80,9 @@ def main():
             offline=args.offline,
             model_enabled=args.extract,
             max_sources=args.max_sources,
+            max_model_calls=args.max_model_calls,
+            retries=args.retries,
+            timeout_seconds=args.timeout_seconds,
         )
     elif args.mode == "rollback":
         if not args.source_id:

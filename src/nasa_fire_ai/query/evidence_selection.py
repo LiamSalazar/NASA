@@ -62,7 +62,7 @@ def select_information(intent, query, store, evidence_registry):
     candidates = []
     selected = []
     for subject in store.entities():
-        classes = store.classes(subject)
+        classes = store.classes(subject, include_ancestors=True)
         if not classes.intersection(requested):
             continue
         refs = store.evidence(subject)

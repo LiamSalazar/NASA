@@ -77,6 +77,14 @@ class SemanticGraph:
             raise LookupError("relation endpoints must be reviewed entities")
         if not evidence_ids:
             raise ValueError("canonical relation requires evidence")
+        if definition.domain and not self.classes(subject, include_ancestors=True).intersection(
+            definition.domain
+        ):
+            raise ValueError("Relationship source violates approved scientific domain")
+        if definition.range and not self.classes(obj, include_ancestors=True).intersection(
+            definition.range
+        ):
+            raise ValueError("Relationship target violates approved scientific range")
         record = node(f"relation:{subject}:{relation}:{obj}")
         for pred, value in (
             (RDF.type, NS.SemanticRelation),
@@ -676,7 +684,13 @@ def execute_native(
                 generic_records.append(store.payload(identity(record)))
     for subject in sorted(selected):
         for cls in store.classes(subject):
-            if intent.requested_information and cls not in intent.requested_information:
+            if (
+                intent.requested_information
+                and cls not in intent.requested_information
+                and not store.classes(subject, include_ancestors=True).intersection(
+                    intent.requested_information
+                )
+            ):
                 continue
             field = store.registry.class_metadata.get(cls, {}).get("bundle_field")
             if field:
@@ -698,7 +712,16 @@ def execute_native(
                     }
                 records.setdefault(field, []).append(payload)
             generic_records.append(
-                {"class_id": cls, **store.payload(subject), "evidence_ids": store.evidence(subject)}
+                {
+                    "class_id": cls,
+                    **store.payload(subject),
+                    "evidence_ids": store.evidence(subject),
+                    "approved_relationships": [
+                        {"relation": relation.relation_id, "object": obj}
+                        for relation in store.registry.relations.values()
+                        for obj in sorted(store.relations(subject, relation.relation_id))
+                    ],
+                }
             )
     contextual_statements = []
     if context_layer:

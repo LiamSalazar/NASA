@@ -3,7 +3,7 @@
 import re
 
 
-def render_intent_answer(bundle, detail_level="standard"):
+def render_intent_answer(bundle, detail_level="standard", *, registry=None):
     meta = bundle.retrieval_metadata
     conceptual = meta.get("conceptual_query", {})
     intent = meta.get("query_intent_v2", {})
@@ -11,6 +11,32 @@ def render_intent_answer(bundle, detail_level="standard"):
     if not conceptual.get("active") and not bibliographic:
         return None
     from nasa_fire_ai.services.scientific_synthesis import documentary_statements, normalize
+
+    verifications = []
+
+    def allowed(text, ids):
+        if registry is None:
+            return True
+        valid = bool(ids) and all(
+            (source := registry.resolve(eid))
+            and normalize(text) in normalize(source.get("text", ""))
+            for eid in ids
+        )
+        verifications.append(
+            {
+                "status": "SUPPORTED_WITH_LIMITATIONS" if valid else "UNSUPPORTED",
+                "evidence_ids": ids,
+                "support_spans": [{"text": text, "evidence_id": eid} for eid in ids],
+                "limitations": ["Documentary wording; no experimental applicability inferred"],
+            }
+        )
+        meta["claim_verification"] = verifications
+        meta["final_emission_gate"] = {
+            "enforced": True,
+            "blocked": sum(v["status"] == "UNSUPPORTED" for v in verifications),
+            "contract": "exact-documentary-span",
+        }
+        return valid
 
     if conceptual.get("active"):
         lines = [
@@ -21,11 +47,17 @@ def render_intent_answer(bundle, detail_level="standard"):
                 f"Approved registry terminology: {entity} ({', '.join(aliases)}). This is a vocabulary lookup, not a scientific equivalence claim."
             )
         for relation in conceptual.get("approved_relations", []):
+            if registry is not None and not all(
+                registry.resolve(eid) for eid in relation.get("evidence_ids", [])
+            ):
+                continue
             lines.append(
                 f"{relation['subject']} — {relation['predicate']} — {relation['object']} [{', '.join(relation['evidence_ids'])}]"
             )
         rows = documentary_statements(bundle)
         for row in rows[:2]:
+            if not allowed(row["text"], row["evidence_ids"]):
+                continue
             lines.append(
                 f"Documented wording: “{normalize(row['text'])}” [{', '.join(row['evidence_ids'])}]"
             )
@@ -42,6 +74,8 @@ def render_intent_answer(bundle, detail_level="standard"):
                     ):
                         snippets.append((line.strip(), passage["evidence_id"]))
             for text, eid in snippets[:3]:
+                if not allowed(text, [eid]):
+                    continue
                 lines.append(f"Source terminology: “{text}” [{eid}].")
         if not rows and not snippets:
             lines.append(
@@ -78,6 +112,15 @@ def render_intent_answer(bundle, detail_level="standard"):
             set(re.findall(r"[a-z]{5,}", p.get("text", "").lower()))
         ):
             continue
+        from nasa_fire_ai.services.investigation import (
+            publication_topic_supported,
+            topic_applicable,
+        )
+
+        if not publication_topic_supported(
+            query, p.get("text", "") + " " + source.get("title", "")
+        ):
+            continue
         seen.add(sid)
         text = normalize(p.get("text", ""))
         # Full sentences containing a requested topic explain relevance without
@@ -87,10 +130,14 @@ def render_intent_answer(bundle, detail_level="standard"):
             (
                 s
                 for s in sentences
-                if terms.intersection(set(re.findall(r"[a-z]{5,}", s.lower()))) and len(s) <= 900
+                if topic_applicable(query, s)
+                and terms.intersection(set(re.findall(r"[a-z]{5,}", s.lower())))
+                and len(s) <= 900
             ),
             "Matching topic wording occurs in the cited source passage.",
         )
+        if not allowed(relevant, [p["evidence_id"]]):
+            continue
         lines.append(
             f"- {source.get('title', p.get('document_id', 'NASA source'))}: {relevant} [{p['evidence_id']}] {source.get('url', '')}"
         )

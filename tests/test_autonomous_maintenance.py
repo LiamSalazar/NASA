@@ -108,6 +108,28 @@ def test_external_or_private_download_rejected():
         official_download(data)
 
 
+def test_atomic_publication_failure_retains_consistent_database(tmp_path, monkeypatch):
+    instance = pipeline(tmp_path)
+    client = httpx.Client(
+        transport=httpx.MockTransport(lambda request: httpx.Response(200, content=pdf()))
+    )
+    monkeypatch.setattr(httpx, "stream", client.stream)
+    original = registry_checks
+
+    def failed_gate(registry):
+        return {**original(registry), "missing_fts": 1}
+
+    monkeypatch.setattr("nasa_fire_ai.ingestion.autonomous.registry_checks", failed_gate)
+    result = instance.update("123", dry_run=False)
+    assert result["status"] == "QUARANTINED"
+    assert instance.registry.db.execute("SELECT count(*) FROM documents").fetchone()[0] == 0
+    assert original(instance.registry)["sqlite_integrity"] == "ok"
+    monkeypatch.setattr("nasa_fire_ai.ingestion.autonomous.registry_checks", original)
+    recovered = instance.update("123", dry_run=False)
+    assert recovered["status"] == "PUBLISHED"
+    assert original(instance.registry)["missing_fts"] == 0
+
+
 def test_changed_content_supersedes_document_and_rollback_restores(tmp_path, monkeypatch):
     instance = pipeline(tmp_path)
     values = [pdf()]

@@ -190,6 +190,16 @@ class Phase3AssistantService:
             tuple(
                 tuple(row)
                 for row in self.registry.db.execute(
+                    "SELECT package_id,digest FROM research_active ORDER BY package_id"
+                )
+            )
+            if self.registry.db.execute(
+                "SELECT 1 FROM sqlite_master WHERE name='research_active'"
+            ).fetchone()
+            else (),
+            tuple(
+                tuple(row)
+                for row in self.registry.db.execute(
                     "SELECT candidate_id,review_status,resolution_status FROM semantic_staging ORDER BY candidate_id"
                 )
             ),
@@ -292,13 +302,18 @@ class Phase3AssistantService:
         )
         bundle = response.execution.bundle
         bundle.retrieval_metadata["scientific_question"] = query
+        from nasa_fire_ai.services.curation import scientific_focus
+
+        bundle.retrieval_metadata["scientific_focus_question"] = scientific_focus(
+            query, self._native_store
+        )
         from nasa_fire_ai.ingestion.scientific_proposals import search_staged
 
         bundle.retrieval_metadata["staged_scientific_knowledge"] = search_staged(
             query, self.registry
         )
         rendered_answer = response.rendered_answer
-        if os.getenv("SCIENTIFIC_SYNTHESIS_ENABLED", "false").lower() == "true":
+        if intent.schema_version == "query-intent-v2":
             from nasa_fire_ai.services.scientific_synthesis import render_scientific
 
             if (
@@ -318,16 +333,9 @@ class Phase3AssistantService:
                     synthesis=os.getenv("NEMOTRON_SCIENTIFIC_SYNTHESIS_ENABLED", "false").lower()
                     == "true",
                 )
-            rendered_answer = render_scientific(bundle, detail_level=detail_level)
-        from nasa_fire_ai.models import GroundedClaim
-        from nasa_fire_ai.services.claim_verification import verify_claim
-
-        bundle.retrieval_metadata["claim_verification"] = [
-            verify_claim(GroundedClaim.model_validate(claim), bundle, self.registry)
-            for claim in bundle.retrieval_metadata.get("scientific_synthesis", {}).get(
-                "selected_claims", []
+            rendered_answer = render_scientific(
+                bundle, detail_level=detail_level, registry=self.registry, store=self._native_store
             )
-        ]
         bundle.query_intent = display
         status = (
             "DIRECT_EVIDENCE"

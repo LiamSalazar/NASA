@@ -1,0 +1,1186 @@
+{
+  "package": "NASA FIRE AI Phase 3C sanitized implementation",
+  "generated_from": "/home/liam/NASA",
+  "file_count": 234,
+  "total_bytes": 20581855,
+  "excluded": [
+    ".env and credentials",
+    "caches and bytecode",
+    "private files",
+    "large historical/source inputs",
+    "SQLite/vector indexes",
+    "nested ZIP archives"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "size": 1013,
+      "sha256": "bfd908f65636735046781d35ea999144992e8148b755c6bf844f5a6370579168"
+    },
+    {
+      "path": "README.md",
+      "size": 8870,
+      "sha256": "0abfa6731419bc044da548ff1698aec9506b42f59b77d43891ee1e5086aa9121"
+    },
+    {
+      "path": "app/curation_view.py",
+      "size": 17715,
+      "sha256": "80fb41a03c5324f2a098e2d8f2e4e5c3203c8f1dacf494383dac51555f0c80d4"
+    },
+    {
+      "path": "app/streamlit_app.py",
+      "size": 3862,
+      "sha256": "071bc52003c8151660c4dbc7654832c60f6c65f550b5779f764c6f630011205b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/artifact_index.json",
+      "size": 54841,
+      "sha256": "6e20a1f7d129ffd1053d5cd668c9fa1c1c44820b6779073eab38417d209efac7"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/baseline.json",
+      "size": 116202,
+      "sha256": "21fd6126e47f795ba128ce15b9f4328909f38806053eb2a5ce5e4369d60ebbc5"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/baseline_pytest.txt",
+      "size": 816,
+      "sha256": "becbf6537d4ec9710580f3bc540d0c4329d5c83e0a6b14559ff6be0bc0cf0f61"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/coverage/coverage_ledger.json",
+      "size": 175192,
+      "sha256": "e7a8dad5c17d972bef82228d38c2e2ca87146dfd154e348fc25d8ab1dc58e69a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/coverage_execution.txt",
+      "size": 190,
+      "sha256": "db110040fb69a803e8b9554089580fd79f39d1914a2c4d83a31ad0b10ac2bf0b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_initial_tests.txt",
+      "size": 29198,
+      "sha256": "121d37598f40c90c240bb880d66fd262a88f850afe68cfc4b23084b44422cd93"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_rdf_tests_v1.txt",
+      "size": 2302,
+      "sha256": "57b42b43bc146c1b72e73c73c80deb101c530c1940a14bea27b41584431d40ab"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_rdf_tests_v2.txt",
+      "size": 515,
+      "sha256": "02a109296e587d8f9e031b012c49fc5e84e4f74282e495ae201707e946c7cce1"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v10.txt",
+      "size": 515,
+      "sha256": "cfa78df48eb3782ce14158323dc97b2650111605afd1e889f93610a53860f7da"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v11.txt",
+      "size": 515,
+      "sha256": "89ec3fa25a0b069241a2e18820c84b23fe8649dbe15322fc87c9788fc993121b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v12.txt",
+      "size": 515,
+      "sha256": "b3fb308af1aca274470a012fd31a9c139f97b417d25438445ef269217128e130"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v2.txt",
+      "size": 18052,
+      "sha256": "184d398e7a1b10beac3afc32fec72d2f52b4199d3ab6ff6849d9e14e2e13d63e"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v3.txt",
+      "size": 18296,
+      "sha256": "4c2511b82e2c29326cfdc63f8bb274186c06d1ab84a0c4f303526544802d0b65"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v4.txt",
+      "size": 2401,
+      "sha256": "1d106ef2c0ec0834360c77a17bd7593fd1fbe69e3529d56ac0859aa34f73d84e"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v5.txt",
+      "size": 514,
+      "sha256": "dc21131fcb6ee986a6ef77fbb2e94f1259d3206e89f515131f9b802626c798b9"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v6.txt",
+      "size": 514,
+      "sha256": "34ee68d4db02c94d9374bee6101417eed92a8b172e9fadb818769b3dfe6c1f60"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v7.txt",
+      "size": 3979,
+      "sha256": "6ccbb4531848356e9af638b1df5e51f5cf34a0635d2032b0110459eb468e9a5b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v8.txt",
+      "size": 514,
+      "sha256": "2270d6e0863919291d27e37ebceab50026ef134cd5068fc74e3736ef8de2f8d4"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/curation_tests_v9.txt",
+      "size": 514,
+      "sha256": "d0a029bcfb6e85ec1d50493acf6bef4cbe1bf7ec3969f42d86d914dab073e005"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/decisions.json",
+      "size": 933,
+      "sha256": "973ffe5dbcc87b247fa1a18042563cdf1a757bd1647421bd863d9df61504f87e"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/final_graph.ttl",
+      "size": 2145054,
+      "sha256": "90acdc1569c2f9b55ee9761dfa8db6e2317723152c4e93eec7b5e83a24d45940"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/final_integrity.json",
+      "size": 2339,
+      "sha256": "5e56c4ee8c4688c167f3725c2c65f1d1537b7a15831a39579e2dfde7112d7ff0"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/final_package_readiness.json",
+      "size": 1007,
+      "sha256": "9d9c35277395ac5540edde753bb26ce7761adf4b88bc9a08004ef409ec39dfd9"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/final_queries.json",
+      "size": 1035840,
+      "sha256": "fd1ea65cedd56ae9968124ce21b61a340e661b740e3ea6caf4730fed5609d7cd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/format_final_v1.txt",
+      "size": 28,
+      "sha256": "799d447a7516fd2f468ccd50e4718e03d8e155401fb80c5bd2b62245885d5d4c"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/format_final_v2.txt",
+      "size": 28,
+      "sha256": "1314fcadf0cc9a8bef7bede96afb99edd0c2580bec47a0ba021737e48f19394f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/format_final_v3.txt",
+      "size": 28,
+      "sha256": "30f9ce60b05856d055e2ae36819c965642d2cd576833379bfc8d9b6463373daf"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/format_final_v4.txt",
+      "size": 28,
+      "sha256": "ba125731aee4475d0522fe9eb59a9ddfe3aad88bcddb2bfec3a9d8d67ae9da36"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/format_initial.txt",
+      "size": 627,
+      "sha256": "e76c6d120ce03aefc56dd0443ccd8b06477e5cdc42df667c7d32379941ddc02b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/implementation_manifest.json",
+      "size": 3804,
+      "sha256": "bc0ee14e601e21898281fc48e297f88ae5b5f18e818492e423b82bc491b90945"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/integrity_execution.txt",
+      "size": 326,
+      "sha256": "1b71b95541f7e9c85b5f3d1c6d360cb2e9cefdf13b1fcdf25a9c4efd85a8bf23"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/lint_final_v1.txt",
+      "size": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/lint_final_v2.txt",
+      "size": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/lint_final_v3.txt",
+      "size": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/lint_final_v4.txt",
+      "size": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/lint_initial.txt",
+      "size": 917,
+      "sha256": "6136e13917d7cbe86f428aae95055f11267fbf91d81c769728c75022a6863c28"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/lint_v2.txt",
+      "size": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/meaningful_subgraph_diff.json",
+      "size": 18565,
+      "sha256": "0cf0f9318c79b45b01661a682b1873037a0dd7ba09fab882c37483b50cbe9df6"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/model_configuration_receipt.json",
+      "size": 177,
+      "sha256": "6be2fc4ffccfb8c9016cb3134762bfe1e2f5d00f48b0535ed942266cbdbff4b7"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_execution_v1.txt",
+      "size": 327,
+      "sha256": "354cf4f3a0fa1f6cd88e9fe75574a642a16987c0d44e4cd32583a496a5c337f6"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_execution_v2.txt",
+      "size": 338,
+      "sha256": "ab53a28f90a3582579b15a72483997f94263f46da00cc94cd5b59f145fb73b5f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_execution_v3.txt",
+      "size": 338,
+      "sha256": "6a65fa1f235894b850192c2a0924817cb7ffc8a0cdfa4d1a4ff578a554722040"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/activated_graph.ttl",
+      "size": 2120739,
+      "sha256": "dda1f2d1c40f6d2a2ea6ee4374d57c5eed25c2db866a2023db8ae80861f6a667"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/activated_relations.json",
+      "size": 370,
+      "sha256": "7f5f584285f4deed6cdf4e687eb75c270297a0bb600ad5a69646f9e30562c229"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/approval_publication.json",
+      "size": 689,
+      "sha256": "e8f5e062595c24daaa435fad8cdc263f22fa5fb4b22effeb7fd9c951b207cff3"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/clarification_receipts.json",
+      "size": 9019,
+      "sha256": "90d18285fa2607d3304f6f9910340aa0e82da810f4226456a87bea336e0e7b9f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/clarifications_initial.json",
+      "size": 7465,
+      "sha256": "e49dc76f067086b8285176b5c0d47e4b919c7693b47d64272ad142a74bfacb2b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/exceptions_preview.json",
+      "size": 18579,
+      "sha256": "c026fb67822b2340f147ee18a4d9a7dad961c85e091e3b5a56b8d4e5c3fdaefb"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/extension_proposal.json",
+      "size": 697,
+      "sha256": "4cfb63a764e49c109bb668e34d0903952794443291d69bc7add12c08267fc698"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/failure_recovery.json",
+      "size": 391,
+      "sha256": "5b262d1769eff35f22c854baeb982441730921b4e9a33e27eb3f0b22779e4f50"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/historical_after.json",
+      "size": 195287,
+      "sha256": "216e409b51b3f8bb595c853b950582c45f8a4395de491ffdef84a92797e4c751"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/historical_before.json",
+      "size": 195289,
+      "sha256": "281dfaf269784a40dbf49c07555410091b5744444b79fa0c00c1dc2712312c15"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/history.json",
+      "size": 4057,
+      "sha256": "838a2399dcd339d1b11eedb2aac53a638aca1df40982a4f69e574e6a5839c374"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/idempotence.json",
+      "size": 112,
+      "sha256": "dc28d9f41215a61456f11e1d6c5956d296031880cc8ca19fe9a34cef98a3162b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/natural_correction.json",
+      "size": 982,
+      "sha256": "cf34b692b8d42924804bb779ee4e823beed1e378846b9cb9ad5ef9de61f201c5"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/query_after.json",
+      "size": 786163,
+      "sha256": "6288f7fda748eb83c85115d8694dbb3c40e3a56c58b284c308f7453c661bb999"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/query_before.json",
+      "size": 188020,
+      "sha256": "a22da543abeb5dc194ac4740c12db6510242c23ba9c241c9effb10acf021c3db"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/reviewed.json",
+      "size": 55472,
+      "sha256": "dff29c0c7377b72400bfd9ea1727f4114b141cefb39ba03a8ca34bfb22fed301"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/revision_publication.json",
+      "size": 418,
+      "sha256": "0e671710d28192fcac6c0f7600a96f2414f53d65382a99f34cafffe4f65c97ad"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/rollback.json",
+      "size": 118,
+      "sha256": "412a0a10b785ffd573757bfbe7b1529f959caa60051a02328b3718114b2b0a97"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/stale_approval_rejected.json",
+      "size": 98,
+      "sha256": "7c4e56ab5d4be917571a6a5284b01829064ed1ae09207438e43f2ee2220d61ed"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/submitted.json",
+      "size": 39415,
+      "sha256": "35b93f50f1c20dc6dc7a8ab987c0cdd19a24924c97dcf40ca6f7ff7de75218ca"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/templates.json",
+      "size": 9423,
+      "sha256": "633561867fa98637461ce8b14d074d0be8aa2d9303d2fef9ce09761d41b75dc3"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/validation.json",
+      "size": 277,
+      "sha256": "e9fa7071189f9703c53f12344fae59f662df05850ebe13d4bda0075cc6c246ae"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/data/canonical/graph.ttl",
+      "size": 944775,
+      "sha256": "745a2dcf3e0317c6dcc8bdf34b4bf991b57c89f81208d629d8f96fcf40add319"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/domain/incorporation.yaml",
+      "size": 946,
+      "sha256": "9c5871f12aa910f65d3c2a6c661498c016a8c896f086460b9cb08a2366b14175"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/domain/legacy_semantic_projection.yaml",
+      "size": 1613,
+      "sha256": "f209e6abfdb4ddcb3cabb6b00969043c60c61825cbbaba1ce36f630a6d6fcd8d"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/domain/lexicon.yaml",
+      "size": 2849,
+      "sha256": "eca2cf9b0d62bfa00fa85eec886509ff9b04e97481d01158c4f0d04bd2c81a1b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/domain/query_language_v2.yaml",
+      "size": 2491,
+      "sha256": "52dee605620ab5dfc1c25714da29f2a136818320831e43d51dd96e8d57c5a614"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/domain/semantic_registry.yaml",
+      "size": 3978,
+      "sha256": "c3e017485085401d1d92f75adeb7c7d2a2336865eb3aa13a307049929527acae"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/domain/semantic_taxonomy.yaml",
+      "size": 431,
+      "sha256": "af45b9c233cd81aef0ece35995cadd9cf850a7d087d3e03d87d819fe9015512a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/domain/source_field_accessors.yaml",
+      "size": 1864,
+      "sha256": "98605b0e0c64c72991e94c2eeb7043d20479450dcc6e7fee26c18a4cbcf30396"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/ontology/enrichment_shapes.ttl",
+      "size": 1263,
+      "sha256": "0b585986feb4b12e075e4201e04b9ab25f1e3dc23a5b8c1b902f49085a7e12f9"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/ontology/fire_safety.ttl",
+      "size": 3486,
+      "sha256": "7f99c453e53d1f341563e6050102283155f88d02105edf42876f524d5b223691"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/ontology/incorporation_mappings.ttl",
+      "size": 777,
+      "sha256": "63bea5ae45915925ba30bd4cc32a7d39cbbdfea37cdca7afdc313c401e5382e9"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/ontology/semantic_shapes.ttl",
+      "size": 1468,
+      "sha256": "97c46e86efbf5b4925236dad88e572d2ff7050b199bd09ca47de6e8a9fc0e7cd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/ontology/semantic_taxonomy_shapes.ttl",
+      "size": 1046,
+      "sha256": "2e9c953fde32aa6cca4ec2c74b79b342c7b82efb99a7e37402c41c7734a75bdd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v1/workspace/ontology/shapes.ttl",
+      "size": 845,
+      "sha256": "1aa9e56c96798cf0bd9efb818956df63eda4de2d2c5b98d8cb8c0cfb8194cf72"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/activated_graph.ttl",
+      "size": 2120829,
+      "sha256": "7b541d9f1b9ea6ef2b3566cc8dba41409aa6e037e2e46b01fdf7622f5ee78c3c"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/activated_relations.json",
+      "size": 370,
+      "sha256": "7f5f584285f4deed6cdf4e687eb75c270297a0bb600ad5a69646f9e30562c229"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/approval_publication.json",
+      "size": 689,
+      "sha256": "04cd4e196b4c5536736e7a21880972d8aa83189c298954ac7924f3772ddd6771"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/clarification_receipts.json",
+      "size": 9019,
+      "sha256": "0ed23fccd312e29d32caa5b80a27be1e0d847588809177802d21fd74ffbb071d"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/clarifications_initial.json",
+      "size": 7465,
+      "sha256": "e49dc76f067086b8285176b5c0d47e4b919c7693b47d64272ad142a74bfacb2b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/events.json",
+      "size": 27335,
+      "sha256": "ec207efee91ebbc5b389743d14b9ed6d773e60b2ec84830c126695d4ebc63d1a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/exceptions_preview.json",
+      "size": 18579,
+      "sha256": "c026fb67822b2340f147ee18a4d9a7dad961c85e091e3b5a56b8d4e5c3fdaefb"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/extension_proposal.json",
+      "size": 697,
+      "sha256": "4cfb63a764e49c109bb668e34d0903952794443291d69bc7add12c08267fc698"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/failure_recovery.json",
+      "size": 391,
+      "sha256": "99b1b97b7a26b910a4607be18dfc513e9d6151aeaea69fc997bf5a4de946ea9f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/historical_after.json",
+      "size": 195288,
+      "sha256": "bb4b556a4a75258784abed47b16d0f60b61a53b518a4833af70bf377db317ba7"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/historical_before.json",
+      "size": 195290,
+      "sha256": "cdc42eee819813c20704818a1c98bc6ff75a632465e5e074672d4b87b769aaa4"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/history.json",
+      "size": 4057,
+      "sha256": "9282c56a1335ddfbda46b5b1ffd2ea30d955bf0db4ce86d85220e170426b2643"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/idempotence.json",
+      "size": 112,
+      "sha256": "9de604c7baabf5b2ecadac5f3817111b6eff194a3fcba8de5feef3037c8d4be2"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/integrity.json",
+      "size": 308,
+      "sha256": "a8851f8615f8d226761ff3fb5b85a1913dd269a5f322ce373695ec6cfbdace7c"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/natural_correction.json",
+      "size": 968,
+      "sha256": "bea77cb9bd0f292b55f2ec134ca2ca4de0c9aa599e6bcb1e6c94b5cc682832ea"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/natural_correction_compact_v3.json",
+      "size": 1202,
+      "sha256": "ce606db24fbc767ec91064afd9e57f4c2463cab6f64f2e9cdcfca57aee04d099"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/query_after.json",
+      "size": 786162,
+      "sha256": "835707757cec981389ab665a6963aa3ba60b9c725f1daf72fca0d1eeb4108be2"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/query_before.json",
+      "size": 188022,
+      "sha256": "6595d775f74fa256b7ed045533e7dc8558ef05cb47e95c0cbb40938ce0b148c6"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/reviewed.json",
+      "size": 55472,
+      "sha256": "491d4966ced91f4a6e857397ff2092c3d3cc38b6155f04d424ff2fead3859611"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/revision_publication.json",
+      "size": 418,
+      "sha256": "f3e076471ff232bf28400cfbd5f88ce31f0fc463d01548f195c5cce415afeace"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/rollback.json",
+      "size": 118,
+      "sha256": "18119675cbdd326f7f137464bec4d1c7b9babf24af17a0af54a0b5a45f563730"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/stale_approval_rejected.json",
+      "size": 98,
+      "sha256": "7c4e56ab5d4be917571a6a5284b01829064ed1ae09207438e43f2ee2220d61ed"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/submitted.json",
+      "size": 39415,
+      "sha256": "35b93f50f1c20dc6dc7a8ab987c0cdd19a24924c97dcf40ca6f7ff7de75218ca"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/templates.json",
+      "size": 9423,
+      "sha256": "633561867fa98637461ce8b14d074d0be8aa2d9303d2fef9ce09761d41b75dc3"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/validation.json",
+      "size": 277,
+      "sha256": "e9fa7071189f9703c53f12344fae59f662df05850ebe13d4bda0075cc6c246ae"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/data/canonical/graph.ttl",
+      "size": 944775,
+      "sha256": "745a2dcf3e0317c6dcc8bdf34b4bf991b57c89f81208d629d8f96fcf40add319"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/domain/incorporation.yaml",
+      "size": 946,
+      "sha256": "9c5871f12aa910f65d3c2a6c661498c016a8c896f086460b9cb08a2366b14175"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/domain/legacy_semantic_projection.yaml",
+      "size": 1613,
+      "sha256": "f209e6abfdb4ddcb3cabb6b00969043c60c61825cbbaba1ce36f630a6d6fcd8d"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/domain/lexicon.yaml",
+      "size": 2849,
+      "sha256": "eca2cf9b0d62bfa00fa85eec886509ff9b04e97481d01158c4f0d04bd2c81a1b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/domain/query_language_v2.yaml",
+      "size": 2491,
+      "sha256": "52dee605620ab5dfc1c25714da29f2a136818320831e43d51dd96e8d57c5a614"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/domain/semantic_registry.yaml",
+      "size": 3978,
+      "sha256": "c3e017485085401d1d92f75adeb7c7d2a2336865eb3aa13a307049929527acae"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/domain/semantic_taxonomy.yaml",
+      "size": 431,
+      "sha256": "af45b9c233cd81aef0ece35995cadd9cf850a7d087d3e03d87d819fe9015512a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/domain/source_field_accessors.yaml",
+      "size": 1864,
+      "sha256": "98605b0e0c64c72991e94c2eeb7043d20479450dcc6e7fee26c18a4cbcf30396"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/ontology/enrichment_shapes.ttl",
+      "size": 1263,
+      "sha256": "0b585986feb4b12e075e4201e04b9ab25f1e3dc23a5b8c1b902f49085a7e12f9"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/ontology/fire_safety.ttl",
+      "size": 3486,
+      "sha256": "7f99c453e53d1f341563e6050102283155f88d02105edf42876f524d5b223691"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/ontology/incorporation_mappings.ttl",
+      "size": 777,
+      "sha256": "63bea5ae45915925ba30bd4cc32a7d39cbbdfea37cdca7afdc313c401e5382e9"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/ontology/semantic_shapes.ttl",
+      "size": 1468,
+      "sha256": "97c46e86efbf5b4925236dad88e572d2ff7050b199bd09ca47de6e8a9fc0e7cd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/ontology/semantic_taxonomy_shapes.ttl",
+      "size": 1046,
+      "sha256": "2e9c953fde32aa6cca4ec2c74b79b342c7b82efb99a7e37402c41c7734a75bdd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v2/workspace/ontology/shapes.ttl",
+      "size": 845,
+      "sha256": "1aa9e56c96798cf0bd9efb818956df63eda4de2d2c5b98d8cb8c0cfb8194cf72"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/activated_graph.ttl",
+      "size": 2132738,
+      "sha256": "e6d06deee7217d26925a51f5d8c8b0aead7dda092d0d23d86baf3d42e64958e6"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/activated_relations.json",
+      "size": 370,
+      "sha256": "7f5f584285f4deed6cdf4e687eb75c270297a0bb600ad5a69646f9e30562c229"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/approval_publication.json",
+      "size": 890,
+      "sha256": "e397c0fc1bb78dc000fbe929aad2fa296a2c6baece58ecfa6fe24a5172f6726a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/clarification_receipts.json",
+      "size": 9019,
+      "sha256": "6bcd54209c82749675ca85dca771591cf083bc48d6fda5d22512a0bb2df3f5bf"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/clarifications_initial.json",
+      "size": 7277,
+      "sha256": "216428f6b5d71aa5f70918a8db0bde9885967d31154d79a1bfbf662457a54157"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/events.json",
+      "size": 43349,
+      "sha256": "e50a07d7f10122c2b6b5215e930a1bceba66cd971c09ca178a88f2d22ca96727"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/exceptions_preview.json",
+      "size": 18579,
+      "sha256": "c026fb67822b2340f147ee18a4d9a7dad961c85e091e3b5a56b8d4e5c3fdaefb"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/extension_proposal.json",
+      "size": 697,
+      "sha256": "4cfb63a764e49c109bb668e34d0903952794443291d69bc7add12c08267fc698"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/failure_recovery.json",
+      "size": 391,
+      "sha256": "c3f552cb1df41b460d5012125887d07434371d1cf00fe87ab74f3f294541102f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/historical_after.json",
+      "size": 195376,
+      "sha256": "4b82b2cb1cc6e616486230e64b910180378792f38f2571275588ade11f399b83"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/historical_before.json",
+      "size": 195375,
+      "sha256": "501fab091a402340d66b76b3d47450545ec49e9b4539714a3972764ab8f34bf5"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/history.json",
+      "size": 4311,
+      "sha256": "f1e0be400128e5992a3b0a44a8b028018667e9e7f475dfdeafbbcb50ba69a54b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/idempotence.json",
+      "size": 112,
+      "sha256": "9351c22b4501d00da75e2050f8906695949ef151f4bf130915f679909c7557f7"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/integrity.json",
+      "size": 308,
+      "sha256": "a8851f8615f8d226761ff3fb5b85a1913dd269a5f322ce373695ec6cfbdace7c"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/natural_correction.json",
+      "size": 19024,
+      "sha256": "24fd145f13f0a88b7eab948498baa522409eeba3609c95635992d90749837048"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/natural_correction_applied.json",
+      "size": 56640,
+      "sha256": "ea36d6bec8dec0b4cf31a51d74e62a25974c06eab35a33c838e9d68ec424efaa"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/query_after.json",
+      "size": 702984,
+      "sha256": "a6a71ae759d9edd6d68c2cc8fddd95399a0737f47d1d42f30817f95b8961769c"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/query_before.json",
+      "size": 188128,
+      "sha256": "2ffce4d0025b06dbcc605b1147903537b9e547f811db9d788f31e5f2569b999d"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/reviewed.json",
+      "size": 56640,
+      "sha256": "ea36d6bec8dec0b4cf31a51d74e62a25974c06eab35a33c838e9d68ec424efaa"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/revision_publication.json",
+      "size": 615,
+      "sha256": "92347e276e0f1508488cd842e5bacf6b129f9f3f071e5e6bd38e485ece217c5f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/rollback.json",
+      "size": 118,
+      "sha256": "3cf6860b1431cf18846c234fa7e7f51466e07d9d495fe546b4065cb558a5e8dd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/stale_approval_rejected.json",
+      "size": 98,
+      "sha256": "7c4e56ab5d4be917571a6a5284b01829064ed1ae09207438e43f2ee2220d61ed"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/submitted.json",
+      "size": 39415,
+      "sha256": "35b93f50f1c20dc6dc7a8ab987c0cdd19a24924c97dcf40ca6f7ff7de75218ca"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/templates.json",
+      "size": 9423,
+      "sha256": "633561867fa98637461ce8b14d074d0be8aa2d9303d2fef9ce09761d41b75dc3"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/validation.json",
+      "size": 277,
+      "sha256": "c9cdfb37a015421a12c154b62e9864eb2bb37dfaa81e34dec4a22cd19792445f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/data/canonical/graph.ttl",
+      "size": 944775,
+      "sha256": "745a2dcf3e0317c6dcc8bdf34b4bf991b57c89f81208d629d8f96fcf40add319"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/data/canonical/research/297fdba9a78bc3ab13d83ae407e06aec9a3680a1e9ecf1b76881b92600af68d3.nt",
+      "size": 80622,
+      "sha256": "4acf0b43a31cd9e335c1cf8f24e6f5412b65d13984b2685d6a69fea9c06eb393"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/data/canonical/research/cb68e02f44effbc0388db7c5c7fc6089fa6beab242969bc0ff1e824196f10426.nt",
+      "size": 14710,
+      "sha256": "b5eaab4d5d01c5868c2ab773331de4a4fde4023cce923092390b8125e7d8bada"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/data/canonical/research/ee60b4675c2b0d2c5fd95bc0c1fffb6118a26a26bea469f19cd261f6b82fc79d.nt",
+      "size": 98162,
+      "sha256": "bc94f3a99666dcf5c855b50b2169fa0b1eb4ff94cc669c18acf39dc3fef4726a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/data/canonical/research/f2b1b681f89d408709d40831123f2fd8cd4f1aa74657079d3921a1622a9dfa9d.nt",
+      "size": 80622,
+      "sha256": "4acf0b43a31cd9e335c1cf8f24e6f5412b65d13984b2685d6a69fea9c06eb393"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/domain/incorporation.yaml",
+      "size": 946,
+      "sha256": "9c5871f12aa910f65d3c2a6c661498c016a8c896f086460b9cb08a2366b14175"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/domain/legacy_semantic_projection.yaml",
+      "size": 1613,
+      "sha256": "f209e6abfdb4ddcb3cabb6b00969043c60c61825cbbaba1ce36f630a6d6fcd8d"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/domain/lexicon.yaml",
+      "size": 2849,
+      "sha256": "eca2cf9b0d62bfa00fa85eec886509ff9b04e97481d01158c4f0d04bd2c81a1b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/domain/query_language_v2.yaml",
+      "size": 2491,
+      "sha256": "52dee605620ab5dfc1c25714da29f2a136818320831e43d51dd96e8d57c5a614"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/domain/semantic_registry.yaml",
+      "size": 3978,
+      "sha256": "c3e017485085401d1d92f75adeb7c7d2a2336865eb3aa13a307049929527acae"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/domain/semantic_taxonomy.yaml",
+      "size": 431,
+      "sha256": "af45b9c233cd81aef0ece35995cadd9cf850a7d087d3e03d87d819fe9015512a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/domain/source_field_accessors.yaml",
+      "size": 1864,
+      "sha256": "98605b0e0c64c72991e94c2eeb7043d20479450dcc6e7fee26c18a4cbcf30396"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/ontology/enrichment_shapes.ttl",
+      "size": 1263,
+      "sha256": "0b585986feb4b12e075e4201e04b9ab25f1e3dc23a5b8c1b902f49085a7e12f9"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/ontology/fire_safety.ttl",
+      "size": 3486,
+      "sha256": "7f99c453e53d1f341563e6050102283155f88d02105edf42876f524d5b223691"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/ontology/incorporation_mappings.ttl",
+      "size": 777,
+      "sha256": "63bea5ae45915925ba30bd4cc32a7d39cbbdfea37cdca7afdc313c401e5382e9"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/ontology/semantic_shapes.ttl",
+      "size": 1468,
+      "sha256": "97c46e86efbf5b4925236dad88e572d2ff7050b199bd09ca47de6e8a9fc0e7cd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/ontology/semantic_taxonomy_shapes.ttl",
+      "size": 1046,
+      "sha256": "2e9c953fde32aa6cca4ec2c74b79b342c7b82efb99a7e37402c41c7734a75bdd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pilot_v3/workspace/ontology/shapes.ttl",
+      "size": 845,
+      "sha256": "1aa9e56c96798cf0bd9efb818956df63eda4de2d2c5b98d8cb8c0cfb8194cf72"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_execution_v1.txt",
+      "size": 118,
+      "sha256": "5d98b86d4532adbc992692993b589f3814e413057646ec4d1f66ddeb5da7c981"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_execution_v2.txt",
+      "size": 118,
+      "sha256": "0b6133c31eaac153020827df9f866d97b8d04d55654f8484ec5b420cc921aa0e"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/natural_scope_correction_v1.json",
+      "size": 1428,
+      "sha256": "798657a0a745561f034dc603a9ea8eddab16a805cb5530d1702a49c018003728"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/prose_approval_publication.json",
+      "size": 686,
+      "sha256": "3063f86388e426c01298e5125d87a03817f811242241fc1dab1257768d04793f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/prose_clarifications.json",
+      "size": 4647,
+      "sha256": "8fe861b0614bda6acd185e519acb08471c35ea3ead93a134e278ede86453e100"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/prose_correction_preview.json",
+      "size": 25723,
+      "sha256": "495b0e9dd2b626fa3af56b54db11eb45356eddb33251ed13178bd15c94d67e04"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/prose_query_after.json",
+      "size": 378227,
+      "sha256": "743a648feb831a7e9728fa0f3147cf0ae71b9c7a215452fd4c44266cb1e4f468"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/prose_query_verified.json",
+      "size": 462391,
+      "sha256": "f299bfb985fcab5ce34192336b03fb01e8e2adbfc55b890cfdcf3a9029582f14"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/prose_reviewed.json",
+      "size": 73863,
+      "sha256": "ad18e40ec27d6fdc2d6ce2e092024f50d309e4d9b9b8d6721b9ac8a7f51afacc"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/prose_submitted.json",
+      "size": 64616,
+      "sha256": "cd39ea3f93ceecec7dfe1a688e4b7d4ccd90b4ae827747275ea22ba86521967a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v1/prose_validation.json",
+      "size": 276,
+      "sha256": "808a7c6cf25ea206a05f39ba958fcd54f582ee6adec4f77707180ce41e510c8b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v2/prose_approval_publication.json",
+      "size": 887,
+      "sha256": "270e728b01321def0e4430cfbf77db4108a615c6770f1ada16f9d0f56e8c0f10"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v2/prose_clarifications.json",
+      "size": 4647,
+      "sha256": "8fe861b0614bda6acd185e519acb08471c35ea3ead93a134e278ede86453e100"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v2/prose_correction_preview.json",
+      "size": 25723,
+      "sha256": "f566830bb5372b3282d14ad078720451b611848e682528d85d09062219f84c0b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v2/prose_query_after.json",
+      "size": 463883,
+      "sha256": "de16a2c86658e7cacc707db24a841030731e369a65f6a88323aeae2b449ec119"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v2/prose_reviewed.json",
+      "size": 73863,
+      "sha256": "20b550094e786b08337ff753385eb6edae8abfbe2176b24a8ca6a31d88b597b8"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v2/prose_submitted.json",
+      "size": 64616,
+      "sha256": "cd39ea3f93ceecec7dfe1a688e4b7d4ccd90b4ae827747275ea22ba86521967a"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/prose_v2/prose_validation.json",
+      "size": 276,
+      "sha256": "808a7c6cf25ea206a05f39ba958fcd54f582ee6adec4f77707180ce41e510c8b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pytest_final_v1.txt",
+      "size": 934,
+      "sha256": "ab421efd25460eac6e6b7ad64a1f424fa705a05b139c6439baec690c6c80794d"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pytest_final_v2.txt",
+      "size": 934,
+      "sha256": "3ae3b827b50d3bb68843ab6925648f7651c2ae6156162839d386ec3dabb8d5fe"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pytest_final_v3.txt",
+      "size": 934,
+      "sha256": "eb12cbee33fb4e0d6e5ab035e708de661381b121a20d378b5f3bd6fb024ac72f"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pytest_final_v4.txt",
+      "size": 934,
+      "sha256": "b67524a06e4e3686b91ddc657121fb415b03b9caf6e10e752263df402cddfb49"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pytest_final_v5.txt",
+      "size": 934,
+      "sha256": "2a6fb03059b7437905c5465aa121c3cf909951b456fe4c47dd3e2129f75ffbcd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/pytest_v1.txt",
+      "size": 934,
+      "sha256": "01e2aa769e968c57afac0691a0afce7c44d2664654d996012868177510c9047b"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/quality_receipt.json",
+      "size": 221,
+      "sha256": "b37db498aedce0736d0e344ab6bb23226f5fb5c03f1f7265e407df7814d6ce09"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_execution_v2.txt",
+      "size": 125,
+      "sha256": "3d5bc2c4824d26c42964235320cdcd3d990cc0acd2fa5d836c77177eec81bf1d"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v1/meaningful_revision.json",
+      "size": 61351,
+      "sha256": "b54ece4a02181048f08037da1ae9dff084bf2f67d37cdf93800cf076ea0987b3"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v1/measurement_query.json",
+      "size": 12756,
+      "sha256": "f72a301b6e60c1120bb53d8aad1ef2494f70b37ebfce6ac062030c318decae65"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v1/measurement_query_final.json",
+      "size": 79681,
+      "sha256": "713fae8100aabfd3d2f8eb3d23d766551f7e764be38faf42c6338f2458fd07f2"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v1/measurement_query_verified.json",
+      "size": 61786,
+      "sha256": "1bbd9f42668b6fdffd0176ce98c0c8ed5675efe1fb20f5d211d0b3c34ab33e04"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v2/meaningful_reactivation.json",
+      "size": 615,
+      "sha256": "dd436d85f67b2b2689840afaaef21910a287e5cd2491b0396494baefe1bb3477"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v2/meaningful_revision.json",
+      "size": 62786,
+      "sha256": "6302a97192c9618f62062e6a9cbccf6368e0b1a49bbd33d28abd80e85c94046e"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v2/meaningful_rollback.json",
+      "size": 118,
+      "sha256": "3cf6860b1431cf18846c234fa7e7f51466e07d9d495fe546b4065cb558a5e8dd"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v2/measurement_query_final.json",
+      "size": 48389,
+      "sha256": "8f2fec68a5ddfc8aa80b57e17336fe5886eb3b013558b856ecbf4f00030f8af4"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/revision_v2/measurements_after_rollback.json",
+      "size": 9569,
+      "sha256": "bb9fe3cd43062b1e1378d99e27e7a94548c02f0351b442bb55cc5c307dd31633"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/ui_final_receipt.json",
+      "size": 2597,
+      "sha256": "c8fa404281ade24747b2161a24a07337e44f4bea1a53ab8445d2ae467c591b16"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/ui_final_receipt_v2.json",
+      "size": 770,
+      "sha256": "025d0d19b5ddad2d82ea22459fa8242ef1cb462c746c83737d660deef6d91844"
+    },
+    {
+      "path": "artifacts/phase3c_curation_v1/ui_receipt.json",
+      "size": 2815,
+      "sha256": "e3bc73181d70063bae3640f0296412785dc4efeb0ec8d95e5e84cc20b6a0be01"
+    },
+    {
+      "path": "docs/PHASE3C_CURATION_V1.md",
+      "size": 20653,
+      "sha256": "b39a32318d5e0cabe0fd4cf79202050231be152ea43685365f26d05c8096a74e"
+    },
+    {
+      "path": "docs/PHASE3C_REASONING_CLOSURE_V1.md",
+      "size": 16783,
+      "sha256": "570a479fc858e88934ef155bc7352b9d78e81a66a02bb7393f70ee21885c671d"
+    },
+    {
+      "path": "domain/incorporation.yaml",
+      "size": 946,
+      "sha256": "9c5871f12aa910f65d3c2a6c661498c016a8c896f086460b9cb08a2366b14175"
+    },
+    {
+      "path": "domain/semantic_registry.yaml",
+      "size": 3978,
+      "sha256": "c3e017485085401d1d92f75adeb7c7d2a2336865eb3aa13a307049929527acae"
+    },
+    {
+      "path": "ontology/incorporation_mappings.ttl",
+      "size": 777,
+      "sha256": "63bea5ae45915925ba30bd4cc32a7d39cbbdfea37cdca7afdc313c401e5382e9"
+    },
+    {
+      "path": "pyproject.toml",
+      "size": 497,
+      "sha256": "329aa7a5480c2323012b4f9276fedfa39e98fce15b3b326095a54daa4a20ee43"
+    },
+    {
+      "path": "scripts/build_phase3c_sanitized_zip.py",
+      "size": 5577,
+      "sha256": "eb469e116b960159cdcbcdd503e24056f34859c4888d51e03bae366eef6ed854"
+    },
+    {
+      "path": "scripts/curate_research.py",
+      "size": 2147,
+      "sha256": "113729ee0d9b7320cca389c1dbf6ff57eb0176e2d0aff65672adec9260e579d2"
+    },
+    {
+      "path": "scripts/phase3c_closure.py",
+      "size": 45230,
+      "sha256": "db7affa9658b72a09eee7a147962f5bf4899e46de76bfe7f967c924fc8aa1718"
+    },
+    {
+      "path": "scripts/phase3c_curation_coverage.py",
+      "size": 6995,
+      "sha256": "35f3591956e14362d21be7a99e052d28c77fdcc83c9866ec4665e51a4d3a75de"
+    },
+    {
+      "path": "scripts/phase3c_curation_integrity.py",
+      "size": 7249,
+      "sha256": "a69ee21a701d48d5cdd3f44aa0838f382397eb2ab8dc3b6ef645846c1746f91c"
+    },
+    {
+      "path": "scripts/phase3c_curation_pilot.py",
+      "size": 13546,
+      "sha256": "2f687332bfcf3ad56dcc8a0846b98a707e238b92b942119b5f8a5003144c7a8a"
+    },
+    {
+      "path": "scripts/phase3c_curation_prose.py",
+      "size": 4030,
+      "sha256": "f4dbf03c0a8ea1861736158a2a7df4b3e5ed0f7aa8472c2a1741500e81200c77"
+    },
+    {
+      "path": "scripts/phase3c_curation_revision.py",
+      "size": 4275,
+      "sha256": "2e79729cfbd9228be2ae7029025d637bb53b4abf2485a2f7c91449e35bfdb06d"
+    },
+    {
+      "path": "src/nasa_fire_ai/ingestion/scientific_proposals.py",
+      "size": 20551,
+      "sha256": "317947c5cb3d47670e8b7ac4b6f912bfdf1d04a918ae0dc636ad43de4eb7eb8c"
+    },
+    {
+      "path": "src/nasa_fire_ai/ingestion/semantic.py",
+      "size": 18398,
+      "sha256": "9efb1dd3cdbae41ef9afc76c6b41019c81736cdf42f126252828a9ea537482c8"
+    },
+    {
+      "path": "src/nasa_fire_ai/llm/research.py",
+      "size": 5051,
+      "sha256": "9c0619e5439f9c2d5c2965787c8ac3f24b1c0b98234f47e76d607486b9959687"
+    },
+    {
+      "path": "src/nasa_fire_ai/llm/scientific_correction.py",
+      "size": 6796,
+      "sha256": "62cff695d65801dfffd28f5a6dd230c0234a7fc0efafd33b99a357cb550950c6"
+    },
+    {
+      "path": "src/nasa_fire_ai/models/__init__.py",
+      "size": 12503,
+      "sha256": "b5da4f319ee10295d2a0cf536c92b80bf11f239f521e41674abd1e8087d3a408"
+    },
+    {
+      "path": "src/nasa_fire_ai/services/claim_verification.py",
+      "size": 2699,
+      "sha256": "8d3c5247086ecf84f1b1d490bbf263dff7be7fd18f977c0129a1511358ddce0b"
+    },
+    {
+      "path": "src/nasa_fire_ai/services/curation.py",
+      "size": 79663,
+      "sha256": "b2ba12ce3ff17f12b5cb5a2d86a53bb1c51ed5312a7f30a402e7457a66e0b084"
+    },
+    {
+      "path": "src/nasa_fire_ai/services/intent_answers.py",
+      "size": 6650,
+      "sha256": "68294c0913fa5620651b806b8f983af0a1c8b9df55a52e4a355fb858289a29d9"
+    },
+    {
+      "path": "src/nasa_fire_ai/services/investigation.py",
+      "size": 28785,
+      "sha256": "119e1a5ba2dd3bbd105461f3a71314af06cf377b1cfd7fe55a72976680f1bd45"
+    },
+    {
+      "path": "src/nasa_fire_ai/services/maintenance.py",
+      "size": 9251,
+      "sha256": "9a209b55ead0eafbe94bc3d6b327de8ff24e76cd6eea6a0102d5ee644510283f"
+    },
+    {
+      "path": "src/nasa_fire_ai/services/native.py",
+      "size": 30951,
+      "sha256": "96eab12aad90c890013e73a3060ab32dfa8a194d0b6d92569ab30a0b616ee018"
+    },
+    {
+      "path": "src/nasa_fire_ai/services/phase3.py",
+      "size": 16599,
+      "sha256": "1ceca12c5ed390bdde5e2128f5c8cca10615784916295bcedca3bd5652ad0fd9"
+    },
+    {
+      "path": "src/nasa_fire_ai/services/scientific_synthesis.py",
+      "size": 25775,
+      "sha256": "7c4a087421cf878b7e4980dcad7e0c22ed9989b6933d757d7b784acaa565ddc8"
+    },
+    {
+      "path": "tests/test_autonomous_maintenance.py",
+      "size": 7097,
+      "sha256": "a766a381b4ee22c5d0823397440805ddfe6cd0783f115fd907f2cd5d5f8f8560"
+    },
+    {
+      "path": "tests/test_curation.py",
+      "size": 24083,
+      "sha256": "fce207bf3a508f51a37c2ffcf4fe45f520cd2bfa69021f1c8016d6b53e71a1be"
+    },
+    {
+      "path": "tests/test_investigation.py",
+      "size": 13792,
+      "sha256": "ed3033afc3ca639e5ebb37c6f67785acdd00eaf4676eaa37518e57ed6ede7cb3"
+    },
+    {
+      "path": "tests/test_reasoning_closure.py",
+      "size": 10522,
+      "sha256": "07764c1c860cdf389fb703647480aeb5fa86184cc99336c0da98fa79d76127b9"
+    },
+    {
+      "path": "uv.lock",
+      "size": 312141,
+      "sha256": "fa9c7f9558ed33d70df25caf76a24b899f84e41940a384a4fbaadb4911362867"
+    }
+  ]
+}
