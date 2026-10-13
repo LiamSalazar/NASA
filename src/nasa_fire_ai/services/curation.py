@@ -23,6 +23,7 @@ from pyshacl import validate as shacl_validate
 from rdflib import OWL, RDF, RDFS, Graph, Literal, Namespace
 
 from nasa_fire_ai.ingestion.generic import profile_table, resolve_column
+from nasa_fire_ai.ingestion.scientific_proposals import normative_instruction
 from nasa_fire_ai.ingestion.semantic import load_semantic_registry
 from nasa_fire_ai.query.native import NS, SemanticGraph, node
 from nasa_fire_ai.query.v2 import (
@@ -211,9 +212,26 @@ class CurationService:
             sid = package["id"] + ":" + manifest["sha256"][:16]
             for ordinal, text in units:
                 eid = "E-" + digest([sid, ordinal, text])[:24]
-                expected[eid] = (text, manifest["sha256"], sid)
+                expected[eid] = (
+                    text,
+                    manifest["sha256"],
+                    sid,
+                    sid + ":document",
+                    ordinal,
+                    {
+                        "file": manifest["name"],
+                        "row" if suffix in {".csv", ".tsv"} else "page": ordinal,
+                    },
+                )
         supplied = {
-            e["evidence_id"]: (e["text"], e["checksum"], e["source_id"])
+            e["evidence_id"]: (
+                e["text"],
+                e["checksum"],
+                e["source_id"],
+                e.get("document_id"),
+                e.get("page"),
+                e.get("locator"),
+            )
             for e in package["evidence"]
         }
         if supplied != expected:
@@ -221,6 +239,371 @@ class CurationService:
                 "Evidence differs from original submitted source units; regenerate extraction"
             )
         return errors
+
+    def validate_attribution(self, package):
+        """Reconstruct applicability from original cells, never corrected extraction.
+
+        These ephemeral anchors are not persisted scientific claims. Unknown prose
+        applicability requires the existing explicit scope decision, not model prose.
+        """
+        errors = []
+        refs = {e["evidence_id"]: e for e in package["evidence"]}
+        excluded = {e["subject"] for e in package["exclusions"]}
+        semantic = self.property_registry(package)
+        runs, values, statements = {}, {}, {}
+        for manifest in package["inputs"]:
+            path = self.root / manifest["stored_input"]
+            if path.suffix not in {".csv", ".tsv"} or not path.is_file():
+                continue
+            data = path.read_bytes()
+            if hashlib.sha256(data).hexdigest() != manifest["sha256"]:
+                continue  # validate_originals supplies the blocking checksum error.
+            text, _ = decode_table(data)
+            rows = list(
+                csv.DictReader(io.StringIO(text), delimiter="\t" if path.suffix == ".tsv" else ",")
+            )
+            rows = [
+                {k.strip(): (v or "").strip() for k, v in r.items() if k is not None} for r in rows
+            ]
+            profiles = profile_table(rows)
+            sid = package["id"] + ":" + manifest["sha256"][:16]
+            for i, row in enumerate(rows):
+                eid = "E-" + digest([sid, i + 1, json.dumps(row, ensure_ascii=False)])[:24]
+                rid = sid + ":run:" + str(i)
+                roles = {
+                    role: row[p.label]
+                    for p in profiles
+                    for role, aliases in self.presentation["column_roles"].items()
+                    if p.normalized_label in aliases and row[p.label]
+                }
+                runs[rid] = {"eid": eid, "roles": roles, "sid": sid}
+                for p in profiles:
+                    if not row[p.label]:
+                        continue
+                    role = self.presentation["statement_roles"].get(p.normalized_label)
+                    if role:
+                        if normative_instruction(row[p.label]):
+                            # A procedural sentence under an "Observation" header
+                            # still needs a normative or documentary interpretation.
+                            role = self.presentation["statement_roles"]["requirement"]
+                        statements[rid + ":statement:" + p.label] = {
+                            "run": rid,
+                            "text": row[p.label],
+                            "role": role,
+                            "eid": eid,
+                        }
+                    else:
+                        values[rid + ":value:" + p.label] = {
+                            "run": rid,
+                            "expression": row[p.label],
+                            "unit": p.raw_unit,
+                            "header": p.label,
+                            "eid": eid,
+                            "property_id": resolve_column(p, semantic).property_id
+                            or package["decisions"]
+                            .get("column:" + sid + ":" + p.label, {})
+                            .get("selection"),
+                        }
+        for entity in package["entities"]:
+            anchor = runs.get(entity["id"])
+            if (
+                entity["class_id"] == "ExperimentalRun"
+                and not anchor
+                and entity["id"] not in excluded
+            ):
+                errors.append(
+                    "Scientific review required: experimental run lacks original table-row identity: "
+                    + entity["id"]
+                )
+            if (
+                anchor
+                and entity["id"] not in excluded
+                and (
+                    anchor["eid"] not in entity["evidence_ids"]
+                    or entity["label"] != anchor["roles"].get("run", entity["label"])
+                )
+            ):
+                errors.append(
+                    "Source row/run identity differs from original evidence: " + entity["id"]
+                )
+        for relation in package["relations"]:
+            if relation["subject"] in excluded:
+                continue
+            anchor = runs.get(relation["subject"])
+            dimension = {
+                "hasGravityCondition": "gravity",
+                "hasMaterial": "material",
+                "belongsToExperimentFamily": "group",
+                "belongsToInvestigation": "investigation",
+            }.get(relation["relation"])
+            if not dimension:
+                continue
+            if not anchor and relation["subject"] in statements:
+                anchor = runs[statements[relation["subject"]]["run"]]
+            if not anchor:
+                errors.append(
+                    "Scientific review required: relationship "
+                    + dimension
+                    + " needs original experimental applicability for "
+                    + relation["subject"]
+                )
+                continue
+            raw = anchor["roles"].get(dimension)
+            expected = None
+            if dimension == "investigation":
+                expected = package["id"]
+            elif dimension == "group" and raw:
+                expected = anchor["sid"] + ":group:" + raw
+            elif raw:
+                expected = self.resolve_identity(raw, relation["relation"])
+                if not expected:
+                    selection = package["decisions"].get(dimension + ":" + raw, {}).get("selection")
+                    if selection == "distinct" and dimension == "material":
+                        expected = anchor["sid"] + ":material:" + digest(raw)[:12]
+                    elif selection not in {None, "documentary"}:
+                        expected = selection
+            if expected:
+                if relation["object"] != expected or anchor["eid"] not in relation["evidence_ids"]:
+                    errors.append(
+                        "Source row "
+                        + dimension
+                        + " attribution contradicts original evidence: "
+                        + relation["subject"]
+                    )
+            elif dimension == "gravity" and not raw:
+                # Broader documentary context is permitted only after an explicit
+                # applicability decision; local source conditions take precedence.
+                supported = any(
+                    c["value"] == relation["object"]
+                    and package["decisions"].get(c["id"], {}).get("selection") == "campaign"
+                    and any(
+                        e in refs
+                        and c["text"] in refs[e]["text"]
+                        and re.search(
+                            r"\b" + re.escape(c["value"]) + r"\b", refs[e]["text"], re.IGNORECASE
+                        )
+                        for e in c["evidence_ids"]
+                    )
+                    for c in package.get("contexts", [])
+                )
+                if not supported:
+                    errors.append(
+                        "Scientific review required: identify source-backed gravity context and its applicability to "
+                        + relation["subject"]
+                    )
+            else:
+                errors.append(
+                    "Scientific review required: resolve original source "
+                    + dimension
+                    + " identity for "
+                    + relation["subject"]
+                )
+        for value in package["values"]:
+            if value["id"] in excluded or value["subject"] in excluded:
+                continue
+            anchor = values.get(value["id"])
+            if not anchor:
+                errors.append(
+                    "Scientific review required: quantity needs an identified original table cell: "
+                    + value["id"]
+                )
+                continue
+            original_unit = anchor["unit"]
+            # Existing reviewed percent header contract retains the original unit.
+            if original_unit is None and "percent" in anchor["header"].lower():
+                original_unit = "%"
+            v = value["value"]
+            if value["property_id"] != anchor["property_id"]:
+                errors.append(
+                    "Quantity semantics require original header or reviewed column mapping: "
+                    + value["id"]
+                )
+            if value["subject"] != anchor["run"] or anchor["eid"] not in value["evidence_ids"]:
+                errors.append(
+                    "Quantity subject/table-row membership contradicts original source: "
+                    + value["id"]
+                )
+            if (
+                v.get("raw_expression") != anchor["expression"]
+                or v.get("reported_unit") != original_unit
+            ):
+                errors.append(
+                    "Quantity expression/unit differs from original source cell: " + value["id"]
+                )
+        for statement in package["statements"]:
+            if not statement.get("included", True) or statement["id"] in excluded:
+                continue
+            cls = statement["class_id"]
+            ancestry = {cls}
+            while (
+                parent := semantic.class_metadata.get(cls, {}).get("parent")
+            ) and parent not in ancestry:
+                ancestry.add(parent)
+                cls = parent
+            expected_classes = {
+                r["class_id"]
+                for r in self.presentation["statement_roles"].values()
+                if r["epistemic"] == statement["epistemic"]
+            }
+            if expected_classes and not ancestry.intersection(expected_classes):
+                errors.append(
+                    "Scientific statement class/epistemic role disagrees with source-role contract: "
+                    + statement["id"]
+                )
+            anchor = statements.get(statement["id"])
+            if not anchor and any(
+                e in {a["eid"] for a in runs.values()} for e in statement["evidence_ids"]
+            ):
+                errors.append(
+                    "Scientific statement must retain original table cell/role identity: "
+                    + statement["id"]
+                )
+            if anchor:
+                role = anchor["role"]
+                # Multiple rows can explicitly report the identical statement.
+                permitted = {
+                    a["run"]
+                    for a in statements.values()
+                    if a["text"] == anchor["text"] and a["role"] == role
+                }
+                if (
+                    statement["text"] != anchor["text"]
+                    or anchor["eid"] not in statement["evidence_ids"]
+                    or not set(statement.get("scope", [])) <= permitted
+                ):
+                    errors.append(
+                        "Statement applicability/table-row membership contradicts original source: "
+                        + statement["id"]
+                    )
+                if statement["epistemic"] != role["epistemic"]:
+                    prefix = (
+                        "Uncertain source statements cannot become confirmed observations or conclusions; "
+                        if role["epistemic"]
+                        in {"hypothesis", "tentative_interpretation", "open_question"}
+                        else ""
+                    )
+                    errors.append(
+                        prefix
+                        + "Source-backed statement role differs from original column ("
+                        + role["epistemic"]
+                        + "): "
+                        + statement["id"]
+                    )
+                if role["class_id"] not in ancestry:
+                    errors.append(
+                        "Source-backed statement class differs from original column: "
+                        + statement["id"]
+                    )
+            elif statement.get("scope"):
+                reviewed = any(
+                    key.startswith("scope")
+                    and d.get("explanation", "").strip()
+                    and set(statement["evidence_ids"]) <= set(d.get("evidence_ids", []))
+                    and set(statement["scope"])
+                    <= set(d["selection"] if isinstance(d["selection"], list) else [d["selection"]])
+                    for key, d in package["decisions"].items()
+                )
+                if not reviewed:
+                    errors.append(
+                        "Scientific review required: select source-supported narrative scope with evidence and an applicability explanation for "
+                        + statement["id"]
+                    )
+                role_review = package["decisions"].get("role:" + statement["id"], {})
+                reviewed_role = (
+                    role_review.get("selection") == statement["epistemic"]
+                    and role_review.get("principal") in self.policy.approvers
+                    and role_review.get("explanation", "").strip()
+                    and role_review.get("support_spans")
+                    and all(
+                        s.get("evidence_id") in refs
+                        and s.get("text")
+                        and s["text"] in refs[s["evidence_id"]]["text"]
+                        and refs[s["evidence_id"]]["source_id"]
+                        in {refs[e]["source_id"] for e in statement["evidence_ids"] if e in refs}
+                        for s in role_review.get("support_spans", [])
+                    )
+                )
+                if (
+                    statement["epistemic"] == "author_reported_conclusion"
+                    and not reviewed_role
+                    and not re.search(
+                        r"\b(?:results\s+(?:indicate|show)|authors?\s+conclude|concluded|conclusion|study\s+(?:showed|demonstrates)|demonstrated\s+that)\b",
+                        statement["text"],
+                        re.IGNORECASE,
+                    )
+                ):
+                    errors.append(
+                        "Scientific review required: author-conclusion role needs explicit original author attribution for "
+                        + statement["id"]
+                    )
+                if statement["epistemic"] in {
+                    "measured_observation",
+                    "author_reported_conclusion",
+                } and re.search(
+                    r"\b(?:hypothes\w*|may|might|likely|not\s+clear|future\s+work)\b",
+                    statement["text"],
+                    re.IGNORECASE,
+                ):
+                    errors.append(
+                        "Uncertain source statement requires tentative, hypothesis or open-question role: "
+                        + statement["id"]
+                    )
+            if statement["epistemic"] in {
+                "measured_observation",
+                "reported_quantity",
+            } and normative_instruction(statement["text"]):
+                errors.append(
+                    "Normative source instruction is not an experimental observation or measurement: "
+                    + statement["id"]
+                )
+        return errors
+
+    def review_statement_role(
+        self, package_id, statement_id, epistemic, support_spans, explanation, principal
+    ):
+        """Authorized source-context adjudication in the existing review decisions.
+
+        Context can span paragraphs/pages; this does not waive original table
+        membership, uncertainty or normative safeguards.
+        """
+        self.authorize(principal)
+        current = self.get(package_id)
+        package = current["package"]
+        statement = next(s for s in package["statements"] if s["id"] == statement_id)
+        refs = {e["evidence_id"]: e for e in package["evidence"]}
+        source_ids = {refs[e]["source_id"] for e in statement["evidence_ids"]}
+        if (
+            not explanation.strip()
+            or not support_spans
+            or not all(
+                s.get("evidence_id") in refs
+                and s.get("text")
+                and s["text"] in refs[s["evidence_id"]]["text"]
+                and refs[s["evidence_id"]]["source_id"] in source_ids
+                for s in support_spans
+            )
+        ):
+            raise ValueError(
+                "Role review requires exact same-source context spans and a scientific explanation"
+            )
+        if epistemic not in {r["epistemic"] for r in self.presentation["statement_roles"].values()}:
+            raise ValueError("Choose a registered scientific epistemic classification")
+        package["decisions"]["role:" + statement_id] = {
+            "selection": epistemic,
+            "principal": principal,
+            "explanation": explanation,
+            "support_spans": support_spans,
+            "evidence_ids": statement["evidence_ids"],
+            "affected_records": 1,
+        }
+        saved = self.save(package, principal)
+        self.event(
+            saved["package"],
+            "SOURCE_ROLE_REVIEWED",
+            principal,
+            package["decisions"]["role:" + statement_id],
+        )
+        return saved
 
     def get(self, package_id, version=None):
         row = self.registry.db.execute(
@@ -1130,15 +1513,6 @@ class CurationService:
                     for r in self.presentation["statement_roles"].values()
                 ):
                     raise ValueError("Choose a registered scientific epistemic classification")
-                original = next(s for s in draft["statements"] if s["id"] == op["subject"])
-                if original["epistemic"] in {
-                    "hypothesis",
-                    "tentative_interpretation",
-                    "open_question",
-                } and op.get("epistemic") in {"measured_observation", "author_reported_conclusion"}:
-                    raise ValueError(
-                        "Uncertain source statements cannot become confirmed observations or conclusions"
-                    )
             if op.get("subject") not in editable:
                 raise ValueError(
                     "Published reference entities are read-only; create a separate change proposal"
@@ -1397,6 +1771,7 @@ class CurationService:
 
     def validate(self, package):
         errors = self.validate_originals(package)
+        errors.extend(self.validate_attribution(package))
         if package.get("contract_digest") and package["contract_digest"] != self.contract_digest():
             errors.append(
                 "Scientific contracts changed; regenerate and review a new prepared version"

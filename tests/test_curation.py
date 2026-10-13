@@ -513,7 +513,7 @@ def test_natural_language_proposal_and_incorrect_model(curator):
     new = curator.submit(
         "NL fixture",
         "Controlled source",
-        [("runs.csv", b"Run,Material\nR1,PMMA\nR2,PMMA\n")],
+        [("runs.csv", b"Run,Material,Gravity\nR1,PMMA,microgravity\nR2,PMMA,microgravity\n")],
         "test-scientist",
     )
     result = interpret_correction(
@@ -784,27 +784,41 @@ def test_wrong_observation_run_and_stale_correction_preview(curator):
     package = saved["package"]
     runs = [e["id"] for e in package["entities"] if e["class_id"] == "ExperimentalRun"]
     observation = next(s for s in package["statements"] if s["epistemic"] == "measured_observation")
-    wrong = curator.preview_correction(
-        package["id"],
-        [{"action": "scope", "subject": observation["id"], "objects": [runs[1]]}],
-        "Controlled wrong attribution fixture",
-        "test-scientist",
-    )
-    curator.apply_correction(wrong, "test-scientist")
+    with pytest.raises(ValueError, match="Statement applicability/table-row"):
+        curator.preview_correction(
+            package["id"],
+            [{"action": "scope", "subject": observation["id"], "objects": [runs[1]]}],
+            "Controlled wrong attribution fixture",
+            "test-scientist",
+        )
+    # A genuine documentary exclusion changes the draft and makes a previously
+    # source-supported preview stale, without publishing wrong attribution.
     correct = curator.preview_correction(
         package["id"],
         [{"action": "scope", "subject": observation["id"], "objects": [runs[0]]}],
         "Original source row belongs to first run, not the terrestrial control",
         "test-scientist",
     )
-    curator.apply_correction(correct, "test-scientist")
+    changed = curator.preview_correction(
+        package["id"],
+        [
+            {
+                "action": "exclude",
+                "subject": observation["id"],
+                "reason": "Retain documentary evidence",
+            }
+        ],
+        "Withhold scientific assertion",
+        "test-scientist",
+    )
+    curator.apply_correction(changed, "test-scientist")
     assert next(
         s
         for s in curator.get(package["id"])["package"]["statements"]
         if s["id"] == observation["id"]
     )["scope"] == [runs[0]]
     with pytest.raises(ValueError, match="changed"):
-        curator.apply_correction(wrong, "test-scientist")
+        curator.apply_correction(correct, "test-scientist")
 
 
 def test_measurement_retrieval_and_approved_rdf_integrity(curator, monkeypatch):

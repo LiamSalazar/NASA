@@ -18,6 +18,17 @@ from nasa_fire_ai.llm.interfaces import NvidiaStructuredClient
 CONTRACT = "scientific-exact-span-stage-v5-dynamic-contracts-source-whitespace"
 
 
+def normative_instruction(text):
+    """Narrow procedural modal guard, not a scientific epistemic classifier."""
+    return bool(
+        re.search(
+            r"\bshall\b|\bmust\s+(?:be|record|conduct|observe|test|use|meet|comply)\b",
+            text,
+            re.IGNORECASE,
+        )
+    )
+
+
 def span_location(text, quote):
     start = text.find(quote)
     if start >= 0:
@@ -39,6 +50,10 @@ def validate_proposition(proposal, registry, semantic_registry):
     location = span_location(source["text"], proposal.get("quote", "")) if source else None
     if not location:
         errors.append("SOURCE_SPAN_NOT_FOUND")
+    if class_id in {"ReportedObservation", "Measurement"} and normative_instruction(
+        proposal.get("quote", "")
+    ):
+        errors.append("NORMATIVE_INSTRUCTION_NOT_EXPERIMENTAL_OBSERVATION")
     for quantity in proposal.get("quantities", []):
         if (
             not isinstance(quantity, dict)
@@ -180,6 +195,22 @@ def deterministic_propositions(passages, semantic_registry, limit=24):
         for match in re.finditer(r".+?(?:[.!?](?!\d)(?=\s|$)|$)", text, re.DOTALL):
             quote = match.group().strip()
             if not 30 <= len(quote) <= 1400:
+                continue
+            if normative_instruction(quote):
+                # Procedure text is not an observation merely because it says
+                # "shall be observed". Existing normative role remains a proposal.
+                if "Requirement" in semantic_registry.class_metadata:
+                    proposals.append(
+                        {
+                            "class_id": "Requirement",
+                            "quote": quote,
+                            "evidence_id": passage["evidence_id"],
+                            "scope": "UNRESOLVED_NORMATIVE_APPLICABILITY",
+                            "origin": "deterministic_sentence_proposal",
+                        }
+                    )
+                    if len(proposals) >= limit:
+                        return proposals
                 continue
             for class_id, pattern in patterns.items():
                 if class_id in semantic_registry.class_metadata and re.search(
