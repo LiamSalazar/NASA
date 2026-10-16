@@ -173,6 +173,10 @@ STAGE_INSTRUCTIONS = {
 {"entities":[{"key":"e1","label":"exact source name","class_id":"existing class ID","study":"current","support":["A1"]}]}.
 Identify all supported investigations, groups, named runs, samples, materials,
 physical conditions and interventions in this source task. Use exact source names
+including the original full article title for its current Investigation when that
+title appears in the source. This documentary identity does not assert execution.
+A tested specimen/coupon is a Sample unless an individual run is actually named.
+A strategic development phase is not an experimental group.
 including meaningful qualifiers. Source headings can name experimental groups;
 preserve their distinguishing prefixes when identifying ExperimentFamily entities.
 Keep comparison groups distinct. Do not invent a
@@ -190,7 +194,8 @@ Study is current, cited or unknown. Supply supporting anchors for every entity.
 DO NOT output propositions, relationships, identity, schema or any other root key.""",
     "propositions": """Your ONLY task is SOURCE PROPOSITIONS AND QUANTITIES.
 Return root arrays statements, quantities and concepts, following their schemas.
-For a statement select its original source anchor; do not rewrite the sentence.
+For a statement select its original source anchor with statement_eligible=true;
+identity/context anchors are not statement choices. Do not rewrite the sentence.
 A statement item is {"anchor":"A1","epistemic":"measured_observation","subjects":["K1"],"study":"current"}.
 Classify each scientifically relevant original sentence accurately: observations,
 configurations, author conclusions, tentative interpretations, hypotheses, open
@@ -364,12 +369,18 @@ def role_errors(statement):
         if re.search(r"\b(?:will|would|planned|proposed|future\s+work)\b", text, re.IGNORECASE):
             errors.append("PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION")
         if re.search(
+            r"\b(?:goals?|objectives?|aims?)\s+(?:is\s+|are\s+)?to\b", text, re.IGNORECASE
+        ):
+            errors.append("SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT")
+        if re.search(
             r"\b(?:may|might|hypothes\w*|likely|possibly|not\s+clear|suggest\w*)\b",
             text,
             re.IGNORECASE,
         ):
             errors.append("UNCERTAINTY_CANNOT_BECOME_CONFIRMED")
     observation_text = text
+    if role != "documentary_context" and len(re.findall(r"(?m)^\s*[•●▪◦]", text)) > 1:
+        errors.append("MULTIPLE_BULLETS_REQUIRE_SEPARATE_EPISTEMIC_REVIEW")
     if role == "measured_observation":
         lines = [line.strip() for line in text.splitlines() if line.strip() not in {"", "•"}]
         symbolic_lines = sum(
@@ -516,6 +527,49 @@ def document_conclusion_scope(subject, spans, entities, document):
         return False
     return not re.search(
         r"\b(?!(?:Figure|Table|Equation|Test|Run)\d)[A-Z][a-z]+(?:[’']s)?\d{1,3}\b", text
+    )
+
+
+def original_research_passage(spans, document):
+    """Documentary author attribution, never inheritance by every member run."""
+    if not spans or not all(
+        re.search(
+            r"\b(?:results?|discussion|conclusions?|methods?|experimental|testing|verification)\b",
+            section_for_span(s, document),
+            re.IGNORECASE,
+        )
+        and not re.search(
+            r"\b(?:prior|historical|literature|background|introduction|references)\b",
+            section_for_span(s, document),
+            re.IGNORECASE,
+        )
+        for s in spans
+    ):
+        return False
+    text = " ".join(s["quote"] for s in spans)
+    return not re.search(
+        r"\b(?:prior|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
+        text,
+        re.IGNORECASE,
+    ) and not re.search(
+        r"\b[A-Z][a-z]+\s+et\s+al\b|\b(?!(?:Figure|Table|Equation|Test|Run)\d)[A-Z][a-z]+(?:[’']s)?\d{1,3}\b",
+        text,
+    )
+
+
+def document_statement_scope(subject, spans, entities, document):
+    entity = entities.get(subject, {})
+    return (
+        entity.get("class_id") == "Investigation"
+        and entity.get("study") == "current"
+        and entity.get("validation_status") == "SOURCE_SUPPORTED"
+        and normalized(entity.get("label", "")) == normalized(document.get("package_title", ""))
+        and all(s["source_id"] == entity["source_id"] for s in spans)
+        and original_research_passage(spans, document)
+        and not any(
+            e.get("study") == "cited" and mentions(e["label"], " ".join(s["quote"] for s in spans))
+            for e in entities.values()
+        )
     )
 
 
@@ -796,6 +850,24 @@ def resolve_explicit_scopes(output, document):
                 if re.search(r"conclusions?", section_for_span(span, document), re.IGNORECASE):
                     statement["subjects"] = [roots[0]["key"]]
                     statement["study"] = "current"
+        if (
+            not statement["subjects"]
+            and statement["study"] != "cited"
+            and original_research_passage(statement["support"], document)
+        ):
+            roots = [
+                e
+                for e in experiments
+                if e["class_id"] == "Investigation"
+                and e["study"] == "current"
+                and normalized(e["label"]) == normalized(document.get("package_title", ""))
+            ]
+            text = statement["text"]
+            if len(roots) == 1 and not any(
+                e["study"] == "cited" and mentions(e["label"], text) for e in experiments
+            ):
+                statement["subjects"] = [roots[0]["key"]]
+                statement["study"] = "current"
 
 
 def deterministic(segment, semantic):
@@ -977,8 +1049,12 @@ def unique_json_fields(pairs):
 def source_anchors(window, context, known, package):
     """Stable original offsets, including explicit earlier identity/context anchors."""
     evidence = {e["evidence_id"]: e for e in package["evidence"]}
-    candidates = list(context["anchors"])
-    candidates.extend(s["layout_heading"] for s in window["members"] if s.get("layout_heading"))
+    candidates = [{**s, "statement_eligible": False} for s in context["anchors"]]
+    candidates.extend(
+        {**s["layout_heading"], "statement_eligible": False}
+        for s in window["members"]
+        if s.get("layout_heading")
+    )
     for segment in window["members"]:
         cursor = 0
         intervals = []
@@ -988,31 +1064,47 @@ def source_anchors(window, context, known, package):
             cursor = end
         intervals.append((cursor, len(segment["text"])))
         for begin, end in intervals:
-            for paragraph in re.finditer(r"[^\n]+(?:\n(?!\n)[^\n]+)*", segment["text"][begin:end]):
-                for match in re.finditer(
-                    r".+?(?:[.!?](?!\d)(?=\s|$)|$)", paragraph.group(), re.DOTALL
-                ):
-                    quote = match.group().strip()
-                    if quote:
-                        candidates.append(
-                            {
-                                "evidence_id": segment["evidence_id"],
-                                "quote": quote,
-                                "start": segment["start"]
-                                + begin
-                                + paragraph.start()
-                                + match.start()
-                                + len(match.group())
-                                - len(match.group().lstrip()),
-                            }
-                        )
-    candidates.extend(s for e in known for s in e["support"])
+            # A slide/list may contain no sentence punctuation. Keep each bullet
+            # separate while preserving wrapped lines and original byte offsets.
+            part = segment["text"][begin:end]
+            boundaries = [
+                0,
+                *[m.start() for m in re.finditer(r"(?m)^[ \t]*[•●▪◦]\s*", part)],
+                len(part),
+            ]
+            for left, right in pairwise(sorted(set(boundaries))):
+                for paragraph in re.finditer(r"[^\n]+(?:\n(?!\n)[^\n]+)*", part[left:right]):
+                    for match in re.finditer(
+                        r".+?(?:[.!?](?!\d)(?=\s|$)|$)", paragraph.group(), re.DOTALL
+                    ):
+                        quote = match.group().strip()
+                        if quote:
+                            candidates.append(
+                                {
+                                    "evidence_id": segment["evidence_id"],
+                                    "quote": quote,
+                                    "statement_eligible": True,
+                                    "start": segment["start"]
+                                    + begin
+                                    + left
+                                    + paragraph.start()
+                                    + match.start()
+                                    + len(match.group())
+                                    - len(match.group().lstrip()),
+                                }
+                            )
+    candidates.extend({**s, "statement_eligible": False} for e in known for s in e["support"])
     anchors = {}
     for candidate in candidates:
         spans = locate([candidate], evidence)
         span = spans[0]
         key = "anchor-" + identity([span["evidence_id"], span["start"], span["end"]])[:20]
-        anchors[key] = {"id": key, **span}
+        anchors[key] = {
+            "id": key,
+            **span,
+            "statement_eligible": candidate.get("statement_eligible", False)
+            or anchors.get(key, {}).get("statement_eligible", False),
+        }
     return anchors
 
 
@@ -1147,6 +1239,7 @@ def parse_stage_output(content, stage, anchors, finish_reason, quantities=None):
                     set(item) != {"anchor", "epistemic", "subjects", "study"}
                     or not isinstance(item["anchor"], str)
                     or item["anchor"] not in anchors
+                    or anchors[item["anchor"]].get("statement_eligible") is False
                     or item["epistemic"] not in STATEMENT_CLASSES
                 ):
                     errors.append(
@@ -1661,6 +1754,31 @@ def validate_output(output, package, document, semantic):
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY")
+                    if (
+                        item["class_id"] == "ExperimentFamily"
+                        and re.match(r"Phase\s+(?:\d+|[IVX]+)\b", item["label"], re.IGNORECASE)
+                        and any(
+                            re.search(
+                                r"\b(?:strategy|roadmap|planned|will|if)\b",
+                                s["quote"],
+                                re.IGNORECASE,
+                            )
+                            for s in spans
+                        )
+                        and not any(
+                            re.search(
+                                r"\b(?:tests?|experiments?|samples?|specimens?)\s+(?:was|were)\s+(?:performed|conducted|tested|burned)\b",
+                                s["quote"],
+                                re.IGNORECASE,
+                            )
+                            for s in spans
+                        )
+                    ):
+                        record["status"] = "UNRESOLVED"
+                        record["research_execution_role"] = "STRATEGIC_OR_PLANNED_PHASE"
+                        record["reasons"].append(
+                            "STRATEGIC_PHASE_IS_NOT_ESTABLISHED_EXPERIMENT_GROUP"
+                        )
                     if item["class_id"] == "Sample" and re.fullmatch(
                         r"(?:thin(?:ner)?|thick(?:er)?|several|various|different|candidate)\s+(?:materials?|samples?|specimens?|fuels?)",
                         item["label"],
@@ -1747,9 +1865,9 @@ def validate_output(output, package, document, semantic):
                         )
                         or any(
                             re.search(
-                                re.escape(item["label"])
+                                re.escape(normalized(item["label"]))
                                 + r"\s+(?:investigation|experiment|study|project)\b",
-                                span["quote"],
+                                normalized(span["quote"]),
                                 re.IGNORECASE,
                             )
                             for span in spans
@@ -1985,6 +2103,13 @@ def validate_output(output, package, document, semantic):
                                 "support": entities[subject]["support"],
                                 "scope_is_individual_run": False,
                             }
+                        elif document_statement_scope(subject, spans, entities, document):
+                            record["scope_context"] = {
+                                "basis": "ORIGINAL_RESEARCH_SECTION_AT_DOCUMENT_INVESTIGATION_SCOPE",
+                                "support": entities[subject]["support"],
+                                "scope_is_individual_run": False,
+                                "distributes_to_members": False,
+                            }
                         if subject in entities and not applicable(
                             subject, spans, entities, document
                         ):
@@ -1998,7 +2123,9 @@ def validate_output(output, package, document, semantic):
                                     "support": proof,
                                 }
                     if not item["subjects"] or not all(
-                        applicable(s, spans, entities, document) for s in item["subjects"]
+                        applicable(s, spans, entities, document)
+                        or document_statement_scope(s, spans, entities, document)
+                        for s in item["subjects"]
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED")
@@ -2307,6 +2434,20 @@ def validate_output(output, package, document, semantic):
 
                         stem = re.sub(r"^(?:sample|specimen)\s+", "", normalized(item["label"]))
                         name = "sample_" + stem.replace(" ", "_")
+                        if name not in getattr(semantic, "source_field_accessors", {}):
+                            # Reuse only word forms of already approved specimen
+                            # accessors. The original label remains unchanged.
+                            alternatives = [
+                                n
+                                for n in getattr(semantic, "source_field_accessors", {})
+                                if n.startswith("sample_")
+                                and stem
+                                in source_dimension_adjectives(
+                                    n.removeprefix("sample_"), item["unit"]
+                                )
+                            ]
+                            if len(alternatives) == 1:
+                                name = alternatives[0]
                         definition = getattr(semantic, "source_field_accessors", {}).get(name)
                         try:
                             if (
@@ -2329,6 +2470,15 @@ def validate_output(output, package, document, semantic):
                             record["native_representation"] = (
                                 "STAGED_ORIGINAL_SPECIMEN_CHARACTERISTIC"
                             )
+                            if item["epistemic"] == "reported_quantity" and not any(
+                                re.search(r"\b(?:measur\w*|observ\w*)\b", s["quote"], re.IGNORECASE)
+                                for s in spans
+                            ):
+                                record["status"] = "UNRESOLVED"
+                                record["scientific_role_conflict"] = True
+                                record["reasons"].append(
+                                    "SPECIMEN_CHARACTERISTIC_IS_NOT_ESTABLISHED_MEASUREMENT"
+                                )
                     record["subject"] = entities[item["subject"]]["id"]
                     record["native_value_compatible"] = native_quantity_expression(
                         item["expression"]
@@ -2357,6 +2507,7 @@ def validate_output(output, package, document, semantic):
                     )
                     if derivation and item["epistemic"] == "reported_quantity":
                         record["status"] = "UNRESOLVED"
+                        record["scientific_role_conflict"] = True
                         record["reasons"].append("DERIVED_CONTEXT_IS_NOT_DIRECT_OBSERVATION")
                         record["epistemic_context"] = {
                             "basis": "NEAREST_ORIGINAL_DERIVATION_OF_SAME_VARIABLE",
@@ -2803,6 +2954,40 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
     for original in document["segments"]:
         if not re.search(r"references|acknowledg", original["section"], re.IGNORECASE):
             merge_output(output, deterministic(original, semantic))
+    # The existing package title already identifies its documentary investigation.
+    # Reuse it only when it is literally printed at the start of a source, never
+    # infer an executed experiment from a title supplied by an uploader.
+    title_pattern = (
+        r"(?m)^[ \t]*(?:#{1,6}[ \t]+)?("
+        + r"\s+".join(re.escape(t) for t in package["title"].split())
+        + r")(?=\s|$)"
+    )
+    for original in package["evidence"]:
+        if original.get("page") not in {None, 1}:
+            continue
+        found = re.search(title_pattern, original["text"][:1500], re.IGNORECASE)
+        if found:
+            merge_output(
+                output,
+                {
+                    **Output().model_dump(),
+                    "entities": [
+                        {
+                            "key": "original-document-investigation",
+                            "label": found.group(1),
+                            "class_id": "Investigation",
+                            "study": "current",
+                            "support": [
+                                {
+                                    "evidence_id": original["evidence_id"],
+                                    "quote": found.group(1),
+                                    "start": found.start(1),
+                                }
+                            ],
+                        }
+                    ],
+                },
+            )
     stable_entity_keys(output, package)
     consolidated = Output().model_dump()
     merge_output(consolidated, output)
@@ -2862,6 +3047,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 {
                     "id": ref,
                     **{k: a[k] for k in ("page", "quote")},
+                    "statement_eligible": a.get("statement_eligible", True),
                     "in_task": any(
                         a["evidence_id"] == m["evidence_id"]
                         and a["start"] >= m["start"]
@@ -3031,6 +3217,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 "(exact source quantity name), and epistemic (reported_quantity, derived_quantity "
                 "or experimental_configuration). The service preserves the original value/unit/support "
                 "by exact Q lookup; do not write or modify them. Use only justified scientific scope."
+                " A described specimen dimension is experimental_configuration unless its measurement "
+                "is explicitly reported. A value from a fit or derivative is derived_quantity. "
                 " Select a subject from that candidate's source_applicable_subjects. "
                 "If its list is empty, preserve the gap by omitting the candidate; never substitute "
                 "another document-level entity."
@@ -3477,7 +3665,12 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     outcome["recovery"] = "SPLIT_TRUNCATED_TASK"
                     break
                 if transient:
-                    if transient_attempts >= budget.retries:
+                    empty_deadline = (
+                        outcome.get("error_type") in {"deadline", "timeout"} and not raw
+                    )
+                    if transient_attempts >= budget.retries or (
+                        empty_deadline and model_index + 1 < len(model_options) and not retry_after
+                    ):
                         if model_index + 1 >= len(model_options) or retry_after:
                             break
                         model_index += 1
@@ -3727,6 +3920,9 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
     validation = validate_output(output, package, document, semantic)
     table_mappings = table_mapping_decisions(service, package, semantic)
     quantities = table_quantities(service, package, table_mappings)
+    from nasa_fire_ai.ingestion.pdf_quantities import pdf_table_quantities
+
+    original_pdf_quantities = pdf_table_quantities(package, document)
     scientific_coverage = coverage(package, document, validation, outcomes, quantities)
     if restoring:
         scientific_coverage["model_proposed_items"] = max(
@@ -3749,6 +3945,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         },
         "table_semantic_mappings": table_mappings,
         "table_quantity_proposals": quantities,
+        "pdf_table_quantity_proposals": original_pdf_quantities,
         "scientific_coverage": scientific_coverage,
         "table_row_role_proposals": table_row_roles(package),
         "structured_table_records": table_records(document),

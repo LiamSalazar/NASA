@@ -15,6 +15,12 @@ from pathlib import Path
 def score(prepared, review):
     package = prepared["package"]
     records = {r["id"]: r for r in package["scientific_extraction"]["records"]}
+    records.update(
+        {
+            r["id"]: r
+            for r in package["scientific_extraction"].get("pdf_table_quantity_proposals", [])
+        }
+    )
     seen = set()
     allowed = {"correct", "incorrect", "unresolved", "omitted", "inaccessible"}
     counts = Counter()

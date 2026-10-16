@@ -136,7 +136,8 @@ def test_pdf_heading_changes_do_not_force_tiny_model_calls():
     assert len(windows[0]["members"]) == 20
 
 
-def test_scientific_model_and_finite_fallback_preserve_task(service):
+@pytest.mark.parametrize("failure,retries", [("transient_server", 0), ("deadline", 2)])
+def test_scientific_model_and_finite_fallback_preserve_task(service, failure, retries):
     p = submitted(service, "Run A1 was tested in microgravity.")
     c = Mock()
     requests = []
@@ -144,7 +145,7 @@ def test_scientific_model_and_finite_fallback_preserve_task(service):
     def respond(**kwargs):
         requests.append(kwargs)
         if kwargs["model"] == "science-primary":
-            raise ScientificTransportError("transient_server")
+            raise ScientificTransportError(failure)
         payload = json.loads(kwargs["messages"][1]["content"])
         return response({k: [] for k in payload["schema"]["properties"]})
 
@@ -159,7 +160,7 @@ def test_scientific_model_and_finite_fallback_preserve_task(service):
         ),
         model_enabled=True,
         client=c,
-        budget=ExtractionBudget(retries=0, max_model_calls=2),
+        budget=ExtractionBudget(retries=retries, max_model_calls=2),
     )
     assert [r["model"] for r in requests] == ["science-primary", "science-backup"]
     assert requests[0]["messages"] == requests[1]["messages"]

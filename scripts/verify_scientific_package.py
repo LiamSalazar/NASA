@@ -45,7 +45,12 @@ def main():
             )
     package = current["package"]
     evidence = {e["evidence_id"]: e for e in package["evidence"]}
-    spans = [s for r in package["scientific_extraction"]["records"] for s in r["support_spans"]]
+    extraction = package["scientific_extraction"]
+    spans = [
+        s
+        for r in [*extraction["records"], *extraction.get("pdf_table_quantity_proposals", [])]
+        for s in r["support_spans"]
+    ]
     correct = sum(
         evidence[s["evidence_id"]]["text"][s["start"] : s["end"]] == s["quote"]
         and evidence[s["evidence_id"]]["checksum"] == s["checksum"]

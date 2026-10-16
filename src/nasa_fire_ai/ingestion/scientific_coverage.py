@@ -24,6 +24,8 @@ def statement_candidates(package, document, validation):
     anchors = source_anchors(window, {"anchors": []}, [], package)
     result = []
     for anchor in anchors.values():
+        if not anchor.get("statement_eligible", True):
+            continue
         text = anchor["quote"]
         if len(re.findall(r"[A-Za-z]{2,}", text)) < 5 or not CUES.search(text):
             continue
@@ -120,7 +122,9 @@ def coverage(package, document, validation, outcomes, table_quantities):
             q["state"] = (
                 "STRUCTURED_CANDIDATE"
                 if any(
-                    r["status"] != "REJECTED" and r.get("native_scope_compatible", True)
+                    r["status"] != "REJECTED"
+                    and r.get("native_scope_compatible", True)
+                    and not r.get("scientific_role_conflict", False)
                     for r in quantity_records
                 )
                 else "NOT_STRUCTURED"

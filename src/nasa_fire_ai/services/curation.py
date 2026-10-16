@@ -2109,10 +2109,13 @@ class CurationService:
                 )
             if extraction["contract_digest"] != self.contract_digest():
                 errors.append("Scientific extraction contracts changed; prepare a new version")
+            rebuilt_document = structure(
+                package, self.root, extraction["processing"]["budget"]["segment_chars"]
+            )
             rebuilt = validate_output(
                 extraction["raw_proposals"],
                 package,
-                structure(package, self.root, extraction["processing"]["budget"]["segment_chars"]),
+                rebuilt_document,
                 extraction_semantic(self, package),
             )
             if rebuilt["records"] != extraction["records"]:
@@ -2136,6 +2139,17 @@ class CurationService:
                 )
             if table_row_roles(package) != extraction.get("table_row_role_proposals"):
                 errors.append("Table row roles differ from original source cells; regenerate")
+            from nasa_fire_ai.ingestion.pdf_quantities import pdf_table_quantities
+
+            expected_pdf_quantities = pdf_table_quantities(package, rebuilt_document)
+            if expected_pdf_quantities != extraction.get("pdf_table_quantity_proposals", []):
+                errors.append(
+                    "PDF quantitative proposals differ from original cells, headers or page context; regenerate"
+                )
+            if expected_pdf_quantities:
+                errors.append(
+                    "Original PDF quantities retain unresolved role and experimental scope for scientific review"
+                )
             errors.extend(
                 "Scientific quantity native representation deferred; original literal retained: "
                 + r["id"]

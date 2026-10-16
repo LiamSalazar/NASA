@@ -369,6 +369,195 @@ def test_source_objectives_are_not_executed_configuration():
     )
 
 
+def test_bullet_source_anchors_keep_epistemic_units_and_original_offsets(service):
+    from nasa_fire_ai.ingestion.document_extraction import parse_stage_output, source_anchors
+
+    text = "# Results\n• The sample pressure\nwas measured at 20 Pa\n• Future tests will use\n40 Pa\n• It is recommended to\nrepeat the procedure"
+    p = submitted(service, text)
+    d = structure(p, service.root)
+    context = {
+        "anchors": [{"evidence_id": p["evidence"][0]["evidence_id"], "quote": text, "start": 0}]
+    }
+    anchors = source_anchors({"members": d["segments"]}, context, [], p)
+    atomic = [a for a in anchors.values() if a["statement_eligible"]]
+    assert len(atomic) == 3
+    assert all(text[a["start"] : a["end"]] == a["quote"] for a in atomic)
+    assert any("sample pressure\nwas measured" in a["quote"] for a in atomic)
+    assert all(a["quote"].count("•") == 1 for a in atomic)
+    broad = next(k for k, a in anchors.items() if not a["statement_eligible"])
+    out, errors = parse_stage_output(
+        json.dumps(
+            {
+                "statements": [
+                    {"anchor": broad, "epistemic": "guidance", "subjects": [], "study": "current"}
+                ]
+            }
+        ),
+        "propositions",
+        anchors,
+        "stop",
+    )
+    assert not out["statements"]
+    assert errors
+
+
+def test_wrapped_project_role_and_planned_strategy_are_distinct(service):
+    text = "Example\nDevelopment Project Manager\nPhase 1 Baseline Testing\nIf no solution passes, the strategy will use a second phase."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "project", "Example Development", "Investigation", text),
+        entity(p, "phase", "Phase 1 Baseline Testing", "ExperimentFamily", text),
+    ]
+    records = validate(service, p, o)["records"]
+    assert records[0]["status"] == "SOURCE_SUPPORTED"
+    assert records[1]["status"] == "UNRESOLVED"
+    assert "STRATEGIC_PHASE_IS_NOT_ESTABLISHED_EXPERIMENT_GROUP" in records[1]["reasons"]
+
+
+def test_mixed_bullets_and_goals_cannot_be_confirmed_scientific_results():
+    from nasa_fire_ai.ingestion.document_extraction import role_errors
+
+    assert "MULTIPLE_BULLETS_REQUIRE_SEPARATE_EPISTEMIC_REVIEW" in role_errors(
+        {
+            "text": "• Measurements were completed\n• Future work is recommended",
+            "epistemic": "guidance",
+        }
+    )
+    assert "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT" in role_errors(
+        {"text": "Goal to improve material safety", "epistemic": "author_reported_conclusion"}
+    )
+    assert not role_errors(
+        {
+            "text": "The goal was achieved in the reported tests.",
+            "epistemic": "author_reported_conclusion",
+        }
+    )
+
+
+def test_original_dimensional_adjective_reuses_accessor_without_claiming_measurement(service):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+    from nasa_fire_ai.ingestion.scientific_coverage import coverage
+
+    text = "Fabric 5 cm wide x 30 cm long was mounted in the chamber."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "film", "Fabric 5 cm wide x 30 cm long", "Sample", text)]
+    q = {
+        "subject": "film",
+        "label": "wide",
+        "expression": "5",
+        "unit": "cm",
+        "epistemic": "experimental_configuration",
+        "support": support(p, text),
+    }
+    o["quantities"] = [q]
+    d = structure(p, service.root)
+    semantic = extraction_semantic(service, p)
+    v = validate_output(o, p, d, semantic)
+    assert v["records"][-1]["status"] == "SOURCE_SUPPORTED"
+    assert v["records"][-1]["mapping"]["source_accessor"] == "sample_width"
+    assert v["records"][-1]["proposal"]["label"] == "wide"
+    q["epistemic"] = "reported_quantity"
+    v = validate_output(o, p, d, semantic)
+    assert v["records"][-1]["status"] == "UNRESOLVED"
+    assert v["records"][-1]["scientific_role_conflict"]
+    inventory = coverage(p, d, v, [], [])
+    assert inventory["source_units"][0]["quantity_inventory"][0]["state"] == "NOT_STRUCTURED"
+
+
+def test_literal_article_identity_does_not_invent_execution_or_override_cited_scope(service):
+    from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget, resolve_explicit_scopes
+
+    text = "# Synthetic study\n# Results\nThe flame extinguished after the flow stopped.\nEarlier measurements reported a different outcome.\nRun A1 was tested."
+    p = submitted(service, text)
+    prepared = service.prepare_scientific(
+        p["id"],
+        Settings(root=service.root, nvidia_api_key=None),
+        budget=ExtractionBudget(max_model_calls=0),
+    )
+    o = Output().model_dump()
+    roots = [
+        e
+        for e in prepared["package"]["scientific_extraction"]["raw_proposals"]["entities"]
+        if e["class_id"] == "Investigation" and e["label"] == "Synthetic study"
+    ]
+    assert len(roots) == 1
+    o["entities"] = [roots[0], entity(p, "a1", "A1", "ExperimentalRun", "Run A1 was tested.")]
+    s = {
+        "text": "The flame extinguished after the flow stopped.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [],
+        "study": "unknown",
+        "support": support(p, "The flame extinguished after the flow stopped."),
+    }
+    # The runtime resolves only exact original offsets, not model-created spans.
+    s["support"][0]["start"] = text.index(s["text"])
+    o["statements"] = [s]
+    d = structure(p, service.root)
+    resolve_explicit_scopes(o, d)
+    result = validate(service, p, o)["records"][-1]
+    assert result["status"] == "SOURCE_SUPPORTED"
+    assert result["scope_context"]["distributes_to_members"] is False
+    s["subjects"] = ["a1"]
+    assert validate(service, p, o)["records"][-1]["status"] != "SOURCE_SUPPORTED"
+    s["subjects"] = []
+    s["study"] = "cited"
+    resolve_explicit_scopes(o, d)
+    assert not s["subjects"] and s["study"] == "cited"
+    s["study"] = "unknown"
+    s["text"] = "Earlier measurements reported a different outcome."
+    s["support"] = support(p, s["text"])
+    s["support"][0]["start"] = text.index(s["text"])
+    resolve_explicit_scopes(o, d)
+    assert not s["subjects"]
+
+
+def test_pdf_numeric_cells_are_pending_original_quantities_with_independent_tamper_check(service):
+    import pymupdf
+
+    from nasa_fire_ai.ingestion.pdf_quantities import pdf_table_quantities
+
+    with pymupdf.open() as pdf:
+        pdf.new_page().insert_text((50, 50), "Synthetic derived table\nResults from linear fits")
+        data = pdf.tobytes()
+    p = service.submit(
+        "Synthetic derived table", "Synthetic table test", [("table.pdf", data)], "tester"
+    )["package"]
+    d = structure(p, service.root)
+    d["detected_tables"] = [
+        {
+            "input_sha256": p["inputs"][0]["sha256"],
+            "physical_pdf_page": 1,
+            "bbox": [50, 50, 250, 150],
+            "cells": [["Group A (mm/s)", "Group B (mm/s)"], [".15", ".40"]],
+            "header": ["Group A (mm/s)", "Group B (mm/s)"],
+            "header_external": False,
+        }
+    ]
+    candidates = pdf_table_quantities(p, d)
+    assert len(candidates) == 2
+    assert [r["proposal"]["expression"] for r in candidates] == [".15", ".40"]
+    assert all(
+        r["status"] == "UNRESOLVED" and not r["scientific_execution_asserted"] for r in candidates
+    )
+    assert candidates[0]["proposal"]["unit"] == "mm/s"
+    assert any(
+        c["quote"] == "Results from linear fits"
+        for c in candidates[0]["proposal"]["original_role_cues"]
+    )
+    assert candidates[0]["support_spans"][0]["locator"]["column_index"] == 0
+    prepared = service.prepare_scientific(p["id"], Settings(root=service.root, nvidia_api_key=None))
+    package = prepared["package"]
+    # The real PDF has no detected table. Injecting fabricated cell proposals
+    # cannot survive independent reconstruction from its original bytes.
+    package["scientific_extraction"]["pdf_table_quantity_proposals"] = candidates
+    assert any(
+        "PDF quantitative proposals differ" in e for e in service.validate(package)["errors"]
+    )
+
+
 def test_estimated_quantity_cannot_become_measurement_or_change_neighboring_measurement(service):
     text = "Run A1 was tested. A1 pressure was computed at 20 Pa; A1 oxygen concentration was measured at 21%."
     p = submitted(service, text)

@@ -2,6 +2,11 @@ from pathlib import Path
 
 import pymupdf
 
+# An optional-package advertisement must not precede the runtime CLI's JSON.
+# This suppresses that notice only; PDF errors and extraction limits stay visible.
+if hasattr(pymupdf, "no_recommend_layout"):
+    pymupdf.no_recommend_layout()
+
 
 def extract_pdf(path: Path):
     with pymupdf.open(path) as doc:
