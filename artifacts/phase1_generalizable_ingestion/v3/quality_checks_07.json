@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "receipt": "artifacts/phase1_generalizable_ingestion/v3/ruff_format_final_07.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 1,
+      "receipt": "artifacts/phase1_generalizable_ingestion/v3/ruff_lint_final_07.txt"
+    }
+  ],
+  "frozen_source_changed": [],
+  "pytest_receipt": "quality_checks_06.json (449pass; frozen runtime/test files unchanged)",
+  "offline_receipt": "offline_final_07/validation.json",
+  "verification_scripts_are_artifact_only": true
+}

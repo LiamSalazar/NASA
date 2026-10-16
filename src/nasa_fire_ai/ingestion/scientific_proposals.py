@@ -22,7 +22,8 @@ def normative_instruction(text):
     """Narrow procedural modal guard, not a scientific epistemic classifier."""
     return bool(
         re.search(
-            r"\bshall\b|\bmust\s+(?:be|record|conduct|observe|test|use|meet|comply)\b",
+            r"\bshall\b|\bmust\s+(?:record|conduct|observe|test|use|meet|comply)\b|"
+            r"\bmust\s+be\s+(?:recorded|conducted|observed|tested|used|measured|maintained|certified|required|kept|completed|verified)\b",
             text,
             re.IGNORECASE,
         )

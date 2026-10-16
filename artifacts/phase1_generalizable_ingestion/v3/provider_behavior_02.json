@@ -1,0 +1,59 @@
+{
+  "endpoint": "https://integrate.api.nvidia.com/v1",
+  "configured_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "access": "Existing user-authorized NVIDIA free development endpoint; no plan upgrade, paid endpoint or credential change. Account invoice/credit balances unavailable; no claim of unlimited service or production licensing.",
+  "official_sources": [
+    "https://build.nvidia.com/nvidia/nemotron-3.5-lightning-30b-a3b",
+    "https://docs.api.nvidia.com/nim/reference/nvidia-nemotron-3-5-lightning-30b-a3b-infer",
+    "https://docs.nvidia.com/nim/large-language-models/2.0.10/get-started/advanced/get-started-nemotron-3.5-lightning.html"
+  ],
+  "context": {
+    "advertised_model_tokens": 1000000,
+    "hosted_maximum_verified": false,
+    "default_usable_envelope_tokens": 65536,
+    "tokenizer_estimate": "Conservative bytes/2 scheduling estimate plus completion reserve; not an exact tokenizer; oversized contexts split. Failed billing reserves full UTF-8 bytes plus output."
+  },
+  "output": {
+    "documented_hosted_max_tokens": 32768,
+    "accepted_max_tokens": 32768,
+    "verification": "provider_probe_03_reasoning.json; acceptance of requested capacity, not a verified 32768-token meaningful scientific response",
+    "reasoning_and_visible_share_budget": true,
+    "default_ceiling": 32768,
+    "allocation": "Source density/stage estimates plus configurable reasoning, growth then source partition on length"
+  },
+  "reasoning": {
+    "configuration": "chat_template_kwargs.enable_thinking plus reasoning_budget",
+    "observed_usage": "Probe 3 consumed 4095 reasoning tokens within 4195 completion tokens",
+    "source_adaptive_default": "2048 plus sentence/table complexity; focused quantity recovery at least4096, provider ceiling8192; operator override"
+  },
+  "streaming": {
+    "accepted": true,
+    "behavior": "SSE with include_usage; some observed first visible content near completion, buffering limits early progress visibility",
+    "durability": "Attempt persisted before request, source response prefix persisted while receiving and on completion/failure; fully closed items alone can be replayed from incomplete response"
+  },
+  "structured_output": {
+    "json_schema": "Accepted by configured endpoint; strict source and scientific validation remain independent",
+    "json_object": "Supported but probe04 returned a stage prefix and whitespace until length. Not a scientific completion. No replacement of schema validator with parseability."
+  },
+  "timeouts": {
+    "default_per_call_cap_seconds": 600,
+    "calculation": "max(120,45 + requested output /35), capped by provider envelope unless operator override; connect<=20",
+    "whole_document_default": null,
+    "finite_controls": "Two transient retries, two semantic repair rounds, finite source splitting and no-progress omission recovery; optional operator session ceilings"
+  },
+  "retry": "SDK retries disabled; caller separates rate/network/timeout/5xx, request/schema incompatibility, access denial, interruption and scientific rejection. Numeric/date Retry-After honored; long backoffs defer without an unbounded sleep.",
+  "observed_provider_errors": "models.retrieve returned404; not proof of an internet outage. Individual interruptions/campaign deadline are labeled separately from provider failure.",
+  "usage_uncertainty": "Successful responses preserve actual token counters. Missing/interrupted usage is reserved conservatively and is not reported as zero. No verified per-token USD price for this account.",
+  "operational_authorization": "Latest Phase 1 user mandate authorizes ordinary free-endpoint validation, superseding the v2 exhausted paid-budget boundary.",
+  "later_development_corrections": {
+    "receipt": "post_freeze_development_audit_01.json",
+    "sse_deadline": "Daemon watchdog shuts down response socket at total elapsed deadline, independent of SDK events/HTTP inactivity. Source-independent actualhealth06 closed120.001s; oldhealth05 exceeded120 and interrupted189s.",
+    "stream_api_errors": "Provider-stream APIError now records sanitized provider message as provider_stream_error; unknown errors are not blindly retried or silently collapsed into JSON errors.",
+    "health_receipts": [
+      "provider_health_05.json",
+      "provider_health_06.json"
+    ],
+    "interpretation": "Provider stream sometimes failed/stalled; internet/NASAdownload not the blocker. No assertion of total outage, USD cost or exhaustedaccount credits.",
+    "current_scientific_live_acceptance": false
+  }
+}

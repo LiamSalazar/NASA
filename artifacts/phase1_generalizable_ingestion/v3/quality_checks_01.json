@@ -1,0 +1,22 @@
+{
+  "ruff_format": {
+    "command": "uv run ruff format --check .",
+    "exit_code": 0,
+    "files": 461
+  },
+  "ruff_lint": {
+    "command": "uv run ruff check .",
+    "exit_code": 0
+  },
+  "pytest": {
+    "command": "uv run pytest -q",
+    "exit_code": 0,
+    "passed": 428,
+    "duration_seconds": 92.04,
+    "warnings": 72960,
+    "output": "pytest_final_01.txt"
+  },
+  "code_hash_manifest": "final_checks_started_01.json",
+  "files_changed_during_or_after_run": [],
+  "scientific_negative_boundary": "Includes original G2/G3 source/run/role corrections and source/quantity/context/reference/truncation/cache/curation regressions; passing tests are not live scientific acceptance."
+}

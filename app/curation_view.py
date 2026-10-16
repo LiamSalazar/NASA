@@ -3,10 +3,12 @@
 import os
 from pathlib import Path
 
+import httpx
 import streamlit as st
 
 from nasa_fire_ai.config import Settings
 from nasa_fire_ai.evidence import EvidenceRegistry
+from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget
 from nasa_fire_ai.llm.scientific_correction import generate_clarifications, interpret_correction
 from nasa_fire_ai.services.curation import CurationService, ReviewPolicy
 
@@ -36,20 +38,38 @@ def show_curation(root):
     with st.form("submit_investigation"):
         title = st.text_input("Investigation title")
         purpose = st.text_area("Scientific purpose")
+        ntrs_id = st.text_input("Official NTRS citation ID (optional)")
         files = st.file_uploader(
             "Research materials",
             type=["pdf", "csv", "tsv", "txt", "md", "json"],
             accept_multiple_files=True,
         )
+        model_extraction = st.checkbox(
+            "Use configured Nemotron for scientific interpretation", value=False
+        )
+        limit_calls = st.checkbox("Set a session call ceiling", value=False)
+        call_limit = st.number_input(
+            "Session call ceiling", min_value=1, value=50, disabled=not limit_calls
+        )
         submitted = st.form_submit_button("Prepare investigation")
     if submitted:
         try:
-            saved = service.submit(
-                title, purpose, [(f.name, f.getvalue()) for f in files], principal
+            saved = (
+                service.submit_ntrs(ntrs_id.strip(), principal)
+                if ntrs_id.strip()
+                else service.submit(
+                    title, purpose, [(f.name, f.getvalue()) for f in files], principal
+                )
+            )
+            saved = service.prepare_scientific(
+                saved["package"]["id"],
+                Settings(root=workspace),
+                model_enabled=model_extraction,
+                budget=ExtractionBudget(max_model_calls=int(call_limit) if limit_calls else None),
             )
             st.session_state.curation_id = saved["package"]["id"]
             generated = generate_clarifications(
-                service, saved["package"]["id"], Settings(root=workspace), model_enabled=True
+                service, saved["package"]["id"], Settings(root=workspace), model_enabled=False
             )
             st.session_state.curation_questions = {"digest": saved["digest"], **generated}
             st.success(
@@ -57,7 +77,7 @@ def show_curation(root):
                 if saved.get("duplicate")
                 else "Scientific draft prepared."
             )
-        except (ValueError, UnicodeError) as error:
+        except (ValueError, UnicodeError, httpx.HTTPError) as error:
             st.error(str(error))
     packages = service.list_packages()
     if not packages:
@@ -76,6 +96,15 @@ def show_curation(root):
             0,
         ),
     )
+    if st.button("Continue scientific preparation with configured Nemotron"):
+        with st.spinner("Interpreting original evidence and resuming saved progress"):
+            service.prepare_scientific(
+                chosen,
+                Settings(root=workspace),
+                model_enabled=True,
+                budget=ExtractionBudget(recovery_only=True),
+            )
+        st.rerun()
     current = service.get(chosen)
     package = current["package"]
     labels = {e["id"]: e["label"] for e in package["entities"]}
@@ -85,6 +114,18 @@ def show_curation(root):
     st.caption(
         f"Prepared version {package['version']} · {len(package['entities'])} scientific entities · {len(package['relations'])} proposed relationships"
     )
+    if package.get("scientific_extraction"):
+        extraction = package["scientific_extraction"]
+        with st.expander("Document coverage and scientific preparation"):
+            st.json(extraction.get("scientific_coverage", {}))
+            st.json(extraction["processing"])
+            st.json(extraction["document"]["coverage"])
+            st.json(extraction["document"]["limitations"])
+            st.json(extraction["semantic_mappings"])
+            st.json(extraction["review_requirements"])
+        with st.expander("Original table attributes and detected scientific tables"):
+            st.json(extraction.get("table_quantity_proposals", []))
+            st.json(extraction.get("structured_table_records", []))
     st.success("Ready for exact-version approval") if readiness["ready"] else st.warning(
         f"{len(readiness['errors'])} decisions or validation blockers remain"
     )

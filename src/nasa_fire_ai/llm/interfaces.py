@@ -61,6 +61,7 @@ class NvidiaStructuredClient:
     """Shared NVIDIA-compatible client; it has no scientific authority."""
 
     provider_identity = "NVIDIA Integrate"
+    supports_streaming = True
 
     def __init__(self, api_key: str | None, base_url: str | None, model: str):
         if not api_key:

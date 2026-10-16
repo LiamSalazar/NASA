@@ -1,0 +1,107 @@
+{
+  "unique_recorded_inference_attempts": 242,
+  "development_attempts": 233,
+  "frozen_holdout_attempts": 3,
+  "provider_protocol_probes": 4,
+  "provider_health_diagnostics": 2,
+  "actual_usage_reported_attempts": 228,
+  "actual_total_tokens_reported_subtotal": 1716008,
+  "attempts_without_complete_usage": 14,
+  "missing_usage_is_not_zero": true,
+  "USD_cost": "Not verified; account-specific pricing/credits unavailable. Existing authorized free development endpoint; no plan/key/billing change.",
+  "duplicate_exports_not_counted_twice": true,
+  "development": "development_provider_attempts_01.json",
+  "holdout": "holdout_provider_attempts_01.json",
+  "probes": [
+    {
+      "receipt": "provider_probe_01.json",
+      "usage": {
+        "completion_tokens": 410,
+        "prompt_tokens": 548,
+        "total_tokens": 958,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      }
+    },
+    {
+      "receipt": "provider_probe_02_schema.json",
+      "usage": {
+        "completion_tokens": 166,
+        "prompt_tokens": 646,
+        "total_tokens": 812,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      }
+    },
+    {
+      "receipt": "provider_probe_03_reasoning.json",
+      "usage": {
+        "completion_tokens": 4195,
+        "prompt_tokens": 196,
+        "total_tokens": 4391,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 4095,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      }
+    },
+    {
+      "receipt": "provider_probe_04_quantity_format.json",
+      "usage": {
+        "completion_tokens": 16384,
+        "prompt_tokens": 4116,
+        "total_tokens": 20500,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 4095,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      }
+    }
+  ],
+  "latest_health": "provider_health_06.json",
+  "latest_code_scientific_live_acceptance": false
+}

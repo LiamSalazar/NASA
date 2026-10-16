@@ -42,6 +42,25 @@ def propose_table_role(profiles: list[ColumnProfile]) -> dict:
     }
 
 
+def documentary_row(row: dict[str, str]) -> list[str]:
+    """Explicit non-execution labels only; blank cells and identifiers prove no role.
+
+    Return the original cells establishing a documentary/planned exception.
+    Absence of an exception does not establish that a run was performed.
+    """
+    return [
+        value
+        for value in row.values()
+        if re.search(
+            r"\b(?:pre[- ]test\s+flow\s+vis\w*\s+data|planned\s+(?:run|test)|"
+            r"(?:run|test)\s+(?:not\s+(?:performed|conducted)|cancelled|canceled)|"
+            r"documentary\s+(?:row|record))\b",
+            str(value),
+            re.IGNORECASE,
+        )
+    ]
+
+
 def resolve_column(profile: ColumnProfile, registry: SemanticRegistry) -> SemanticResolution:
     """Registry-only semantic proposal; unknowns deliberately remain unresolved."""
     status, property_id = registry.resolve_property(profile.normalized_label, profile.raw_unit)

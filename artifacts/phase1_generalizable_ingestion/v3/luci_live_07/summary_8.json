@@ -1,0 +1,4503 @@
+{
+  "source": "luci",
+  "package_id": "research-88a2411be5fc53d76df5",
+  "digest": "6000a5f88f11ee4f8241f78ebbc9d918bc18e85f41739c713aabeeca5c664b43",
+  "processing": {
+    "budget": {
+      "max_model_calls": 0,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "timeout_seconds": null,
+      "recovery_only": true,
+      "call_timeout_seconds": null,
+      "retries": 2,
+      "segment_chars": 12958,
+      "reasoning_tokens": null,
+      "recovery_rounds": 2,
+      "stream": true
+    },
+    "resource_policy": {
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 8192,
+        "throughput_tokens_per_second": 35.0,
+        "request_timeout_seconds": 600.0
+      },
+      "scientific_item_ceiling": null,
+      "adaptive": true
+    },
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "new_model_calls": 0,
+    "restored_proposals_after_source_validation": 302,
+    "recovered_cached_proposals_after_source_validation": 0,
+    "targeted_recovery_mode": true,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "tokens_consumed_or_reserved": 0,
+    "cached_segments": 18,
+    "duration_seconds": 41.498605431988835,
+    "outcomes": [
+      {
+        "segment_id": "window-7f2c932bbbb68ee6f0594b92",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-c1e596ab3be846821c400ce9",
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-e54637cd4f9b646f02df26eb",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 0,
+            "end": 456
+          },
+          {
+            "id": "segment-cc993a1f594cccf6c31a035e",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 456,
+            "end": 776
+          },
+          {
+            "id": "segment-bd146d8f397f9f65630306f7",
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "start": 0,
+            "end": 772
+          },
+          {
+            "id": "segment-03a713bfb9ed6856662ea509",
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "start": 0,
+            "end": 539
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-88483811894137fdcd05a54b",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-a0803776918ef1741c02b219",
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "start": 0,
+            "end": 592
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-1811cd9621fc5bce015f6685",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-426e822e99eca4474f313de2",
+            "evidence_id": "E-a4517b58edb7fb6b7246f801",
+            "start": 0,
+            "end": 132
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-0896ebd90ce8627432bedd17",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-26637bfbdfd33ddb83435184",
+            "evidence_id": "E-b3ed9a7463f43f22a17be8ec",
+            "start": 0,
+            "end": 100
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-40f0cd5f87ee7185754e960a",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-0300df564a7d37f7d4e009c9",
+            "evidence_id": "E-9984369871f9b119c39685ae",
+            "start": 0,
+            "end": 151
+          },
+          {
+            "id": "segment-20e74bccbc65f71594def476",
+            "evidence_id": "E-d621160208181545c2e7acf1",
+            "start": 0,
+            "end": 7
+          },
+          {
+            "id": "segment-be5d68159af6dfc60d8f477c",
+            "evidence_id": "E-138c0efdbdc2243a724f2a16",
+            "start": 0,
+            "end": 394
+          },
+          {
+            "id": "segment-530262f4cd32a1aaab95cf6b",
+            "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+            "start": 0,
+            "end": 9
+          },
+          {
+            "id": "segment-db7f9650915e690de2a61799",
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "start": 0,
+            "end": 1499
+          },
+          {
+            "id": "segment-bbd11a1978a0d9a7374758f7",
+            "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+            "start": 0,
+            "end": 1035
+          },
+          {
+            "id": "segment-db3bd90a9b652021f9d1d47a",
+            "evidence_id": "E-e701476789b9bf6dd3395377",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-1b5c33472e72e144f909a25c",
+            "evidence_id": "E-d5b5c13caefae1761b25a868",
+            "start": 0,
+            "end": 268
+          },
+          {
+            "id": "segment-7603d41eb3fe6a1741224420",
+            "evidence_id": "E-d3aebe64259ea519e1693467",
+            "start": 0,
+            "end": 866
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-058e6cc6deffb1b08a2a86c2",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-6adaab00206f5167145e2009",
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "start": 0,
+            "end": 292
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-e0ccad36fb34406161b59614",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-42841cebccdca079fd639657",
+            "evidence_id": "E-d21d6576e58973f04cbb79b6",
+            "start": 0,
+            "end": 315
+          },
+          {
+            "id": "segment-de86923551291452ba80aded",
+            "evidence_id": "E-b7874f30c44529988c9a2b4d",
+            "start": 0,
+            "end": 118
+          },
+          {
+            "id": "segment-34ec4452cd972f75c6364f0a",
+            "evidence_id": "E-ace382bc90bbdf2808dfba14",
+            "start": 0,
+            "end": 191
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-fc629acdfaa2fba88908afa4",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-41c4f967315c777511cc0de1",
+            "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+            "start": 0,
+            "end": 389
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-739295235ecf05ac7ce72901",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-0547e445b069f010d1fd2704",
+            "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+            "start": 0,
+            "end": 194
+          },
+          {
+            "id": "segment-57f5cc4e04c7855f8f797f06",
+            "evidence_id": "E-a08131327d6385587996348e",
+            "start": 0,
+            "end": 224
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-cd30e720a1b81ec71192993c",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-00a724d85ffb7fc187c60aa3",
+            "evidence_id": "E-007124915589abdd7abc5e6e",
+            "start": 0,
+            "end": 76
+          },
+          {
+            "id": "segment-982a39c8a4d866fd4829cab9",
+            "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+            "start": 0,
+            "end": 74
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-4213916c48664492ad343746",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-4c40ff5d12a1507a32e70060",
+            "evidence_id": "E-94f2c30163d61cfbf33f137a",
+            "start": 0,
+            "end": 252
+          },
+          {
+            "id": "segment-eecf1fc32edb289e7661c0eb",
+            "evidence_id": "E-4e83b44eb58f230065e2b311",
+            "start": 0,
+            "end": 226
+          },
+          {
+            "id": "segment-33fdb84e39028c7e5329aec3",
+            "evidence_id": "E-883f133a5745d0142df1e007",
+            "start": 0,
+            "end": 117
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-5173a1c59f45dc20ebc33f9f",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-59c9f85b9f13574f77bca086",
+            "evidence_id": "E-d4940e2063b4c03f3303beea",
+            "start": 0,
+            "end": 127
+          },
+          {
+            "id": "segment-8f0323e764e3b70ef69cbc8c",
+            "evidence_id": "E-92e5fd01ba0fa39b833981b3",
+            "start": 0,
+            "end": 24
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-494229c34f2f9ff58371c600",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-0db31dbfb72d76fa0264164b",
+            "evidence_id": "E-7b2423e2b4112606572b7b6e",
+            "start": 0,
+            "end": 153
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-13990d3f79cc5aa0ef288948",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-da0bcdf337aee670d166f6bf",
+            "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+            "start": 0,
+            "end": 208
+          },
+          {
+            "id": "segment-1de976f86c01f3facd19647f",
+            "evidence_id": "E-a77a2a0b6c4c5ef905224f73",
+            "start": 0,
+            "end": 23
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-a0dd56fa807bf7a52786f0f8",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-b379670b8b5adc4b90055325",
+            "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+            "start": 0,
+            "end": 138
+          },
+          {
+            "id": "segment-f298b01a1b10d005ed0d535c",
+            "evidence_id": "E-ab863beddb4ab0a2517976fa",
+            "start": 0,
+            "end": 706
+          },
+          {
+            "id": "segment-28fd007c535c19cecc9a2618",
+            "evidence_id": "E-7e8d8e958dbe85901540a377",
+            "start": 0,
+            "end": 8
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-e6c40ac0b3c96c13bc37be99",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-233b2558285b789e48806c67",
+            "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+            "start": 0,
+            "end": 344
+          },
+          {
+            "id": "segment-999d768775be52225a93c0cd",
+            "evidence_id": "E-d5f9930ae7882641030769e0",
+            "start": 0,
+            "end": 269
+          },
+          {
+            "id": "segment-16ee9be57b91444451eb4da2",
+            "evidence_id": "E-591e163edaa75d5ac8c895d0",
+            "start": 0,
+            "end": 136
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-2b9b98e77573830d2ffe3c21",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-dd7d0c2d7b12935c8b43123a",
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "start": 0,
+            "end": 142
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-576e0fdc499c7045d1cb3ca5",
+        "stage": "identity",
+        "focus": null,
+        "model": "CACHE_REPLAY",
+        "attempts": 0,
+        "members": [
+          {
+            "id": "segment-838e15258c55f6ff9dd8904c",
+            "evidence_id": "E-d6e291dc28d06c4dea34e721",
+            "start": 0,
+            "end": 294
+          },
+          {
+            "id": "segment-be55c2279b820f2adb135984",
+            "evidence_id": "E-f4f95c94998d43684aa6df08",
+            "start": 0,
+            "end": 95
+          }
+        ],
+        "basis": "PRIOR_COMPLETED_IDENTITY_WINDOW_WITH_REVALIDATED_ORIGINAL_PROPOSALS"
+      },
+      {
+        "segment_id": "window-7f2c932bbbb68ee6f0594b92",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "d1d99f8da6b8c4e0a04a6b64fc803bd66e93bd7448962af9a25d9e3d8002a0e0",
+        "members": [
+          {
+            "id": "segment-c1e596ab3be846821c400ce9",
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-e54637cd4f9b646f02df26eb",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 0,
+            "end": 456
+          },
+          {
+            "id": "segment-cc993a1f594cccf6c31a035e",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 456,
+            "end": 776
+          },
+          {
+            "id": "segment-bd146d8f397f9f65630306f7",
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "start": 0,
+            "end": 772
+          },
+          {
+            "id": "segment-03a713bfb9ed6856662ea509",
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "start": 0,
+            "end": 539
+          }
+        ],
+        "evidence_id": "E-3d0d479957889ee0ebba3428",
+        "start": 0,
+        "end": 2407,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 35,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 4096,
+        "source_anchor_characters": 5828,
+        "proposed_items": 0,
+        "request_bytes": 12741,
+        "reserved_tokens_per_attempt": 25528,
+        "output_tokens": 10240,
+        "context_token_estimate": 18396,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-88483811894137fdcd05a54b",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "366474c1640b5716dc7fc5395c56581a8470e80be552407d556d4bf1b96a63f6",
+        "members": [
+          {
+            "id": "segment-a0803776918ef1741c02b219",
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "start": 0,
+            "end": 592
+          }
+        ],
+        "evidence_id": "E-49e271d94011afe76cb7c262",
+        "start": 0,
+        "end": 592,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 21,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 4096,
+        "source_anchor_characters": 4158,
+        "proposed_items": 0,
+        "request_bytes": 9278,
+        "reserved_tokens_per_attempt": 19985,
+        "output_tokens": 8192,
+        "context_token_estimate": 14600,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-40f0cd5f87ee7185754e960a",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "9b84f728d58d988d3d6d526f2b7426ffb478630b74dd99abed49d52ff61d3158",
+        "members": [
+          {
+            "id": "segment-0300df564a7d37f7d4e009c9",
+            "evidence_id": "E-9984369871f9b119c39685ae",
+            "start": 0,
+            "end": 151
+          },
+          {
+            "id": "segment-20e74bccbc65f71594def476",
+            "evidence_id": "E-d621160208181545c2e7acf1",
+            "start": 0,
+            "end": 7
+          },
+          {
+            "id": "segment-be5d68159af6dfc60d8f477c",
+            "evidence_id": "E-138c0efdbdc2243a724f2a16",
+            "start": 0,
+            "end": 394
+          },
+          {
+            "id": "segment-530262f4cd32a1aaab95cf6b",
+            "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+            "start": 0,
+            "end": 9
+          },
+          {
+            "id": "segment-db7f9650915e690de2a61799",
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "start": 0,
+            "end": 1499
+          },
+          {
+            "id": "segment-bbd11a1978a0d9a7374758f7",
+            "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+            "start": 0,
+            "end": 1035
+          },
+          {
+            "id": "segment-db3bd90a9b652021f9d1d47a",
+            "evidence_id": "E-e701476789b9bf6dd3395377",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-1b5c33472e72e144f909a25c",
+            "evidence_id": "E-d5b5c13caefae1761b25a868",
+            "start": 0,
+            "end": 268
+          },
+          {
+            "id": "segment-7603d41eb3fe6a1741224420",
+            "evidence_id": "E-d3aebe64259ea519e1693467",
+            "start": 0,
+            "end": 866
+          }
+        ],
+        "evidence_id": "E-9984369871f9b119c39685ae",
+        "start": 0,
+        "end": 4549,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 46,
+        "known_entities_selected": 20,
+        "reasoning_tokens": 4096,
+        "source_anchor_characters": 7646,
+        "proposed_items": 0,
+        "request_bytes": 17222,
+        "reserved_tokens_per_attempt": 33191,
+        "output_tokens": 13312,
+        "context_token_estimate": 23763,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-4213916c48664492ad343746",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "506036451f9145fc5e72edc779a91b521c043251743cff8c525e3b6bc838dd42",
+        "members": [
+          {
+            "id": "segment-4c40ff5d12a1507a32e70060",
+            "evidence_id": "E-94f2c30163d61cfbf33f137a",
+            "start": 0,
+            "end": 252
+          },
+          {
+            "id": "segment-eecf1fc32edb289e7661c0eb",
+            "evidence_id": "E-4e83b44eb58f230065e2b311",
+            "start": 0,
+            "end": 226
+          },
+          {
+            "id": "segment-33fdb84e39028c7e5329aec3",
+            "evidence_id": "E-883f133a5745d0142df1e007",
+            "start": 0,
+            "end": 117
+          }
+        ],
+        "evidence_id": "E-94f2c30163d61cfbf33f137a",
+        "start": 0,
+        "end": 595,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 22,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 4096,
+        "source_anchor_characters": 3979,
+        "proposed_items": 0,
+        "request_bytes": 9382,
+        "reserved_tokens_per_attempt": 20091,
+        "output_tokens": 8192,
+        "context_token_estimate": 14653,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-13990d3f79cc5aa0ef288948",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "81d7018d81447ea9f0ae359d3e61a5a59f90a9e0e08a9a5b0d4fd0de3400191a",
+        "members": [
+          {
+            "id": "segment-da0bcdf337aee670d166f6bf",
+            "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+            "start": 0,
+            "end": 208
+          },
+          {
+            "id": "segment-1de976f86c01f3facd19647f",
+            "evidence_id": "E-a77a2a0b6c4c5ef905224f73",
+            "start": 0,
+            "end": 23
+          }
+        ],
+        "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+        "start": 0,
+        "end": 231,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 16,
+        "known_entities_selected": 18,
+        "reasoning_tokens": 4096,
+        "source_anchor_characters": 3590,
+        "proposed_items": 0,
+        "request_bytes": 8536,
+        "reserved_tokens_per_attempt": 19246,
+        "output_tokens": 8192,
+        "context_token_estimate": 14231,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-a0dd56fa807bf7a52786f0f8",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "1b62366f0b7b47e4f74b12fbe886eb90af7837c7994aa119f64d3f4af07ced22",
+        "members": [
+          {
+            "id": "segment-b379670b8b5adc4b90055325",
+            "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+            "start": 0,
+            "end": 138
+          },
+          {
+            "id": "segment-f298b01a1b10d005ed0d535c",
+            "evidence_id": "E-ab863beddb4ab0a2517976fa",
+            "start": 0,
+            "end": 706
+          },
+          {
+            "id": "segment-28fd007c535c19cecc9a2618",
+            "evidence_id": "E-7e8d8e958dbe85901540a377",
+            "start": 0,
+            "end": 8
+          }
+        ],
+        "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+        "start": 0,
+        "end": 852,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 18,
+        "known_entities_selected": 18,
+        "reasoning_tokens": 4096,
+        "source_anchor_characters": 3932,
+        "proposed_items": 0,
+        "request_bytes": 9198,
+        "reserved_tokens_per_attempt": 19901,
+        "output_tokens": 8192,
+        "context_token_estimate": 14558,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-e6c40ac0b3c96c13bc37be99",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "e1250a9e19701022aee59442978f40bc790d260d35b0289231f926dedf09025a",
+        "members": [
+          {
+            "id": "segment-233b2558285b789e48806c67",
+            "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+            "start": 0,
+            "end": 344
+          },
+          {
+            "id": "segment-999d768775be52225a93c0cd",
+            "evidence_id": "E-d5f9930ae7882641030769e0",
+            "start": 0,
+            "end": 269
+          },
+          {
+            "id": "segment-16ee9be57b91444451eb4da2",
+            "evidence_id": "E-591e163edaa75d5ac8c895d0",
+            "start": 0,
+            "end": 136
+          }
+        ],
+        "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+        "start": 0,
+        "end": 749,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 25,
+        "known_entities_selected": 17,
+        "reasoning_tokens": 4096,
+        "source_anchor_characters": 4237,
+        "proposed_items": 0,
+        "request_bytes": 9917,
+        "reserved_tokens_per_attempt": 20631,
+        "output_tokens": 8192,
+        "context_token_estimate": 14923,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-576e0fdc499c7045d1cb3ca5",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "bb92e32de995fef1179d9d40783b203d0f2837653d586679d63c3c7b194220e0",
+        "members": [
+          {
+            "id": "segment-838e15258c55f6ff9dd8904c",
+            "evidence_id": "E-d6e291dc28d06c4dea34e721",
+            "start": 0,
+            "end": 294
+          },
+          {
+            "id": "segment-be55c2279b820f2adb135984",
+            "evidence_id": "E-f4f95c94998d43684aa6df08",
+            "start": 0,
+            "end": 95
+          }
+        ],
+        "evidence_id": "E-d6e291dc28d06c4dea34e721",
+        "start": 0,
+        "end": 389,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 19,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 4096,
+        "source_anchor_characters": 3821,
+        "proposed_items": 0,
+        "request_bytes": 8985,
+        "reserved_tokens_per_attempt": 19692,
+        "output_tokens": 8192,
+        "context_token_estimate": 14454,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-7f2c932bbbb68ee6f0594b92",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "3672b4be681ea2f5b686b80c6f144637465b2b78ed86fa058629bac10c8f226d",
+        "members": [
+          {
+            "id": "segment-c1e596ab3be846821c400ce9",
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-e54637cd4f9b646f02df26eb",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 0,
+            "end": 456
+          },
+          {
+            "id": "segment-cc993a1f594cccf6c31a035e",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 456,
+            "end": 776
+          },
+          {
+            "id": "segment-bd146d8f397f9f65630306f7",
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "start": 0,
+            "end": 772
+          },
+          {
+            "id": "segment-03a713bfb9ed6856662ea509",
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "start": 0,
+            "end": 539
+          }
+        ],
+        "evidence_id": "E-3d0d479957889ee0ebba3428",
+        "start": 0,
+        "end": 2407,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 35,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2352,
+        "source_anchor_characters": 5828,
+        "proposed_items": 0,
+        "request_bytes": 16475,
+        "reserved_tokens_per_attempt": 27148,
+        "output_tokens": 8496,
+        "context_token_estimate": 18334
+      },
+      {
+        "segment_id": "window-88483811894137fdcd05a54b",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "b0d969d3503272e4116dda1e5c41341a8eaea592e2db0c19094da9f7ce846076",
+        "members": [
+          {
+            "id": "segment-a0803776918ef1741c02b219",
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "start": 0,
+            "end": 592
+          }
+        ],
+        "evidence_id": "E-49e271d94011afe76cb7c262",
+        "start": 0,
+        "end": 592,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 21,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2112,
+        "source_anchor_characters": 4158,
+        "proposed_items": 0,
+        "request_bytes": 13616,
+        "reserved_tokens_per_attempt": 22001,
+        "output_tokens": 6208,
+        "context_token_estimate": 14616
+      },
+      {
+        "segment_id": "window-1811cd9621fc5bce015f6685",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "f601608200f630108232c7e1da90e54d92c479e0788735b5ecd36fa2c636010c",
+        "members": [
+          {
+            "id": "segment-426e822e99eca4474f313de2",
+            "evidence_id": "E-a4517b58edb7fb6b7246f801",
+            "start": 0,
+            "end": 132
+          }
+        ],
+        "evidence_id": "E-a4517b58edb7fb6b7246f801",
+        "start": 0,
+        "end": 132,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 17,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 3578,
+        "proposed_items": 0,
+        "request_bytes": 12809,
+        "reserved_tokens_per_attempt": 21130,
+        "output_tokens": 6144,
+        "context_token_estimate": 14149
+      },
+      {
+        "segment_id": "window-40f0cd5f87ee7185754e960a",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "fcb70c7a919d8042fc49f88dc39b7a40d683e60229f1081aaa7407485512c8dc",
+        "members": [
+          {
+            "id": "segment-0300df564a7d37f7d4e009c9",
+            "evidence_id": "E-9984369871f9b119c39685ae",
+            "start": 0,
+            "end": 151
+          },
+          {
+            "id": "segment-20e74bccbc65f71594def476",
+            "evidence_id": "E-d621160208181545c2e7acf1",
+            "start": 0,
+            "end": 7
+          },
+          {
+            "id": "segment-be5d68159af6dfc60d8f477c",
+            "evidence_id": "E-138c0efdbdc2243a724f2a16",
+            "start": 0,
+            "end": 394
+          },
+          {
+            "id": "segment-530262f4cd32a1aaab95cf6b",
+            "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+            "start": 0,
+            "end": 9
+          },
+          {
+            "id": "segment-db7f9650915e690de2a61799",
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "start": 0,
+            "end": 1499
+          },
+          {
+            "id": "segment-bbd11a1978a0d9a7374758f7",
+            "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+            "start": 0,
+            "end": 1035
+          },
+          {
+            "id": "segment-db3bd90a9b652021f9d1d47a",
+            "evidence_id": "E-e701476789b9bf6dd3395377",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-1b5c33472e72e144f909a25c",
+            "evidence_id": "E-d5b5c13caefae1761b25a868",
+            "start": 0,
+            "end": 268
+          },
+          {
+            "id": "segment-7603d41eb3fe6a1741224420",
+            "evidence_id": "E-d3aebe64259ea519e1693467",
+            "start": 0,
+            "end": 866
+          }
+        ],
+        "evidence_id": "E-9984369871f9b119c39685ae",
+        "start": 0,
+        "end": 4549,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 46,
+        "known_entities_selected": 20,
+        "reasoning_tokens": 2528,
+        "source_anchor_characters": 7646,
+        "proposed_items": 0,
+        "request_bytes": 19055,
+        "reserved_tokens_per_attempt": 32983,
+        "output_tokens": 11744,
+        "context_token_estimate": 22875
+      },
+      {
+        "segment_id": "window-058e6cc6deffb1b08a2a86c2",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "dd908b86c15b4ed70384e77592124c1bf3c54ecb6fa926327d83db27f585243c",
+        "members": [
+          {
+            "id": "segment-6adaab00206f5167145e2009",
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "start": 0,
+            "end": 292
+          }
+        ],
+        "evidence_id": "E-36fba4ad2dd3a80446e482de",
+        "start": 0,
+        "end": 292,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 20,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2096,
+        "source_anchor_characters": 3827,
+        "proposed_items": 0,
+        "request_bytes": 13223,
+        "reserved_tokens_per_attempt": 21592,
+        "output_tokens": 6192,
+        "context_token_estimate": 14404
+      },
+      {
+        "segment_id": "window-e0ccad36fb34406161b59614",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "66701b752a35053240a59e7840b808b2e7415e329f2aa274e6338ecf4115ba53",
+        "members": [
+          {
+            "id": "segment-42841cebccdca079fd639657",
+            "evidence_id": "E-d21d6576e58973f04cbb79b6",
+            "start": 0,
+            "end": 315
+          },
+          {
+            "id": "segment-de86923551291452ba80aded",
+            "evidence_id": "E-b7874f30c44529988c9a2b4d",
+            "start": 0,
+            "end": 118
+          },
+          {
+            "id": "segment-34ec4452cd972f75c6364f0a",
+            "evidence_id": "E-ace382bc90bbdf2808dfba14",
+            "start": 0,
+            "end": 191
+          }
+        ],
+        "evidence_id": "E-d21d6576e58973f04cbb79b6",
+        "start": 0,
+        "end": 624,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 25,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2160,
+        "source_anchor_characters": 4199,
+        "proposed_items": 0,
+        "request_bytes": 14113,
+        "reserved_tokens_per_attempt": 22546,
+        "output_tokens": 6256,
+        "context_token_estimate": 14913
+      },
+      {
+        "segment_id": "window-4213916c48664492ad343746",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "17941ac20321f26f1cdc35fe16059727b057b1263f021b1b58e73e519863ac11",
+        "members": [
+          {
+            "id": "segment-4c40ff5d12a1507a32e70060",
+            "evidence_id": "E-94f2c30163d61cfbf33f137a",
+            "start": 0,
+            "end": 252
+          },
+          {
+            "id": "segment-eecf1fc32edb289e7661c0eb",
+            "evidence_id": "E-4e83b44eb58f230065e2b311",
+            "start": 0,
+            "end": 226
+          },
+          {
+            "id": "segment-33fdb84e39028c7e5329aec3",
+            "evidence_id": "E-883f133a5745d0142df1e007",
+            "start": 0,
+            "end": 117
+          }
+        ],
+        "evidence_id": "E-94f2c30163d61cfbf33f137a",
+        "start": 0,
+        "end": 595,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 22,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2128,
+        "source_anchor_characters": 3979,
+        "proposed_items": 0,
+        "request_bytes": 13712,
+        "reserved_tokens_per_attempt": 22113,
+        "output_tokens": 6224,
+        "context_token_estimate": 14680
+      },
+      {
+        "segment_id": "window-5173a1c59f45dc20ebc33f9f",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "cc9ac1c8a42c58811973072685e09ac4872e856e175e095055b17465d73e9694",
+        "members": [
+          {
+            "id": "segment-59c9f85b9f13574f77bca086",
+            "evidence_id": "E-d4940e2063b4c03f3303beea",
+            "start": 0,
+            "end": 127
+          },
+          {
+            "id": "segment-8f0323e764e3b70ef69cbc8c",
+            "evidence_id": "E-92e5fd01ba0fa39b833981b3",
+            "start": 0,
+            "end": 24
+          }
+        ],
+        "evidence_id": "E-d4940e2063b4c03f3303beea",
+        "start": 0,
+        "end": 151,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 16,
+        "known_entities_selected": 18,
+        "reasoning_tokens": 2064,
+        "source_anchor_characters": 3551,
+        "proposed_items": 0,
+        "request_bytes": 12703,
+        "reserved_tokens_per_attempt": 21033,
+        "output_tokens": 6160,
+        "context_token_estimate": 14108
+      },
+      {
+        "segment_id": "window-13990d3f79cc5aa0ef288948",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "2752753151a48fdda50709351276c4d44162f205cb78e9237e65059b021547c8",
+        "members": [
+          {
+            "id": "segment-da0bcdf337aee670d166f6bf",
+            "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+            "start": 0,
+            "end": 208
+          },
+          {
+            "id": "segment-1de976f86c01f3facd19647f",
+            "evidence_id": "E-a77a2a0b6c4c5ef905224f73",
+            "start": 0,
+            "end": 23
+          }
+        ],
+        "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+        "start": 0,
+        "end": 231,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 16,
+        "known_entities_selected": 18,
+        "reasoning_tokens": 2064,
+        "source_anchor_characters": 3590,
+        "proposed_items": 0,
+        "request_bytes": 12732,
+        "reserved_tokens_per_attempt": 21062,
+        "output_tokens": 6160,
+        "context_token_estimate": 14123
+      },
+      {
+        "segment_id": "window-a0dd56fa807bf7a52786f0f8",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "0c09c448092b320d9addb98a158ac90d435020c4b8b9fb47a1d912ab44269948",
+        "members": [
+          {
+            "id": "segment-b379670b8b5adc4b90055325",
+            "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+            "start": 0,
+            "end": 138
+          },
+          {
+            "id": "segment-f298b01a1b10d005ed0d535c",
+            "evidence_id": "E-ab863beddb4ab0a2517976fa",
+            "start": 0,
+            "end": 706
+          },
+          {
+            "id": "segment-28fd007c535c19cecc9a2618",
+            "evidence_id": "E-7e8d8e958dbe85901540a377",
+            "start": 0,
+            "end": 8
+          }
+        ],
+        "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+        "start": 0,
+        "end": 852,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 18,
+        "known_entities_selected": 18,
+        "reasoning_tokens": 2112,
+        "source_anchor_characters": 3932,
+        "proposed_items": 0,
+        "request_bytes": 13490,
+        "reserved_tokens_per_attempt": 21868,
+        "output_tokens": 6208,
+        "context_token_estimate": 14550
+      },
+      {
+        "segment_id": "window-e6c40ac0b3c96c13bc37be99",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "eb19137dff4dc0ff4a0353c0a1becd254fe81a1d33e4d31d8509b465aed113ea",
+        "members": [
+          {
+            "id": "segment-233b2558285b789e48806c67",
+            "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+            "start": 0,
+            "end": 344
+          },
+          {
+            "id": "segment-999d768775be52225a93c0cd",
+            "evidence_id": "E-d5f9930ae7882641030769e0",
+            "start": 0,
+            "end": 269
+          },
+          {
+            "id": "segment-16ee9be57b91444451eb4da2",
+            "evidence_id": "E-591e163edaa75d5ac8c895d0",
+            "start": 0,
+            "end": 136
+          }
+        ],
+        "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+        "start": 0,
+        "end": 749,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 25,
+        "known_entities_selected": 17,
+        "reasoning_tokens": 2176,
+        "source_anchor_characters": 4237,
+        "proposed_items": 0,
+        "request_bytes": 13857,
+        "reserved_tokens_per_attempt": 22292,
+        "output_tokens": 6272,
+        "context_token_estimate": 14794
+      },
+      {
+        "segment_id": "window-576e0fdc499c7045d1cb3ca5",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "1598b6f40bfa94520c9d2c35039f4b743aba06b8c18db9deb83cb0f6666a3451",
+        "members": [
+          {
+            "id": "segment-838e15258c55f6ff9dd8904c",
+            "evidence_id": "E-d6e291dc28d06c4dea34e721",
+            "start": 0,
+            "end": 294
+          },
+          {
+            "id": "segment-be55c2279b820f2adb135984",
+            "evidence_id": "E-f4f95c94998d43684aa6df08",
+            "start": 0,
+            "end": 95
+          }
+        ],
+        "evidence_id": "E-d6e291dc28d06c4dea34e721",
+        "start": 0,
+        "end": 389,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 19,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2096,
+        "source_anchor_characters": 3821,
+        "proposed_items": 0,
+        "request_bytes": 13307,
+        "reserved_tokens_per_attempt": 21676,
+        "output_tokens": 6192,
+        "context_token_estimate": 14446
+      },
+      {
+        "segment_id": "window-7f2c932bbbb68ee6f0594b92",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "4a2b12509442c9868fc0a8ef01319f819fc82b1515f0d4cb0a954896ff56eb92",
+        "members": [
+          {
+            "id": "segment-c1e596ab3be846821c400ce9",
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-e54637cd4f9b646f02df26eb",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 0,
+            "end": 456
+          },
+          {
+            "id": "segment-cc993a1f594cccf6c31a035e",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 456,
+            "end": 776
+          },
+          {
+            "id": "segment-bd146d8f397f9f65630306f7",
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "start": 0,
+            "end": 772
+          },
+          {
+            "id": "segment-03a713bfb9ed6856662ea509",
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "start": 0,
+            "end": 539
+          }
+        ],
+        "evidence_id": "E-3d0d479957889ee0ebba3428",
+        "start": 0,
+        "end": 2407,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 35,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2352,
+        "source_anchor_characters": 5828,
+        "proposed_items": 0,
+        "request_bytes": 16391,
+        "reserved_tokens_per_attempt": 27543,
+        "output_tokens": 8496,
+        "context_token_estimate": 18531
+      },
+      {
+        "segment_id": "window-88483811894137fdcd05a54b",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "e47c161f2b6c48d98cfbff595bf255cb42cf0d5b05deadb5900ffd42c609106b",
+        "members": [
+          {
+            "id": "segment-a0803776918ef1741c02b219",
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "start": 0,
+            "end": 592
+          }
+        ],
+        "evidence_id": "E-49e271d94011afe76cb7c262",
+        "start": 0,
+        "end": 592,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 21,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2112,
+        "source_anchor_characters": 4158,
+        "proposed_items": 0,
+        "request_bytes": 13532,
+        "reserved_tokens_per_attempt": 24444,
+        "output_tokens": 8256,
+        "context_token_estimate": 16862
+      },
+      {
+        "segment_id": "window-1811cd9621fc5bce015f6685",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "1423bc669bc602c22d129f4b6ca123068b7929a66e9461279b6c86650bdea28b",
+        "members": [
+          {
+            "id": "segment-426e822e99eca4474f313de2",
+            "evidence_id": "E-a4517b58edb7fb6b7246f801",
+            "start": 0,
+            "end": 132
+          }
+        ],
+        "evidence_id": "E-a4517b58edb7fb6b7246f801",
+        "start": 0,
+        "end": 132,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 17,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 3578,
+        "proposed_items": 0,
+        "request_bytes": 12725,
+        "reserved_tokens_per_attempt": 23573,
+        "output_tokens": 8192,
+        "context_token_estimate": 16394
+      },
+      {
+        "segment_id": "window-0896ebd90ce8627432bedd17",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "7b8babdd137a2c308c920d7fb5b9ae02461076df2c27943040b7380f3b8aaa0b",
+        "members": [
+          {
+            "id": "segment-26637bfbdfd33ddb83435184",
+            "evidence_id": "E-b3ed9a7463f43f22a17be8ec",
+            "start": 0,
+            "end": 100
+          }
+        ],
+        "evidence_id": "E-b3ed9a7463f43f22a17be8ec",
+        "start": 0,
+        "end": 100,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 17,
+        "known_entities_selected": 17,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 3556,
+        "proposed_items": 0,
+        "request_bytes": 12473,
+        "reserved_tokens_per_attempt": 22269,
+        "output_tokens": 7168,
+        "context_token_estimate": 15230
+      },
+      {
+        "segment_id": "window-40f0cd5f87ee7185754e960a",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "2067c3f5c71fb31dc858f009eaa01b8acdb9013190d403e046c2c2e66cdc888c",
+        "members": [
+          {
+            "id": "segment-0300df564a7d37f7d4e009c9",
+            "evidence_id": "E-9984369871f9b119c39685ae",
+            "start": 0,
+            "end": 151
+          },
+          {
+            "id": "segment-20e74bccbc65f71594def476",
+            "evidence_id": "E-d621160208181545c2e7acf1",
+            "start": 0,
+            "end": 7
+          },
+          {
+            "id": "segment-be5d68159af6dfc60d8f477c",
+            "evidence_id": "E-138c0efdbdc2243a724f2a16",
+            "start": 0,
+            "end": 394
+          },
+          {
+            "id": "segment-530262f4cd32a1aaab95cf6b",
+            "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+            "start": 0,
+            "end": 9
+          },
+          {
+            "id": "segment-db7f9650915e690de2a61799",
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "start": 0,
+            "end": 1499
+          },
+          {
+            "id": "segment-bbd11a1978a0d9a7374758f7",
+            "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+            "start": 0,
+            "end": 1035
+          },
+          {
+            "id": "segment-db3bd90a9b652021f9d1d47a",
+            "evidence_id": "E-e701476789b9bf6dd3395377",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-1b5c33472e72e144f909a25c",
+            "evidence_id": "E-d5b5c13caefae1761b25a868",
+            "start": 0,
+            "end": 268
+          },
+          {
+            "id": "segment-7603d41eb3fe6a1741224420",
+            "evidence_id": "E-d3aebe64259ea519e1693467",
+            "start": 0,
+            "end": 866
+          }
+        ],
+        "evidence_id": "E-9984369871f9b119c39685ae",
+        "start": 0,
+        "end": 4549,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 46,
+        "known_entities_selected": 20,
+        "reasoning_tokens": 2528,
+        "source_anchor_characters": 7646,
+        "proposed_items": 0,
+        "request_bytes": 18977,
+        "reserved_tokens_per_attempt": 31343,
+        "output_tokens": 9696,
+        "context_token_estimate": 21031
+      },
+      {
+        "segment_id": "window-058e6cc6deffb1b08a2a86c2",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "b4fb7da0fc3eca84f58841b26fead0ce3c9598e03f045809a677f69227906c16",
+        "members": [
+          {
+            "id": "segment-6adaab00206f5167145e2009",
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "start": 0,
+            "end": 292
+          }
+        ],
+        "evidence_id": "E-36fba4ad2dd3a80446e482de",
+        "start": 0,
+        "end": 292,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 20,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2096,
+        "source_anchor_characters": 3827,
+        "proposed_items": 0,
+        "request_bytes": 13139,
+        "reserved_tokens_per_attempt": 24035,
+        "output_tokens": 8240,
+        "context_token_estimate": 16649
+      },
+      {
+        "segment_id": "window-e0ccad36fb34406161b59614",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "a63239d6a5e22909af2c8abde079d533f588757e4e806b7a1836c5cc6553337a",
+        "members": [
+          {
+            "id": "segment-42841cebccdca079fd639657",
+            "evidence_id": "E-d21d6576e58973f04cbb79b6",
+            "start": 0,
+            "end": 315
+          },
+          {
+            "id": "segment-de86923551291452ba80aded",
+            "evidence_id": "E-b7874f30c44529988c9a2b4d",
+            "start": 0,
+            "end": 118
+          },
+          {
+            "id": "segment-34ec4452cd972f75c6364f0a",
+            "evidence_id": "E-ace382bc90bbdf2808dfba14",
+            "start": 0,
+            "end": 191
+          }
+        ],
+        "evidence_id": "E-d21d6576e58973f04cbb79b6",
+        "start": 0,
+        "end": 624,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 25,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2160,
+        "source_anchor_characters": 4199,
+        "proposed_items": 0,
+        "request_bytes": 14029,
+        "reserved_tokens_per_attempt": 24989,
+        "output_tokens": 8304,
+        "context_token_estimate": 17158
+      },
+      {
+        "segment_id": "window-fc629acdfaa2fba88908afa4",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "296dc30c72ea9a2a4a19fedb9a710d3f2413467a27c9de5987aa44018ebfc28a",
+        "members": [
+          {
+            "id": "segment-41c4f967315c777511cc0de1",
+            "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+            "start": 0,
+            "end": 389
+          }
+        ],
+        "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+        "start": 0,
+        "end": 389,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 18,
+        "known_entities_selected": 17,
+        "reasoning_tokens": 2096,
+        "source_anchor_characters": 3744,
+        "proposed_items": 0,
+        "request_bytes": 12699,
+        "reserved_tokens_per_attempt": 22543,
+        "output_tokens": 7216,
+        "context_token_estimate": 15391
+      },
+      {
+        "segment_id": "window-739295235ecf05ac7ce72901",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "c9ef39bbfcc9ed5242cd3b657c64e9c8373b2ae4dd8b99a7fa4a5e8e86c8ef44",
+        "members": [
+          {
+            "id": "segment-0547e445b069f010d1fd2704",
+            "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+            "start": 0,
+            "end": 194
+          },
+          {
+            "id": "segment-57f5cc4e04c7855f8f797f06",
+            "evidence_id": "E-a08131327d6385587996348e",
+            "start": 0,
+            "end": 224
+          }
+        ],
+        "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+        "start": 0,
+        "end": 418,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 21,
+        "known_entities_selected": 20,
+        "reasoning_tokens": 2112,
+        "source_anchor_characters": 3912,
+        "proposed_items": 0,
+        "request_bytes": 13504,
+        "reserved_tokens_per_attempt": 24430,
+        "output_tokens": 8256,
+        "context_token_estimate": 16855
+      },
+      {
+        "segment_id": "window-cd30e720a1b81ec71192993c",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "3dc63df276e5dbe2b5c91a6cbd74bfa06a05abfe5f76d83495882775537eb5d9",
+        "members": [
+          {
+            "id": "segment-00a724d85ffb7fc187c60aa3",
+            "evidence_id": "E-007124915589abdd7abc5e6e",
+            "start": 0,
+            "end": 76
+          },
+          {
+            "id": "segment-982a39c8a4d866fd4829cab9",
+            "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+            "start": 0,
+            "end": 74
+          }
+        ],
+        "evidence_id": "E-007124915589abdd7abc5e6e",
+        "start": 0,
+        "end": 150,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 17,
+        "known_entities_selected": 17,
+        "reasoning_tokens": 2080,
+        "source_anchor_characters": 3528,
+        "proposed_items": 0,
+        "request_bytes": 12530,
+        "reserved_tokens_per_attempt": 22358,
+        "output_tokens": 7200,
+        "context_token_estimate": 15291
+      },
+      {
+        "segment_id": "window-4213916c48664492ad343746",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "3c553208ad963b8288c1c65f16f7f2ac208dbb13dce61fe69c746159b4e21e97",
+        "members": [
+          {
+            "id": "segment-4c40ff5d12a1507a32e70060",
+            "evidence_id": "E-94f2c30163d61cfbf33f137a",
+            "start": 0,
+            "end": 252
+          },
+          {
+            "id": "segment-eecf1fc32edb289e7661c0eb",
+            "evidence_id": "E-4e83b44eb58f230065e2b311",
+            "start": 0,
+            "end": 226
+          },
+          {
+            "id": "segment-33fdb84e39028c7e5329aec3",
+            "evidence_id": "E-883f133a5745d0142df1e007",
+            "start": 0,
+            "end": 117
+          }
+        ],
+        "evidence_id": "E-94f2c30163d61cfbf33f137a",
+        "start": 0,
+        "end": 595,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 22,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2128,
+        "source_anchor_characters": 3979,
+        "proposed_items": 0,
+        "request_bytes": 13628,
+        "reserved_tokens_per_attempt": 24556,
+        "output_tokens": 8272,
+        "context_token_estimate": 16926
+      },
+      {
+        "segment_id": "window-5173a1c59f45dc20ebc33f9f",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "6fc02c5b58f8584dc810cf66bdad897ef06181354839bbdb45cfb8786552daeb",
+        "members": [
+          {
+            "id": "segment-59c9f85b9f13574f77bca086",
+            "evidence_id": "E-d4940e2063b4c03f3303beea",
+            "start": 0,
+            "end": 127
+          },
+          {
+            "id": "segment-8f0323e764e3b70ef69cbc8c",
+            "evidence_id": "E-92e5fd01ba0fa39b833981b3",
+            "start": 0,
+            "end": 24
+          }
+        ],
+        "evidence_id": "E-d4940e2063b4c03f3303beea",
+        "start": 0,
+        "end": 151,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 16,
+        "known_entities_selected": 18,
+        "reasoning_tokens": 2064,
+        "source_anchor_characters": 3551,
+        "proposed_items": 0,
+        "request_bytes": 12613,
+        "reserved_tokens_per_attempt": 23463,
+        "output_tokens": 8208,
+        "context_token_estimate": 16347
+      },
+      {
+        "segment_id": "window-494229c34f2f9ff58371c600",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "fcd5a339d164340bedaccd3609cc346061a1ebc3b10de8861e986d7563580c19",
+        "members": [
+          {
+            "id": "segment-0db31dbfb72d76fa0264164b",
+            "evidence_id": "E-7b2423e2b4112606572b7b6e",
+            "start": 0,
+            "end": 153
+          }
+        ],
+        "evidence_id": "E-7b2423e2b4112606572b7b6e",
+        "start": 0,
+        "end": 153,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 15,
+        "known_entities_selected": 17,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 3529,
+        "proposed_items": 0,
+        "request_bytes": 12715,
+        "reserved_tokens_per_attempt": 22511,
+        "output_tokens": 7168,
+        "context_token_estimate": 15351
+      },
+      {
+        "segment_id": "window-13990d3f79cc5aa0ef288948",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "f0300b908e8248109d02918aaf296f295e00fcb1fd53a9c94ed9f0973771da76",
+        "members": [
+          {
+            "id": "segment-da0bcdf337aee670d166f6bf",
+            "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+            "start": 0,
+            "end": 208
+          },
+          {
+            "id": "segment-1de976f86c01f3facd19647f",
+            "evidence_id": "E-a77a2a0b6c4c5ef905224f73",
+            "start": 0,
+            "end": 23
+          }
+        ],
+        "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+        "start": 0,
+        "end": 231,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 16,
+        "known_entities_selected": 18,
+        "reasoning_tokens": 2064,
+        "source_anchor_characters": 3590,
+        "proposed_items": 0,
+        "request_bytes": 12642,
+        "reserved_tokens_per_attempt": 22468,
+        "output_tokens": 7184,
+        "context_token_estimate": 15338
+      },
+      {
+        "segment_id": "window-a0dd56fa807bf7a52786f0f8",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "17a6c5168ba7e6977e481234f83488a85bf040010568f4fd3ff94e03bc14fa51",
+        "members": [
+          {
+            "id": "segment-b379670b8b5adc4b90055325",
+            "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+            "start": 0,
+            "end": 138
+          },
+          {
+            "id": "segment-f298b01a1b10d005ed0d535c",
+            "evidence_id": "E-ab863beddb4ab0a2517976fa",
+            "start": 0,
+            "end": 706
+          },
+          {
+            "id": "segment-28fd007c535c19cecc9a2618",
+            "evidence_id": "E-7e8d8e958dbe85901540a377",
+            "start": 0,
+            "end": 8
+          }
+        ],
+        "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+        "start": 0,
+        "end": 852,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 18,
+        "known_entities_selected": 18,
+        "reasoning_tokens": 2112,
+        "source_anchor_characters": 3932,
+        "proposed_items": 0,
+        "request_bytes": 13400,
+        "reserved_tokens_per_attempt": 24298,
+        "output_tokens": 8256,
+        "context_token_estimate": 16789
+      },
+      {
+        "segment_id": "window-e6c40ac0b3c96c13bc37be99",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "1afedd816fbf30f58ebbd1a34a8f002056c1b459b9e20a00547847ab0ed1279b",
+        "members": [
+          {
+            "id": "segment-233b2558285b789e48806c67",
+            "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+            "start": 0,
+            "end": 344
+          },
+          {
+            "id": "segment-999d768775be52225a93c0cd",
+            "evidence_id": "E-d5f9930ae7882641030769e0",
+            "start": 0,
+            "end": 269
+          },
+          {
+            "id": "segment-16ee9be57b91444451eb4da2",
+            "evidence_id": "E-591e163edaa75d5ac8c895d0",
+            "start": 0,
+            "end": 136
+          }
+        ],
+        "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+        "start": 0,
+        "end": 749,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 25,
+        "known_entities_selected": 17,
+        "reasoning_tokens": 2176,
+        "source_anchor_characters": 4237,
+        "proposed_items": 0,
+        "request_bytes": 13761,
+        "reserved_tokens_per_attempt": 23685,
+        "output_tokens": 7296,
+        "context_token_estimate": 16002
+      },
+      {
+        "segment_id": "window-2b9b98e77573830d2ffe3c21",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "b3f8325c517b97145ac49dcc69615de6ea2f10822a4b79fdc48d7eee895dfdd3",
+        "members": [
+          {
+            "id": "segment-dd7d0c2d7b12935c8b43123a",
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "start": 0,
+            "end": 142
+          }
+        ],
+        "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+        "start": 0,
+        "end": 142,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 17,
+        "known_entities_selected": 17,
+        "reasoning_tokens": 2080,
+        "source_anchor_characters": 3542,
+        "proposed_items": 0,
+        "request_bytes": 12452,
+        "reserved_tokens_per_attempt": 22280,
+        "output_tokens": 7200,
+        "context_token_estimate": 15252
+      },
+      {
+        "segment_id": "window-576e0fdc499c7045d1cb3ca5",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "e4e07199b205959129704ceb4853bf7607299681708a7bce05be8819c46b2bc0",
+        "members": [
+          {
+            "id": "segment-838e15258c55f6ff9dd8904c",
+            "evidence_id": "E-d6e291dc28d06c4dea34e721",
+            "start": 0,
+            "end": 294
+          },
+          {
+            "id": "segment-be55c2279b820f2adb135984",
+            "evidence_id": "E-f4f95c94998d43684aa6df08",
+            "start": 0,
+            "end": 95
+          }
+        ],
+        "evidence_id": "E-d6e291dc28d06c4dea34e721",
+        "start": 0,
+        "end": 389,
+        "deterministic": "COMPLETE",
+        "model": "DEFERRED_BUDGET",
+        "attempts": 0,
+        "source_anchors": 19,
+        "known_entities_selected": 19,
+        "reasoning_tokens": 2096,
+        "source_anchor_characters": 3821,
+        "proposed_items": 0,
+        "request_bytes": 13223,
+        "reserved_tokens_per_attempt": 24119,
+        "output_tokens": 8240,
+        "context_token_estimate": 16691
+      }
+    ],
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "deterministic_characters": 12915,
+    "model_characters": 0
+  },
+  "scientific_coverage": {
+    "basis": "Literal source-cue/quantity inventory plus independent proposal validation; NOT comprehensive scientific recall or expert gold",
+    "read_content": {
+      "source_characters": 12915,
+      "segmented_characters": 12915,
+      "units": 44,
+      "segments": 43
+    },
+    "scientific_content_identified": {
+      "candidate_units": 39,
+      "literal_quantity_occurrences": 57,
+      "numeric_pdf_table_cells": 9
+    },
+    "scientific_information_structured": {
+      "entities:SOURCE_SUPPORTED": 40,
+      "entities:UNRESOLVED": 12,
+      "statements:UNRESOLVED": 153,
+      "statements:SOURCE_SUPPORTED": 57,
+      "relations:UNRESOLVED": 10,
+      "relations:SOURCE_SUPPORTED": 4,
+      "quantities:UNRESOLVED": 15,
+      "quantities:SOURCE_SUPPORTED": 8,
+      "concepts:UNRESOLVED": 3
+    },
+    "source_supported_relationships": 4,
+    "unresolved": 193,
+    "rejected": 0,
+    "table_quantity_candidates": 0,
+    "pdf_table_quantity_inventory": [
+      {
+        "table_record_id": "table-record-566f25f8bbb72b3fd39b",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 33,
+        "table_index": 1,
+        "row_index": 1,
+        "column_index": 1,
+        "original_expression": ".9",
+        "original_column_header": "Partial-\nG\n(mm/s)",
+        "header_unit_candidate": "mm/s",
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": null,
+            "original_value": "Flame\nBase"
+          },
+          {
+            "column_index": 1,
+            "header": "Partial-\nG\n(mm/s)",
+            "original_value": ".9"
+          },
+          {
+            "column_index": 2,
+            "header": "1-G\n(mm/s)",
+            "original_value": "1.5"
+          },
+          {
+            "column_index": 3,
+            "header": "Ratio",
+            "original_value": ".6"
+          }
+        ],
+        "table_bbox": [
+          617.7899780273438,
+          257.7200012207031,
+          946.7319946289062,
+          454.56201171875
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-566f25f8bbb72b3fd39b",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 33,
+        "table_index": 1,
+        "row_index": 1,
+        "column_index": 2,
+        "original_expression": "1.5",
+        "original_column_header": "1-G\n(mm/s)",
+        "header_unit_candidate": "mm/s",
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": null,
+            "original_value": "Flame\nBase"
+          },
+          {
+            "column_index": 1,
+            "header": "Partial-\nG\n(mm/s)",
+            "original_value": ".9"
+          },
+          {
+            "column_index": 2,
+            "header": "1-G\n(mm/s)",
+            "original_value": "1.5"
+          },
+          {
+            "column_index": 3,
+            "header": "Ratio",
+            "original_value": ".6"
+          }
+        ],
+        "table_bbox": [
+          617.7899780273438,
+          257.7200012207031,
+          946.7319946289062,
+          454.56201171875
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-566f25f8bbb72b3fd39b",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 33,
+        "table_index": 1,
+        "row_index": 1,
+        "column_index": 3,
+        "original_expression": ".6",
+        "original_column_header": "Ratio",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": null,
+            "original_value": "Flame\nBase"
+          },
+          {
+            "column_index": 1,
+            "header": "Partial-\nG\n(mm/s)",
+            "original_value": ".9"
+          },
+          {
+            "column_index": 2,
+            "header": "1-G\n(mm/s)",
+            "original_value": "1.5"
+          },
+          {
+            "column_index": 3,
+            "header": "Ratio",
+            "original_value": ".6"
+          }
+        ],
+        "table_bbox": [
+          617.7899780273438,
+          257.7200012207031,
+          946.7319946289062,
+          454.56201171875
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-20c4ad60ee4ef1ca529c",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 33,
+        "table_index": 1,
+        "row_index": 2,
+        "column_index": 1,
+        "original_expression": "1.1",
+        "original_column_header": "Partial-\nG\n(mm/s)",
+        "header_unit_candidate": "mm/s",
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": null,
+            "original_value": "Flame\nTip"
+          },
+          {
+            "column_index": 1,
+            "header": "Partial-\nG\n(mm/s)",
+            "original_value": "1.1"
+          },
+          {
+            "column_index": 2,
+            "header": "1-G\n(mm/s)",
+            "original_value": "2.8"
+          },
+          {
+            "column_index": 3,
+            "header": "Ratio",
+            "original_value": ".39"
+          }
+        ],
+        "table_bbox": [
+          617.7899780273438,
+          257.7200012207031,
+          946.7319946289062,
+          454.56201171875
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-20c4ad60ee4ef1ca529c",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 33,
+        "table_index": 1,
+        "row_index": 2,
+        "column_index": 2,
+        "original_expression": "2.8",
+        "original_column_header": "1-G\n(mm/s)",
+        "header_unit_candidate": "mm/s",
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": null,
+            "original_value": "Flame\nTip"
+          },
+          {
+            "column_index": 1,
+            "header": "Partial-\nG\n(mm/s)",
+            "original_value": "1.1"
+          },
+          {
+            "column_index": 2,
+            "header": "1-G\n(mm/s)",
+            "original_value": "2.8"
+          },
+          {
+            "column_index": 3,
+            "header": "Ratio",
+            "original_value": ".39"
+          }
+        ],
+        "table_bbox": [
+          617.7899780273438,
+          257.7200012207031,
+          946.7319946289062,
+          454.56201171875
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-20c4ad60ee4ef1ca529c",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 33,
+        "table_index": 1,
+        "row_index": 2,
+        "column_index": 3,
+        "original_expression": ".39",
+        "original_column_header": "Ratio",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": null,
+            "original_value": "Flame\nTip"
+          },
+          {
+            "column_index": 1,
+            "header": "Partial-\nG\n(mm/s)",
+            "original_value": "1.1"
+          },
+          {
+            "column_index": 2,
+            "header": "1-G\n(mm/s)",
+            "original_value": "2.8"
+          },
+          {
+            "column_index": 3,
+            "header": "Ratio",
+            "original_value": ".39"
+          }
+        ],
+        "table_bbox": [
+          617.7899780273438,
+          257.7200012207031,
+          946.7319946289062,
+          454.56201171875
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-c641383bd9d0e978a7b7",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 36,
+        "table_index": 2,
+        "row_index": 1,
+        "column_index": 0,
+        "original_expression": ".15",
+        "original_column_header": "Partial-G\n(cm/s)",
+        "header_unit_candidate": "cm/s",
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Partial-G\n(cm/s)",
+            "original_value": ".15"
+          },
+          {
+            "column_index": 1,
+            "header": "1-G\n(cm/s)",
+            "original_value": ".40"
+          },
+          {
+            "column_index": 2,
+            "header": "Ratio",
+            "original_value": ".38"
+          }
+        ],
+        "table_bbox": [
+          668.8400268554688,
+          241.58924102783203,
+          931.5910339355469,
+          366.42999267578125
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-c641383bd9d0e978a7b7",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 36,
+        "table_index": 2,
+        "row_index": 1,
+        "column_index": 1,
+        "original_expression": ".40",
+        "original_column_header": "1-G\n(cm/s)",
+        "header_unit_candidate": "cm/s",
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Partial-G\n(cm/s)",
+            "original_value": ".15"
+          },
+          {
+            "column_index": 1,
+            "header": "1-G\n(cm/s)",
+            "original_value": ".40"
+          },
+          {
+            "column_index": 2,
+            "header": "Ratio",
+            "original_value": ".38"
+          }
+        ],
+        "table_bbox": [
+          668.8400268554688,
+          241.58924102783203,
+          931.5910339355469,
+          366.42999267578125
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-c641383bd9d0e978a7b7",
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 36,
+        "table_index": 2,
+        "row_index": 1,
+        "column_index": 2,
+        "original_expression": ".38",
+        "original_column_header": "Ratio",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Partial-G\n(cm/s)",
+            "original_value": ".15"
+          },
+          {
+            "column_index": 1,
+            "header": "1-G\n(cm/s)",
+            "original_value": ".40"
+          },
+          {
+            "column_index": 2,
+            "header": "Ratio",
+            "original_value": ".38"
+          }
+        ],
+        "table_bbox": [
+          668.8400268554688,
+          241.58924102783203,
+          931.5910339355469,
+          366.42999267578125
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      }
+    ],
+    "native_quantity_representation_deferred": 0,
+    "detected_quantity_occurrences_structured": 22,
+    "model_proposed_items": 655,
+    "inaccessible_content": [
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 1,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 3,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 4,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 5,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 6,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 7,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 8,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 9,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 10,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 11,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 14,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 15,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 16,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 17,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 19,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 20,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 21,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 22,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 24,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 25,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 26,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 27,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 28,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 29,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 30,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 31,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 33,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 34,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 36,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 39,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 40,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 41,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 42,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 43,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+        "page": 44,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      }
+    ],
+    "source_units": [
+      {
+        "id": "coverage-416b03453e14dc26e979",
+        "evidence_id": "E-3d0d479957889ee0ebba3428",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 1,
+        "start": 0,
+        "end": 320,
+        "section": "Lunar Combustion Investigation: Flammability Results",
+        "scientific_cues": [
+          "Results"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4,
+          "UNRESOLVED": 10
+        },
+        "proposal_ids": [
+          "proposal-7781bf51037c4672a1d8edb5",
+          "proposal-fb086150b569ed29e6a3dae6",
+          "proposal-0f45116702814b1ece1421ce",
+          "proposal-d2ec4e9283fd9338a231cd31",
+          "proposal-8530187b0c2843d37b2eee7f",
+          "proposal-94b89aba5bbf5f56f7ac6f26",
+          "proposal-5e13449055562b7d5cde432a",
+          "proposal-faac857975aa098046a3d7d4",
+          "proposal-d2e763df821a5281a321eaf4",
+          "proposal-5c5b238976a6b5bed6004739",
+          "proposal-e9ea3b88d4ffba6922695cfb",
+          "proposal-6247cfe03c8a1d4a597dbd38",
+          "proposal-b0a3fe6a5d4d06a23e2b690e",
+          "proposal-46c3456b2d790542874c99a7"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-2f1d0f9495b8d59ed6cc",
+        "evidence_id": "E-0acbeed7a437e765685d020a",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 2,
+        "start": 0,
+        "end": 456,
+        "section": "UNSPECIFIED",
+        "scientific_cues": [
+          "Results",
+          "experiments",
+          "experiments",
+          "experiments"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "UNRESOLVED": 2
+        },
+        "proposal_ids": [
+          "proposal-e76adc9f2dea62f17978963a",
+          "proposal-b0a3fe6a5d4d06a23e2b690e"
+        ],
+        "state": "UNRESOLVED_STRUCTURE"
+      },
+      {
+        "id": "coverage-c9ea841fc60cfa3549ef",
+        "evidence_id": "E-0acbeed7a437e765685d020a",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 2,
+        "start": 456,
+        "end": 776,
+        "section": "Outcome",
+        "scientific_cues": [
+          "might"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "UNRESOLVED": 10
+        },
+        "proposal_ids": [
+          "proposal-023faf9d31d4d8614d3600f3",
+          "proposal-214e8940373e87f7d2cf67c9",
+          "proposal-2b1eb34a39bc030fbd52bc0e",
+          "proposal-860b367f7c129c43bfb42eea",
+          "proposal-05fc8b2825e429eb864a0a3b",
+          "proposal-7d759bfc85cc38a90a77cdc0",
+          "proposal-1270fd73b44909e17e81447b",
+          "proposal-745835bb2375cc8a85740e25",
+          "proposal-f2dec71f636d6d5da39e7f5b",
+          "proposal-b0a3fe6a5d4d06a23e2b690e"
+        ],
+        "state": "UNRESOLVED_STRUCTURE"
+      },
+      {
+        "id": "coverage-54297466edf31a1dbe97",
+        "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 3,
+        "start": 0,
+        "end": 772,
+        "section": "Outcome",
+        "scientific_cues": [
+          "tests",
+          "Hypothesis",
+          "samples",
+          "Measured"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 215,
+            "end": 218,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 425,
+            "end": 428,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 473,
+            "end": 476,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 1,
+          "UNRESOLVED": 20
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-9ff4e633a24e0f14c472c1b5",
+          "proposal-bec6440cffb9f1555c9aff9e",
+          "proposal-7cf7bfee0d8eac3093435e4d",
+          "proposal-e735a4f2a3ac41abccb5f8b4",
+          "proposal-19d679b257e84b61e7520ca2",
+          "proposal-4e6dca0df24aee168a38234a",
+          "proposal-804e3086e8d22666ae8c292f",
+          "proposal-c310543a38654c640535be65",
+          "proposal-5e0adaf5b09363e5194be43f",
+          "proposal-c5e16e316641f4282fd8a8eb",
+          "proposal-f17edad2628d86c1584b0f44",
+          "proposal-c50045ce413bca1151666c87",
+          "proposal-4d4250f838544c3c0d98eaf5",
+          "proposal-f9453a24f069e7a5a37e61bc",
+          "proposal-0ebef44af1911ce1703e8b8b",
+          "proposal-794f69f6f06b53a57c64cdc9",
+          "proposal-13341953b26051f2fe4e5e29",
+          "proposal-71bfb5b18008d23f072021c6",
+          "proposal-3f99e503ceaa825d76d87e91",
+          "proposal-2143b6383a31d85612082c8b"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-46fb7c7a95643c28bd60",
+        "evidence_id": "E-b901ec1e461ebf942f146e18",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 4,
+        "start": 0,
+        "end": 539,
+        "section": "Outcome",
+        "scientific_cues": [
+          "samples",
+          "ignited"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "5 cm",
+            "expression": "5",
+            "unit": "cm",
+            "start": 270,
+            "end": 274,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "30 cm",
+            "expression": "30",
+            "unit": "cm",
+            "start": 282,
+            "end": 287,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "4-mm",
+            "expression": "4",
+            "unit": "mm",
+            "start": 298,
+            "end": 302,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 12
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-4b5b3e026790a32a45073fd9",
+          "proposal-482588889da1059f281dc867",
+          "proposal-cf25576bfdbbc3c5d5d684c5",
+          "proposal-353934f665c6b2b0f36a8579",
+          "proposal-d632c61aaffe0600c9cb159b",
+          "proposal-8e5c4cc05db4de1c6bdd0bb3",
+          "proposal-c9c0dd0e445ebfce4a5286a2",
+          "proposal-a327b566e18e9aca52df6044",
+          "proposal-2b9b9ae966c1469346f29cde",
+          "proposal-619325e2cf16de36036d06eb",
+          "proposal-fefcdd9d77128f93d597174e",
+          "proposal-d07f8eb9f66e42ab5dd3d7cb",
+          "proposal-43f120ea4140c582e3151c86"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-1061483c201d6897eb7b",
+        "evidence_id": "E-49e271d94011afe76cb7c262",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 5,
+        "start": 0,
+        "end": 592,
+        "section": "would be looking outward from the",
+        "scientific_cues": [
+          "samples",
+          "ignited",
+          "Sample"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "5 cm",
+            "expression": "5",
+            "unit": "cm",
+            "start": 270,
+            "end": 274,
+            "proposal_ids": [
+              "proposal-216c15673b76138668c7e011"
+            ],
+            "source_supported_proposals": 1,
+            "unresolved_proposals": 0,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "30 cm",
+            "expression": "30",
+            "unit": "cm",
+            "start": 282,
+            "end": 287,
+            "proposal_ids": [
+              "proposal-cb5ae03947682b90b147366f"
+            ],
+            "source_supported_proposals": 1,
+            "unresolved_proposals": 0,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "4-mm",
+            "expression": "4",
+            "unit": "mm",
+            "start": 298,
+            "end": 302,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 5,
+          "UNRESOLVED": 12
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-0e1d419852894d9a0d304d23",
+          "proposal-951b2f5e72097477b68df935",
+          "proposal-09d3eeeca78b8549d870efc3",
+          "proposal-20fa434269379f070e946850",
+          "proposal-ef51c4b335c228c7fa702927",
+          "proposal-4599068b985e67b42c1050ce",
+          "proposal-d816cbd0b2a4f4083c860d3c",
+          "proposal-9978c2be26a0b42478b17373",
+          "proposal-d8eca36a98cc523dd227f073",
+          "proposal-52cbd1ff385e848ee45d36d7",
+          "proposal-4293b0b8d15abed0f335104a",
+          "proposal-78cfcc76295a53b4079b80a4",
+          "proposal-004147c5860b3477620ea77d",
+          "proposal-d15a13ad419989d27eed0e64",
+          "proposal-216c15673b76138668c7e011",
+          "proposal-cb5ae03947682b90b147366f"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-815061c0d42f0b2c18cd",
+        "evidence_id": "E-d621160208181545c2e7acf1",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 9,
+        "start": 0,
+        "end": 7,
+        "section": "Outcome",
+        "scientific_cues": [],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-c57d5674902a6b4848b40eef"
+        ],
+        "state": "UNRESOLVED_STRUCTURE"
+      },
+      {
+        "id": "coverage-2d4c00e2b09551bc9edc",
+        "evidence_id": "E-138c0efdbdc2243a724f2a16",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 10,
+        "start": 0,
+        "end": 394,
+        "section": "Outcome",
+        "scientific_cues": [
+          "measures",
+          "samples",
+          "samples"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "about 41 cm",
+            "expression": "about 41",
+            "unit": "cm",
+            "start": 134,
+            "end": 145,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "48 cm",
+            "expression": "48",
+            "unit": "cm",
+            "start": 148,
+            "end": 153,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "about 53 cm",
+            "expression": "about 53",
+            "unit": "cm",
+            "start": 200,
+            "end": 211,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "UNRESOLVED": 6
+        },
+        "proposal_ids": [
+          "proposal-1d21b0410a35ee82f12cb35c",
+          "proposal-3ca64f36652f09610d196bb0",
+          "proposal-4f94f42daba8837a6af4597c",
+          "proposal-198e25659b5cd90a5614deba",
+          "proposal-609cb9f46960705e10325a36",
+          "proposal-a89ec0444eb918b41578175a"
+        ],
+        "state": "UNRESOLVED_STRUCTURE"
+      },
+      {
+        "id": "coverage-53908446a5722fd1c1b7",
+        "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 11,
+        "start": 0,
+        "end": 9,
+        "section": "Outcome",
+        "scientific_cues": [],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-b8876e22c242a3552d138028"
+        ],
+        "state": "UNRESOLVED_STRUCTURE"
+      },
+      {
+        "id": "coverage-47a1336039a14f5e2076",
+        "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 12,
+        "start": 0,
+        "end": 1499,
+        "section": "Outcome",
+        "scientific_cues": [
+          "tests",
+          "experiment",
+          "samples",
+          "measured",
+          "extinction",
+          "Results",
+          "experiment",
+          "tests",
+          "experiments",
+          "results",
+          "experiment",
+          "tests",
+          "experiment"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "greater than 25 seconds",
+            "expression": "greater than 25",
+            "unit": "seconds",
+            "start": 145,
+            "end": 168,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "11 RPM",
+            "expression": "11",
+            "unit": "RPM",
+            "start": 258,
+            "end": 264,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1.22 m",
+            "expression": "1.22",
+            "unit": "m",
+            "start": 321,
+            "end": 327,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "4-mm",
+            "expression": "4",
+            "unit": "mm",
+            "start": 472,
+            "end": 476,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "over \ntwo and a half minutes",
+            "expression": "over \ntwo and a half",
+            "unit": "minutes",
+            "start": 658,
+            "end": 686,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 962,
+            "end": 965,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 5,
+          "UNRESOLVED": 24
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-d6962e1dc5aaf0ec737f0e7a",
+          "proposal-e4ffba1c9b96ea623df80420",
+          "proposal-24b45031048c1c614d8e2220",
+          "proposal-139b04a26aee8c17c7e8d7c0",
+          "proposal-f581be0a1c345abc05cf410d",
+          "proposal-d51a0876d991b4f17ee5dd90",
+          "proposal-3007dc06d11a6d4cad4c6481",
+          "proposal-403e7de3076aba61d0f8bd3a",
+          "proposal-08e9d42d67e05c2741879472",
+          "proposal-8c26aea05549a8013b3a95a8",
+          "proposal-999c6b103f0b12516c8ebb93",
+          "proposal-9d2490a8ea5fcac24860d699",
+          "proposal-45edf532776b672a8efe6494",
+          "proposal-114be877f6badf92f4b49786",
+          "proposal-2bc89b928729189265680f5c",
+          "proposal-9478d7d22618c5a790d7a5cb",
+          "proposal-e62dd243856680d20be880fa",
+          "proposal-dbd10ad0e99776fe2289e62c",
+          "proposal-43fff62109af72ed7598360d",
+          "proposal-24a6fdcf9afdb69891d5866e",
+          "proposal-9b7106ff06094b2ab249079c",
+          "proposal-d10156fe2f9c7fe730b7a8ff",
+          "proposal-92d307dc073cb6b5740edd1f",
+          "proposal-9a8a6fa6079bf0fcc11d821d",
+          "proposal-117dce199318e0d80579d730",
+          "proposal-56ec9b527979139680be2db9",
+          "proposal-2d95be860aa7175134ad92d3",
+          "proposal-9501c1eded906beecd514da7"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-639748b3b6143d815749",
+        "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 13,
+        "start": 0,
+        "end": 1035,
+        "section": "Outcome",
+        "scientific_cues": [
+          "test",
+          "test",
+          "observation",
+          "measurement",
+          "results",
+          "sample",
+          "test",
+          "experiment",
+          "Measurements",
+          "samples",
+          "Sample",
+          "test"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 1025,
+            "end": 1028,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4,
+          "UNRESOLVED": 11
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-0e9a5eab2667a5067f9c903e",
+          "proposal-0eed95a8d83ef2e621a6588b",
+          "proposal-8a7d8336b47653b9083d6ae2",
+          "proposal-55c8dd9bdab447a7746b5056",
+          "proposal-08bc53b79451f1ad1f00bf8c",
+          "proposal-307a6f97e6b16c748e6ef618",
+          "proposal-82a87fa7e909095655b9811a",
+          "proposal-451c1e227cc0d1b24f7615e0",
+          "proposal-9d288fdec108b2f091ee3fd5",
+          "proposal-048dde457d407f3e156054bf",
+          "proposal-b58b395b33be2d55f45d1aac",
+          "proposal-f582c8575f4b884226c9396c",
+          "proposal-38ae53f5e3f16001ae656774"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-ac96c6292a1fd0cd76c1",
+        "evidence_id": "E-e701476789b9bf6dd3395377",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 16,
+        "start": 0,
+        "end": 320,
+        "section": "Outcome",
+        "scientific_cues": [
+          "samples",
+          "ignition",
+          "ignition",
+          "ignition"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "30 s",
+            "expression": "30",
+            "unit": "s",
+            "start": 13,
+            "end": 17,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "30 s",
+            "expression": "30",
+            "unit": "s",
+            "start": 121,
+            "end": 125,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "4-mm",
+            "expression": "4",
+            "unit": "mm",
+            "start": 187,
+            "end": 191,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "30 s",
+            "expression": "30",
+            "unit": "s",
+            "start": 244,
+            "end": 248,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 16
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-0e9a5eab2667a5067f9c903e",
+          "proposal-8a7d8336b47653b9083d6ae2",
+          "proposal-cfd7913d16a6a7fc0426dff2",
+          "proposal-cd58bfccbdde93c1fc6b80ab",
+          "proposal-675673ddb28e68f46ac52b5d",
+          "proposal-c233cbedbaba37b28c987db9",
+          "proposal-a57be7cff346f074a0c96ea7",
+          "proposal-5ebab6b2a6e1eb686689e915",
+          "proposal-c8d3124975273696b16089f2",
+          "proposal-d06a024b2f1fcfc2c844a66c",
+          "proposal-ea149880138db97b9eef9bd2",
+          "proposal-ee0f63c11906d970b048cb19",
+          "proposal-a9a3a26eb35b475a331b5a48",
+          "proposal-94ac4fc9fb527c53f71373ca",
+          "proposal-d0f96d53fd894ddc4c1bfe71",
+          "proposal-2452efd9eab7851a3926b816",
+          "proposal-3532fcff72f4e6eb769b49a0"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-4555b500e75928f52f1d",
+        "evidence_id": "E-d5b5c13caefae1761b25a868",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 17,
+        "start": 0,
+        "end": 268,
+        "section": "Outcome",
+        "scientific_cues": [],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "90 seconds",
+            "expression": "90",
+            "unit": "seconds",
+            "start": 15,
+            "end": 25,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 10
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-8a7d8336b47653b9083d6ae2",
+          "proposal-139ebc5308890d32661a73f0",
+          "proposal-827ed4607ffa39d0ccef12d8",
+          "proposal-9bf852629ee6687276a0a3c3",
+          "proposal-e7907e89bf1c28a76395f4c4",
+          "proposal-488564213b7fed70b6702de0",
+          "proposal-b6a21ca1eb30c981286f0338",
+          "proposal-040480d4fe66b1ab18f6f5d5",
+          "proposal-8d084c0a486f7809bc65cb5a",
+          "proposal-c2e476ec0ea848cb65d65f0d",
+          "proposal-79ef915a6a430e656e665a94"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-829d26deae56ee76edac",
+        "evidence_id": "E-d3aebe64259ea519e1693467",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 18,
+        "start": 0,
+        "end": 866,
+        "section": "Outcome",
+        "scientific_cues": [
+          "hypothesis",
+          "may",
+          "test",
+          "experiment",
+          "results",
+          "Measurements",
+          "Sample",
+          "test"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 147,
+            "end": 150,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 199,
+            "end": 202,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 277,
+            "end": 280,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 560,
+            "end": 563,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 856,
+            "end": 859,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 3,
+          "UNRESOLVED": 4
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-e5d18ae437f9289550ba6810",
+          "proposal-dfba0e81e99f495ff79fb25b",
+          "proposal-e337980e5b4447f49a46fa5c",
+          "proposal-d27d964963a4bb7c7d505345",
+          "proposal-5310fb718f291d3cf34d8fe3",
+          "proposal-e5fdbb8e7a3edda5811a3ed6"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-c820460761091eee9079",
+        "evidence_id": "E-36fba4ad2dd3a80446e482de",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 19,
+        "start": 0,
+        "end": 292,
+        "section": "LUCI: SIBAL fabric",
+        "scientific_cues": [],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": ".92 mm/s",
+            "expression": ".92",
+            "unit": "mm/s",
+            "start": 46,
+            "end": 54,
+            "proposal_ids": [
+              "proposal-4cff99bf58bf989fd3e2c4bc",
+              "proposal-8507a6f64822dfbbd62add31"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 2,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "1.1 mm/s",
+            "expression": "1.1",
+            "unit": "mm/s",
+            "start": 82,
+            "end": 90,
+            "proposal_ids": [
+              "proposal-afd51954224fd89b07b21abc"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 6,
+          "UNRESOLVED": 4
+        },
+        "proposal_ids": [
+          "proposal-0e9a5eab2667a5067f9c903e",
+          "proposal-0ee53368e8f2eeccba33baa2",
+          "proposal-5b97d4c10065c3ee62220b8c",
+          "proposal-a998fe61cd0a965589e57f4a",
+          "proposal-f60120d3e478c2d8f6c8ff74",
+          "proposal-e59d0dae1c0256cb8013b271",
+          "proposal-a074a1587b8f4e23a417491d",
+          "proposal-4cff99bf58bf989fd3e2c4bc",
+          "proposal-8507a6f64822dfbbd62add31",
+          "proposal-afd51954224fd89b07b21abc"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-954ddc24db1744021e03",
+        "evidence_id": "E-d21d6576e58973f04cbb79b6",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 20,
+        "start": 0,
+        "end": 315,
+        "section": "LUCI: PMMA",
+        "scientific_cues": [
+          "Sample",
+          "sample",
+          "measure",
+          "extinction"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "~6cm",
+            "expression": "~6",
+            "unit": "cm",
+            "start": 215,
+            "end": 219,
+            "proposal_ids": [
+              "proposal-40b9db788f8223069699d346"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 10,
+          "UNRESOLVED": 2
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-fb086150b569ed29e6a3dae6",
+          "proposal-0bed1e14f1f6d06e8892a251",
+          "proposal-02c975c562b91d320ef31625",
+          "proposal-d604c84dda7f9870c5b3f7bb",
+          "proposal-72dec2567853337beac946ce",
+          "proposal-e0d222d22a7dd8e2448da257",
+          "proposal-38747821eb1725e53d4cf206",
+          "proposal-4687d40a54670429a18e245c",
+          "proposal-2da2d6b46cc5ab9f23e14199",
+          "proposal-ea8a8f9661693201ef3a2e65",
+          "proposal-40b9db788f8223069699d346"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-6aa4ab7dc9c5014adde4",
+        "evidence_id": "E-b7874f30c44529988c9a2b4d",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 21,
+        "start": 0,
+        "end": 118,
+        "section": "LUCI: PMMA",
+        "scientific_cues": [
+          "Sample"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "1.5 \nmm/s",
+            "expression": "1.5",
+            "unit": "mm/s",
+            "start": 107,
+            "end": 116,
+            "proposal_ids": [
+              "proposal-b1ca4002f166a5dd0030cf8d"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 6,
+          "UNRESOLVED": 2
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-0bed1e14f1f6d06e8892a251",
+          "proposal-02c975c562b91d320ef31625",
+          "proposal-b1a88cf0052aacb95c6464f6",
+          "proposal-aaa771b345ab0b8562bf80e7",
+          "proposal-c63afffeb7bd21f6f93d5dbd",
+          "proposal-4e90bfd65200a8f91fafb43c",
+          "proposal-b1ca4002f166a5dd0030cf8d"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-a488f608588e2e61dbfe",
+        "evidence_id": "E-ace382bc90bbdf2808dfba14",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 22,
+        "start": 0,
+        "end": 191,
+        "section": "LUCI: PMMA",
+        "scientific_cues": [
+          "Sample"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "20%",
+            "expression": "20",
+            "unit": "%",
+            "start": 61,
+            "end": 64,
+            "proposal_ids": [
+              "proposal-256d3348e031fc4d4aff43b0"
+            ],
+            "source_supported_proposals": 1,
+            "unresolved_proposals": 0,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "14.3%",
+            "expression": "14.3",
+            "unit": "%",
+            "start": 69,
+            "end": 74,
+            "proposal_ids": [
+              "proposal-0f3f87b3621634438e64c187"
+            ],
+            "source_supported_proposals": 1,
+            "unresolved_proposals": 0,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "15.8%",
+            "expression": "15.8",
+            "unit": "%",
+            "start": 96,
+            "end": 101,
+            "proposal_ids": [
+              "proposal-950d7975a95b1e1f6b1d239f"
+            ],
+            "source_supported_proposals": 1,
+            "unresolved_proposals": 0,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "125s",
+            "expression": "125",
+            "unit": "s",
+            "start": 185,
+            "end": 189,
+            "proposal_ids": [
+              "proposal-c05f00a67937b95d09c07da6"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 9,
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-0bed1e14f1f6d06e8892a251",
+          "proposal-02c975c562b91d320ef31625",
+          "proposal-4c227beadb95e3aa4d643286",
+          "proposal-1324ba7512e5a56176abc835",
+          "proposal-68354c013be9ed91894a21c7",
+          "proposal-256d3348e031fc4d4aff43b0",
+          "proposal-0f3f87b3621634438e64c187",
+          "proposal-950d7975a95b1e1f6b1d239f",
+          "proposal-c05f00a67937b95d09c07da6"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-3a84b67c62295b826d71",
+        "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 23,
+        "start": 0,
+        "end": 389,
+        "section": "LUCI 1-G Updates",
+        "scientific_cues": [
+          "Results",
+          "results",
+          "Results"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4
+        },
+        "proposal_ids": [
+          "proposal-e5d18ae437f9289550ba6810",
+          "proposal-cb2de5cab07f14f52f7f2f67",
+          "proposal-ff658e555c65a305f4dc1a91",
+          "proposal-553479d387ecac43bc121f18"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-4b1a8014b8a1cfdc00a3",
+        "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 24,
+        "start": 0,
+        "end": 194,
+        "section": "1-G Results: SIBAL fabric",
+        "scientific_cues": [
+          "Results"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "~24 seconds",
+            "expression": "~24",
+            "unit": "seconds",
+            "start": 148,
+            "end": 159,
+            "proposal_ids": [
+              "proposal-e55f04dfa37d07c17c25c130"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "4 \nseconds",
+            "expression": "4",
+            "unit": "seconds",
+            "start": 182,
+            "end": 192,
+            "proposal_ids": [
+              "proposal-4dc2f98add2edb33e748c2d0"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 8,
+          "UNRESOLVED": 5
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-0e9a5eab2667a5067f9c903e",
+          "proposal-0eed95a8d83ef2e621a6588b",
+          "proposal-7129870cd8a44d98602bee54",
+          "proposal-48d974f9788fadd8388338fc",
+          "proposal-76d5de1146f600e98feed9a0",
+          "proposal-909c6325dc90ef60338604a3",
+          "proposal-3f9f123588fb959344115c0a",
+          "proposal-66d8777f961fed3e60bbf203",
+          "proposal-97ad25d6df12f9adae72711c",
+          "proposal-9007e58498a8f6dbfb5db5fc",
+          "proposal-e55f04dfa37d07c17c25c130",
+          "proposal-4dc2f98add2edb33e748c2d0"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-80336cf0b50a6660ad64",
+        "evidence_id": "E-a08131327d6385587996348e",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 25,
+        "start": 0,
+        "end": 224,
+        "section": "1-G Results: SIBAL fabric",
+        "scientific_cues": [
+          "Results",
+          "result"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 8,
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-0e9a5eab2667a5067f9c903e",
+          "proposal-0eed95a8d83ef2e621a6588b",
+          "proposal-7129870cd8a44d98602bee54",
+          "proposal-17944f49b5925de67926c7cf",
+          "proposal-ca66e130d52fdd3cce1bb58f",
+          "proposal-e83479722a44a03bd5ca029d",
+          "proposal-f396dcae81326ab045a51253",
+          "proposal-9007e58498a8f6dbfb5db5fc"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-1a2164bfb87ae211c1bc",
+        "evidence_id": "E-007124915589abdd7abc5e6e",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 26,
+        "start": 0,
+        "end": 76,
+        "section": "1-G Results: SIBAL",
+        "scientific_cues": [
+          "Results"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 7
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-d45d4d3ec3a0a27411488d49",
+          "proposal-4d5cfac95f99dbd21602a24a",
+          "proposal-0271c126f8099607caf9d5c7",
+          "proposal-de7691abb0e98e7286e3b011",
+          "proposal-ee61905e48c04b3eb92b1907",
+          "proposal-ae4e461d9f0c26087e62c5a5"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-e22e7d05682498bb22cb",
+        "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 27,
+        "start": 0,
+        "end": 74,
+        "section": "1-G Results: SIBAL",
+        "scientific_cues": [
+          "Results"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "20%",
+            "expression": "20",
+            "unit": "%",
+            "start": 69,
+            "end": 72,
+            "proposal_ids": [
+              "proposal-a7293140120396e9f4c82850"
+            ],
+            "source_supported_proposals": 1,
+            "unresolved_proposals": 0,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 8
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-d45d4d3ec3a0a27411488d49",
+          "proposal-4d5cfac95f99dbd21602a24a",
+          "proposal-8471b3154e9c49d46e62e00d",
+          "proposal-0b3aa0525a6dfff54a904b7e",
+          "proposal-d9bbfdfe5f47f783f98ac283",
+          "proposal-7775e1a9d4b0cce7e135c21a",
+          "proposal-a7293140120396e9f4c82850"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-ca24826b5a118cbcc04e",
+        "evidence_id": "E-94f2c30163d61cfbf33f137a",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 28,
+        "start": 0,
+        "end": 252,
+        "section": "1-G Results: PMMA",
+        "scientific_cues": [
+          "Results",
+          "Sample",
+          "experiment",
+          "observation",
+          "sample"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 8,
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-a06f442c48e69ac76bdb8df3",
+          "proposal-e41c38e6123abd33be018011",
+          "proposal-05c23577d18293967c7e6805",
+          "proposal-c2b47ba27064612a7d40695c",
+          "proposal-f6c533bb13814d5c955cd8bf",
+          "proposal-f3c5a6246f3280b21e949095",
+          "proposal-25a245641b69d9f721f09a2c"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-3efd71700921f9603e37",
+        "evidence_id": "E-4e83b44eb58f230065e2b311",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 29,
+        "start": 0,
+        "end": 226,
+        "section": "1-G Results: PMMA",
+        "scientific_cues": [
+          "Results",
+          "Sample"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "~ 3.95 mm/s",
+            "expression": "~ 3.95",
+            "unit": "mm/s",
+            "start": 50,
+            "end": 61,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 6,
+          "UNRESOLVED": 5
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-a06f442c48e69ac76bdb8df3",
+          "proposal-e41c38e6123abd33be018011",
+          "proposal-b93310e51288c300d180d983",
+          "proposal-d5bf139cb9cf8fdd1f1b4457",
+          "proposal-f6c25ca7ccf4392209018d91",
+          "proposal-bf8a79e017c1b0c1aa95e435",
+          "proposal-c14501057bf17441739cd32f",
+          "proposal-455a79b93a3a58ad18d9ef4a",
+          "proposal-54a40bd9b66651fe67f1ac60"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-12e804aa49a56f92893d",
+        "evidence_id": "E-883f133a5745d0142df1e007",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 30,
+        "start": 0,
+        "end": 117,
+        "section": "1-G Results: PMMA",
+        "scientific_cues": [
+          "Results",
+          "Sample"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 5,
+          "UNRESOLVED": 3
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-a06f442c48e69ac76bdb8df3",
+          "proposal-e41c38e6123abd33be018011",
+          "proposal-4a41899f3c3996907bfc60e6",
+          "proposal-ff8498bdd00cccfb1d0278eb",
+          "proposal-723af79f948c6159c928262b",
+          "proposal-30cf11b0a48fee194ad3958a"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-08493e77424bdad0df7c",
+        "evidence_id": "E-d4940e2063b4c03f3303beea",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 31,
+        "start": 0,
+        "end": 127,
+        "section": "Results: PMMA",
+        "scientific_cues": [
+          "Sample",
+          "Results"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "21%",
+            "expression": "21",
+            "unit": "%",
+            "start": 99,
+            "end": 102,
+            "proposal_ids": [
+              "proposal-1e04dd7a9561179aed25b937"
+            ],
+            "source_supported_proposals": 1,
+            "unresolved_proposals": 0,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "14.5%",
+            "expression": "14.5",
+            "unit": "%",
+            "start": 106,
+            "end": 111,
+            "proposal_ids": [
+              "proposal-1c83a06b34160464530b6bf5"
+            ],
+            "source_supported_proposals": 1,
+            "unresolved_proposals": 0,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 6,
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-4fc6f440e7c88fc9a4471867",
+          "proposal-bbde99abe1cf719ee93e2033",
+          "proposal-9d9c46dfd4fc0c1277f0275f",
+          "proposal-468b1a4143667304ce759bfd",
+          "proposal-1e04dd7a9561179aed25b937",
+          "proposal-1c83a06b34160464530b6bf5"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-824382d9ae0295c759a6",
+        "evidence_id": "E-92e5fd01ba0fa39b833981b3",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 32,
+        "start": 0,
+        "end": 24,
+        "section": "Outcome",
+        "scientific_cues": [
+          "Results"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 5
+        },
+        "proposal_ids": [
+          "proposal-d45d4d3ec3a0a27411488d49",
+          "proposal-c868926da4c81a29e01a6dca",
+          "proposal-537de0b104a8cddadb1e2d61",
+          "proposal-25ded29a715b14640e792ca9",
+          "proposal-ca0faba98c0f67555cd27bc0",
+          "proposal-468b1a4143667304ce759bfd",
+          "proposal-1cf173591b869802c8716be1"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-5ca34a24e7ec0e74152d",
+        "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 34,
+        "start": 0,
+        "end": 208,
+        "section": "SIBAL Flame Width Comparison",
+        "scientific_cues": [
+          "extinction",
+          "experiment",
+          "extinction",
+          "extinction"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 52,
+            "end": 55,
+            "proposal_ids": [
+              "proposal-254efa9e5afc963c537db5b4"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "start": 137,
+            "end": 140,
+            "proposal_ids": [
+              "proposal-53e080aac06752e78bb3c47d"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "~ 45 \nseconds",
+            "expression": "~ 45",
+            "unit": "seconds",
+            "start": 160,
+            "end": 173,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4,
+          "UNRESOLVED": 4
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-d45d4d3ec3a0a27411488d49",
+          "proposal-d2164e152930b3dbc3ae7299",
+          "proposal-800d4465d0cb6c8e9a7599cb",
+          "proposal-20dbd86da829ab0d12f522a6",
+          "proposal-2a6aea8d9951c8e8174ab6e6",
+          "proposal-254efa9e5afc963c537db5b4",
+          "proposal-53e080aac06752e78bb3c47d"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-7ec852291818ed914a7a",
+        "evidence_id": "E-a77a2a0b6c4c5ef905224f73",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 35,
+        "start": 0,
+        "end": 23,
+        "section": "Outcome",
+        "scientific_cues": [
+          "Results"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-02c975c562b91d320ef31625"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-08778bcbc8db86bf6bd3",
+        "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 36,
+        "start": 0,
+        "end": 138,
+        "section": "PMMA Flame Tip Comparison",
+        "scientific_cues": [
+          "Sample"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 6,
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-a92a1bd9f63568f5d15f9244",
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-e5d18ae437f9289550ba6810",
+          "proposal-1250c97084bb7e867489a7d8",
+          "proposal-e58aa984394dd6ce2cc1523d",
+          "proposal-2b144a8d85e716740c0c4574",
+          "proposal-ec764f2eaeed37bc1cb55eb9"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-ecf9abdfbb6bc27feb47",
+        "evidence_id": "E-ab863beddb4ab0a2517976fa",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 37,
+        "start": 0,
+        "end": 706,
+        "section": "Outcome",
+        "scientific_cues": [
+          "tests",
+          "results",
+          "experiment",
+          "tests",
+          "experiment",
+          "test"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "greater than 25 seconds",
+            "expression": "greater than 25",
+            "unit": "seconds",
+            "start": 78,
+            "end": 101,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "UNRESOLVED": 5,
+          "SOURCE_SUPPORTED": 2
+        },
+        "proposal_ids": [
+          "proposal-0380c1eecd5cfe5cbb7ca7c8",
+          "proposal-102ecd7304351a7cd6262bcd",
+          "proposal-b7288a138411d7bca33e9cb3",
+          "proposal-af4777c489cedcace856757a",
+          "proposal-c31c029aae016bb9569a49e4",
+          "proposal-3eff431ead117b146c90c987",
+          "proposal-79e175ae6969ac1d8d5262e5"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-ac7d4a6aa3df1ca078b1",
+        "evidence_id": "E-7e8d8e958dbe85901540a377",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 38,
+        "start": 0,
+        "end": 8,
+        "section": "Outcome",
+        "scientific_cues": [],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-c2e20f48e8d508f48114306d"
+        ],
+        "state": "UNRESOLVED_STRUCTURE"
+      },
+      {
+        "id": "coverage-1fff705db171febc6759",
+        "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 39,
+        "start": 0,
+        "end": 344,
+        "section": "LUCI Partial-G Recap: SIBAL",
+        "scientific_cues": [
+          "observed",
+          "extinction"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "~3.2 \ncm",
+            "expression": "~3.2",
+            "unit": "cm",
+            "start": 127,
+            "end": 135,
+            "proposal_ids": [
+              "proposal-c2a01c73f39a2280d055230d"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "~1.5 cm",
+            "expression": "~1.5",
+            "unit": "cm",
+            "start": 140,
+            "end": 147,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "~40 \nseconds",
+            "expression": "~40",
+            "unit": "seconds",
+            "start": 228,
+            "end": 240,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 7,
+          "UNRESOLVED": 1
+        },
+        "proposal_ids": [
+          "proposal-d45d4d3ec3a0a27411488d49",
+          "proposal-0eed95a8d83ef2e621a6588b",
+          "proposal-e60b1ff9f196402e88f59e32",
+          "proposal-e9abfa532f61c220ad8604ae",
+          "proposal-d96a86a17eaa5820d51dcf69",
+          "proposal-6088608f41124d08a6d9998a",
+          "proposal-b92e6978fa350fe7fae82243",
+          "proposal-c2a01c73f39a2280d055230d"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-e18fff4a4370613ff956",
+        "evidence_id": "E-d5f9930ae7882641030769e0",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 40,
+        "start": 0,
+        "end": 269,
+        "section": "LUCI Partial-G Recap: SIBAL",
+        "scientific_cues": [],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "~ 1.25 \ncm",
+            "expression": "~ 1.25",
+            "unit": "cm",
+            "start": 180,
+            "end": 190,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "~0.4 cm",
+            "expression": "~0.4",
+            "unit": "cm",
+            "start": 195,
+            "end": 202,
+            "proposal_ids": [
+              "proposal-e23e4b6f12a49051beed2c77"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "-0.094 \nmm/s",
+            "expression": "-0.094",
+            "unit": "mm/s",
+            "start": 255,
+            "end": 267,
+            "proposal_ids": [
+              "proposal-d1f56552c4e4e76412daadd2"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4,
+          "UNRESOLVED": 4
+        },
+        "proposal_ids": [
+          "proposal-d45d4d3ec3a0a27411488d49",
+          "proposal-0eed95a8d83ef2e621a6588b",
+          "proposal-e60b1ff9f196402e88f59e32",
+          "proposal-f5b4a5c52f53a5995b427555",
+          "proposal-17491e4cc4205013b5a58249",
+          "proposal-e744b794bc2d2b2dd082b0e0",
+          "proposal-d1f56552c4e4e76412daadd2",
+          "proposal-e23e4b6f12a49051beed2c77"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-483ded82b2ed01ead25f",
+        "evidence_id": "E-591e163edaa75d5ac8c895d0",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 41,
+        "start": 0,
+        "end": 136,
+        "section": "LUCI Partial-G Recap: SIBAL",
+        "scientific_cues": [
+          "extinction",
+          "must"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4
+        },
+        "proposal_ids": [
+          "proposal-d45d4d3ec3a0a27411488d49",
+          "proposal-0eed95a8d83ef2e621a6588b",
+          "proposal-e60b1ff9f196402e88f59e32",
+          "proposal-96f4ff70266e11896898c27f"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-7b18f6fe8459b1eaff90",
+        "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 42,
+        "start": 0,
+        "end": 142,
+        "section": "LUCI: SIBAL fabric",
+        "scientific_cues": [
+          "experiment"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "~20%",
+            "expression": "~20",
+            "unit": "%",
+            "start": 54,
+            "end": 58,
+            "proposal_ids": [
+              "proposal-98b920868d6ec7720f73247b"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          },
+          {
+            "original_expression_with_unit": "~18%",
+            "expression": "~18",
+            "unit": "%",
+            "start": 63,
+            "end": 67,
+            "proposal_ids": [
+              "proposal-04409241114ae07051414f3a"
+            ],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 1,
+            "state": "STRUCTURED_CANDIDATE"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 3,
+          "UNRESOLVED": 3
+        },
+        "proposal_ids": [
+          "proposal-0e9a5eab2667a5067f9c903e",
+          "proposal-0eed95a8d83ef2e621a6588b",
+          "proposal-6b7131b7284659673197c070",
+          "proposal-afeea4ad3c8b80fecd507065",
+          "proposal-98b920868d6ec7720f73247b",
+          "proposal-04409241114ae07051414f3a"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-80fd107c34b017d26027",
+        "evidence_id": "E-d6e291dc28d06c4dea34e721",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 43,
+        "start": 0,
+        "end": 294,
+        "section": "LUCI: PMMA",
+        "scientific_cues": [
+          "Sample"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "~.6 mm/s",
+            "expression": "~.6",
+            "unit": "mm/s",
+            "start": 209,
+            "end": 217,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "125s",
+            "expression": "125",
+            "unit": "s",
+            "start": 259,
+            "end": 263,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 8,
+          "UNRESOLVED": 3
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-0bed1e14f1f6d06e8892a251",
+          "proposal-02c975c562b91d320ef31625",
+          "proposal-88f712ee09cf3444c0242c2e",
+          "proposal-fb87bdb139ad80dd2457a632",
+          "proposal-0005a12d17960b408e71fa1e",
+          "proposal-4362b5ae2d5964d8727c4cf0",
+          "proposal-ba7e514ba316a5ce60d89e17",
+          "proposal-40473e1485f5c1d61eabea68",
+          "proposal-75a2db3ffd6bb86c83504907",
+          "proposal-0fdbb38440802a42deafe457"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-e30ef3bd2477c93a512b",
+        "evidence_id": "E-f4f95c94998d43684aa6df08",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "page": 44,
+        "start": 0,
+        "end": 95,
+        "section": "LUCI: PMMA",
+        "scientific_cues": [
+          "Sample"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 3,
+          "UNRESOLVED": 3
+        },
+        "proposal_ids": [
+          "proposal-6daad66a15641112e3373fc0",
+          "proposal-0bed1e14f1f6d06e8892a251",
+          "proposal-02c975c562b91d320ef31625",
+          "proposal-eeb9ed2a2b607f48057800e1",
+          "proposal-625241ef715819e3490decdf",
+          "proposal-419b7e8a633de4879a082ef3"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      }
+    ],
+    "outstanding_source_units": [
+      "coverage-54297466edf31a1dbe97",
+      "coverage-46fb7c7a95643c28bd60",
+      "coverage-1061483c201d6897eb7b",
+      "coverage-2d4c00e2b09551bc9edc",
+      "coverage-47a1336039a14f5e2076",
+      "coverage-639748b3b6143d815749",
+      "coverage-ac96c6292a1fd0cd76c1",
+      "coverage-4555b500e75928f52f1d",
+      "coverage-829d26deae56ee76edac",
+      "coverage-3efd71700921f9603e37",
+      "coverage-5ca34a24e7ec0e74152d",
+      "coverage-ecf9abdfbb6bc27feb47",
+      "coverage-1fff705db171febc6759",
+      "coverage-e18fff4a4370613ff956",
+      "coverage-80fd107c34b017d26027"
+    ],
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "empty_model_is_scientific_success": false
+  },
+  "source_integrity_errors": [],
+  "approvals": 0,
+  "publications": 0,
+  "sqlite_integrity": "ok"
+}

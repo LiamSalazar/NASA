@@ -1,0 +1,14 @@
+{
+  "staged_files": 486,
+  "staged_logical_bytes": 97563190,
+  "forbidden_runtime_secret_or_downloaded_source_files": [],
+  "credential_pattern_files": [],
+  "deliberate_public_test_pdf": "tests/fixtures/scientific_extraction/luci_original.pdf",
+  "staging_policy": "Exact production modules/tests/docs plus versioned scientific execution/QA receipts. Generated workspaces, PDF downloads, databases, ZIP snapshots and cold archives excluded. Compressed JSONL raw provider receipt streams inspected after decompression.",
+  "supersedes": "staging_audit_01.json initial diff_check label was incorrect; full check emitted preserved receipt whitespace warnings.",
+  "production_diff_check_exit_code": 0,
+  "full_artifact_diff_check_exit_code": 2,
+  "full_artifact_diff_check_receipt": "staging_whitespace_01.txt",
+  "artifact_policy": "Historical Turtle exports retain serializer EOF blanks. Initial Git patch retains exact archived whitespace. Do not rewrite immutable scientific receipts to normalize formatting. Production source/test/doc diff passes.",
+  "final_tests": "quality_checks_09.json:463pass/Ruffpass/sourcehashesunchanged"
+}

@@ -1,0 +1,50 @@
+{
+  "response": "{\"entities\":[{\"key\":\"e1\",\"label\":\"Lunar Combustion Investigation\",\"class_id\":\"Investigation\",\"study\":\"current\",\"support\":[\"E-3d0d479957889ee0ebba3428\"]},{\"key\":\"e2\",\"label\":\"Lunar Combustion Investigation\",\"class_id\":\"Investigation\",\"study\":\"current\",\"support\":[\"E-0acbeed7a437e765685d020a\"]},{\"key\":\"e3\",\"label\":\"Lunar Combustion Investigation\",\"class_id\":\"Investigation\",\"study\":\"current\",\"support\":[\"E-fff11db50ab02d9c3c5437c1\"]}]}",
+  "usage": {
+    "completion_tokens": 166,
+    "prompt_tokens": 646,
+    "total_tokens": 812,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "finish_reason": "stop",
+  "metadata": {
+    "stream": true,
+    "max_output_tokens": 8192,
+    "thinking_enabled": false,
+    "reasoning_budget": 0,
+    "duration_seconds": 4.065593635008554,
+    "time_to_first_token_seconds": 4.063908641008311,
+    "reasoning_characters": 0
+  },
+  "request": {
+    "source_anchors": [
+      {
+        "id": "E-3d0d479957889ee0ebba3428",
+        "quote": "Lunar Combustion Investigation: Flammability Results \nfrom a Rotating Sounding Rocket\nPaul V. Ferkul1, Michael C. Johnston2, Nathan Kralik3, and Ya-Ting Liao3 \nUniversities Space Research Association1\nNASA Johnson Space Center 2 \nCase Western Reserve University 3\n2025 Annual Meeting\nPhoenix, Arizona\nDecember 3-6, 2025\n"
+      },
+      {
+        "id": "E-0acbeed7a437e765685d020a",
+        "quote": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\nObjectives\nDemonstrate the feasibility of conducting material flammability experiments in partial-g on the spinning Blue Origin \nNew Shepard vehicle which simulates Lunar gravity with centrifugal force\nObtain data from the flight that will support other simulated Lunar-g experiments in drop towers and parabolic \nflight, actual Lunar-g experiments, and computer models.\nOutcome\nThe LUCI scientific objectives were achieved.  Material flammability testing at partial-g is feasible using a spinning \nvehicle.  Conducting large scale flammability testing would require additional programmatic support.  This might be \nconsidered should more Lunar-g flights become available using New Shepard.\n"
+      },
+      {
+        "id": "E-fff11db50ab02d9c3c5437c1",
+        "quote": "Page 3\nOverview\nConduct partial-g fire tests on the Blue Origin sounding rocket.\n \nHypothesis: some materials burning in partial-g are more flammable than on Earth.  This has \nimportant implications for the current 1-g material screening method used by NASA.  \nFuel samples burned in pairs; cameras and other sensors record flame characteristics.\nOxygen limits for upward and downward spread at partial-g will be compared to 1-g values.  \nMeasured flame characteristics in 1-g and partial-g will be compared to detailed model predictions.  \nThese comparisons will refine pressure-gravity scaling relations and will be applied to other g-levels.\n  \nThe work directly addresses knowledge gaps in flammability and crew safety as defined in several \nNASA strategic documents.\n"
+      }
+    ]
+  },
+  "system": "Your only task is source-grounded entity identification. Return exactly {\"entities\":[{\"key\":\"e1\",\"label\":\"exact source name\",\"class_id\":\"Investigation\",\"study\":\"current\",\"support\":[\"supplied anchor ID\"]}]}. Use classes Investigation, ExperimentFamily, ExperimentalRun, Sample, Material or ExperimentalCondition. Do not output any other top-level key. Do not copy the schema. No propositions or relationships in this task. Do not invent executed runs from objectives.",
+  "response_format": "json_schema"
+}

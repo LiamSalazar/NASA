@@ -1,0 +1,32 @@
+{
+  "purpose": "Minimal existing free endpoint check through repaired production stream deadline; not scientific extraction",
+  "request": {
+    "source_anchor": {
+      "id": "A1",
+      "quote": "LUCI: SIBAL fabric"
+    },
+    "task": "Return the supplied original anchor ID in the anchor field."
+  },
+  "max_tokens": 4096,
+  "reasoning_tokens": 0,
+  "timeout_seconds": 120,
+  "configured_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "failure": {
+    "kind": "deadline",
+    "metadata": {
+      "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "stream": true,
+      "max_output_tokens": 4096,
+      "thinking_enabled": false,
+      "reasoning_budget": 0,
+      "response_headers": {},
+      "duration_seconds": 120.00091354601318,
+      "served_models": [],
+      "reasoning_characters": 0,
+      "usage": null,
+      "finish_reason": null
+    },
+    "raw_prefix": ""
+  },
+  "duration_seconds": 120.00094803801039
+}

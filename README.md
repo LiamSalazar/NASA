@@ -78,3 +78,18 @@ NASA_CURATION_DEVELOPMENT=true NASA_CURATION_WORKSPACE=/tmp/nasa-curation-demo N
 ```
 
 See [PHASE3C_CURATION_V1.md](docs/PHASE3C_CURATION_V1.md) and `artifacts/phase3c_curation_v1/` for actual PSI-98/NTRS publication, correction, rollback, query and validation receipts. Compatible quantity additions and guided review work; general prose preparation, unrestricted natural-language correction and general ontology evolution remain partial. Test-principal approval is not NASA institutional authorization.
+
+## Contextual scientific ingestion
+
+The existing incorporation service supports immutable official NTRS submission and adaptive, resumable scientific preparation:
+
+```bash
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion initialize
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion submit --ntrs-id 20150008961
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion prepare PACKAGE_ID --model
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion prepare PACKAGE_ID --model --recover
+```
+
+Preparation works without an API key. Model extraction uses the configured NVIDIA endpoint; source complexity guides context, output and reasoning allocation. Requests have finite timeouts and controlled retries. Optional operator call/token/session ceilings remain available. `--recover` revalidates retained proposals, resumes missing identity tasks and targets source omissions. These operations are also available through `CurationService.prepare_scientific` and the application's incorporation view, without a coding assistant.
+
+The isolated package retains original inputs, evidence spans, source table cells, proposed semantic mappings and grouped review dependencies. Preparation grants no scientific approval or publication authority. Scientific coverage distinguishes text read, original quantity/table candidates, validated assertions, unresolved proposals and inaccessible figures. See [the Phase 1 implementation and acceptance report](docs/PHASE1_GENERALIZABLE_SCIENTIFIC_INGESTION.md) for real inference results and remaining acceptance requirements.

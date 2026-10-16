@@ -1,0 +1,288 @@
+@prefix ns1: <https://example.org/nasa-fire-safety/semantic/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:PMMA a ns1:Material ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-29f4dbc445b8ec5997aadda5",
+        "E-42d1d3e0142d9ad0e6e13365",
+        "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"id\": \"PMMA\", \"label\": \"PMMA\", \"review_status\": \"APPROVED\", \"text\": \"PMMA\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:normal-gravity a ns1:GravityCondition ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c",
+        "E-a06680297147043e091d73fd",
+        "E-fbf7641d95c4f4bc72654389" ;
+    ns1:payload "{\"id\": \"normal-gravity\", \"label\": \"normal gravity\", \"review_status\": \"APPROVED\", \"text\": \"normal gravity\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-054a8620ce7721bf311da4b7 a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-2a510aca56981d0ee2a06058" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"author_reported_conclusion\", \"evidence_ids\": [\"E-2a510aca56981d0ee2a06058\"], \"id\": \"proposal-054a8620ce7721bf311da4b7\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:825679bad1b75437a11d\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"The blowoff \\nbranch exhibits a linear (Yox ~ a), trend that indicates there is a relatively constant critical \\ntemperature at blowoff.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-2c41556f8e029e244c5be1ab a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"tentative_interpretation\", \"evidence_ids\": [\"E-073a752147138aad3f10501c\"], \"id\": \"proposal-2c41556f8e029e244c5be1ab\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Later in the test program, we attempted to re-establish the \\nstagnation region after local blowoff by quickly reducing the flow to a value below the blowoff \\nvelocity, but we were only successful in one instance where the blowoff of the stagnation region may \\nnot have been complete (flame opening less than a thermal length, perhaps) due to the astronaut\\u2019s \\nquick response time.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-3a68f8e705640dca0add2c1b a ns1:ExperimentalCondition ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"experimental_configuration\", \"evidence_ids\": [\"E-a06680297147043e091d73fd\"], \"id\": \"proposal-3a68f8e705640dca0add2c1b\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:828208648e7d4f90a1c8\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Twenty-four concurrent-flow tests were performed, focusing on finding flammability limits as a function \\nof oxygen and flow speed.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-3f114857aa8ec2066e5af67d a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-fbf7641d95c4f4bc72654389" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"tentative_interpretation\", \"evidence_ids\": [\"E-fbf7641d95c4f4bc72654389\"], \"id\": \"proposal-3f114857aa8ec2066e5af67d\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"The linear blowoff boundary has interesting implications in that it may be \\npossible to linearly extrapolate blowoff data down to zero stretch rate and use that oxygen value as a \\nconservative estimate of the minimum oxygen concentration where the material will burn.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-4e979d5e1e622422dc878885 a ns1:ExperimentalCondition ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-501cf49397bf0765164ecfe5" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"experimental_configuration\", \"evidence_ids\": [\"E-501cf49397bf0765164ecfe5\"], \"id\": \"proposal-4e979d5e1e622422dc878885\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Conclusions \\nTwenty-four concurrent axial flow flammability tests with three diameters of cast PMMA \\ncylindrical rods were performed in the MSG on the ISS.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-5be151e143a52e7719c120ea a ns1:ExperimentalCondition ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-501cf49397bf0765164ecfe5" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"experimental_configuration\", \"evidence_ids\": [\"E-501cf49397bf0765164ecfe5\"], \"id\": \"proposal-5be151e143a52e7719c120ea\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Flow velocity through the duct was also varied by changing the fan voltage, and \\nmeasured with a hot-wire anemometer.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-8635dd38cc231b841d54b9eb a ns1:ExperimentalCondition ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-501cf49397bf0765164ecfe5" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"experimental_configuration\", \"evidence_ids\": [\"E-501cf49397bf0765164ecfe5\"], \"id\": \"proposal-8635dd38cc231b841d54b9eb\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Oxygen concentrations in the MSG \\nworking volume were varied during the testing from ambient ISS oxygen levels (~ 21% O2) down to \\n~14% O2, and oxygen concentrations before and after each test were measured with an on-board \\nCSA-CP sensor.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-aa71b67b77ed6ea53749263e a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-501cf49397bf0765164ecfe5" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"author_reported_conclusion\", \"evidence_ids\": [\"E-501cf49397bf0765164ecfe5\"], \"id\": \"proposal-aa71b67b77ed6ea53749263e\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:825679bad1b75437a11d\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"For blowoff limit tests, the astronaut quickly turned up the flow to obtain extinction.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-beeb9f2266f79218f0f363c2 a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-2a510aca56981d0ee2a06058" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"author_reported_conclusion\", \"evidence_ids\": [\"E-2a510aca56981d0ee2a06058\"], \"id\": \"proposal-beeb9f2266f79218f0f363c2\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:825679bad1b75437a11d\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"A surface energy balance is used \\nto show how the reductions in net flame heat flux at low stretch (low regression rates) drives the \\nflame to quenching extinction despite the fact that the losses actually decrease slightly near the limit.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-c25ef71e5fbde308f25988ed a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-fbf7641d95c4f4bc72654389" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"tentative_interpretation\", \"evidence_ids\": [\"E-fbf7641d95c4f4bc72654389\"], \"id\": \"proposal-c25ef71e5fbde308f25988ed\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"This \\nsuggests the Arrhenius temperature exponential term is dominant in the quenching region.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-c476c842755635a3e741855d a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-2a510aca56981d0ee2a06058" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"author_reported_conclusion\", \"evidence_ids\": [\"E-2a510aca56981d0ee2a06058\"], \"id\": \"proposal-c476c842755635a3e741855d\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:825679bad1b75437a11d\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"The quenching branch exhibits an exponential (Yox versus a) curve which \\nreflects importance of heat losses to drop the flame temperature, causing the Arrhenius reaction rate \\nto slow to a critical Damkohler number while flow time is plentiful.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-cf6a94060b9d23365e2b591c a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-2a510aca56981d0ee2a06058" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"author_reported_conclusion\", \"evidence_ids\": [\"E-2a510aca56981d0ee2a06058\"], \"id\": \"proposal-cf6a94060b9d23365e2b591c\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:825679bad1b75437a11d\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Sub Topic: Fire Research \\n \\n10 \\nA flammability boundary with axes of oxygen concentration and forced stretch rate is obtained \\nthat has a distinctive shape that correlates well with a critical Damkohler number.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-f8c1f60f43fbd38db4beb981 a ns1:ExperimentalCondition ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-501cf49397bf0765164ecfe5" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"experimental_configuration\", \"evidence_ids\": [\"E-501cf49397bf0765164ecfe5\"], \"id\": \"proposal-f8c1f60f43fbd38db4beb981\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"In quenching limit tests, the flow was incrementally turned down and the flame allowed to \\nstabilize at the new flow condition for at least the solid-phase response time before changing it again.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:relation%3Aproposal-d164b6b9d37fa05fc573c0ae%3AhasGravityCondition%3Amicrogravity a ns1:SemanticRelation ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c",
+        "E-501cf49397bf0765164ecfe5",
+        "E-a06680297147043e091d73fd" ;
+    ns1:object ns1:microgravity ;
+    ns1:relation ns1:hasGravityCondition ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:subject ns1:proposal-d164b6b9d37fa05fc573c0ae .
+
+ns1:relation%3Aresearch-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Astatement%3A4fda106e74b07ef2%3AhasGravityCondition%3Amicrogravity a ns1:SemanticRelation ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c",
+        "E-501cf49397bf0765164ecfe5",
+        "E-a06680297147043e091d73fd",
+        "E-cf3c4b5b6fbcb89ab1a0546a" ;
+    ns1:object ns1:microgravity ;
+    ns1:relation ns1:hasGravityCondition ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:subject ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Astatement%3A4fda106e74b07ef2 .
+
+ns1:relation%3Aresearch-5c3917d4f165b5bdd301%3Aentity%3A32a116156b650c85b83f%3AhasGravityCondition%3Amicrogravity a ns1:SemanticRelation ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c",
+        "E-501cf49397bf0765164ecfe5",
+        "E-a06680297147043e091d73fd" ;
+    ns1:object ns1:microgravity ;
+    ns1:relation ns1:hasGravityCondition ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:subject ns1:research-5c3917d4f165b5bdd301%3Aentity%3A32a116156b650c85b83f .
+
+ns1:research-5c3917d4f165b5bdd301 a ns1:Investigation ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301\", \"label\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"review_status\": \"APPROVED\", \"text\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Astatement%3A248407655e83559f a ns1:ReportedObservation ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"measured_observation\", \"evidence_ids\": [\"E-073a752147138aad3f10501c\"], \"id\": \"research-5c3917d4f165b5bdd301:8cee8a023d9f0aab:statement:248407655e83559f\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:825679bad1b75437a11d\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"This is \\nconsistent with tests for opposed flow flame spread rods that were also done as part of BASS-II [18], \\nwhere flame spread was not observed below 16.4 % O2.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Astatement%3A28396f1f326a67df a ns1:ReportedObservation ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"measured_observation\", \"evidence_ids\": [\"E-a06680297147043e091d73fd\"], \"id\": \"research-5c3917d4f165b5bdd301:8cee8a023d9f0aab:statement:28396f1f326a67df\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Quenching was observed when the \\nflow became sufficiently weak that the flame could no longer provide adequate heat flux to compensate \\nfor the heat losses (conduction into the rod and radiation).\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Astatement%3A2d1c591e2ecafad2 a ns1:ReportedObservation ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-cf3c4b5b6fbcb89ab1a0546a" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"measured_observation\", \"evidence_ids\": [\"E-cf3c4b5b6fbcb89ab1a0546a\"], \"id\": \"research-5c3917d4f165b5bdd301:8cee8a023d9f0aab:statement:2d1c591e2ecafad2\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"The thick gray flammability boundary is the border between stable flames and extinguished \\nflames.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Astatement%3A927d9fc50c9e2d3d a ns1:ReportedObservation ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-9d735526f461884a17b32b0a" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"measured_observation\", \"evidence_ids\": [\"E-9d735526f461884a17b32b0a\"], \"id\": \"research-5c3917d4f165b5bdd301:8cee8a023d9f0aab:statement:927d9fc50c9e2d3d\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Quenching was observed when the levels of forced flow and/or oxygen concentration became \\nsufficiently weak that the flame could no longer provide adequate heat flux to compensate for the \\nheat losses (conduction into the rod and radiation).\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Astatement%3Ad07e0ddd947af813 a ns1:Requirement ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"normative_requirement\", \"evidence_ids\": [\"E-a06680297147043e091d73fd\"], \"id\": \"research-5c3917d4f165b5bdd301:8cee8a023d9f0aab:statement:d07e0ddd947af813\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"For the blowoff branch, the boundary exhibits a linear dependence on oxygen \\nconcentration and stretch rate, indicating that the temperature at blowoff must be fairly constant.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3A22b2cfb3e47c5b9578e0 a ns1:Investigation ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-2a510aca56981d0ee2a06058" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:22b2cfb3e47c5b9578e0\", \"label\": \"BASS\", \"review_status\": \"APPROVED\", \"text\": \"BASS\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3A724a9bb88bade34097d3 a ns1:ExperimentFamily ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c",
+        "E-501cf49397bf0765164ecfe5",
+        "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:724a9bb88bade34097d3\", \"label\": \"blowoff limit tests\", \"review_status\": \"APPROVED\", \"text\": \"blowoff limit tests\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3A75ce060f9b47c2fc41d6 a ns1:ExperimentFamily ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-9d735526f461884a17b32b0a",
+        "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:75ce060f9b47c2fc41d6\", \"label\": \"quenching \\ntests\", \"review_status\": \"APPROVED\", \"text\": \"quenching \\ntests\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3A7fa1fe0665959478836f a ns1:ExperimentFamily ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:7fa1fe0665959478836f\", \"label\": \"blowoff tests\", \"review_status\": \"APPROVED\", \"text\": \"blowoff tests\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3A825679bad1b75437a11d a ns1:Investigation ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:825679bad1b75437a11d\", \"label\": \"BASS-II\", \"review_status\": \"APPROVED\", \"text\": \"BASS-II\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3A828208648e7d4f90a1c8 a ns1:ExperimentFamily ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:828208648e7d4f90a1c8\", \"label\": \"concurrent-flow tests\", \"review_status\": \"APPROVED\", \"text\": \"concurrent-flow tests\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3Aac4f85cd6ae54c7c252f a ns1:ExperimentFamily ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c",
+        "E-cf3c4b5b6fbcb89ab1a0546a" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:ac4f85cd6ae54c7c252f\", \"label\": \"drop tests\", \"review_status\": \"APPROVED\", \"text\": \"drop tests\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3Aaec0f16e95b7d9d7cb2d a ns1:ExperimentFamily ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:aec0f16e95b7d9d7cb2d\", \"label\": \"blowoff tests\", \"review_status\": \"APPROVED\", \"text\": \"blowoff tests\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:proposal-d164b6b9d37fa05fc573c0ae a ns1:ExperimentalCondition ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-501cf49397bf0765164ecfe5" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"experimental_configuration\", \"evidence_ids\": [\"E-501cf49397bf0765164ecfe5\"], \"id\": \"proposal-d164b6b9d37fa05fc573c0ae\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:32a116156b650c85b83f\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Complementary \\n5.18 second Zero Gravity Facility drop tests were conducted to compare blowoff limits in short and \\nlong duration microgravity.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Astatement%3A4fda106e74b07ef2 a ns1:ReportedObservation ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-cf3c4b5b6fbcb89ab1a0546a" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"measured_observation\", \"evidence_ids\": [\"E-cf3c4b5b6fbcb89ab1a0546a\"], \"id\": \"research-5c3917d4f165b5bdd301:8cee8a023d9f0aab:statement:4fda106e74b07ef2\", \"review_status\": \"APPROVED\", \"scope\": [\"research-5c3917d4f165b5bdd301:entity:32a116156b650c85b83f\"], \"scope_applicability\": \"Microgravity Flammability of PMMA Rods in Concurrent Flow\", \"text\": \"Sub Topic: Fire Research \\n \\n6 \\n3.4   Flammability Boundary \\nFor each test, the flow at which the flames extinguished and the last flow where a stable flame \\nwas observed (or where the flame did not blowout in the drop time for drop tests), along with the \\npost-burn oxygen reading were used to generate the flammability boundary, shown in Figure 4.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:research-5c3917d4f165b5bdd301%3Aentity%3A32a116156b650c85b83f a ns1:ExperimentFamily ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-073a752147138aad3f10501c",
+        "E-501cf49397bf0765164ecfe5",
+        "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"id\": \"research-5c3917d4f165b5bdd301:entity:32a116156b650c85b83f\", \"label\": \"drop \\ntests\", \"review_status\": \"APPROVED\", \"text\": \"drop \\ntests\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+
+ns1:microgravity a ns1:GravityCondition ;
+    prov:wasDerivedFrom ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-29f4dbc445b8ec5997aadda5",
+        "E-42d1d3e0142d9ad0e6e13365",
+        "E-a06680297147043e091d73fd" ;
+    ns1:payload "{\"id\": \"microgravity\", \"label\": \"Microgravity\", \"review_status\": \"APPROVED\", \"text\": \"Microgravity\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-5c3917d4f165b5bdd301%3A8cee8a023d9f0aab .
+

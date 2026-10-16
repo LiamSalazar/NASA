@@ -1,0 +1,32 @@
+{
+  "purpose": "Limited provider health diagnostic after two stalled/failed frozen requests; DEVELOPMENT anchor only; not scientific extraction/acceptance",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "max_tokens": 4096,
+  "timeout_seconds": 120,
+  "reasoning_tokens": 0,
+  "request": {
+    "anchor": {
+      "id": "A1",
+      "quote": "LUCI: SIBAL fabric"
+    },
+    "task": "Copy the supplied original anchor ID as anchor. Return only the JSON object."
+  },
+  "failure": {
+    "kind": "interrupted",
+    "metadata": {
+      "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "stream": true,
+      "max_output_tokens": 4096,
+      "thinking_enabled": false,
+      "reasoning_budget": 0,
+      "response_headers": {},
+      "duration_seconds": 189.03142342499632,
+      "served_models": [],
+      "reasoning_characters": 0,
+      "usage": null,
+      "finish_reason": null
+    },
+    "raw_prefix": ""
+  },
+  "duration_seconds": 189.03149233300064
+}

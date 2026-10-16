@@ -1,0 +1,10 @@
+{
+  "command": "uv run python scripts/curate_research.py --workspace artifacts/phase1_generalizable_ingestion/v3/luci_live_07/workspace prepare research-88a2411be5fc53d76df5 --model --recover --max-model-calls 0",
+  "exit_code": 0,
+  "stdout_preamble": "Consider using the pymupdf_layout package for a greatly improved page layout analysis.\n",
+  "artifact_parser": "json.loads(stdout[stdout.index(\"{\"):]); strips third-party PyMuPDF informational banner only; no scientific JSON altered",
+  "raw_stdout": "application_cli_luci_01.json",
+  "prepared": "application_cli_luci_prepared_01.json",
+  "new_calls": 0,
+  "digest": "6000a5f88f11ee4f8241f78ebbc9d918bc18e85f41739c713aabeeca5c664b43"
+}

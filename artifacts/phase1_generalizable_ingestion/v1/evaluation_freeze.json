@@ -1,0 +1,25 @@
+{
+  "head": "32336287ee4bfc0725879ee5ba95949a7001e306",
+  "baseline_tests": 331,
+  "development": [
+    "PSI-98",
+    "20150008961",
+    "20260003546"
+  ],
+  "holdout": {
+    "nasa_id": "20250010653",
+    "investigation": "Lunar Combustion Investigation (LUCI)",
+    "publication_lineage": "ASGSR 2025 LUCI presentation",
+    "eligibility": "NASA GRC acquisition, NASA-authored partial-gravity material flammability",
+    "exposure": "Citation metadata and abstract viewed; document body not acquired or viewed. No occurrence of identifier/investigation in repository raw, canonical, reports, artifacts, evals, domain or source before freeze. Other LUCI versions and FM2 excluded from development. Pretraining exposure unknown."
+  },
+  "labels": "Developer-verified exact source checks; not independent scientific gold",
+  "historical_holdout_limitations": "FLEX and Saffire previously exposed; title-only historical split did not separate investigation lineages",
+  "budgets": {
+    "development_model_calls": 8,
+    "holdout_model_calls": 6,
+    "output_tokens_per_call": 3000,
+    "retries": 0,
+    "timeout_per_call_seconds": 40
+  }
+}

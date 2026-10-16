@@ -1,0 +1,105 @@
+@prefix ns1: <https://example.org/nasa-fire-safety/semantic/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:PMMA a ns1:Material ;
+    prov:wasDerivedFrom ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-01e78ac4900b35ec6ddd9644",
+        "E-49e271d94011afe76cb7c262",
+        "E-4e83b44eb58f230065e2b311",
+        "E-883f133a5745d0142df1e007",
+        "E-94f2c30163d61cfbf33f137a",
+        "E-a77a2a0b6c4c5ef905224f73",
+        "E-ace382bc90bbdf2808dfba14",
+        "E-b1a9f6a613faf9d539c3c1bb",
+        "E-b7874f30c44529988c9a2b4d",
+        "E-b901ec1e461ebf942f146e18",
+        "E-d21d6576e58973f04cbb79b6",
+        "E-d4940e2063b4c03f3303beea",
+        "E-d5b5c13caefae1761b25a868",
+        "E-d6e291dc28d06c4dea34e721",
+        "E-e701476789b9bf6dd3395377",
+        "E-f4f95c94998d43684aa6df08" ;
+    ns1:payload "{\"id\": \"PMMA\", \"label\": \"PMMA\", \"review_status\": \"APPROVED\", \"text\": \"PMMA\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+
+ns1:SIBAL%20Fabric a ns1:Material ;
+    prov:wasDerivedFrom ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-36fba4ad2dd3a80446e482de",
+        "E-43050973b6a89b18f7e5ea5e",
+        "E-a08131327d6385587996348e",
+        "E-b1a9f6a613faf9d539c3c1bb",
+        "E-dc4b3c3fe52caaa86c554e24",
+        "E-e701476789b9bf6dd3395377" ;
+    ns1:payload "{\"id\": \"SIBAL Fabric\", \"label\": \"SIBAL fabric\", \"review_status\": \"APPROVED\", \"text\": \"SIBAL fabric\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+
+ns1:normal-gravity a ns1:GravityCondition ;
+    prov:wasDerivedFrom ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-007124915589abdd7abc5e6e",
+        "E-01e78ac4900b35ec6ddd9644",
+        "E-369175d9bd5f5634f84a0c6b",
+        "E-43050973b6a89b18f7e5ea5e",
+        "E-4e83b44eb58f230065e2b311",
+        "E-6a062578a8bc9b381a5d6bf0",
+        "E-7b2423e2b4112606572b7b6e",
+        "E-883f133a5745d0142df1e007",
+        "E-94f2c30163d61cfbf33f137a",
+        "E-a08131327d6385587996348e",
+        "E-b1a9f6a613faf9d539c3c1bb",
+        "E-d3aebe64259ea519e1693467",
+        "E-dc9e4c8b9ff90290439d6f6a",
+        "E-fff11db50ab02d9c3c5437c1" ;
+    ns1:payload "{\"id\": \"normal-gravity\", \"label\": \"1-g\", \"review_status\": \"APPROVED\", \"text\": \"1-g\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+
+ns1:proposal-214e8940373e87f7d2cf67c9 a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-0acbeed7a437e765685d020a" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"tentative_interpretation\", \"evidence_ids\": [\"E-0acbeed7a437e765685d020a\"], \"id\": \"proposal-214e8940373e87f7d2cf67c9\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\", \"text\": \"This might be \\nconsidered should more Lunar-g flights become available using New Shepard.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+
+ns1:proposal-9ff4e633a24e0f14c472c1b5 a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-fff11db50ab02d9c3c5437c1" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"hypothesis\", \"evidence_ids\": [\"E-fff11db50ab02d9c3c5437c1\"], \"id\": \"proposal-9ff4e633a24e0f14c472c1b5\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\", \"text\": \"Hypothesis: some materials burning in partial-g are more flammable than on Earth.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+
+ns1:proposal-e337980e5b4447f49a46fa5c a ns1:NASAConclusion ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-d3aebe64259ea519e1693467" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"hypothesis\", \"evidence_ids\": [\"E-d3aebe64259ea519e1693467\"], \"id\": \"proposal-e337980e5b4447f49a46fa5c\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\", \"text\": \"\\uf0a8Potential Follow-on Objectives\\n\\u2022 Evaluate the hypothesis that some materials burning in partial-g environments may be more flammable \\ncompared to 1-g.\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+
+ns1:research-88a2411be5fc53d76df5 a ns1:Investigation ;
+    prov:wasDerivedFrom ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-3d0d479957889ee0ebba3428" ;
+    ns1:payload "{\"id\": \"research-88a2411be5fc53d76df5\", \"label\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\", \"review_status\": \"APPROVED\", \"text\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+
+ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483%3Astatement%3A878e496142f11d95 a ns1:ReportedObservation ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-8e152fd5cc3f08cf75f79651" ;
+    ns1:payload "{\"authority\": \"RESEARCHER_CURATED\", \"epistemic\": \"measured_observation\", \"evidence_ids\": [\"E-8e152fd5cc3f08cf75f79651\"], \"id\": \"research-88a2411be5fc53d76df5:bb0aadd2f9543483:statement:878e496142f11d95\", \"review_status\": \"APPROVED\", \"scope\": [], \"scope_applicability\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\", \"text\": \"LUCI Partial-G Recap: SIBAL\\n\\u2022\\nSemi-steady spread is achieved, \\nduring which the constant flame \\nwidth and length are observed (~3.2 \\ncm and ~1.5 cm respectively).\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+
+ns1:research-88a2411be5fc53d76df5%3Aentity%3A2950d9239d623016cfb8 a ns1:Investigation ;
+    prov:wasDerivedFrom ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483%3Adocument ;
+    ns1:canonical false ;
+    ns1:evidenceRef "E-ab863beddb4ab0a2517976fa" ;
+    ns1:payload "{\"id\": \"research-88a2411be5fc53d76df5:entity:2950d9239d623016cfb8\", \"label\": \"LUCI\", \"review_status\": \"APPROVED\", \"text\": \"LUCI\"}" ;
+    ns1:reviewState "STAGED_CANDIDATE" ;
+    ns1:source ns1:research-88a2411be5fc53d76df5%3Abb0aadd2f9543483 .
+

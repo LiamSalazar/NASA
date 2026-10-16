@@ -1,0 +1,28 @@
+{
+  "decisions": {
+    "DOCUMENT_PROCESSING": "VALIDATED_BOUNDED",
+    "CONTEXTUAL_SCIENTIFIC_EXTRACTION": "PARTIAL",
+    "EXPERIMENT_IDENTITY": "PARTIAL",
+    "TABLE_AND_NARRATIVE_INTEGRATION": "PARTIAL",
+    "EVIDENCE_ATTRIBUTION": "VALIDATED_BOUNDED",
+    "EPISTEMIC_FIDELITY": "PARTIAL",
+    "SEMANTIC_REUSE": "VALIDATED_BOUNDED",
+    "ONTOLOGY_EXTENSION_STAGING": "VALIDATED_BOUNDED",
+    "REVIEW_REQUIREMENT_PREPARATION": "PARTIAL",
+    "GENERALIZATION_TO_UNMODELED_RESEARCH": "FAILED_SCIENTIFIC_ACCEPTANCE",
+    "END_TO_END_INGESTION": "VALIDATED_ISOLATED_PREPARATION",
+    "REGRESSION_AND_PRESERVATION": "PASS",
+    "PHASE1_COMPLETE": "NO"
+  },
+  "evidence": [
+    "quality_gates_v2.json",
+    "final_development_receipts/validation.json",
+    "final_holdout_deterministic_receipts/validation.json",
+    "holdout_first_pass/20250010653_prepared.json",
+    "holdout_first_pass/post_exposure_repair.json",
+    "scientific_quality.json",
+    "preservation_final.json",
+    "canonical_shacl.json"
+  ],
+  "scientific_authority": "Developer checks and proposals, not scientist approval"
+}

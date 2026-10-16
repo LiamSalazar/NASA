@@ -1,0 +1,1328 @@
+{
+  "adjudication": "Developer-verified source cells and documentary passages, not independent scientific gold",
+  "table_quantities": {
+    "correct": 16,
+    "produced": 16,
+    "eligible_source_cells": 16,
+    "precision": 1.0,
+    "recall": 1.0,
+    "baseline_typed_numeric_attributes": 2,
+    "baseline_recall": 0.125,
+    "boundary": "PSI-98 first two scientific sample rows, eight explicitly reported fields. Labels and values are source cells; they do not establish performed-measurement roles."
+  },
+  "table_runs": {
+    "correct_proposed_run_labels": 2,
+    "unreviewed_noncombustion_rows_also_proposed_as_runs": 2,
+    "precision_for_executed_combustion_identity": 0.5,
+    "baseline_same_limitation": true,
+    "scientifically_approved_false_runs": 0
+  },
+  "scientific_relationships": {
+    "bounded_BASS_gravity_edges_proposed_and_checked": 3,
+    "correct_in_scoped_developer_sample": 3,
+    "precision": 1.0,
+    "recall": null,
+    "boundary": "Three explicit drop-test/microgravity source edges; publication-wide relation recall was not adjudicated. Duplicate source support is not three independent experiments."
+  },
+  "holdout": {
+    "investigation": "LUCI",
+    "science_source_body_exposed_after_freeze": true,
+    "first_pass_complete_model_windows": 0,
+    "first_pass_model_calls": 3,
+    "repair_complete_model_windows": 0,
+    "repair_model_calls": 3,
+    "ontology_or_python_source_specific_changes": 0,
+    "result": "FAILED_SCIENTIFIC_ACCEPTANCE",
+    "numeric_and_group_assignment_recall": "NOT_MEASURABLE from valid model output; zero model-confirmed complete windows",
+    "gold": "No expert-reviewed gold invented"
+  },
+  "critical_negative_cases": {
+    "historical_G2_scientifically_false_assignments_accepted": 0,
+    "denominator": 6,
+    "verification": "tests/test_curation_attribution.py, final pytest receipt; original Phase 3C fixtures preserved",
+    "additional_positive_and_negative_context_cases": "tests/test_document_extraction.py, shared methods with local terrestrial exception"
+  },
+  "source_science_cases": [
+    {
+      "source": "20150008961",
+      "support_states": {
+        "SOURCE_SUPPORTED": 42,
+        "UNRESOLVED": 40,
+        "REJECTED": 1
+      },
+      "native_scoped_statements": 7,
+      "entity_labels": [
+        {
+          "label": "Microgravity Flammability of PMMA Rods in Concurrent Flow",
+          "class": "Investigation"
+        },
+        {
+          "label": "PMMA",
+          "class": "Material"
+        },
+        {
+          "label": "Microgravity",
+          "class": "GravityCondition"
+        },
+        {
+          "label": "BASS-II",
+          "class": "Investigation"
+        },
+        {
+          "label": "concurrent-flow tests",
+          "class": "ExperimentFamily"
+        },
+        {
+          "label": "blowoff limit tests",
+          "class": "ExperimentFamily"
+        },
+        {
+          "label": "drop \ntests",
+          "class": "ExperimentFamily"
+        },
+        {
+          "label": "quenching \ntests",
+          "class": "ExperimentFamily"
+        },
+        {
+          "label": "normal gravity",
+          "class": "GravityCondition"
+        },
+        {
+          "label": "drop tests",
+          "class": "ExperimentFamily"
+        },
+        {
+          "label": "blowoff tests",
+          "class": "ExperimentFamily"
+        },
+        {
+          "label": "blowoff tests",
+          "class": "ExperimentFamily"
+        },
+        {
+          "label": "BASS",
+          "class": "Investigation"
+        }
+      ],
+      "concept_terms": [
+        "As Peclet \nnumber",
+        "Damkohler \nnumber",
+        "Damkohler number",
+        "Fourier number",
+        "Peclet \nnumber",
+        "Peclet number"
+      ],
+      "review_requirements": [
+        {
+          "id": "issue-6cfdb931390c01aea3cd",
+          "kind": "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-5f510106c3d93d475ca5578d",
+            "proposal-59d16d793b75fec8dbe1ec33",
+            "proposal-16cd681cf8ef83d581e9b33f",
+            "proposal-b5e56af3a4dcddd0169ee4c4",
+            "proposal-038d19e9fd8916e619d72a61",
+            "proposal-76b7200656db73b320a173be",
+            "proposal-fdbba49bd59b0a2b57ca13c4",
+            "proposal-1d253e6143e2f825f8ecc226",
+            "proposal-2dbf593c0e39975b439f2e94",
+            "proposal-0e9eaa280c2c62a610f5e595",
+            "proposal-4b5fd750fa7ac8eba71bb981",
+            "proposal-daecc624933174ff611c3f0d",
+            "proposal-35fbb969777a9fe4b8e4cbbe",
+            "proposal-06aecec872303f51aa8bce08",
+            "proposal-f7a8dd0969987cc38111128e",
+            "proposal-dee26b1a99c398ae2f04ea76",
+            "proposal-97f070f6af1d6fac46d4ca85",
+            "proposal-424aac5057bafc9289cfb1ea",
+            "proposal-82f5f945f9a637c402346200",
+            "proposal-cad012a54dd7d0992de9de16",
+            "proposal-4515b2b4700d7db5ae9a253e"
+          ],
+          "evidence_ids": [
+            "E-073a752147138aad3f10501c",
+            "E-2a510aca56981d0ee2a06058",
+            "E-501cf49397bf0765164ecfe5",
+            "E-9d735526f461884a17b32b0a",
+            "E-a06680297147043e091d73fd",
+            "E-cf3c4b5b6fbcb89ab1a0546a",
+            "E-fbf7641d95c4f4bc72654389"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-a06680297147043e091d73fd",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 1,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 1520,
+              "end": 1608,
+              "quote": "For blowoff limit tests, the astronaut \nquickly turned up the flow to obtain extinction.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 1
+              }
+            },
+            {
+              "evidence_id": "E-a06680297147043e091d73fd",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 1,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 1753,
+              "end": 1944,
+              "quote": "For quenching \ntests, the flow was incrementally turned down and the flame allowed to stabilize at the new flow condition \nfor at least the solid-phase response time before changing it again.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 1
+              }
+            },
+            {
+              "evidence_id": "E-9d735526f461884a17b32b0a",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 4,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 2446,
+              "end": 2662,
+              "quote": "3.1 Quenching Extinction \nFor quenching tests, the flow was incrementally turned down and the flame allowed to stabilize at \nthe new flow condition for at least the solid-phase response time before changing it again.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 4
+              }
+            },
+            {
+              "evidence_id": "E-073a752147138aad3f10501c",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 5,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 0,
+              "end": 142,
+              "quote": "Sub Topic: Fire Research \n \n5 \n3.1 Blowoff extinction \nFor blowoff limit tests, the astronaut quickly turned up the flow to obtain extinction.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 5
+              }
+            },
+            {
+              "evidence_id": "E-073a752147138aad3f10501c",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 5,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 1472,
+              "end": 1745,
+              "quote": "For \nthe drop tests, the rod was ignited in normal gravity and allowed to burn and preheat the rod briefly at \na flammable oxygen flow, and then the gas was switched to the test atmosphere and the package \nreleased based on the flow time of the gas to reach the flame zone.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 5
+              }
+            },
+            {
+              "evidence_id": "E-073a752147138aad3f10501c",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 5,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 1749,
+              "end": 1867,
+              "quote": "The flames in the drop tower \nblowoff tests are significantly smaller than the ISS flames, as can be seen in Figure 3.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 5
+              }
+            }
+          ],
+          "question": "Does this evidence describe the current investigation or a cited earlier study?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-b38b17ea3183de5d91c1",
+          "kind": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-0e9eaa280c2c62a610f5e595",
+            "proposal-4b5fd750fa7ac8eba71bb981",
+            "proposal-daecc624933174ff611c3f0d",
+            "proposal-35fbb969777a9fe4b8e4cbbe",
+            "proposal-06aecec872303f51aa8bce08",
+            "proposal-f7a8dd0969987cc38111128e",
+            "proposal-dee26b1a99c398ae2f04ea76",
+            "proposal-97f070f6af1d6fac46d4ca85",
+            "proposal-424aac5057bafc9289cfb1ea",
+            "proposal-82f5f945f9a637c402346200",
+            "proposal-cad012a54dd7d0992de9de16",
+            "proposal-4515b2b4700d7db5ae9a253e"
+          ],
+          "evidence_ids": [
+            "E-073a752147138aad3f10501c",
+            "E-501cf49397bf0765164ecfe5",
+            "E-9d735526f461884a17b32b0a",
+            "E-a06680297147043e091d73fd",
+            "E-cf3c4b5b6fbcb89ab1a0546a",
+            "E-fbf7641d95c4f4bc72654389"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-a06680297147043e091d73fd",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 1,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 1947,
+              "end": 2143,
+              "quote": "Quenching was observed when the \nflow became sufficiently weak that the flame could no longer provide adequate heat flux to compensate \nfor the heat losses (conduction into the rod and radiation).",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 1
+              }
+            },
+            {
+              "evidence_id": "E-9d735526f461884a17b32b0a",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 4,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 2666,
+              "end": 2907,
+              "quote": "Quenching was observed when the levels of forced flow and/or oxygen concentration became \nsufficiently weak that the flame could no longer provide adequate heat flux to compensate for the \nheat losses (conduction into the rod and radiation).",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 4
+              }
+            },
+            {
+              "evidence_id": "E-073a752147138aad3f10501c",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 5,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 390,
+              "end": 769,
+              "quote": "Later in the test program, we attempted to re-establish the \nstagnation region after local blowoff by quickly reducing the flow to a value below the blowoff \nvelocity, but we were only successful in one instance where the blowoff of the stagnation region may \nnot have been complete (flame opening less than a thermal length, perhaps) due to the astronaut\u2019s \nquick response time.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 5
+              }
+            },
+            {
+              "evidence_id": "E-cf3c4b5b6fbcb89ab1a0546a",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 6,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 0,
+              "end": 348,
+              "quote": "Sub Topic: Fire Research \n \n6 \n3.4   Flammability Boundary \nFor each test, the flow at which the flames extinguished and the last flow where a stable flame \nwas observed (or where the flame did not blowout in the drop time for drop tests), along with the \npost-burn oxygen reading were used to generate the flammability boundary, shown in Figure 4.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 6
+              }
+            },
+            {
+              "evidence_id": "E-cf3c4b5b6fbcb89ab1a0546a",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 6,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 540,
+              "end": 638,
+              "quote": "The thick gray flammability boundary is the border between stable flames and extinguished \nflames.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 6
+              }
+            },
+            {
+              "evidence_id": "E-fbf7641d95c4f4bc72654389",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 7,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 578,
+              "end": 845,
+              "quote": "The linear blowoff boundary has interesting implications in that it may be \npossible to linearly extrapolate blowoff data down to zero stretch rate and use that oxygen value as a \nconservative estimate of the minimum oxygen concentration where the material will burn.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 7
+              }
+            }
+          ],
+          "question": "Which documented experiment or group do these statements describe?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-68b268542e808f93cd80",
+          "kind": "CITED_STUDY_APPLICABILITY_REQUIRES_REVIEW",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-6fd004963d172c716de39cc9"
+          ],
+          "evidence_ids": [
+            "E-073a752147138aad3f10501c"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-073a752147138aad3f10501c",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 5,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 1040,
+              "end": 1204,
+              "quote": "This is \nconsistent with tests for opposed flow flame spread rods that were also done as part of BASS-II [18], \nwhere flame spread was not observed below 16.4 % O2.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 5
+              }
+            }
+          ],
+          "question": "Which earlier study is being compared here, and which result belongs to it?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-27c9adcfeba8a831e281",
+          "kind": "LOCAL_SUBJECT_BINDING_UNRESOLVED",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-9c46803cc00d31b836494798",
+            "proposal-45ae5a5bb5bd03ec75024cea"
+          ],
+          "evidence_ids": [
+            "E-a06680297147043e091d73fd"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-a06680297147043e091d73fd",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 1,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 541,
+              "end": 926,
+              "quote": "110-3, Cleveland OH, 44135-3127 USA  \n*Corresponding Author Email: Sandra.Olson@NASA.gov \n \nAbstract: Microgravity experiments burning cast PMMA cylindrical rods in axial flow have been \nconducted aboard the International Space Station in the Microgravity Science Glovebox (MSG) facility \nusing the Burning and Suppression of Solids (BASS) flow duct, as part of the BASS-II experiment.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 1
+              }
+            },
+            {
+              "evidence_id": "E-a06680297147043e091d73fd",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 1,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 541,
+              "end": 926,
+              "quote": "110-3, Cleveland OH, 44135-3127 USA  \n*Corresponding Author Email: Sandra.Olson@NASA.gov \n \nAbstract: Microgravity experiments burning cast PMMA cylindrical rods in axial flow have been \nconducted aboard the International Space Station in the Microgravity Science Glovebox (MSG) facility \nusing the Burning and Suppression of Solids (BASS) flow duct, as part of the BASS-II experiment.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 1
+              }
+            }
+          ],
+          "question": "Which experimental subject does the stated condition belong to?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-2c8cfa7e4a559b0e5e7e",
+          "kind": "ONTOLOGY_EXTENSION_REVIEW",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-c4481fdf22bdc3c083ac99e8"
+          ],
+          "evidence_ids": [
+            "E-9d735526f461884a17b32b0a"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-9d735526f461884a17b32b0a",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 4,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 2153,
+              "end": 2319,
+              "quote": "The time needed to \nadequately develop the solid-phase thermal profile is estimated to be when the Fourier number is \napproximately equal to 0.3 (Fo= \u03b1t/R2~0.3) [17].",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 4
+              }
+            }
+          ],
+          "question": "How should the source term 'Fourier number' be defined and represented using existing scientific concepts?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-a49d6034933e48673099",
+          "kind": "ONTOLOGY_EXTENSION_REVIEW",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-246d1c0027210969e5bb8d2e"
+          ],
+          "evidence_ids": [
+            "E-cf3c4b5b6fbcb89ab1a0546a"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-cf3c4b5b6fbcb89ab1a0546a",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 6,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 978,
+              "end": 1226,
+              "quote": "These dashed lines are based on a critical Damkohler \nnumber analysis, where a critical Damkohler number (Dacrit) is defined as  \n \n \n \n \n \n \n \n \n \nFigure 4:   Flammability boundary obtained in BASS-II tests with concurrent rods of different sizes.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 6
+              }
+            }
+          ],
+          "question": "How should the source term 'Damkohler \nnumber' be defined and represented using existing scientific concepts?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-15787979e2c201825818",
+          "kind": "ONTOLOGY_EXTENSION_REVIEW",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-4d19f0f809c856051e6639d2",
+            "proposal-e1d3e4f3a99803fefdb14145",
+            "proposal-06c3331ded1af881e6d08f69"
+          ],
+          "evidence_ids": [
+            "E-2a510aca56981d0ee2a06058",
+            "E-cf3c4b5b6fbcb89ab1a0546a"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-cf3c4b5b6fbcb89ab1a0546a",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 6,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 978,
+              "end": 1226,
+              "quote": "These dashed lines are based on a critical Damkohler \nnumber analysis, where a critical Damkohler number (Dacrit) is defined as  \n \n \n \n \n \n \n \n \n \nFigure 4:   Flammability boundary obtained in BASS-II tests with concurrent rods of different sizes.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 6
+              }
+            },
+            {
+              "evidence_id": "E-2a510aca56981d0ee2a06058",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 10,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 0,
+              "end": 210,
+              "quote": "Sub Topic: Fire Research \n \n10 \nA flammability boundary with axes of oxygen concentration and forced stretch rate is obtained \nthat has a distinctive shape that correlates well with a critical Damkohler number.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 10
+              }
+            },
+            {
+              "evidence_id": "E-2a510aca56981d0ee2a06058",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 10,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 348,
+              "end": 592,
+              "quote": "The quenching branch exhibits an exponential (Yox versus a) curve which \nreflects importance of heat losses to drop the flame temperature, causing the Arrhenius reaction rate \nto slow to a critical Damkohler number while flow time is plentiful.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 10
+              }
+            }
+          ],
+          "question": "How should the source term 'Damkohler number' be defined and represented using existing scientific concepts?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-1171f6b688fbf2694507",
+          "kind": "ONTOLOGY_EXTENSION_REVIEW",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-49ed7ae3ad16f7c6348bc1f2",
+            "proposal-de70b7802c8e67f0d2443485",
+            "proposal-df78300c7c148a38059609f1",
+            "proposal-9826da4d9fe22e28cefacc77",
+            "proposal-61cad8480a11df2c36f5114e",
+            "proposal-4f7383671cf2451c1b16c3f2",
+            "proposal-065d4c7ca2adacbaf9ff5b92",
+            "proposal-69814e3c2326d5e65289e2bc",
+            "proposal-dce3a8294180dceda937726d"
+          ],
+          "evidence_ids": [
+            "E-23f522adb4998bb0b1668cf8",
+            "E-501cf49397bf0765164ecfe5"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-23f522adb4998bb0b1668cf8",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 8,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 617,
+              "end": 886,
+              "quote": "Non-dimensionalizing with \nY=y/L, \u03b8 = (T-Tf)/(Ts-Tf), and Pe= LVr/\u03b1s we can write \nThe coefficient is a solid-phase Peclet number, which is a ratio of the convective heat \ntransferred as the fuel regresses, compared to the conductive heat transfer from the hot surface.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 8
+              }
+            },
+            {
+              "evidence_id": "E-23f522adb4998bb0b1668cf8",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 8,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 1794,
+              "end": 1959,
+              "quote": "We can differentiate the 1D solution to evaluate the steady-state temperature gradient at the \nregressing surface (Y=0) with decreasing Peclet number (burning rate).",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 8
+              }
+            },
+            {
+              "evidence_id": "E-23f522adb4998bb0b1668cf8",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 8,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 1964,
+              "end": 2249,
+              "quote": "Solving for the temperature \ngradient at the surface as a function of Peclet number, we obtain \u0740\n\u07e0\u0740\u073b\u0201\u0bd2\u0b40\u0b34\u0d4c\u0732\u0741\u0087\u009a\u0092\u123a\u0d46\u0732\u0741\n\u123b\u0d46\u0373 \nWe can use this to evaluate the conductive loss down the rod as a function of regression rate \n(Pe), and estimate the flame heat flux as a function of Peclet number.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 8
+              }
+            },
+            {
+              "evidence_id": "E-23f522adb4998bb0b1668cf8",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 8,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 2251,
+              "end": 2739,
+              "quote": "The surface energy balance for the rod tip is given by \n\u074d\u0bd9\u0bdf\u0bd4\u0be0\u0bd8\u0336 \u0d4c\u0003\u07e3\u0bda\u07f2\u0736\n\u0bda\u07f2\n\u0754\u0201\u0be6\u0d45\u0003\u074d\u0be5\u0bd4\u0bd7\u0336 \u0d4c\u07e3\u0be6\u0003\u07f2\u0736\n\u0be6\u0be2\u0bdf\u0bdc\u0bd7\u07f2\n\u0754\n\u0201\u0be6\u0d45\u0003\u0749\u1236\u0336 \u072e\u0be9\u0bd4\u0be3\u0d45\u07dd\u07ea\u123a\u0736\u0be6\n\u0b38\u0d46\u0736\n\u0bb6\n\u0b38\u123b \n \nWhere Lvap = 1700 J/g, m\u201d = Vr\u03c1, \u03b5 = 0.85, Ts = 300 oC, \u03bbs = 2.09 x 10-3 W/cm K at 300 K, \u03bbg = 5.77 \nx 10-4 W/cm K at 800 K, \u03c1 = 1.19 g/cc, L=5.9 cm, and \u03c3 = 5.729 x 10-12 W/cm2 K4 \nUsing these values and evaluating the surface temperature gradient as above, we can estimate \neach term in the energy equation as a function of the Peclet number in Figure 5.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 8
+              }
+            },
+            {
+              "evidence_id": "E-23f522adb4998bb0b1668cf8",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 8,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 3025,
+              "end": 3130,
+              "quote": "The energy available for fuel vaporization \ndecreases with decreasing Peclet number, as one would expect.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 8
+              }
+            },
+            {
+              "evidence_id": "E-23f522adb4998bb0b1668cf8",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 8,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 3132,
+              "end": 3212,
+              "quote": "The net flame heat flux thus drops \nprecipitously with decreasing Peclet number.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 8
+              }
+            }
+          ],
+          "question": "How should the source term 'Peclet number' be defined and represented using existing scientific concepts?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-664067a5562a00b5198f",
+          "kind": "ONTOLOGY_EXTENSION_REVIEW",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-e7ac26edc104631b50da2753"
+          ],
+          "evidence_ids": [
+            "E-23f522adb4998bb0b1668cf8"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-23f522adb4998bb0b1668cf8",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 8,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 2894,
+              "end": 2972,
+              "quote": "As mentioned above, solid conduction decreases with decreasing Peclet \nnumber.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 8
+              }
+            }
+          ],
+          "question": "How should the source term 'Peclet \nnumber' be defined and represented using existing scientific concepts?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-de91eebfb0aaef308822",
+          "kind": "ONTOLOGY_EXTENSION_REVIEW",
+          "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+          "dependent_proposals": [
+            "proposal-0859deee210435c63c4b0ea0"
+          ],
+          "evidence_ids": [
+            "E-501cf49397bf0765164ecfe5"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-501cf49397bf0765164ecfe5",
+              "source_id": "research-5c3917d4f165b5bdd301:8cee8a023d9f0aab",
+              "page": 9,
+              "checksum": "8cee8a023d9f0aab214996ebaeefb842080b0c935ba9e01db0096a47379519f7",
+              "start": 419,
+              "end": 666,
+              "quote": "As Peclet \nnumber decreases (rod regression rate decreases as forced stretch rate decreases), the radiative loss \nratio increases dramatically since surface radiative loss is a constant while flame heat flux decreases \nlinearly with Peclet number.",
+              "locator": {
+                "file": "20150008961.pdf",
+                "page": 9
+              }
+            }
+          ],
+          "question": "How should the source term 'As Peclet \nnumber' be defined and represented using existing scientific concepts?",
+          "alternatives": [
+            "BASS",
+            "BASS-II",
+            "blowoff limit tests",
+            "blowoff tests",
+            "concurrent-flow tests",
+            "drop \ntests",
+            "drop tests",
+            "quenching \ntests",
+            "quenching tests",
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        }
+      ]
+    },
+    {
+      "source": "20260003546",
+      "support_states": {
+        "SOURCE_SUPPORTED": 10,
+        "UNRESOLVED": 43,
+        "REJECTED": 0
+      },
+      "native_scoped_statements": 0,
+      "entity_labels": [
+        {
+          "label": "Risks of Depress as a Fire Suppression Technique in Spacecraft",
+          "class": "Investigation"
+        },
+        {
+          "label": "PMMA",
+          "class": "Material"
+        },
+        {
+          "label": "1-g",
+          "class": "GravityCondition"
+        },
+        {
+          "label": "Microgravity",
+          "class": "GravityCondition"
+        }
+      ],
+      "concept_terms": [],
+      "review_requirements": [
+        {
+          "id": "issue-2cf599ea57d45f0db0f8",
+          "kind": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+          "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+          "dependent_proposals": [
+            "proposal-1c261fc84c100552bcfe7c02",
+            "proposal-972d00f41cbf267170d204e3",
+            "proposal-eda4aeb28a34985235753c28",
+            "proposal-084bcad6db7c77017e3520d4",
+            "proposal-733beb6b954077d56e581d72",
+            "proposal-d062aee915926b93b4c9f8ce",
+            "proposal-a989141836b173adcf7b95ee",
+            "proposal-efbd04658ffc3753c4820d56",
+            "proposal-84a63881bd016ad7fe4732c8",
+            "proposal-ab2ab6cbd7099d25758761f0",
+            "proposal-54c781ee03712ef6ea6df61c",
+            "proposal-ede6dbba84a15fa8a3d5c984",
+            "proposal-ab9501ffe1563001dcdcd709",
+            "proposal-0c7bbb8678a98be6753215fd",
+            "proposal-df371c9524756dc42a30a29f",
+            "proposal-9b66c42f137e199a7be25e65",
+            "proposal-f4c0f946760297aea44eaebb",
+            "proposal-c90d4b9524498b0bfe69af87",
+            "proposal-4e5752c1f66dea4af8680be6",
+            "proposal-88dfad3ae151966ba365c1fe",
+            "proposal-f5a358d84e3d6c7703d4d76e",
+            "proposal-c031d797b87d36454d0dcac8",
+            "proposal-1235254755e541894a312abb",
+            "proposal-10891e1194709db9d14ef8aa",
+            "proposal-5844534cb0253c7a756636f4",
+            "proposal-2d40b4a03a6e6ed7ae88a7f4",
+            "proposal-b830028e05159ee3f46699ea",
+            "proposal-e036793b293ab73597a6fef2",
+            "proposal-b687c840cb4a7466e9b5721c",
+            "proposal-a64826eaa8c74e9e603fc50e",
+            "proposal-ae8f722ecd8ca94866637b55",
+            "proposal-c04a2f203751f47067581ee8",
+            "proposal-90d4c25d48e966c7a7630be6",
+            "proposal-b3c64c7994e97f7b99c293a0",
+            "proposal-271a47c93d06bfd022332f62",
+            "proposal-a51fbe1839eccf17cefbfa7e",
+            "proposal-5348a7592174df22d08af24b",
+            "proposal-b475b1ab9035e4b51560f564",
+            "proposal-c76c74c2e0512e959734d0a0",
+            "proposal-5e504a8d5d5ff307fbf21b47",
+            "proposal-fabfb9b3d026a35441ef42ba",
+            "proposal-364a3d7bba688ef617c0e84b",
+            "proposal-e87dc8f5bfec9d44bcbbb008"
+          ],
+          "evidence_ids": [
+            "E-08ad69a0554df8624a6ce0d5",
+            "E-0da92272426b7d4bc88155a2",
+            "E-0e084bdb1e99c5bcec73806b",
+            "E-141599a7e54260423e383d79",
+            "E-2850db00fab6b98d44699cd1",
+            "E-296c9003cc6b7365dc7a38f6",
+            "E-2fc973b7e0903d1a09c86082",
+            "E-3dde136f79e6d3ee2a27b2fb",
+            "E-6a4fb43bfaf5e7a5d092ac7d",
+            "E-767370b5d999b47dcd722b69",
+            "E-7ccba4c2bf7eb60a200ca085"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-2fc973b7e0903d1a09c86082",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 2,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 4028,
+              "end": 4342,
+              "quote": "There is no record \nof the venting rate used in the evaluation or the pressure where extinguishment was achieved, however it was observed \nthat there was a substantial difference between the slow flame spread under quiescent conditions and the rapid flame \nspread that was observed during depressurization venting.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 2
+              }
+            },
+            {
+              "evidence_id": "E-2fc973b7e0903d1a09c86082",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 2,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 2673,
+              "end": 3233,
+              "quote": "Challenges  posed by venting \ninclude: air movement induced by the venting process can increase fire damage until fire extinguishment is achieved; \nhardware and systems need to be certified to survive vacuum; crew evacuation is required; potential exterior damage \nto the spacecraft from evacuated particulate; risk of foreign object damage from the venting process to the vent valve \n(critical to spacecraft integrity); weight and volume penalty of  the large valve needed to vent quickly; and in vacuum, \nmaterials will cool slowly so reentry may be delayed.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 2
+              }
+            },
+            {
+              "evidence_id": "E-2fc973b7e0903d1a09c86082",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 2,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 3766,
+              "end": 3915,
+              "quote": "Other tests performed were considered invalid as \nthe PTFE and nylon samples had ignition difficulties and the mylar sample may not have been vented.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 2
+              }
+            },
+            {
+              "evidence_id": "E-296c9003cc6b7365dc7a38f6",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 3,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 597,
+              "end": 844,
+              "quote": "Cold \nsamples extinguished more easily at pressures \nnear 0.25 Atmospheres (Atm) (3.675 psia, 25.3 \nkPa) but samples with more residual heat from \na longer burn duration survived to less than 0.1 \nAtm (1.47 psia, 10.03 kPa), as shown in Figure \n1.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 3
+              }
+            },
+            {
+              "evidence_id": "E-296c9003cc6b7365dc7a38f6",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 3,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 845,
+              "end": 922,
+              "quote": "These results indicate that rapid venting is \nnecessary to assure extinction.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 3
+              }
+            },
+            {
+              "evidence_id": "E-296c9003cc6b7365dc7a38f6",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 3,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 2269,
+              "end": 2433,
+              "quote": "The testing was performed \nwith Beefy T cotton t-shirt material and nylon lacing tape in a \nISO 4589-4 Test apparatus modified to operate in sub ambient \npressures.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 3
+              }
+            }
+          ],
+          "question": "Which documented experiment or group do these statements describe?",
+          "alternatives": [
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        },
+        {
+          "id": "issue-fc93ba6366ace21efca5",
+          "kind": "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+          "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+          "dependent_proposals": [
+            "proposal-1c261fc84c100552bcfe7c02",
+            "proposal-972d00f41cbf267170d204e3",
+            "proposal-eda4aeb28a34985235753c28",
+            "proposal-084bcad6db7c77017e3520d4",
+            "proposal-733beb6b954077d56e581d72",
+            "proposal-d062aee915926b93b4c9f8ce",
+            "proposal-a989141836b173adcf7b95ee",
+            "proposal-efbd04658ffc3753c4820d56",
+            "proposal-84a63881bd016ad7fe4732c8",
+            "proposal-ab2ab6cbd7099d25758761f0",
+            "proposal-54c781ee03712ef6ea6df61c",
+            "proposal-ede6dbba84a15fa8a3d5c984",
+            "proposal-ab9501ffe1563001dcdcd709",
+            "proposal-0c7bbb8678a98be6753215fd",
+            "proposal-df371c9524756dc42a30a29f",
+            "proposal-9b66c42f137e199a7be25e65",
+            "proposal-f4c0f946760297aea44eaebb",
+            "proposal-c90d4b9524498b0bfe69af87",
+            "proposal-4e5752c1f66dea4af8680be6",
+            "proposal-88dfad3ae151966ba365c1fe",
+            "proposal-f5a358d84e3d6c7703d4d76e",
+            "proposal-c031d797b87d36454d0dcac8",
+            "proposal-1235254755e541894a312abb",
+            "proposal-10891e1194709db9d14ef8aa",
+            "proposal-5844534cb0253c7a756636f4",
+            "proposal-2d40b4a03a6e6ed7ae88a7f4",
+            "proposal-b830028e05159ee3f46699ea",
+            "proposal-e036793b293ab73597a6fef2",
+            "proposal-b687c840cb4a7466e9b5721c",
+            "proposal-a64826eaa8c74e9e603fc50e",
+            "proposal-ae8f722ecd8ca94866637b55",
+            "proposal-c04a2f203751f47067581ee8",
+            "proposal-90d4c25d48e966c7a7630be6",
+            "proposal-b3c64c7994e97f7b99c293a0",
+            "proposal-271a47c93d06bfd022332f62",
+            "proposal-a51fbe1839eccf17cefbfa7e",
+            "proposal-5348a7592174df22d08af24b",
+            "proposal-b475b1ab9035e4b51560f564",
+            "proposal-c76c74c2e0512e959734d0a0",
+            "proposal-5e504a8d5d5ff307fbf21b47",
+            "proposal-fabfb9b3d026a35441ef42ba",
+            "proposal-364a3d7bba688ef617c0e84b",
+            "proposal-e87dc8f5bfec9d44bcbbb008"
+          ],
+          "evidence_ids": [
+            "E-08ad69a0554df8624a6ce0d5",
+            "E-0da92272426b7d4bc88155a2",
+            "E-0e084bdb1e99c5bcec73806b",
+            "E-141599a7e54260423e383d79",
+            "E-2850db00fab6b98d44699cd1",
+            "E-296c9003cc6b7365dc7a38f6",
+            "E-2fc973b7e0903d1a09c86082",
+            "E-3dde136f79e6d3ee2a27b2fb",
+            "E-6a4fb43bfaf5e7a5d092ac7d",
+            "E-767370b5d999b47dcd722b69",
+            "E-7ccba4c2bf7eb60a200ca085"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-2fc973b7e0903d1a09c86082",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 2,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 4028,
+              "end": 4342,
+              "quote": "There is no record \nof the venting rate used in the evaluation or the pressure where extinguishment was achieved, however it was observed \nthat there was a substantial difference between the slow flame spread under quiescent conditions and the rapid flame \nspread that was observed during depressurization venting.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 2
+              }
+            },
+            {
+              "evidence_id": "E-2fc973b7e0903d1a09c86082",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 2,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 2673,
+              "end": 3233,
+              "quote": "Challenges  posed by venting \ninclude: air movement induced by the venting process can increase fire damage until fire extinguishment is achieved; \nhardware and systems need to be certified to survive vacuum; crew evacuation is required; potential exterior damage \nto the spacecraft from evacuated particulate; risk of foreign object damage from the venting process to the vent valve \n(critical to spacecraft integrity); weight and volume penalty of  the large valve needed to vent quickly; and in vacuum, \nmaterials will cool slowly so reentry may be delayed.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 2
+              }
+            },
+            {
+              "evidence_id": "E-2fc973b7e0903d1a09c86082",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 2,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 3766,
+              "end": 3915,
+              "quote": "Other tests performed were considered invalid as \nthe PTFE and nylon samples had ignition difficulties and the mylar sample may not have been vented.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 2
+              }
+            },
+            {
+              "evidence_id": "E-296c9003cc6b7365dc7a38f6",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 3,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 597,
+              "end": 844,
+              "quote": "Cold \nsamples extinguished more easily at pressures \nnear 0.25 Atmospheres (Atm) (3.675 psia, 25.3 \nkPa) but samples with more residual heat from \na longer burn duration survived to less than 0.1 \nAtm (1.47 psia, 10.03 kPa), as shown in Figure \n1.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 3
+              }
+            },
+            {
+              "evidence_id": "E-296c9003cc6b7365dc7a38f6",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 3,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 845,
+              "end": 922,
+              "quote": "These results indicate that rapid venting is \nnecessary to assure extinction.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 3
+              }
+            },
+            {
+              "evidence_id": "E-296c9003cc6b7365dc7a38f6",
+              "source_id": "research-673e8dc214da9478bc45:b4b64e88992718a7",
+              "page": 3,
+              "checksum": "b4b64e88992718a7598000ad85d181ac4d9c06ed58e0ae7df0fb4188a6662a18",
+              "start": 2269,
+              "end": 2433,
+              "quote": "The testing was performed \nwith Beefy T cotton t-shirt material and nylon lacing tape in a \nISO 4589-4 Test apparatus modified to operate in sub ambient \npressures.",
+              "locator": {
+                "file": "20260003546.pdf",
+                "page": 3
+              }
+            }
+          ],
+          "question": "Does this evidence describe the current investigation or a cited earlier study?",
+          "alternatives": [
+            "Retain unresolved",
+            "Documentary context"
+          ],
+          "source_resolution_attempts": [
+            "literal source span",
+            "surrounding section and shared methods",
+            "approved semantic definitions and aliases",
+            "identified subject anchors"
+          ],
+          "status": "SCIENTIFIC_REVIEW_REQUIRED"
+        }
+      ]
+    }
+  ],
+  "resource_use": {
+    "new_provider_calls": 14,
+    "received_usage_tokens": 56244,
+    "unknown_or_reserved_failed_call_tokens": "Timeouts and the first development schema failures did not return usable usage receipts; billed cost is unknown",
+    "seconds": 448.76404938100313,
+    "outcomes": [
+      {
+        "calls": 4,
+        "duration": 156.00065787299536,
+        "models": [
+          {
+            "model": "FAILED",
+            "error_type": "APITimeoutError",
+            "finish_reason": null
+          },
+          {
+            "model": "FAILED",
+            "error_type": "APITimeoutError",
+            "finish_reason": null
+          },
+          {
+            "model": "FAILED",
+            "error_type": "APITimeoutError",
+            "finish_reason": null
+          },
+          {
+            "model": "FAILED",
+            "error_type": "ValidationError",
+            "finish_reason": null
+          }
+        ]
+      },
+      {
+        "calls": 4,
+        "duration": 101.94904283698997,
+        "models": [
+          {
+            "model": "FAILED",
+            "error_type": "ValidationError",
+            "finish_reason": null
+          },
+          {
+            "model": "FAILED",
+            "error_type": "ValidationError",
+            "finish_reason": null
+          },
+          {
+            "model": "FAILED",
+            "error_type": "APITimeoutError",
+            "finish_reason": null
+          },
+          {
+            "model": "COMPLETE",
+            "error_type": null,
+            "finish_reason": null
+          }
+        ]
+      },
+      {
+        "calls": 3,
+        "duration": 111.05061977200967,
+        "models": [
+          {
+            "model": "FAILED",
+            "error_type": "JSONDecodeError",
+            "finish_reason": null
+          },
+          {
+            "model": "FAILED",
+            "error_type": "APITimeoutError",
+            "finish_reason": null
+          },
+          {
+            "model": "FAILED",
+            "error_type": "APITimeoutError",
+            "finish_reason": null
+          }
+        ]
+      },
+      {
+        "calls": 3,
+        "duration": 79.76372889900813,
+        "models": [
+          {
+            "model": "PARTIAL_SCHEMA",
+            "error_type": null,
+            "finish_reason": "stop"
+          },
+          {
+            "model": "FAILED",
+            "error_type": "JSONDecodeError",
+            "finish_reason": "length"
+          },
+          {
+            "model": "PARTIAL_SCHEMA",
+            "error_type": null,
+            "finish_reason": "stop"
+          }
+        ]
+      }
+    ]
+  },
+  "unmeasured": [
+    "Corpus-wide scientific relation recall",
+    "Full epistemic role precision/recall",
+    "Complete group/run identity recall",
+    "Genuine versus unnecessary scientific review requirements",
+    "Independent scientific relevance and accuracy"
+  ]
+}
