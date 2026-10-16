@@ -86,7 +86,8 @@ def main():
         "replays": replays,
         "idempotent": replays[0]["digest"] == replays[1]["digest"] if replays else None,
         "native_id_duplicates": {
-            kind: len(package[kind]) - len({r["id"] for r in package[kind]})
+            kind: len(package[kind])
+            - len({r.get("id") or json.dumps(r, sort_keys=True) for r in package[kind]})
             for kind in ("entities", "relations", "values", "statements")
         },
         "shacl_conforms": bool(conforms),
