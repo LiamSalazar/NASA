@@ -191,6 +191,179 @@ def test_two_specimen_dimensions_bind_only_inside_their_original_names(service):
     assert "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED" in result["reasons"]
 
 
+def test_original_method_subsection_scope_crosses_pdf_pages_without_crossing_groups(service):
+    import pymupdf
+
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    with pymupdf.open() as pdf:
+        for text in [
+            "A. Alpha tests\nSynthetic apparatus description.",
+            "Pressure was maintained at 20 Pa.",
+            "B. Beta tests\nPressure was maintained at 40 Pa.",
+        ]:
+            pdf.new_page().insert_text((50, 50), text)
+        data = pdf.tobytes()
+    p = service.submit("Synthetic study", "Labeled scope test", [("source.pdf", data)], "tester")[
+        "package"
+    ]
+    first, middle, last = p["evidence"]
+
+    def ref(e, quote):
+        return [{"evidence_id": e["evidence_id"], "quote": quote}]
+
+    o = Output().model_dump()
+    o["entities"] = [
+        {
+            "key": key,
+            "label": label,
+            "class_id": "ExperimentFamily",
+            "study": "current",
+            "support": ref(e, e["text"]),
+        }
+        for key, label, e in [("alpha", "Alpha tests", first), ("beta", "Beta tests", last)]
+    ]
+    o["quantities"] = [
+        {
+            "subject": "alpha",
+            "label": "pressure",
+            "expression": "20",
+            "unit": "Pa",
+            "epistemic": "experimental_configuration",
+            "support": ref(middle, middle["text"]),
+        }
+    ]
+    document = structure(p, service.root)
+    semantic = extraction_semantic(service, p)
+    positive = validate_output(o, p, document, semantic)["records"][-1]
+    assert positive["status"] == "SOURCE_SUPPORTED"
+    assert positive["scope_context"]["basis"] == "EXACT_ORIGINAL_GROUP_SUBSECTION"
+    assert positive["scope_context"]["support"][0]["evidence_id"] == first["evidence_id"]
+    o["quantities"][0]["subject"] = "beta"
+    assert validate_output(o, p, document, semantic)["records"][-1]["status"] == "REJECTED"
+
+
+def test_group_subsection_cannot_promote_individual_run_value_to_whole_group(service):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    text = "A. Alpha tests\nRun A1 was tested at pressure 20 Pa."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "alpha", "Alpha tests", "ExperimentFamily", "A. Alpha tests"),
+        entity(p, "a1", "A1", "ExperimentalRun", "Run A1 was tested at pressure 20 Pa."),
+    ]
+    o["quantities"] = [
+        {
+            "subject": "alpha",
+            "label": "pressure",
+            "expression": "20",
+            "unit": "Pa",
+            "epistemic": "experimental_configuration",
+            "support": support(p, "Run A1 was tested at pressure 20 Pa."),
+        }
+    ]
+    assert (
+        validate_output(o, p, structure(p, service.root), extraction_semantic(service, p))[
+            "records"
+        ][-1]["status"]
+        == "REJECTED"
+    )
+
+
+def test_roman_conclusion_scope_is_literal_document_investigation_not_cited_work(service):
+    text = "# Synthetic study\nI. Methods\nAn apparatus was tested.\nIV. Conclusion\nThe results demonstrate the reported trend.\nEarlier work reported a different trend."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
+    s = {
+        "text": "The results demonstrate the reported trend.",
+        "class_id": "NASAConclusion",
+        "epistemic": "author_reported_conclusion",
+        "subjects": ["root"],
+        "study": "current",
+        "support": support(p, "The results demonstrate the reported trend."),
+    }
+    o["statements"] = [s]
+    result = validate(service, p, o)["records"][-1]
+    assert result["status"] == "SOURCE_SUPPORTED"
+    assert result["scope_context"]["scope_is_individual_run"] is False
+    s["text"] = "Earlier work reported a different trend."
+    s["support"] = support(p, s["text"])
+    assert validate(service, p, o)["records"][-1]["status"] != "SOURCE_SUPPORTED"
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Figure 4: Original data with the best fit curve.",
+        "This relationship is compared to experimental results.",
+        "The least-squares fit describes the data.",
+    ],
+)
+def test_fitted_caption_or_comparison_method_is_not_direct_observation(text):
+    from nasa_fire_ai.ingestion.document_extraction import role_errors
+
+    assert role_errors({"text": text, "epistemic": "measured_observation"})
+
+
+def test_source_objectives_are_not_executed_configuration():
+    from nasa_fire_ai.ingestion.document_extraction import role_errors
+
+    assert role_errors(
+        {
+            "text": "Objectives\nDemonstrate the technique. Obtain new observations.",
+            "epistemic": "experimental_configuration",
+        }
+    )
+    assert not role_errors(
+        {"text": "The pressure was maintained at 20 Pa.", "epistemic": "experimental_configuration"}
+    )
+
+
+def test_estimated_quantity_cannot_become_measurement_or_change_neighboring_measurement(service):
+    text = "Run A1 was tested. A1 pressure was computed at 20 Pa; A1 oxygen concentration was measured at 21%."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "a1", "A1", "ExperimentalRun", text)]
+    o["quantities"] = [
+        {
+            "subject": "a1",
+            "label": label,
+            "expression": expression,
+            "unit": unit,
+            "epistemic": "reported_quantity",
+            "support": support(p, text),
+        }
+        for label, expression, unit in [
+            ("pressure", "20", "Pa"),
+            ("oxygen concentration", "21", "%"),
+        ]
+    ]
+    rows = [r for r in validate(service, p, o)["records"] if r["kind"] == "quantities"]
+    assert rows[0]["status"] == "REJECTED"
+    assert "EXPLICIT_DERIVATION_IS_NOT_REPORTED_MEASUREMENT" in rows[0]["reasons"]
+    assert rows[1]["status"] == "SOURCE_SUPPORTED"
+
+
+def test_author_citation_in_conclusion_does_not_become_current_document_result(service):
+    text = "# Synthetic study\nIV. Conclusion\nSmith16 reported the earlier trend."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
+    o["statements"] = [
+        {
+            "text": "Smith16 reported the earlier trend.",
+            "class_id": "NASAConclusion",
+            "epistemic": "author_reported_conclusion",
+            "subjects": ["root"],
+            "study": "current",
+            "support": support(p, "Smith16 reported the earlier trend."),
+        }
+    ]
+    assert validate(service, p, o)["records"][-1]["status"] != "SOURCE_SUPPORTED"
+
+
 def test_all_characters_and_distributed_context(service):
     text = (
         "# Methods\n\nAll experiments were conducted in microgravity in the Synthetic study.\n\n"

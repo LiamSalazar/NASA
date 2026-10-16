@@ -404,12 +404,115 @@ def role_errors(statement):
             flags=re.IGNORECASE,
         )
     if role == "measured_observation" and re.search(
-        r"\b(?:simulat\w*|predict\w*|numerical\s+(?:model|result)|calculated|derived|derivative|(?:linear|quadratic|regression|curve|polynomial)\s+fits?)\b",
+        r"\b(?:simulat\w*|predict\w*|numerical\s+(?:model|result)|calculated|derived|derivative|(?:best|linear|quadratic|regression|curve|polynomial|least[- ]squares)\s+fits?)\b",
         observation_text,
         re.IGNORECASE,
     ):
         errors.append("DERIVED_IS_NOT_OBSERVATION")
+    if role == "measured_observation" and re.search(
+        r"\b(?:relationship|model|analysis|prediction)\s+(?:is|was|are|were)\s+(?:compared|validated)\b",
+        text,
+        re.IGNORECASE,
+    ):
+        errors.append("COMPARISON_METHOD_IS_NOT_MEASURED_OBSERVATION")
+    if (
+        role == "experimental_configuration"
+        and re.search(r"\bObjectives?\s*\n", text, re.IGNORECASE)
+        and re.search(r"\b(?:Demonstrate|Obtain|Determine|Develop)\b", text)
+        and not re.search(
+            r"\b(?:was|were|conducted|performed|maintained|installed)\b", text, re.IGNORECASE
+        )
+    ):
+        errors.append("SOURCE_OBJECTIVE_IS_NOT_ESTABLISHED_CONFIGURATION")
     return errors
+
+
+def group_section_support(subject, spans, entities, document):
+    """Exact original subsection scope, including continuation across PDF pages.
+
+    This is a documentary heading certificate, never evidence that each member
+    run shares a result. Explicit competing groups/runs remain unresolved.
+    """
+    entity = entities.get(subject, {})
+    if (
+        entity.get("class_id") != "ExperimentFamily"
+        or entity.get("validation_status") != "SOURCE_SUPPORTED"
+    ):
+        return []
+    order = {s["evidence_id"]: i for i, s in enumerate(document["segments"])}
+    proof = []
+    for span in spans:
+        if span["source_id"] != entity["source_id"]:
+            return []
+        preceding = [
+            h
+            for h in document["sections"]
+            if h.get("source_id") == span["source_id"]
+            and (order[h["evidence_id"]], h["start"]) <= (order[span["evidence_id"]], span["start"])
+        ]
+        if not preceding:
+            return []
+        heading = max(preceding, key=lambda h: (order[h["evidence_id"]], h["start"]))
+        label = re.sub(
+            r"^(?:#+\s*|(?:[A-Z]|\d+(?:\.\d+)*|[IVXLCDM]+)[.)]\s+)",
+            "",
+            heading["title"],
+            flags=re.IGNORECASE,
+        )
+        if normalized(label) != normalized(entity["label"]):
+            return []
+        for key, other in entities.items():
+            if (
+                key == subject
+                or other["id"] == entity["id"]
+                or other.get("validation_status") != "SOURCE_SUPPORTED"
+            ):
+                continue
+            if other["class_id"] == "ExperimentalRun" and mentions(other["label"], span["quote"]):
+                return []
+            if other["class_id"] == "ExperimentFamily":
+                markers = [other["label"], *re.findall(r"\(([A-Z]{2,8})\)", other["label"])]
+                own_markers = set(re.findall(r"\(([A-Z]{2,8})\)", entity["label"]))
+                if any(mentions(m, span["quote"]) for m in markers if m not in own_markers):
+                    return []
+        proof.append(
+            {
+                "evidence_id": heading["evidence_id"],
+                "quote": heading["title"],
+                "start": heading["start"],
+            }
+        )
+    return list({identity(p): p for p in proof}.values())
+
+
+def document_conclusion_scope(subject, spans, entities, document):
+    """Current authors' article scope; never an individual experimental run."""
+    entity = entities.get(subject, {})
+    if (
+        entity.get("class_id") != "Investigation"
+        or entity.get("study") != "current"
+        or entity.get("validation_status") != "SOURCE_SUPPORTED"
+        or normalized(entity.get("label", "")) != normalized(document.get("package_title", ""))
+    ):
+        return False
+    if any(s["source_id"] != entity["source_id"] for s in spans):
+        return False
+    conclusions = [
+        s for s in spans if re.search(r"conclusions?", section_for_span(s, document), re.IGNORECASE)
+    ]
+    if not conclusions:
+        return False
+    text = " ".join(s["quote"] for s in conclusions)
+    if re.search(r"\b(?:prior|previous|earlier|reported\s+by)\b|\[\d", text, re.IGNORECASE):
+        return False
+    if any(
+        e["class_id"] == "Investigation" and e["study"] == "cited" and mentions(e["label"], text)
+        for e in entities.values()
+    ):
+        return False
+    return not re.search(
+        r"\b(?!(?:Figure|Table|Equation|Test|Run)\d)[A-Z][a-z]+(?:[’']s)?\d{1,3}\b", text
+    )
 
 
 def original_derivation_context(text, spans, evidence):
@@ -563,6 +666,10 @@ def applicable(subject, spans, entities, document):
             return False
     if any(mentions(entity["label"], s["quote"]) for s in spans):
         return True
+    if group_section_support(subject, spans, entities, document) or document_conclusion_scope(
+        subject, spans, entities, document
+    ):
+        return True
     if entity["class_id"] == "ExperimentFamily":
         for span in spans:
             heading = document.get("layout_headings", {}).get(span["evidence_id"])
@@ -659,6 +766,27 @@ def resolve_explicit_scopes(output, document):
             ):
                 statement["subjects"] = list(current)
                 statement["study"] = "current"
+        if not statement["subjects"] and statement["epistemic"] in {
+            "author_reported_conclusion",
+            "tentative_interpretation",
+            "hypothesis",
+        }:
+            roots = [
+                e
+                for e in experiments
+                if e["class_id"] == "Investigation"
+                and e["study"] == "current"
+                and normalized(e["label"]) == normalized(document.get("package_title", ""))
+            ]
+            if len(roots) == 1 and not re.search(
+                r"\b(?:prior|previous|earlier|reported\s+by)\b|\[\d",
+                statement["text"],
+                re.IGNORECASE,
+            ):
+                span = statement["support"][0]
+                if re.search(r"conclusions?", section_for_span(span, document), re.IGNORECASE):
+                    statement["subjects"] = [roots[0]["key"]]
+                    statement["study"] = "current"
 
 
 def deterministic(segment, semantic):
@@ -1082,8 +1210,25 @@ def grounded_entities(output, package, document, semantic, window, context=None)
     )
     selected = []
     for entity in entities:
-        if not mentions(entity["label"], text) and not (
-            entity["class_id"] == "Investigation" and entity["study"] == "current"
+        if (
+            not mentions(entity["label"], text)
+            and not (entity["class_id"] == "Investigation" and entity["study"] == "current")
+            and not any(
+                group_section_support(
+                    entity["key"],
+                    [
+                        {
+                            "source_id": m["source_id"],
+                            "evidence_id": m["evidence_id"],
+                            "start": m["start"],
+                            "quote": "",
+                        }
+                    ],
+                    validation["entities_by_key"],
+                    document,
+                )
+                for m in window["members"]
+            )
         ):
             continue
         supports = [s for s in entity["support"] if mentions(entity["label"], s["quote"])]
@@ -1130,9 +1275,26 @@ def quantity_scope_eligible(entity, semantic):
 
 def original_heading_scope(spans, entities, document):
     """An exact original group heading can establish scope, never name similarity."""
+    explicit_section = any(
+        group_section_support(key, [{**span, "quote": ""}], entities, document)
+        for key in entities
+        for span in spans
+    )
+    if explicit_section:
+        candidates = [
+            (key, proof)
+            for key in entities
+            if (proof := group_section_support(key, spans, entities, document))
+        ]
+        return candidates[0] if len(candidates) == 1 else None
     headers = [document.get("layout_headings", {}).get(s["evidence_id"]) for s in spans]
     if not headers or any(h is None for h in headers):
-        return None
+        candidates = [
+            (key, proof)
+            for key in entities
+            if (proof := group_section_support(key, spans, entities, document))
+        ]
+        return candidates[0] if len(candidates) == 1 else None
     labels = {normalized(h["quote"]) for h in headers}
     if len(labels) != 1:
         return None
@@ -1262,6 +1424,66 @@ def resolve_source_property(semantic, label, unit):
             if candidate:
                 return candidate_status, candidate
     return status, prop
+
+
+def explicit_quantity_derivation(labels, values, spans):
+    """Explicit derivation words bound to this variable/value, not its neighbors."""
+    derived = re.compile(
+        r"\b(?:calculated|computed|estimated|assumed|derived|predicted)\b|\b(?:best|least[- ]squares)\s+fits?\b",
+        re.IGNORECASE,
+    )
+    for value in values:
+        for span in spans:
+            if (
+                span["evidence_id"] != value["evidence_id"]
+                or not span["start"] <= value["start"] < span["end"]
+            ):
+                continue
+            before = span["quote"][: value["start"] - span["start"]]
+            # Do not let a different preceding sentence or semicolon establish
+            # the role of a later measured variable.
+            boundary = max(
+                [0, *[m.end() for m in re.finditer(r";|[.!?](?!\d)(?=\s|$)|\n\s*•\s*\n", before)]]
+            )
+            before = before[boundary:]
+            names = [
+                m
+                for label in labels
+                for m in re.finditer(
+                    r"(?<!\w)" + re.escape(label) + r"(?!\w)", before, re.IGNORECASE
+                )
+                if label
+            ]
+            if not names:
+                continue
+            name = max(names, key=lambda m: m.start())
+            local = before[name.start() :]
+            prefix = before[: name.start()]
+            preceding = re.search(
+                r"(?:calculated|computed|estimated|assumed|derived|predicted|best\s+fit)\s+$",
+                prefix,
+                re.IGNORECASE,
+            )
+            candidates = (
+                [preceding.group()]
+                if preceding
+                and not re.search(
+                    r"\b(?:not|rather\s+than|instead\s+of)\s*$",
+                    prefix[: preceding.start()],
+                    re.IGNORECASE,
+                )
+                else []
+            )
+            candidates += [
+                m.group()
+                for m in derived.finditer(local)
+                if not re.search(
+                    r"\b(?:not|rather\s+than|instead\s+of)\s*$", local[: m.start()], re.IGNORECASE
+                )
+            ]
+            if candidates:
+                return candidates
+    return []
 
 
 def native_quantity_expression(expression):
@@ -1425,6 +1647,18 @@ def validate_output(output, package, document, semantic):
                     if item["class_id"] not in semantic.class_metadata:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("UNREGISTERED_CLASS_NEEDS_SEMANTIC_REVIEW")
+                    if item["class_id"] == "ExperimentFamily" and re.match(
+                        r"(?:Figure|Fig\.?|Table)\s*\d+\s*[:.]", item["label"], re.IGNORECASE
+                    ):
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY")
+                    if item["class_id"] == "Sample" and re.fullmatch(
+                        r"(?:thin(?:ner)?|thick(?:er)?|several|various|different|candidate)\s+(?:materials?|samples?|specimens?|fuels?)",
+                        item["label"],
+                        re.IGNORECASE,
+                    ):
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED")
                     if item["study"] == "current" and any(
                         re.search(
                             r"\b(?:previous|prior|earlier|cited)\s+(?:stud(?:y|ies)|work|experiments?|tests?)\s+"
@@ -1729,6 +1963,19 @@ def validate_output(output, package, document, semantic):
                             "CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION"
                         )
                     for subject in item["subjects"]:
+                        section_proof = group_section_support(subject, spans, entities, document)
+                        if section_proof:
+                            record["scope_context"] = {
+                                "basis": "EXACT_ORIGINAL_GROUP_SUBSECTION",
+                                "support": section_proof,
+                            }
+                            spans += locate(section_proof, evidence)
+                        if document_conclusion_scope(subject, spans, entities, document):
+                            record["scope_context"] = {
+                                "basis": "ORIGINAL_CONCLUSION_AT_LITERAL_DOCUMENT_INVESTIGATION_SCOPE",
+                                "support": entities[subject]["support"],
+                                "scope_is_individual_run": False,
+                            }
                         if subject in entities and not applicable(
                             subject, spans, entities, document
                         ):
@@ -1930,18 +2177,29 @@ def validate_output(output, package, document, semantic):
                         for match, quote in candidates
                     ):
                         raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
-                    if not local_binding(
-                        item["subject"], item["expression"], spans, entities
-                    ) and not (
-                        entities[item["subject"]]["class_id"] == "ExperimentFamily"
-                        and all(
-                            normalized(
-                                document.get("layout_headings", {})
-                                .get(s["evidence_id"], {})
-                                .get("quote", "")
+                    section_proof = group_section_support(
+                        item["subject"], spans, entities, document
+                    )
+                    if section_proof:
+                        record["scope_context"] = {
+                            "basis": "EXACT_ORIGINAL_GROUP_SUBSECTION",
+                            "support": section_proof,
+                        }
+                        spans += locate(section_proof, evidence)
+                    if (
+                        not section_proof
+                        and not local_binding(item["subject"], item["expression"], spans, entities)
+                        and not (
+                            entities[item["subject"]]["class_id"] == "ExperimentFamily"
+                            and all(
+                                normalized(
+                                    document.get("layout_headings", {})
+                                    .get(s["evidence_id"], {})
+                                    .get("quote", "")
+                                )
+                                == normalized(entities[item["subject"]]["label"])
+                                for s in spans
                             )
-                            == normalized(entities[item["subject"]]["label"])
-                            for s in spans
                         )
                     ):
                         raise ValueError("QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED")
@@ -2024,6 +2282,10 @@ def validate_output(output, package, document, semantic):
                     )
                     if not record["quantity_value_spans"]:
                         raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
+                    if item["epistemic"] == "reported_quantity" and explicit_quantity_derivation(
+                        labels, record["quantity_value_spans"], spans
+                    ):
+                        raise ValueError("EXPLICIT_DERIVATION_IS_NOT_REPORTED_MEASUREMENT")
                     record["mapping"] = {
                         "kind": "existing_attribute" if prop else "unresolved_attribute",
                         "raw_label": item["label"],

@@ -8,7 +8,7 @@ from nasa_fire_ai.ingestion.pdf import extract_pdf_tables
 
 VERSION = "scientific-document-structure-v1"
 HEADING = re.compile(
-    r"(?m)^(?:#{1,6}\s+[^\n]+|(?:\d+(?:\.\d+)*[.)]?\s+)?"
+    r"(?m)^(?:#{1,6}\s+[^\n]+|[A-Z]\.\s+[A-Z][^\n]{2,180}|(?:(?:\d+(?:\.\d+)*|[IVXLCDM]+)[.)]?\s+)?"
     r"(?:abstract|introduction|background|experimental(?:\s+\w+){0,3}|"
     r"methods|outcomes?|findings|results(?:\s+and\s+discussion)?|discussion|conclusions?|"
     r"summary(?:\s+and\s+conclusions)?|references|acknowledg\w*|appendix[^\n]*))\s*$",
@@ -109,7 +109,13 @@ def structure(package, root, max_chars=6500):
         eid, sid, text = evidence["evidence_id"], evidence["source_id"], evidence["text"]
         transitions = list(HEADING.finditer(text))
         sections.extend(
-            {"evidence_id": eid, "start": m.start(), "end": m.end(), "title": m.group().strip()}
+            {
+                "evidence_id": eid,
+                "source_id": sid,
+                "start": m.start(),
+                "end": m.end(),
+                "title": m.group().strip(),
+            }
             for m in transitions
         )
         start = 0
@@ -214,6 +220,7 @@ def structure(package, root, max_chars=6500):
                     )
     return {
         "version": VERSION,
+        "package_title": package["title"],
         "sections": sections,
         "layout_headings": layout,
         "segments": segments,
