@@ -8,7 +8,7 @@ from nasa_fire_ai.ingestion.pdf import extract_pdf_tables
 
 VERSION = "scientific-document-structure-v1"
 HEADING = re.compile(
-    r"(?m)^(?:#{1,6}\s+[^\n]+|[A-Z]\.\s+[A-Z][^\n]{2,180}|(?:(?:\d+(?:\.\d+)*|[IVXLCDM]+)[.)]?\s+)?"
+    r"(?m)^(?:#{1,6}\s+[^\n]+|(?:[A-Z]|[IVXLCDM]+|\d+(?:\.\d+)*)\.\s+[A-Z][^\n]{2,180}|(?:(?:\d+(?:\.\d+)*|[IVXLCDM]+)[.)]?\s+)?"
     r"(?:abstract|introduction|background|experimental(?:\s+\w+){0,3}|"
     r"methods|outcomes?|findings|results(?:\s+and\s+discussion)?|discussion|conclusions?|"
     r"summary(?:\s+and\s+conclusions)?|references|acknowledg\w*|appendix[^\n]*))\s*$",

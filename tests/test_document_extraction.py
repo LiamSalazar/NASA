@@ -271,6 +271,52 @@ def test_group_subsection_cannot_promote_individual_run_value_to_whole_group(ser
     )
 
 
+@pytest.mark.parametrize("boundary", ["III. Verification Testing", "4. Final Protocol"])
+def test_arbitrary_numbered_section_ends_previous_group_scope(service, boundary):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    text = f"A. Alpha tests\nPressure was maintained at 20 Pa.\n{boundary}\nPressure was maintained at 40 Pa."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "alpha", "Alpha tests", "ExperimentFamily", "A. Alpha tests")]
+    o["quantities"] = [
+        {
+            "subject": "alpha",
+            "label": "pressure",
+            "expression": "40",
+            "unit": "Pa",
+            "epistemic": "experimental_configuration",
+            "support": support(p, "Pressure was maintained at 40 Pa."),
+        }
+    ]
+    result = validate_output(o, p, structure(p, service.root), extraction_semantic(service, p))
+    assert result["records"][-1]["status"] == "REJECTED"
+
+
+def test_floating_figure_does_not_inherit_following_group(service):
+    from nasa_fire_ai.ingestion.document_extraction import group_section_support
+
+    text = "A. Alpha tests\nFigure 5: Temperature measurements."
+    p = submitted(service, text)
+    d = structure(p, service.root)
+    span = {
+        "source_id": p["evidence"][0]["source_id"],
+        "evidence_id": p["evidence"][0]["evidence_id"],
+        "start": text.index("Figure"),
+        "quote": "Figure 5: Temperature measurements.",
+    }
+    entities = {
+        "alpha": {
+            "id": "alpha",
+            "class_id": "ExperimentFamily",
+            "label": "Alpha tests",
+            "source_id": span["source_id"],
+            "validation_status": "SOURCE_SUPPORTED",
+        }
+    }
+    assert not group_section_support("alpha", [span], entities, d)
+
+
 def test_roman_conclusion_scope_is_literal_document_investigation_not_cited_work(service):
     text = "# Synthetic study\nI. Methods\nAn apparatus was tested.\nIV. Conclusion\nThe results demonstrate the reported trend.\nEarlier work reported a different trend."
     p = submitted(service, text)
@@ -299,6 +345,8 @@ def test_roman_conclusion_scope_is_literal_document_investigation_not_cited_work
         "Figure 4: Original data with the best fit curve.",
         "This relationship is compared to experimental results.",
         "The least-squares fit describes the data.",
+        "The flame length was computed from the fitted curve.",
+        "The ignition temperature was estimated from the model.",
     ],
 )
 def test_fitted_caption_or_comparison_method_is_not_direct_observation(text):

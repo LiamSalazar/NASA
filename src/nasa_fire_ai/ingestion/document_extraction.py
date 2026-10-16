@@ -404,7 +404,7 @@ def role_errors(statement):
             flags=re.IGNORECASE,
         )
     if role == "measured_observation" and re.search(
-        r"\b(?:simulat\w*|predict\w*|numerical\s+(?:model|result)|calculated|derived|derivative|(?:best|linear|quadratic|regression|curve|polynomial|least[- ]squares)\s+fits?)\b",
+        r"\b(?:simulat\w*|predict\w*|numerical\s+(?:model|result)|calculated|computed|estimated|assumed|derived|derivative|(?:best|linear|quadratic|regression|curve|polynomial|least[- ]squares)\s+fits?)\b",
         observation_text,
         re.IGNORECASE,
     ):
@@ -443,6 +443,10 @@ def group_section_support(subject, spans, entities, document):
     proof = []
     for span in spans:
         if span["source_id"] != entity["source_id"]:
+            return []
+        # PDF floats may appear under the following section. Their placement
+        # alone cannot certify that the depicted data belong to that group.
+        if re.match(r"\s*(?:Fig(?:ure)?\.?|Table)\s+\d", span["quote"], re.IGNORECASE):
             return []
         preceding = [
             h
@@ -766,11 +770,16 @@ def resolve_explicit_scopes(output, document):
             ):
                 statement["subjects"] = list(current)
                 statement["study"] = "current"
-        if not statement["subjects"] and statement["epistemic"] in {
-            "author_reported_conclusion",
-            "tentative_interpretation",
-            "hypothesis",
-        }:
+        if (
+            not statement["subjects"]
+            and statement["study"] != "cited"
+            and statement["epistemic"]
+            in {
+                "author_reported_conclusion",
+                "tentative_interpretation",
+                "hypothesis",
+            }
+        ):
             roots = [
                 e
                 for e in experiments
