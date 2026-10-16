@@ -12,6 +12,45 @@ CUES = re.compile(
 )
 
 
+def statement_candidates(package, document, validation):
+    """Literal prose anchors requiring classification, never scientific gold.
+
+    Coverage requires a matching statement text, not just a nearby support span
+    or a documentary entity mentioning the same page.
+    """
+    from nasa_fire_ai.ingestion.document_extraction import normalized, source_anchors
+
+    window = {"members": document["segments"]}
+    anchors = source_anchors(window, {"anchors": []}, [], package)
+    result = []
+    for anchor in anchors.values():
+        text = anchor["quote"]
+        if len(re.findall(r"[A-Za-z]{2,}", text)) < 5 or not CUES.search(text):
+            continue
+        if not re.search(
+            r"\b(?:is|are|was|were|has|have|achieved|provides?|guide|observ\w*|measur\w*|increas\w*|decreas\w*|show\w*|conclud\w*|may|might|must|shall)\b",
+            text,
+            re.IGNORECASE,
+        ):
+            continue
+        matching = [
+            r
+            for r in validation["records"]
+            if r["kind"] == "statements"
+            and r["status"] != "REJECTED"
+            and normalized(text) in normalized(r["proposal"]["text"])
+            and any(s["evidence_id"] == anchor["evidence_id"] for s in r["support_spans"])
+        ]
+        result.append(
+            {
+                **{k: anchor[k] for k in ("id", "evidence_id", "page", "start", "end", "quote")},
+                "proposal_ids": [r["id"] for r in matching],
+                "state": "RETAINED_STATEMENT" if matching else "NOT_STRUCTURED",
+            }
+        )
+    return result
+
+
 def coverage(package, document, validation, outcomes, table_quantities):
     from nasa_fire_ai.ingestion.document_extraction import quantity_expression_pattern
 
@@ -27,6 +66,7 @@ def coverage(package, document, validation, outcomes, table_quantities):
         rf"(?<![\w.])(?P<expression>{quantity_expression_pattern()})\s*[-‑]?\s*(?P<unit>{units})(?!\w)"
     )
     records = validation["records"]
+    prose = statement_candidates(package, document, validation)
     anchors = []
     for segment in document["segments"]:
         if re.search(r"references|acknowledg", segment["section"], re.IGNORECASE):
@@ -163,6 +203,8 @@ def coverage(package, document, validation, outcomes, table_quantities):
         "detected_quantity_occurrences_structured": sum(
             q["state"] == "STRUCTURED_CANDIDATE" for q in quantities
         ),
+        "literal_proposition_candidates": prose,
+        "unstructured_proposition_candidates": sum(p["state"] == "NOT_STRUCTURED" for p in prose),
         "model_proposed_items": model_items,
         "inaccessible_content": document["limitations"],
         "source_units": anchors,

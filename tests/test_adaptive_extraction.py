@@ -118,6 +118,126 @@ def test_coherent_sparse_section_can_use_available_provider_context(service):
     assert document["coverage"]["source_characters"] == len(text)
 
 
+def test_pdf_heading_changes_do_not_force_tiny_model_calls():
+    document = {
+        "segments": [
+            {
+                "id": str(i),
+                "source_id": "same-original",
+                "text": "Original section text.",
+                "section": f"Section {i}",
+                "layout_heading": {"quote": f"Section {i}"},
+            }
+            for i in range(20)
+        ]
+    }
+    windows = model_windows(document, 6000)
+    assert len(windows) == 1
+    assert len(windows[0]["members"]) == 20
+
+
+def test_scientific_model_and_finite_fallback_preserve_task(service):
+    p = submitted(service, "Run A1 was tested in microgravity.")
+    c = Mock()
+    requests = []
+
+    def respond(**kwargs):
+        requests.append(kwargs)
+        if kwargs["model"] == "science-primary":
+            raise ScientificTransportError("transient_server")
+        payload = json.loads(kwargs["messages"][1]["content"])
+        return response({k: [] for k in payload["schema"]["properties"]})
+
+    c.client.with_options.return_value.chat.completions.create.side_effect = respond
+    result = service.prepare_scientific(
+        p["id"],
+        Settings(
+            root=service.root,
+            nvidia_extraction_model="science-primary",
+            nvidia_phase3_model="query-only",
+            nvidia_science_fallback_models=("science-backup",),
+        ),
+        model_enabled=True,
+        client=c,
+        budget=ExtractionBudget(retries=0, max_model_calls=2),
+    )
+    assert [r["model"] for r in requests] == ["science-primary", "science-backup"]
+    assert requests[0]["messages"] == requests[1]["messages"]
+    assert requests[0]["response_format"] == requests[1]["response_format"]
+    assert result["processing"]["model"] == "science-primary"
+    attempts = [
+        json.loads(row[0])
+        for row in service.registry.db.execute(
+            "SELECT payload_json FROM phase3_cache WHERE cache_kind='scientific_document_attempt'"
+        )
+    ]
+    assert {a["requested_model"] for a in attempts} == {"science-primary", "science-backup"}
+    assert all("response_format" in a for a in attempts)
+
+
+def test_original_pdf_image_identity_and_mutation_guard(service):
+    import hashlib
+
+    import pymupdf
+
+    from nasa_fire_ai.ingestion.scientific_media import table_page_images
+
+    with pymupdf.open() as pdf:
+        pdf.new_page().insert_text((50, 50), "Synthetic derived table; fits, not measurements.")
+        data = pdf.tobytes()
+    p = service.submit(
+        "Synthetic PDF", "Image provenance regression", [("source.pdf", data)], "tester"
+    )["package"]
+    sha = hashlib.sha256(data).hexdigest()
+    tables = [{"input_sha256": sha, "physical_pdf_page": 1}]
+    images, receipts = table_page_images(p, service.root, tables)
+    assert len(images) == len(receipts) == 1
+    assert images[0].startswith("data:image/png;base64,")
+    assert receipts[0]["pdf_sha256"] == sha
+    assert receipts[0]["physical_pdf_page"] == 1
+    assert receipts[0]["evidence_id"] == p["evidence"][0]["evidence_id"]
+    assert "data:image" not in json.dumps(receipts)
+    (service.root / p["inputs"][0]["stored_input"]).write_bytes(b"changed synthetic test copy")
+    with pytest.raises(ValueError, match="Original PDF changed"):
+        table_page_images(p, service.root, tables)
+
+
+def test_statement_omission_inventory_does_not_count_entity_as_recovery(service):
+    from nasa_fire_ai.ingestion.scientific_coverage import statement_candidates
+
+    p = submitted(service, "The results show that the specimen remained intact.")
+    document = structure(p, service.root)
+    missing = statement_candidates(p, document, {"records": []})
+    assert len(missing) == 1
+    assert missing[0]["state"] == "NOT_STRUCTURED"
+    assert missing[0]["quote"] in p["evidence"][0]["text"]
+
+
+def test_named_project_completion_is_explicit_execution_not_objective_completion(service):
+    from nasa_fire_ai.ingestion.narrative_candidates import literal_candidates
+
+    def candidate(text):
+        p = submitted(service, text)
+        segment = structure(p, service.root)["segments"][0]
+        return next(
+            e
+            for e in literal_candidates(segment, service.semantic)["entities"]
+            if e["label"] == "ABC"
+        )
+
+    assert (
+        candidate("The ABC project completed combustion tests in reduced gravity.")["study"]
+        == "current"
+    )
+    assert candidate("The ABC project achieved its scientific objectives.")["study"] == "unknown"
+    assert (
+        candidate("The previous ABC project completed combustion tests in reduced gravity.")[
+            "study"
+        ]
+        == "cited"
+    )
+
+
 def test_transient_retry_and_attempt_journal_are_production_behavior(service, monkeypatch):
     p = submitted(service, "Run A1 was tested in microgravity.")
     c = Mock()

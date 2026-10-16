@@ -26,8 +26,13 @@ class Settings:
     nvidia_api_key: str | None = os.getenv("NVIDIA_API_KEY")
     nvidia_base_url: str | None = os.getenv("NVIDIA_BASE_URL")
     nvidia_extraction_model: str | None = os.getenv(
-        "NVIDIA_EXTRACTION_MODEL", os.getenv("NVIDIA_MODEL")
+        "NVIDIA_EXTRACTION_MODEL",
+        os.getenv("NVIDIA_MODEL", "nvidia/nemotron-3.5-super-vl-120b-a12b"),
     )
+    nvidia_science_fallback_models: tuple[str, ...] = tuple(
+        m.strip() for m in os.getenv("NVIDIA_SCIENCE_FALLBACK_MODELS", "").split(",") if m.strip()
+    )
+    nvidia_science_vision_model: str | None = os.getenv("NVIDIA_SCIENCE_VISION_MODEL")
     nvidia_phase3_model: str = os.getenv(
         "NVIDIA_PHASE3_MODEL", os.getenv("NVIDIA_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b")
     )
@@ -36,6 +41,10 @@ class Settings:
     # Optional advisory routing only. It never grants semantic classifiers any
     # authority to publish claims, alter DIRECT matching, or mutate the KG.
     semantic_classifier_backend: str = os.getenv("SEMANTIC_CLASSIFIER_BACKEND", "rule")
+
+    @property
+    def scientific_model(self) -> str:
+        return self.nvidia_extraction_model or self.nvidia_phase3_model
 
     @property
     def registry_path(self) -> Path:

@@ -9,6 +9,7 @@ import hashlib
 import json
 import shutil
 import sys
+from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
@@ -18,6 +19,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from nasa_fire_ai.config import Settings
 from nasa_fire_ai.evidence import EvidenceRegistry
 from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget
+from nasa_fire_ai.ingestion.extraction_resources import ProviderEnvelope
 from nasa_fire_ai.services.curation import CurationService
 
 SOURCES = {
@@ -35,15 +37,38 @@ def write(path, value):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("source", choices=[*SOURCES, "holdout"])
+    parser.add_argument("source", choices=[*SOURCES, "holdout", "reserved"])
     parser.add_argument("--directory", type=Path, required=True)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--offline", action="store_true")
     parser.add_argument("--timeout-seconds", type=float)
     parser.add_argument("--recover", action="store_true")
     parser.add_argument("--max-model-calls", type=int)
+    parser.add_argument("--ntrs-id")
+    parser.add_argument("--freeze", type=Path)
+    parser.add_argument("--acquire-only", action="store_true")
+    parser.add_argument("--request-timeout-seconds", type=float)
     args = parser.parse_args()
     out = args.directory.resolve()
+    if args.source == "reserved":
+        if not args.ntrs_id or not args.freeze:
+            parser.error("A reserved investigation requires --ntrs-id and --freeze")
+        freeze = json.loads(args.freeze.read_text())
+        if freeze["evaluation"]["ntrs_id"] != args.ntrs_id:
+            raise ValueError("Reserved investigation differs from prospective membership")
+        for name, sha in freeze["files"].items():
+            if hashlib.sha256((ROOT / name).read_bytes()).hexdigest() != sha:
+                raise ValueError("Frozen implementation changed: " + name)
+        settings = Settings()
+        actual = {
+            "model": settings.scientific_model,
+            "fallback_models": list(settings.nvidia_science_fallback_models),
+            "vision_model": settings.nvidia_science_vision_model,
+            "endpoint": settings.nvidia_base_url or "https://integrate.api.nvidia.com/v1",
+            "provider_envelope": asdict(ProviderEnvelope()),
+        }
+        if actual != freeze["configuration"]:
+            raise ValueError("Frozen inference configuration changed")
     if args.source == "holdout":
         freeze = json.loads(
             (
@@ -79,8 +104,8 @@ def main():
         submission = json.loads((out / "submission.json").read_text())
         version = len(list(out.glob("prepared_*.json"))) + 1
     else:
-        if args.source == "holdout":
-            submission = service.submit_ntrs("20240006315", "phase1-validation")
+        if args.source in {"holdout", "reserved"}:
+            submission = service.submit_ntrs(args.ntrs_id or "20240006315", "phase1-validation")
         else:
             campaign, identifier = SOURCES[args.source]
             historical = ROOT / "artifacts/phase1_generalizable_ingestion/v1" / campaign
@@ -99,6 +124,14 @@ def main():
             submission = service.save(submission["package"], package["creator"])
         write(out / "submission.json", submission)
         version = 1
+    if args.acquire_only:
+        print(
+            json.dumps(
+                {"package_id": submission["package"]["id"], "state": "ACQUIRED_WITHOUT_INFERENCE"}
+            )
+        )
+        registry.db.close()
+        return
     earlier_attempts = {
         r[0]
         for r in registry.db.execute(
@@ -113,6 +146,7 @@ def main():
             max_model_calls=args.max_model_calls,
             timeout_seconds=args.timeout_seconds,
             recovery_only=args.recover,
+            call_timeout_seconds=args.request_timeout_seconds,
         ),
     )
     attempts = [

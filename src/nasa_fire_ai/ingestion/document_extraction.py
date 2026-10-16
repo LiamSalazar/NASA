@@ -183,6 +183,9 @@ not experiment identities. Do not turn every statement/number into an entity.
 Deduplicate the same source subject and class, combining only relevant supports.
 Copy label as a contiguous source phrase; do not append explanations or aliases.
 Every cited support anchor must contain that exact label or explicit identity context.
+Use multiple adjacent original anchors when an identity wraps across source lines.
+Condition subclasses require original wording or an approved alias establishing that
+type; a sensor variable is not evidence for an arbitrary condition subclass.
 Study is current, cited or unknown. Supply supporting anchors for every entity.
 DO NOT output propositions, relationships, identity, schema or any other root key.""",
     "propositions": """Your ONLY task is SOURCE PROPOSITIONS AND QUANTITIES.
@@ -196,6 +199,9 @@ Do not classify titles, author lists, future plans or methods as observations.
 Use justified known_entities subject keys; subjects=[] preserves an unresolved scope.
 For quantities copy the source quantity label, original numeric expression WITHOUT
 its unit, original adjacent unit, known subject key, epistemic and supporting IDs.
+The label must be a literal original variable phrase, never a rewritten synonym.
+For 'tip grows at a rate of 7 mm/s', use the original label 'rate'; do not invent
+'tip spread velocity'. Preserve this literal quantity for semantic review if needed.
 The fields are subject, label, expression, unit, epistemic, support.
 Preserve ~, inequalities and ranges. Never convert or calculate a number.
 Use reported_quantity, derived_quantity or experimental_configuration accurately.
@@ -223,6 +229,7 @@ def stage_prompt(stage, focus=None):
             "value/unit/support, so do not output them. Preserve fits/derivatives as derived_quantity "
             "and setpoints as experimental_configuration. The label identifies the named variable, "
             "not the value or unit. For synthetic text 'specimen width was 7 mm', label is 'width', "
+            "Use a literal contiguous variable phrase, never a synonym or an expanded name. "
             "never '7 mm'. Read the named source_anchors to find the variable and experimental "
             "subject. A material concept, a gravity category or a planned experiment cannot be "
             "used as the executed experimental scope. If no variable or subject is justified, "
@@ -264,7 +271,12 @@ def local_binding(subject, value, spans, entities):
                     and e["class_id"] == entities[subject]["class_id"]
                     and mentions(e["label"], clause)
                 ]
-                if not competing:
+                embedded_specimen_attribute = (
+                    entities[subject]["class_id"] == "Sample"
+                    and mentions(value, label)
+                    and not any(mentions(value, e["label"]) for e in competing)
+                )
+                if not competing or embedded_specimen_attribute:
                     return True
     return False
 
@@ -291,6 +303,28 @@ def locate(support, evidence):
     if len({s["source_id"] for s in spans}) != 1:
         raise ValueError("CROSS_DOCUMENT_SUPPORT_REQUIRES_REVIEW")
     return spans
+
+
+def contiguous_support(spans, evidence):
+    """Join only overlapping spans or whitespace gaps in the same original page.
+
+    This permits line-wrapped names without using an uncited intervening sentence
+    as evidence. Returned text and offsets always come from the immutable source.
+    """
+    merged = []
+    for span in sorted(spans, key=lambda s: (s["evidence_id"], s["start"])):
+        if merged and merged[-1]["evidence_id"] == span["evidence_id"]:
+            previous = merged[-1]
+            text = evidence[span["evidence_id"]]["text"]
+            if (
+                span["start"] <= previous["end"]
+                or not text[previous["end"] : span["start"]].strip()
+            ):
+                previous["end"] = max(previous["end"], span["end"])
+                previous["quote"] = text[previous["start"] : previous["end"]]
+                continue
+        merged.append(copy.deepcopy(span))
+    return merged
 
 
 def role_errors(statement):
@@ -454,6 +488,7 @@ def local_investigation_antecedent(subject, spans, entities, document):
             k: e
             for k, e in entities.items()
             if e["class_id"] == "Investigation"
+            and e.get("validation_status") == "SOURCE_SUPPORTED"
             and e["source_id"] == span["source_id"]
             and mentions(e["label"], prefix)
         }
@@ -1416,8 +1451,34 @@ def validate_output(output, package, document, semantic):
                         record["status"] = "UNRESOLVED"
                         record["research_execution_role"] = "PLANNED_FUTURE_RESEARCH"
                         record["reasons"].append("FUTURE_RESEARCH_IS_NOT_CURRENT_INVESTIGATION")
-                    if not any(mentions(item["label"], s["quote"]) for s in spans):
+                    label_spans = contiguous_support(spans, evidence)
+                    if not any(mentions(item["label"], s["quote"]) for s in label_spans):
                         raise ValueError("ENTITY_LABEL_ABSENT_FROM_SUPPORT")
+                    if not any(mentions(item["label"], s["quote"]) for s in spans):
+                        record["identity_support"] = {
+                            "basis": "CONTIGUOUS_ORIGINAL_SOURCE_SPANS",
+                            "support": label_spans,
+                        }
+                    if (
+                        has_class(item["class_id"], "ExperimentalCondition", semantic)
+                        and item["class_id"] != "ExperimentalCondition"
+                    ):
+                        meta = semantic.class_metadata.get(item["class_id"], {})
+                        stem = re.sub(r"Condition$", "", meta.get("label") or item["class_id"])
+                        terms = [stem, *meta.get("query_terms", [])]
+                        approved_condition = item["class_id"] == "GravityCondition" and any(
+                            m.get("relation") == "hasGravityCondition"
+                            and normalized(item["label"])
+                            in {normalized(a) for a in [canonical, *m.get("aliases", [])]}
+                            for canonical, m in getattr(semantic, "entity_mentions", {}).items()
+                        )
+                        if not approved_condition and not any(
+                            mentions(t, item["label"]) for t in terms if t
+                        ):
+                            record["status"] = "UNRESOLVED"
+                            record["reasons"].append(
+                                "CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS"
+                            )
                     metadata = (
                         package.get("source_provenance", {}).get("metadata", {})
                         if package.get("source_provenance")
@@ -1892,6 +1953,34 @@ def validate_output(output, package, document, semantic):
                     }:
                         raise ValueError("QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME")
                     status, prop = resolve_source_property(semantic, item["label"], item["unit"])
+                    # Reuse declared dimensional nouns to block, for example,
+                    # a width assigned the time until that width vanished. This
+                    # checks compatibility only; it activates no accessor/mapping.
+                    from nasa_fire_ai.normalization.units import normalize
+
+                    noun = normalized(item["label"]).split()[-1:]
+                    expected_units = {
+                        definition["unit"]
+                        for name, definition in getattr(
+                            semantic, "source_field_accessors", {}
+                        ).items()
+                        if noun and name.split("_")[-1] == noun[0] and definition.get("unit")
+                    }
+                    if len(expected_units) == 1 and item["unit"]:
+                        try:
+                            original_unit = (
+                                "s"
+                                if re.fullmatch(
+                                    r"seconds?|minutes?|hours?", item["unit"], re.IGNORECASE
+                                )
+                                else normalize(1, item["unit"])[1]
+                            )
+                            expected_unit = normalize(1, next(iter(expected_units)))[1]
+                        except ValueError:
+                            pass
+                        else:
+                            if original_unit != expected_unit:
+                                raise ValueError("QUANTITY_NAME_UNIT_DIMENSION_CONTRADICTION")
                     labels = [item["label"]]
                     if prop:
                         labels.extend(semantic.properties[prop].aliases)
@@ -1987,6 +2076,21 @@ def validate_output(output, package, document, semantic):
                         re.IGNORECASE,
                     ):
                         raise ValueError("CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT")
+                    derivation = next(
+                        (
+                            context
+                            for s in spans
+                            if (context := original_derivation_context(s["quote"], [s], evidence))
+                        ),
+                        None,
+                    )
+                    if derivation and item["epistemic"] == "reported_quantity":
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("DERIVED_CONTEXT_IS_NOT_DIRECT_OBSERVATION")
+                        record["epistemic_context"] = {
+                            "basis": "NEAREST_ORIGINAL_DERIVATION_OF_SAME_VARIABLE",
+                            "support": locate([derivation], evidence),
+                        }
                 elif kind == "concepts":
                     if not any(mentions(item["term"], s["quote"]) for s in spans):
                         raise ValueError("CONCEPT_TERM_ABSENT")
@@ -2423,7 +2527,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
     calls, tokens, cached, outcomes = 0, 0, 0, []
     if model_enabled and client is None and settings.nvidia_api_key:
         client = NvidiaStructuredClient(
-            settings.nvidia_api_key, settings.nvidia_base_url, settings.nvidia_phase3_model
+            settings.nvidia_api_key, settings.nvidia_base_url, settings.scientific_model
         )
     for original in document["segments"]:
         if not re.search(r"references|acknowledg", original["section"], re.IGNORECASE):
@@ -2533,6 +2637,28 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         ]
         if original_tables:
             request["original_tables"] = original_tables
+        images, image_receipts = [], []
+        if stage == "propositions" and original_tables and settings.nvidia_science_vision_model:
+            from nasa_fire_ai.ingestion.scientific_media import table_page_images
+
+            images, image_receipts = table_page_images(
+                package,
+                service.root,
+                [
+                    t
+                    for t in document["detected_tables"]
+                    if "cells" in t and (t["physical_pdf_page"], t["input_sha256"]) in local_pages
+                ],
+            )
+            request["original_page_images"] = image_receipts
+            request["visual_source_policy"] = (
+                "Images are original page context, never scientific authority. Use only original "
+                "text anchors for proposed facts. Preserve table row/column scope and fit/derived "
+                "roles. If image-only attribution cannot be independently established, omit the "
+                "scientific assignment and retain the original table for scientist review."
+            )
+        task_model = settings.nvidia_science_vision_model if images else settings.scientific_model
+        fallback_models = () if images else settings.nvidia_science_fallback_models
         schema = request["schema"]
         wire_quantities = {}
         if focus == "quantities":
@@ -2600,6 +2726,23 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 **{k: definition["properties"][k] for k in ("subject", "label", "epistemic")},
             }
             definition["required"] = list(definition["properties"])
+        if focus == "statements":
+            from nasa_fire_ai.ingestion.scientific_coverage import statement_candidates
+
+            missing = statement_candidates(
+                package, document, validate_output(output, package, document, semantic)
+            )
+            request["unstructured_statement_anchors"] = [
+                ref
+                for ref, anchor in wire_anchors.items()
+                if any(
+                    c["state"] == "NOT_STRUCTURED"
+                    and c["evidence_id"] == anchor["evidence_id"]
+                    and c["start"] == anchor["start"]
+                    and c["end"] == anchor["end"]
+                    for c in missing
+                )
+            ]
         if focus:
             schema["properties"] = {focus: schema["properties"][focus]}
             schema["required"] = [focus]
@@ -2623,7 +2766,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             )
         if stage == "identity" and focus == "entities":
             request["task"] = (
-                "Resolve the source result-heading identity using the local evidence. "
+                "Resolve original experimental identities, including quantified samples and source result headings, using local evidence. "
+                "Retain literal sample/specimen names; dimensions alone do not create a run. "
                 "Material means the substance itself, without investigation/gravity/result qualifiers. "
                 "ExperimentFamily is a source-defined experimental group or comparison context. "
                 "A result heading combining test context and material names is a scoped group, "
@@ -2726,7 +2870,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 CONTRACT,
                 prompt,
                 request,
-                settings.nvidia_phase3_model,
+                task_model,
+                fallback_models,
                 budget.max_output_tokens,
                 envelope.output_tokens,
                 reasoning,
@@ -2791,11 +2936,17 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             history = copy.deepcopy((partial or {}).get("attempt_receipts", []))
             retained = copy.deepcopy((partial or {}).get("output", Output().model_dump()))
             feedback, transient_attempts, repairs = None, 0, 0
+            model_options = list(dict.fromkeys((task_model, *fallback_models)))
+            model_index = 0
             while True:
                 body = {**request, **({"validation_feedback": feedback} if feedback else {})}
                 payload = json.dumps(body, ensure_ascii=False, separators=(",", ":"))
                 # UTF-8 bytes are a conservative tokenizer upper bound, not billed usage.
-                reserve = len((prompt + payload + json.dumps(format_mode)).encode()) + capacity
+                reserve = (
+                    len((prompt + payload + json.dumps(format_mode)).encode())
+                    + capacity
+                    + len(images) * 4096
+                )
                 outcome.update(
                     request_bytes=len(payload.encode()),
                     reserved_tokens_per_attempt=reserve,
@@ -2831,6 +2982,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     "stage": stage,
                     "request": body,
                     "max_output_tokens": capacity,
+                    "requested_model": model_options[model_index],
+                    "response_format": format_mode,
                 }
                 attempt_key = identity([key, calls, time.time_ns()])
                 service.registry.set_phase3_cache(
@@ -2875,7 +3028,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     )
                     response = complete_scientific(
                         client,
-                        model=settings.nvidia_phase3_model,
+                        model=model_options[model_index],
                         system=prompt,
                         payload=payload,
                         max_tokens=capacity,
@@ -2885,6 +3038,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         response_format=format_mode,
                         reasoning_budget=reasoning,
                         on_progress=checkpoint_stream,
+                        images=images,
                     )
                     raw, finish, usage = response.content, response.finish_reason, response.usage
                     outcome.update(finish_reason=finish, usage=usage, transport=response.metadata)
@@ -2986,6 +3140,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         "timeout",
                         "network",
                         "deadline",
+                        "provider_stream_error",
                     }
                     if error.kind in {"access_denied", "interrupted"}:
                         provider_blocked[0] = True
@@ -3052,7 +3207,20 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     break
                 if transient:
                     if transient_attempts >= budget.retries:
-                        break
+                        if model_index + 1 >= len(model_options) or retry_after:
+                            break
+                        model_index += 1
+                        transient_attempts = 0
+                        feedback = None
+                        outcome.setdefault("fallbacks", []).append(
+                            {
+                                "from": model_options[model_index - 1],
+                                "to": model_options[model_index],
+                                "reason": outcome.get("error_type"),
+                                "task_and_evidence_preserved": True,
+                            }
+                        )
+                        continue
                     transient_attempts += 1
                     # Do not wait indefinitely when the operator chose no overall
                     # campaign deadline. Never retry earlier than Retry-After.
@@ -3176,6 +3344,15 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             }:
                 deferred.append((window, stage, result))
         if stage == "identity" and model_enabled:
+            checked_identities = validate_output(output, package, document, semantic)
+            sample_pages = {
+                s["evidence_id"]
+                for r in checked_identities["records"]
+                if r["kind"] == "entities"
+                and r["status"] != "REJECTED"
+                and r["proposal"]["class_id"] == "Sample"
+                for s in r["support_spans"]
+            }
             supported_groups = {
                 normalized(r["proposal"]["label"])
                 for r in validate_output(output, package, document, semantic)["records"]
@@ -3193,7 +3370,13 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 and normalized(e["label"]) not in supported_groups
             ]
             for window in windows:
-                if any(
+                missing_quantified_samples = any(
+                    m["evidence_id"] not in sample_pages
+                    and re.search(r"\b(?:samples?|specimens?)\b", m["text"], re.IGNORECASE)
+                    and re.search(r"\d\s*(?:mm|cm|m|g)\b", m["text"])
+                    for m in window["members"]
+                )
+                if missing_quantified_samples or any(
                     any(
                         span["evidence_id"] == member["evidence_id"]
                         for span in e["support"]
@@ -3242,6 +3425,11 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 break
             result["coverage_recovery"] = "VERIFIED_SOURCE_QUANTITY_PROGRESS"
     if recovery_only:
+        from nasa_fire_ai.ingestion.scientific_coverage import statement_candidates
+
+        pending_statements = statement_candidates(
+            package, document, validate_output(output, package, document, semantic)
+        )
         pending = validate_output(output, package, document, semantic)
         unresolved_ids = {
             s["evidence_id"]
@@ -3249,6 +3437,9 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             if r["kind"] == "statements" and r["status"] == "UNRESOLVED"
             for s in r["support_spans"]
         }
+        unresolved_ids.update(
+            c["evidence_id"] for c in pending_statements if c["state"] == "NOT_STRUCTURED"
+        )
         for window in windows:
             if any(m["evidence_id"] in unresolved_ids for m in window["members"]):
                 process_stage(window, "propositions", "statements")
@@ -3298,7 +3489,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 "scientific_item_ceiling": None,
                 "adaptive": True,
             },
-            "model": settings.nvidia_phase3_model if model_enabled else None,
+            "model": settings.scientific_model if model_enabled else None,
+            "configured_fallback_models": list(settings.nvidia_science_fallback_models),
             "new_model_calls": calls,
             "restored_proposals_after_source_validation": restored_count,
             "recovered_cached_proposals_after_source_validation": recovered_cached_proposals,
@@ -3309,7 +3501,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             "duration_seconds": time.monotonic() - started,
             "outcomes": outcomes,
             "status": "PARTIAL_MODEL_COVERAGE"
-            if any(
+            if (model_enabled and scientific_coverage["outstanding_source_units"])
+            or any(
                 o["model"]
                 in {
                     "FAILED",

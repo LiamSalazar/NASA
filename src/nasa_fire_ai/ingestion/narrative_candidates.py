@@ -26,6 +26,12 @@ def literal_candidates(segment, semantic):
             re.search(
                 r"\b(?:conducted|performed|tested|obtained|as\s+part\s+of)\b", quote, re.IGNORECASE
             )
+            or re.search(
+                r"\b(?:project|investigation|experiment|study)\s+(?:has\s+)?(?:achieved|completed)\b"
+                r"[^.!?]{0,160}\b(?:tests?|experiments?|measurements?)\b",
+                quote,
+                re.IGNORECASE,
+            )
         )
         study = (
             "cited"

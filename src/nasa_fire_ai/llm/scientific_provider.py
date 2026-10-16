@@ -91,6 +91,7 @@ def complete_scientific(
     response_format=None,
     reasoning_budget=0,
     on_progress=None,
+    images=None,
 ):
     """Preserve streamed prefixes and timing even when a connection fails.
 
@@ -107,6 +108,7 @@ def complete_scientific(
         "max_output_tokens": max_tokens,
         "thinking_enabled": reasoning_budget > 0,
         "reasoning_budget": reasoning_budget,
+        "image_count": len(images or []),
     }
     try:
         request = {
@@ -120,7 +122,15 @@ def complete_scientific(
             },
             "messages": [
                 {"role": "system", "content": system},
-                {"role": "user", "content": payload},
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": payload},
+                        *[{"type": "image_url", "image_url": {"url": url}} for url in images],
+                    ]
+                    if images
+                    else payload,
+                },
             ],
         }
         api = client.client.with_options(

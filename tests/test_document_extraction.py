@@ -93,6 +93,104 @@ def validate(service, package, output):
     return validate_output(output, package, structure(package, service.root), service.semantic)
 
 
+def test_identity_can_span_only_contiguous_original_anchors(service):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    p = submitted(
+        service, "Synthetic Investigation:\nA rotating apparatus\n\nUncited text.\nOther words"
+    )
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(
+            p,
+            "study",
+            "Synthetic Investigation: A rotating apparatus",
+            "Investigation",
+            "Synthetic Investigation:",
+        )
+    ]
+    o["entities"][0]["support"] += support(p, "A rotating apparatus")
+    d = structure(p, service.root)
+    result = validate_output(o, p, d, extraction_semantic(service, p))["records"][0]
+    assert result["status"] == "SOURCE_SUPPORTED"
+    assert (
+        result["identity_support"]["support"][0]["quote"]
+        == "Synthetic Investigation:\nA rotating apparatus"
+    )
+    o["entities"][0]["label"] = "A rotating apparatus Other words"
+    o["entities"][0]["support"] = support(p, "A rotating apparatus") + support(p, "Other words")
+    result = validate_output(o, p, d, extraction_semantic(service, p))["records"][0]
+    assert result["status"] == "REJECTED"
+
+
+def test_source_variable_does_not_establish_arbitrary_condition_subclass(service):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    p = submitted(service, "Sensors record centrifugal acceleration and pressure.")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "variable", "centrifugal acceleration", "FlowCondition", p["evidence"][0]["text"])
+    ]
+    result = validate_output(o, p, structure(p, service.root), extraction_semantic(service, p))[
+        "records"
+    ][0]
+    assert result["status"] == "UNRESOLVED"
+    assert "CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS" in result["reasons"]
+
+
+def test_duration_until_width_disappears_is_not_a_width_measurement(service):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    text = "Run A1 was tested. A1 flame width decreased to zero within 4 seconds."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "a1", "A1", "ExperimentalRun", text)]
+    o["quantities"] = [
+        {
+            "subject": "a1",
+            "label": "flame width",
+            "expression": "4",
+            "unit": "seconds",
+            "epistemic": "reported_quantity",
+            "support": support(p, text),
+        }
+    ]
+    result = validate_output(o, p, structure(p, service.root), extraction_semantic(service, p))
+    quantity = next(r for r in result["records"] if r["kind"] == "quantities")
+    assert quantity["status"] == "REJECTED"
+    assert "QUANTITY_NAME_UNIT_DIMENSION_CONTRADICTION" in quantity["reasons"]
+
+
+def test_two_specimen_dimensions_bind_only_inside_their_original_names(service):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    text = "Two samples: Film 5 cm wide x 30 cm long and Rod 4 mm diameter were tested."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "film", "Film 5 cm wide x 30 cm long", "Sample", text),
+        entity(p, "rod", "Rod 4 mm diameter", "Sample", text),
+    ]
+    q = {
+        "subject": "film",
+        "label": "width",
+        "expression": "5",
+        "unit": "cm",
+        "epistemic": "experimental_configuration",
+        "support": support(p, text),
+    }
+    o["quantities"] = [q]
+    semantic = extraction_semantic(service, p)
+    assert (
+        validate_output(o, p, structure(p, service.root), semantic)["records"][-1]["status"]
+        == "SOURCE_SUPPORTED"
+    )
+    q["subject"] = "rod"
+    result = validate_output(o, p, structure(p, service.root), semantic)["records"][-1]
+    assert result["status"] == "REJECTED"
+    assert "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED" in result["reasons"]
+
+
 def test_all_characters_and_distributed_context(service):
     text = (
         "# Methods\n\nAll experiments were conducted in microgravity in the Synthetic study.\n\n"

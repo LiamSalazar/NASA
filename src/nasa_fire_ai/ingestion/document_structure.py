@@ -323,7 +323,6 @@ def model_windows(document, max_chars):
         if members and (
             members[0]["source_id"] != segment["source_id"]
             or size + len(segment["text"]) > max_chars
-            or (segment.get("layout_heading") and members[-1]["section"] != segment["section"])
         ):
             windows.append(
                 {
