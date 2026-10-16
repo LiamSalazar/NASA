@@ -558,6 +558,43 @@ def test_pdf_numeric_cells_are_pending_original_quantities_with_independent_tamp
     )
 
 
+def test_transposed_table_units_preserve_axis_and_do_not_use_qualifier_as_unit():
+    from nasa_fire_ai.ingestion.pdf_quantities import original_table_unit
+
+    row = [{"original_value": "Nominal Voltage (V)"}, {"original_value": "15.14"}]
+    unit, candidates = original_table_unit("Specimen B (Calculated)", row)
+    assert unit == "V"
+    assert candidates == [
+        {"axis": "column", "literal": "Calculated", "recognized_unit_syntax": False},
+        {"axis": "row", "literal": "V", "recognized_unit_syntax": True},
+    ]
+    assert original_table_unit("Length (cm)", [{"original_value": "Length (mm)"}])[0] is None
+    assert original_table_unit("Unknown (estimate)", [])[0] is None
+
+
+def test_author_abbreviation_does_not_sever_original_correlation_method(service):
+    from nasa_fire_ai.ingestion.document_extraction import role_errors, source_anchors
+
+    text = "Heat release is measured using Author et al. [12] correlation for the device. A second result follows."
+    p = submitted(service, text)
+    d = structure(p, service.root)
+    anchors = source_anchors({"members": d["segments"]}, {"anchors": []}, [], p)
+    quotes = [a["quote"] for a in anchors.values() if a["statement_eligible"]]
+    assert quotes == [
+        "Heat release is measured using Author et al. [12] correlation for the device.",
+        "A second result follows.",
+    ]
+    assert "CORRELATION_ESTIMATE_IS_NOT_DIRECT_OBSERVATION" in role_errors(
+        {"text": quotes[0], "epistemic": "measured_observation"}
+    )
+    assert not role_errors(
+        {
+            "text": "The height was measured using calibrated images.",
+            "epistemic": "measured_observation",
+        }
+    )
+
+
 def test_estimated_quantity_cannot_become_measurement_or_change_neighboring_measurement(service):
     text = "Run A1 was tested. A1 pressure was computed at 20 Pa; A1 oxygen concentration was measured at 21%."
     p = submitted(service, text)

@@ -35,6 +35,55 @@ def write(path, value):
         json.dump(value, f, indent=2, ensure_ascii=False)
 
 
+def commit_source_reference(directory, freeze, package, attempt_count):
+    """Fail closed before reserved inference; ordinary ingestion needs no gold."""
+    path = directory / "source_reference.json"
+    reference = json.loads(path.read_text())
+    membership = freeze["evaluation"]
+    if (
+        reference.get("membership") != membership["membership"]
+        or str(reference.get("source_ntrs_id")) != membership["ntrs_id"]
+    ):
+        raise ValueError("Reference does not match prospective evaluation membership")
+    if reference.get("source_sha256") not in {m["sha256"] for m in package["inputs"]}:
+        raise ValueError("Reference belongs to a different original source")
+    targets = reference["targets"]
+    plan = freeze.get("source_review_plan", {})
+    if len(targets) < plan.get("minimum_targets", 24) or len({t["id"] for t in targets}) != len(
+        targets
+    ):
+        raise ValueError("Reference denominator is incomplete or duplicates targets")
+    evidence = {e["evidence_id"]: e for e in package["evidence"]}
+    for target in targets:
+        original = evidence[target["evidence_id"]]
+        if (
+            original["text"][target["start"] : target["end"]] != target["quote"]
+            or original["source_id"] != target["source_id"]
+        ):
+            raise ValueError("Reference is not an exact original source span")
+    for kind in ("entities", "quantities", "statements", "relations"):
+        if sum(t["kind"] == kind for t in targets) < plan.get("minimum_" + kind, 0):
+            raise ValueError("Reference lacks the prospectively required " + kind)
+    sha = hashlib.sha256(path.read_bytes()).hexdigest()
+    commitment = directory / "source_reference_commitment.json"
+    if commitment.exists():
+        if json.loads(commitment.read_text())["sha256"] != sha:
+            raise ValueError("Prospectively committed source reference changed")
+    else:
+        if attempt_count:
+            raise ValueError("Inference began before source reference commitment")
+        write(
+            commitment,
+            {
+                "registered_at": datetime.now(UTC).isoformat(),
+                "sha256": sha,
+                "membership": membership["membership"],
+                "source_sha256": reference["source_sha256"],
+                "model_attempts": 0,
+            },
+        )
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", choices=[*SOURCES, "holdout", "reserved"])
@@ -138,6 +187,8 @@ def main():
             "SELECT cache_key FROM phase3_cache WHERE cache_kind='scientific_document_attempt'"
         )
     }
+    if args.source == "reserved" and not args.offline:
+        commit_source_reference(out, freeze, submission["package"], len(earlier_attempts))
     prepared = service.prepare_scientific(
         submission["package"]["id"],
         settings,

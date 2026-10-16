@@ -5,6 +5,28 @@ import re
 from nasa_fire_ai.ingestion.document_structure import identity, table_records
 
 
+def original_table_unit(header, row):
+    """Recognize literal unit syntax in either axis, without converting values."""
+    prefix = r"(?:da|[yzafpnumµμcdhkMGTPEZY])?"
+    base = r"(?:mol|kat|Hz|Pa|Wb|lm|lx|Bq|Gy|Sv|cd|m|g|s|A|K|N|J|W|C|V|F|Ω|S|T|H)"
+    atom = rf"{prefix}{base}(?:\^?[-+]?\d+|[²³])?"
+    syntax = rf"(?:{atom}(?:[/*· ]{atom})*|%|ppm|fraction|RPM|psia|Wh|Ah|Whr|Ahr|seconds?|minutes?|hours?)"
+    label = row[0].get("original_value") if row else None
+    candidates = []
+    for axis, text in [("column", header), ("row", label or "")]:
+        for match in re.finditer(r"\(([^()]+)\)", text):
+            literal = match.group(1)
+            candidates.append(
+                {
+                    "axis": axis,
+                    "literal": literal,
+                    "recognized_unit_syntax": bool(re.fullmatch(syntax, literal.strip())),
+                }
+            )
+    units = {c["literal"] for c in candidates if c["recognized_unit_syntax"]}
+    return (next(iter(units)) if len(units) == 1 else None), candidates
+
+
 def pdf_table_quantities(package, document):
     from nasa_fire_ai.ingestion.document_extraction import quantity_expression_pattern
 
@@ -33,7 +55,7 @@ def pdf_table_quantities(package, document):
             if not original or not re.fullmatch(quantity_expression_pattern(), original.strip()):
                 continue
             header = cell.get("header") or ""
-            unit = re.search(r"\(([^()]+)\)", header)
+            unit, unit_candidates = original_table_unit(header, row["cells"])
             key = identity([row["id"], cell["column_index"], original, header])[:24]
             result.append(
                 {
@@ -42,7 +64,8 @@ def pdf_table_quantities(package, document):
                     "status": "UNRESOLVED",
                     "proposal": {
                         "expression": original,
-                        "unit": unit.group(1) if unit else None,
+                        "unit": unit,
+                        "original_unit_candidates": unit_candidates,
                         "original_column_header": header,
                         "original_row": row["cells"],
                         "original_page_heading": document.get("layout_headings", {})

@@ -426,6 +426,12 @@ def role_errors(statement):
         re.IGNORECASE,
     ):
         errors.append("COMPARISON_METHOD_IS_NOT_MEASURED_OBSERVATION")
+    if role == "measured_observation" and re.search(
+        r"\b(?:measured|obtained|determined|estimated)\s+(?:using|from|via)\b[^\n]*\bcorrelations?\b",
+        text,
+        re.IGNORECASE,
+    ):
+        errors.append("CORRELATION_ESTIMATE_IS_NOT_DIRECT_OBSERVATION")
     if (
         role == "experimental_configuration"
         and re.search(r"\bObjectives?\s*\n", text, re.IGNORECASE)
@@ -1075,7 +1081,9 @@ def source_anchors(window, context, known, package):
             for left, right in pairwise(sorted(set(boundaries))):
                 for paragraph in re.finditer(r"[^\n]+(?:\n(?!\n)[^\n]+)*", part[left:right]):
                     for match in re.finditer(
-                        r".+?(?:[.!?](?!\d)(?=\s|$)|$)", paragraph.group(), re.DOTALL
+                        r".+?(?:(?<!\bal)(?<!\bFig)(?<!\bFigs)(?<!\bEq)(?<!\bEqs)(?<!\bDr)(?<!\bProf)[.!?](?!\d)(?=\s|$)|$)",
+                        paragraph.group(),
+                        re.DOTALL | re.IGNORECASE,
                     ):
                         quote = match.group().strip()
                         if quote:
