@@ -13,9 +13,12 @@ an independent evaluation. `PHASE1_COMPLETE=NO` is unchanged.
 - **Models:** `nvidia/nemotron-3.5-super-vl-120b-a12b`, with fallback
   `nvidia/nemotron-3-super-120b-a12b`.
 - **Budget:** 1800 s deadline, the same as v4.
-- **Usage:** 19 model calls, 1066 s, 441,017 tokens. The run completed inside
-  its deadline; the v4 primary run stopped at the 1800 s deadline after 14
-  attempts.
+- **Usage:** 19 model calls in 1066 s. The run completed inside its deadline;
+  the v4 primary run stopped at the 1800 s deadline after 14 attempts.
+- **Tokens:** provider-reported usage is 238,317 total tokens (177,059 prompt,
+  61,258 completion, 29,157 of them reasoning) over the 15 attempts that report
+  usage; 4 attempts report none. The 441,017 in `summary.json.gz` is
+  `tokens_consumed_or_reserved`, a budget-accounting figure.
 - **Integrity:** no source integrity errors, SQLite `ok`, 0 approvals,
   0 publications. Validation errors are review requirements only.
 - **Files:** `prepared.json.gz`, `attempts.json.gz`, `validation.json.gz`,
@@ -38,14 +41,43 @@ reference.
 - **Judge consistency:** on the 10 accepted proposals present in both runs, the
   two reviews agreed on 9. The one difference is a non-critical role call on the
   page-18 opening conclusion.
+- **Hand check of a review defect:** the reviewers saw a compact proposal view
+  that cut proposal text at 400 characters, kept only 3 support spans and cut
+  quotes at 300 characters. Source pages were complete. A hand check on the
+  full records found:
+  - no target outcome changes in either run, because no qualifying proposal was
+    hidden;
+  - no precision verdict changes;
+  - only the written reasons of `proposal-4d624b1e` and `proposal-ef1c4448`
+    relied on the excerpt. They were rewritten from the full record
+    (`review_corrections` in `review/source_review.json`), and both remain
+    incorrect and critical.
+
+### Results
+
+Denominators: 36 frozen targets, of which 2 photo-only targets are excluded as
+inaccessible, so recall and retention use 34. Precision is over every accepted
+(SOURCE_SUPPORTED, non-duplicate) proposal.
 
 | Review | Correct | Unresolved | Omitted | Semantic recall | Retention | Reviewed precision | Critical in sample |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| v4, original v4 review | 7 | 15 | 12 | 7/34 | 22/34 | 28/29 | 0 |
-| v4, this protocol | 8 | 15 | 11 | 8/34 | 23/34 | 20/29 | 4 |
-| live, this protocol | 10 | 15 | 9 | 10/34 | 25/34 | 25/32 | 5 |
+| v4, original v4 review | 7 | 15 | 12 | 7/34 (0.21) | 22/34 (0.65) | 28/29 | 0 |
+| v4, this protocol | 8 | 15 | 11 | 8/34 (0.24) | 23/34 (0.68) | 20/29 (0.69) | 4 |
+| live, this protocol | 10 | 15 | 9 | 10/34 (0.29) | 25/34 (0.74) | 25/32 (0.78) | 5 |
 
-The frozen minima (recall 0.50, retention 0.75) are still not met: 0.29 and 0.74.
+- **Same-protocol comparison (rows 2 and 3):** +2 correct targets, +2 retained
+  targets, +1 critical error.
+- **By kind, live versus v4 under this protocol:**
+  - entities 7 vs 6 correct;
+  - statements 3 vs 2 correct;
+  - quantities 0 vs 0 correct (5 unresolved, 5 omitted in both);
+  - relations 0 vs 0 correct, 1 vs 0 unresolved.
+- **Critical errors:**
+  - live: three cited-only comparator materials labelled `current` (Viton A,
+    Viton A-500, Fluorel) and two copies of one table span (findings 3 and 4);
+  - v4 under this protocol: four materials with the same lineage error.
+- **Verdict:** the frozen minima (recall 0.50, retention 0.75) are still not
+  met, at 0.29 and 0.74. PTFE scientific acceptance: **FAIL**.
 
 **Attribution.** The numeric grammar changed only quantity handling, and
 quantity target outcomes are identical in both runs (5 unresolved, 5 omitted).

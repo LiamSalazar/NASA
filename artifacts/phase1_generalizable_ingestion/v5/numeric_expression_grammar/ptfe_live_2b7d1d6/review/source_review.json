@@ -809,8 +809,8 @@
    "proposal_id": "proposal-4d624b1eeb3087644062b301",
    "correct": false,
    "critical": true,
-   "reason": "The span runs the Figure 2 caption into the Table 3 title and header, then gives only Batch #1 rows. It ends mid-row at 'GOX/75°F 10,000 0', which is the 0.06824 thickness cut off, so the 0/20 GOX result and the 4/80 LOX Batch #1 row (central to the page-9 contradiction) are lost. Yet as a measured_observation it is linked to all four batch entities (Batch #1 to #4). That moves Batch #1's LOX 0/20 outcome onto Batches #2 to #4, whose actual rows differ (for example Batch #2 LOX 1/60). This is the row-merging that target entities-08 forbids: a wrong subject/group assignment. The same span is also accepted again as proposal-ef1c4 with a conflicting role.",
-   "verification": "CONFIRMED_BY_SKEPTIC"
+   "reason": "Incorrect, critical (wrong group assignment). The full 822-character span is the whole page-12 portion of Table 3: the Figure 2 caption, the table title and header, and the Batch #1 to #4 rows (Batch #4's LOX row continues on page 13). It is accepted as ONE measured_observation whose scope is all four batch Sample entities. Each batch is therefore linked to the other batches' results: for example, Batch #1's 4/80 LOX reactions become evidence scoped to Batches #2 to #4, whose rows differ (Batch #2 LOX 1/60). A table region is also not a single source statement.",
+   "verification": "REASON_CORRECTED_BY_HAND_ON_FULL_RECORD"
   },
   {
    "proposal_id": "proposal-9d56e8445c8bf295296404f7",
@@ -823,8 +823,9 @@
    "proposal_id": "proposal-ef1c4448e2e0900e13ebf58d",
    "correct": false,
    "critical": true,
-   "reason": "This repeats the page-12 span of proposal-4d624 but labels it Publication/documentary_context, even though it holds measured MSFC Table 3 data (footnote a, NASA-STD 6001 MSFC: Batch #1 LOX 0/20). Measured rows are thereby demoted to context, and the two accepted copies of one span disagree on role. It has the same wrong subject links: Batch #2, #3 and #4 are attached to text holding only Batch #1 rows. It has the same truncation at '10,000 0', which drops the GOX 0/20 result and the 4/80 LOX row. Wrong role and wrong group assignment.",
-   "verification": "CONFIRMED_BY_SKEPTIC"
+   "reason": "Incorrect, critical (wrong role). Same full page-12 Table 3 span as proposal-4d624b1e, scoped to the same four batches, but classified Publication/documentary_context. The rows are measured MSFC results (footnote a, NASA-STD 6001 MSFC), so they are demoted to context, and the two accepted copies of one span contradict each other in role.",
+   "verification": "REASON_CORRECTED_BY_HAND_ON_FULL_RECORD"
   }
- ]
+ ],
+ "review_corrections": "The automated reviewers saw a compact proposal view that cut proposal text at 400 characters, kept 3 support spans and cut quotes at 300 characters (pages were complete). A hand check on the full records found: no target outcome in either run changes (no qualifying proposal was hidden), and no precision verdict changes. Only the written reasons of proposal-4d624b1e and proposal-ef1c4448 relied on the excerpt ('ends mid-row', 'only Batch #1 rows'); both were rewritten from the full record and both remain incorrect and critical."
 }
