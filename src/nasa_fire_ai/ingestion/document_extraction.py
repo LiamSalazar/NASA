@@ -2420,7 +2420,16 @@ def validate_output(output, package, document, semantic):
                         )
                         for match, quote in candidates
                     ):
-                        raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
+                        # A table value may state its unit only in its own
+                        # column header, e.g. "System Pressure (psia)".
+                        from nasa_fire_ai.ingestion.pdf_quantities import header_unit_binding
+
+                        inherited = header_unit_binding(
+                            item["expression"], item["unit"], spans, document
+                        )
+                        if not inherited:
+                            raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
+                        record["unit_binding"] = inherited
                     section_proof = group_section_support(
                         item["subject"], spans, entities, document
                     )
@@ -2529,7 +2538,8 @@ def validate_output(output, package, document, semantic):
                     record["quantity_value_spans"] = quantity_name_value_binding(
                         labels,
                         item["expression"],
-                        item["unit"],
+                        # A header-inherited unit is already bound to its column.
+                        None if record.get("unit_binding") else item["unit"],
                         spans,
                         adjacent_names,
                         temporal_coordinate,

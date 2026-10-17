@@ -413,9 +413,14 @@ def parse_numeric_expression(expression, *, convention=None, table_cell=False):
     return _result(original, "NOT_NUMERIC", None, [], convention, **extra)
 
 
-def _same_unit(a, b):
+def same_unit(a, b):
+    """Same original unit literal, ignoring only spacing, middle dots and hyphen glyphs.
+
+    Case is significant: "Pa" and "pa", or "mS" and "ms", are different literals.
+    """
+
     def key(text):
-        return re.sub(r"\s+", "", (text or "")).replace("·", "").replace("‑", "-").lower()
+        return re.sub(r"\s+", "", (text or "")).replace("·", "").replace("‑", "-")
 
     return key(a) == key(b)
 
@@ -455,7 +460,7 @@ def split_embedded_unit(expression, declared_unit, *, convention=None):
     if parse_numeric_expression(value, convention=convention)["status"] == "NOT_NUMERIC":
         return None
     if declared:
-        if not _same_unit(unit, declared):
+        if not same_unit(unit, declared):
             return {"status": "UNIT_MISMATCH", "embedded_unit": unit, "declared_unit": declared}
     elif unit in AMBIGUOUS_UNIT_LITERALS:
         return None

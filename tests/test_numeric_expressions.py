@@ -445,3 +445,37 @@ def test_pdf_table_cells_keep_grouped_values_and_ratios(service):
     assert all(
         r["status"] == "UNRESOLVED" and not r["scientific_execution_asserted"] for r in candidates
     )
+
+
+def header_document(header, value, page=1):
+    return {
+        "detected_tables": [
+            {
+                "input_sha256": "synthetic",
+                "physical_pdf_page": page,
+                "bbox": [0, 0, 1, 1],
+                "cells": [["Material", header], ["Sample A", value]],
+                "header": ["Material", header],
+                "header_external": False,
+            }
+        ]
+    }
+
+
+def test_table_value_inherits_only_its_own_column_header_unit():
+    from nasa_fire_ai.ingestion.pdf_quantities import header_unit_binding
+
+    spans = [{"page": 1}]
+    document = header_document("System\nPressure (psia)", "10,000")
+    binding = header_unit_binding("10,000", "psia", spans, document)
+    assert binding["basis"] == "ORIGINAL_TABLE_COLUMN_HEADER_UNIT"
+    assert (binding["page"], binding["column_index"], binding["conversion"]) == (1, 1, "NONE")
+    # Another unit, another case, another page or another value never binds.
+    assert header_unit_binding("10,000", "inches", spans, document) is None
+    assert header_unit_binding("10,000", "PSIA", spans, document) is None
+    assert header_unit_binding("10,000", "psia", [{"page": 2}], document) is None
+    assert header_unit_binding("5,000", "psia", spans, document) is None
+    # A header without a literal unit gives the cell no unit.
+    assert (
+        header_unit_binding("10,000", "psia", spans, header_document("Pressure", "10,000")) is None
+    )

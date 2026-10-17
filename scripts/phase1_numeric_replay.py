@@ -64,7 +64,8 @@ def replay(name, service):
     from nasa_fire_ai.ingestion.pdf_quantities import pdf_table_quantities
     from nasa_fire_ai.ingestion.scientific_coverage import coverage
 
-    prepared = load(ROOT / RECEIPTS / name)
+    # A name is relative to the v4 receipts unless it is a repository path.
+    prepared = load(ROOT / name if (ROOT / name).exists() else ROOT / RECEIPTS / name)
     package = prepared["package"]
     extraction = package["scientific_extraction"]
     document = extraction["document"]

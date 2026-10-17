@@ -27,6 +27,38 @@ def original_table_unit(header, row):
     return (next(iter(units)) if len(units) == 1 else None), candidates
 
 
+def header_unit_binding(expression, unit, spans, document):
+    """Bind a table value to a unit stated literally in its own column header.
+
+    A cell inherits a unit only from "(unit)" in the header of the column that
+    contains that exact original value on a supporting page. A unit elsewhere in
+    the table, caption or text does not bind. No conversion happens here.
+    """
+    from nasa_fire_ai.ingestion.numeric_expressions import same_expression, same_unit
+
+    pages = {s.get("page") for s in spans}
+    for row in table_records(document):
+        if row["kind"] != "STRUCTURED_TABLE_RECORD" or row["page"] not in pages:
+            continue
+        for cell in row["cells"]:
+            value = (cell.get("original_value") or "").strip()
+            if not value or not same_expression(value, expression):
+                continue
+            header = cell.get("header") or ""
+            _, candidates = original_table_unit(header, [])
+            if any(c["axis"] == "column" and same_unit(c["literal"], unit) for c in candidates):
+                return {
+                    "basis": "ORIGINAL_TABLE_COLUMN_HEADER_UNIT",
+                    "original_column_header": header,
+                    "page": row["page"],
+                    "table_index": row["table_index"],
+                    "row_index": row["row_index"],
+                    "column_index": cell["column_index"],
+                    "conversion": "NONE",
+                }
+    return None
+
+
 def pdf_table_quantities(package, document):
     from nasa_fire_ai.ingestion.numeric_expressions import (
         decimal_convention,
