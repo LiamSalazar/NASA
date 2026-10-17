@@ -1,0 +1,314 @@
+{
+  "source": "psi",
+  "package_id": "research-20ea6c04d39a14251dca",
+  "digest": "592975f3f0bf268030a4a2e7e8012c9f4ac64e7e32fa9b3d524c75319f76b514",
+  "processing": {
+    "budget": {
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "timeout_seconds": null,
+      "recovery_only": false,
+      "call_timeout_seconds": null,
+      "retries": 2,
+      "segment_chars": 6000,
+      "reasoning_tokens": null,
+      "recovery_rounds": 2,
+      "stream": true
+    },
+    "resource_policy": {
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "throughput_tokens_per_second": 35.0,
+        "request_timeout_seconds": 600.0
+      },
+      "scientific_item_ceiling": null,
+      "adaptive": true
+    },
+    "model": null,
+    "configured_fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "new_model_calls": 0,
+    "restored_proposals_after_source_validation": 0,
+    "recovered_cached_proposals_after_source_validation": 0,
+    "targeted_recovery_mode": false,
+    "scientific_completeness": "NOT_ESTABLISHED",
+    "tokens_consumed_or_reserved": 0,
+    "cached_segments": 0,
+    "duration_seconds": 0.041633654000179376,
+    "outcomes": [
+      {
+        "segment_id": "window-f65c9dd5391f30c1024e7df1",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "a5cd90c9b8d347ca7d56305ffb21eb9a2c7ea1152bce2e862d931b181df36e66",
+        "members": [
+          {
+            "id": "segment-3f95b1106824a3a60247166d",
+            "evidence_id": "E-b2440b009a4259dfbcb43521",
+            "start": 0,
+            "end": 346
+          },
+          {
+            "id": "segment-6af78aa783a03930ac634286",
+            "evidence_id": "E-59663ba3352d800262217292",
+            "start": 0,
+            "end": 337
+          },
+          {
+            "id": "segment-1030f3cacb41d9b8f1ab422c",
+            "evidence_id": "E-6e1084e63be7dc5822d488ae",
+            "start": 0,
+            "end": 335
+          },
+          {
+            "id": "segment-94e0ff7f09e17371145b6928",
+            "evidence_id": "E-15d8f1afbac40635f17b555d",
+            "start": 0,
+            "end": 335
+          }
+        ],
+        "evidence_id": "E-b2440b009a4259dfbcb43521",
+        "start": 0,
+        "end": 1353,
+        "deterministic": "COMPLETE",
+        "model": "DISABLED",
+        "attempts": 0,
+        "source_anchors": 4,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 1353,
+        "proposed_items": 0
+      },
+      {
+        "segment_id": "window-f65c9dd5391f30c1024e7df1",
+        "stage": "propositions",
+        "focus": null,
+        "cache_key": "488c2e52d3ed2a967056c6ecaf62faaec453f0818e24aacafc5f92db6ddce374",
+        "members": [
+          {
+            "id": "segment-3f95b1106824a3a60247166d",
+            "evidence_id": "E-b2440b009a4259dfbcb43521",
+            "start": 0,
+            "end": 346
+          },
+          {
+            "id": "segment-6af78aa783a03930ac634286",
+            "evidence_id": "E-59663ba3352d800262217292",
+            "start": 0,
+            "end": 337
+          },
+          {
+            "id": "segment-1030f3cacb41d9b8f1ab422c",
+            "evidence_id": "E-6e1084e63be7dc5822d488ae",
+            "start": 0,
+            "end": 335
+          },
+          {
+            "id": "segment-94e0ff7f09e17371145b6928",
+            "evidence_id": "E-15d8f1afbac40635f17b555d",
+            "start": 0,
+            "end": 335
+          }
+        ],
+        "evidence_id": "E-b2440b009a4259dfbcb43521",
+        "start": 0,
+        "end": 1353,
+        "deterministic": "COMPLETE",
+        "model": "DISABLED",
+        "attempts": 0,
+        "source_anchors": 4,
+        "known_entities_selected": 1,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 1353,
+        "proposed_items": 0
+      },
+      {
+        "segment_id": "window-f65c9dd5391f30c1024e7df1",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "a67a19aa8a9d1086f04271572f62224460f791a27938ddb6211acd12a8580dc0",
+        "members": [
+          {
+            "id": "segment-3f95b1106824a3a60247166d",
+            "evidence_id": "E-b2440b009a4259dfbcb43521",
+            "start": 0,
+            "end": 346
+          },
+          {
+            "id": "segment-6af78aa783a03930ac634286",
+            "evidence_id": "E-59663ba3352d800262217292",
+            "start": 0,
+            "end": 337
+          },
+          {
+            "id": "segment-1030f3cacb41d9b8f1ab422c",
+            "evidence_id": "E-6e1084e63be7dc5822d488ae",
+            "start": 0,
+            "end": 335
+          },
+          {
+            "id": "segment-94e0ff7f09e17371145b6928",
+            "evidence_id": "E-15d8f1afbac40635f17b555d",
+            "start": 0,
+            "end": 335
+          }
+        ],
+        "evidence_id": "E-b2440b009a4259dfbcb43521",
+        "start": 0,
+        "end": 1353,
+        "deterministic": "COMPLETE",
+        "model": "DISABLED",
+        "attempts": 0,
+        "source_anchors": 4,
+        "known_entities_selected": 1,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 1353,
+        "proposed_items": 0
+      }
+    ],
+    "status": "COMPLETE",
+    "deterministic_characters": 1353,
+    "model_characters": 0
+  },
+  "scientific_coverage": {
+    "basis": "Literal source-cue/quantity inventory plus independent proposal validation; NOT comprehensive scientific recall or expert gold",
+    "read_content": {
+      "source_characters": 1353,
+      "segmented_characters": 1353,
+      "units": 4,
+      "segments": 4
+    },
+    "scientific_content_identified": {
+      "candidate_units": 4,
+      "literal_quantity_occurrences": 0,
+      "numeric_pdf_table_cells": 0
+    },
+    "scientific_information_structured": {
+      "entities:SOURCE_SUPPORTED": 1
+    },
+    "source_supported_relationships": 0,
+    "unresolved": 0,
+    "rejected": 0,
+    "superseded_inference_variants": 0,
+    "table_quantity_candidates": 16,
+    "pdf_table_quantity_inventory": [],
+    "native_quantity_representation_deferred": 0,
+    "detected_quantity_occurrences_structured": 0,
+    "literal_proposition_candidates": [],
+    "unstructured_proposition_candidates": 0,
+    "model_proposed_items": 0,
+    "inaccessible_content": [],
+    "source_units": [
+      {
+        "id": "coverage-ab6dd1613a0351d045af",
+        "evidence_id": "E-b2440b009a4259dfbcb43521",
+        "source_id": "research-20ea6c04d39a14251dca:c01f29c62455f0a3",
+        "page": 1,
+        "start": 0,
+        "end": 346,
+        "section": "UNSPECIFIED",
+        "scientific_cues": [
+          "Sample",
+          "Sample",
+          "Sample",
+          "Sample",
+          "Ignition",
+          "Ignition"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 1
+        },
+        "proposal_ids": [
+          "proposal-c9cf540ff112a702f09755b2"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-3f1b88701a25cb8ed200",
+        "evidence_id": "E-59663ba3352d800262217292",
+        "source_id": "research-20ea6c04d39a14251dca:c01f29c62455f0a3",
+        "page": 2,
+        "start": 0,
+        "end": 337,
+        "section": "UNSPECIFIED",
+        "scientific_cues": [
+          "Sample",
+          "Sample",
+          "Sample",
+          "Sample",
+          "Ignition",
+          "Ignition"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 1
+        },
+        "proposal_ids": [
+          "proposal-c9cf540ff112a702f09755b2"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-338019278608fe3466cf",
+        "evidence_id": "E-6e1084e63be7dc5822d488ae",
+        "source_id": "research-20ea6c04d39a14251dca:c01f29c62455f0a3",
+        "page": 3,
+        "start": 0,
+        "end": 335,
+        "section": "UNSPECIFIED",
+        "scientific_cues": [
+          "Sample",
+          "test",
+          "sample",
+          "Sample",
+          "Sample",
+          "Sample",
+          "Ignition",
+          "Ignition"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {},
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "coverage-309b9f7ef9c4a78baf96",
+        "evidence_id": "E-15d8f1afbac40635f17b555d",
+        "source_id": "research-20ea6c04d39a14251dca:c01f29c62455f0a3",
+        "page": 4,
+        "start": 0,
+        "end": 335,
+        "section": "UNSPECIFIED",
+        "scientific_cues": [
+          "Sample",
+          "test",
+          "sample",
+          "Sample",
+          "Sample",
+          "Sample",
+          "Ignition",
+          "Ignition"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {},
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      }
+    ],
+    "outstanding_source_units": [
+      "coverage-338019278608fe3466cf",
+      "coverage-309b9f7ef9c4a78baf96"
+    ],
+    "scientific_completeness": "NOT_ESTABLISHED",
+    "empty_model_is_scientific_success": false
+  },
+  "source_integrity_errors": [],
+  "approvals": 0,
+  "publications": 0,
+  "sqlite_integrity": "ok"
+}

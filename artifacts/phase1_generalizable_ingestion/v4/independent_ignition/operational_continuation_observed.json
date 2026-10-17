@@ -1,0 +1,49 @@
+{
+  "prior_notice": "operational_continuation.json recorded intended intervention before signal delivery; preserved unchanged.",
+  "actual_sequence": [
+    {
+      "stage": "identity",
+      "state": "COMPLETE_WITH_REJECTIONS",
+      "error": null,
+      "duration_seconds": 26.312665862002177
+    },
+    {
+      "stage": "identity",
+      "state": "COMPLETE_WITH_REJECTIONS",
+      "error": null,
+      "duration_seconds": 19.54463368800134
+    },
+    {
+      "stage": "identity",
+      "state": "COMPLETE",
+      "error": null,
+      "duration_seconds": 56.630925256999035
+    },
+    {
+      "stage": "propositions",
+      "state": "COMPLETE_WITH_REJECTIONS",
+      "error": null,
+      "duration_seconds": 124.68424386499828
+    },
+    {
+      "stage": "propositions",
+      "state": "FAILED",
+      "error": "deadline",
+      "duration_seconds": 180.00068476900196
+    },
+    {
+      "stage": "propositions",
+      "state": "COMPLETE_WITH_REJECTIONS",
+      "error": null,
+      "duration_seconds": 48.96087649399851
+    },
+    {
+      "stage": "relationships",
+      "state": "FAILED",
+      "error": "interrupted",
+      "duration_seconds": 16.74484569299966
+    }
+  ],
+  "correction": "The proposition retry completed successfully before the signal arrived. The signal interrupted the subsequent relationship call at 16.745 seconds. Completed propositions are retained and replayed. This is an operator interruption, not a provider failure.",
+  "code_prompts_model_ontology_acceptance_reference_changed": false
+}

@@ -1,0 +1,373 @@
+{
+  "split": "development",
+  "labels": "Developer verified source evidence; no independent scientific gold",
+  "results": [
+    {
+      "source": "PSI-98",
+      "package_id": "research-20ea6c04d39a14251dca",
+      "processing": {
+        "budget": {
+          "max_model_calls": 0,
+          "max_output_tokens": 3000,
+          "max_total_tokens": 40000,
+          "timeout_seconds": 180,
+          "call_timeout_seconds": 40,
+          "retries": 0,
+          "segment_chars": 6500
+        },
+        "model": null,
+        "new_model_calls": 0,
+        "tokens_consumed_or_reserved": 0,
+        "cached_segments": 0,
+        "duration_seconds": 0.0025264209980377927,
+        "outcomes": [
+          {
+            "segment_id": "segment-3f95b1106824a3a60247166d",
+            "evidence_id": "E-b2440b009a4259dfbcb43521",
+            "start": 0,
+            "end": 346,
+            "deterministic": "COMPLETE",
+            "model": "DISABLED",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-6af78aa783a03930ac634286",
+            "evidence_id": "E-59663ba3352d800262217292",
+            "start": 0,
+            "end": 337,
+            "deterministic": "COMPLETE",
+            "model": "DISABLED",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-1030f3cacb41d9b8f1ab422c",
+            "evidence_id": "E-6e1084e63be7dc5822d488ae",
+            "start": 0,
+            "end": 335,
+            "deterministic": "COMPLETE",
+            "model": "DISABLED",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-94e0ff7f09e17371145b6928",
+            "evidence_id": "E-15d8f1afbac40635f17b555d",
+            "start": 0,
+            "end": 335,
+            "deterministic": "COMPLETE",
+            "model": "DISABLED",
+            "attempts": 0
+          }
+        ],
+        "status": "COMPLETE",
+        "deterministic_characters": 1353,
+        "model_characters": 0
+      }
+    },
+    {
+      "source": "20150008961",
+      "package_id": "research-5c3917d4f165b5bdd301",
+      "digest": "7fce4a5c73b5b604d88bec2af60171dec3ea9feadc40e8a7ebdfae2fe4d6474c",
+      "source_integrity": [],
+      "source_url": "https://ntrs.nasa.gov/api/citations/20150008961/downloads/20150008961.pdf",
+      "proposals": {
+        "statements:UNRESOLVED": 12
+      },
+      "processing": {
+        "budget": {
+          "max_model_calls": 4,
+          "max_output_tokens": 3000,
+          "max_total_tokens": 100000,
+          "timeout_seconds": 300,
+          "call_timeout_seconds": 40,
+          "retries": 0,
+          "segment_chars": 6500
+        },
+        "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "new_model_calls": 4,
+        "tokens_consumed_or_reserved": 70504,
+        "cached_segments": 0,
+        "duration_seconds": 156.00065787299536,
+        "outcomes": [
+          {
+            "segment_id": "segment-ce90e03db48c22c7b4120067",
+            "evidence_id": "E-a06680297147043e091d73fd",
+            "start": 0,
+            "end": 3847,
+            "deterministic": "COMPLETE",
+            "model": "FAILED",
+            "attempts": 1,
+            "error_type": "APITimeoutError"
+          },
+          {
+            "segment_id": "segment-3ea300e85f560369b4d48788",
+            "evidence_id": "E-42d1d3e0142d9ad0e6e13365",
+            "start": 0,
+            "end": 4137,
+            "deterministic": "COMPLETE",
+            "model": "FAILED",
+            "attempts": 1,
+            "error_type": "APITimeoutError"
+          },
+          {
+            "segment_id": "segment-196d2818e2f457e094b6f56d",
+            "evidence_id": "E-29f4dbc445b8ec5997aadda5",
+            "start": 0,
+            "end": 2891,
+            "deterministic": "COMPLETE",
+            "model": "FAILED",
+            "attempts": 1,
+            "error_type": "APITimeoutError"
+          },
+          {
+            "segment_id": "segment-031b07c6163b44dd8e56f398",
+            "evidence_id": "E-9d735526f461884a17b32b0a",
+            "start": 0,
+            "end": 3275,
+            "deterministic": "COMPLETE",
+            "model": "FAILED",
+            "attempts": 1,
+            "error_type": "ValidationError"
+          },
+          {
+            "segment_id": "segment-2ac53ab0bddaf4f7314fcc53",
+            "evidence_id": "E-073a752147138aad3f10501c",
+            "start": 0,
+            "end": 2445,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-635c11c6c45e5a03f56df384",
+            "evidence_id": "E-cf3c4b5b6fbcb89ab1a0546a",
+            "start": 0,
+            "end": 1903,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-41abeeddb692b633f9fd2ca4",
+            "evidence_id": "E-fbf7641d95c4f4bc72654389",
+            "start": 0,
+            "end": 3739,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-003c4e037ea3bc12396aa7ed",
+            "evidence_id": "E-23f522adb4998bb0b1668cf8",
+            "start": 0,
+            "end": 3265,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-f5668fd11ee26c1dc94f2ee5",
+            "evidence_id": "E-501cf49397bf0765164ecfe5",
+            "start": 0,
+            "end": 2408,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-4c6049a118f4a82e2a98fa15",
+            "evidence_id": "E-2a510aca56981d0ee2a06058",
+            "start": 0,
+            "end": 3610,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          }
+        ],
+        "status": "PARTIAL_MODEL_COVERAGE",
+        "deterministic_characters": 31520,
+        "model_characters": 0
+      },
+      "coverage": {
+        "source_characters": 31520,
+        "segmented_characters": 31520,
+        "units": 10,
+        "segments": 10
+      },
+      "unchanged_replay_digest": true
+    },
+    {
+      "source": "20260003546",
+      "package_id": "research-673e8dc214da9478bc45",
+      "digest": "a97f40ac02caa8c24eba7d40a9a420796fa4fd44694c39beb0582bd5cf14baae",
+      "source_integrity": [],
+      "source_url": "https://ntrs.nasa.gov/api/citations/20260003546/downloads/ICES%202026%20176%20Depress%20for%20Supress%20STRIVES_4-30.pdf",
+      "proposals": {
+        "entities:REJECTED": 1,
+        "statements:UNRESOLVED": 43,
+        "statements:REJECTED": 1,
+        "relations:REJECTED": 1
+      },
+      "processing": {
+        "budget": {
+          "max_model_calls": 4,
+          "max_output_tokens": 3000,
+          "max_total_tokens": 100000,
+          "timeout_seconds": 300,
+          "call_timeout_seconds": 40,
+          "retries": 0,
+          "segment_chars": 6500
+        },
+        "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "new_model_calls": 4,
+        "tokens_consumed_or_reserved": 63577,
+        "cached_segments": 0,
+        "duration_seconds": 101.94904283698997,
+        "outcomes": [
+          {
+            "segment_id": "segment-ce8d5502f3f248cddeaccc21",
+            "evidence_id": "E-4abf29a91c393b65c252e8fe",
+            "start": 0,
+            "end": 2888,
+            "deterministic": "COMPLETE",
+            "model": "FAILED",
+            "attempts": 1,
+            "error_type": "ValidationError"
+          },
+          {
+            "segment_id": "segment-398b5cbd6a4aeb108f83ccf9",
+            "evidence_id": "E-2fc973b7e0903d1a09c86082",
+            "start": 0,
+            "end": 4347,
+            "deterministic": "COMPLETE",
+            "model": "FAILED",
+            "attempts": 1,
+            "error_type": "ValidationError"
+          },
+          {
+            "segment_id": "segment-606ed052e0d008d39443cadc",
+            "evidence_id": "E-296c9003cc6b7365dc7a38f6",
+            "start": 0,
+            "end": 4342,
+            "deterministic": "COMPLETE",
+            "model": "FAILED",
+            "attempts": 1,
+            "error_type": "APITimeoutError"
+          },
+          {
+            "segment_id": "segment-1dc31a1a74a0b0c0f5a1c60d",
+            "evidence_id": "E-141599a7e54260423e383d79",
+            "start": 0,
+            "end": 1668,
+            "deterministic": "COMPLETE",
+            "model": "COMPLETE",
+            "attempts": 1,
+            "usage": {
+              "completion_tokens": 759,
+              "prompt_tokens": 3565,
+              "total_tokens": 4324,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": null,
+                "audio_tokens": null,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": null,
+                "text_tokens": null
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": null,
+                "cache_write_tokens": null,
+                "cached_tokens": 0,
+                "image_tokens": null,
+                "text_tokens": null
+              }
+            }
+          },
+          {
+            "segment_id": "segment-32d94dafc53ec56247be84ba",
+            "evidence_id": "E-7ccba4c2bf7eb60a200ca085",
+            "start": 0,
+            "end": 4655,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-e32c3ef87b62e9100c6ea45a",
+            "evidence_id": "E-0da92272426b7d4bc88155a2",
+            "start": 0,
+            "end": 3407,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-4cb10476916a75492cc518f0",
+            "evidence_id": "E-0e084bdb1e99c5bcec73806b",
+            "start": 0,
+            "end": 3237,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-a4f7ac625fdee41fb2b92a08",
+            "evidence_id": "E-2850db00fab6b98d44699cd1",
+            "start": 0,
+            "end": 2542,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-becc3bcb097fd6a67f8f1dd3",
+            "evidence_id": "E-6a4fb43bfaf5e7a5d092ac7d",
+            "start": 0,
+            "end": 2966,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-a7ca650762395f925916a7a4",
+            "evidence_id": "E-767370b5d999b47dcd722b69",
+            "start": 0,
+            "end": 2714,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-6ab54a45806829e7d8037fb5",
+            "evidence_id": "E-3dde136f79e6d3ee2a27b2fb",
+            "start": 0,
+            "end": 3389,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          },
+          {
+            "segment_id": "segment-1d12c8f5ba47450f823c9273",
+            "evidence_id": "E-08ad69a0554df8624a6ce0d5",
+            "start": 0,
+            "end": 2860,
+            "deterministic": "COMPLETE",
+            "model": "DEFERRED_BUDGET",
+            "attempts": 0
+          }
+        ],
+        "status": "PARTIAL_MODEL_COVERAGE",
+        "deterministic_characters": 39015,
+        "model_characters": 1668
+      },
+      "coverage": {
+        "source_characters": 39015,
+        "segmented_characters": 39015,
+        "units": 12,
+        "segments": 12
+      },
+      "unchanged_replay_digest": true
+    }
+  ],
+  "approved_packages": 0,
+  "approval_receipts": 0,
+  "integrity": "ok"
+}

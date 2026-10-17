@@ -1,0 +1,27 @@
+unformatted: File would be reformatted
+  --> scripts/score_scientific_review.py:73:61
+   |
+72 |         "unreviewed_supported_proposals": sum(
+   -             r["status"] == "SOURCE_SUPPORTED" and not r.get('duplicate_of') for r in records.values()
+73 +             r["status"] == "SOURCE_SUPPORTED" and not r.get("duplicate_of")
+74 +             for r in records.values()
+75 |         )
+   |
+
+unformatted: File would be reformatted
+  --> src/nasa_fire_ai/ingestion/scientific_scope.py:81:16
+   |
+80 |             return []
+   -         if any(e.get('class_id') in {'ExperimentFamily','ExperimentalRun'} and e.get('validation_status')=='SOURCE_SUPPORTED' and e.get('id')!=entity.get('id') and contains(e['label'],span['quote']) for e in entities.values()):return []
+81 +         if any(
+82 +             e.get("class_id") in {"ExperimentFamily", "ExperimentalRun"}
+83 +             and e.get("validation_status") == "SOURCE_SUPPORTED"
+84 +             and e.get("id") != entity.get("id")
+85 +             and contains(e["label"], span["quote"])
+86 +             for e in entities.values()
+87 +         ):
+88 +             return []
+89 |         refs = re.findall(r"\b(?:Figures?|Figs?\.?)\s+(\d+)\b", span["quote"], re.IGNORECASE)
+   |
+
+2 files would be reformatted, 475 files already formatted

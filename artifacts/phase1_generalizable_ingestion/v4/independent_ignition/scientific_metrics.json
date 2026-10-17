@@ -1,0 +1,50 @@
+{
+  "basis": "Developer independent-source adjudication against the prospective 30-target source reference. Target counts are a fixed sample, not exhaustive article recall. Precision uses first-by-page/id stratified 12 entities, all 11 supported statements, all 6 supported relations and the one supported (cited) quantity. No independent scientist approval is claimed.",
+  "target_count": 30,
+  "outcomes": {
+    "correct": 4,
+    "inaccessible": 1,
+    "incorrect": 1,
+    "omitted": 19,
+    "unresolved": 5
+  },
+  "by_kind": {
+    "entities": {
+      "correct": 4
+    },
+    "quantities": {
+      "omitted": 13,
+      "incorrect": 1,
+      "unresolved": 1
+    },
+    "statements": {
+      "unresolved": 4,
+      "omitted": 4
+    },
+    "relations": {
+      "omitted": 2
+    },
+    "figures": {
+      "inaccessible": 1
+    }
+  },
+  "semantic_recall": {
+    "numerator": 4,
+    "denominator": 29
+  },
+  "evidence_retention": {
+    "numerator": 9,
+    "denominator": 29
+  },
+  "reviewed_proposal_precision": {
+    "numerator": 23,
+    "denominator": 30
+  },
+  "incorrect_critical_assignments_in_sample": 6,
+  "unreviewed_supported_proposals": 33,
+  "unresolved_is_confirmed_science": false,
+  "input_sha256": {
+    "artifacts/phase1_generalizable_ingestion/v4/independent_ignition/prepared_3.json": "c07a102d008c1debbf5431b8798826b27400c5224aec43a3e410eea1ecab4026",
+    "artifacts/phase1_generalizable_ingestion/v4/independent_ignition/source_review.json": "220cd0fa050ae886cd6753f290adb540bdcd4536ff4b403872c3fc1f37677a89"
+  }
+}

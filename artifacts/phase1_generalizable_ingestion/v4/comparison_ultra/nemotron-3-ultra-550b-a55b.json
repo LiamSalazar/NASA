@@ -1,0 +1,43 @@
+{
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "endpoint": "https://integrate.api.nvidia.com/v1",
+  "task": {
+    "title": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket",
+    "original_pages": [
+      {
+        "page": 5,
+        "text": "Schematic\nCentrifugal gravity is into the page; this \nwould be looking outward from the \naxis of rotation of the vehicle toward \nthe cylindrical hull of the rocket.  The \nflames would generally rise out of the \npage, or towards the axis of rotation.\nTwo samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.  \nSensors: Chamber oxygen \nconcentration, pressure, temperature, \nand centrifugal acceleration.\nCombustion enclosure/chamber\nLocker\nBurning Fabric\nFront view\nSample #2: Acrylic \n(PMMA) Rod\nBurning Fabric\nEdge view\nBurning Rod\n"
+      },
+      {
+        "page": 29,
+        "text": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.\n•\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length).\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n"
+      },
+      {
+        "page": 36,
+        "text": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n"
+      },
+      {
+        "page": 37,
+        "text": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.  The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.  \nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight. \n"
+      }
+    ]
+  },
+  "image": null,
+  "system": "Interpret only supplied original NASA evidence. Return JSON with keys\nentities, quantities, statements. Each is an array of objects. Entities: label,\nkind, page, quote. Quantities: label, expression, unit, subject, epistemic, page,\nquote. Statements: text, subject, epistemic, page, quote. Every quote must be an\nexact contiguous original span. Preserve approximate values, original units,\nscope and uncertainty. Separate experimental_configuration, reported_quantity,\nderived_quantity, measured_observation, author_conclusion, tentative_interpretation,\nplanned_work. A linear fit is derived, not a direct measurement. Do not infer\ncauses, executed runs, or distribute group results to other groups. Recover all\nscientifically meaningful content, omit diagram-symbol fragments.",
+  "state": "FAILED",
+  "error": "timeout",
+  "content": "",
+  "transport": {
+    "requested_model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "stream": true,
+    "max_output_tokens": 8192,
+    "thinking_enabled": false,
+    "reasoning_budget": 0,
+    "image_count": 0,
+    "duration_seconds": 180.32183430900113,
+    "served_models": [],
+    "reasoning_characters": 0,
+    "usage": null,
+    "finish_reason": null
+  }
+}

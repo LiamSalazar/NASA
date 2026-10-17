@@ -1,0 +1,66 @@
+{
+  "ruff_format": {
+    "command": "uv run ruff format --check .",
+    "exit_code": 0,
+    "files": 453
+  },
+  "ruff_lint": {
+    "command": "uv run ruff check .",
+    "exit_code": 0
+  },
+  "pytest": {
+    "command": "uv run pytest -q",
+    "exit_code": 0,
+    "passed": 380,
+    "duration_seconds": 82.8,
+    "warnings": 72960,
+    "warning_boundary": "Existing rdflib Dataset.default_context deprecations"
+  },
+  "scientific_negatives": "Included in full pytest: original test_curation_attribution.py and new document extraction role/reference/support/unit/source/collision/comparison/truncation regressions",
+  "integration": "Original normal submission, preparation, corrections, curation/export/approval tests plus isolated four-source service preparation/export, zero new approvals/publications",
+  "offline_execution": {
+    "command": "uv run python scripts/repair_generalizable_ingestion.py --directory artifacts/phase1_generalizable_ingestion/v2/offline_run3",
+    "exit_code": 0,
+    "sources": 4,
+    "source_integrity": true,
+    "idempotence": true,
+    "native_shacl": true,
+    "sqlite_integrity": "ok",
+    "foreign_keys": [],
+    "approvals": 0,
+    "published": 0
+  },
+  "canonical_shacl": [
+    {
+      "shapes": "shapes.ttl",
+      "conforms": true,
+      "triples": 24014
+    },
+    {
+      "shapes": "semantic_shapes.ttl",
+      "conforms": true,
+      "triples": 24014
+    }
+  ],
+  "preservation": {
+    "protected_files": 2468,
+    "unchanged": 2468,
+    "changed": [],
+    "missing": [],
+    "scope": "union of v1 historical protected inputs/evals/receipts and continuation-start v2 raw/canonical/index/domain/ontology/evals/v1 snapshots"
+  },
+  "live_plan_dry_runs": {
+    "commands": [
+      "uv run python scripts/validate_scientific_extraction_live.py smoke",
+      "uv run python scripts/validate_scientific_extraction_live.py luci",
+      "uv run python scripts/validate_scientific_extraction_live.py holdout"
+    ],
+    "exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "new_live_calls": 0
+  },
+  "PHASE1_COMPLETE": false
+}

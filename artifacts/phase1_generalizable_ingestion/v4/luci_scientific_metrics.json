@@ -1,0 +1,46 @@
+{
+  "basis": "Developer source adjudication of the historical 19-target LUCI regression sample plus a fixed stratified first-by-page/id sample of 30 SOURCE_SUPPORTED proposals (6 entities, all 7 quantities, all 4 relations, first 13 statements). Not whole-document recall or independent expert gold. Duplicate supporting proposals are not independent scientific facts.",
+  "target_count": 19,
+  "outcomes": {
+    "correct": 13,
+    "inaccessible": 0,
+    "incorrect": 0,
+    "omitted": 1,
+    "unresolved": 5
+  },
+  "by_kind": {
+    "entities": {
+      "correct": 4
+    },
+    "quantities": {
+      "unresolved": 5,
+      "correct": 2
+    },
+    "statements": {
+      "correct": 6
+    },
+    "relations": {
+      "omitted": 1,
+      "correct": 1
+    }
+  },
+  "semantic_recall": {
+    "numerator": 13,
+    "denominator": 19
+  },
+  "evidence_retention": {
+    "numerator": 18,
+    "denominator": 19
+  },
+  "reviewed_proposal_precision": {
+    "numerator": 28,
+    "denominator": 30
+  },
+  "incorrect_critical_assignments_in_sample": 0,
+  "unreviewed_supported_proposals": 112,
+  "unresolved_is_confirmed_science": false,
+  "input_sha256": {
+    "artifacts/phase1_generalizable_ingestion/v4/luci_application_02/prepared.json": "a37fa8633794e1a7b45d80c7857bf4f1bf50f25bfb4ad2248086ea530cf2c501",
+    "artifacts/phase1_generalizable_ingestion/v4/luci_source_review.json": "0a2a8f70d4e872f7f321a562f1a124612c3e32e4fa318339f6fe8b22064f6241"
+  }
+}

@@ -1,0 +1,3574 @@
+{
+  "started_at": "2026-10-16T23:42:35.963483+00:00",
+  "completed_at": "2026-10-16T23:43:19.676667+00:00",
+  "attempts": [
+    {
+      "cache_key": "16467ab9837c086f2b612db37eca7fffc6f813e42f7b221388608bb7cb63eca6",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "identity",
+      "request": {
+        "stage": "identity",
+        "focus": null,
+        "document_identity": {
+          "title": "Characterization of Laptop Fires in Spacecraft"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 1,
+            "start": 0,
+            "end": 2832,
+            "section": "Characterization of Laptop Fires in Spacecraft"
+          },
+          {
+            "page": 2,
+            "start": 0,
+            "end": 276,
+            "section": "UNSPECIFIED"
+          },
+          {
+            "page": 2,
+            "start": 276,
+            "end": 3416,
+            "section": "I.\nIntroduction"
+          },
+          {
+            "page": 2,
+            "start": 3416,
+            "end": 4098,
+            "section": "II.\nExperimental Description"
+          },
+          {
+            "page": 3,
+            "start": 0,
+            "end": 2306,
+            "section": "II.\nExperimental Description"
+          },
+          {
+            "page": 4,
+            "start": 0,
+            "end": 1021,
+            "section": "II.\nExperimental Description"
+          },
+          {
+            "page": 4,
+            "start": 1021,
+            "end": 2514,
+            "section": "III.\nResults"
+          },
+          {
+            "page": 5,
+            "start": 0,
+            "end": 2250,
+            "section": "III.\nResults"
+          },
+          {
+            "page": 6,
+            "start": 0,
+            "end": 3252,
+            "section": "III.\nResults"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 1,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nCharacterization of Laptop Fires in Spacecraft\nRosa E.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 1,
+            "quote": "Characterization of Laptop Fires in Spacecraft",
+            "statement_eligible": false,
+            "in_task": true
+          },
+          {
+            "id": "A3",
+            "page": 1,
+            "quote": "Padilla ∗, Daniel L.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A4",
+            "page": 1,
+            "quote": "Dietrich †, Gary A.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A5",
+            "page": 1,
+            "quote": "Ruff ‡, and David L.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A6",
+            "page": 1,
+            "quote": "Urban §\nNASA John H.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A7",
+            "page": 1,
+            "quote": "Glenn Research Center, Cleveland, Ohio, 44135, USA\nKelly C.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A8",
+            "page": 1,
+            "quote": "Lynch ¶\nUniversity of Kentucky, Chemical Engineering Department, Lexington, Kentucky, 40506, USA\nAlfredo Juarez∥, Susana A.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A9",
+            "page": 1,
+            "quote": "Harper ∗∗\nWhite Sands Test Facility, Las Cruces, New Mexico, 88012, USA\nand\nChristopher R.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A10",
+            "page": 1,
+            "quote": "Nagel ††\nNASA Johnson Space Center, Houston, Texas, 77058, USA\nAn accidental ﬁre involving the Lithium-Ion (Li-ion) battery in a laptop computer is one of the most likely\nﬁre scenarios on-board a spacecraft.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A11",
+            "page": 1,
+            "quote": "These ﬁres can occur from a defect in the battery that worsens with time,\nover-charging the battery and leading to failure or accidental damage caused by thermal runaway.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A12",
+            "page": 1,
+            "quote": "While this\nis a relatively likely ﬁre scenario, very little is known about the how a laptop computer ﬁre would impact a\nsealed spacecraft.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A13",
+            "page": 1,
+            "quote": "The heat release would likely cause a pressure rise, possibly exceeding the pressure limit\nof the vehicle and causing a relief valve to open.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A14",
+            "page": 1,
+            "quote": "The combustion products from the ﬁre could pose a short-\nterm and long-term health hazard to the crew and the ﬁre itself could cause injury to the crew and damage\nto the spacecraft.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A15",
+            "page": 1,
+            "quote": "Despite the hazard posed by a laptop ﬁre, there is little quantitative data on the ﬁre size,\nheat release and toxic product formation.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A16",
+            "page": 1,
+            "quote": "This paper presents the results of initial attempts to quantify the\nﬁre resulting from a failed laptop battery tested at the NASA White Sands Test Facility (WSTF).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A17",
+            "page": 1,
+            "quote": "The ﬁre size\nand characteristics such as maximum heat release rate, total heat release, maximum temperatures and ﬁre\nduration are determined.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A18",
+            "page": 1,
+            "quote": "Using existing models and correlations for ﬁres, the measured ﬁre characteristics are\nextrapolated to laptop ﬁres on a vehicle the approximate size of the Orion spacecraft.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A19",
+            "page": 1,
+            "quote": "Nomenclature\n∆Tc\n= Centerline temperature, K\n∆To\n= Temperature, K\nρ\n= Air density, kg/m3\nAs\n= Surface area, m\ncp\n= Speciﬁc heat, J/K\nD\n= Fire source diameter, m\n∗Aerospace Engineer, Combustion Physics and Reacting Processes Branch, Mail Stop 110-317L\n†Aerospace Engineer, Combustion Physics and Reacting Processes Branch, Mail Stop 110-3\n‡Aerospace Engineer, Exploration Systems Project Ofﬁce, Mail Stop, 162:321-43\n§Branch Chief, Combustion Physics and Reacting Processes Branch, Mail Stop 77:101\n¶Undergrad, University of Kentucky, Chemical Engineering Department, Lexington, KY, 40506, USA\n∥WSTF Flammability Project and Facility Lead, Materials and Components Laboratories, Mail Stop 800-116\n∗∗WSTF Standard Testing Project and Facility Manager, Mail Stop 803:100\n††Project Manager, Life Support Systems Branch (EC3), Orion ECLSS GFE, Mail Stop 7A:225",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A20",
+            "page": 2,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nHF\n= Flame height, m\nQ\n= Heat Release rate, kW\nQc\n= Convective energy release, kW\nT∞\n= Ambient temperature, K\nz\n= Height above the ﬁre surface, m\nzo\n= Virtual origin, m",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A21",
+            "page": 2,
+            "quote": "T\nHE demand for lithium-ion (Li-ion) batteries has increased throughout the years due to their attractive energy\ncharacteristics.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A22",
+            "page": 2,
+            "quote": "Li-ion batteries are known for their wide range of high energy and power density and have\nbecome a preferred energy source for many ground and on orbit applications.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A23",
+            "page": 2,
+            "quote": "Among the batteries available, the\ntraditional 18650 cylindrical cell was originally designed for portable electronics, such as hand held power tools and is\nnow in high demand by the automotive industry.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A24",
+            "page": 2,
+            "quote": "Li-ion batteries are also present aboard current spacecraft; the 18650\ncells are found in satellites, powertools, and spacesuits as battery packs, while commercial laptops have either 18650\nbatteries or pouch cells [1].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A25",
+            "page": 2,
+            "quote": "The Li-ion polymer pouch cells are typically found inside laptop notebooks and in cellular\nphones.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A26",
+            "page": 2,
+            "quote": "Li-ion batteries pose a serious safety risk for spacecraft and the crew since they can generate large quantities\nof heat during a thermal runaway event.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A27",
+            "page": 2,
+            "quote": "Li-ion batteries can release toxic substances, among those are carbon monoxide (CO), carbon dioxdide (CO2) and\nother trace species.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A28",
+            "page": 2,
+            "quote": "These gases can be fatal if inhaled in large quantities, primarily a concern to spacecraft crew as\nthese may be asphyxiant or can cause anoxia [2].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A29",
+            "page": 2,
+            "quote": "During a thermal runaway event, Li-ion batteries can release the\nﬂuorine content of the electrolyte and other materials in the battery, such as the polyvinylidene ﬂuoride (PVdF) binder\nand phosphoryl ﬂuoride (POF3) from the electrodes.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A30",
+            "page": 2,
+            "quote": "In addition, other gases may form such as hydrogen ﬂuoride (HF), and hydrogen cyanide (HCN)[2].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A31",
+            "page": 2,
+            "quote": "The total\namount of these toxic gases vary considerably depending on manufacturers, state of charge, battery type and chemistry.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A32",
+            "page": 2,
+            "quote": "There have been numerous studies of the failure modes and performance characteristics of a cylindrical or pouch\nbattery during a thermal run away event [3].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A33",
+            "page": 2,
+            "quote": "However, very few have focused on laptop battery ﬁres.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A34",
+            "page": 2,
+            "quote": "Laptop battery\nfailures have happened worldwide due to defects in the interior parts, such as deformities in the cathode metal or\ndamage to the separator [4].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A35",
+            "page": 2,
+            "quote": "A few accidents involving laptop ﬁres have occurred through out the years, among those\nSony, HP and Dell, have recalled of 1.8 million batteries [5] due to being potential hazards caused from metallic\ndefects and unwanted contact between electrodes.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A36",
+            "page": 2,
+            "quote": "Efforts from Meyer et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A37",
+            "page": 2,
+            "quote": "[6], Juarez et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A38",
+            "page": 2,
+            "quote": "[7] and Harper et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A39",
+            "page": 2,
+            "quote": "[8]\nhave focused on studying the spacecraft smoke alarm thresholds and ﬁre suppression effectiveness on laptop ﬁres.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A40",
+            "page": 2,
+            "quote": "The studies examined laptops that the Orion Program identiﬁed as the largest stored-energy source that may be found\nonboard.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A41",
+            "page": 2,
+            "quote": "The laptops identiﬁed were the Surface Pro 42 Whr with 4 cells and the Dell Model No.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A42",
+            "page": 2,
+            "quote": "XPS 15 9560 with\nsix cells at 97 Wh.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A43",
+            "page": 2,
+            "quote": "This paper focuses on characterizing the ﬁre from a commercial Dell XPS laptop and Surface Pro tablet, that\nwas conducted at the NASA White Sands Test Facility [8].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A44",
+            "page": 2,
+            "quote": "Measurements of ﬂame height were extracted from the\ncombustion process and used to quantify the maximum heat release, total heat release and centerline temperature using\nHeskestad’s equations.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A45",
+            "page": 2,
+            "quote": "Figure 1 shows a general schematic of the experimental apparatus used to perform battery ﬁre tests inside a 1.4 m3\n(50 ft3) chamber.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A46",
+            "page": 2,
+            "quote": "This work used a Dell 97 Wh laptop that holds a 6 cell battery pack at a nominal 11.4 V and 25.8 Ahr\nrating and a Surface Pro that has 4 cells with a nominal 15.14 V and a 11.88 Ahr battery pack.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A47",
+            "page": 2,
+            "quote": "Further speciﬁcations\nare found in Table 1.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A48",
+            "page": 2,
+            "quote": "The testing included the laptop unit and the battery pack, which includes electronics and plastic\nhousing.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A49",
+            "page": 2,
+            "quote": "In addition, the Surface Pro was tested with a keyboard attached.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A50",
+            "page": 2,
+            "quote": "The laptops were charged to a state of\ncharge of 100%.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A51",
+            "page": 2,
+            "quote": "International Conference on Environmental Systems\n2",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A52",
+            "page": 3,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nThermocouple (TC) \nPositions\nTC\n* Only \nType K\nThermocouple (TC)\n14.06”\n9.06”\nCamera\nThe Surface Pro 5 is also tested and has a similar TC arrangement\nFigure 1: A commercial laptop, Dell XPS 97Wh is forced into thermal runaway inside a 1.4 m3 (50 ft3) chamber.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A53",
+            "page": 3,
+            "quote": "A\nstove top coil element is used to initiate the combustion process.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A54",
+            "page": 3,
+            "quote": "Thermocouples are placed for event monitoring (red\ndots).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A55",
+            "page": 3,
+            "quote": "The laptop and tablet were heated externally to promote thermal runaway using a stove top coil element with\na power input at approximately a maximum of 1000 W.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A56",
+            "page": 3,
+            "quote": "Two “sparkers” were used to ignite the gases that have\nbeen vented out or produced during the pyrolysis process.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A57",
+            "page": 3,
+            "quote": "The chamber and the laptop were instrumented with\nthermocouples; two Type K thermocouples were reported by Harper et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A58",
+            "page": 3,
+            "quote": "[8] as being placed at 0.61 m (24 in.) and\n0.864 m (34 in.) above the laptop to monitor potential worst-case cabin temperature conditions during a ﬁre event.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A59",
+            "page": 3,
+            "quote": "The\ntemperature in the chamber stayed between 300-337.45 K.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A60",
+            "page": 3,
+            "quote": "Each individual pouch cell had a thermocouple attached\nfor temperature data upon ignition and propagation.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A61",
+            "page": 3,
+            "quote": "An additional thermocouple was placed above the external casing\nand above the heater element to verify adequate heat input.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A62",
+            "page": 3,
+            "quote": "A video camera was placed inside the testing chamber and captured the burning process for all combustion events\n(as shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A63",
+            "page": 3,
+            "quote": "2).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A64",
+            "page": 3,
+            "quote": "The ﬂame height was determined from a customized Matlab code developed for image processing\nof the digital still frames.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A65",
+            "page": 3,
+            "quote": "Pixel data was obtained from the images and converted into real dimensions; the scale factor\nused was found by measuring the depth from one side of a laptop and divided by the number of pixels.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A66",
+            "page": 3,
+            "quote": "Typical\nimages used for the analysis are seen in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A67",
+            "page": 3,
+            "quote": "2.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A68",
+            "page": 3,
+            "quote": "The still images are converted to grayscale by eliminating the hue and\nsaturation information while retaining the luminance.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A69",
+            "page": 3,
+            "quote": "The grayscale images are converted to binary by replacing all\npixels in the color image with luminance greater than the threshold level with 1 (white) and replacing all other pixels\nwith the value 0 (black).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A70",
+            "page": 3,
+            "quote": "Figure 2 illustrates the ﬂame height as Hf and D as the diameter of the ﬁre.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A71",
+            "page": 3,
+            "quote": "International Conference on Environmental Systems\n3",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A72",
+            "page": 4,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n𝑇𝑒𝑠𝑡𝑐ℎ𝑎𝑚𝑏𝑒𝑟:\n1.4 𝑚3 50𝑓𝑡3\nFlame Height, Hf\nDiameter, D\n𝑇∞=300-330.4 K\n𝑇𝑒𝑠𝑡𝑐ℎ𝑎𝑚𝑏𝑒𝑟:\n1.4 𝑚3 50𝑓𝑡3\nPi\nxel\ns\nPixels\nP\ni\nx\ne\nl\ns\nPixels\nFigure 2: Typical images capturing the burning process, test chamber volume, and ambient temperature.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A73",
+            "page": 4,
+            "quote": "A black and\nwhite image used for the analysis of heat release is also shown.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A74",
+            "page": 4,
+            "quote": "Fire suppression was accomplished with a portable ﬁre extinguisher (PFE) assembly that holds 6 pounds of water\nand 1.2 lb of nitrogen pressurized to approximately 1270 psia.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A75",
+            "page": 4,
+            "quote": "Details on the portable ﬁre extinguisher are further\ndiscussed in Rodriguez et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A76",
+            "page": 4,
+            "quote": "[9] work.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A77",
+            "page": 4,
+            "quote": "In addition, the work by Harper et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A78",
+            "page": 4,
+            "quote": "[8] discusses the use of the PFE on a\nDell XPS 15 ﬁre and its capability of extinguishing a Dell XPS 15 with 2 lbs of water.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A79",
+            "page": 4,
+            "quote": "The chamber was instrumented\nwith an Orion smoke detector, particulate sensor, and gas probes to perform toxicological analysis of CO, CO2 and\nO2, among other hydrocarbons.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A80",
+            "page": 4,
+            "quote": "I\nBurning Behavior\nFigures 3, 4, and 5 show the combustion process of a fully charged Dell XPS 97 Wh laptop.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A81",
+            "page": 4,
+            "quote": "Images from the\nburning process for the Surface Pro are not shown in this paper.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A82",
+            "page": 4,
+            "quote": "The burning of a laptop can be summarized into the\nfollowing stages: the heater is turned on and the laptop is heated for about 180 s, raising its temperature to pyrolize\nthe laptop or battery and cause a release of gaseous products.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A83",
+            "page": 4,
+            "quote": "The laptop begins to decompose and shows a minimum\namount of white smoke (see Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A84",
+            "page": 4,
+            "quote": "3a) and sparks under the mousepad and sides.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A85",
+            "page": 4,
+            "quote": "The sparks resemble what has been\npreviously reported in literature to occur when solid electrolyte burns as its being ejected.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A86",
+            "page": 4,
+            "quote": "These gases are ignited\nusing a sparker and the coil was shut off when the laptop was uniformly ignited over the exposed area.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A87",
+            "page": 4,
+            "quote": "The Li-ion\nbattery pack is found under the mousepad region; the mousepad is shown to raise during the heating period which is\nan indication that pouch cells go through a minimum amount of swelling.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A88",
+            "page": 4,
+            "quote": "The second phase shows a large amount of\nwhite smoke (see Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A89",
+            "page": 4,
+            "quote": "3b) and more apparent sparks are released from the sides and underneath the mousepad.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A90",
+            "page": 4,
+            "quote": "The\nventing period lasted for about 6 s.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A91",
+            "page": 4,
+            "quote": "The released smoke is ignited and results in an aggressive ﬁreball (\"thermal\"[10])\noutburst 2 seconds after the end of the venting period (Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A92",
+            "page": 4,
+            "quote": "4a).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A93",
+            "page": 4,
+            "quote": "The white smoke is also observed midway during the\nﬁre suppression phase (Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A94",
+            "page": 4,
+            "quote": "5a).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A95",
+            "page": 4,
+            "quote": "International Conference on Environmental Systems\n4",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A96",
+            "page": 5,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n(a) The heater is turned on and a small quantity of white smoke\nbegins to appear.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A97",
+            "page": 5,
+            "quote": "(b) White smoke and sparks are released through the mousepad\nand from the sides of the laptop.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A98",
+            "page": 5,
+            "quote": "Figure 3: Digital still images displaying the initial combustion event from a 97Wh Dell laptop.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A99",
+            "page": 5,
+            "quote": "The ﬁre begins to reduce in its hemispherical shape and instead elongates (Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A100",
+            "page": 5,
+            "quote": "4c), showing three regions, a\ncontinuous, intermittent, and buoyant plume, as described by McCaffrey [11].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A101",
+            "page": 5,
+            "quote": "The ﬂame rapidly moves to the sides,\npulses and ﬂickers.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A102",
+            "page": 5,
+            "quote": "The ﬂame abates and reduces in size signiﬁcantly while spreading above the region where the\nbattery pack is located (near the mouse pad area) and is shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A103",
+            "page": 5,
+            "quote": "4d.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A104",
+            "page": 5,
+            "quote": "A second outburst occurs 4 seconds after\nintroducing water, as shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A105",
+            "page": 5,
+            "quote": "4e.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A106",
+            "page": 5,
+            "quote": "After introducing water, the ﬁre grows in size brieﬂy and then begins to cool.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A107",
+            "page": 5,
+            "quote": "Very near extinguishment the ﬁre is pushed to other areas in the laptop, as shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A108",
+            "page": 5,
+            "quote": "5a.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A109",
+            "page": 5,
+            "quote": "A typical post image after\nthe ﬁre event is shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A110",
+            "page": 5,
+            "quote": "5b.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A111",
+            "page": 5,
+            "quote": "The image was taken from Harper et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A112",
+            "page": 5,
+            "quote": "[8] work.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A113",
+            "page": 5,
+            "quote": "The image shows the thermal\nrunaway propagation which occurs across all cells when external heating was applied directly underneath the coil\nheater.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A114",
+            "page": 5,
+            "quote": "A visual observation of the cells after combustion shows the exterior packaging foil of the battery pack and the\npouch cells completely burnt.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A115",
+            "page": 5,
+            "quote": "Molten case material was also emitted in the Dell more than what was observed in the\nSurface Pro.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A116",
+            "page": 5,
+            "quote": "In addition, the smoke may be due to the decomposition of the plastic case and a contribution from the\npouch cell material (i.e.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A117",
+            "page": 5,
+            "quote": "separator melts).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A118",
+            "page": 5,
+            "quote": "Similar heating behavior was observed with the Surface Pro, however, the\nﬁre was not suppressed and lasted for 8 minutes of continuous burning.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A119",
+            "page": 5,
+            "quote": "A large amount of white smoke and a large\nﬁre size was also observed.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A120",
+            "page": 5,
+            "quote": "(a) The ﬁrst ﬂame outburst.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A121",
+            "page": 5,
+            "quote": "(b) The ﬂame moves to the sides.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A122",
+            "page": 5,
+            "quote": "(c) An elongated plume appears.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A123",
+            "page": 5,
+            "quote": "(d) Fire sits above mousepad area.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A124",
+            "page": 5,
+            "quote": "(e) Second ﬁre outburst.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A125",
+            "page": 5,
+            "quote": "(f) Flame abatement.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A126",
+            "page": 5,
+            "quote": "Figure 4: Digital still images displaying the combustion process of a 97Wh Dell XPS laptop at different time stamps.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A127",
+            "page": 5,
+            "quote": "International Conference on Environmental Systems\n5",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A128",
+            "page": 6,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n(a) Near extinguishment.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A129",
+            "page": 6,
+            "quote": "(b) Thermal runaway propagation to\nall battery cells.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A130",
+            "page": 6,
+            "quote": "Figure 5: Digital still images displaying the combustion process of a 97Wh Dell XPS laptop showing post images of\nthe battery pack.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A131",
+            "page": 6,
+            "quote": "Figure 6a shows the evolution of the thermal runaway event in the Dell XPS 15 and the temperature proﬁle for the\nSurface Pro 5 is shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A132",
+            "page": 6,
+            "quote": "6b.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A133",
+            "page": 6,
+            "quote": "The three stages that can observed in the plot are summarized in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A134",
+            "page": 6,
+            "quote": "6 as follow:\na linear rise in temperature until about 318 s to 415 K due to the initial heating applied by the coil.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A135",
+            "page": 6,
+            "quote": "The temperature\nincreases upon heating until it reaches the melting temperature of the laptop casing.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A136",
+            "page": 6,
+            "quote": "In addition, the temperature jump\nmay also be associated to the venting and decomposition period in a pouch cell.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A137",
+            "page": 6,
+            "quote": "The melting temperature of a typical\npouch cell separator from either polyethylene or polypropylene is reported in literature to be between 403.15-438.15 K\n[12] which is close to the ﬁrst temperature jump.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A138",
+            "page": 6,
+            "quote": "The second temperature jump is a typical thermal runaway behavior\nthat has also been captured in Li-ion 18650 battery studies.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A139",
+            "page": 6,
+            "quote": "The thermal runaway onset temperature is between 513.4-\n600 K (shown as dashed ellipses in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A140",
+            "page": 6,
+            "quote": "6), which is higher than what is observed in 18650 and pouch cells.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A141",
+            "page": 6,
+            "quote": "The\nthermal runaway event happens within a few seconds (6-36 s) and experiences a sharp temperature rise from 513.4 K\nto 943.4 K (Tmax) for the Dell XPS laptop and from 600 K to 800 K in 36 s for the Surface Pro.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A142",
+            "page": 6,
+            "quote": "The average runaway\npower during this period can be estimated from the total energy released (discussed in Section III) that is at 326.2\nkJ for the Dell XPS this can produce about 54.3 kW within 6 s.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A143",
+            "page": 6,
+            "quote": "The cooling stage occurs right after the Tmax peak\ntemperature, showing that cooling occurs at a faster rate for the Dell XPS than the Surface Pro.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A144",
+            "page": 6,
+            "quote": "200\n400\n600\n800\n1000\n1200\nTime(s)\n300\n400\n500\n600\n700\n800\n900\nTemperature (K)\n800\n810\n820\nTime (s)\n600\n700\n800\n900\nTemperature (K)\nCooling\nStage\n(PFE)\nTmax\n6 s\n330 K\nHeating Stage\nSparker (Ignition) at\n240 s\nDell XPS 15 9560 (97 Wh)\nThermal Runaway\n     Onset\n(a) Temperature as a function of time for the Dell XPS.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A145",
+            "page": 6,
+            "quote": "0\n200\n400\n600\n800\n1000\n1200\nTime(s)\n300\n400\n500\n600\n700\n800\n900\nTemperature (K)\nHeating         \nStage (140 s)   \nCooling Stage (no PFE)\nTmax\nSparker   \n(Ignition)\n420\n440\n460\nTime(sec)\n600\n700\n800\nTemperature (K)\nSurface Pro 5 (45 Wh)\n36 s\n200 K\nThermal Runaway\n     Onset \n(b) Temperature as a function of time for the Surface Pro.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A146",
+            "page": 6,
+            "quote": "Figure 6: Temperature proﬁles showing the combustion event for the Dell XPS and the Surface Pro.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A147",
+            "page": 6,
+            "quote": "The inset image\nzooms into the thermal runaway region.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A148",
+            "page": 6,
+            "quote": "II\nFlame Height\nFigures 7, 8 and Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A149",
+            "page": 6,
+            "quote": "9 show the ﬂame height and diameter as functions of time for the Dell XPS and Surface\nPro.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A150",
+            "page": 6,
+            "quote": "In general, the ﬂame size for the Dell decreased with time, but exhibited large ﬂuctuations or ﬂare ups.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A151",
+            "page": 6,
+            "quote": "The\nﬂame reaches a height of 0.85 m (t=281.1 s) during the ﬁrst outburst, 0.9 m (t=288.1 s), and 0.63 m (t=296.7 s).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A152",
+            "page": 6,
+            "quote": "The\nﬂame height then decreases linearly to as low as 0.3 m (t=299-313 s).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A153",
+            "page": 6,
+            "quote": "Figure 7 also shows locations where the water\nInternational Conference on Environmental Systems\n6",
+            "statement_eligible": true,
+            "in_task": true
+          }
+        ],
+        "shared_context": {
+          "available": 1,
+          "selected_characters": 0
+        },
+        "known_entities": [],
+        "schema": {
+          "$defs": {
+            "Entity": {
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "title": "Key",
+                  "type": "string"
+                },
+                "label": {
+                  "minLength": 1,
+                  "title": "Label",
+                  "type": "string"
+                },
+                "class_id": {
+                  "title": "Class Id",
+                  "type": "string",
+                  "enum": [
+                    "AtmosphereCondition",
+                    "Blowoff",
+                    "CombustionPhenomenon",
+                    "ExperimentFamily",
+                    "ExperimentalCondition",
+                    "ExperimentalRun",
+                    "Extinction",
+                    "FlameGrowth",
+                    "FlameSpread",
+                    "FlowCondition",
+                    "GravityCondition",
+                    "Ignition",
+                    "Intervention",
+                    "Investigation",
+                    "Material",
+                    "PressureCondition",
+                    "Quenching",
+                    "Sample",
+                    "StableBurning"
+                  ]
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                },
+                "support": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "class_id",
+                "study",
+                "support"
+              ],
+              "title": "Entity",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "entities": {
+              "items": {
+                "$ref": "#/$defs/Entity"
+              },
+              "title": "Entities",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "entities"
+          ]
+        },
+        "original_tables": [
+          {
+            "physical_pdf_page": 3,
+            "original_cells": [
+              [
+                null,
+                null,
+                null,
+                null,
+                "",
+                null
+              ],
+              [
+                null,
+                null,
+                "",
+                null,
+                "",
+                ""
+              ],
+              [
+                null,
+                null,
+                "",
+                "",
+                "",
+                ""
+              ],
+              [
+                null,
+                null,
+                null,
+                "Camera\nType K\nThermocouple (TC)\n9.06”\nTC 14.06”",
+                "",
+                null
+              ],
+              [
+                null,
+                null,
+                null,
+                null,
+                "",
+                null
+              ],
+              [
+                "",
+                null,
+                null,
+                "",
+                null,
+                null
+              ],
+              [
+                null,
+                "* Only\nThe Surface Pro 5 is also tested and has a similar TC arrangemen",
+                null,
+                null,
+                null,
+                null
+              ]
+            ],
+            "original_headers": [
+              null,
+              null,
+              null,
+              null,
+              "",
+              null
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          },
+          {
+            "physical_pdf_page": 4,
+            "original_cells": [
+              [
+                "xxel\nPix",
+                null
+              ],
+              [
+                null,
+                ""
+              ]
+            ],
+            "original_headers": [
+              "xxel\nPix",
+              null
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          },
+          {
+            "physical_pdf_page": 6,
+            "original_cells": [
+              [
+                "Dell XPS 15 9560 (97 Wh)\n900 (K)\n800 Temperature\n330 K\n700\n600\n6 s\n800 810 820\nTime (s)\nSparker (Ignition) at\n240 s\nHeating Stage",
+                "T\nmax\nCooling\nStage\n(PFE)\nThermal Runaway\nOnset"
+              ]
+            ],
+            "original_headers": [
+              "Dell XPS 15 9560 (97 Wh)\n900 (K)\n800 Temperature\n330 K\n700\n600\n6 s\n800 810 820\nTime (s)\nSparker (Ignition) at\n240 s\nHeating Stage",
+              "T\nmax\nCooling\nStage\n(PFE)\nThermal Runaway\nOnset"
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          },
+          {
+            "physical_pdf_page": 6,
+            "original_cells": [
+              [
+                "6 s",
+                "330 K"
+              ]
+            ],
+            "original_headers": [
+              "6 s",
+              "330 K"
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          }
+        ]
+      },
+      "max_output_tokens": 6144,
+      "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "scientific_identity",
+          "schema": {
+            "$defs": {
+              "Entity": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "title": "Key",
+                    "type": "string"
+                  },
+                  "label": {
+                    "minLength": 1,
+                    "title": "Label",
+                    "type": "string"
+                  },
+                  "class_id": {
+                    "title": "Class Id",
+                    "type": "string",
+                    "enum": [
+                      "AtmosphereCondition",
+                      "Blowoff",
+                      "CombustionPhenomenon",
+                      "ExperimentFamily",
+                      "ExperimentalCondition",
+                      "ExperimentalRun",
+                      "Extinction",
+                      "FlameGrowth",
+                      "FlameSpread",
+                      "FlowCondition",
+                      "GravityCondition",
+                      "Ignition",
+                      "Intervention",
+                      "Investigation",
+                      "Material",
+                      "PressureCondition",
+                      "Quenching",
+                      "Sample",
+                      "StableBurning"
+                    ]
+                  },
+                  "study": {
+                    "default": "unknown",
+                    "enum": [
+                      "current",
+                      "cited",
+                      "unknown"
+                    ],
+                    "title": "Study",
+                    "type": "string"
+                  },
+                  "support": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "key",
+                  "label",
+                  "class_id",
+                  "study",
+                  "support"
+                ],
+                "title": "Entity",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "entities": {
+                "items": {
+                  "$ref": "#/$defs/Entity"
+                },
+                "title": "Entities",
+                "type": "array"
+              }
+            },
+            "title": "Output",
+            "type": "object",
+            "required": [
+              "entities"
+            ]
+          },
+          "strict": true
+        }
+      },
+      "raw_response": "{\"entities\": [{\"key\": \"e1\", \"label\": \"Characterization of Laptop Fires in Spacecraft\", \"class_id\": \"Investigation\", \"study\": \"current\", \"support\": [\"A1\"]}, {\"key\": \"e2\", \"label\": \"Dell XPS 15 9560 (97 Wh)\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A41\", \"A42\", \"A46\", \"A144\"]}, {\"key\": \"e3\", \"label\": \"Surface Pro\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A41\", \"A43\", \"A46\", \"A145\"]}, {\"key\": \"e4\", \"label\": \"stove top coil element\", \"class_id\": \"Intervention\", \"study\": \"current\", \"support\": [\"A53\", \"A55\"]}, {\"key\": \"e5\", \"label\": \"portable fire extinguisher (PFE) assembly\", \"class_id\": \"Intervention\", \"study\": \"current\", \"support\": [\"A74\", \"A78\"]}, {\"key\": \"e6\", \"label\": \"1.4 m3 (50 ft3) chamber\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A45\", \"A52\", \"A72\"]}, {\"key\": \"e7\", \"label\": \"300-337.45 K\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A59\"]}, {\"key\": \"e8\", \"label\": \"100%\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A50\"]}, {\"key\": \"e9\", \"label\": \"1000 W\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A55\"]}, {\"key\": \"e10\", \"label\": \"1270 psia\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A74\"]}, {\"key\": \"e11\", \"label\": \"6 pounds of water\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A74\"]}, {\"key\": \"e12\", \"label\": \"1.2 lb of nitrogen\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A74\"]}]}",
+      "usage": {
+        "completion_tokens": 2629,
+        "prompt_tokens": 11618,
+        "total_tokens": 14247,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 2047,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "outcome": {
+        "segment_id": "window-4308dca602513542aee26d28",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "b3dcf481cea5ba8e5f4d87c576b32ac0a42ea9274c41744090ee1ca06663fbdb",
+        "members": [
+          {
+            "id": "segment-29b1a14218b57e0265e1d4ab",
+            "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+            "start": 0,
+            "end": 2832
+          },
+          {
+            "id": "segment-349b935ff0e8839855833775",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 0,
+            "end": 276
+          },
+          {
+            "id": "segment-ff1d1165e926597024a8d5b5",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 276,
+            "end": 3416
+          },
+          {
+            "id": "segment-497cc23a209eb14fd30f7163",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 3416,
+            "end": 4098
+          },
+          {
+            "id": "segment-6e446a90fc050e3f810b719b",
+            "evidence_id": "E-7d3674715bb6963dd75f22c1",
+            "start": 0,
+            "end": 2306
+          },
+          {
+            "id": "segment-a26adcc611bddbab9d947f42",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 0,
+            "end": 1021
+          },
+          {
+            "id": "segment-d52a84afa5ea60c67abf849d",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 1021,
+            "end": 2514
+          },
+          {
+            "id": "segment-8d68663b546fca97c5be070f",
+            "evidence_id": "E-c1bc65ad939838ad838b5871",
+            "start": 0,
+            "end": 2250
+          },
+          {
+            "id": "segment-b3e025089411138cf5033cb7",
+            "evidence_id": "E-c23c6e510e076592e4d7d0df",
+            "start": 0,
+            "end": 3252
+          }
+        ],
+        "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+        "start": 0,
+        "end": 17252,
+        "deterministic": "COMPLETE",
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "attempts": 1,
+        "source_anchors": 153,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 17088,
+        "proposed_items": 12,
+        "request_bytes": 36969,
+        "reserved_tokens_per_attempt": 46876,
+        "output_tokens": 6144,
+        "context_token_estimate": 27022,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 2629,
+          "prompt_tokens": 11618,
+          "total_tokens": 14247,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 6144,
+          "thinking_enabled": true,
+          "reasoning_budget": 2048,
+          "image_count": 0,
+          "response_headers": {},
+          "duration_seconds": 34.84126012399793,
+          "time_to_first_token_seconds": 34.83216272400023,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 6721
+        },
+        "schema_errors": [],
+        "source_errors": [
+          {
+            "proposal_id": "proposal-e14680273e648a4eb5765706",
+            "kind": "entities",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ],
+            "proposal": {
+              "key": "entity-1b24f3b7fadae34b7fe5",
+              "label": "portable fire extinguisher (PFE) assembly",
+              "class_id": "Intervention",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+                  "quote": "Fire suppression was accomplished with a portable ﬁre extinguisher (PFE) assembly that holds 6 pounds of water\nand 1.2 lb of nitrogen pressurized to approximately 1270 psia.",
+                  "start": 417
+                },
+                {
+                  "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+                  "quote": "[8] discusses the use of the PFE on a\nDell XPS 15 ﬁre and its capability of extinguishing a Dell XPS 15 with 2 lbs of water.",
+                  "start": 723
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "state": "FINISHED"
+    },
+    {
+      "cache_key": "efc15beba652e768e5e88744c6b4698a790d61b297b470983ee13e48e67299ab",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "identity",
+      "request": {
+        "stage": "identity",
+        "focus": null,
+        "document_identity": {
+          "title": "Characterization of Laptop Fires in Spacecraft"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 7,
+            "start": 0,
+            "end": 1505,
+            "section": "III.\nResults"
+          },
+          {
+            "page": 8,
+            "start": 0,
+            "end": 3337,
+            "section": "III.\nResults"
+          },
+          {
+            "page": 9,
+            "start": 0,
+            "end": 2066,
+            "section": "III.\nResults"
+          },
+          {
+            "page": 10,
+            "start": 0,
+            "end": 2061,
+            "section": "III.\nResults"
+          },
+          {
+            "page": 11,
+            "start": 0,
+            "end": 2865,
+            "section": "III.\nResults"
+          },
+          {
+            "page": 12,
+            "start": 0,
+            "end": 599,
+            "section": "III.\nResults"
+          },
+          {
+            "page": 12,
+            "start": 599,
+            "end": 2967,
+            "section": "IV.\nConclusion"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 7,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nsuppression became active (t= 315-327 s).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 7,
+            "quote": "A fourth outburst was observed during the ﬁre suppression and caused the\nﬂame to reach a maximum of 0.65 m (319.2 s) as shown by the secondary outburst peak, in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A3",
+            "page": 7,
+            "quote": "7.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A4",
+            "page": 7,
+            "quote": "Figure 8 shows\nthat the Surface Pro remained at a lower height than the Dell XPS 15.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A5",
+            "page": 7,
+            "quote": "The ﬁre size reached a height above 0.8 m, and\nrapidly decreased to 0.6 m while remaining at about 0.15 m during abatement.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A6",
+            "page": 7,
+            "quote": "Water was not used to extinguish the\nﬁre during the period that the combustion event was observed.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A7",
+            "page": 7,
+            "quote": "Flame height measurements during the ﬁrst outburst\nare obscured by the amount of white smoke released during the event by ±2 in (0.05 m).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A8",
+            "page": 7,
+            "quote": "In general, image processing\ncode can be tuned to capture the highest ﬁre intensity region, while leaving out areas that are not of interest.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A9",
+            "page": 7,
+            "quote": "285\n290\n295\n300\n305\n310\n315\nTime (s)\n0\n0.1\n0.2\n0.3\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\nFlame Height (m)\nOutburst #1\nAbatement\nStable \nCombustion\nOutburst #2\nFire \nSuppression  (PFE)\nFigure 7: Measured ﬂame height for the Dell XPS as a function of time divided into various stages to describe the\nburning phenomena.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A10",
+            "page": 7,
+            "quote": "Flame height reached between 0.85 and 0.6 m, respectively.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A11",
+            "page": 7,
+            "quote": "550\n600\n650\n700\n750\n800\n850\n900\nTime (s)\n0\n0.1\n0.2\n0.3\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\nFlame Height (m)\nOutburst\nFigure 8: Measured ﬂame height as a function of time for the Surface Pro 5.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A12",
+            "page": 7,
+            "quote": "International Conference on Environmental Systems\n7",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A13",
+            "page": 8,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nThe ﬂame width is measured by analyzing the extracted images from the video.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A14",
+            "page": 8,
+            "quote": "Figure 9 shows the ﬂame diameter\nreached over 0.9 m during the ﬁrst outburst (Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A15",
+            "page": 8,
+            "quote": "4a) and thereafter it varies between 0.2-0.65 m.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A16",
+            "page": 8,
+            "quote": "The second outburst\nhad a diameter of 0.7 m.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A17",
+            "page": 8,
+            "quote": "The outburst are described in Dinenno et al., as a thermal or \"ﬁreball\" [2, 10], which occur\nfrom a sudden release of a ﬁnite volume of gaseous fuel that is ignited.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A18",
+            "page": 8,
+            "quote": "Flame width for the Surface Pro is not shown\nin the paper.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A19",
+            "page": 8,
+            "quote": "However, the Surface Pro showed a similar behavior, that is, a maximum diameter reached above 0.8 m\nand thereafter remained between 0.6 and decaying down to 0.2 m.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A20",
+            "page": 8,
+            "quote": "The diameter of the Surface Pro was obscured since\nthe ﬁre propagated to different locations along the surface of the tablet.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A21",
+            "page": 8,
+            "quote": "285\n290\n295\n300\n305\n310\n315\nTime(s)\n0\n0.1\n0.2\n0.3\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\nFlame Diameter (m)\nFigure 9: Flame diameter for the Dell XPS 15.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A22",
+            "page": 8,
+            "quote": "III\nHeat Release\nThe heat release rate (HRR) is among the most important parameters for understanding combustion processes.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A23",
+            "page": 8,
+            "quote": "The\nheat release rate gives insight on the ﬁre size, rate of smoke production, and overall an evaluation for ﬁre assessment\nin a new environment [2].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A24",
+            "page": 8,
+            "quote": "In the event of an accidental ﬁre inside a spacecraft vehicle, the heat release will cause\na temperature rise in the cabin.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A25",
+            "page": 8,
+            "quote": "The primary mechanism to dissipate the heat from the cabin gas is radiation and\nconvection heat transfer to the vehicle and through the ECLSS systems [13].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A26",
+            "page": 8,
+            "quote": "Preliminary measurements of heat\nrelease have been made in this paper using the WSTF data [8] as an effort to understand the impact that a ﬁre would\nhave inside a spacecraft vehicle.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A27",
+            "page": 8,
+            "quote": "In addition, very little data is available on heat release measurements made on laptops\nunits.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A28",
+            "page": 8,
+            "quote": "The cone calorimeter is most commonly used worldwide for measuring heat release for many materials and are\ndescribed in ASTM E1354 and ISO 5660 [14].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A29",
+            "page": 8,
+            "quote": "This work has measured heat release from a Dell 97 Wh laptop and\nSurface Pro 5 42 Wh ﬁre using measurements of ﬂame height.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A30",
+            "page": 8,
+            "quote": "The Heskestad [15] correlation was used to calculate the\nenergy release rate, ˙Q (kW) and is typically used to characterize liquid pool ﬁres with a deﬁned ﬁre source diameter,\nD (m) and ﬂame height, HF(m),\nHf = 0.235 ˙Q2/5 −1.02D\n(1)\nThe heat release is based on ﬂame height measurements and on the diameter of the ﬂame.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A31",
+            "page": 8,
+            "quote": "Figure 10 and 11 shows the\nmeasured heat release proﬁles as a function of time.Figure 10 shows the ﬁrst maximum HRR peak is observed during\nthe ﬁrst outburst (Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A32",
+            "page": 8,
+            "quote": "4a) event, rising quickly up to 110 kW (t=281 s) and rapidly decaying thereafter; the ﬁst heat\nrelease outburst occurs at a temperature of 900 K based on the surface temperature measured on each cell (Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A33",
+            "page": 8,
+            "quote": "6).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A34",
+            "page": 8,
+            "quote": "The\ninitial outburst includes more heat that has been released from heating the laptop unit and battery material that was\nabruptly released from the laptop unit.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A35",
+            "page": 8,
+            "quote": "A second heat release peak is observed at 75 kW (t=286.9 s), and following\nthat at 46 kW (t=294.8 s) peak during stable combustion abatement.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A36",
+            "page": 8,
+            "quote": "However, at t=310 s and between 315-329 s, there\nis cooling that occurs from the discharge of the ﬁre extinguisher.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A37",
+            "page": 8,
+            "quote": "A maximum outburst of 50 kW in heat release is\nInternational Conference on Environmental Systems\n8",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A38",
+            "page": 9,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nobserved after introducing the water.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A39",
+            "page": 9,
+            "quote": "The heat release proﬁle for the Surface 5 Pro is shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A40",
+            "page": 9,
+            "quote": "11.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A41",
+            "page": 9,
+            "quote": "A maximum\nheat release rate value is observed above 80 kW during the ﬁrst outburst and rapidly decays to 50 kW.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A42",
+            "page": 9,
+            "quote": "In general the\nheat release depletes thereafter.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A43",
+            "page": 9,
+            "quote": "During the major heat release outbursts, preliminary measurements on toxic gases\nhave been observed, such as, HCL (max 30ppm), CO (max 350 ppm), CO2 (0.5% vol), and HCN (max 2.2 ppm) have\nbeen measured.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A44",
+            "page": 9,
+            "quote": "A lack of data has been found for commercial laptops, however, the work by Larsson et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A45",
+            "page": 9,
+            "quote": "[16, 17]\nhas performed a study with two Lenovo laptop battery packs, each at a nominal capacity of 16.8 Ah (each battery pack\nwith 6 cells); the heat release measured was between 35-57 kW.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A46",
+            "page": 9,
+            "quote": "The battery packs included the electrical connectors,\nplastic housing and the electronic circuits, but did not include the laptop casing.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A47",
+            "page": 9,
+            "quote": "However, assuming that the laptop\nis made from PolyMethylMethAcrylate, the work from Biteau et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A48",
+            "page": 9,
+            "quote": "[18] has measured a maximum of 8 kW in heat\nrelease using various calorimetry methods.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A49",
+            "page": 9,
+            "quote": "A typical heat release value for a 2.9 Ah (11 Wh) pouch cell was measured\nby Ribiere et.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A50",
+            "page": 9,
+            "quote": "el.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A51",
+            "page": 9,
+            "quote": "[19] to be 20 kW (at 100% state of charge).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A52",
+            "page": 9,
+            "quote": "The heat release measurements were done with an\noxygen consumption method, which based on Ribiere et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A53",
+            "page": 9,
+            "quote": "[19] estimates an uncertainty of 10%.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A54",
+            "page": 9,
+            "quote": "Additional work\nfrom Hasegawa et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A55",
+            "page": 9,
+            "quote": "[20] has measured heat release of a pallet of laptops which included their packaging.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A56",
+            "page": 9,
+            "quote": "The results\nby Dietrich et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A57",
+            "page": 9,
+            "quote": "[13] showed that ﬁres between 50 and 100 kW are detrimental and can cause severe damage to a\nperson tracheal or cause skin burns.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A58",
+            "page": 9,
+            "quote": "285\n290\n295\n300\n305\n310\n315\n320\n325\nTime(s)\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n110\n Heat Release Rate (kW)\n100 % SOC, Total Heat Release: 338.4 kJ\nFigure 10: Heat release rate and total heat release are measured using Heskestad et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A59",
+            "page": 9,
+            "quote": "[15] correlation for the Dell\nlaptop.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A60",
+            "page": 9,
+            "quote": "International Conference on Environmental Systems\n9",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A61",
+            "page": 10,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n550\n600\n650\n700\n750\n800\n850\n900\nTime(s)\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n110\n Heat Release Rate (kW)\n100 % SOC, Total Heat Release: 960 kJ\nFigure 11: Heat release rate and total heat release are measured using Heskestad et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A62",
+            "page": 10,
+            "quote": "[15] correlation for the Surface\nPro tablet.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A63",
+            "page": 10,
+            "quote": "Figure 12 summarizes typical ﬂames with corresponding measured ﬂame height versus heat release.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A64",
+            "page": 10,
+            "quote": "The ﬂame\nheight is closely associated with the amount of energy being released by a ﬁre ( ˙Q).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A65",
+            "page": 10,
+            "quote": "The deviation of the ﬂame height\nmeasurement grows with increasing heat release because the larger ﬂames ﬂicker more, yielding and increase in frame-\nto-frame variation in the ﬂame (shown as Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A66",
+            "page": 10,
+            "quote": "4c).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A67",
+            "page": 10,
+            "quote": "A difference in ± 30 kW was observed for ﬁres with longer plumes\nand less with steadier ﬁres ± 10 kW (shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A68",
+            "page": 10,
+            "quote": "4d).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A69",
+            "page": 10,
+            "quote": "In addition, a high uncertainty in height and diameter resulted\nwith the ﬁrst and second major outbursts (Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A70",
+            "page": 10,
+            "quote": "4a) and in the presence of high vapors (white smoke) release.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A71",
+            "page": 10,
+            "quote": "117 kW\nD=0.9 m\nH\nHf=0.65 m\nFigure 12: Major combustion events are selected with corresponding heights and maximum heat release values.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A72",
+            "page": 10,
+            "quote": "The calculated total heat release was measured by integrating the heat release proﬁles, in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A73",
+            "page": 10,
+            "quote": "10 and 11 for the\nDell XPS laptop and the Surface Pro.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A74",
+            "page": 10,
+            "quote": "The total heat release from the laptop was measured to be 338.2 kJ and 960 kJ for\nthe tablet, showing that the Surface Pro had a higher heat release due to a higher amount of material getting consumed\nand no water being introduced.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A75",
+            "page": 10,
+            "quote": "Further work using various calorimetry measurements will be done to quantify and\nvalidate the total heat release measured in this preliminary study.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A76",
+            "page": 10,
+            "quote": "As described in the experimental section, the Dell\n97 Wh laptop holds a 6 cell battery pack with a nominal 11.4 V and 8.5 Ahr rating.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A77",
+            "page": 10,
+            "quote": "This gives a maximum stored\nenergy of 350 kJ.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A78",
+            "page": 10,
+            "quote": "The Surface Pro has 4 cells with a total of 15.14 V for a 11.8 Ahr rating.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A79",
+            "page": 10,
+            "quote": "This gives a maximum\nInternational Conference on Environmental Systems\n10",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A80",
+            "page": 11,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nstored energy of 647.5 kJ.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A81",
+            "page": 11,
+            "quote": "Additional details are given in Table 1 and shows that the speciﬁc energy for the Surface\npro is higher than the Dell XPS.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A82",
+            "page": 11,
+            "quote": "The total heat release for the Surface Pro indicates that more of the material was\nconsumed than with the Dell XPS.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A83",
+            "page": 11,
+            "quote": "However, the Dell XPS was suppressed with water, which may be responsible for\nthe lower heat release.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A84",
+            "page": 11,
+            "quote": "Larsson et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A85",
+            "page": 11,
+            "quote": "[16, 17] performed a study with two Lenovo laptop battery packs, each at a\nnominal capacity of 16.8 Ah (each battery pack with 6 cells).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A86",
+            "page": 11,
+            "quote": "The battery packs included the electrical connectors,\nplastic housing and the electronic circuits, but did not include the laptop casing.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A87",
+            "page": 11,
+            "quote": "The total heat release measured was\n3,470 kJ (i.e.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A88",
+            "page": 11,
+            "quote": "1,735 kJ for one battery pack).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A89",
+            "page": 11,
+            "quote": "In addition, the work from Ribiere et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A90",
+            "page": 11,
+            "quote": "[19] and Walters et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A91",
+            "page": 11,
+            "quote": "have\nfound that total heat release and maximum peak release are independent of state of charge.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A92",
+            "page": 11,
+            "quote": "That is, at higher state of\ncharges, Ribiere et al.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A93",
+            "page": 11,
+            "quote": "[19] measured a lower total heat release than at a lower state of charge.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A94",
+            "page": 11,
+            "quote": "These preliminary heat\nrelease ﬁndings surpass the limits that a spacecraft and crew are able to tolerate.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A95",
+            "page": 11,
+            "quote": "Characteristics\nValues\nSurface Pro 6 (Calculated)\nDell XPS 15\nManufacturer\nMicrosoft\nDell\nNumber of Cells\n2S2P\n3S2P\nDimensions (mm)\n292 x 201 x 8.5\n13 x 235 x 357\nNominal Voltage (V)\n15.14\n11.4\nDischarge Capacity (Ah)\n11.88\n8.5\nDischarge Energy (Wh)\n179.86\n97\nMass (kg)\n0.77, 0.2-0.3 (estimate battery pack)\n1.8 ,0.34 (battery pack)\nBattery Pack Dimension (mm)\n254 x 101.6 x 3\n71.80 x 330.5 x 7.20\nStored Energy (kJ)\n647.5\n350\nSpeciﬁc Energy (Wh/kg)\n900-600\n285.3\nTable 1: Speciﬁcations of the Dell XPS 15 9560 and Surface Pro Tablet.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A96",
+            "page": 11,
+            "quote": "The chemistry of the pouch cell has not been\nreported by the manufacturer.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A97",
+            "page": 11,
+            "quote": "Predicted temperatures along the plume’s centerline axis are shown in Fig.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A98",
+            "page": 11,
+            "quote": "13 and are computed using Heskestad’s\n[21] Eq.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A99",
+            "page": 11,
+            "quote": "(2), which depends on the convective energy release, ˙Qc (kW) (Qc=0.7 ˙Q) and the temperature of the ambient\ngas, T∞.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A100",
+            "page": 11,
+            "quote": "The highest temperature observed inside the testing enclosure was T∞= 330 K.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A101",
+            "page": 11,
+            "quote": "∆To = 9.1\n \nT∞\ngc2pρ2∞\n!1/3\n˙Qc\n2/3(z−zo)−5/3\n(2)\nwhere z (m) is the height above the ﬁre surface, total heat release rate ˙Q (kW).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A102",
+            "page": 11,
+            "quote": "The virtual origin zo= 0.083 ˙Q2/5-1.02\nD (m) [21], depends on the diameter of the ﬁre source.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A103",
+            "page": 11,
+            "quote": "Properties of ambient air (density, ρ (kg/m3) and speciﬁc heat,\ncp (kJ/kg K) are also included.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A104",
+            "page": 11,
+            "quote": "Figure 13 shows the centerline temperature evaluated for ﬁres between 50 kW-110 kW\n(assuming complete combustion of the laptop unit) with a maximum ﬁre source diameter of 0.48 m (i.e for non-circular\nobjects, D =\np\n(4As)/π and As is the surface area of the laptop), which corresponds to the diameter of the Dell XPS.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A105",
+            "page": 11,
+            "quote": ".",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A106",
+            "page": 11,
+            "quote": "International Conference on Environmental Systems\n11",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A107",
+            "page": 12,
+            "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\n600\n800\n1000\n1200\n1400\n1600\n1800\nCenterline Temperature, Tc= \nT+ T\n, (K)\n Flame Height =0.45m\n         (Dell XPS 15)\nFigure 13: Predicted temperature on the plume’s centerline for 25, 75 and 100 kW ﬁres with a diameter of D=0.48 m.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A108",
+            "page": 12,
+            "quote": "The centerline temperature for a 25, 75 and 100 kW ﬁre at a height of 0.45 m results in plume temperatures above\n1550, 1380 K and 800 K, respectively.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A109",
+            "page": 12,
+            "quote": "Future work will investigate and measure ﬂame temperatures with pyrometry\nmethods.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A110",
+            "page": 12,
+            "quote": "Experimental data from a test conducted at WSTF was used as an initial effort to characterize the ﬁre behavior\nin commercial laptops (DELL XPS 15 at 95 Wh and the Surface Pro 42 Wh).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A111",
+            "page": 12,
+            "quote": "The test was conducted inside of a\n1.4 m3 (50 ft3) chamber to contain combustion by-products.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A112",
+            "page": 12,
+            "quote": "Digital still frames were extracted and were used for\nmeasurements of height and heat release.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A113",
+            "page": 12,
+            "quote": "The height measurements were then used to calculate the maximum heat\nrelease using Heskestad correlations, total heat release, and the centerline ﬂame temperature.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A114",
+            "page": 12,
+            "quote": "A coil stove top at 1.0 kW was used to initiate thermal runaway.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A115",
+            "page": 12,
+            "quote": "During the ﬁrst stage of the burning process, the\nlaptops and tablets were seen to release a drastic amount of white smoke for about 6 s due to material decomposition.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A116",
+            "page": 12,
+            "quote": "The venting period followed an aggressive ﬂame outburst.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A117",
+            "page": 12,
+            "quote": "The Surface Pro was burnt continuously for 8 min, while\nthe Dell XPS was burning for 70 s and thereafter water suppression was introduced.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A118",
+            "page": 12,
+            "quote": "The Dell XPS experienced a\nsecond outburst 3 s after the suppression event.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A119",
+            "page": 12,
+            "quote": "The temperature proﬁle showed the dramatic thermal runaway event\nduring a short window span, that is between 6-36 s, while reaching a maximum temperature of 900 K.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A120",
+            "page": 12,
+            "quote": "The temperature\nproﬁle also revealed thermal onset temperatures, between 513.4-600 K, higher than typically observed in the thermal\nrunaway processes for 18650 or pouch li-ion cells.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A121",
+            "page": 12,
+            "quote": "Using experimental measurements of ﬂame heights the heat release rate and total heat release was approximated\nwith the Heskestad correlations for the two commercial laptops.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A122",
+            "page": 12,
+            "quote": "A heat release between 50-110 kW was observed\nduring the burning process of the laptop and tablet.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A123",
+            "page": 12,
+            "quote": "The ﬂame heights varied between 0.85-0.2 m, while increasing\nwith an increase in heat release.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A124",
+            "page": 12,
+            "quote": "In addition, the ﬂame diameter varied between 0.4 m-1.0 m, decreasing with an\nincrease in heat release.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A125",
+            "page": 12,
+            "quote": "The total energy release associated with the combustion was computed based on experimental\nmeasurements of ﬂame height and found to be 338.4 kJ for the Dell XPS and 960 kJ for the Surface Pro tablet.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A126",
+            "page": 12,
+            "quote": "Centerline temperatures between 1550-800 K were predicted using Heskestad’s correlation for ﬁre sizes between 25-\n100 kW and a ﬂame height of 0.45 m.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A127",
+            "page": 12,
+            "quote": "Future work will focus on alternative ignition methods and calorimetry methods\nin order to validate the data that was presented in this paper.",
+            "statement_eligible": true,
+            "in_task": true
+          }
+        ],
+        "shared_context": {
+          "available": 1,
+          "selected_characters": 0
+        },
+        "known_entities": [],
+        "schema": {
+          "$defs": {
+            "Entity": {
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "title": "Key",
+                  "type": "string"
+                },
+                "label": {
+                  "minLength": 1,
+                  "title": "Label",
+                  "type": "string"
+                },
+                "class_id": {
+                  "title": "Class Id",
+                  "type": "string",
+                  "enum": [
+                    "AtmosphereCondition",
+                    "Blowoff",
+                    "CombustionPhenomenon",
+                    "ExperimentFamily",
+                    "ExperimentalCondition",
+                    "ExperimentalRun",
+                    "Extinction",
+                    "FlameGrowth",
+                    "FlameSpread",
+                    "FlowCondition",
+                    "GravityCondition",
+                    "Ignition",
+                    "Intervention",
+                    "Investigation",
+                    "Material",
+                    "PressureCondition",
+                    "Quenching",
+                    "Sample",
+                    "StableBurning"
+                  ]
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                },
+                "support": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "class_id",
+                "study",
+                "support"
+              ],
+              "title": "Entity",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "entities": {
+              "items": {
+                "$ref": "#/$defs/Entity"
+              },
+              "title": "Entities",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "entities"
+          ]
+        },
+        "original_tables": [
+          {
+            "physical_pdf_page": 7,
+            "original_cells": [
+              [
+                "Outburst #1 Fire\nSuppression\nStable\nCombustion\nOutburst #2\nAbatement",
+                "",
+                "(PFE)"
+              ],
+              [
+                null,
+                "Fire\nSuppression",
+                null
+              ]
+            ],
+            "original_headers": [
+              "Outburst #1 Fire\nSuppression\nStable\nCombustion\nOutburst #2\nAbatement",
+              "",
+              "(PFE)"
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          },
+          {
+            "physical_pdf_page": 11,
+            "original_cells": [
+              [
+                "Characteristics",
+                "Values",
+                null
+              ],
+              [
+                null,
+                "Surface Pro 6 (Calculated)",
+                "Dell XPS 15"
+              ],
+              [
+                "Manufacturer",
+                "Microsoft",
+                "Dell"
+              ],
+              [
+                "Number of Cells",
+                "2S2P",
+                "3S2P"
+              ],
+              [
+                "Dimensions (mm)",
+                "292 x 201 x 8.5",
+                "13 x 235 x 357"
+              ],
+              [
+                "Nominal Voltage (V)",
+                "15.14",
+                "11.4"
+              ],
+              [
+                "Discharge Capacity (Ah)",
+                "11.88",
+                "8.5"
+              ],
+              [
+                "Discharge Energy (Wh)",
+                "179.86",
+                "97"
+              ],
+              [
+                "Mass (kg)",
+                "0.77, 0.2-0.3 (estimate battery pack)",
+                "1.8 ,0.34 (battery pack)"
+              ],
+              [
+                "Battery Pack Dimension (mm)",
+                "254 x 101.6 x 3",
+                "71.80 x 330.5 x 7.20"
+              ],
+              [
+                "Stored Energy (kJ)",
+                "647.5",
+                "350"
+              ],
+              [
+                "Specific Energy (Wh/kg)",
+                "900-600",
+                "285.3"
+              ]
+            ],
+            "original_headers": [
+              "Characteristics",
+              "Values",
+              null
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          }
+        ]
+      },
+      "max_output_tokens": 7168,
+      "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "scientific_identity",
+          "schema": {
+            "$defs": {
+              "Entity": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "title": "Key",
+                    "type": "string"
+                  },
+                  "label": {
+                    "minLength": 1,
+                    "title": "Label",
+                    "type": "string"
+                  },
+                  "class_id": {
+                    "title": "Class Id",
+                    "type": "string",
+                    "enum": [
+                      "AtmosphereCondition",
+                      "Blowoff",
+                      "CombustionPhenomenon",
+                      "ExperimentFamily",
+                      "ExperimentalCondition",
+                      "ExperimentalRun",
+                      "Extinction",
+                      "FlameGrowth",
+                      "FlameSpread",
+                      "FlowCondition",
+                      "GravityCondition",
+                      "Ignition",
+                      "Intervention",
+                      "Investigation",
+                      "Material",
+                      "PressureCondition",
+                      "Quenching",
+                      "Sample",
+                      "StableBurning"
+                    ]
+                  },
+                  "study": {
+                    "default": "unknown",
+                    "enum": [
+                      "current",
+                      "cited",
+                      "unknown"
+                    ],
+                    "title": "Study",
+                    "type": "string"
+                  },
+                  "support": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "key",
+                  "label",
+                  "class_id",
+                  "study",
+                  "support"
+                ],
+                "title": "Entity",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "entities": {
+                "items": {
+                  "$ref": "#/$defs/Entity"
+                },
+                "title": "Entities",
+                "type": "array"
+              }
+            },
+            "title": "Output",
+            "type": "object",
+            "required": [
+              "entities"
+            ]
+          },
+          "strict": true
+        }
+      },
+      "raw_response": "",
+      "usage": null,
+      "outcome": {
+        "segment_id": "window-c622208dbe61530e059712ad",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "2938749d2447ee312d52a8613ef2d253c464d0234e334f25f298a9bb633d9137",
+        "members": [
+          {
+            "id": "segment-f578576de109546dea482132",
+            "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+            "start": 0,
+            "end": 1505
+          },
+          {
+            "id": "segment-f4933ce350326055ba46f62a",
+            "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+            "start": 0,
+            "end": 3337
+          },
+          {
+            "id": "segment-d198bf2293a41faac7da78ab",
+            "evidence_id": "E-6b80996b8f02b95aeda17768",
+            "start": 0,
+            "end": 2066
+          },
+          {
+            "id": "segment-2d1b4461e31f335bf1449c56",
+            "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+            "start": 0,
+            "end": 2061
+          },
+          {
+            "id": "segment-fbbce1a8e43d0a0357e38e61",
+            "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+            "start": 0,
+            "end": 2865
+          },
+          {
+            "id": "segment-96e79507ac0e036539fa5718",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 0,
+            "end": 599
+          },
+          {
+            "id": "segment-e9bded207146aa7a33a677e9",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 599,
+            "end": 2967
+          }
+        ],
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "start": 0,
+        "end": 14801,
+        "deterministic": "COMPLETE",
+        "model": "FAILED",
+        "attempts": 1,
+        "source_anchors": 127,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 14659,
+        "proposed_items": 0,
+        "request_bytes": 32066,
+        "reserved_tokens_per_attempt": 42997,
+        "output_tokens": 7168,
+        "context_token_estimate": 25594,
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 7168,
+          "thinking_enabled": true,
+          "reasoning_budget": 2048,
+          "image_count": 0,
+          "response_headers": {},
+          "duration_seconds": 2.4309562950002146,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 812,
+          "usage": null,
+          "finish_reason": null
+        },
+        "error_type": "interrupted"
+      },
+      "state": "FINISHED"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "decided_at": "2026-10-17T15:54:03.066363+00:00",
+  "membership": "RESERVED_INDEPENDENT_V4_CYCLE7",
+  "source_commit": "cdb17f252a0eb000f5afdf2a2bc5b647b903db1c",
+  "source_reference_unchanged": true,
+  "all_224_frozen_files_unchanged": true,
+  "decision": "FAILED_INDEPENDENT_SCIENTIFIC_ACCEPTANCE",
+  "semantic_recall": {
+    "numerator": 7,
+    "denominator": 34,
+    "required": 0.5,
+    "passes": false
+  },
+  "evidence_retention": {
+    "numerator": 22,
+    "denominator": 34,
+    "required": 0.75,
+    "passes": false
+  },
+  "reviewed_supported_proposal_precision": {
+    "numerator": 28,
+    "denominator": 29,
+    "required": 0.95,
+    "passes": true
+  },
+  "meaningful_proposal_precision_excluding_two_documentary_fillers": {
+    "numerator": 26,
+    "denominator": 27
+  },
+  "critical_false_assignments_in_all_supported_proposals": 0,
+  "defects": [
+    "Printed table footnote prefixes and wrapped batch labels cause valid cohort identities to be rejected.",
+    "Pure-number expression grammar rejects original thousands separators, reaction-count ratios and unit-bearing original expressions rather than preserving them for review.",
+    "Five target table fields retain original rows/headers/units/bounds as unresolved, but no semantically recovered quantities or target relations.",
+    "Overly conservative scientific scope leaves documented methods and meaningful results unresolved."
+  ],
+  "provider_observations": [
+    "One real600-second VL deadline triggered an identical-task Super fallback; valid prefixes were retained.",
+    "One reasoning-only empty EOF is classified JSONDecodeError; this needs transport diagnostics.",
+    "Primary whole-session1800-second deadline and later explicit operator interruption are recorded separately; no generalized NVIDIA outage claim."
+  ],
+  "next_membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY; never relabel this source as unseen after repairs.",
+  "metrics": "scientific_metrics.json",
+  "source_review": "source_review.json",
+  "PHASE1_COMPLETE": false,
+  "external_restriction_is_only_cause": false
+}

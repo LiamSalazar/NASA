@@ -1,0 +1,108 @@
+{
+  "adjudication": "Developer source/mechanical checks and controlled source fixtures; no new independent expert gold",
+  "PHASE1_COMPLETE": false,
+  "live_scientific_acceptance": "NOT_RUN_AUTHORIZATION_REQUIRED",
+  "historical_LUCI_complete_live_windows": 0,
+  "new_paid_calls": 0,
+  "historical_failure_count": 6,
+  "historical_raw_responses_available": 0,
+  "replay_boundary": "Only saved normalized partial proposals, schema diagnostics and usage/outcomes survive. Raw provider JSON cannot be reconstructed.",
+  "historical_replayed_proposals": {
+    "statements:REJECTED": 11,
+    "relations:REJECTED": 10,
+    "concepts:REJECTED": 1,
+    "quantities:REJECTED": 1
+  },
+  "source_locations": {
+    "correct": 166,
+    "denominator": 166
+  },
+  "source_reports": [
+    {
+      "source": "PSI-98",
+      "table_quantities": 16,
+      "run_candidate_labels": [
+        "S1",
+        "S2"
+      ],
+      "scientific_proposals": {
+        "entities:SOURCE_SUPPORTED": 1
+      },
+      "coverage": {
+        "source_characters": 1353,
+        "segmented_characters": 1353,
+        "units": 4,
+        "segments": 4
+      }
+    },
+    {
+      "source": "20150008961",
+      "table_quantities": 0,
+      "run_candidate_labels": [],
+      "scientific_proposals": {
+        "entities:SOURCE_SUPPORTED": 12,
+        "entities:UNRESOLVED": 5,
+        "statements:SOURCE_SUPPORTED": 8,
+        "statements:UNRESOLVED": 11,
+        "statements:REJECTED": 1,
+        "relations:UNRESOLVED": 2,
+        "relations:SOURCE_SUPPORTED": 3,
+        "concepts:UNRESOLVED": 16
+      },
+      "coverage": {
+        "source_characters": 31520,
+        "segmented_characters": 31520,
+        "units": 10,
+        "segments": 20
+      }
+    },
+    {
+      "source": "20260003546",
+      "table_quantities": 0,
+      "run_candidate_labels": [],
+      "scientific_proposals": {
+        "entities:SOURCE_SUPPORTED": 3,
+        "statements:UNRESOLVED": 43
+      },
+      "coverage": {
+        "source_characters": 39015,
+        "segmented_characters": 39015,
+        "units": 12,
+        "segments": 23
+      }
+    },
+    {
+      "source": "20250010653",
+      "table_quantities": 0,
+      "run_candidate_labels": [],
+      "scientific_proposals": {
+        "entities:SOURCE_SUPPORTED": 6,
+        "entities:UNRESOLVED": 1,
+        "statements:UNRESOLVED": 4
+      },
+      "coverage": {
+        "source_characters": 12915,
+        "segmented_characters": 12915,
+        "units": 44,
+        "segments": 42
+      }
+    }
+  ],
+  "table_run_role_boundary": "Original PSI rows intact. S1/S2 remain unreviewed candidates; two explicit pre-test visualization rows no longer generate run proposals. Header/blank-cell inference does not establish execution.",
+  "controlled_protocol": {
+    "calls": 21,
+    "live_calls": 0,
+    "cache_replayed_stages": 21,
+    "idempotent": true,
+    "max_request_bytes": 18890,
+    "science": "Empty outputs prove protocol/cache behavior only"
+  },
+  "source_positive_regression": "test_saved_source_quantity_can_traverse_staged_production_pipeline reuses the saved provider configuration sentence and original E-6a062578a8bc9b381a5d6bf0, physical PDF page 12. Numeric expression/unit are read from source and remain configuration. No rotation property/unit mapping is fabricated; the quantity stays UNRESOLVED for semantic review.",
+  "synthetic_structure_positive": "test_staged_scientific_recovery_and_cross_section_scope verifies investigation/group/run identities, configuration quantities, observation/run attribution, shared gravity and investigation-only author-conclusion scope through CurationService",
+  "unresolved_science": [
+    "Live model reliability and scientific recall/precision/roles/scopes",
+    "Final frozen unseen investigation extraction and source adjudication",
+    "Complex merged table mapping and unread image content",
+    "Independent expert gold and genuine-versus-unnecessary review rates"
+  ]
+}

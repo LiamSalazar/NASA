@@ -1,0 +1,268 @@
+{
+  "source": "NTRS 20250010653",
+  "split": "DEVELOPMENT_REGRESSION",
+  "adjudication": "Developer checks against original NASA passages; not independent expert adjudication",
+  "source_positive_boundary": "Prior8quantities/4relations remain source-grounded; final17/19 limited recall sample unchanged. Expanded source review found four additional invalid scientific classifications in the prefreeze set; comprehensive statement precision is NOT established.",
+  "quantity_source_support_precision_sample": {
+    "correct": 8,
+    "denominator": 8,
+    "proposal_ids": [
+      "proposal-a7293140120396e9f4c82850",
+      "proposal-1e04dd7a9561179aed25b937",
+      "proposal-1c83a06b34160464530b6bf5",
+      "proposal-216c15673b76138668c7e011",
+      "proposal-cb5ae03947682b90b147366f",
+      "proposal-256d3348e031fc4d4aff43b0",
+      "proposal-0f3f87b3621634438e64c187",
+      "proposal-950d7975a95b1e1f6b1d239f"
+    ],
+    "detail": "p5 5cm wide/30cm long are original specimen characteristics via approved source accessors, not asserted observed measurements. p22 O2 20%,14.3%,15.8% remain source-reported temporal changes at LUCI:PMMA scope; speculative cause remains tentative. p27 roughly constant20% belongs to1-G Results:SIBAL. p31 21%,14.5% belong tooriginal Results:PMMA scope; no extra run membership is invented."
+  },
+  "relation_source_support_precision_sample": {
+    "correct": 4,
+    "denominator": 4,
+    "proposal_ids": [
+      "proposal-97ad25d6df12f9adae72711c",
+      "proposal-ae4e461d9f0c26087e62c5a5",
+      "proposal-7775e1a9d4b0cce7e135c21a",
+      "proposal-30cf11b0a48fee194ad3958a"
+    ],
+    "detail": "Original typed headings and local Earth-gravity statement support material/gravity assignments; two gravity supports refer to the same documentary group, not independent experiments."
+  },
+  "limited_recall_counts": {
+    "entities": {
+      "denominator": 4,
+      "source_supported_recovered": 4,
+      "grounded_pending_semantics": 0,
+      "omitted_or_other_unresolved": 0
+    },
+    "quantities": {
+      "denominator": 7,
+      "source_supported_recovered": 1,
+      "grounded_pending_semantics": 5,
+      "omitted_or_other_unresolved": 1
+    },
+    "relations": {
+      "denominator": 2,
+      "source_supported_recovered": 2,
+      "grounded_pending_semantics": 0,
+      "omitted_or_other_unresolved": 0
+    },
+    "statements": {
+      "denominator": 6,
+      "source_supported_recovered": 5,
+      "grounded_pending_semantics": 0,
+      "omitted_or_other_unresolved": 1
+    }
+  },
+  "unresolved_is_not_false_acceptance": true,
+  "omissions": [
+    "One reference quantity: approximate3.95mm/s p29 variable/epistemic structuring",
+    "One reference study-wide applications conclusion p37",
+    "Table-derived rates/ratios are preserved as9original numeric cells but their scientific subject/column/unit roles remain unresolved",
+    "Many source timing/configuration quantities and qualitative scopes remain unstructured or unresolved",
+    "Figures not interpreted by the text-only model/document extractor"
+  ],
+  "native_value_inequality_protection": "Bounds/word quantities without exact current GenericValue representation stay original literal proposals and are not flattened to exact native values",
+  "full_precision_and_recall": "NOT_ESTABLISHED",
+  "review_issue_precision": "NOT_ADJUDICATED; grouping reduces duplication but genuine versus unnecessary requests has not been comprehensively measured",
+  "PHASE1_COMPLETE": false,
+  "prepared": "luci_live_07/prepared_11.json",
+  "prepared_sha256": "0bb2e2b99d77e2c524f1eb9631508d818fa5831230696d77a1f4a47839886161",
+  "digest": "35040ab8dc36e19874ea861f6832ad8f7731014f8d4bc6957e1552d0750a5b90",
+  "expanded_negative_sample": {
+    "negative_items": 4,
+    "incorrect_source_supported_before": 4,
+    "incorrect_source_supported_after": 0,
+    "now_safely_rejected_or_unresolved": 4,
+    "boundary": "Targeted developer negative sample, not random precision estimate or comprehensive count of all statement errors",
+    "items": [
+      {
+        "id": "proposal-c14501057bf17441739cd32f",
+        "original_status": "SOURCE_SUPPORTED",
+        "original_proposal": {
+          "text": "𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓",
+          "class_id": "ReportedObservation",
+          "epistemic": "measured_observation",
+          "subjects": [
+            "entity-92f399f8d96347179c35"
+          ],
+          "study": "current",
+          "support": [
+            {
+              "evidence_id": "E-4e83b44eb58f230065e2b311",
+              "quote": "𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓",
+              "start": 197
+            }
+          ]
+        },
+        "original_support_spans": [
+          {
+            "evidence_id": "E-4e83b44eb58f230065e2b311",
+            "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+            "page": 29,
+            "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+            "start": 197,
+            "end": 225,
+            "quote": "𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓",
+            "locator": {
+              "file": "20250010653.pdf",
+              "page": 29
+            }
+          }
+        ],
+        "current_status": "REMOVED_AFTER_REJECTION",
+        "reasons": "role_errors regression + production source revalidation",
+        "current_proposal_retained_for_review": false
+      },
+      {
+        "id": "proposal-0fdbb38440802a42deafe457",
+        "original_status": "SOURCE_SUPPORTED",
+        "original_proposal": {
+          "text": "•\nFlame spread rate increases \nlinearly from 0 to ~.6 mm/s \n(before gravity starts dropping \nat t = 125s)\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓",
+          "class_id": "ReportedObservation",
+          "epistemic": "measured_observation",
+          "subjects": [
+            "entity-5ee8a436c90c0981c571"
+          ],
+          "study": "current",
+          "support": [
+            {
+              "evidence_id": "E-d6e291dc28d06c4dea34e721",
+              "quote": "•\nFlame spread rate increases \nlinearly from 0 to ~.6 mm/s \n(before gravity starts dropping \nat t = 125s)\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓",
+              "start": 159
+            }
+          ]
+        },
+        "original_support_spans": [
+          {
+            "evidence_id": "E-d6e291dc28d06c4dea34e721",
+            "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+            "page": 43,
+            "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+            "start": 159,
+            "end": 293,
+            "quote": "•\nFlame spread rate increases \nlinearly from 0 to ~.6 mm/s \n(before gravity starts dropping \nat t = 125s)\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓",
+            "locator": {
+              "file": "20250010653.pdf",
+              "page": 43
+            }
+          },
+          {
+            "evidence_id": "E-d6e291dc28d06c4dea34e721",
+            "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+            "page": 43,
+            "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+            "start": 0,
+            "end": 10,
+            "quote": "LUCI: PMMA",
+            "locator": {
+              "file": "20250010653.pdf",
+              "page": 43
+            }
+          }
+        ],
+        "current_status": "UNRESOLVED",
+        "reasons": [
+          "DERIVED_CONTEXT_IS_NOT_DIRECT_OBSERVATION"
+        ],
+        "current_proposal_retained_for_review": true
+      },
+      {
+        "id": "proposal-b93310e51288c300d180d983",
+        "original_status": "SOURCE_SUPPORTED",
+        "original_proposal": {
+          "text": "•\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length).",
+          "class_id": "ReportedObservation",
+          "epistemic": "measured_observation",
+          "subjects": [
+            "entity-df17e4e3d148216e390f"
+          ],
+          "study": "current",
+          "support": [
+            {
+              "evidence_id": "E-4e83b44eb58f230065e2b311",
+              "quote": "•\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length).",
+              "start": 93
+            }
+          ]
+        },
+        "original_support_spans": [
+          {
+            "evidence_id": "E-4e83b44eb58f230065e2b311",
+            "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+            "page": 29,
+            "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+            "start": 93,
+            "end": 196,
+            "quote": "•\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length).",
+            "locator": {
+              "file": "20250010653.pdf",
+              "page": 29
+            }
+          }
+        ],
+        "current_status": "REMOVED_AFTER_REJECTION",
+        "reasons": "role_errors regression + production source revalidation",
+        "current_proposal_retained_for_review": false
+      },
+      {
+        "id": "proposal-ca66e130d52fdd3cce1bb58f",
+        "original_status": "SOURCE_SUPPORTED",
+        "original_proposal": {
+          "text": "•\nSmall fluctuations in the \ntracking result in inexact fits \nfor the spread data, therefore \nthis is only an approximate \nrelationship.",
+          "class_id": "ReportedObservation",
+          "epistemic": "measured_observation",
+          "subjects": [
+            "entity-d199bbfe81a5c9d70dae"
+          ],
+          "study": "current",
+          "support": [
+            {
+              "evidence_id": "E-a08131327d6385587996348e",
+              "quote": "•\nSmall fluctuations in the \ntracking result in inexact fits \nfor the spread data, therefore \nthis is only an approximate \nrelationship.",
+              "start": 87
+            }
+          ]
+        },
+        "original_support_spans": [
+          {
+            "evidence_id": "E-a08131327d6385587996348e",
+            "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+            "page": 25,
+            "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+            "start": 87,
+            "end": 223,
+            "quote": "•\nSmall fluctuations in the \ntracking result in inexact fits \nfor the spread data, therefore \nthis is only an approximate \nrelationship.",
+            "locator": {
+              "file": "20250010653.pdf",
+              "page": 25
+            }
+          }
+        ],
+        "current_status": "REMOVED_AFTER_REJECTION",
+        "reasons": "role_errors regression + production source revalidation",
+        "current_proposal_retained_for_review": false
+      }
+    ]
+  },
+  "record_counts": {
+    "entities:SOURCE_SUPPORTED": 40,
+    "entities:UNRESOLVED": 12,
+    "statements:UNRESOLVED": 154,
+    "statements:SOURCE_SUPPORTED": 53,
+    "relations:UNRESOLVED": 10,
+    "relations:SOURCE_SUPPORTED": 4,
+    "quantities:UNRESOLVED": 15,
+    "quantities:SOURCE_SUPPORTED": 8,
+    "concepts:UNRESOLVED": 3
+  },
+  "final_tests": "quality_checks_09.json",
+  "original_source_spans": {
+    "correct": 454,
+    "denominator": 454
+  },
+  "latest_live_boundary": "Latest validators reprocess real saved provider outputs with zero new model calls. No full current-code live scientific acceptance or independent generalization is claimed.",
+  "provider_blocker": "Latest minimal real source-anchor check yielded no model/usage/finish at120s; repaired socket deadline closed it in120.001s. A previous120s check required manual interruption at189s; old frozen scientific request also produced APIError. Internet and officialNASA acquisition succeeded; provider reliability is the affected boundary.",
+  "generalization": "Original frozen holdout incomplete and retained; latest LUCI-only corrections not independently evaluated."
+}

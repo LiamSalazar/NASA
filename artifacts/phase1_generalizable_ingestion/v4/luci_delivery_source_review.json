@@ -1,0 +1,753 @@
+{
+  "basis": "Retrospective LUCI development/regression source audit expanded to31targets, covering4groups,19quantities,6statements,2relations. The30-proposal precision sample is a selected regression set (6identities,9distinctacceptedquantities,4relations,11importantstatements including a known role defect), not random whole-publication precision or independentexpertgold. Superseded inference variants do not count as independent assertions. Original source values, units, roles and scopes adjudicated from originalPDF; no source-specific extraction rules.",
+  "prepared": "luci_delivery/prepared.json",
+  "targets": [
+    {
+      "id": "entities-19-1",
+      "kind": "entities",
+      "evidence_id": "E-36fba4ad2dd3a80446e482de",
+      "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.\n•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-4fb830d617f851df82613d65"
+      ],
+      "expectation": {
+        "page": 19,
+        "label": "LUCI: SIBAL fabric",
+        "class_id": "ExperimentFamily",
+        "boundary": "Source-defined result-heading group; not a named individual run or independently established distinct physical experiment."
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "entities-20-2",
+      "kind": "entities",
+      "evidence_id": "E-d21d6576e58973f04cbb79b6",
+      "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).\n•\nTotal base spread of ~6cm until \nextinction.\n•\nFlame base spread rate is not \nconstant; steady spread was not \nachieved.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-be3b116d07e8b8c86fcd8d3f"
+      ],
+      "expectation": {
+        "page": 20,
+        "label": "LUCI: PMMA",
+        "class_id": "ExperimentFamily",
+        "boundary": "Source-defined result-heading group; not a named individual run or independently established distinct physical experiment."
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "entities-24-3",
+      "kind": "entities",
+      "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+      "quote": "1-G Results: SIBAL fabric\n•\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn.\n•\nFlame width decreases suddenly at \n~24 seconds, and goes to 0 within 4 \nseconds.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-ccfaaa1c2b105f0143442fd4"
+      ],
+      "expectation": {
+        "page": 24,
+        "label": "1-G Results: SIBAL fabric",
+        "class_id": "ExperimentFamily",
+        "boundary": "Source-defined result-heading group; not a named individual run or independently established distinct physical experiment."
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "entities-28-4",
+      "kind": "entities",
+      "evidence_id": "E-94f2c30163d61cfbf33f137a",
+      "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location.\n•\nFlame tip spread was \n~linear until tip becomes \nobscured by sample holder.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-117eaa1378987bf9096e3348"
+      ],
+      "expectation": {
+        "page": 28,
+        "label": "1-G Results: PMMA",
+        "class_id": "ExperimentFamily",
+        "boundary": "Source-defined result-heading group; not a named individual run or independently established distinct physical experiment."
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-19-5",
+      "kind": "quantities",
+      "evidence_id": "E-36fba4ad2dd3a80446e482de",
+      "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.\n•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-8507a6f64822dfbbd62add31"
+      ],
+      "expectation": {
+        "page": 19,
+        "subject_label": "LUCI: SIBAL fabric",
+        "label_contains_any": [
+          "Flame base spread rate"
+        ],
+        "expression": ".92",
+        "unit": "mm/s",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-19-6",
+      "kind": "quantities",
+      "evidence_id": "E-36fba4ad2dd3a80446e482de",
+      "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.\n•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-afd51954224fd89b07b21abc"
+      ],
+      "expectation": {
+        "page": 19,
+        "subject_label": "LUCI: SIBAL fabric",
+        "label_contains_any": [
+          "Flame tip spread rate"
+        ],
+        "expression": "1.1",
+        "unit": "mm/s",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-21-7",
+      "kind": "quantities",
+      "evidence_id": "E-b7874f30c44529988c9a2b4d",
+      "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame tip spread is \napproximately linear.\n•\nFlame spread rate = 1.5 \nmm/s.\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-2d8379a10aad5e8f6797599d"
+      ],
+      "expectation": {
+        "page": 21,
+        "subject_label": "LUCI: PMMA",
+        "label_contains_any": [
+          "Flame spread rate"
+        ],
+        "expression": "1.5",
+        "unit": "mm/s",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-27-8",
+      "kind": "quantities",
+      "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+      "quote": "1-G Results: SIBAL\n•\nO2% varies slightly but is \nroughly constant at 20%.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-1e967e9b1c463180df9dc9b0"
+      ],
+      "expectation": {
+        "page": 27,
+        "subject_label": "1-G Results: SIBAL",
+        "label_contains_any": [
+          "oxygen concentration",
+          "oxygen",
+          "O2",
+          "O2%"
+        ],
+        "expression": "20",
+        "unit": "%",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-29-9",
+      "kind": "quantities",
+      "evidence_id": "E-4e83b44eb58f230065e2b311",
+      "quote": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.\n•\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length).\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-a5d73dffa3ac5100cf12ef8d"
+      ],
+      "expectation": {
+        "page": 29,
+        "subject_label": "1-G Results: PMMA",
+        "label_contains_any": [
+          "Flame tip"
+        ],
+        "expression": "~ 3.95",
+        "unit": "mm/s",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-42-10",
+      "kind": "quantities",
+      "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+      "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.\n•\nO2% decreases at a roughly \nconstant rate over the entire \nexperiment.\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-98b920868d6ec7720f73247b"
+      ],
+      "expectation": {
+        "page": 42,
+        "subject_label": "LUCI: SIBAL fabric",
+        "label_contains_any": [
+          "oxygen concentration",
+          "O2",
+          "O2%"
+        ],
+        "expression": "~20",
+        "unit": "%",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-42-11",
+      "kind": "quantities",
+      "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+      "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.\n•\nO2% decreases at a roughly \nconstant rate over the entire \nexperiment.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-560e2bce8959097372419e36"
+      ],
+      "expectation": {
+        "page": 42,
+        "subject_label": "LUCI: SIBAL fabric",
+        "label_contains_any": [
+          "oxygen concentration",
+          "O2",
+          "O2%"
+        ],
+        "expression": "~18",
+        "unit": "%",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-19-12",
+      "kind": "statements",
+      "evidence_id": "E-36fba4ad2dd3a80446e482de",
+      "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.\n•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-94aaba8983cf400ac5d4032b",
+        "proposal-94aaba8983cf400ac5d4032b"
+      ],
+      "expectation": {
+        "page": 19,
+        "subject_label": "LUCI: SIBAL fabric",
+        "text_contains": "Spread rates for char front, flame base, and flame tip are all linear",
+        "epistemic": "measured_observation"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-20-13",
+      "kind": "statements",
+      "evidence_id": "E-d21d6576e58973f04cbb79b6",
+      "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).\n•\nTotal base spread of ~6cm until \nextinction.\n•\nFlame base spread rate is not \nconstant; steady spread was not \nachieved.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-5eeaa394cafbcbd5e79b9761",
+        "proposal-5eeaa394cafbcbd5e79b9761"
+      ],
+      "expectation": {
+        "page": 20,
+        "subject_label": "LUCI: PMMA",
+        "text_contains": "steady spread was not achieved",
+        "epistemic": "measured_observation"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-24-14",
+      "kind": "statements",
+      "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+      "quote": "1-G Results: SIBAL fabric\n•\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn.\n•\nFlame width decreases suddenly at \n~24 seconds, and goes to 0 within 4 \nseconds.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-1268bc70a5775e67d632f439",
+        "proposal-1268bc70a5775e67d632f439"
+      ],
+      "expectation": {
+        "page": 24,
+        "subject_label": "1-G Results: SIBAL fabric",
+        "text_contains": "Flame width decreases suddenly",
+        "epistemic": "measured_observation"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-28-15",
+      "kind": "statements",
+      "evidence_id": "E-94f2c30163d61cfbf33f137a",
+      "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location.\n•\nFlame tip spread was \n~linear until tip becomes \nobscured by sample holder.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-c2b47ba27064612a7d40695c"
+      ],
+      "expectation": {
+        "page": 28,
+        "subject_label": "1-G Results: PMMA",
+        "text_contains": "Base was not accurately tracked",
+        "epistemic": "measured_observation"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-37-16",
+      "kind": "statements",
+      "evidence_id": "E-ab863beddb4ab0a2517976fa",
+      "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.  The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.  \nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight. \n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-302168556ec3a5fb73cddbbc"
+      ],
+      "expectation": {
+        "page": 37,
+        "subject_label": "LUCI project",
+        "text_contains": "The LUCI project achieved the first-ever",
+        "epistemic": "author_reported_conclusion"
+      },
+      "review_note": "p37 LUCI and LUCI project are the same literal named source subject by the explicit original construction The LUCI project. This is an evaluation judgment, not a global alias or altered production proposal."
+    },
+    {
+      "id": "statements-37-17",
+      "kind": "statements",
+      "evidence_id": "E-ab863beddb4ab0a2517976fa",
+      "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.  The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.  \nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight. \n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-524c3062622efbdd82e1c1ca"
+      ],
+      "expectation": {
+        "page": 37,
+        "subject_label": "LUCI project",
+        "text_contains": "The results are applicable to NASA’s exploration efforts",
+        "epistemic": "author_reported_conclusion"
+      },
+      "review_note": "p37 LUCI and LUCI project are the same literal named source subject by the explicit original construction The LUCI project. This is an evaluation judgment, not a global alias or altered production proposal."
+    },
+    {
+      "id": "relations-24-18",
+      "kind": "relations",
+      "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+      "quote": "1-G Results: SIBAL fabric\n•\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn.\n•\nFlame width decreases suddenly at \n~24 seconds, and goes to 0 within 4 \nseconds.\n",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "expectation": {
+        "page": 24,
+        "subject_label": "1-G Results: SIBAL fabric",
+        "relation": "hasMaterial",
+        "object_id": "SIBAL Fabric"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "relations-30-19",
+      "kind": "relations",
+      "evidence_id": "E-883f133a5745d0142df1e007",
+      "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nGravity remains constant at \nEarth’s gravity for duration of \nburn.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-30cf11b0a48fee194ad3958a"
+      ],
+      "expectation": {
+        "page": 30,
+        "subject_label": "1-G Results: PMMA",
+        "relation": "hasGravityCondition",
+        "object_id": "normal-gravity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "expanded-quantity-20",
+      "kind": "quantities",
+      "evidence_id": "E-49e271d94011afe76cb7c262",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA);",
+      "page": 5,
+      "start": 250,
+      "end": 323,
+      "expression": "5",
+      "unit": "cm",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-65bed06695e547cbf5bcca68"
+      ],
+      "review_note": "Recovered correct specimenwidth/configuration role with existing sample_width accessor; original5cm preserved."
+    },
+    {
+      "id": "expanded-quantity-21",
+      "kind": "quantities",
+      "evidence_id": "E-49e271d94011afe76cb7c262",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA);",
+      "page": 5,
+      "start": 250,
+      "end": 323,
+      "expression": "30",
+      "unit": "cm",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-30c133f011643d348a755927"
+      ],
+      "review_note": "Recovered correct specimenlength/configuration role with existing sample_length accessor; original30cm preserved."
+    },
+    {
+      "id": "expanded-quantity-22",
+      "kind": "quantities",
+      "evidence_id": "E-49e271d94011afe76cb7c262",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA);",
+      "page": 5,
+      "start": 250,
+      "end": 323,
+      "expression": "4",
+      "unit": "mm",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No independently staged correct structured rod-diameter quantity; original expression remains in source and specimen narrative."
+    },
+    {
+      "id": "expanded-quantity-23",
+      "kind": "quantities",
+      "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+      "page": 36,
+      "start": 0,
+      "end": 138,
+      "expression": ".15",
+      "unit": "cm/s",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "pdf-quantity-d7215ecd0c3c63e4dbc88c0c"
+      ],
+      "review_note": "Original.15/cm/s partial-G column and PMMAcomparison page, row/column/bbox plus linear-fit sourcecue preserved. No invented experiment or approvedproperty."
+    },
+    {
+      "id": "expanded-quantity-24",
+      "kind": "quantities",
+      "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+      "page": 36,
+      "start": 0,
+      "end": 138,
+      "expression": ".40",
+      "unit": "cm/s",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "pdf-quantity-767c655a316c3758103d8ca7"
+      ],
+      "review_note": "Original.40/cm/s 1-G column and matrix sourcecontext preserved; pending interpretation/ontology scope, never accepted measured value."
+    },
+    {
+      "id": "expanded-quantity-25",
+      "kind": "quantities",
+      "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+      "page": 36,
+      "start": 0,
+      "end": 138,
+      "expression": ".38",
+      "unit": "",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "pdf-quantity-66da0a15cb51c225a37e5941"
+      ],
+      "review_note": "Original.38 ratio column preserved with sourcecontext; no unit invented where header lacks a unit. Quantitative semantic scope remains pending."
+    },
+    {
+      "id": "expanded-quantity-26",
+      "kind": "quantities",
+      "evidence_id": "E-d6e291dc28d06c4dea34e721",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "Flame spread rate increases \nlinearly from 0 to ~.6 mm/s \n(before gravity starts dropping \nat t = 125s)",
+      "page": 43,
+      "start": 161,
+      "end": 264,
+      "expression": "~.6",
+      "unit": "mm/s",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-072cd00cb7aca98d9df3efd0"
+      ],
+      "review_note": "Correct derived_quantity role now recovered, same LUCI PMMA scope, original~.6mm/s and source derivative context. No unapprovedproperty activated."
+    },
+    {
+      "id": "expanded-quantity-27",
+      "kind": "quantities",
+      "evidence_id": "E-d6e291dc28d06c4dea34e721",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "before gravity starts dropping \nat t = 125s",
+      "page": 43,
+      "start": 220,
+      "end": 263,
+      "expression": "125",
+      "unit": "s",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-cb7627b9de5d327dbebf1192"
+      ],
+      "review_note": "Correct literal time/event and LUCI PMMA group, unresolved approved property mapping; not a gravity magnitude or measured rate."
+    },
+    {
+      "id": "expanded-quantity-28",
+      "kind": "quantities",
+      "evidence_id": "E-ab863beddb4ab0a2517976fa",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.",
+      "page": 37,
+      "start": 0,
+      "end": 131,
+      "expression": "greater than 25",
+      "unit": "seconds",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "Duration survives in the supported author conclusion, but attempted distinct quantity proposals were rejected; no structured quantitative-duration success counted."
+    },
+    {
+      "id": "expanded-quantity-29",
+      "kind": "quantities",
+      "evidence_id": "E-e701476789b9bf6dd3395377",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "LUCI samples 30 s after ignition.",
+      "page": 16,
+      "start": 0,
+      "end": 33,
+      "expression": "30",
+      "unit": "s",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-6429534a0433331ca6c0e7a9"
+      ],
+      "review_note": "Literal image acquisition time after ignition at current LUCI scope preserved with unresolved mapping. Does not assert both samples ignited simultaneously."
+    },
+    {
+      "id": "expanded-quantity-30",
+      "kind": "quantities",
+      "evidence_id": "E-d4940e2063b4c03f3303beea",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "O2% rises quickly in the \nbeginning, then decreases \n~linearly from 21% to 14.5%.",
+      "page": 31,
+      "start": 31,
+      "end": 112,
+      "expression": "21",
+      "unit": "%",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-98f2324bf5f1b03bac0aa8e4"
+      ],
+      "review_note": "Original 1-G PMMA oxygen concentration endpoint, measured narrative, exact value/unit and local group checked against the original page heading/context."
+    },
+    {
+      "id": "expanded-quantity-31",
+      "kind": "quantities",
+      "evidence_id": "E-d4940e2063b4c03f3303beea",
+      "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+      "quote": "O2% rises quickly in the \nbeginning, then decreases \n~linearly from 21% to 14.5%.",
+      "page": 31,
+      "start": 31,
+      "end": 112,
+      "expression": "14.5",
+      "unit": "%",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-a2f5805916482e584b21d0db"
+      ],
+      "review_note": "Original 1-G PMMA oxygen concentration endpoint, measured narrative, exact value/unit and local group checked against the original page heading/context."
+    }
+  ],
+  "proposal_sample": [
+    {
+      "proposal_id": "proposal-4fb830d617f851df82613d65",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-be3b116d07e8b8c86fcd8d3f",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-ccfaaa1c2b105f0143442fd4",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-117eaa1378987bf9096e3348",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-439e92779236aadf9b1c668b",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-19bd0866c75eb940531f98be",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-1065e2c5cad7966b70628903",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-d481f3ddeb9e57e11c03e412",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-64782f8061fd84c30fe5d705",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-560e2bce8959097372419e36",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-1e967e9b1c463180df9dc9b0",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-98f2324bf5f1b03bac0aa8e4",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-a2f5805916482e584b21d0db",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-65bed06695e547cbf5bcca68",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-30c133f011643d348a755927",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-a08c59685748dba98037683e",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-30cf11b0a48fee194ad3958a",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-0589fe13b80b335c01aa0c4a",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-9d0e4bf7c2c1ae906d43063e",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-3336c131c45361c5860a33e5",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-18175820a8e2b3d8ee396124",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-94aaba8983cf400ac5d4032b",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-d187e01405d18502698a79a1",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-1ea9e56e462e6f3aad8f7a52",
+      "correct": false,
+      "critical": false,
+      "reason": "Page20 measured flame-length behavior and occlusion are overcautiously classified as tentative interpretation. Source text is correct, but role is inaccurate; not a fabricated measurement or wrong-run attribution."
+    },
+    {
+      "proposal_id": "proposal-5eeaa394cafbcbd5e79b9761",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-21795f479a09342a6565a74e",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-1268bc70a5775e67d632f439",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-53ab8aafba720ad9963b5c5f",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-302168556ec3a5fb73cddbbc",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    },
+    {
+      "proposal_id": "proposal-524c3062622efbdd82e1c1ca",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source identity, role, expression/unit and experimental/documentary scope checked against the PDF. Unknown properties remain unresolved, not included as confirmed quantities."
+    }
+  ],
+  "scientific_limitations": [
+    "One original relation target at p24 remains omitted.",
+    "Two noncritical role defects remain in the reviewed source-supported proposal sample; do not claim flawless epistemic accuracy.",
+    "Visual/table roles remain review-required. The three quantities from linear fits are not accepted as direct measurements.",
+    "The source-grounded ~3.95 mm/s quantity and original applications conclusion are recovered; scientific quantity semantics remain unresolved when no approved property is justified."
+  ]
+}

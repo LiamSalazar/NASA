@@ -1,0 +1,44 @@
+{
+  "status": "PROPOSED_NOT_AUTHORIZED_NOT_EXECUTED",
+  "driver": "scripts/validate_scientific_extraction_live.py",
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "per_call_timeout_seconds": 55,
+  "retries": 0,
+  "segment_chars": 2500,
+  "max_calls_total": 37,
+  "max_tokens_consumed_or_reserved_total": 630000,
+  "max_completion_tokens_total": 66000,
+  "stages": {
+    "smoke": {
+      "max_calls": 1,
+      "max_output_tokens": 1200,
+      "max_total_tokens": 30000,
+      "max_elapsed_seconds": 60,
+      "purpose": "One LUCI identity-stage transport/schema/source-support smoke; does not prove scientific recovery"
+    },
+    "luci": {
+      "max_calls": 21,
+      "max_output_tokens": 1800,
+      "max_total_tokens": 400000,
+      "max_elapsed_seconds": 900,
+      "purpose": "Seven source windows, three stages each; original LUCI remains development/regression"
+    },
+    "holdout": {
+      "max_calls": 15,
+      "max_output_tokens": 1800,
+      "max_total_tokens": 200000,
+      "max_elapsed_seconds": 900,
+      "purpose": "Frozen spacesuit wire-break investigation, at most five fully staged windows. If document/budget exceeds capacity, report incomplete coverage; do not silently add calls or tune the contract."
+    }
+  },
+  "cost_usd": "UNKNOWN. Account pricing/credits are not recorded and failed-call billing was incomplete. Timeout calls reserve UTF-8 input+max output as an upper token bound; no zero-cost assertion. No request to provider made for pricing.",
+  "acceptance_requirements": [
+    "First smoke must produce grounded identity/source support; a syntax-only or empty result does not authorize further scientific success claims",
+    "Source adjudicate recovered versus omitted investigations/groups/runs/quantities/conditions/conclusions, epistemic role and cross-section scope against original text/tables",
+    "Count documentary/planned rows and cited/derived results as negatives; require zero critical false source/run/role assignments",
+    "Report precision/recall denominators and omissions/unresolveds rather than treating schema or text coverage as science",
+    "Freeze final responses and human adjudication receipts; no prompt/schema/ontology tuning from the final holdout",
+    "No approval, publication or ontology activation. Phase 1 remains incomplete until the original scientific acceptance criteria pass"
+  ],
+  "authorization": "Renewed explicit authorization is required before --execute. --authorization-ref records that user authorization; the flag itself does not create it."
+}

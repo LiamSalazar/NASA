@@ -1,0 +1,2123 @@
+{
+  "reason": "Observed full-document identity response violated stage schema and generated unrelated stages. Stop to fix production protocol; preserve completed receipts. Any interrupted in-flight provider usage is unknown.",
+  "saved_attempts": 1,
+  "receipts": [
+    {
+      "output": {
+        "entities": [],
+        "statements": [],
+        "relations": [],
+        "quantities": [],
+        "concepts": []
+      },
+      "contract": "contextual-scientific-ingestion-v3",
+      "attempt_receipts": [
+        {
+          "contract": "contextual-scientific-ingestion-v3",
+          "stage": "identity",
+          "request": {
+            "stage": "identity",
+            "contracts": {
+              "classes": {
+                "Material": {
+                  "definition": "",
+                  "label": "Material"
+                },
+                "Sample": {
+                  "definition": "",
+                  "label": "Sample"
+                },
+                "ExperimentalRun": {
+                  "definition": "",
+                  "label": "ExperimentalRun"
+                },
+                "Investigation": {
+                  "definition": "",
+                  "label": "Investigation"
+                },
+                "ExperimentFamily": {},
+                "Measurement": {
+                  "definition": "",
+                  "label": "Measurement"
+                },
+                "ExperimentalCondition": {
+                  "definition": "",
+                  "label": "ExperimentalCondition"
+                },
+                "Publication": {
+                  "definition": "",
+                  "label": "Publication"
+                },
+                "Document": {},
+                "SafetyStatement": {},
+                "ReportedObservation": {},
+                "Intervention": {
+                  "definition": "",
+                  "label": "Intervention"
+                },
+                "NASAConclusion": {
+                  "definition": "",
+                  "label": "NASAConclusion"
+                },
+                "SafetyImplication": {
+                  "definition": "",
+                  "label": "SafetyImplication"
+                },
+                "Requirement": {
+                  "definition": "",
+                  "label": "Requirement"
+                },
+                "Guidance": {
+                  "definition": "",
+                  "label": "Guidance"
+                },
+                "DesignCriterion": {
+                  "definition": "",
+                  "label": "DesignCriterion"
+                },
+                "TestCriterion": {
+                  "definition": "",
+                  "label": "TestCriterion"
+                },
+                "OpenQuestion": {},
+                "Geometry": {
+                  "definition": "",
+                  "label": "Geometry"
+                },
+                "AtmosphereCondition": {
+                  "definition": "",
+                  "label": "AtmosphereCondition"
+                },
+                "FlowCondition": {
+                  "definition": "",
+                  "label": "FlowCondition"
+                },
+                "GravityCondition": {
+                  "definition": "",
+                  "label": "GravityCondition"
+                },
+                "PressureCondition": {
+                  "definition": "",
+                  "label": "PressureCondition"
+                },
+                "Observation": {
+                  "definition": "",
+                  "label": "Observation"
+                },
+                "CombustionPhenomenon": {
+                  "definition": "",
+                  "label": "CombustionPhenomenon"
+                },
+                "Ignition": {
+                  "definition": "",
+                  "label": "Ignition"
+                },
+                "FlameGrowth": {
+                  "definition": "",
+                  "label": "FlameGrowth"
+                },
+                "FlameSpread": {
+                  "definition": "",
+                  "label": "FlameSpread"
+                },
+                "StableBurning": {
+                  "definition": "",
+                  "label": "StableBurning"
+                },
+                "Quenching": {
+                  "definition": "",
+                  "label": "Quenching"
+                },
+                "Blowoff": {
+                  "definition": "",
+                  "label": "Blowoff"
+                },
+                "Extinction": {
+                  "definition": "",
+                  "label": "Extinction"
+                },
+                "SafetyKnowledge": {
+                  "definition": "",
+                  "label": "SafetyKnowledge"
+                },
+                "NormativeStatement": {
+                  "definition": "",
+                  "label": "NormativeStatement"
+                },
+                "NASAIdentifiedOpenQuestion": {
+                  "definition": "",
+                  "label": "NASAIdentifiedOpenQuestion"
+                },
+                "NASAStandard": {
+                  "definition": "",
+                  "label": "NASAStandard"
+                }
+              },
+              "information_classes": [
+                "DesignCriterion",
+                "ExperimentalCondition",
+                "ExperimentalRun",
+                "Guidance",
+                "Intervention",
+                "Measurement",
+                "NASAConclusion",
+                "OpenQuestion",
+                "Publication",
+                "ReportedObservation",
+                "Requirement",
+                "SafetyImplication",
+                "TestCriterion"
+              ],
+              "properties": [
+                {
+                  "property_id": "AirflowVelocity",
+                  "dimension": "velocity",
+                  "canonical_unit": "m/s",
+                  "datatype": "numeric",
+                  "aliases": [
+                    "airflow velocity",
+                    "airflow",
+                    "air flow",
+                    "flow velocity",
+                    "forced flow"
+                  ],
+                  "context": null,
+                  "status": "CANONICAL"
+                },
+                {
+                  "property_id": "OxygenConcentration",
+                  "dimension": "fraction",
+                  "canonical_unit": "fraction",
+                  "datatype": "numeric",
+                  "aliases": [
+                    "oxygen concentration",
+                    "oxygen",
+                    "O2"
+                  ],
+                  "context": null,
+                  "status": "CANONICAL"
+                },
+                {
+                  "property_id": "Pressure",
+                  "dimension": "pressure",
+                  "canonical_unit": "Pa",
+                  "datatype": "numeric",
+                  "aliases": [
+                    "pressure"
+                  ],
+                  "context": null,
+                  "status": "CANONICAL"
+                },
+                {
+                  "property_id": "FlowDirection",
+                  "dimension": "none",
+                  "canonical_unit": null,
+                  "datatype": "categorical",
+                  "aliases": [
+                    "flow direction"
+                  ],
+                  "context": null,
+                  "status": "CANONICAL"
+                }
+              ],
+              "relations": [
+                "belongTo",
+                "belongsToExperimentFamily",
+                "belongsToInvestigation",
+                "concerns",
+                "hasCondition",
+                "hasGravityCondition",
+                "hasIntervention",
+                "hasMaterial",
+                "hasMeasurement",
+                "hasObservation",
+                "hasPhenomenon",
+                "hasRun",
+                "madeOf",
+                "observesPhenomenon",
+                "reportedBy",
+                "usesSample"
+              ],
+              "aliases": [
+                {
+                  "aliases": [
+                    "PMMA",
+                    "PMMA",
+                    "polymethyl methacrylate"
+                  ],
+                  "relation": "hasMaterial"
+                },
+                {
+                  "aliases": [
+                    "SIBAL Fabric",
+                    "SIBAL Fabric",
+                    "Sibal"
+                  ],
+                  "relation": "hasMaterial"
+                },
+                {
+                  "aliases": [
+                    "microgravity",
+                    "microgravity",
+                    "low-g"
+                  ],
+                  "relation": "hasGravityCondition"
+                },
+                {
+                  "aliases": [
+                    "normal-gravity",
+                    "normal gravity",
+                    "normal-gravity",
+                    "terrestrial",
+                    "1-g",
+                    "1g"
+                  ],
+                  "relation": "hasGravityCondition"
+                }
+              ],
+              "ontology_datatype_properties": {
+                "evidenceRef": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "conditionType": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "value": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "canonicalValue": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "reportedValue": {
+                  "definition": "Original source value, retaining numeric or textual representation.",
+                  "ranges": []
+                },
+                "reportedUnit": {
+                  "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+                  "ranges": []
+                },
+                "canonicalUnit": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "reportedLowerValue": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "reportedUpperValue": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "canonicalLowerValue": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "canonicalUpperValue": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "isApproximate": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "geometry": {
+                  "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+                  "ranges": []
+                },
+                "scopeApplicability": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "text": {
+                  "definition": "",
+                  "ranges": []
+                },
+                "title": {
+                  "definition": "",
+                  "ranges": []
+                }
+              },
+              "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+            },
+            "segments": [
+              {
+                "id": "segment-c1e596ab3be846821c400ce9",
+                "evidence_id": "E-3d0d479957889ee0ebba3428",
+                "start": 0,
+                "end": 320,
+                "section": "UNSPECIFIED"
+              },
+              {
+                "id": "segment-e54637cd4f9b646f02df26eb",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "start": 0,
+                "end": 456,
+                "section": "UNSPECIFIED"
+              },
+              {
+                "id": "segment-cc993a1f594cccf6c31a035e",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "start": 456,
+                "end": 776,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-bd146d8f397f9f65630306f7",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "start": 0,
+                "end": 772,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-03a713bfb9ed6856662ea509",
+                "evidence_id": "E-b901ec1e461ebf942f146e18",
+                "start": 0,
+                "end": 539,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-a0803776918ef1741c02b219",
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "start": 0,
+                "end": 592,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-426e822e99eca4474f313de2",
+                "evidence_id": "E-a4517b58edb7fb6b7246f801",
+                "start": 0,
+                "end": 132,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-26637bfbdfd33ddb83435184",
+                "evidence_id": "E-b3ed9a7463f43f22a17be8ec",
+                "start": 0,
+                "end": 100,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-0300df564a7d37f7d4e009c9",
+                "evidence_id": "E-9984369871f9b119c39685ae",
+                "start": 0,
+                "end": 151,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-20e74bccbc65f71594def476",
+                "evidence_id": "E-d621160208181545c2e7acf1",
+                "start": 0,
+                "end": 7,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-be5d68159af6dfc60d8f477c",
+                "evidence_id": "E-138c0efdbdc2243a724f2a16",
+                "start": 0,
+                "end": 394,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-530262f4cd32a1aaab95cf6b",
+                "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+                "start": 0,
+                "end": 9,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-db7f9650915e690de2a61799",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "start": 0,
+                "end": 1499,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-bbd11a1978a0d9a7374758f7",
+                "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+                "start": 0,
+                "end": 1035,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-db3bd90a9b652021f9d1d47a",
+                "evidence_id": "E-e701476789b9bf6dd3395377",
+                "start": 0,
+                "end": 320,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-1b5c33472e72e144f909a25c",
+                "evidence_id": "E-d5b5c13caefae1761b25a868",
+                "start": 0,
+                "end": 268,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-7603d41eb3fe6a1741224420",
+                "evidence_id": "E-d3aebe64259ea519e1693467",
+                "start": 0,
+                "end": 866,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-6adaab00206f5167145e2009",
+                "evidence_id": "E-36fba4ad2dd3a80446e482de",
+                "start": 0,
+                "end": 292,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-42841cebccdca079fd639657",
+                "evidence_id": "E-d21d6576e58973f04cbb79b6",
+                "start": 0,
+                "end": 315,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-de86923551291452ba80aded",
+                "evidence_id": "E-b7874f30c44529988c9a2b4d",
+                "start": 0,
+                "end": 118,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-34ec4452cd972f75c6364f0a",
+                "evidence_id": "E-ace382bc90bbdf2808dfba14",
+                "start": 0,
+                "end": 191,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-41c4f967315c777511cc0de1",
+                "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+                "start": 0,
+                "end": 389,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-0547e445b069f010d1fd2704",
+                "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+                "start": 0,
+                "end": 194,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-57f5cc4e04c7855f8f797f06",
+                "evidence_id": "E-a08131327d6385587996348e",
+                "start": 0,
+                "end": 224,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-00a724d85ffb7fc187c60aa3",
+                "evidence_id": "E-007124915589abdd7abc5e6e",
+                "start": 0,
+                "end": 76,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-982a39c8a4d866fd4829cab9",
+                "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+                "start": 0,
+                "end": 74,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-4c40ff5d12a1507a32e70060",
+                "evidence_id": "E-94f2c30163d61cfbf33f137a",
+                "start": 0,
+                "end": 252,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-eecf1fc32edb289e7661c0eb",
+                "evidence_id": "E-4e83b44eb58f230065e2b311",
+                "start": 0,
+                "end": 226,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-33fdb84e39028c7e5329aec3",
+                "evidence_id": "E-883f133a5745d0142df1e007",
+                "start": 0,
+                "end": 117,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-59c9f85b9f13574f77bca086",
+                "evidence_id": "E-d4940e2063b4c03f3303beea",
+                "start": 0,
+                "end": 127,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-8f0323e764e3b70ef69cbc8c",
+                "evidence_id": "E-92e5fd01ba0fa39b833981b3",
+                "start": 0,
+                "end": 24,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-0db31dbfb72d76fa0264164b",
+                "evidence_id": "E-7b2423e2b4112606572b7b6e",
+                "start": 0,
+                "end": 153,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-da0bcdf337aee670d166f6bf",
+                "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+                "start": 0,
+                "end": 208,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-1de976f86c01f3facd19647f",
+                "evidence_id": "E-a77a2a0b6c4c5ef905224f73",
+                "start": 0,
+                "end": 23,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-b379670b8b5adc4b90055325",
+                "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+                "start": 0,
+                "end": 138,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-f298b01a1b10d005ed0d535c",
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "start": 0,
+                "end": 706,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-28fd007c535c19cecc9a2618",
+                "evidence_id": "E-7e8d8e958dbe85901540a377",
+                "start": 0,
+                "end": 8,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-233b2558285b789e48806c67",
+                "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+                "start": 0,
+                "end": 344,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-999d768775be52225a93c0cd",
+                "evidence_id": "E-d5f9930ae7882641030769e0",
+                "start": 0,
+                "end": 269,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-16ee9be57b91444451eb4da2",
+                "evidence_id": "E-591e163edaa75d5ac8c895d0",
+                "start": 0,
+                "end": 136,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-dd7d0c2d7b12935c8b43123a",
+                "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+                "start": 0,
+                "end": 142,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-838e15258c55f6ff9dd8904c",
+                "evidence_id": "E-d6e291dc28d06c4dea34e721",
+                "start": 0,
+                "end": 294,
+                "section": "Outcome"
+              },
+              {
+                "id": "segment-be55c2279b820f2adb135984",
+                "evidence_id": "E-f4f95c94998d43684aa6df08",
+                "start": 0,
+                "end": 95,
+                "section": "Outcome"
+              }
+            ],
+            "source_anchors": [
+              {
+                "id": "anchor-9d58e7200ce45cd6e6b1",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 0,
+                "end": 1498,
+                "quote": "\u2022\nBlue Origin New Shepard sounding rocket yields Lunar gravity by using centrifugal acceleration.\n\u2022\nThese are the first-ever, extended-duration (greater than 25 seconds) combustion tests performed in simulated Lunar gravity.  \n\u2022\nA steady vehicle rotation of 11 RPM is established, with an effective radius of rotation of 1.22 m at the experiment location.  \n\u2022\nTwo samples are burned simultaneously in air at normal pressure: Cotton-fiberglass composite fabric sheet and a 4-mm diameter \nrod of acrylic plastic (polymethyl methacrylate).  \n\u2022\nFlame images from two orthogonal cameras are used to determine flame spread and growth rates, and the burn lasts for over \ntwo and a half minutes.  \n\u2022\nThe oxygen concentration in the chamber is measured.  As the burns progress, the oxygen concentration drops, enabling a \nlimiting value for extinction to be defined.  \n\u2022\nThe effect of Coriolis force is discussed.  \n\u2022\nResults from this experiment are compared to related 1-g work, drop tower tests, aircraft experiments, and modeling.  \n\u2022\nThe results are applicable to NASA\u2019s exploration efforts in that they guide the selection of fire-safe materials and environments \nand ensure safety of future spacecraft and Lunar habitats.  The data also provides fundamental understanding of fires.  \n\u2022\nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the Flammability \nof Materials on the Moon (FM2) experiment which is planned to launch in late 2026. "
+              },
+              {
+                "id": "anchor-81e7957bf014b65a4461",
+                "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+                "page": 13,
+                "start": 0,
+                "end": 1034,
+                "quote": "\uf0a8History\n\u2022 ZIN technologies brought on board October 2021\n\u2022 Initial Planned launch was Spring 2023, Launch provider delay initially delayed launch into late Summer early Fall 2024, until \nit finally launched Feb 4 2025\n\u2022 First mission sequence test was performed in July 2023\n\u2022 Due to launch slip some improvements were made and last mission sequence test was ran in February 2024 before \nbeing shelved prior to flight. \n\uf0a8Objectives\n\u2022 Burn SIBAL fabric & PMMA \n\u2022 Conduct first-ever, long duration observation and measurement of flame spread in a partial-g environment\n\u2022 Verify this platform is a viable means to obtain material flammability data in Lunar-g and will include an assessment of \nthe Coriolis force on results\n\u2022 Provide guidance for sample selection and test definition for a Lunar in-situ experiment\n\uf0a8Data\n\u2022 First Flight\n\u2022 Measurements of flame spread rate and output of other diagnostics, including g-level vs. time for the two samples\n\u2022 Sample closeout photos and photos before and after each test\n\u2022 Data from 1-g burns"
+              },
+              {
+                "id": "anchor-8688d05aea4d225ce0ef",
+                "evidence_id": "E-3d0d479957889ee0ebba3428",
+                "page": 1,
+                "start": 0,
+                "end": 93,
+                "quote": "Lunar Combustion Investigation: Flammability Results \nfrom a Rotating Sounding Rocket\nPaul V."
+              },
+              {
+                "id": "anchor-ba3a2290e017b4b75005",
+                "evidence_id": "E-3d0d479957889ee0ebba3428",
+                "page": 1,
+                "start": 94,
+                "end": 113,
+                "quote": "Ferkul1, Michael C."
+              },
+              {
+                "id": "anchor-773fd992b521595476fd",
+                "evidence_id": "E-3d0d479957889ee0ebba3428",
+                "page": 1,
+                "start": 114,
+                "end": 319,
+                "quote": "Johnston2, Nathan Kralik3, and Ya-Ting Liao3 \nUniversities Space Research Association1\nNASA Johnson Space Center 2 \nCase Western Reserve University 3\n2025 Annual Meeting\nPhoenix, Arizona\nDecember 3-6, 2025"
+              },
+              {
+                "id": "anchor-6969015ae905b5c545bf",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "page": 2,
+                "start": 0,
+                "end": 455,
+                "quote": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\nObjectives\nDemonstrate the feasibility of conducting material flammability experiments in partial-g on the spinning Blue Origin \nNew Shepard vehicle which simulates Lunar gravity with centrifugal force\nObtain data from the flight that will support other simulated Lunar-g experiments in drop towers and parabolic \nflight, actual Lunar-g experiments, and computer models."
+              },
+              {
+                "id": "anchor-4128a886d05f9b8d0bd2",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "page": 2,
+                "start": 464,
+                "end": 509,
+                "quote": "The LUCI scientific objectives were achieved."
+              },
+              {
+                "id": "anchor-80d416c34817355141f9",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "page": 2,
+                "start": 511,
+                "end": 592,
+                "quote": "Material flammability testing at partial-g is feasible using a spinning \nvehicle."
+              },
+              {
+                "id": "anchor-e80205c579d9dbf56903",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "page": 2,
+                "start": 594,
+                "end": 684,
+                "quote": "Conducting large scale flammability testing would require additional programmatic support."
+              },
+              {
+                "id": "anchor-2115d64c4c8a84c536f3",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "page": 2,
+                "start": 686,
+                "end": 775,
+                "quote": "This might be \nconsidered should more Lunar-g flights become available using New Shepard."
+              },
+              {
+                "id": "anchor-a8e307f0e55e34c9682c",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "page": 3,
+                "start": 0,
+                "end": 80,
+                "quote": "Page 3\nOverview\nConduct partial-g fire tests on the Blue Origin sounding rocket."
+              },
+              {
+                "id": "anchor-955296ecb58407a4d173",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "page": 3,
+                "start": 83,
+                "end": 164,
+                "quote": "Hypothesis: some materials burning in partial-g are more flammable than on Earth."
+              },
+              {
+                "id": "anchor-945c2c29fa56b2e3d806",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "page": 3,
+                "start": 166,
+                "end": 258,
+                "quote": "This has \nimportant implications for the current 1-g material screening method used by NASA."
+              },
+              {
+                "id": "anchor-73b6822e6b991b681610",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "page": 3,
+                "start": 261,
+                "end": 346,
+                "quote": "Fuel samples burned in pairs; cameras and other sensors record flame characteristics."
+              },
+              {
+                "id": "anchor-bb8468688e8a36e2316e",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "page": 3,
+                "start": 347,
+                "end": 436,
+                "quote": "Oxygen limits for upward and downward spread at partial-g will be compared to 1-g values."
+              },
+              {
+                "id": "anchor-fd776478abbbd6f7dad5",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "page": 3,
+                "start": 439,
+                "end": 538,
+                "quote": "Measured flame characteristics in 1-g and partial-g will be compared to detailed model predictions."
+              },
+              {
+                "id": "anchor-7faf2bffd22bb4687109",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "page": 3,
+                "start": 541,
+                "end": 644,
+                "quote": "These comparisons will refine pressure-gravity scaling relations and will be applied to other g-levels."
+              },
+              {
+                "id": "anchor-4b16dfd47a39a1be8b6c",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "page": 3,
+                "start": 648,
+                "end": 771,
+                "quote": "The work directly addresses knowledge gaps in flammability and crew safety as defined in several \nNASA strategic documents."
+              },
+              {
+                "id": "anchor-1621ba38ddc1bd441736",
+                "evidence_id": "E-b901ec1e461ebf942f146e18",
+                "page": 4,
+                "start": 0,
+                "end": 164,
+                "quote": "Schematic\nCentrifugal gravity is into the page; this \nwould be looking outward from the \naxis of rotation of the vehicle toward \nthe cylindrical hull of the rocket."
+              },
+              {
+                "id": "anchor-5b09df8cfb9dd7419ac2",
+                "evidence_id": "E-b901ec1e461ebf942f146e18",
+                "page": 4,
+                "start": 166,
+                "end": 249,
+                "quote": "The \nflames would generally rise out of the \npage, or towards the axis of rotation."
+              },
+              {
+                "id": "anchor-3a98e811524b953d98d2",
+                "evidence_id": "E-b901ec1e461ebf942f146e18",
+                "page": 4,
+                "start": 250,
+                "end": 365,
+                "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem."
+              },
+              {
+                "id": "anchor-7aae414f3ab155d9e02f",
+                "evidence_id": "E-b901ec1e461ebf942f146e18",
+                "page": 4,
+                "start": 368,
+                "end": 461,
+                "quote": "Sensors: Chamber oxygen \nconcentration, pressure, temperature, \nand centrifugal acceleration."
+              },
+              {
+                "id": "anchor-0b72eee52039a36d570b",
+                "evidence_id": "E-b901ec1e461ebf942f146e18",
+                "page": 4,
+                "start": 462,
+                "end": 538,
+                "quote": "Combustion enclosure/chamber\nSensors\nLocker\nFlame\nFront view\nFlame\nEdge view"
+              },
+              {
+                "id": "anchor-a38b236d0389859c8693",
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "page": 5,
+                "start": 0,
+                "end": 164,
+                "quote": "Schematic\nCentrifugal gravity is into the page; this \nwould be looking outward from the \naxis of rotation of the vehicle toward \nthe cylindrical hull of the rocket."
+              },
+              {
+                "id": "anchor-18c39b6e773b0a381c47",
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "page": 5,
+                "start": 166,
+                "end": 249,
+                "quote": "The \nflames would generally rise out of the \npage, or towards the axis of rotation."
+              },
+              {
+                "id": "anchor-0514f265bf8b0df12d69",
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "page": 5,
+                "start": 250,
+                "end": 365,
+                "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem."
+              },
+              {
+                "id": "anchor-297e558c4ada698c6d4a",
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "page": 5,
+                "start": 368,
+                "end": 461,
+                "quote": "Sensors: Chamber oxygen \nconcentration, pressure, temperature, \nand centrifugal acceleration."
+              },
+              {
+                "id": "anchor-f5c972935d7a735efc9f",
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "page": 5,
+                "start": 462,
+                "end": 591,
+                "quote": "Combustion enclosure/chamber\nLocker\nBurning Fabric\nFront view\nSample #2: Acrylic \n(PMMA) Rod\nBurning Fabric\nEdge view\nBurning Rod"
+              },
+              {
+                "id": "anchor-853a5bbddc202b6033d9",
+                "evidence_id": "E-a4517b58edb7fb6b7246f801",
+                "page": 6,
+                "start": 0,
+                "end": 131,
+                "quote": "6\nGlenn Research Center\nZIN Technologies\nHardware\nEMI Shielding\nBlue Origin Locker\nChamber Assembly\nLid Assembly\nTop Level Assembly"
+              },
+              {
+                "id": "anchor-e46eb9aacc49e557a4b5",
+                "evidence_id": "E-b3ed9a7463f43f22a17be8ec",
+                "page": 7,
+                "start": 0,
+                "end": 99,
+                "quote": "7\nGlenn Research Center\nZIN Technologies\nTop Level Assembly\nIn Payload Locker\nOut of Payload Locker"
+              },
+              {
+                "id": "anchor-cc0bb40722cd4c115fc2",
+                "evidence_id": "E-9984369871f9b119c39685ae",
+                "page": 8,
+                "start": 0,
+                "end": 149,
+                "quote": "8\nGlenn Research Center\nZIN Technologies\nCombustion Chamber Lid Assembly  \nLid is the main attachment point for \nAll Payload Avionics and Diagnostics"
+              },
+              {
+                "id": "anchor-e12b147c036cabf8c5fc",
+                "evidence_id": "E-d621160208181545c2e7acf1",
+                "page": 9,
+                "start": 0,
+                "end": 6,
+                "quote": "Page 9"
+              },
+              {
+                "id": "anchor-06da775554c9e99c2f63",
+                "evidence_id": "E-138c0efdbdc2243a724f2a16",
+                "page": 10,
+                "start": 0,
+                "end": 154,
+                "quote": "Page 10\nThe effective floor of our hardware (orientated so that the \ncentrifugal g-vector points downward toward the floor) \nmeasures about 41 cm x 48 cm."
+              },
+              {
+                "id": "anchor-38ebfc2548972272856e",
+                "evidence_id": "E-138c0efdbdc2243a724f2a16",
+                "page": 10,
+                "start": 156,
+                "end": 212,
+                "quote": "The available height in the \ng-direction is about 53 cm."
+              },
+              {
+                "id": "anchor-d2f6ac3c9c783b9f420c",
+                "evidence_id": "E-138c0efdbdc2243a724f2a16",
+                "page": 10,
+                "start": 215,
+                "end": 288,
+                "quote": "NOTE: How we orient our samples depends on the specific \nlocker location."
+              },
+              {
+                "id": "anchor-e8af88984987c7abfb28",
+                "evidence_id": "E-138c0efdbdc2243a724f2a16",
+                "page": 10,
+                "start": 290,
+                "end": 392,
+                "quote": "It is required that the principle vertical \naxes of the burn samples be aligned with the radial lines."
+              },
+              {
+                "id": "anchor-ddb160f0ca840522fd8a",
+                "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+                "page": 11,
+                "start": 0,
+                "end": 8,
+                "quote": "+x\n+y\n+z"
+              },
+              {
+                "id": "anchor-5ddb92262df155cb5101",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 0,
+                "end": 97,
+                "quote": "\u2022\nBlue Origin New Shepard sounding rocket yields Lunar gravity by using centrifugal acceleration."
+              },
+              {
+                "id": "anchor-62b28124eafde47166f2",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 98,
+                "end": 224,
+                "quote": "\u2022\nThese are the first-ever, extended-duration (greater than 25 seconds) combustion tests performed in simulated Lunar gravity."
+              },
+              {
+                "id": "anchor-f1c163a026fbc27f0ad1",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 227,
+                "end": 355,
+                "quote": "\u2022\nA steady vehicle rotation of 11 RPM is established, with an effective radius of rotation of 1.22 m at the experiment location."
+              },
+              {
+                "id": "anchor-28b33796719860d489a6",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 358,
+                "end": 536,
+                "quote": "\u2022\nTwo samples are burned simultaneously in air at normal pressure: Cotton-fiberglass composite fabric sheet and a 4-mm diameter \nrod of acrylic plastic (polymethyl methacrylate)."
+              },
+              {
+                "id": "anchor-503044710b797ef3458d",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 539,
+                "end": 687,
+                "quote": "\u2022\nFlame images from two orthogonal cameras are used to determine flame spread and growth rates, and the burn lasts for over \ntwo and a half minutes."
+              },
+              {
+                "id": "anchor-e3e28da0b01af5755cc7",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 690,
+                "end": 744,
+                "quote": "\u2022\nThe oxygen concentration in the chamber is measured."
+              },
+              {
+                "id": "anchor-13ddf7bdf080c8686295",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 746,
+                "end": 857,
+                "quote": "As the burns progress, the oxygen concentration drops, enabling a \nlimiting value for extinction to be defined."
+              },
+              {
+                "id": "anchor-ffd58b92258bf4b5a99d",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 860,
+                "end": 904,
+                "quote": "\u2022\nThe effect of Coriolis force is discussed."
+              },
+              {
+                "id": "anchor-ffa6cfcfef92816cb285",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 907,
+                "end": 1025,
+                "quote": "\u2022\nResults from this experiment are compared to related 1-g work, drop tower tests, aircraft experiments, and modeling."
+              },
+              {
+                "id": "anchor-8ad1549042dc5cf6c95b",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 1028,
+                "end": 1219,
+                "quote": "\u2022\nThe results are applicable to NASA\u2019s exploration efforts in that they guide the selection of fire-safe materials and environments \nand ensure safety of future spacecraft and Lunar habitats."
+              },
+              {
+                "id": "anchor-d0bdabe3676cf1e5960e",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 1221,
+                "end": 1279,
+                "quote": "The data also provides fundamental understanding of fires."
+              },
+              {
+                "id": "anchor-6c319c325077143adfc9",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "page": 12,
+                "start": 1282,
+                "end": 1497,
+                "quote": "\u2022\nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the Flammability \nof Materials on the Moon (FM2) experiment which is planned to launch in late 2026."
+              },
+              {
+                "id": "anchor-c077e0cfb94e7c00fdd4",
+                "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+                "page": 13,
+                "start": 0,
+                "end": 419,
+                "quote": "\uf0a8History\n\u2022 ZIN technologies brought on board October 2021\n\u2022 Initial Planned launch was Spring 2023, Launch provider delay initially delayed launch into late Summer early Fall 2024, until \nit finally launched Feb 4 2025\n\u2022 First mission sequence test was performed in July 2023\n\u2022 Due to launch slip some improvements were made and last mission sequence test was ran in February 2024 before \nbeing shelved prior to flight."
+              },
+              {
+                "id": "anchor-9a72337a8e9203527cb2",
+                "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+                "page": 13,
+                "start": 421,
+                "end": 924,
+                "quote": "\uf0a8Objectives\n\u2022 Burn SIBAL fabric & PMMA \n\u2022 Conduct first-ever, long duration observation and measurement of flame spread in a partial-g environment\n\u2022 Verify this platform is a viable means to obtain material flammability data in Lunar-g and will include an assessment of \nthe Coriolis force on results\n\u2022 Provide guidance for sample selection and test definition for a Lunar in-situ experiment\n\uf0a8Data\n\u2022 First Flight\n\u2022 Measurements of flame spread rate and output of other diagnostics, including g-level vs."
+              },
+              {
+                "id": "anchor-5a2090a34b5b5daeac9a",
+                "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+                "page": 13,
+                "start": 925,
+                "end": 1034,
+                "quote": "time for the two samples\n\u2022 Sample closeout photos and photos before and after each test\n\u2022 Data from 1-g burns"
+              },
+              {
+                "id": "anchor-019a69153fcadb9b9d8e",
+                "evidence_id": "E-e701476789b9bf6dd3395377",
+                "page": 16,
+                "start": 0,
+                "end": 33,
+                "quote": "LUCI samples 30 s after ignition."
+              },
+              {
+                "id": "anchor-ad0c6c96e45276ff79b8",
+                "evidence_id": "E-e701476789b9bf6dd3395377",
+                "page": 16,
+                "start": 35,
+                "end": 142,
+                "quote": "Left: Edge view of SIBAL fabric (cotton-fiberglass blend) burning downward in Lunar-g 30 s \nafter ignition."
+              },
+              {
+                "id": "anchor-0507857a4550c1e246c7",
+                "evidence_id": "E-e701476789b9bf6dd3395377",
+                "page": 16,
+                "start": 144,
+                "end": 179,
+                "quote": "The flame spread for over a minute."
+              },
+              {
+                "id": "anchor-991eba621da0b878f180",
+                "evidence_id": "E-e701476789b9bf6dd3395377",
+                "page": 16,
+                "start": 181,
+                "end": 265,
+                "quote": "Right:4-mm-diameter PMMA rod burning upward in air in Lunar-g, 30 s \nafter ignition."
+              },
+              {
+                "id": "anchor-ea7650b34f8f3addba38",
+                "evidence_id": "E-e701476789b9bf6dd3395377",
+                "page": 16,
+                "start": 267,
+                "end": 319,
+                "quote": "The flame eventually grows to engulf the entire rod."
+              },
+              {
+                "id": "anchor-ac4cef8c8b0dfe29c4d4",
+                "evidence_id": "E-d5b5c13caefae1761b25a868",
+                "page": 17,
+                "start": 0,
+                "end": 48,
+                "quote": "PMMA rod after 90 seconds of burning in Lunar g."
+              },
+              {
+                "id": "anchor-078d26d0b92deba77810",
+                "evidence_id": "E-d5b5c13caefae1761b25a868",
+                "page": 17,
+                "start": 51,
+                "end": 89,
+                "quote": "Two orthogonal camera views are shown."
+              },
+              {
+                "id": "anchor-c620014559a9eebf3ed9",
+                "evidence_id": "E-d5b5c13caefae1761b25a868",
+                "page": 17,
+                "start": 91,
+                "end": 267,
+                "quote": "The one on \nthe right demonstrates how the Coriolis force pulls the \nflame away from the axis of the fuel, which is aligned \nwith the direction of the centrifugal acceleration."
+              },
+              {
+                "id": "anchor-34b076e4202a10ed1cfa",
+                "evidence_id": "E-d3aebe64259ea519e1693467",
+                "page": 18,
+                "start": 0,
+                "end": 151,
+                "quote": "\uf0a8Potential Follow-on Objectives\n\u2022 Evaluate the hypothesis that some materials burning in partial-g environments may be more flammable \ncompared to 1-g."
+              },
+              {
+                "id": "anchor-36824f7e20307ffbd631",
+                "evidence_id": "E-d3aebe64259ea519e1693467",
+                "page": 18,
+                "start": 152,
+                "end": 388,
+                "quote": "\u2022 Compare upward and downward oxygen limits to 1-g values\n\u2022 Evaluate flame size, strength, intensity, and spread compared to 1-g\n\u2022 Develop a numerical model\n\u2022 Assess the applicability of the model by comparing to the test data obtained."
+              },
+              {
+                "id": "anchor-706dcab4fcdda7a24fc3",
+                "evidence_id": "E-d3aebe64259ea519e1693467",
+                "page": 18,
+                "start": 391,
+                "end": 483,
+                "quote": "\u2022 Determine applicability of the pressure-gravity scaling relations for upward spread rates."
+              },
+              {
+                "id": "anchor-4ee1bbe03ac84f2331a6",
+                "evidence_id": "E-d3aebe64259ea519e1693467",
+                "page": 18,
+                "start": 485,
+                "end": 626,
+                "quote": "\u2022 Refine model using experiment results\n\u2022 Provide a bridge between current 1-g material screen method and actual behavior in reduced gravity."
+              },
+              {
+                "id": "anchor-4a17be286b5a44d9b2a4",
+                "evidence_id": "E-d3aebe64259ea519e1693467",
+                "page": 18,
+                "start": 627,
+                "end": 865,
+                "quote": "\uf0a8Data\n\u2022 Flammability limits (%O2) for a subset of materials in Lunar-g\n\u2022 Measurements of the flame spread rate over materials in exploration atmospheres\n\u2022 Sample closeout photos, and photos before and after each test\n\u2022 Data from 1-g burns"
+              },
+              {
+                "id": "anchor-134b27ee033e489b8425",
+                "evidence_id": "E-36fba4ad2dd3a80446e482de",
+                "page": 19,
+                "start": 0,
+                "end": 55,
+                "quote": "LUCI: SIBAL fabric\n\u2022\nFlame base spread rate = .92 mm/s."
+              },
+              {
+                "id": "anchor-a182cfce434cb4115c2e",
+                "evidence_id": "E-36fba4ad2dd3a80446e482de",
+                "page": 19,
+                "start": 56,
+                "end": 194,
+                "quote": "\u2022\nFlame tip spread rate = 1.1 mm/s\n\u2022\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length."
+              },
+              {
+                "id": "anchor-4072151fef57990fb240",
+                "evidence_id": "E-36fba4ad2dd3a80446e482de",
+                "page": 19,
+                "start": 195,
+                "end": 291,
+                "quote": "\u2022\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread)."
+              },
+              {
+                "id": "anchor-0fdba1c7ec8f5fc27d45",
+                "evidence_id": "E-d21d6576e58973f04cbb79b6",
+                "page": 20,
+                "start": 0,
+                "end": 191,
+                "quote": "LUCI: PMMA\n\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53\n\u2022\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point)."
+              },
+              {
+                "id": "anchor-9a191579586a998d5324",
+                "evidence_id": "E-d21d6576e58973f04cbb79b6",
+                "page": 20,
+                "start": 192,
+                "end": 238,
+                "quote": "\u2022\nTotal base spread of ~6cm until \nextinction."
+              },
+              {
+                "id": "anchor-ee70087113aa492e4559",
+                "evidence_id": "E-d21d6576e58973f04cbb79b6",
+                "page": 20,
+                "start": 239,
+                "end": 314,
+                "quote": "\u2022\nFlame base spread rate is not \nconstant; steady spread was not \nachieved."
+              },
+              {
+                "id": "anchor-fec3b3a7bf80457584bc",
+                "evidence_id": "E-b7874f30c44529988c9a2b4d",
+                "page": 21,
+                "start": 0,
+                "end": 84,
+                "quote": "LUCI: PMMA\n\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53\n\u2022\nFlame tip spread is \napproximately linear."
+              },
+              {
+                "id": "anchor-cc231d4070ee715efb44",
+                "evidence_id": "E-b7874f30c44529988c9a2b4d",
+                "page": 21,
+                "start": 85,
+                "end": 117,
+                "quote": "\u2022\nFlame spread rate = 1.5 \nmm/s."
+              },
+              {
+                "id": "anchor-2abd3561b449122da362",
+                "evidence_id": "E-ace382bc90bbdf2808dfba14",
+                "page": 22,
+                "start": 0,
+                "end": 75,
+                "quote": "LUCI: PMMA\n\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53\n\u2022\nO2% decreases from 20% to \n14.3%."
+              },
+              {
+                "id": "anchor-abd8c5b4970e08c6481e",
+                "evidence_id": "E-ace382bc90bbdf2808dfba14",
+                "page": 22,
+                "start": 76,
+                "end": 190,
+                "quote": "\u2022\nO2% rises back to 15.8% \nlikely due to the decrease in \ngravity (and thus buoyant \nflow) which occurred at 125s."
+              },
+              {
+                "id": "anchor-02ddefd7b5463d10c269",
+                "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+                "page": 23,
+                "start": 0,
+                "end": 97,
+                "quote": "LUCI 1-G Updates\n\u2022 Results have been obtained and plotted with partial-g results for \ncomparison."
+              },
+              {
+                "id": "anchor-71a2ef808f2372615868",
+                "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+                "page": 23,
+                "start": 98,
+                "end": 214,
+                "quote": "\u2022 Fits of the data were created where possible and useful, and more \nfits can be created in the future if necessary."
+              },
+              {
+                "id": "anchor-02fa920de46dac373e9f",
+                "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+                "page": 23,
+                "start": 215,
+                "end": 388,
+                "quote": "\u2022 Results are not as clean as partial-g, the program does not read \nthe flame spread as cleanly, and the flame burns out much \nquicker, resulting in fewer total data points."
+              },
+              {
+                "id": "anchor-12e059377e22e77f2414",
+                "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+                "page": 24,
+                "start": 0,
+                "end": 110,
+                "quote": "1-G Results: SIBAL fabric\n\u2022\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn."
+              },
+              {
+                "id": "anchor-7668357707fe39c155ac",
+                "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+                "page": 24,
+                "start": 111,
+                "end": 193,
+                "quote": "\u2022\nFlame width decreases suddenly at \n~24 seconds, and goes to 0 within 4 \nseconds."
+              },
+              {
+                "id": "anchor-edca8bd45d29df6dbb9b",
+                "evidence_id": "E-a08131327d6385587996348e",
+                "page": 25,
+                "start": 0,
+                "end": 86,
+                "quote": "1-G Results: SIBAL fabric\n\u2022\nFlame tip spread rate is \n~double flame base spread \nrate."
+              },
+              {
+                "id": "anchor-b21e320f326ca30e9c2d",
+                "evidence_id": "E-a08131327d6385587996348e",
+                "page": 25,
+                "start": 87,
+                "end": 223,
+                "quote": "\u2022\nSmall fluctuations in the \ntracking result in inexact fits \nfor the spread data, therefore \nthis is only an approximate \nrelationship."
+              },
+              {
+                "id": "anchor-5948c7278e120fe7f098",
+                "evidence_id": "E-007124915589abdd7abc5e6e",
+                "page": 26,
+                "start": 0,
+                "end": 75,
+                "quote": "1-G Results: SIBAL\n\u2022\nGravity (in g\u2019s) remains \nconstant at Earth\u2019s gravity."
+              },
+              {
+                "id": "anchor-8a7cbab23d765f6f3317",
+                "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+                "page": 27,
+                "start": 0,
+                "end": 73,
+                "quote": "1-G Results: SIBAL\n\u2022\nO2% varies slightly but is \nroughly constant at 20%."
+              },
+              {
+                "id": "anchor-894bab8d73925c2e21fb",
+                "evidence_id": "E-94f2c30163d61cfbf33f137a",
+                "page": 28,
+                "start": 0,
+                "end": 173,
+                "quote": "1-G Results: PMMA\n\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53\n\u2022\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location."
+              },
+              {
+                "id": "anchor-92286c0a96289696d980",
+                "evidence_id": "E-94f2c30163d61cfbf33f137a",
+                "page": 28,
+                "start": 174,
+                "end": 251,
+                "quote": "\u2022\nFlame tip spread was \n~linear until tip becomes \nobscured by sample holder."
+              },
+              {
+                "id": "anchor-424f859b4542ae5e3fe8",
+                "evidence_id": "E-4e83b44eb58f230065e2b311",
+                "page": 29,
+                "start": 0,
+                "end": 92,
+                "quote": "1-G Results: PMMA\n\u2022\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn."
+              },
+              {
+                "id": "anchor-4ec2617f1c685112fbf1",
+                "evidence_id": "E-4e83b44eb58f230065e2b311",
+                "page": 29,
+                "start": 93,
+                "end": 196,
+                "quote": "\u2022\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length)."
+              },
+              {
+                "id": "anchor-965fa5bca6693c6268b2",
+                "evidence_id": "E-4e83b44eb58f230065e2b311",
+                "page": 29,
+                "start": 197,
+                "end": 225,
+                "quote": "\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53"
+              },
+              {
+                "id": "anchor-72d132140a462bda8294",
+                "evidence_id": "E-883f133a5745d0142df1e007",
+                "page": 30,
+                "start": 0,
+                "end": 116,
+                "quote": "1-G Results: PMMA\n\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53\n\u2022\nGravity remains constant at \nEarth\u2019s gravity for duration of \nburn."
+              },
+              {
+                "id": "anchor-b4eb623dd0d7917dbbf7",
+                "evidence_id": "E-d4940e2063b4c03f3303beea",
+                "page": 31,
+                "start": 0,
+                "end": 112,
+                "quote": "\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53\n\u2022\nO2% rises quickly in the \nbeginning, then decreases \n~linearly from 21% to 14.5%."
+              },
+              {
+                "id": "anchor-9355c0ed10cf6b0d6126",
+                "evidence_id": "E-d4940e2063b4c03f3303beea",
+                "page": 31,
+                "start": 113,
+                "end": 126,
+                "quote": "Results: PMMA"
+              },
+              {
+                "id": "anchor-1750a48cb1c7409b93cb",
+                "evidence_id": "E-92e5fd01ba0fa39b833981b3",
+                "page": 32,
+                "start": 0,
+                "end": 23,
+                "quote": "Combined Results: SIBAL"
+              },
+              {
+                "id": "anchor-5d3fe6ad92cc605debf0",
+                "evidence_id": "E-7b2423e2b4112606572b7b6e",
+                "page": 33,
+                "start": 0,
+                "end": 152,
+                "quote": "SIBAL Flame Spread Fit Comparison\nFlame Spread Rates (from linear fits):\nPartial-\nG\n(mm/s)\n1-G\n(mm/s)\nRatio\nFlame \nBase\n.9\n1.5\n.6\nFlame \nTip\n1.1\n2.8\n.39"
+              },
+              {
+                "id": "anchor-8b8414ff55fe0cda8bf0",
+                "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+                "page": 34,
+                "start": 0,
+                "end": 134,
+                "quote": "SIBAL Flame Width Comparison\n\u2022\nFlame extinction for 1-g \nexperiment occurs quicker \n(flame width decrease is \nsteeper than partial-g)."
+              },
+              {
+                "id": "anchor-181a165b071037963727",
+                "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+                "page": 34,
+                "start": 135,
+                "end": 207,
+                "quote": "\u2022\n1-g extinction happens ~ 45 \nseconds sooner than partial-g \nextinction"
+              },
+              {
+                "id": "anchor-1c25843210fad759fb29",
+                "evidence_id": "E-a77a2a0b6c4c5ef905224f73",
+                "page": 35,
+                "start": 0,
+                "end": 22,
+                "quote": "Combined Results: PMMA"
+              },
+              {
+                "id": "anchor-4fc2742af1833498556f",
+                "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+                "page": 36,
+                "start": 0,
+                "end": 137,
+                "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53"
+              },
+              {
+                "id": "anchor-3dc796ba03b7ed6a218e",
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "page": 37,
+                "start": 0,
+                "end": 131,
+                "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity."
+              },
+              {
+                "id": "anchor-319f90f7b37b939808f1",
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "page": 37,
+                "start": 133,
+                "end": 322,
+                "quote": "The results are applicable to NASA\u2019s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats."
+              },
+              {
+                "id": "anchor-3cba6b4b368a3377cf57",
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "page": 37,
+                "start": 324,
+                "end": 459,
+                "quote": "The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models."
+              },
+              {
+                "id": "anchor-cc506540d76a67ebc535",
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "page": 37,
+                "start": 462,
+                "end": 704,
+                "quote": "Finally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight."
+              },
+              {
+                "id": "anchor-071d72af2b2fd460533b",
+                "evidence_id": "E-7e8d8e958dbe85901540a377",
+                "page": 38,
+                "start": 0,
+                "end": 7,
+                "quote": "Backups"
+              },
+              {
+                "id": "anchor-9110a6a962e8a4157276",
+                "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+                "page": 39,
+                "start": 0,
+                "end": 162,
+                "quote": "LUCI Partial-G Recap: SIBAL\n\u2022\nSemi-steady spread is achieved, \nduring which the constant flame \nwidth and length are observed (~3.2 \ncm and ~1.5 cm respectively)."
+              },
+              {
+                "id": "anchor-84c00670554994f58461",
+                "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+                "page": 39,
+                "start": 163,
+                "end": 242,
+                "quote": "\u2022\nFlame length and width both \ndecrease during extinction (final ~40 \nseconds)."
+              },
+              {
+                "id": "anchor-c9ca9f7ac29f03e32d89",
+                "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+                "page": 39,
+                "start": 244,
+                "end": 343,
+                "quote": "\u2022\nChar propagation and flame base \npropagation are ~parallel, indicating \n~constant preheat length."
+              },
+              {
+                "id": "anchor-13cd96b41fbbe79093e9",
+                "evidence_id": "E-d5f9930ae7882641030769e0",
+                "page": 40,
+                "start": 0,
+                "end": 107,
+                "quote": "LUCI Partial-G Recap: SIBAL\n\u2022\nPreheat Length: difference between \nflame base and char front fit \nequations."
+              },
+              {
+                "id": "anchor-a2461a0c9dc9afc8e4a9",
+                "evidence_id": "E-d5f9930ae7882641030769e0",
+                "page": 40,
+                "start": 108,
+                "end": 223,
+                "quote": "\u2022\nBoth flame length and preheat length \ndecrease very slowly over time (~ 1.25 \ncm and ~0.4 cm total respectively)."
+              },
+              {
+                "id": "anchor-40472edd59a8f69679ed",
+                "evidence_id": "E-d5f9930ae7882641030769e0",
+                "page": 40,
+                "start": 224,
+                "end": 268,
+                "quote": "\u2022\nPreheat length shrink rate = -0.094 \nmm/s."
+              },
+              {
+                "id": "anchor-511b4aeff59fe15645c9",
+                "evidence_id": "E-591e163edaa75d5ac8c895d0",
+                "page": 41,
+                "start": 0,
+                "end": 82,
+                "quote": "LUCI Partial-G Recap: SIBAL\n\u2022\nGravity (in g\u2019s) remains \nconstant at lunar gravity."
+              },
+              {
+                "id": "anchor-87fb80143239ad33d2cd",
+                "evidence_id": "E-591e163edaa75d5ac8c895d0",
+                "page": 41,
+                "start": 83,
+                "end": 135,
+                "quote": "\u2022\nFlame extinction must be \ncaused by other factors."
+              },
+              {
+                "id": "anchor-a55c56899ea2b8792506",
+                "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+                "page": 42,
+                "start": 0,
+                "end": 68,
+                "quote": "LUCI: SIBAL fabric\n\u2022\nO2 concentration \ndecreases from ~20% to \n~18%."
+              },
+              {
+                "id": "anchor-660106dc6a2d804f3f0a",
+                "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+                "page": 42,
+                "start": 69,
+                "end": 141,
+                "quote": "\u2022\nO2% decreases at a roughly \nconstant rate over the entire \nexperiment."
+              },
+              {
+                "id": "anchor-25d00b9ed2c3801f4767",
+                "evidence_id": "E-d6e291dc28d06c4dea34e721",
+                "page": 43,
+                "start": 0,
+                "end": 59,
+                "quote": "LUCI: PMMA\n\u2022\nFlame base spread is \napproximately quadratic."
+              },
+              {
+                "id": "anchor-c35719fbcdb732a10f22",
+                "evidence_id": "E-d6e291dc28d06c4dea34e721",
+                "page": 43,
+                "start": 60,
+                "end": 158,
+                "quote": "\u2022\nInstantaneous spread rate \n(red line) is plotted derivative \nof fit equation (linear \nrelation)."
+              },
+              {
+                "id": "anchor-460f954db4be7757b8f1",
+                "evidence_id": "E-d6e291dc28d06c4dea34e721",
+                "page": 43,
+                "start": 159,
+                "end": 293,
+                "quote": "\u2022\nFlame spread rate increases \nlinearly from 0 to ~.6 mm/s \n(before gravity starts dropping \nat t = 125s)\n\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53"
+              },
+              {
+                "id": "anchor-611488639e845ca27baa",
+                "evidence_id": "E-f4f95c94998d43684aa6df08",
+                "page": 44,
+                "start": 0,
+                "end": 94,
+                "quote": "LUCI: PMMA\n\ud835\udc65\ud835\udc53\ud835\udc4f\n\ud835\udc65\ud835\udc53\ud835\udc61\nSample\nFlame\ng\n\ud835\udc59\ud835\udc53\n\ud835\udc49\ud835\udc53\n\u2022\nGravity remains ~constant for \nduration of the burn."
+              }
+            ],
+            "shared_context": {
+              "available": 2,
+              "selected_characters": 2532
+            },
+            "known_entities": [
+              {
+                "key": "entity-00a4b1d16c8983107a6a",
+                "label": "1-g",
+                "class_id": "GravityCondition",
+                "study": "current",
+                "support": [
+                  "anchor-36824f7e20307ffbd631",
+                  "anchor-02ddefd7b5463d10c269"
+                ]
+              },
+              {
+                "key": "entity-50f5001d8bb03d28af40",
+                "label": "SIBAL",
+                "class_id": "Material",
+                "study": "unknown",
+                "support": [
+                  "anchor-5948c7278e120fe7f098",
+                  "anchor-8a7cbab23d765f6f3317",
+                  "anchor-1750a48cb1c7409b93cb",
+                  "anchor-5d3fe6ad92cc605debf0",
+                  "anchor-8b8414ff55fe0cda8bf0",
+                  "anchor-9110a6a962e8a4157276",
+                  "anchor-13cd96b41fbbe79093e9",
+                  "anchor-511b4aeff59fe15645c9"
+                ]
+              },
+              {
+                "key": "entity-b38fd0c8546c9ff0fdfc",
+                "label": "SIBAL fabric",
+                "class_id": "Material",
+                "study": "unknown",
+                "support": [
+                  "anchor-9a72337a8e9203527cb2",
+                  "anchor-ad0c6c96e45276ff79b8",
+                  "anchor-134b27ee033e489b8425",
+                  "anchor-12e059377e22e77f2414",
+                  "anchor-edca8bd45d29df6dbb9b",
+                  "anchor-a55c56899ea2b8792506"
+                ]
+              },
+              {
+                "key": "entity-bbe6521792b92c74310b",
+                "label": "PMMA",
+                "class_id": "Material",
+                "study": "unknown",
+                "support": [
+                  "anchor-3a98e811524b953d98d2",
+                  "anchor-0514f265bf8b0df12d69",
+                  "anchor-f5c972935d7a735efc9f",
+                  "anchor-9a72337a8e9203527cb2",
+                  "anchor-991eba621da0b878f180",
+                  "anchor-ac4cef8c8b0dfe29c4d4",
+                  "anchor-0fdba1c7ec8f5fc27d45",
+                  "anchor-fec3b3a7bf80457584bc",
+                  "anchor-2abd3561b449122da362",
+                  "anchor-894bab8d73925c2e21fb",
+                  "anchor-424f859b4542ae5e3fe8",
+                  "anchor-72d132140a462bda8294",
+                  "anchor-9355c0ed10cf6b0d6126",
+                  "anchor-1c25843210fad759fb29",
+                  "anchor-4fc2742af1833498556f",
+                  "anchor-25d00b9ed2c3801f4767",
+                  "anchor-611488639e845ca27baa"
+                ]
+              },
+              {
+                "key": "entity-c73f79cf59206d728d84",
+                "label": "1-g",
+                "class_id": "GravityCondition",
+                "study": "unknown",
+                "support": [
+                  "anchor-945c2c29fa56b2e3d806",
+                  "anchor-bb8468688e8a36e2316e",
+                  "anchor-fd776478abbbd6f7dad5",
+                  "anchor-ffa6cfcfef92816cb285",
+                  "anchor-5a2090a34b5b5daeac9a",
+                  "anchor-34b076e4202a10ed1cfa",
+                  "anchor-4ee1bbe03ac84f2331a6",
+                  "anchor-4a17be286b5a44d9b2a4",
+                  "anchor-12e059377e22e77f2414",
+                  "anchor-edca8bd45d29df6dbb9b",
+                  "anchor-5948c7278e120fe7f098",
+                  "anchor-8a7cbab23d765f6f3317",
+                  "anchor-894bab8d73925c2e21fb",
+                  "anchor-424f859b4542ae5e3fe8",
+                  "anchor-72d132140a462bda8294",
+                  "anchor-5d3fe6ad92cc605debf0",
+                  "anchor-8b8414ff55fe0cda8bf0",
+                  "anchor-181a165b071037963727",
+                  "anchor-4fc2742af1833498556f"
+                ]
+              },
+              {
+                "key": "entity-c9899197615f1cf718a0",
+                "label": "polymethyl methacrylate",
+                "class_id": "Material",
+                "study": "unknown",
+                "support": [
+                  "anchor-28b33796719860d489a6"
+                ]
+              }
+            ],
+            "schema": {
+              "$defs": {
+                "Entity": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "key": {
+                      "title": "Key",
+                      "type": "string"
+                    },
+                    "label": {
+                      "maxLength": 300,
+                      "minLength": 1,
+                      "title": "Label",
+                      "type": "string"
+                    },
+                    "class_id": {
+                      "title": "Class Id",
+                      "type": "string"
+                    },
+                    "study": {
+                      "default": "unknown",
+                      "enum": [
+                        "current",
+                        "cited",
+                        "unknown"
+                      ],
+                      "title": "Study",
+                      "type": "string"
+                    },
+                    "support": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "label",
+                    "class_id",
+                    "study",
+                    "support"
+                  ],
+                  "title": "Entity",
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false,
+              "properties": {
+                "entities": {
+                  "items": {
+                    "$ref": "#/$defs/Entity"
+                  },
+                  "title": "Entities",
+                  "type": "array"
+                }
+              },
+              "title": "Output",
+              "type": "object",
+              "required": [
+                "entities"
+              ]
+            }
+          },
+          "max_output_tokens": 6144,
+          "raw_response": "{\n  \"identity\": {\n    \"investigation\": \"LUCI\",\n    \"group\": \"Blue Origin New Shepard sounding rocket\",\n    \"run\": \"First Flight\",\n    \"sample\": \"Cotton-fiberglass composite fabric sheet and 4-mm diameter rod of acrylic plastic (polymethyl methacrylate)\",\n    \"material\": \"Cotton-fiberglass composite fabric sheet, polymethyl methacrylate (PMMA), SIBAL fabric\",\n    \"condition\": \"Lunar gravity (simulated via centrifugal acceleration), normal pressure, air atmosphere\"\n  },\n  \"propositions\": [\n    {\n      \"subject\": \"entity-00a4b1d16c8983107a6a\",\n      \"statement\": \"Gravity remains constant at Earth\u2019s gravity for duration of burn\"\n    },\n    {\n      \"subject\": \"entity-50f5001d8bb03d28af40\",\n      \"statement\": \"Blue Origin New Shepard sounding rocket yields Lunar gravity by using centrifugal acceleration\"\n    },\n    {\n      \"subject\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"statement\": \"Two samples are burned simultaneously in air at normal pressure: Cotton-fiberglass composite fabric sheet and a 4-mm diameter rod of acrylic plastic (polymethyl methacrylate)\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame images from two orthogonal cameras are used to determine flame spread and growth rates, and the burn lasts for over two and a half minutes\"\n    },\n    {\n      \"subject\": \"entity-c73f79cf59206d728d84\",\n      \"statement\": \"Oxygen concentration in the chamber is measured. As the burns progress, the oxygen concentration drops, enabling a limiting value for extinction to be defined\"\n    },\n    {\n      \"subject\": \"entity-c73f79cf59206d728d84\",\n      \"statement\": \"The effect of Coriolis force is discussed\"\n    },\n    {\n      \"subject\": \"entity-c73f79cf59206d728d84\",\n      \"statement\": \"Results from this experiment are compared to related 1-g work, drop tower tests, aircraft experiments, and modeling\"\n    },\n    {\n      \"subject\": \"entity-c73f79cf59206d728d84\",\n      \"statement\": \"The results are applicable to NASA\u2019s exploration efforts in that they guide the selection of fire-safe materials and environments and ensure safety of future spacecraft and Lunar habitats\"\n    },\n    {\n      \"subject\": \"entity-c73f79cf59206d728d84\",\n      \"statement\": \"The experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the Flammability of Materials on the Moon (FM2) experiment which is planned to launch in late 2026\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame spread rate for SIBAL fabric flame base = 0.9 mm/s, flame tip = 1.1 mm/s\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame spread rate for PMMA flame base = 1.5 mm/s, flame tip = 1.5 mm/s (approximately linear)\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame extinction for 1-g experiment occurs quicker (flame width decrease is steeper than partial-g)\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"1-g extinction happens ~45 seconds sooner than partial-g extinction\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame tip spread is approximately linear for PMMA in partial-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame base spread rate is not constant; steady spread was not achieved for PMMA\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"O2% decreases from 20% to 14.3% for PMMA\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"O2% rises back to 15.8% likely due to the decrease in gravity (and thus buoyant flow) which occurred at 125s\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame base spread rate for SIBAL fabric = 0.92 mm/s, flame tip spread rate = 1.1 mm/s\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame tip spreads very slightly faster than flame base, indicating a slowly shrinking flame length\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Spread rates for char front, flame base, and flame tip are all linear (steady state spread) for SIBAL fabric\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame length increases ~linearly until flame tip becomes obscured by sample holder (could not measure flame length accurately beyond this point) for PMMA\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Total base spread of ~6cm until extinction for PMMA\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame base spread rate is not constant; steady spread was not achieved for PMMA\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame tip spread was ~linear until tip becomes obscured by sample holder for PMMA\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame tip grows at a rate of ~3.95 mm/s at the beginning of the burn for PMMA in 1-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame base location is ~constant, so this can be approximated as flame growth rate (flame length) for PMMA in 1-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame tip spread rate is ~double flame base spread rate for SIBAL fabric in 1-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame width decreases suddenly at ~24 seconds, and goes to 0 within 4 seconds for SIBAL fabric in 1-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame extinction for 1-g experiment occurs quicker (flame width decrease is steeper than partial-g)\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame width decreases ~linearly from 21% to 14.5% for PMMA in 1-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame base spread rate for PMMA in partial-g is approximately quadratic\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Instantaneous spread rate (red line) is plotted derivative of fit equation (linear relation) for PMMA in partial-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame spread rate increases linearly from 0 to ~0.6 mm/s (before gravity starts dropping at t = 125s) for PMMA in partial-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Gravity remains ~constant for duration of the burn for PMMA\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"Flame extinction must be caused by other factors for PMMA in partial-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"O2 concentration decreases from ~20% to ~18% for SIBAL fabric in partial-g\"\n    },\n    {\n      \"subject\": \"entity-bbe6521792b92c74310b\",\n      \"statement\": \"O2% decreases at a roughly constant rate over the entire experiment for SIBAL fabric\"\n    }\n  ],\n  \"relationships\": [\n    {\n      \"entity1\": \"entity-00a4b1d16c8983107a6a\",\n      \"relation\": \"hasGravityCondition\",\n      \"entity2\": \"entity-c73f79cf59206d728d84\"\n    },\n    {\n      \"entity1\": \"entity-50f5001d8bb03d28af40\",\n      \"relation\": \"hasMaterial\",\n      \"entity2\": \"entity-b38fd0c8546c9ff0fdfc\"\n    },\n    {\n      \"entity1\": \"entity-50f5001d8bb03d28af40\",\n      \"relation\": \"hasMaterial\",\n      \"entity2\": \"entity-bbe6521792b92c74310b\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"hasMaterial\",\n      \"entity2\": \"entity-00a4b1d16c8983107a6a\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"hasMaterial\",\n      \"entity2\": \"entity-50f5001d8bb03d28af40\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-81e7957bf014b65a4461\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-8688d05aea4d225ce0ef\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-6969015ae905b5c545bf\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-0acbeed7a437e765685d020a\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-49e271d94011afe76cb7c262\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-b901ec1e461ebf942f146e18\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-a4517b58edb7fb6b7246f801\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-e701476789b9bf6dd3395377\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-d5b5c13caefae1761b25a868\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-369175d9bd5f5634f84a0c6b\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-369175d9bd5f5634f84a0c6b\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-01e78ac4900b35ec6ddd9644\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-0acbeed7a437e765685d020a\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-369175d9bd5f5634f84a0c6b\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-01e78ac4900b35ec6ddd9644\"\n    },\n    {\n      \"entity1\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-369175d9bd5f5634f84a0c6b\"\n    },\n    {\n      \"entity1\": \"entity-bbe6521792b92c74310b\",\n      \"relation\": \"belongsToInvestigation\",\n      \"entity2\": \"anchor-01e78ac4900b35ec6ddd9644\"\n    }\n  ],\n  \"support\": [\n    {\n      \"entity\": \"entity-00a4b1d16c8983107a6a\",\n      \"support_anchors\": [\"anchor-36824f7e20307ffbd631\", \"anchor-02ddefd7b5463d10c269\"]\n    },\n    {\n      \"entity\": \"entity-50f5001d8bb03d28af40\",\n      \"support_anchors\": [\"anchor-5948c7278e120fe7f098\", \"anchor-8a7cbab23d765f6f3317\", \"anchor-1750a48cb1c7409b93cb\", \"anchor-5d3fe6ad92cc605debf0\", \"anchor-8b8414ff55fe0cda8bf0\", \"anchor-9110a6a962e8a4157276\", \"anchor-13cd96b41fbbe79093e9\", \"anchor-511b4aeff59fe15645c9\"]\n    },\n    {\n      \"entity\": \"entity-b38fd0c8546c9ff0fdfc\",\n      \"support_anchors\": [\"anchor-9a72337a8e9203527cb2\", \"anchor-ad0c6c96e45276ff79b8\", \"anchor-134b27ee033e489b8425\", \"anchor-12e059377e22e77f2414\", \"anchor-edca8bd45d29df6dbb9b\", \"anchor-a55c56899ea2b8792506\"]\n    },\n    {\n      \"entity\": \"entity-bbe6521792b92c74310b\",\n      \"support_anchors\": [\"anchor-3a98e811524b953d98d2\", \"anchor-0514f265bf8b0df12d69\", \"anchor-f5c972935d7a735efc9f\", \"anchor-9a72337a8e9203527cb2\", \"anchor-991eba621da0b878f180\", \"anchor-ac4cef8c8b0dfe29c4d4\", \"anchor-0fdba1c7ec8f5fc27d45\", \"anchor-fec3b3a7bf80457584bc\", \"anchor-2abd3561b449122da362\", \"anchor-894bab8d73925c2e21fb\", \"anchor-424f859b4542ae5e3fe8\", \"anchor-72d132140a462bda8294\", \"anchor-9355c0ed10cf6b0d6126\", \"anchor-1c25843210fad759fb29\", \"anchor-4fc2742af1833498556f\", \"anchor-25d00b9ed2c3801f4767\", \"anchor-611488639e845ca27baa\"]\n    },\n    {\n      \"entity\": \"entity-c73f79cf59206d728d84\",\n      \"support_anchors\": [\"anchor-945c2c29fa56b2e3d806\", \"anchor-bb8468688e8a36e2316e\", \"anchor-fd776478abbbd6f7dad5\", \"anchor-ffa6cfcfef92816cb285\", \"anchor-5a2090a34b5b5daeac9a\", \"anchor-34b076e4202a10ed1cfa\", \"anchor-4ee1bbe03ac84f2331a6\", \"anchor-4a17be286b5a44d9b2a4\", \"anchor-12e059377e22e77f2414\", \"anchor-edca8bd45d29df6dbb9b\", \"anchor-5948c7278e120fe7f098\", \"anchor-8a7cbab23d765f6f3317\", \"anchor-894bab8d73925c2e21fb\", \"anchor-424f859b4542ae5e3fe8\", \"anchor-72d132140a462bda8294\", \"anchor-5d3fe6ad92cc605debf0\", \"anchor-8b8414ff55fe0cda8bf0\", \"anchor-181a165b071037963727\", \"anchor-4fc2742af1833498556f\"]\n    },\n    {\n      \"entity\": \"entity-c9899197615f1cf718a0\",\n      \"support_anchors\": [\"anchor-28b33796719860d489a6\"]\n    }\n  ],\n  \"schema\": {\n    \"$defs\": {\n      \"Entity\": {\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"key\": {\n            \"title\": \"Key\",\n            \"type\": \"string\"\n          },\n          \"label\": {\n            \"maxLength\": 300,\n            \"minLength\": 1,\n            \"title\": \"Label\",\n            \"type\": \"string\"\n          },\n          \"class_id\": {\n            \"title\": \"Class Id\",\n            \"type\": \"string\"\n          },\n          \"study\": {\n            \"default\": \"unknown\",\n            \"enum\": [\"current\", \"cited\", \"unknown\"],\n            \"title\": \"Study\",\n            \"type\": \"string\"\n          },\n          \"support\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"string\"\n            },\n            \"minItems\": 1\n          }\n        },\n        \"required\": [\"key\", \"label\", \"class_id\", \"study\", \"support\"],\n        \"title\": \"Entity\",\n        \"type\": \"object\"\n      }\n    },\n    \"additionalProperties\": false,\n    \"properties\": {\n      \"entities\": {\n        \"items\": {\n          \"$ref\": \"#/$defs/Entity\"\n        },\n        \"title\": \"Entities\",\n        \"type\": \"array\"\n      }\n    },\n    \"title\": \"Output\",\n    \"type\": \"object\",\n    \"required\": [\"entities\"]\n  }\n}",
+          "usage": {
+            "completion_tokens": 5504,
+            "prompt_tokens": 18805,
+            "total_tokens": 24309,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": null,
+              "audio_tokens": null,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": null,
+              "text_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": null,
+              "cache_write_tokens": null,
+              "cached_tokens": 0,
+              "image_tokens": null,
+              "text_tokens": null
+            }
+          },
+          "outcome": {
+            "segment_id": "window-7dea7556f306ecafd4449a30",
+            "stage": "identity",
+            "cache_key": "9f0d80fde8a9b55a2fa97fa872fa3ca5fd78ce9db09022eb9a5b2ba81069adac",
+            "members": [
+              {
+                "id": "segment-c1e596ab3be846821c400ce9",
+                "evidence_id": "E-3d0d479957889ee0ebba3428",
+                "start": 0,
+                "end": 320
+              },
+              {
+                "id": "segment-e54637cd4f9b646f02df26eb",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "start": 0,
+                "end": 456
+              },
+              {
+                "id": "segment-cc993a1f594cccf6c31a035e",
+                "evidence_id": "E-0acbeed7a437e765685d020a",
+                "start": 456,
+                "end": 776
+              },
+              {
+                "id": "segment-bd146d8f397f9f65630306f7",
+                "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+                "start": 0,
+                "end": 772
+              },
+              {
+                "id": "segment-03a713bfb9ed6856662ea509",
+                "evidence_id": "E-b901ec1e461ebf942f146e18",
+                "start": 0,
+                "end": 539
+              },
+              {
+                "id": "segment-a0803776918ef1741c02b219",
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "start": 0,
+                "end": 592
+              },
+              {
+                "id": "segment-426e822e99eca4474f313de2",
+                "evidence_id": "E-a4517b58edb7fb6b7246f801",
+                "start": 0,
+                "end": 132
+              },
+              {
+                "id": "segment-26637bfbdfd33ddb83435184",
+                "evidence_id": "E-b3ed9a7463f43f22a17be8ec",
+                "start": 0,
+                "end": 100
+              },
+              {
+                "id": "segment-0300df564a7d37f7d4e009c9",
+                "evidence_id": "E-9984369871f9b119c39685ae",
+                "start": 0,
+                "end": 151
+              },
+              {
+                "id": "segment-20e74bccbc65f71594def476",
+                "evidence_id": "E-d621160208181545c2e7acf1",
+                "start": 0,
+                "end": 7
+              },
+              {
+                "id": "segment-be5d68159af6dfc60d8f477c",
+                "evidence_id": "E-138c0efdbdc2243a724f2a16",
+                "start": 0,
+                "end": 394
+              },
+              {
+                "id": "segment-530262f4cd32a1aaab95cf6b",
+                "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+                "start": 0,
+                "end": 9
+              },
+              {
+                "id": "segment-db7f9650915e690de2a61799",
+                "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                "start": 0,
+                "end": 1499
+              },
+              {
+                "id": "segment-bbd11a1978a0d9a7374758f7",
+                "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+                "start": 0,
+                "end": 1035
+              },
+              {
+                "id": "segment-db3bd90a9b652021f9d1d47a",
+                "evidence_id": "E-e701476789b9bf6dd3395377",
+                "start": 0,
+                "end": 320
+              },
+              {
+                "id": "segment-1b5c33472e72e144f909a25c",
+                "evidence_id": "E-d5b5c13caefae1761b25a868",
+                "start": 0,
+                "end": 268
+              },
+              {
+                "id": "segment-7603d41eb3fe6a1741224420",
+                "evidence_id": "E-d3aebe64259ea519e1693467",
+                "start": 0,
+                "end": 866
+              },
+              {
+                "id": "segment-6adaab00206f5167145e2009",
+                "evidence_id": "E-36fba4ad2dd3a80446e482de",
+                "start": 0,
+                "end": 292
+              },
+              {
+                "id": "segment-42841cebccdca079fd639657",
+                "evidence_id": "E-d21d6576e58973f04cbb79b6",
+                "start": 0,
+                "end": 315
+              },
+              {
+                "id": "segment-de86923551291452ba80aded",
+                "evidence_id": "E-b7874f30c44529988c9a2b4d",
+                "start": 0,
+                "end": 118
+              },
+              {
+                "id": "segment-34ec4452cd972f75c6364f0a",
+                "evidence_id": "E-ace382bc90bbdf2808dfba14",
+                "start": 0,
+                "end": 191
+              },
+              {
+                "id": "segment-41c4f967315c777511cc0de1",
+                "evidence_id": "E-a55ec34c0f83d6c8b98b529c",
+                "start": 0,
+                "end": 389
+              },
+              {
+                "id": "segment-0547e445b069f010d1fd2704",
+                "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+                "start": 0,
+                "end": 194
+              },
+              {
+                "id": "segment-57f5cc4e04c7855f8f797f06",
+                "evidence_id": "E-a08131327d6385587996348e",
+                "start": 0,
+                "end": 224
+              },
+              {
+                "id": "segment-00a724d85ffb7fc187c60aa3",
+                "evidence_id": "E-007124915589abdd7abc5e6e",
+                "start": 0,
+                "end": 76
+              },
+              {
+                "id": "segment-982a39c8a4d866fd4829cab9",
+                "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+                "start": 0,
+                "end": 74
+              },
+              {
+                "id": "segment-4c40ff5d12a1507a32e70060",
+                "evidence_id": "E-94f2c30163d61cfbf33f137a",
+                "start": 0,
+                "end": 252
+              },
+              {
+                "id": "segment-eecf1fc32edb289e7661c0eb",
+                "evidence_id": "E-4e83b44eb58f230065e2b311",
+                "start": 0,
+                "end": 226
+              },
+              {
+                "id": "segment-33fdb84e39028c7e5329aec3",
+                "evidence_id": "E-883f133a5745d0142df1e007",
+                "start": 0,
+                "end": 117
+              },
+              {
+                "id": "segment-59c9f85b9f13574f77bca086",
+                "evidence_id": "E-d4940e2063b4c03f3303beea",
+                "start": 0,
+                "end": 127
+              },
+              {
+                "id": "segment-8f0323e764e3b70ef69cbc8c",
+                "evidence_id": "E-92e5fd01ba0fa39b833981b3",
+                "start": 0,
+                "end": 24
+              },
+              {
+                "id": "segment-0db31dbfb72d76fa0264164b",
+                "evidence_id": "E-7b2423e2b4112606572b7b6e",
+                "start": 0,
+                "end": 153
+              },
+              {
+                "id": "segment-da0bcdf337aee670d166f6bf",
+                "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+                "start": 0,
+                "end": 208
+              },
+              {
+                "id": "segment-1de976f86c01f3facd19647f",
+                "evidence_id": "E-a77a2a0b6c4c5ef905224f73",
+                "start": 0,
+                "end": 23
+              },
+              {
+                "id": "segment-b379670b8b5adc4b90055325",
+                "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+                "start": 0,
+                "end": 138
+              },
+              {
+                "id": "segment-f298b01a1b10d005ed0d535c",
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "start": 0,
+                "end": 706
+              },
+              {
+                "id": "segment-28fd007c535c19cecc9a2618",
+                "evidence_id": "E-7e8d8e958dbe85901540a377",
+                "start": 0,
+                "end": 8
+              },
+              {
+                "id": "segment-233b2558285b789e48806c67",
+                "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+                "start": 0,
+                "end": 344
+              },
+              {
+                "id": "segment-999d768775be52225a93c0cd",
+                "evidence_id": "E-d5f9930ae7882641030769e0",
+                "start": 0,
+                "end": 269
+              },
+              {
+                "id": "segment-16ee9be57b91444451eb4da2",
+                "evidence_id": "E-591e163edaa75d5ac8c895d0",
+                "start": 0,
+                "end": 136
+              },
+              {
+                "id": "segment-dd7d0c2d7b12935c8b43123a",
+                "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+                "start": 0,
+                "end": 142
+              },
+              {
+                "id": "segment-838e15258c55f6ff9dd8904c",
+                "evidence_id": "E-d6e291dc28d06c4dea34e721",
+                "start": 0,
+                "end": 294
+              },
+              {
+                "id": "segment-be55c2279b820f2adb135984",
+                "evidence_id": "E-f4f95c94998d43684aa6df08",
+                "start": 0,
+                "end": 95
+              }
+            ],
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "start": 0,
+            "end": 12915,
+            "deterministic": "COMPLETE",
+            "model": "PARTIAL_SCHEMA",
+            "attempts": 1,
+            "source_anchors": 117,
+            "known_entities_selected": 6,
+            "source_anchor_characters": 15261,
+            "request_bytes": 43575,
+            "reserved_tokens_per_attempt": 51460,
+            "output_tokens": 6144,
+            "finish_reason": "stop",
+            "usage": {
+              "completion_tokens": 5504,
+              "prompt_tokens": 18805,
+              "total_tokens": 24309,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": null,
+                "audio_tokens": null,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": null,
+                "text_tokens": null
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": null,
+                "cache_write_tokens": null,
+                "cached_tokens": 0,
+                "image_tokens": null,
+                "text_tokens": null
+              }
+            },
+            "transport": {
+              "stream": true,
+              "max_output_tokens": 6144,
+              "thinking_enabled": false,
+              "reasoning_budget": 0,
+              "duration_seconds": 73.19860496200272,
+              "time_to_first_token_seconds": 73.19670517000486,
+              "reasoning_characters": 0
+            },
+            "schema_errors": [
+              {
+                "kind": "top_level",
+                "error": "UNEXPECTED_STAGE_KEY",
+                "key": "schema"
+              },
+              {
+                "kind": "top_level",
+                "error": "UNEXPECTED_STAGE_KEY",
+                "key": "identity"
+              },
+              {
+                "kind": "top_level",
+                "error": "UNEXPECTED_STAGE_KEY",
+                "key": "support"
+              },
+              {
+                "kind": "top_level",
+                "error": "UNEXPECTED_STAGE_KEY",
+                "key": "relationships"
+              },
+              {
+                "kind": "top_level",
+                "error": "UNEXPECTED_STAGE_KEY",
+                "key": "propositions"
+              },
+              {
+                "kind": "entities",
+                "error": "MISSING_STAGE_ARRAY"
+              }
+            ],
+            "source_errors": [],
+            "proposed_items": 0
+          }
+        }
+      ]
+    }
+  ]
+}

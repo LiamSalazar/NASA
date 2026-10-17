@@ -1,0 +1,15 @@
+unformatted: File would be reformatted
+  --> artifacts/storage_cleanup_20261015/README.md:24:9
+   |
+23 |
+   - rows = [json.loads(line) for line in Path(
+   -     "artifacts/storage_cleanup_20261015/manifest.jsonl"
+   - ).read_text().splitlines()]
+24 + rows = [
+25 +     json.loads(line)
+26 +     for line in Path("artifacts/storage_cleanup_20261015/manifest.jsonl").read_text().splitlines()
+27 + ]
+28 | row = rows[0]  # Select the required original path in the manifest.
+   |
+
+1 file would be reformatted, 462 files already formatted

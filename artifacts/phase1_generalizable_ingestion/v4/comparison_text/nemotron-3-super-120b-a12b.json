@@ -1,0 +1,163 @@
+{
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "endpoint": "https://integrate.api.nvidia.com/v1",
+  "task": {
+    "title": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket",
+    "original_pages": [
+      {
+        "page": 5,
+        "text": "Schematic\nCentrifugal gravity is into the page; this \nwould be looking outward from the \naxis of rotation of the vehicle toward \nthe cylindrical hull of the rocket.  The \nflames would generally rise out of the \npage, or towards the axis of rotation.\nTwo samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.  \nSensors: Chamber oxygen \nconcentration, pressure, temperature, \nand centrifugal acceleration.\nCombustion enclosure/chamber\nLocker\nBurning Fabric\nFront view\nSample #2: Acrylic \n(PMMA) Rod\nBurning Fabric\nEdge view\nBurning Rod\n"
+      },
+      {
+        "page": 29,
+        "text": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.\n•\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length).\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n"
+      },
+      {
+        "page": 36,
+        "text": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n"
+      },
+      {
+        "page": 37,
+        "text": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.  The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.  \nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight. \n"
+      }
+    ]
+  },
+  "image": null,
+  "system": "Interpret only supplied original NASA evidence. Return JSON with keys\nentities, quantities, statements. Each is an array of objects. Entities: label,\nkind, page, quote. Quantities: label, expression, unit, subject, epistemic, page,\nquote. Statements: text, subject, epistemic, page, quote. Every quote must be an\nexact contiguous original span. Preserve approximate values, original units,\nscope and uncertainty. Separate experimental_configuration, reported_quantity,\nderived_quantity, measured_observation, author_conclusion, tentative_interpretation,\nplanned_work. A linear fit is derived, not a direct measurement. Do not infer\ncauses, executed runs, or distribute group results to other groups. Recover all\nscientifically meaningful content, omit diagram-symbol fragments.",
+  "state": "COMPLETED",
+  "content": "{\"entities\": [{\"label\": \"LUCI project\", \"kind\": \"project\", \"page\": 37, \"quote\": \"The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated Lunar gravity.\"}, {\"label\": \"Flammability of Materials on the Moon (FM2) experiment\", \"kind\": \"experiment\", \"page\": 37, \"quote\": \"the Flammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System unmanned test flight.\"}, {\"label\": \"Fabric 5 cm wide x 30 cm long\", \"kind\": \"sample\", \"page\": 5, \"quote\": \"Two samples: Fabric 5 cm wide x 30 cm long and 4-mm-DIA acrylic, (PMMA); ignited with slight pause between them.\"}, {\"label\": \"4-mm-DIA acrylic, (PMMA)\", \"kind\": \"sample\", \"page\": 5, \"quote\": \"Two samples: Fabric 5 cm wide x 30 cm long and 4-mm-DIA acrylic, (PMMA); ignited with slight pause between them.\"}], \"quantities\": [{\"label\": \"Flame tip growth rate\", \"expression\": \"~ 3.95\", \"unit\": \"mm/s\", \"subject\": \"PMMA flame tip\", \"epistemic\": \"approximate\", \"page\": 29, \"quote\": \"Flame tip grows at a rate of ~ 3.95 mm/s at the beginning of the burn.\"}, {\"label\": \"Flame tip spread\", \"expression\": \".15\", \"unit\": \"cm/s\", \"subject\": \"Partial-G PMMA\", \"epistemic\": \"measured\", \"page\": 36, \"quote\": \".15\"}, {\"label\": \"Flame tip spread\", \"expression\": \".40\", \"unit\": \"cm/s\", \"subject\": \"1-G PMMA\", \"epistemic\": \"measured\", \"page\": 36, \"quote\": \".40\"}, {\"label\": \"Flame tip spread ratio\", \"expression\": \".38\", \"unit\": null, \"subject\": \"Partial-G to 1-G PMMA\", \"epistemic\": \"derived\", \"page\": 36, \"quote\": \".38\"}], \"statements\": [{\"label\": \"Flame base location is ~constant\", \"text\": \"Flame base location is ~constant, so this can be approximated as flame growth rate (flame length).\", \"subject\": \"PMMA flame\", \"epistemic\": \"approximation\", \"page\": 29, \"quote\": \"Flame base location is ~constant, so this can be approximated as flame growth rate (flame length).\"}, {\"label\": \"LUCI project significance\", \"text\": \"The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe materials and environments and ensure safety of future spacecraft and Lunar habitats. The data also provides fundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.\", \"subject\": \"LUCI project results\", \"epistemic\": \"author_conclusion\", \"page\": 37, \"quote\": \"The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe materials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides fundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.\"}, {\"label\": \"LUCI project duration\", \"text\": \"The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated Lunar gravity.\", \"subject\": \"LUCI project\", \"epistemic\": \"author_conclusion\", \"page\": 37, \"quote\": \"The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated Lunar gravity.\"}, {\"label\": \"FM2 experiment purpose\", \"text\": \"The experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the Flammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System unmanned test flight.\", \"subject\": \"LUCI project\", \"epistemic\": \"planned_work\", \"page\": 37, \"quote\": \"Finally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the Flammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System unmanned test flight.\"}]}",
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 1001,
+    "prompt_tokens": 801,
+    "total_tokens": 1802,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "transport": {
+    "requested_model": "nvidia/nemotron-3-super-120b-a12b",
+    "stream": true,
+    "max_output_tokens": 8192,
+    "thinking_enabled": false,
+    "reasoning_budget": 0,
+    "response_headers": {},
+    "duration_seconds": 17.282275273999403,
+    "time_to_first_token_seconds": 17.280449096000666,
+    "served_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "reasoning_characters": 0
+  },
+  "parsed": {
+    "entities": [
+      {
+        "label": "LUCI project",
+        "kind": "project",
+        "page": 37,
+        "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated Lunar gravity."
+      },
+      {
+        "label": "Flammability of Materials on the Moon (FM2) experiment",
+        "kind": "experiment",
+        "page": 37,
+        "quote": "the Flammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System unmanned test flight."
+      },
+      {
+        "label": "Fabric 5 cm wide x 30 cm long",
+        "kind": "sample",
+        "page": 5,
+        "quote": "Two samples: Fabric 5 cm wide x 30 cm long and 4-mm-DIA acrylic, (PMMA); ignited with slight pause between them."
+      },
+      {
+        "label": "4-mm-DIA acrylic, (PMMA)",
+        "kind": "sample",
+        "page": 5,
+        "quote": "Two samples: Fabric 5 cm wide x 30 cm long and 4-mm-DIA acrylic, (PMMA); ignited with slight pause between them."
+      }
+    ],
+    "quantities": [
+      {
+        "label": "Flame tip growth rate",
+        "expression": "~ 3.95",
+        "unit": "mm/s",
+        "subject": "PMMA flame tip",
+        "epistemic": "approximate",
+        "page": 29,
+        "quote": "Flame tip grows at a rate of ~ 3.95 mm/s at the beginning of the burn."
+      },
+      {
+        "label": "Flame tip spread",
+        "expression": ".15",
+        "unit": "cm/s",
+        "subject": "Partial-G PMMA",
+        "epistemic": "measured",
+        "page": 36,
+        "quote": ".15"
+      },
+      {
+        "label": "Flame tip spread",
+        "expression": ".40",
+        "unit": "cm/s",
+        "subject": "1-G PMMA",
+        "epistemic": "measured",
+        "page": 36,
+        "quote": ".40"
+      },
+      {
+        "label": "Flame tip spread ratio",
+        "expression": ".38",
+        "unit": null,
+        "subject": "Partial-G to 1-G PMMA",
+        "epistemic": "derived",
+        "page": 36,
+        "quote": ".38"
+      }
+    ],
+    "statements": [
+      {
+        "label": "Flame base location is ~constant",
+        "text": "Flame base location is ~constant, so this can be approximated as flame growth rate (flame length).",
+        "subject": "PMMA flame",
+        "epistemic": "approximation",
+        "page": 29,
+        "quote": "Flame base location is ~constant, so this can be approximated as flame growth rate (flame length)."
+      },
+      {
+        "label": "LUCI project significance",
+        "text": "The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe materials and environments and ensure safety of future spacecraft and Lunar habitats. The data also provides fundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.",
+        "subject": "LUCI project results",
+        "epistemic": "author_conclusion",
+        "page": 37,
+        "quote": "The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe materials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides fundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models."
+      },
+      {
+        "label": "LUCI project duration",
+        "text": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated Lunar gravity.",
+        "subject": "LUCI project",
+        "epistemic": "author_conclusion",
+        "page": 37,
+        "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated Lunar gravity."
+      },
+      {
+        "label": "FM2 experiment purpose",
+        "text": "The experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the Flammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System unmanned test flight.",
+        "subject": "LUCI project",
+        "epistemic": "planned_work",
+        "page": 37,
+        "quote": "Finally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the Flammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System unmanned test flight."
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "adjudication": "Developer source comparison of original NASA pages, not independent scientific expert gold. These small matched targets are not whole-document precision or recall.",
+  "selected_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+  "scientific_fallback_models": [
+    "nvidia/nemotron-3-super-120b-a12b"
+  ],
+  "reasoning_token_envelope": 2048,
+  "selection_basis": "Three correctly attributed author conclusions versus none with fully correct scope/role on matched p37 tasks; better identity recovery in the production preflight; faster matched strict completions. Neither raw model is trusted for quantities or table interpretation. Production validators and targeted recovery remain authoritative.",
+  "models": {
+    "nvidia/nemotron-3-super-120b-a12b": {
+      "matched_strict_tasks": 2,
+      "transport_completions": 2,
+      "finish_reasons": [
+        "stop",
+        "stop"
+      ],
+      "durations_seconds": [
+        67.05202138300228,
+        80.27349191900066
+      ],
+      "total_tokens": 16874,
+      "scientific_review": {
+        "p37_three_author_conclusions_exact_experimental_scope_and_role": {
+          "correct": 0,
+          "denominator": 3
+        },
+        "p29_quantity_complete_scientific_assignment": {
+          "correct": 0,
+          "denominator": 1
+        },
+        "defects": [
+          "A21 and A23 add a gravity-condition endpoint to investigation scope.",
+          "A22 changes the source applications conclusion into guidance. A24 future research is also labeled guidance.",
+          "The p29 quantity is assigned to a FlameSpread phenomenon, not an experimental group, and its name is not literal source wording.",
+          "Table values have derived roles, but phenomenon endpoints do not establish the experimental scope."
+        ]
+      }
+    },
+    "nvidia/nemotron-3.5-super-vl-120b-a12b": {
+      "matched_strict_tasks": 2,
+      "transport_completions": 2,
+      "finish_reasons": [
+        "stop",
+        "stop"
+      ],
+      "durations_seconds": [
+        13.57898010700228,
+        40.56619477300046
+      ],
+      "total_tokens": 16784,
+      "scientific_review": {
+        "p37_three_author_conclusions_exact_experimental_scope_and_role": {
+          "correct": 3,
+          "denominator": 3
+        },
+        "p29_quantity_complete_scientific_assignment": {
+          "correct": 0,
+          "denominator": 1
+        },
+        "defects": [
+          "The p29 quantity uses a material endpoint and a nonliteral quantity name; production must recover it separately with source scope.",
+          "The three linear-fit table values are incorrectly labeled reported quantities. Independent source/unit/role validation must reject these assignments.",
+          "Not every exact source anchor establishes scientific entailment."
+        ]
+      }
+    }
+  },
+  "image_diagnostic": {
+    "receipt": "comparison_image/nemotron-3.5-super-vl-120b-a12b.json",
+    "accepted_format": "OpenAI-compatible user content array with text and PNG data URL in image_url",
+    "page": 36,
+    "derived_rate_roles_correct": 0,
+    "derived_rate_role_denominator": 2,
+    "decision": "Visual input works, but demonstrated no scientific superiority for this table. Optional production image route is available via NVIDIA_SCIENCE_VISION_MODEL and disabled by default. All image context retains original PDF checksum and page; text anchors remain independently required."
+  },
+  "lightning_baseline": "Historical v3 scientific_quality_development_02.json and provider_behavior_02.json preserved; no repeated historical campaign.",
+  "ultra": "Not called: accessible VL plus independent validation and recovery provide a usable configuration; no demonstrated need to introduce another route.",
+  "official_references": [
+    "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b",
+    "https://build.nvidia.com/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  ],
+  "provider_limits": "Free endpoint authorization does not establish unlimited quota, account credits, production licensing, or a verified dollar cost."
+}

@@ -1,0 +1,47 @@
+{
+  "request": {
+    "source_anchor": {
+      "id": "A1",
+      "quote": "LUCI: SIBAL fabric\n\u2022\nFlame base spread rate = .92 mm/s.\n\u2022\nFlame tip spread rate = 1.1 mm/s\n\u2022\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n\u2022\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n"
+    },
+    "task": "Read the source. Return JSON with quantities (exact label, expression without unit, unit) and one observation. Do not invent data or alter scientific meaning. Distinguish measurements from derived fit results."
+  },
+  "source_identity": {
+    "evidence_id": "E-36fba4ad2dd3a80446e482de",
+    "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+    "page": 19,
+    "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79"
+  },
+  "response": {
+    "content": "{\n  \"quantities\": [\n    {\n      \"label\": \"Flame base spread rate\",\n      \"expression\": \".92\",\n      \"unit\": \"mm/s\"\n    },\n    {\n      \"label\": \"Flame tip spread rate\",\n      \"expression\": \"1.1\",\n      \"unit\": \"mm/s\"\n    }\n  ],\n  \"observation\": \"Flame tip spreads very slightly faster than flame base, indicating a slowly shrinking flame length.\"\n}",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 4195,
+      "prompt_tokens": 196,
+      "total_tokens": 4391,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 4095,
+        "rejected_prediction_tokens": null,
+        "text_tokens": null
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "metadata": {
+      "stream": true,
+      "max_output_tokens": 32768,
+      "thinking_enabled": true,
+      "reasoning_budget": 4096,
+      "duration_seconds": 65.60125982500904,
+      "time_to_first_token_seconds": 65.5991696780111,
+      "reasoning_characters": 18393
+    }
+  }
+}

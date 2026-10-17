@@ -1,0 +1,32 @@
+{
+  "evidence": "Live frozen cycle7 actual production provider fallback; not mocked.",
+  "fallbacks": [
+    {
+      "from": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "to": "nvidia/nemotron-3-super-120b-a12b",
+      "reason": "deadline",
+      "task_and_evidence_preserved": true
+    }
+  ],
+  "scientific_task_and_evidence_sha256": "b46fccf2aa9a646a67b812ee1221109113d475fde52ebf681de83c1af5c2ed2a",
+  "identical_task_request_across_models": true,
+  "attempts": [
+    {
+      "cache_key": "bf0759ab55982b090cbecfce53fd5317c5586fff3978687800b80e3d495b88a9",
+      "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "state": "FINISHED",
+      "outcome": "FAILED",
+      "error_type": "JSONDecodeError",
+      "duration_seconds": 37.36772308100262
+    },
+    {
+      "cache_key": "40dbeb8cb317a080dd85ca356a23a6517a8b5a6fb7bcfa2964a1b0c874b52280",
+      "requested_model": "nvidia/nemotron-3-super-120b-a12b",
+      "state": "FINISHED",
+      "outcome": "PARTIAL_SCHEMA",
+      "error_type": null,
+      "duration_seconds": 97.11334974800047
+    }
+  ],
+  "science_authority": "Fallback returns proposals only. Same source/role/scope validators apply; no scientific assertion is rewritten to satisfy the fallback."
+}

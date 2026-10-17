@@ -1,0 +1,3263 @@
+{
+  "started_at": "2026-10-16T20:10:54.755613+00:00",
+  "completed_at": "2026-10-16T20:11:15.088051+00:00",
+  "attempts": [
+    {
+      "cache_key": "303b42db6a6dd1a6d504a3396e83a3bc863d8443e5a59d8cd3debc77def97887",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "identity",
+      "request": {
+        "stage": "identity",
+        "focus": null,
+        "document_identity": {
+          "title": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 1,
+            "start": 0,
+            "end": 320,
+            "section": "Lunar Combustion Investigation: Flammability Results"
+          },
+          {
+            "page": 2,
+            "start": 0,
+            "end": 456,
+            "section": "UNSPECIFIED"
+          },
+          {
+            "page": 2,
+            "start": 456,
+            "end": 776,
+            "section": "Outcome"
+          },
+          {
+            "page": 3,
+            "start": 0,
+            "end": 772,
+            "section": "Outcome"
+          },
+          {
+            "page": 4,
+            "start": 0,
+            "end": 539,
+            "section": "Outcome"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 1,
+            "quote": "Lunar Combustion Investigation: Flammability Results",
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 1,
+            "quote": "Lunar Combustion Investigation: Flammability Results \nfrom a Rotating Sounding Rocket\nPaul V.",
+            "in_task": true
+          },
+          {
+            "id": "A3",
+            "page": 1,
+            "quote": "Ferkul1, Michael C.",
+            "in_task": true
+          },
+          {
+            "id": "A4",
+            "page": 1,
+            "quote": "Johnston2, Nathan Kralik3, and Ya-Ting Liao3 \nUniversities Space Research Association1\nNASA Johnson Space Center 2 \nCase Western Reserve University 3\n2025 Annual Meeting\nPhoenix, Arizona\nDecember 3-6, 2025",
+            "in_task": true
+          },
+          {
+            "id": "A5",
+            "page": 2,
+            "quote": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\nObjectives\nDemonstrate the feasibility of conducting material flammability experiments in partial-g on the spinning Blue Origin \nNew Shepard vehicle which simulates Lunar gravity with centrifugal force\nObtain data from the flight that will support other simulated Lunar-g experiments in drop towers and parabolic \nflight, actual Lunar-g experiments, and computer models.",
+            "in_task": true
+          },
+          {
+            "id": "A6",
+            "page": 2,
+            "quote": "The LUCI scientific objectives were achieved.",
+            "in_task": true
+          },
+          {
+            "id": "A7",
+            "page": 2,
+            "quote": "Material flammability testing at partial-g is feasible using a spinning \nvehicle.",
+            "in_task": true
+          },
+          {
+            "id": "A8",
+            "page": 2,
+            "quote": "Conducting large scale flammability testing would require additional programmatic support.",
+            "in_task": true
+          },
+          {
+            "id": "A9",
+            "page": 2,
+            "quote": "This might be \nconsidered should more Lunar-g flights become available using New Shepard.",
+            "in_task": true
+          },
+          {
+            "id": "A10",
+            "page": 3,
+            "quote": "Page 3\nOverview\nConduct partial-g fire tests on the Blue Origin sounding rocket.",
+            "in_task": true
+          },
+          {
+            "id": "A11",
+            "page": 3,
+            "quote": "Hypothesis: some materials burning in partial-g are more flammable than on Earth.",
+            "in_task": true
+          },
+          {
+            "id": "A12",
+            "page": 3,
+            "quote": "This has \nimportant implications for the current 1-g material screening method used by NASA.",
+            "in_task": true
+          },
+          {
+            "id": "A13",
+            "page": 3,
+            "quote": "Fuel samples burned in pairs; cameras and other sensors record flame characteristics.",
+            "in_task": true
+          },
+          {
+            "id": "A14",
+            "page": 3,
+            "quote": "Oxygen limits for upward and downward spread at partial-g will be compared to 1-g values.",
+            "in_task": true
+          },
+          {
+            "id": "A15",
+            "page": 3,
+            "quote": "Measured flame characteristics in 1-g and partial-g will be compared to detailed model predictions.",
+            "in_task": true
+          },
+          {
+            "id": "A16",
+            "page": 3,
+            "quote": "These comparisons will refine pressure-gravity scaling relations and will be applied to other g-levels.",
+            "in_task": true
+          },
+          {
+            "id": "A17",
+            "page": 3,
+            "quote": "The work directly addresses knowledge gaps in flammability and crew safety as defined in several \nNASA strategic documents.",
+            "in_task": true
+          },
+          {
+            "id": "A18",
+            "page": 4,
+            "quote": "Schematic\nCentrifugal gravity is into the page; this \nwould be looking outward from the \naxis of rotation of the vehicle toward \nthe cylindrical hull of the rocket.",
+            "in_task": true
+          },
+          {
+            "id": "A19",
+            "page": 4,
+            "quote": "The \nflames would generally rise out of the \npage, or towards the axis of rotation.",
+            "in_task": true
+          },
+          {
+            "id": "A20",
+            "page": 4,
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "in_task": true
+          },
+          {
+            "id": "A21",
+            "page": 4,
+            "quote": "Sensors: Chamber oxygen \nconcentration, pressure, temperature, \nand centrifugal acceleration.",
+            "in_task": true
+          },
+          {
+            "id": "A22",
+            "page": 4,
+            "quote": "Combustion enclosure/chamber\nSensors\nLocker\nFlame\nFront view\nFlame\nEdge view",
+            "in_task": true
+          }
+        ],
+        "shared_context": {
+          "available": 2,
+          "selected_characters": 0
+        },
+        "known_entities": [],
+        "schema": {
+          "$defs": {
+            "Entity": {
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "title": "Key",
+                  "type": "string"
+                },
+                "label": {
+                  "minLength": 1,
+                  "title": "Label",
+                  "type": "string"
+                },
+                "class_id": {
+                  "title": "Class Id",
+                  "type": "string",
+                  "enum": [
+                    "AtmosphereCondition",
+                    "Blowoff",
+                    "CombustionPhenomenon",
+                    "ExperimentFamily",
+                    "ExperimentalCondition",
+                    "ExperimentalRun",
+                    "Extinction",
+                    "FlameGrowth",
+                    "FlameSpread",
+                    "FlowCondition",
+                    "GravityCondition",
+                    "Ignition",
+                    "Intervention",
+                    "Investigation",
+                    "Material",
+                    "PressureCondition",
+                    "Quenching",
+                    "Sample",
+                    "StableBurning"
+                  ]
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                },
+                "support": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "class_id",
+                "study",
+                "support"
+              ],
+              "title": "Entity",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "entities": {
+              "items": {
+                "$ref": "#/$defs/Entity"
+              },
+              "title": "Entities",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "entities"
+          ]
+        },
+        "original_tables": [
+          {
+            "physical_pdf_page": 1,
+            "original_cells": [
+              [
+                "December 3",
+                "-",
+                "6",
+                ", 202",
+                "5"
+              ]
+            ],
+            "original_headers": [
+              "December 3",
+              "-",
+              "6",
+              ", 202",
+              "5"
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          }
+        ]
+      },
+      "max_output_tokens": 4096,
+      "raw_response": "{\"entities\": [{\"key\": \"e1\", \"label\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\", \"class_id\": \"Investigation\", \"study\": \"current\", \"support\": [\"A1\", \"A2\"]}, {\"key\": \"e2\", \"label\": \"LUCI\", \"class_id\": \"Investigation\", \"study\": \"current\", \"support\": [\"A6\"]}, {\"key\": \"e3\", \"label\": \"Fabric 5 cm wide x 30 cm long\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A20\"]}, {\"key\": \"e4\", \"label\": \"4-mm-DIA acrylic, (PMMA)\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A20\"]}, {\"key\": \"e5\", \"label\": \"SIBAL Fabric\", \"class_id\": \"Material\", \"study\": \"current\", \"support\": [\"A20\"]}, {\"key\": \"e6\", \"label\": \"PMMA\", \"class_id\": \"Material\", \"study\": \"current\", \"support\": [\"A20\"]}, {\"key\": \"e7\", \"label\": \"partial-g\", \"class_id\": \"GravityCondition\", \"study\": \"current\", \"support\": [\"A5\", \"A10\", \"A11\", \"A14\", \"A15\"]}, {\"key\": \"e8\", \"label\": \"1-g\", \"class_id\": \"GravityCondition\", \"study\": \"current\", \"support\": [\"A12\", \"A14\", \"A15\"]}, {\"key\": \"e9\", \"label\": \"Blue Origin New Shepard vehicle\", \"class_id\": \"ExperimentalRun\", \"study\": \"current\", \"support\": [\"A5\"]}, {\"key\": \"e10\", \"label\": \"spinning vehicle\", \"class_id\": \"ExperimentalRun\", \"study\": \"current\", \"support\": [\"A7\"]}, {\"key\": \"e11\", \"label\": \"Lunar gravity\", \"class_id\": \"GravityCondition\", \"study\": \"current\", \"support\": [\"A5\"]}]}",
+      "usage": {
+        "completion_tokens": 490,
+        "prompt_tokens": 3053,
+        "total_tokens": 3543,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "outcome": {
+        "segment_id": "window-7f2c932bbbb68ee6f0594b92",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "0245b2d0a98b25d6dc1c96cf8170c7a078110e094930e643868f55c4358cd77f",
+        "members": [
+          {
+            "id": "segment-c1e596ab3be846821c400ce9",
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-e54637cd4f9b646f02df26eb",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 0,
+            "end": 456
+          },
+          {
+            "id": "segment-cc993a1f594cccf6c31a035e",
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "start": 456,
+            "end": 776
+          },
+          {
+            "id": "segment-bd146d8f397f9f65630306f7",
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "start": 0,
+            "end": 772
+          },
+          {
+            "id": "segment-03a713bfb9ed6856662ea509",
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "start": 0,
+            "end": 539
+          }
+        ],
+        "evidence_id": "E-3d0d479957889ee0ebba3428",
+        "start": 0,
+        "end": 2407,
+        "deterministic": "COMPLETE",
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "attempts": 1,
+        "source_anchors": 22,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 0,
+        "source_anchor_characters": 2412,
+        "proposed_items": 11,
+        "request_bytes": 9969,
+        "reserved_tokens_per_attempt": 17278,
+        "output_tokens": 4096,
+        "context_token_estimate": 11199,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 490,
+          "prompt_tokens": 3053,
+          "total_tokens": 3543,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 4096,
+          "thinking_enabled": false,
+          "reasoning_budget": 0,
+          "response_headers": {},
+          "duration_seconds": 3.274164398000721,
+          "time_to_first_token_seconds": 3.26555921399995,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 0
+        },
+        "schema_errors": [],
+        "source_errors": [
+          {
+            "proposal_id": "proposal-46da7dd7956c59782d0c7d38",
+            "kind": "entities",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ],
+            "proposal": {
+              "key": "entity-d32a19dd38afba3f0150",
+              "label": "SIBAL Fabric",
+              "class_id": "Material",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-b901ec1e461ebf942f146e18",
+                  "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+                  "start": 250
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "state": "FINISHED"
+    },
+    {
+      "cache_key": "62588089f278ad420eff513c08db24e346cb2fb67893c0fc836dc1c6c85e86b0",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "identity",
+      "request": {
+        "stage": "identity",
+        "focus": null,
+        "document_identity": {
+          "title": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 5,
+            "start": 0,
+            "end": 592,
+            "section": "would be looking outward from the"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 5,
+            "quote": "Schematic\nCentrifugal gravity is into the page; this \nwould be looking outward from the \naxis of rotation of the vehicle toward \nthe cylindrical hull of the rocket.",
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 5,
+            "quote": "would be looking outward from the",
+            "in_task": true
+          },
+          {
+            "id": "A3",
+            "page": 5,
+            "quote": "The \nflames would generally rise out of the \npage, or towards the axis of rotation.",
+            "in_task": true
+          },
+          {
+            "id": "A4",
+            "page": 5,
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "in_task": true
+          },
+          {
+            "id": "A5",
+            "page": 5,
+            "quote": "Sensors: Chamber oxygen \nconcentration, pressure, temperature, \nand centrifugal acceleration.",
+            "in_task": true
+          },
+          {
+            "id": "A6",
+            "page": 5,
+            "quote": "Combustion enclosure/chamber\nLocker\nBurning Fabric\nFront view\nSample #2: Acrylic \n(PMMA) Rod\nBurning Fabric\nEdge view\nBurning Rod",
+            "in_task": true
+          }
+        ],
+        "shared_context": {
+          "available": 2,
+          "selected_characters": 0
+        },
+        "known_entities": [],
+        "schema": {
+          "$defs": {
+            "Entity": {
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "title": "Key",
+                  "type": "string"
+                },
+                "label": {
+                  "minLength": 1,
+                  "title": "Label",
+                  "type": "string"
+                },
+                "class_id": {
+                  "title": "Class Id",
+                  "type": "string",
+                  "enum": [
+                    "AtmosphereCondition",
+                    "Blowoff",
+                    "CombustionPhenomenon",
+                    "ExperimentFamily",
+                    "ExperimentalCondition",
+                    "ExperimentalRun",
+                    "Extinction",
+                    "FlameGrowth",
+                    "FlameSpread",
+                    "FlowCondition",
+                    "GravityCondition",
+                    "Ignition",
+                    "Intervention",
+                    "Investigation",
+                    "Material",
+                    "PressureCondition",
+                    "Quenching",
+                    "Sample",
+                    "StableBurning"
+                  ]
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                },
+                "support": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "class_id",
+                "study",
+                "support"
+              ],
+              "title": "Entity",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "entities": {
+              "items": {
+                "$ref": "#/$defs/Entity"
+              },
+              "title": "Entities",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "entities"
+          ]
+        }
+      },
+      "max_output_tokens": 4096,
+      "raw_response": "{\"entities\": [{\"key\": \"e1\", \"label\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\", \"class_id\": \"Investigation\", \"study\": \"current\", \"support\": [\"A1\"]}, {\"key\": \"e2\", \"label\": \"Fabric 5 cm wide x 30 cm long\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A4\"]}, {\"key\": \"e3\", \"label\": \"4-mm-DIA acrylic, (PMMA)\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A4\"]}, {\"key\": \"e4\", \"label\": \"Centrifugal gravity\", \"class_id\": \"GravityCondition\", \"study\": \"current\", \"support\": [\"A1\"]}, {\"key\": \"e5\", \"label\": \"Chamber oxygen concentration\", \"class_id\": \"AtmosphereCondition\", \"study\": \"current\", \"support\": [\"A5\"]}, {\"key\": \"e6\", \"label\": \"pressure\", \"class_id\": \"PressureCondition\", \"study\": \"current\", \"support\": [\"A5\"]}, {\"key\": \"e7\", \"label\": \"temperature\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A5\"]}, {\"key\": \"e8\", \"label\": \"centrifugal acceleration\", \"class_id\": \"FlowCondition\", \"study\": \"current\", \"support\": [\"A5\"]}]}",
+      "usage": {
+        "completion_tokens": 339,
+        "prompt_tokens": 2187,
+        "total_tokens": 2526,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "outcome": {
+        "segment_id": "window-88483811894137fdcd05a54b",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "edb242cc4f8383834918b572654ecb06b1c3267be1e76326a99fe1b69f23ec34",
+        "members": [
+          {
+            "id": "segment-a0803776918ef1741c02b219",
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "start": 0,
+            "end": 592
+          }
+        ],
+        "evidence_id": "E-49e271d94011afe76cb7c262",
+        "start": 0,
+        "end": 592,
+        "deterministic": "COMPLETE",
+        "model": "COMPLETE",
+        "attempts": 1,
+        "source_anchors": 6,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 0,
+        "source_anchor_characters": 617,
+        "proposed_items": 8,
+        "request_bytes": 6921,
+        "reserved_tokens_per_attempt": 14230,
+        "output_tokens": 4096,
+        "context_token_estimate": 9675,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 339,
+          "prompt_tokens": 2187,
+          "total_tokens": 2526,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 4096,
+          "thinking_enabled": false,
+          "reasoning_budget": 0,
+          "response_headers": {},
+          "duration_seconds": 2.432172883000021,
+          "time_to_first_token_seconds": 2.4253954040032113,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 0
+        },
+        "schema_errors": [],
+        "source_errors": []
+      },
+      "state": "FINISHED"
+    },
+    {
+      "cache_key": "11e485d2a897451efd108eaafce1e190410572604ef34d10223c3d6c9f554873",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "identity",
+      "request": {
+        "stage": "identity",
+        "focus": null,
+        "document_identity": {
+          "title": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 6,
+            "start": 0,
+            "end": 132,
+            "section": "Hardware"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 6,
+            "quote": "6\nGlenn Research Center\nZIN Technologies\nHardware\nEMI Shielding\nBlue Origin Locker\nChamber Assembly\nLid Assembly\nTop Level Assembly",
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 6,
+            "quote": "Hardware",
+            "in_task": true
+          }
+        ],
+        "shared_context": {
+          "available": 2,
+          "selected_characters": 0
+        },
+        "known_entities": [],
+        "schema": {
+          "$defs": {
+            "Entity": {
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "title": "Key",
+                  "type": "string"
+                },
+                "label": {
+                  "minLength": 1,
+                  "title": "Label",
+                  "type": "string"
+                },
+                "class_id": {
+                  "title": "Class Id",
+                  "type": "string",
+                  "enum": [
+                    "AtmosphereCondition",
+                    "Blowoff",
+                    "CombustionPhenomenon",
+                    "ExperimentFamily",
+                    "ExperimentalCondition",
+                    "ExperimentalRun",
+                    "Extinction",
+                    "FlameGrowth",
+                    "FlameSpread",
+                    "FlowCondition",
+                    "GravityCondition",
+                    "Ignition",
+                    "Intervention",
+                    "Investigation",
+                    "Material",
+                    "PressureCondition",
+                    "Quenching",
+                    "Sample",
+                    "StableBurning"
+                  ]
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                },
+                "support": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "class_id",
+                "study",
+                "support"
+              ],
+              "title": "Entity",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "entities": {
+              "items": {
+                "$ref": "#/$defs/Entity"
+              },
+              "title": "Entities",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "entities"
+          ]
+        }
+      },
+      "max_output_tokens": 4096,
+      "raw_response": "{\"entities\": [{\"key\": \"e1\", \"label\": \"EMI Shielding\", \"class_id\": \"Material\", \"study\": \"current\", \"support\": [\"A1\"]}, {\"key\": \"e2\", \"label\": \"Blue Origin Locker\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A1\"]}, {\"key\": \"e3\", \"label\": \"Chamber Assembly\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A1\"]}, {\"key\": \"e4\", \"label\": \"Lid Assembly\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A1\"]}, {\"key\": \"e5\", \"label\": \"Top Level Assembly\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A1\"]}]}",
+      "usage": {
+        "completion_tokens": 192,
+        "prompt_tokens": 1978,
+        "total_tokens": 2170,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "outcome": {
+        "segment_id": "window-1811cd9621fc5bce015f6685",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "292145a13812ed48b55825a938696948bee45040906b87a01721bc1097419e0c",
+        "members": [
+          {
+            "id": "segment-426e822e99eca4474f313de2",
+            "evidence_id": "E-a4517b58edb7fb6b7246f801",
+            "start": 0,
+            "end": 132
+          }
+        ],
+        "evidence_id": "E-a4517b58edb7fb6b7246f801",
+        "start": 0,
+        "end": 132,
+        "deterministic": "COMPLETE",
+        "model": "COMPLETE",
+        "attempts": 1,
+        "source_anchors": 2,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 0,
+        "source_anchor_characters": 139,
+        "proposed_items": 5,
+        "request_bytes": 6219,
+        "reserved_tokens_per_attempt": 13528,
+        "output_tokens": 4096,
+        "context_token_estimate": 9324,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 192,
+          "prompt_tokens": 1978,
+          "total_tokens": 2170,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 4096,
+          "thinking_enabled": false,
+          "reasoning_budget": 0,
+          "response_headers": {},
+          "duration_seconds": 1.8094480679974367,
+          "time_to_first_token_seconds": 1.8029150319998735,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 0
+        },
+        "schema_errors": [],
+        "source_errors": []
+      },
+      "state": "FINISHED"
+    },
+    {
+      "cache_key": "94676fc40155ef6cef585bb58243b1a8e7f96681206304eb51a6b51d2fc62f4f",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "identity",
+      "request": {
+        "stage": "identity",
+        "focus": null,
+        "document_identity": {
+          "title": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 7,
+            "start": 0,
+            "end": 100,
+            "section": "Top Level Assembly"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 7,
+            "quote": "7\nGlenn Research Center\nZIN Technologies\nTop Level Assembly\nIn Payload Locker\nOut of Payload Locker",
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 7,
+            "quote": "Top Level Assembly",
+            "in_task": true
+          }
+        ],
+        "shared_context": {
+          "available": 2,
+          "selected_characters": 0
+        },
+        "known_entities": [],
+        "schema": {
+          "$defs": {
+            "Entity": {
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "title": "Key",
+                  "type": "string"
+                },
+                "label": {
+                  "minLength": 1,
+                  "title": "Label",
+                  "type": "string"
+                },
+                "class_id": {
+                  "title": "Class Id",
+                  "type": "string",
+                  "enum": [
+                    "AtmosphereCondition",
+                    "Blowoff",
+                    "CombustionPhenomenon",
+                    "ExperimentFamily",
+                    "ExperimentalCondition",
+                    "ExperimentalRun",
+                    "Extinction",
+                    "FlameGrowth",
+                    "FlameSpread",
+                    "FlowCondition",
+                    "GravityCondition",
+                    "Ignition",
+                    "Intervention",
+                    "Investigation",
+                    "Material",
+                    "PressureCondition",
+                    "Quenching",
+                    "Sample",
+                    "StableBurning"
+                  ]
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                },
+                "support": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "class_id",
+                "study",
+                "support"
+              ],
+              "title": "Entity",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "entities": {
+              "items": {
+                "$ref": "#/$defs/Entity"
+              },
+              "title": "Entities",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "entities"
+          ]
+        }
+      },
+      "max_output_tokens": 4096,
+      "raw_response": "{\"entities\": [{\"key\": \"e1\", \"label\": \"Top Level Assembly\", \"class_id\": \"ExperimentFamily\", \"study\": \"current\", \"support\": [\"A1\", \"A2\"]}]}",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 1971,
+        "total_tokens": 2019,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "outcome": {
+        "segment_id": "window-0896ebd90ce8627432bedd17",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "86ff0486b6f1ab567fbd902739a8c127d3794c62f7af46c704a711115fa02d1e",
+        "members": [
+          {
+            "id": "segment-26637bfbdfd33ddb83435184",
+            "evidence_id": "E-b3ed9a7463f43f22a17be8ec",
+            "start": 0,
+            "end": 100
+          }
+        ],
+        "evidence_id": "E-b3ed9a7463f43f22a17be8ec",
+        "start": 0,
+        "end": 100,
+        "deterministic": "COMPLETE",
+        "model": "COMPLETE",
+        "attempts": 1,
+        "source_anchors": 2,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 0,
+        "source_anchor_characters": 117,
+        "proposed_items": 1,
+        "request_bytes": 6204,
+        "reserved_tokens_per_attempt": 13513,
+        "output_tokens": 4096,
+        "context_token_estimate": 9316,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 48,
+          "prompt_tokens": 1971,
+          "total_tokens": 2019,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 4096,
+          "thinking_enabled": false,
+          "reasoning_budget": 0,
+          "response_headers": {},
+          "duration_seconds": 0.8915563250011473,
+          "time_to_first_token_seconds": 0.8868316449988924,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 0
+        },
+        "schema_errors": [],
+        "source_errors": []
+      },
+      "state": "FINISHED"
+    },
+    {
+      "cache_key": "aafdb8101ae3e5febac1a542f26710c2de5bad52a397da1e06c5f6313e0028ec",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "identity",
+      "request": {
+        "stage": "identity",
+        "focus": null,
+        "document_identity": {
+          "title": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 8,
+            "start": 0,
+            "end": 151,
+            "section": "Combustion Chamber Lid Assembly"
+          },
+          {
+            "page": 9,
+            "start": 0,
+            "end": 7,
+            "section": "Outcome"
+          },
+          {
+            "page": 10,
+            "start": 0,
+            "end": 394,
+            "section": "Outcome"
+          },
+          {
+            "page": 11,
+            "start": 0,
+            "end": 9,
+            "section": "Outcome"
+          },
+          {
+            "page": 12,
+            "start": 0,
+            "end": 1499,
+            "section": "Outcome"
+          },
+          {
+            "page": 13,
+            "start": 0,
+            "end": 1035,
+            "section": "Outcome"
+          },
+          {
+            "page": 16,
+            "start": 0,
+            "end": 320,
+            "section": "Outcome"
+          },
+          {
+            "page": 17,
+            "start": 0,
+            "end": 268,
+            "section": "Outcome"
+          },
+          {
+            "page": 18,
+            "start": 0,
+            "end": 866,
+            "section": "Outcome"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 8,
+            "quote": "8\nGlenn Research Center\nZIN Technologies\nCombustion Chamber Lid Assembly  \nLid is the main attachment point for \nAll Payload Avionics and Diagnostics",
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 8,
+            "quote": "Combustion Chamber Lid Assembly",
+            "in_task": true
+          },
+          {
+            "id": "A3",
+            "page": 9,
+            "quote": "Page 9",
+            "in_task": true
+          },
+          {
+            "id": "A4",
+            "page": 10,
+            "quote": "Page 10\nThe effective floor of our hardware (orientated so that the \ncentrifugal g-vector points downward toward the floor) \nmeasures about 41 cm x 48 cm.",
+            "in_task": true
+          },
+          {
+            "id": "A5",
+            "page": 10,
+            "quote": "The available height in the \ng-direction is about 53 cm.",
+            "in_task": true
+          },
+          {
+            "id": "A6",
+            "page": 10,
+            "quote": "NOTE: How we orient our samples depends on the specific \nlocker location.",
+            "in_task": true
+          },
+          {
+            "id": "A7",
+            "page": 10,
+            "quote": "It is required that the principle vertical \naxes of the burn samples be aligned with the radial lines.",
+            "in_task": true
+          },
+          {
+            "id": "A8",
+            "page": 11,
+            "quote": "+x\n+y\n+z",
+            "in_task": true
+          },
+          {
+            "id": "A9",
+            "page": 12,
+            "quote": "•\nBlue Origin New Shepard sounding rocket yields Lunar gravity by using centrifugal acceleration.",
+            "in_task": true
+          },
+          {
+            "id": "A10",
+            "page": 12,
+            "quote": "•\nThese are the first-ever, extended-duration (greater than 25 seconds) combustion tests performed in simulated Lunar gravity.",
+            "in_task": true
+          },
+          {
+            "id": "A11",
+            "page": 12,
+            "quote": "•\nA steady vehicle rotation of 11 RPM is established, with an effective radius of rotation of 1.22 m at the experiment location.",
+            "in_task": true
+          },
+          {
+            "id": "A12",
+            "page": 12,
+            "quote": "•\nTwo samples are burned simultaneously in air at normal pressure: Cotton-fiberglass composite fabric sheet and a 4-mm diameter \nrod of acrylic plastic (polymethyl methacrylate).",
+            "in_task": true
+          },
+          {
+            "id": "A13",
+            "page": 12,
+            "quote": "•\nFlame images from two orthogonal cameras are used to determine flame spread and growth rates, and the burn lasts for over \ntwo and a half minutes.",
+            "in_task": true
+          },
+          {
+            "id": "A14",
+            "page": 12,
+            "quote": "•\nThe oxygen concentration in the chamber is measured.",
+            "in_task": true
+          },
+          {
+            "id": "A15",
+            "page": 12,
+            "quote": "As the burns progress, the oxygen concentration drops, enabling a \nlimiting value for extinction to be defined.",
+            "in_task": true
+          },
+          {
+            "id": "A16",
+            "page": 12,
+            "quote": "•\nThe effect of Coriolis force is discussed.",
+            "in_task": true
+          },
+          {
+            "id": "A17",
+            "page": 12,
+            "quote": "•\nResults from this experiment are compared to related 1-g work, drop tower tests, aircraft experiments, and modeling.",
+            "in_task": true
+          },
+          {
+            "id": "A18",
+            "page": 12,
+            "quote": "•\nThe results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe materials and environments \nand ensure safety of future spacecraft and Lunar habitats.",
+            "in_task": true
+          },
+          {
+            "id": "A19",
+            "page": 12,
+            "quote": "The data also provides fundamental understanding of fires.",
+            "in_task": true
+          },
+          {
+            "id": "A20",
+            "page": 12,
+            "quote": "•\nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the Flammability \nof Materials on the Moon (FM2) experiment which is planned to launch in late 2026.",
+            "in_task": true
+          },
+          {
+            "id": "A21",
+            "page": 13,
+            "quote": "History\n• ZIN technologies brought on board October 2021\n• Initial Planned launch was Spring 2023, Launch provider delay initially delayed launch into late Summer early Fall 2024, until \nit finally launched Feb 4 2025\n• First mission sequence test was performed in July 2023\n• Due to launch slip some improvements were made and last mission sequence test was ran in February 2024 before \nbeing shelved prior to flight.",
+            "in_task": true
+          },
+          {
+            "id": "A22",
+            "page": 13,
+            "quote": "Objectives\n• Burn SIBAL fabric & PMMA \n• Conduct first-ever, long duration observation and measurement of flame spread in a partial-g environment\n• Verify this platform is a viable means to obtain material flammability data in Lunar-g and will include an assessment of \nthe Coriolis force on results\n• Provide guidance for sample selection and test definition for a Lunar in-situ experiment\nData\n• First Flight\n• Measurements of flame spread rate and output of other diagnostics, including g-level vs.",
+            "in_task": true
+          },
+          {
+            "id": "A23",
+            "page": 13,
+            "quote": "time for the two samples\n• Sample closeout photos and photos before and after each test\n• Data from 1-g burns",
+            "in_task": true
+          },
+          {
+            "id": "A24",
+            "page": 16,
+            "quote": "LUCI samples 30 s after ignition.",
+            "in_task": true
+          },
+          {
+            "id": "A25",
+            "page": 16,
+            "quote": "Left: Edge view of SIBAL fabric (cotton-fiberglass blend) burning downward in Lunar-g 30 s \nafter ignition.",
+            "in_task": true
+          },
+          {
+            "id": "A26",
+            "page": 16,
+            "quote": "The flame spread for over a minute.",
+            "in_task": true
+          },
+          {
+            "id": "A27",
+            "page": 16,
+            "quote": "Right:4-mm-diameter PMMA rod burning upward in air in Lunar-g, 30 s \nafter ignition.",
+            "in_task": true
+          },
+          {
+            "id": "A28",
+            "page": 16,
+            "quote": "The flame eventually grows to engulf the entire rod.",
+            "in_task": true
+          },
+          {
+            "id": "A29",
+            "page": 17,
+            "quote": "PMMA rod after 90 seconds of burning in Lunar g.",
+            "in_task": true
+          },
+          {
+            "id": "A30",
+            "page": 17,
+            "quote": "Two orthogonal camera views are shown.",
+            "in_task": true
+          },
+          {
+            "id": "A31",
+            "page": 17,
+            "quote": "The one on \nthe right demonstrates how the Coriolis force pulls the \nflame away from the axis of the fuel, which is aligned \nwith the direction of the centrifugal acceleration.",
+            "in_task": true
+          },
+          {
+            "id": "A32",
+            "page": 18,
+            "quote": "Potential Follow-on Objectives\n• Evaluate the hypothesis that some materials burning in partial-g environments may be more flammable \ncompared to 1-g.",
+            "in_task": true
+          },
+          {
+            "id": "A33",
+            "page": 18,
+            "quote": "• Compare upward and downward oxygen limits to 1-g values\n• Evaluate flame size, strength, intensity, and spread compared to 1-g\n• Develop a numerical model\n• Assess the applicability of the model by comparing to the test data obtained.",
+            "in_task": true
+          },
+          {
+            "id": "A34",
+            "page": 18,
+            "quote": "• Determine applicability of the pressure-gravity scaling relations for upward spread rates.",
+            "in_task": true
+          },
+          {
+            "id": "A35",
+            "page": 18,
+            "quote": "• Refine model using experiment results\n• Provide a bridge between current 1-g material screen method and actual behavior in reduced gravity.",
+            "in_task": true
+          },
+          {
+            "id": "A36",
+            "page": 18,
+            "quote": "Data\n• Flammability limits (%O2) for a subset of materials in Lunar-g\n• Measurements of the flame spread rate over materials in exploration atmospheres\n• Sample closeout photos, and photos before and after each test\n• Data from 1-g burns",
+            "in_task": true
+          }
+        ],
+        "shared_context": {
+          "available": 2,
+          "selected_characters": 0
+        },
+        "known_entities": [],
+        "schema": {
+          "$defs": {
+            "Entity": {
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "title": "Key",
+                  "type": "string"
+                },
+                "label": {
+                  "minLength": 1,
+                  "title": "Label",
+                  "type": "string"
+                },
+                "class_id": {
+                  "title": "Class Id",
+                  "type": "string",
+                  "enum": [
+                    "AtmosphereCondition",
+                    "Blowoff",
+                    "CombustionPhenomenon",
+                    "ExperimentFamily",
+                    "ExperimentalCondition",
+                    "ExperimentalRun",
+                    "Extinction",
+                    "FlameGrowth",
+                    "FlameSpread",
+                    "FlowCondition",
+                    "GravityCondition",
+                    "Ignition",
+                    "Intervention",
+                    "Investigation",
+                    "Material",
+                    "PressureCondition",
+                    "Quenching",
+                    "Sample",
+                    "StableBurning"
+                  ]
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                },
+                "support": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "class_id",
+                "study",
+                "support"
+              ],
+              "title": "Entity",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "entities": {
+              "items": {
+                "$ref": "#/$defs/Entity"
+              },
+              "title": "Entities",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "entities"
+          ]
+        }
+      },
+      "max_output_tokens": 4096,
+      "raw_response": "{\"entities\": [{\"key\": \"e1\", \"label\": \"Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\", \"class_id\": \"Investigation\", \"study\": \"current\", \"support\": [\"A1\"]}, {\"key\": \"e2\", \"label\": \"Blue Origin New Shepard sounding rocket\", \"class_id\": \"ExperimentalRun\", \"study\": \"current\", \"support\": [\"A9\"]}, {\"key\": \"e3\", \"label\": \"Cotton-fiberglass composite fabric sheet\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A12\"]}, {\"key\": \"e4\", \"label\": \"4-mm diameter rod of acrylic plastic (polymethyl methacrylate)\", \"class_id\": \"Sample\", \"study\": \"current\", \"support\": [\"A12\"]}, {\"key\": \"e5\", \"label\": \"air at normal pressure\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A12\"]}, {\"key\": \"e6\", \"label\": \"steady vehicle rotation of 11 RPM\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A11\"]}, {\"key\": \"e7\", \"label\": \"effective radius of rotation of 1.22 m at the experiment location\", \"class_id\": \"ExperimentalCondition\", \"study\": \"current\", \"support\": [\"A11\"]}, {\"key\": \"e8\", \"label\": \"simulated Lunar gravity\", \"class_id\": \"GravityCondition\", \"study\": \"current\", \"support\": [\"A9\"]}, {\"key\": \"e9\", \"label\": \"normal-gravity\", \"class_id\": \"GravityCondition\", \"study\": \"cited\", \"support\": [\"A17\"]}]}",
+      "usage": {
+        "completion_tokens": 406,
+        "prompt_tokens": 3855,
+        "total_tokens": 4261,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "outcome": {
+        "segment_id": "window-40f0cd5f87ee7185754e960a",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "f6140ee6bfaaf9b82d2b28fe48a9d538b55ddf359a74ceba5914ffb890d94c60",
+        "members": [
+          {
+            "id": "segment-0300df564a7d37f7d4e009c9",
+            "evidence_id": "E-9984369871f9b119c39685ae",
+            "start": 0,
+            "end": 151
+          },
+          {
+            "id": "segment-20e74bccbc65f71594def476",
+            "evidence_id": "E-d621160208181545c2e7acf1",
+            "start": 0,
+            "end": 7
+          },
+          {
+            "id": "segment-be5d68159af6dfc60d8f477c",
+            "evidence_id": "E-138c0efdbdc2243a724f2a16",
+            "start": 0,
+            "end": 394
+          },
+          {
+            "id": "segment-530262f4cd32a1aaab95cf6b",
+            "evidence_id": "E-48cf0943c2230d21f4c2a9ab",
+            "start": 0,
+            "end": 9
+          },
+          {
+            "id": "segment-db7f9650915e690de2a61799",
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "start": 0,
+            "end": 1499
+          },
+          {
+            "id": "segment-bbd11a1978a0d9a7374758f7",
+            "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+            "start": 0,
+            "end": 1035
+          },
+          {
+            "id": "segment-db3bd90a9b652021f9d1d47a",
+            "evidence_id": "E-e701476789b9bf6dd3395377",
+            "start": 0,
+            "end": 320
+          },
+          {
+            "id": "segment-1b5c33472e72e144f909a25c",
+            "evidence_id": "E-d5b5c13caefae1761b25a868",
+            "start": 0,
+            "end": 268
+          },
+          {
+            "id": "segment-7603d41eb3fe6a1741224420",
+            "evidence_id": "E-d3aebe64259ea519e1693467",
+            "start": 0,
+            "end": 866
+          }
+        ],
+        "evidence_id": "E-9984369871f9b119c39685ae",
+        "start": 0,
+        "end": 4549,
+        "deterministic": "COMPLETE",
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "attempts": 1,
+        "source_anchors": 36,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 0,
+        "source_anchor_characters": 4509,
+        "proposed_items": 9,
+        "request_bytes": 12814,
+        "reserved_tokens_per_attempt": 20123,
+        "output_tokens": 4096,
+        "context_token_estimate": 12621,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 406,
+          "prompt_tokens": 3855,
+          "total_tokens": 4261,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 4096,
+          "thinking_enabled": false,
+          "reasoning_budget": 0,
+          "response_headers": {},
+          "duration_seconds": 3.3498646219995862,
+          "time_to_first_token_seconds": 3.343037212998752,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 0
+        },
+        "schema_errors": [],
+        "source_errors": [
+          {
+            "proposal_id": "proposal-0165256365a51d1d8a3bbca4",
+            "kind": "entities",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ],
+            "proposal": {
+              "key": "entity-ebc0418aae18e73a56b8",
+              "label": "simulated Lunar gravity",
+              "class_id": "GravityCondition",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                  "quote": "•\nBlue Origin New Shepard sounding rocket yields Lunar gravity by using centrifugal acceleration.",
+                  "start": 0
+                }
+              ]
+            }
+          },
+          {
+            "proposal_id": "proposal-67123e37ee039b61c4d48029",
+            "kind": "entities",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ],
+            "proposal": {
+              "key": "entity-69465f9de68da3a0a3e1",
+              "label": "normal-gravity",
+              "class_id": "GravityCondition",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+                  "quote": "•\nResults from this experiment are compared to related 1-g work, drop tower tests, aircraft experiments, and modeling.",
+                  "start": 907
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "state": "FINISHED"
+    }
+  ]
+}

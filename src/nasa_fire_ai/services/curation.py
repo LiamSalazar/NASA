@@ -251,6 +251,33 @@ class CurationService:
         excluded = {e["subject"] for e in package["exclusions"]}
         semantic = self.property_registry(package)
         runs, values, statements = {}, {}, {}
+        narrative_runs, narrative_statements = {}, {}
+        if package.get("scientific_extraction"):
+            from nasa_fire_ai.ingestion.document_extraction import (
+                extraction_semantic,
+                validate_output,
+            )
+            from nasa_fire_ai.ingestion.document_structure import structure
+
+            extraction = package["scientific_extraction"]
+            checked = validate_output(
+                extraction["raw_proposals"],
+                package,
+                structure(package, self.root, extraction["processing"]["budget"]["segment_chars"]),
+                extraction_semantic(self, package),
+            )
+            narrative_runs = {
+                r["entity_id"]: r
+                for r in checked["records"]
+                if r["kind"] == "entities"
+                and r["status"] == "SOURCE_SUPPORTED"
+                and r["proposal"]["class_id"] == "ExperimentalRun"
+            }
+            narrative_statements = {
+                r["id"]: r
+                for r in checked["records"]
+                if r["kind"] == "statements" and r["status"] == "SOURCE_SUPPORTED"
+            }
         for manifest in package["inputs"]:
             path = self.root / manifest["stored_input"]
             if path.suffix not in {".csv", ".tsv"} or not path.is_file():
@@ -310,6 +337,12 @@ class CurationService:
                 entity["class_id"] == "ExperimentalRun"
                 and not anchor
                 and entity["id"] not in excluded
+                and not (
+                    entity["id"] in narrative_runs
+                    and entity["label"] == narrative_runs[entity["id"]]["proposal"]["label"]
+                    and set(entity["evidence_ids"])
+                    == {s["evidence_id"] for s in narrative_runs[entity["id"]]["support_spans"]}
+                )
             ):
                 errors.append(
                     "Scientific review required: experimental run lacks original table-row identity: "
@@ -495,7 +528,20 @@ class CurationService:
                         + statement["id"]
                     )
             elif statement.get("scope"):
-                reviewed = any(
+                reconstructed = narrative_statements.get(
+                    statement.get("scientific_proposal_id", statement["id"])
+                )
+                grounded = bool(
+                    reconstructed
+                    and statement["text"] == reconstructed["proposal"]["text"]
+                    and statement["class_id"] == reconstructed["proposal"]["class_id"]
+                    and statement["epistemic"] == reconstructed["proposal"]["epistemic"]
+                    and set(statement["scope"]) == set(reconstructed["scope"])
+                    and set(statement["evidence_ids"])
+                    == {s["evidence_id"] for s in reconstructed["support_spans"]}
+                    and statement.get("support_spans") == reconstructed["support_spans"]
+                )
+                reviewed = grounded or any(
                     key.startswith("scope")
                     and d.get("explanation", "").strip()
                     and set(statement["evidence_ids"]) <= set(d.get("evidence_ids", []))
@@ -509,7 +555,7 @@ class CurationService:
                         + statement["id"]
                     )
                 role_review = package["decisions"].get("role:" + statement["id"], {})
-                reviewed_role = (
+                reviewed_role = grounded or (
                     role_review.get("selection") == statement["epistemic"]
                     and role_review.get("principal") in self.policy.approvers
                     and role_review.get("explanation", "").strip()
@@ -820,6 +866,265 @@ class CurationService:
         self.event(saved["package"], "SUBMITTED", creator, {"inputs": manifests})
         return saved
 
+    def submit_ntrs(self, nasa_id, creator, *, adapter=None):
+        """Acquire one eligible official NASA document into immutable submissions.
+
+        Uses the existing NTRS adapter and public-download policy. Acquisition
+        prepares a draft and never registers approved scientific knowledge.
+        """
+        import httpx
+
+        from nasa_fire_ai.ingestion.autonomous import official_download
+        from nasa_fire_ai.ingestion.phase1 import NTRSAdapter
+
+        metadata = (adapter or NTRSAdapter()).fetch_metadata(str(nasa_id))
+        url = official_download(metadata)
+        descriptive = " ".join(
+            [metadata.get("title", ""), metadata.get("abstract", ""), *metadata.get("keywords", [])]
+        )
+        if not re.search(
+            r"\b(?:combust\w*|flam\w*|fire\w*)\b", descriptive, re.IGNORECASE
+        ) or not re.search(
+            r"\b(?:microgravity|partial.gravity|reduced.gravity|lunar|spacecraft|spacesuit|space.station|space.fire|spaceflight)\b",
+            descriptive,
+            re.IGNORECASE,
+        ):
+            raise ValueError(
+                "Citation does not establish relevant reduced-gravity combustion or spacecraft fire safety"
+            )
+        key = digest(["official-ntrs-submission-v1", str(nasa_id), url, metadata.get("modified")])
+        cached = self.registry.get_phase3_cache(key, "official_submission")
+        if cached:
+            return {**self.get(cached["package_id"]), "duplicate": True}
+        with httpx.stream("GET", url, timeout=40, follow_redirects=False) as response:
+            response.raise_for_status()
+            chunks, size = [], 0
+            for chunk in response.iter_bytes():
+                size += len(chunk)
+                if size > 50 * 1024 * 1024:
+                    raise ValueError("Official submission exceeds 50 MiB acquisition limit")
+                chunks.append(chunk)
+        data = b"".join(chunks)
+        saved = self.submit(
+            metadata["title"],
+            metadata.get("abstract", "Official NASA research submission"),
+            [(str(nasa_id) + ".pdf", data)],
+            creator,
+        )
+        package = saved["package"]
+        package["source_provenance"] = {
+            "publisher_origin": "NASA NTRS",
+            "source_url": url,
+            "nasa_id": str(nasa_id),
+            "metadata": metadata,
+            "sha256": hashlib.sha256(data).hexdigest(),
+            "eligibility": "OFFICIAL_NASA_DOMAIN_DOCUMENT",
+            "scientific_review": "NONE",
+        }
+        saved = self.save(package, creator)
+        self.registry.set_phase3_cache(key, "official_submission", {"package_id": package["id"]})
+        return saved
+
+    def prepare_scientific(
+        self, package_id, settings, *, model_enabled=False, budget=None, client=None
+    ):
+        """Prepare isolated candidates; successful segments resume from registry cache."""
+        from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget, extract_package
+
+        package = self.get(package_id)["package"]
+        if self.validate_originals(package):
+            raise ValueError("Original source integrity failed before scientific preparation")
+        extraction = extract_package(
+            self, package, settings, budget or ExtractionBudget(), model_enabled, client
+        )
+        package["scientific_extraction"] = extraction
+        self.regenerate(package)
+        previous = copy.deepcopy(self.get(package_id)["package"])
+        candidate = copy.deepcopy(package)
+        for item in (previous, candidate):
+            if item.get("scientific_extraction"):
+                item["scientific_extraction"].pop("processing", None)
+        if previous == candidate:
+            return {
+                **self.get(package_id),
+                "processing": extraction["processing"],
+                "duplicate": True,
+            }
+        saved = self.save(package, package["creator"])
+        candidate_ids = set()
+        for record in extraction["records"]:
+            spans = record["support_spans"]
+            item = record["proposal"]
+            candidate_id = package_id + ":" + record["id"] + ":" + digest(record)[:12]
+            if not record.get("duplicate_of"):
+                candidate_ids.add(candidate_id)
+            self.registry.stage_semantic_candidate(
+                {
+                    "candidate_id": candidate_id,
+                    "candidate_type": record["kind"],
+                    "raw_label": next(
+                        (item[k] for k in ("label", "term", "text", "relation") if k in item), ""
+                    ),
+                    "source_id": spans[0]["source_id"] if spans else None,
+                    "evidence_id": spans[0]["evidence_id"] if spans else None,
+                    "resolution_status": "REJECTED"
+                    if record["status"] == "REJECTED"
+                    else "CANDIDATE_NEW_CONCEPT"
+                    if record["kind"] == "concepts"
+                    else "KNOWN_AMBIGUOUS",
+                    "review_status": "SUPERSEDED"
+                    if record.get("duplicate_of")
+                    else "REJECTED"
+                    if record["status"] == "REJECTED"
+                    else "PENDING",
+                    "proposal": {
+                        "contract": extraction["contract"],
+                        "package_id": package_id,
+                        **record,
+                    },
+                }
+            )
+        for row in self.registry.db.execute(
+            "SELECT candidate_id FROM semantic_staging WHERE json_extract(payload_json,'$.proposal.package_id')=? AND review_status='PENDING'",
+            (package_id,),
+        ).fetchall():
+            if row[0] not in candidate_ids:
+                self.registry.db.execute(
+                    "UPDATE semantic_staging SET review_status='SUPERSEDED' WHERE candidate_id=?",
+                    (row[0],),
+                )
+        self.registry.db.commit()
+        self.event(
+            saved["package"], "SCIENTIFIC_PREPARED", package["creator"], extraction["processing"]
+        )
+        return {**saved, "processing": extraction["processing"]}
+
+    def attach_scientific_proposals(self, package):
+        """Use established entities, statements and values for correction and export."""
+        extraction = package.get("scientific_extraction")
+        if not extraction:
+            return
+        records = sorted(
+            [
+                r
+                for r in extraction["records"]
+                if r["status"] != "REJECTED" and not r.get("duplicate_of")
+            ],
+            key=lambda r: r["status"] != "SOURCE_SUPPORTED",
+        )
+        semantic = self.property_registry(package)
+        entity_keys = extraction["entities_by_key"]
+        existing = {e["id"] for e in package["entities"]}
+        for record in records:
+            if record["kind"] != "entities":
+                continue
+            entity = record["proposal"]
+            if entity["class_id"] not in semantic.class_metadata:
+                continue
+            if record["entity_id"] not in existing:
+                package["entities"].append(
+                    {
+                        "id": record["entity_id"],
+                        "label": entity["label"],
+                        "class_id": entity["class_id"],
+                        "evidence_ids": sorted({s["evidence_id"] for s in record["support_spans"]}),
+                        "origin": "contextual",
+                        "study": entity["study"],
+                    }
+                )
+                existing.add(record["entity_id"])
+
+        def statement_key(statement):
+            return (
+                statement["text"],
+                statement["epistemic"],
+                tuple(sorted(statement["evidence_ids"])),
+                tuple(sorted(statement.get("scope", []))),
+                tuple(
+                    (s["evidence_id"], s["start"], s["end"])
+                    for s in statement.get("support_spans", [])
+                ),
+            )
+
+        statement_texts = {statement_key(s) for s in package["statements"]}
+        for record in records:
+            item, kind = record["proposal"], record["kind"]
+            refs = sorted({s["evidence_id"] for s in record["support_spans"]})
+            if kind == "statements" and item["class_id"] in semantic.information_classes:
+                match = next(
+                    (
+                        s
+                        for s in package["statements"]
+                        if (s["text"], s["epistemic"]) == (item["text"], item["epistemic"])
+                        and s.get("origin") == "prose"
+                        and record["support_spans"][0]["evidence_id"] in s["evidence_ids"]
+                        and (
+                            not s.get("support_spans")
+                            or s["support_spans"][0] == record["support_spans"][0]
+                        )
+                    ),
+                    None,
+                )
+                scope = [
+                    entity_keys[k]["id"]
+                    for k in item["subjects"]
+                    if k in entity_keys
+                    and entity_keys[k]["class_id"]
+                    in {"ExperimentalRun", "ExperimentFamily", "Investigation", "Sample"}
+                ]
+                if match and scope:
+                    match["scope"] = scope
+                    match["support_spans"] = record["support_spans"]
+                    match["scientific_proposal_id"] = record["id"]
+                    match["evidence_ids"] = refs
+                    statement_texts.add(statement_key(match))
+                else:
+                    candidate = {
+                        "id": record["id"],
+                        "text": item["text"],
+                        "class_id": item["class_id"],
+                        "epistemic": item["epistemic"],
+                        "scope": scope,
+                        "origin": "contextual",
+                        "study": item["study"],
+                        "evidence_ids": refs,
+                        "support_spans": record["support_spans"],
+                        "included": True,
+                        "scientific_proposal_id": record["id"],
+                    }
+                    if statement_key(candidate) not in statement_texts:
+                        package["statements"].append(candidate)
+                        statement_texts.add(statement_key(candidate))
+            elif kind == "relations" and record["status"] == "SOURCE_SUPPORTED":
+                package["relations"].append(
+                    {
+                        "subject": record["subject"],
+                        "object": record["object"],
+                        "relation": item["relation"],
+                        "evidence_ids": refs,
+                        "origin": "contextual",
+                    }
+                )
+            elif (
+                kind == "quantities"
+                and record.get("mapping", {}).get("property_id")
+                and record.get("native_value_compatible", True)
+                and record.get("native_scope_compatible", True)
+            ):
+                prop = semantic.properties[record["mapping"]["property_id"]]
+                package["values"].append(
+                    {
+                        "id": record["id"],
+                        "subject": record["subject"],
+                        "property_id": prop.property_id,
+                        "value": self.parse_value(item["expression"], item["unit"], prop),
+                        "column": item["label"],
+                        "evidence_ids": refs,
+                        "epistemic": item["epistemic"],
+                        "origin": "contextual",
+                    }
+                )
+
     def resolve_identity(self, label, relation):
         matches = [
             eid
@@ -976,7 +1281,7 @@ class CurationService:
                             e["id"]
                             for e in package["entities"]
                             if e["class_id"]
-                            in {"ExperimentalRun", "Investigation", "ExperimentFamily"}
+                            in {"ExperimentalRun", "Investigation", "ExperimentFamily", "Sample"}
                         ]
                         + ["documentary"],
                         "evidence_ids": sorted(
@@ -1090,6 +1395,14 @@ class CurationService:
             ):
                 continue
             for i, (row, eid) in enumerate(zip(table["rows"], table["evidence_ids"], strict=True)):
+                from nasa_fire_ai.ingestion.generic import documentary_row
+
+                if (
+                    documentary_row(row)
+                    and package["decisions"].get("table-role:" + table["id"], {}).get("selection")
+                    != "ExperimentalRun"
+                ):
+                    continue
                 run_column = next((c for c in table["columns"] if c["role"] == "run"), None)
                 label = row.get(run_column["label"], "") if run_column else str(i + 1)
                 rid = table["id"] + ":run:" + str(i)
@@ -1209,6 +1522,7 @@ class CurationService:
                                 else "experimental_configuration",
                             }
                         )
+        self.attach_scientific_proposals(package)
         for correction in package["corrections"]:
             self.apply_operations(package, correction["operations"])
         self.resolve_context(package)
@@ -1294,20 +1608,22 @@ class CurationService:
     def parse_value(raw, unit, prop):
         if prop and prop.datatype == "categorical":
             return GenericValue(reported_value=raw, raw_expression=raw).model_dump()
-        numbers = re.findall(r"[-+]?\d+(?:\.\d+)?", raw)
-        if len(numbers) == 1:
-            return GenericValue(
-                reported_value=float(numbers[0]),
-                reported_unit=unit,
-                approximate=raw.strip().startswith("~"),
-                raw_expression=raw,
-            ).model_dump()
-        ranged = re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)\s*", raw)
+        from nasa_fire_ai.query.numeric_mentions import NUMBER
+
+        ranged = re.fullmatch(rf"\s*({NUMBER})\s*[-–]\s*({NUMBER})\s*", raw)
         if ranged:
             return GenericValue(
                 lower=float(ranged[1]),
                 upper=float(ranged[2]),
                 reported_unit=unit,
+                raw_expression=raw,
+            ).model_dump()
+        numbers = re.findall(NUMBER, raw)
+        if len(numbers) == 1:
+            return GenericValue(
+                reported_value=float(numbers[0]),
+                reported_unit=unit,
+                approximate=bool(re.match(r"\s*(?:~|≈|about\b|approximately\b|roughly\b)", raw)),
                 raw_expression=raw,
             ).model_dump()
         return GenericValue(reported_value=raw, reported_unit=unit, raw_expression=raw).model_dump()
@@ -1317,6 +1633,22 @@ class CurationService:
         for extension in package["extensions"]:
             if extension.get("approved"):
                 activate_extension(SemanticGraph(registry), extension)
+        if package.get("scientific_extraction"):
+            # Existing RDF declarations are reused in this draft-local registry;
+            # proposed definitions remain inactive and the shared schema is untouched.
+            ontology = Graph().parse(self.root / "ontology/fire_safety.ttl")
+            prefix = "https://example.org/nasa-fire-safety#"
+            for subject in ontology.subjects(RDF.type, OWL.Class):
+                cls = str(subject).removeprefix(prefix)
+                registry.target_classes.add(cls)
+                metadata = registry.class_metadata.setdefault(cls, {"target": True})
+                metadata["approved_ontology_parents"] = sorted(
+                    str(p).removeprefix(prefix) for p in ontology.objects(subject, RDFS.subClassOf)
+                )
+            for subject in ontology.subjects(RDF.type, OWL.ObjectProperty):
+                relation = str(subject).removeprefix(prefix)
+                if relation not in registry.relations:
+                    registry.register_relation(RelationDefinition(relation))
         return registry
 
     def clarification(
@@ -1772,6 +2104,72 @@ class CurationService:
     def validate(self, package):
         errors = self.validate_originals(package)
         errors.extend(self.validate_attribution(package))
+        if package.get("scientific_extraction"):
+            from nasa_fire_ai.ingestion.document_extraction import (
+                extraction_semantic,
+                validate_output,
+            )
+            from nasa_fire_ai.ingestion.document_structure import structure
+
+            extraction = package["scientific_extraction"]
+            if not package.get("source_provenance"):
+                errors.append(
+                    "Scientific source eligibility review required: establish NASA involvement and domain relevance"
+                )
+            if extraction["contract_digest"] != self.contract_digest():
+                errors.append("Scientific extraction contracts changed; prepare a new version")
+            rebuilt_document = structure(
+                package, self.root, extraction["processing"]["budget"]["segment_chars"]
+            )
+            rebuilt = validate_output(
+                extraction["raw_proposals"],
+                package,
+                rebuilt_document,
+                extraction_semantic(self, package),
+            )
+            if rebuilt["records"] != extraction["records"]:
+                errors.append(
+                    "Scientific extraction validation differs from original source; regenerate"
+                )
+            from nasa_fire_ai.ingestion.document_extraction import (
+                table_mapping_decisions,
+                table_quantities,
+                table_row_roles,
+            )
+
+            expected_mappings = table_mapping_decisions(
+                self, package, extraction_semantic(self, package)
+            )
+            if table_quantities(self, package, expected_mappings) != extraction.get(
+                "table_quantity_proposals", []
+            ):
+                errors.append(
+                    "Structured table quantities differ from the original cells and mapping contracts"
+                )
+            if table_row_roles(package) != extraction.get("table_row_role_proposals"):
+                errors.append("Table row roles differ from original source cells; regenerate")
+            from nasa_fire_ai.ingestion.pdf_quantities import pdf_table_quantities
+
+            expected_pdf_quantities = pdf_table_quantities(package, rebuilt_document)
+            if expected_pdf_quantities != extraction.get("pdf_table_quantity_proposals", []):
+                errors.append(
+                    "PDF quantitative proposals differ from original cells, headers or page context; regenerate"
+                )
+            if expected_pdf_quantities:
+                errors.append(
+                    "Original PDF quantities retain unresolved role and experimental scope for scientific review"
+                )
+            errors.extend(
+                "Scientific quantity native representation deferred; original literal retained: "
+                + r["id"]
+                for r in rebuilt["records"]
+                if r.get("native_value_compatible") is False
+                and r.get("mapping", {}).get("property_id")
+            )
+            errors.extend(
+                "Scientific preparation review dependency: " + issue["kind"]
+                for issue in rebuilt["review_requirements"]
+            )
         if package.get("contract_digest") and package["contract_digest"] != self.contract_digest():
             errors.append(
                 "Scientific contracts changed; regenerate and review a new prepared version"
@@ -1884,13 +2282,13 @@ class CurationService:
                 errors.append("Unregistered statement classification")
             if statement["epistemic"] not in {
                 r["epistemic"] for r in self.presentation["statement_roles"].values()
-            } | {"derived_quantity", "documentary_context"}:
+            } | {"derived_quantity", "documentary_context", "experimental_configuration"}:
                 errors.append("Missing scientific epistemic classification")
             scope_ids = {
                 e["id"]
                 for e in package["entities"]
                 if ancestors(e["class_id"]).intersection(
-                    {"ExperimentalRun", "Investigation", "ExperimentFamily"}
+                    {"ExperimentalRun", "Investigation", "ExperimentFamily", "Sample"}
                 )
             }
             if not statement.get("scope") or not set(statement["scope"]) <= scope_ids:

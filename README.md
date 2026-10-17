@@ -78,3 +78,22 @@ NASA_CURATION_DEVELOPMENT=true NASA_CURATION_WORKSPACE=/tmp/nasa-curation-demo N
 ```
 
 See [PHASE3C_CURATION_V1.md](docs/PHASE3C_CURATION_V1.md) and `artifacts/phase3c_curation_v1/` for actual PSI-98/NTRS publication, correction, rollback, query and validation receipts. Compatible quantity additions and guided review work; general prose preparation, unrestricted natural-language correction and general ontology evolution remain partial. Test-principal approval is not NASA institutional authorization.
+
+## Contextual scientific ingestion
+
+The existing incorporation service supports immutable official NTRS submission and adaptive, resumable scientific preparation:
+
+```bash
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion initialize
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion submit --ntrs-id 20150008961
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion prepare PACKAGE_ID --model
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion prepare PACKAGE_ID --model --recover
+```
+
+Preparation works without an API key. Model extraction uses the configured NVIDIA endpoint; source complexity guides context, output and reasoning allocation. Requests have finite timeouts and controlled retries. Optional operator call/token/session ceilings remain available. `--recover` revalidates retained proposals, resumes missing identity tasks and targets source omissions. These operations are also available through `CurationService.prepare_scientific` and the application's incorporation view, without a coding assistant.
+
+Scientific extraction uses `NVIDIA_EXTRACTION_MODEL` independently of query/synthesis model selection. The v4 evaluated configuration is `nvidia/nemotron-3.5-super-vl-120b-a12b`, with a 2,048-token reasoning envelope and `nvidia/nemotron-3-super-120b-a12b` as an explicitly configured transport fallback. Set `NVIDIA_SCIENCE_FALLBACK_MODELS` to a comma-separated list or leave it empty. A fallback retains the same source task and validators; semantic rejection does not trigger model voting. Existing `NVIDIA_MODEL` configurations remain compatible.
+
+Optional `NVIDIA_SCIENCE_VISION_MODEL` attaches original PDF table pages to proposition tasks using the same authorized endpoint. Each rendered page retains its original PDF checksum, page index and pixel hash in operational receipts. Independently validated text anchors are still required; unread or ambiguous visual science stays unapproved. This route is disabled by default because the evaluated image example did not improve scientific classification. A completed request or valid JSON never grants scientific approval.
+
+The isolated package retains original inputs, evidence spans, source table cells, proposed semantic mappings and grouped review dependencies. Preparation grants no scientific approval or publication authority. Scientific coverage distinguishes text read, original quantity/table candidates, validated assertions, unresolved proposals and inaccessible figures. See [the Phase 1 implementation and acceptance report](docs/PHASE1_GENERALIZABLE_SCIENTIFIC_INGESTION.md) for real inference results and remaining acceptance requirements.

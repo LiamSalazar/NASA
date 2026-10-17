@@ -46,6 +46,7 @@ artifacts/**/*.sqlite
 artifacts/**/*.sqlite-*
 artifacts/**/*.db
 artifacts/**/*.db-*
+artifacts/**/*.sqlite.gz
 
 # Phase 3C execution workspaces and generated bundles can contain local
 # databases, extracted source material and large reproducibility payloads.
@@ -79,3 +80,8 @@ htmlcov/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Phase 1 reproducible runtime workspaces and downloaded originals remain local.
+# Source identity manifests, execution receipts and deliberate tests/fixtures stay versioned.
+artifacts/phase1_generalizable_ingestion/**/workspace/
+artifacts/phase1_generalizable_ingestion/**/*.pdf

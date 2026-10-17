@@ -1,0 +1,22 @@
+{
+  "changed_files": {
+    "src/nasa_fire_ai/ingestion/document_extraction.py": "f525fd28d928822980139e08ec920cdf0e9b6c464b1d595a6b7138588a730290",
+    "src/nasa_fire_ai/ingestion/narrative_candidates.py": "9820ed35398b2c03ea8283d6f2423e462fd08b3ad9f32a01d804117bcee12e27",
+    "src/nasa_fire_ai/ingestion/generic.py": "3de6cbbf3c735df0a593902204525fd10b645bd9ba6de32941ec31f91d9444c8",
+    "src/nasa_fire_ai/services/curation.py": "1485a86b76437bb0996a1d082fc6cdd0d0422bae6212950029dab3906f162702",
+    "tests/test_document_extraction.py": "a47da813ac978b265fe31ed391379563beacd94da05f05a2d31cb83bf2ed512e",
+    "scripts/repair_generalizable_ingestion.py": "afdda29af46616cc95c8b2fbb7c051ff7d981c1990d0705e48536943a9ee5a44",
+    "scripts/validate_scientific_extraction_live.py": "e8dabac342841a84de8171531d4e8776ae43cc726a03a8c16dec27124944925b",
+    "docs/PHASE1_GENERALIZABLE_SCIENTIFIC_INGESTION.md": "925545f16100972b7aa3d3089555897815a9f74dda0b614220a9a4a0fdd7aaf0",
+    "artifacts/phase1_generalizable_ingestion/v2/CHECKPOINT.md": "d661b152351eb08ce708f2c26258f3978141e2318ce08e317ff6fb2da9052496"
+  },
+  "quality_gates": "artifacts/phase1_generalizable_ingestion/v2/quality_gates.json",
+  "source_results": "artifacts/phase1_generalizable_ingestion/v2/scientific_quality.json",
+  "source_execution": "artifacts/phase1_generalizable_ingestion/v2/offline_run3/validation.json",
+  "checkpoints": "artifacts/phase1_generalizable_ingestion/v2/CHECKPOINT.md",
+  "historical_receipts_unchanged": true,
+  "new_paid_calls": 0,
+  "PHASE1_COMPLETE": false,
+  "next_executable_action": "uv run python scripts/validate_scientific_extraction_live.py smoke",
+  "external_blocker": "Renewed explicit live inference authorization, then successful source-adjudicated live extraction and frozen-lineage generalization"
+}

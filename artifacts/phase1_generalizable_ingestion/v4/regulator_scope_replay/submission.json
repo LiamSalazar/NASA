@@ -1,0 +1,539 @@
+{
+  "package": {
+    "id": "research-195aa7ae31aca023746e",
+    "version": 2,
+    "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+    "purpose": "The Variable Oxygen Regulator (VOR), a stepper actuated two-stage mechanical regulator, is being developed for the purpose of serving as the Primary Oxygen Regulator (POR) and Secondary Oxygen Regulator (SOR) within the Advanced EMU PLSS, now referred to as the xEMU and xPLSS. Three prototype designs have been fabricated and tested as part of this development. Building upon the lessons learned from the 35 years of Shuttle/ISS EMU Program operation including the fleet-wide EMU Secondary Oxygen Pack (SOP) contamination failure that occurred in 2000, the VOR is being analyzed, designed, and tested for oxygen compatibility with controlled Non-Volatile Residue (NVR) and a representative worst-case hydro-carbon system contamination event (>100mg/sq ft dodecane). This paper discusses the steps taken in testing of VOR 2.0 with for oxygen compatibility and then discusses follow-on design changes implemented in the VOR 3.0 (3rd prototype) as a result.",
+    "creator": "phase1-validation",
+    "inputs": [
+      {
+        "name": "20170003941.pdf",
+        "sha256": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "bytes": 1765263,
+        "stored_input": "data/submissions/c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966.pdf"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 1,
+        "text": "47th International Conference on Environmental Systems \nICES-2017-XX \n16-20 July 2017, Charleston, South Carolina \nOxygen Compatibility and Challenge Testing of the PLSS \nVariable Oxygen Regulator (VOR) for the Advanced EMU \nColin Campbell, Marlon Cox, Carly Meginnis \nNASA Lyndon B. Johnson Space Center, Houston, TX, 77058 \nand \nEric Falconi \nJacobs Engineering, JSC Engineering Technology and Science (JETS), Houston, TX, 77058 \nThe Variable Oxygen Regulator (VOR), a stepper actuated two-stage mechanical \nregulator, is being developed for the purpose of serving as the Primary Oxygen Regulator \n(POR) and Secondary Oxygen Regulator (SOR) within the Advanced EMU PLSS, now \nreferred to as the xEMU and xPLSS.  Three prototype designs have been fabricated and tested \nas part of this development.  Building upon the lessons learned from the 35 years of Shuttle/ISS \nEMU Program operation including the fleet-wide EMU Secondary Oxygen Pack (SOP) \ncontamination failure that occurred in 2000, the VOR is being analyzed, designed, and tested \nfor oxygen compatibility with controlled Non-Volatile Residue (NVR) and a representative \nworst-case hydro-carbon system contamination event (>100mg/ft2 dodecane).  This paper \ndiscusses the steps taken in testing of VOR 2.0 with for oxygen compatibility and then \ndiscusses follow-on design changes implemented in the VOR 3.0 (3rd prototype) as a result. \nNomenclature \nVOR \nVariable Oxygen Regulator \nSOR \nSecondary Oxygen Regulator \nPOR \nPrimary Oxygen Regulator \nEMU \nExtravehicular Mobility Unit \nPLSS \nPortable Life Support System \nNVR \nNon-Volatile Residue \nSTP \nScience and Technology Program \nStandard Temperature and Pressure \nPVR \nPrimary Variable Regulator \nDCM \nDisplay and Control Module \nDCS \nDecompression Sickness \nPPRV \nPositive Pressure Relief Valve \nOCA \nOxygen Compatibility Assessment \nAIT  \nAutogenous Ignition Temperature \nSOP \nSecondary Oxygen Pack \nPDA \nPre Delivery Acceptance \nWSTF \nWhite Sands Test Facility \nABO \nAviator’s Breathing Oxygen \nLEO \nLow Earth Orbit \nMEOP \nMaximum Expected Operating Pressure \nPT \nPressure Transducer \nCHDS \nConair Heat Delivery System \nEVA \nExtra Vehicular Activity \nTMG \nThermal-Micrometeroid Garment \nSEM \nScanning Electron Microscope \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 1
+        }
+      },
+      {
+        "evidence_id": "E-a2b8c108323aea8a6704c608",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 2,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n2\nI. Introduction \nThe Primary Oxygen Regulator (POR) also referred to as the Variable Oxygen Regulator (VOR) by the Science and \nTechnology Program (STP) has been under development since its initial conception in 2008. For the purposes of this \npaper, POR will be used as the primary method for reference of the regulator. The first bench-top prototype unit \nreferred to as the Primary Variable Regulator (PVR) (1), demonstrated the following improvements over the regulators \nused for the Apollo EMUs and Shuttle/ISS EMUs: \n \nMultiple set-point capability of ~4000 steps over a pressure range of 0-8.4 psid \no \nThe Apollo EMU was a single set-point at 3.75 psid and the Shuttle/ISS EMU utilized a dual set-\npoint regulator that offered ~.9 and 4.3 psid set-points. \n \nCommon regulator design between the primary and secondary oxygen loops with a lower operating \npressure (3000 psi nominally) than typical secondary regulators and higher than typical primary regulators.   \no \nThis enables the recharge of the primary/secondary supplies on-orbit without the need to treat the \nsecondary gas as a consumable that cannot be recharged. \n \nIn-suit decompression sickness treatment via the 8.4 psid operating pressure which can be set by switch \nposition on the Display and Control Module (DCM) \no \nThe Shuttle/ISS EMU offers DCS treatment but only with the addition of an external kit that \ncovers the on-board Positive Pressure Relief Valve (PPRV) and then requires the cycling of the \nprimary regulator from IV to OFF to dump gas into the suit ~.5 psid per cycle.  This has to then be \nmaintained by the crew manually.   \nThe second iteration of the regulator design has been referred to as the POR 2.0.  This particular design focused on \nmaterials selection, oxygen compatibility, packaging of the body/assembly into a tighter volume, and performance \nimprovements to ensure proper performance under a failed open first stage regulator. \n \nFor the POR 2.0 design, specific attention was paid to the materials selections, tolerance, and component design such \nthat the regulator should be compatible with oxygen.  An assessment of the regulator design with respect to materials \nselections and ignition mechanisms was performed by the White Sands Test Facility personnel and documented in \ntheir Oxygen Compatibility Assessment (OCA) (2).  In that assessment, the regulator was found to be well designed \nwith respect to oxygen compatibility.  One regulator failure mode, however, presented a case worth further \ninvestigation, especially with respect to the goal levied on the regulator from the onset of the design: \n \n“The POR shall not ignite or indicate signs of combustion when operated with up to 100 mg/ft2 of medium weight \nhydrocarbon oil coating the wetted parts/passages.” \n \nThat regulator failure involved the failure of the first stage regulator to full-open, which would then pressurize the \ninterstage volume from ~200 psia to supply pressure in the tanks.  Due to the small volume of the interstage region, \nthe pressurization is near adiabatic resulting in very high gas temperatures ~600F which are well above the AIT for \npotential contaminants.  Given this, one may ask why this is being considered as it is normally defined that for a given \nregulator to remain safe, it must have an Non-Volatile Residue (NVR) that remains below 2 mg/ft2 such that the \nassumptions made in the OCA with respect to the kindling chain ignition mechanism remain applicable.  However, \ndeclaring that a system will be maintained clean does not guarantee it to be so as this would be a procedural control \nto a hazard and the best option for control of such a hazard is a hardware design solution that can tolerate it.  The \nShuttle/ISS EMU Program utilized procedural controls to ensure that the primary and secondary oxygen loops \nremained clean, however in the year 2000, contamination was detected during a regulator refurbishment that yielded \nan evidence of fleet wide contamination.  At that time, the failure analysis (3) concluded that there were at least three \ndifferent mechanisms that contributed to the contamination of the Secondary Oxygen Pack (SOP) regulators despite \nthe apparent procedural controls: \n1. Direct contamination of the SOP Test Stand at the field testing organization due to improper connection of \na non O2 compatible dead-weight tester.  The original dead-weight testers used for this function which \nutilized O2 compatible fluorinated oils such as Fomblin were replaced by the calibrating organization with \none that included Sebacate.  On one occasion, there was a report of a contamination event of the rig by \nobservation of the pouring of the redish fluid from flexhoses used to connect the tester to the rig.  Sebacate \nwas later found in multiple regulators when analyzed as they were being refurbished. \n2. Direct contamination of the Test Rig feeding the SOP during Pre Delivery Acceptance (PDA) testing the \nOEM due to rupture of diaphragms on the Aminco high-pressure compressors.  These compressors utilize \nFomblin oil as a hydraulic fluid that is compressed by either a pneumatic piston or electric drive which then \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 2
+        }
+      },
+      {
+        "evidence_id": "E-3c07f004b386b12899af1ccb",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 3,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n3\nacts across a metal diaphragm to compress the isolated gas which was either GN2 or O2.  These \ncompressors had been around for 30years at that time and were known to have issues with contamination of \nthe working fluid via breach of the metallic diaphragm.  WSTF had made a number of design \nimprovements to these units such as the addition of triple diaphragms, cycle counters to monitor the \npressure cycles on the diaphragms and mandate replacement, and in some cases the addition of an oil \ndetector in the outlet.  These updates had not been incorporated in the setup used at the OEM at the time of \nthe failure and the single diaphragm was found to have ruptured.  From that point, the contamination was \nstill just Fomblin which is a fluorinated oil considered oxygen compatible.  However, the rest of the system \nbetween the pressure intensifier and the SOP was cleaned, most likely with Freon 113 leaving a back-\nground contamination permissible per the associated cleanliness specification.  For example, for JPR \n5322.1 (4), a cleanliness level of 100A is permitted to have up to 1 mg/ft2 of NVR when tested at the end of \nthe cleaning cycle.  It was then theorized that as the Fomblin oil moved along through the system, it picked \nup back-ground hydrocarbon contamination such that when it reach the SOP regulator, hydrocarbon \ncontaminants were transported into the regulator.   \n3. Direct contamination of the regulator seat via Joule-Thompson cooling of the gas that is expanded across \nthe 1st stage regulator seat.  In that scenario, the 1st stage regulator drops the inlet gas pressure from ~6000 \npsia down to ~200 psia.  During this expansion, the gas is cooled to temperatures below -50F which would \nallow very small amounts of contaminants in the gas phase within the supply gas to condense on or near the \nregulator seat.  These gas phase contaminants are permitted by the military specification for Aviators \nBreathing Oxygen (ABO) (5), which is then called out and adjusted by various other specifications such as \nShuttle Fluids Procurement Specification (6) then leading to accepted contamination levels of 55 ppm total \nhydrocarbons reported as methane.  In this mechanism, the acceptable NVR limit of <2 mg/ft2 is exceeded \nby the flowing a lot of gas (hundreds of pounds at PDA) and condensing a small amount of contaminant on \nthe very small regulator seat area.   \n \nBy the end of the investigation, the SOP regulator still had the low acceptable limit but the procedural controls were \nfurther strengthened by the implementation of cryogenic cold-traps positioned in front of the SOP regulator whether \nit was being tested at the OEM or field processing organization.  These cold-traps would then protect the test article \n(SOP) from contamination from all of the above mechanisms but only to the established filtering efficiency for the \ncold-traps which was empirically determined to be ~50%.  As a result, the program tracks logistical spreadsheets that \ntotal the mass of gas flowed through each regulator as a limited life item.  Once this life is exceeded, the regulator \nwould then be cleaned and refurbished.   \n \nIn the end, the procedural controls that were employed were defeated in three different ways over time without the \nknowledge of the operators or OEM until the contamination was fleet wide.  As the agency moves toward exploration \nbeyond LEO, the ability to access or refurbish hardware that may become contaminated is reduced and impacts to an \nintolerant system are increased.  The goal for the Primary Oxygen Regulator (POR) was to take advantage of reliable, \ndemonstrated features of the existing Shuttle/ISS EMU SOP regulator while adding functional capabilities and \nrobustness required for an exploration system.  The goal is to get to a position where the contamination tolerance of \nthe regulator is demonstrated by analysis and then test. \n \nII. Ignition Analysis \nWith reference to an earlier discussion, the main failure mode being evaluated is the failure of the first-stage regulator \nin which the interstage volume is pressurized from its nominal pressure ~200 psia to the maximum supply pressure \n~3750 psia nearly instantaneously.  For this test, an initial first order adiabatic compression analysis was performed \nthat predicted a gas temperature of ~900F.  Given that this temperature is above the AIT for all elastomers included \nin the regulator, it necessitated a more detailed analysis that examined contamination along the walls, associated wall \nvs gas temperatures, and energies released to determine if conditions could result in combustion of the contaminant \nand subsequent kindling to the regulator softgoods.  Hence, a high fidelity Primary Oxygen Regulator Thermal \nKindling Chain Analysis (7) (8) was performed using Thermal Desktop with the imported regulator detail geometry.  \nThree distinct analytical approaches with the detailed model were executed to assess the potential for kindling within \nthe POR interstage.  The first was a straightforward transient simulation of the POR failure mode in which the first \nstage fails open and 3750 psia oxygen flows into the POR interstage.  The second approach calculated additional \nenergy required to raise the temperature of the dodecane film on the POR interstage walls to their AIT of 401F during \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 3
+        }
+      },
+      {
+        "evidence_id": "E-758d27b90b3261b72e3f9676",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 4,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n4\nthe transient simulation of the first approach.  The third analytical approach assumed combustion of all available \ndodecane.  Figure 1 depicts the regulator body geometry imported into Thermal Desktop.   \n \n \nFigure 1 - Regulator Body Geometry \n \nIn the first approach, the O2 flows through the 1st stage regulator inlet and then through a fixed orifice which represents \nthe failed open regulator seat, then into a diffuser, through the legs of the diffuser and the annular flow paths that lead \nto either a dead end at the supply pressure sensor or to the filter assembly and 2nd stage regulator seat assembly.  \nConvection between the O2 and the regulator body was computed by Thermal Desktop; a factor was then used to \nmultiply the result up to 3 times to provide conservatism.  A sensitivity study was performed and determined that the \nmaximum contaminant or oil temperature was not affected by the thickness of the oil film below 100mg/ft2, so the \n100mg/ft2 was used. Additional assumptions and key findings include: \n \nOxygen supply boundary conditions of 3750 psia and 275 F \n \nInitial regulator temperature = 70-150F \n \nMaximum gas temperature =  580-674F depending on convection factor \n \nMaximum film oil temperature = 170-200F depending on convection factor \n \nWhile the predicted dodecane film temperatures remained relatively low, the results of this transient simulation \nsuggest dodecane combustion is possible given the listed dodecane AIT is 399-401F, 180 to 270 less than predicted \nmaximum insterstage gas temperatures.  Reported dodecane AITs were determined by ambient combustion testing, a \nmethod in which the liquid chemical is heated in one atmospheric air until its vapor spontaneously ignites.  A partial \ntest at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was \ndamaged during the testing and additional testing will be required to confirm this result.  Finally, these analysis \npredictions should viewed with respect to the dodecane 160F flashpoint, the temperature the material forms a \ncombustible vapor.  It is possible the additional vapor released due to film temperatures of 160F could potentially be \nignited by energy released from contaminant already in vapor phase prior. \n \nThe second analytical approach determined the amount of dodecane needed to burn in order to raise the dodecane film \non the regulator interstage surfaces to the 401F auto ignition temperature.  This was accomplished by using the detailed \nmodel to calculate additional energy required to raise dodecane film temperatures during the transient first stage failure \nsimulation.  The additional energy was then divided by the heat of combustion to yield mass of dodecane. Two \nmethods of applying additional energy were used with results listed below: \n1. Add energy directly to the oxygen at the center of the diffuser (hottest point) until the oil reaches 401F \n \nMass of oil required was found to be 2.4 mg \n \nMass of oil available at 100 mg/ft2 is 14.9mg \n2. Increase the inlet oxygen temperature until the oil on the diffuser reaches 401F \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 4
+        }
+      },
+      {
+        "evidence_id": "E-43fc9b67edc788450536e480",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 5,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n5\n \nMass of oil required was found to be .54 mg \n \nMass of oil available at 100mg/ft2 is 14.9 mg \n \nResults from this analytical approach do not indicate that combustion is expected but rather that combustion of only \na small percentage of the available mass would yield enough energy to combust the remainder of the mass.  \n \nA final analysis was run to determine if the combustion of the available dodecane could be expected to kindle to the \navailable softgoods in the regulator.  In the end, it determined that if all available dodecane burned and the energy was \ninjected at the diffuser (hottest area with least coupling to the regulator body walls) temperatures on the diffuser \napproach AIT for silicone and Vespel making the kindling to the softgoods possible.   \n \nIII. Contaminant Selection \nDuring the contamination investigation that was conducted by the Shuttle/ISS EMU Program, the lower pressure \nprimary oxygen regulator was tested at WSTF to demonstrate its contamination tolerance in the event of another future \ncontamination event.  For that test series, Mobil DTE24 was selected as a good medium weight oil to use.  However, \nas the regulators were disassembled, sampled, cleaned, and refurbished as part of the contamination recovery effort, \nspectra were generated that indicated a wide range of carbon chains spanning from C10-C34.  Figure 2 was excerpted \nfrom (3) and is a chromatogram showing the hydrocarbon constituents found in SOP regulator S/N 102.   \n \n \nFigure 2 - Chromatogram – SOP  Regulator S/N 102 \n \nGiven that the longer chain, heavier hydrocarbons would have lower vapor pressures, WSTF recommended testing \na hydrocarbon that fell on the low end of the observed ranges while not gaseous under ambient conditions.  At that \npoint, WD-40™ was initially chosen which included dodecane but the full formulation could not be ascertained.  As \na result, pure dodecane was used instead so that the materials properties would be known and the composition could \nbe repeatable and known.   \n \nIV. Test Objectives \n \nThis test series sought to achieve the following objectives: \n1. Oxygen wetting of the POR via dry gas adiabatic impacts of the regulator interstage at Maximum Expected \nOperating Pressure (MEOP)  \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 5
+        }
+      },
+      {
+        "evidence_id": "E-ae97ea040925de308074bd3e",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 6,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n6\na. \nThis seeks to demonstrate oxygen compatibility with clean oxygen per ABO (5)  \n2. Dodecane kindling chain adiabatic compression testing of the interstage volume at MEOP and associated \ntemperature \nThis sought to expand the demonstration of oxygen compatibility performed as part of the OCA to include the \nconditions where kindling chain conditions could exist due to the presence of a hydrocarbon contaminant. \n \nV. Test Configuration \nThe test was performed at the White Sands Test Facility (WSTF) in Test Cell 107 located in the 800 area of the \ncenter.  The regulator tested was the Primary Oxygen Regulator (POR) 2.0, s/n 003 (Figure 3) produced by Cobham \nMission Systems.   \n \n \nFigure 3 - POR 2.0 Rendering \n \nThe focus of this test is the green colored area noted in Figure 4 and Figure 5 referred to as the “interstage” area \nwhich is located downstream of the 1st stage regulator and upstream of the 2nd stage regulator.  The nominal operating \npressure for this region is ~200 psia but for the case where the 1st stage regulator fails open at the MEOP for the \ntankage, the interstage region will be pressurized from the ~200 psia nominal operating pressure to the 3750 psia \nsupply pressure on the order of 150 msec. \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 6
+        }
+      },
+      {
+        "evidence_id": "E-219f8c7405b474246050095f",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 7,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n7\n \nFigure 4 - Pneumatic Schematic for POR 2.0 \n \n \nFigure 5 - Cross-Section of POR 2.0 \n \nFor this test, the Interstage Pressure Transducer (PT) was removed to gain access to the interstage region (Figure 6).  \nA special fitting was made to connect to this port and enable connection to the WSTF Test Cell 107 impact valve for \nthe purposes of performing rapid pressurization events.  In order to enable a pressurization from the nominal interstage \npressure up to the MEOP of 3750 psia, a 3750 psia supply was connected to the inlet such that the 1st stage regulator \nwould operate to maintain the nominal interstage pressure.   Then, using a “Little Richard Valve” in Test Cell 107 \nwith the prescribed muscle pressure1, pneumatic impacts were performed on the interstage pressure transducer port.  \nThis configuration efficiently allowed for the planned rapid compression testing and pre/post-test nominal POR \noperations functional testing in which proper 1st and 2nd stage pressure regulation is maintained while a small demand \nup to ~ 1pph is placed on the regulator.  Were a significant combustion event to occur, the outlet or interstage regulation \n                                                          \n1 “muscle pressure” is the pneumatic drive pressure used to control the piston stroking the valve \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 7
+        }
+      },
+      {
+        "evidence_id": "E-e1edc905993958cf454e5d91",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 8,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n8\npressures and total demand would be affected due to malformation of the seats, damage to non-metallic seals on the \nbalance stem, or other static seals causing external leakage. \n \n \nFigure 6 - Cut-away of POR 2.0 \n \nThe original fitting stack-up was used for the dry-impacts, then for the impacts with the dodecane contamination, the \norifice and back-to-back that limited pressurization rate were removed to enable faster pressurization from the “Little \nRichard Valve” feed in the test cell.  Several Type-T thermocouples were placed on key locations on POR 2.0: next \nto outlet, bellows housing, next to inlet port, bottom face, and on the interstage port fitting.  For the dodecane runs, \n20uL was injected at the insterstage port using a syringe with the regulator manipulated to work the contaminant onto \nthe surfaces seeking to achieve ~100 mg/ft2 film coating.  The as-built test setup photo is shown in Figure 7 with \nannotations. \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 8
+        }
+      },
+      {
+        "evidence_id": "E-cc5b2562dd1734f000235c82",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 9,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n9\n \nFigure 7 - POR 2.0 Impact Test Setup \n \nVI. POR 2.0 Testing \nThe initial testing prior to moving onto contaminated challenge testing was to perform 60 dry pneumatic impact tests.  \nPrior to initiation of impact sequence, the POR was setup with a GN2 supply to enable nominal expected operation \nwithin the test system (Figure 8).  After functional checks were completed, personnel were evacuated from the test \ncell and the cell was switched over to oxygen operation.  Sixty test runs were executed with typical impact times \nduring this test sequence of ~360 msec (Figure 9).  Through leakage from the impact valve resulted in the gradual \nasymptotic rise of the interstage pressure to as high as ~700 psia prior to initiation of a given impact dependent on the \ndwell time between impacts.  The impacts were performed manually rather than with the automated system to enable \nmore control for the limited set of impacts.  The actual impacts which are the linear portion of the curves remained \nconsistent through-out.   \n \n \nFigure 8 - POR 2.0 Pre-Impact Functional Test with GN2 \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 9
+        }
+      },
+      {
+        "evidence_id": "E-c53b5f9827711bd9301e72a0",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 10,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n10\n \nFigure 9 - POR Interstage Pressure Measurements During the Sixty O2 Wetting Dry Impact Tests to 3750 psia \nNitrogen functional testing performed after the dry impact testing showed nominal POR performance (Figure 10), \nthus indicating no damage to the POR internal components.  This functional test validated real-time testing \nobservations of the POR, which maintained its 4.05 psid setpoint with approximately 1 pph demand. The POR quickly \nre-established the downstream setpoint conditions after each dry impact test. \n \n \n \nFigure 10 - Post Dry-Impact Functional Check \n \nThe test system was then re-configured for the wet impact testing by removing the 0.013in dia orifice and configuring \nthe “Little Richard” impact valve muscle pressure to reduce the impact times.  Impact times of 80-93 msec were \nmeasured after adjustments and prior to re-connecting the POR test article to the test system.  In addition, the “Conair \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 10
+        }
+      },
+      {
+        "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 11,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n11\nHeat Delivery System” (CHDS) was set up to elevate POR body temperatures for the test series.  The dodecane was \ninjected into the POR interstage, the POR was manipulated, and then reinstalled in an inverted position so that gravity \ncould assist the flow of dodecane towards the 2nd stage.   \n \nFive impacts were then executed with the dodecane load in the POR interstage port.  The impact times ranged from \n137-148 msec (Figure 11).  After the second impact, a leak was noted with the interstage/supply fitting connections \nwhich use the same interface used on the Measurement Specialties, Inc EPXO series pressure transducer used for both \nthe supply and interstage pressure transducers. This particular connection uses a fluoro-silicone seal captured between \ntwo stainless compression limiting/backup rings.  The elevated temperatures of ~185F during the first two test runs  \nappeared to have softened the seal resulting in a leak.  The leak was not significant enough to affect the test results so \nthe impacts continued to completion.  As shown in Figure 12, the CHDS was adjusted to reduce POR body \ntemperatures for the remaining three test runs. \n \n \n \nFigure 11 - POR Interstage Pressures During the First Dodecane Wetted POR Interstage Impact Test Series \n(~140 msec Average Impact Time) \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 11
+        }
+      },
+      {
+        "evidence_id": "E-f64c1220437e812d8c350a15",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 12,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n12\n \nFigure 12 - POR Body Temperature (TC-5) \n \nFunctional testing performed after the initial wet impact testing demonstrated nominal POR operation (Figure 13), \nand again indicated no damage was detected by functional degradation. It is important to note that this was \nanticipated as the regulator was operating at ~.4 slm demand during the interstage impacts and continued to operate \nduring and after each impact. \n \n \nFigure 13 - Post Dodecane Impact Test Series #1 Functional Regulator Check \n \nA final series of 5 wet impacts was executed after the test cell was adjusted to further reduce impact times and another \n20 µL of dodecane was injected via syringe into the interstage pressure transducer port.  Results from this second wet \nimpact series are presented in Figure 14, which shows impact times ranging from 46-49 msec.  POR body temperatures \nin this series were generally lower than in the first wet impact series as shown in Figure 15 but still >20℉ warmer \nthan the current PLSS 2.5 Thermal Desktop Model indicates the POR will see during a full EVA in a Lunar Crater \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 12
+        }
+      },
+      {
+        "evidence_id": "E-cd1658f414503ed55cd8d46c",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 13,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n13\nHot Case with a contaminated Thermal-Micrometeroid Garment (TMG) assuming an ε* = 0.1 (10).   While not shown, \nthe POR maintained the ~4.05 psid set-point at the ~1 pph demand throughout testing. \n \n \nFigure 14 - POR Interstage Pressures During the second Dodecane Wetted POR Interstage Impact Test \nSeries at ~50 msec Pressurization Time \n \n \nFigure 15 - POR Body Temperature (TC-5) \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 13
+        }
+      },
+      {
+        "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 14,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n14\n \nThe test cell was then switched over to GN2 supply and the POR had two final performance sweeps performed at ~4 \npsid and then ~1 psid to confirm operation.  No issues were noted as the regulator still met specifications (see Figures \n25 and 26) with no evidence of poor lock-up, excessive droop, or regulation loss. \n \n \nFigure 16 - Post Dodecane Impact Functional Test at ~4psid set \n \n \nFigure 17 - Post Dodecane Impact Functional Test at ~1psid set \n \nAt the end of POR testing, the POR was disconnected and then a demonstration was setup.  The .013in dia orifice was \ninjected with 20uL of dodecane and then installed on the end of the impact fitting.  The system was then pressurized \nand impacted using the same settings used for the last set of wetted impact tests with the POR.  The lights were \ndimmed in the test cell.  Upon impact, a small, brief flame was generated from the impact demonstrating that the \nadiabatic compression conditions were adequate to ignite the dodecane contaminant. \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 14
+        }
+      },
+      {
+        "evidence_id": "E-d87a3f01374002d789c31344",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 15,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n15\nVII. POR 2.0 Post Test Disassembly and Inspection \nAt the completion of the POR testing at WSTF, the unit was shipped back to Cobham Mission Systems for a more \ndetailed functional check followed by careful disassembly looking for damage and evidence of combustion of the \ndodecane.   \n \n \nFigure 18 - Disassembly of the POR at Cobham \n \nDuring disassembly, the regulator was visibly clean (normal light, no magnification) through each step from the \nremoval of the actuator, bellows housing, Belleville spring assembly, and even the second stage seat, stem, and ball.  \nThe initial pass through of the disassembly did not yield noticeable contamination but under magnification with the \nKeyence Video Microscope system, a few notable areas were found as evidence of combustion.  Figure 19 depicts the \nsapphire ball from the 1st stage regulator which was found to have what appears to be a carbon witness mark from the \n1st stage seat.  SEM analysis could not verify this as the quantity was too small.  The ball in the figure is 1mm diameter. \n \n \nFigure 19 - Sapphire Ball from 1st Stage Regulator \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 15
+        }
+      },
+      {
+        "evidence_id": "E-302383b4371513e5f96ed35e",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 16,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n16\n \nThe filter located in front of the 2nd stage regulator had no visible carbon contamination to the naked eye or with the \nKeyence System, however, SEM of the filter found carbon as shown in Figure 20. \n \n \nFigure 20 - SEM of filter in front of 2nd stage regulator \n \nThe presence of the contaminant on the filter in front of the 2nd stage and the 1st stage ball makes sense given the setup \nand conditions used during the test.  Under those conditions, a supply pressure of ~3750 psia was supplied to the inlet \nof the 1st stage and a demand of ~.4 slm was setup on the outlet of the 2nd stage regulator which was set to ~4 psid.  \nUnder these conditions, the interstage would be pressurized to ~200 psia and the 1st stage and 2nd stage seats would be \nopen and flowing (not in lock-up).  Reference Figure 21 for the following description of events. The impact was then \nfed into the interstage pressure transducer port raising the interstage pressure rapidly from ~200 psia to ~3750 psia \nand simulating the failure of the 1st regulator seat.  At that point, the rapid pressurization both from the impact and \nthen the subsequent ignition of the dodecane pushed combustion products to both ends of the volume.  At one end, \nthe open 1st stage seat which would then close from pressure loading as the interstage exceeded the set-pressure of the \nregulator but not before some combustion products were pushed through the seat opening leaving a witness mark on \nthe ball from the contaminants.  On the other end, the 2nd stage regulator was open and flowing with the 20 micron \nfilter in front.  As the ignition expanded, there was an increase in the regulator outlet pressure momentarily until the \nbalance stem/Belleville spring could compensate and reduce the stroke on the ball to reduce the outlet pressure given \nthe higher interstage pressure.  This can be seen in Figure 22. \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 16
+        }
+      },
+      {
+        "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 17,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n17\n \nFigure 21 - POR 2.0 Cross-section with Interstage Pressurization Annotation \n \n \nFigure 22 - Outlet vs Interstage pressure on Impact#1 for Wet Test Series#1 \n \nVIII. Post-test Thermal Desktop Model Updates and Correlation \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 17
+        }
+      },
+      {
+        "evidence_id": "E-29c4595667327c46d9cbbcc4",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 18,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n18\nAfter completion of the test series at WSTF, the Thermal Desktop model of the POR was updated based on the test \nsetup and the inlet pressure readings at the interstage were used as a forcing function.  One of the initial concerns was \nthat the short drill passage from the Interstage Pressure Transducer port to the diffuser area within the body of the \nregulator would present enough of an obstruction as to create a lag in the pressurization in the actual interstage area \nthereby slowing the pneumatic impact pressurization rate.  The model confirmed that for both the 150 msec and 60 \nmsec pressurization cases tested, the lag was negligible as shown in Figure 23 and Figure 24 where all of the predicted \npressures from the inlet to interstage were so close with respect to the plot scale that they appear on the same line.   \n \n \nFigure 23 - POR Thermal Desktop Model 150 msec Pressurization Test \n \n \n \nFigure 24 - POR Thermal Desktop Model 60 msec Pressurization Test \n \nIX. Conclusion \nThe objectives for this test were fully satisfied by the data collected.  The POR design was “wetted” with 60 \nimpacts of dry oxygen, followed by two sets of 5 impacts of oxygen with a lightweight hydrocarbon contaminant, \ndodecane at levels > 100 mg/ft2.  The impacts with the kindling chain contaminant were performed at the MEOP for \nthe regulator, with elevated regulator body temperatures, and at pressurization rates up to 3 times faster than could be \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 18
+        }
+      },
+      {
+        "evidence_id": "E-76a659916cbede6e557fac99",
+        "source_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f",
+        "document_id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:document",
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "filename": "20170003941.pdf",
+        "page": 19,
+        "text": " \nInternational Conference on Environmental Systems \n \n \n19\nachieved from the failure of the 1st stage regulator under these unlikely conditions.  The contaminant levels used (>100 \nmg/ft2) were far in excess of the required cleanliness level of < 1 mg/ft2 specified and maintained in Level 100A per \nJPR 5322.1 and the < 2 mg/ft2 typically assumed for Oxygen Compatibility Assessments (OCA).  The regulator \nperformed nominally prior to, during, and after the entire impact series.  In the end, evidence of dodecane combustion \nwas found in the regulator but did not result in any functional degradation.  Should a systemic or specific \ncontamination event such as that discussed regarding the EMU SOP Regulator recur with with this regulator/system \nduring an exploration mission 200,000+ miles away from the cleanrooms/labs on earth, the demonstrated POR \nperformance indicates that if the event is known about at all, it will not be expected to be as a result of a regulator \nmalfunction.   \n \nAcknowledgments \nThis test and the data collected from it would not have been possible without the assistance from the wonderful \nfolks at the White Sands Test Facility (WSTF). We would like to specially thank  Steve Peralta, Kyle Sparks, Jonathan \nTylka, and Tim Gallus who invested time, helped us to pull this test off, and who were great hosts for the entire \nexperience.   \n \nReferences \n1. AIAA-2010-6064 - Design and Testing of a Variable Pressure Regulator for a Flexible Spacesuit Architecture. \nMosher, M., Campbell, C. Houston, TX : NASA, 2010. \n2. WSTF. OXHAZ/FAIL.0487 - Oxygen Compatibility Assessment Primary Oxygen Regulator (POR) 2.0. Las Cruces, \nNM : WSTF, 2012. \n3. H-EMU-000—001. Oil Contamination in EMU High Pressure Oxygen System. Houston, TX : NASA, 2000. \n4. 5322.1, JPR. Johnson Space Center Procedural Requirements Contamination Control Requirements Manual. \nHouston, TX : NASA, 2012. \n5. MIL-PRF-27210. PERFORMANCE SPECIFICATION OXYGEN, AVIATOR’S BREATHING, LIQUID AND GAS. \ns.l. : US Govt, 1997. \n6. SE-S-0073. Space Shuttle Specification Fluid Procurment and Use Control. Houston, TX : NASA, 1999. \n7. ESCG-4470-12-TEAN-DOC-0004. Primary Oxygen Regulator Thermal Kindling Chain Analysis. Houston, TX : \nBruce Conger, ESCG, 2012. \n8. ESCG-4470-13-TEAN-DOC-0010. PLSS 2.0 Hardware Analysis. Houston, TX : Bruce Conger/ESCG, 2013. \n9. ASTM G72M-15. Standard Test Method for Autogenous Ignition Temperature of Liquids and Solids in a High-\nPressure Oxygen-Enriched Environment. West Conshohocken, PA : ASTM, 2015. \n10. JETS-JE33-16-TAED-DOC-0021-A. Portable Life Support Subsystem 2.5 Thermal Hydraulic Performance \nAnalysis. Houston, TX : JETS/NASA/JSC, 2016. \n \n \n",
+        "checksum": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+        "locator": {
+          "file": "20170003941.pdf",
+          "page": 19
+        }
+      }
+    ],
+    "tables": [],
+    "entities": [
+      {
+        "id": "research-195aa7ae31aca023746e",
+        "label": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "class_id": "Investigation",
+        "evidence_ids": [
+          "E-368990c83a1aeafe0dcd20c6"
+        ]
+      }
+    ],
+    "relations": [],
+    "values": [],
+    "statements": [
+      {
+        "id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:statement:abfd48d59c481daa",
+        "text": "One regulator failure mode, however, presented a case worth further \ninvestigation, especially with respect to the goal levied on the regulator from the onset of the design: \n \n“The POR shall not ignite or indicate signs of combustion when operated with up to 100 mg/ft2 of medium weight \nhydrocarbon oil coating the wetted parts/passages.” \n \nThat regulator failure involved the failure of the first stage regulator to full-open, which would then pressurize the \ninterstage volume from ~200 psia to supply pressure in the tanks.",
+        "class_id": "Requirement",
+        "epistemic": "normative_requirement",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-a2b8c108323aea8a6704c608"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:statement:ee19f9a98031b978",
+        "text": "At that time, the failure analysis (3) concluded that there were at least three \ndifferent mechanisms that contributed to the contamination of the Secondary Oxygen Pack (SOP) regulators despite \nthe apparent procedural controls: \n1.",
+        "class_id": "NASAConclusion",
+        "epistemic": "author_reported_conclusion",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-a2b8c108323aea8a6704c608"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:statement:4c19e77458508c28",
+        "text": "Figure 2 - Chromatogram – SOP  Regulator S/N 102 \n \nGiven that the longer chain, heavier hydrocarbons would have lower vapor pressures, WSTF recommended testing \na hydrocarbon that fell on the low end of the observed ranges while not gaseous under ambient conditions.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-43fc9b67edc788450536e480"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-195aa7ae31aca023746e:c45b7435c9d5f29f:statement:fd4cc1214d7d13e5",
+        "text": "Conclusion \nThe objectives for this test were fully satisfied by the data collected.",
+        "class_id": "NASAConclusion",
+        "epistemic": "author_reported_conclusion",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-29c4595667327c46d9cbbcc4"
+        ],
+        "included": true
+      }
+    ],
+    "extensions": [],
+    "decisions": {},
+    "corrections": [],
+    "exclusions": [],
+    "contexts": [],
+    "contract_digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd",
+    "source_provenance": {
+      "publisher_origin": "NASA NTRS",
+      "source_url": "https://ntrs.nasa.gov/api/citations/20170003941/downloads/20170003941.pdf",
+      "nasa_id": "20170003941",
+      "metadata": {
+        "copyright": {
+          "thirdPartyPermissionsProduced": false,
+          "disclosedToPublic": false,
+          "containsIndication": false,
+          "publisherPermissionOrRightsToDistribute": false,
+          "belongsToUsGov": false,
+          "determinationType": "PUBLIC_USE_PERMITTED",
+          "thirdPartyContentCondition": "NOT_SET",
+          "belongsToContractor": false,
+          "disclosedInvention": false,
+          "submissionId": 20170003941,
+          "containsThirdPartyMaterial": false,
+          "belongsToPublisher": false,
+          "id": "5171ff22a2e3465cbe46cdc79199a1ac",
+          "belongsToAuthors": false
+        },
+        "subjectCategories": [
+          "Man/System Technology And Life Support"
+        ],
+        "exportControl": {
+          "isExportControl": "NO",
+          "submissionId": 20170003941,
+          "ear": "NO",
+          "id": "eb78233563c9429bb9a03df39de28fb5",
+          "itar": "NO"
+        },
+        "distributionDate": "2019-07-12T00:00:00.0000000+00:00",
+        "otherReportNumbers": [
+          "JSC-CN-39322",
+          "Report Number: JSC-CN-39322"
+        ],
+        "fundingNumbers": [
+          {
+            "number": "WBS 401769.06.06.01.02.41",
+            "submissionId": 20170003941,
+            "id": "a88a3d479f054ee7a93ec83abc88b7f6",
+            "type": "WBS"
+          }
+        ],
+        "title": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+        "stiType": "CONFERENCE_PAPER",
+        "distribution": "PUBLIC",
+        "submittedDate": "2017-04-27T13:33:22.2400000+00:00",
+        "authorAffiliations": [
+          {
+            "sequence": 0,
+            "submissionId": 20170003941,
+            "meta": {
+              "author": {
+                "name": "Campbell, Colin"
+              },
+              "organization": {
+                "name": "NASA Johnson Space Center",
+                "location": "Houston, TX, United States"
+              }
+            },
+            "id": "acf8637b6d1145e78c49354722ef05b6"
+          },
+          {
+            "sequence": 1,
+            "submissionId": 20170003941,
+            "meta": {
+              "author": {
+                "name": "Cox, Marlon"
+              },
+              "organization": {
+                "name": "NASA Johnson Space Center",
+                "location": "Houston, TX, United States"
+              }
+            },
+            "id": "d60913299e9b49f0b9ed0228ac91a4b5"
+          },
+          {
+            "sequence": 2,
+            "submissionId": 20170003941,
+            "meta": {
+              "author": {
+                "name": "Meginnis, Carly"
+              },
+              "organization": {
+                "name": "NASA Johnson Space Center",
+                "location": "Houston, TX, United States"
+              }
+            },
+            "id": "449a1798dd164fcca9ec15947e9c79bf"
+          },
+          {
+            "sequence": 3,
+            "submissionId": 20170003941,
+            "meta": {
+              "author": {
+                "name": "Falconi, Eric"
+              },
+              "organization": {
+                "name": "Jacobs Technologies Engineering Science Contract Group",
+                "location": "Houston, TX, United States"
+              }
+            },
+            "id": "9ad27c7d5c814604a0a00a72ceb9b462"
+          }
+        ],
+        "stiTypeDetails": "Conference Paper",
+        "technicalReviewType": "TECHNICAL_REVIEW_TYPE_NONE",
+        "modified": "2025-08-31T18:39:21.7150190+00:00",
+        "id": 20170003941,
+        "legacyMeta": {
+          "__type": "LegacyMetaIndex, StrivesApi.ServiceModel",
+          "accessionNumber": ""
+        },
+        "created": "2017-04-27T13:33:22.2400000+00:00",
+        "center": {
+          "code": "JSC",
+          "name": "Johnson Space Center",
+          "id": "dd46994b91a94cb2a2722617cbbadc55"
+        },
+        "onlyAbstract": false,
+        "sensitiveInformation": 2,
+        "abstract": "The Variable Oxygen Regulator (VOR), a stepper actuated two-stage mechanical regulator, is being developed for the purpose of serving as the Primary Oxygen Regulator (POR) and Secondary Oxygen Regulator (SOR) within the Advanced EMU PLSS, now referred to as the xEMU and xPLSS. Three prototype designs have been fabricated and tested as part of this development. Building upon the lessons learned from the 35 years of Shuttle/ISS EMU Program operation including the fleet-wide EMU Secondary Oxygen Pack (SOP) contamination failure that occurred in 2000, the VOR is being analyzed, designed, and tested for oxygen compatibility with controlled Non-Volatile Residue (NVR) and a representative worst-case hydro-carbon system contamination event (>100mg/sq ft dodecane). This paper discusses the steps taken in testing of VOR 2.0 with for oxygen compatibility and then discusses follow-on design changes implemented in the VOR 3.0 (3rd prototype) as a result.",
+        "isLessonsLearned": false,
+        "disseminated": "DOCUMENT_AND_METADATA",
+        "meetings": [
+          {
+            "submissionId": 20170003941,
+            "name": "International Conference On Environmental Systems, Inc.",
+            "location": "Stafford Springs, CT, United States",
+            "id": "16aa7f1aa02944c9bae0b4c10f27eb30"
+          },
+          {
+            "country": "United States",
+            "submissionId": 20170003941,
+            "endDate": "2017-07-20T00:00:00.0000000+00:00",
+            "sponsors": [
+              {
+                "meta": {
+                  "organization": {
+                    "name": "International Conference On Environmental Systems, Inc.",
+                    "location": "Stafford Springs, CT, United States"
+                  }
+                },
+                "meetingId": "cf107c80becb4b9c850e8ad64de9974a",
+                "id": "0e3ff5aa13d548e3b93b387f0c781193"
+              }
+            ],
+            "name": "International Conference on Environmental Systems",
+            "location": "Chraleston, SC",
+            "id": "cf107c80becb4b9c850e8ad64de9974a",
+            "startDate": "2017-07-16T00:00:00.0000000+00:00"
+          }
+        ],
+        "publications": [
+          {
+            "submissionId": 20170003941,
+            "id": "0990db00999543d29764f6d80cb4b15b",
+            "publicationDate": "2017-07-16T00:00:00.0000000+00:00"
+          }
+        ],
+        "status": "CURATED",
+        "related": [],
+        "downloads": [
+          {
+            "draft": false,
+            "mimetype": "application/pdf",
+            "name": "20170003941.pdf",
+            "type": "STI",
+            "links": {
+              "original": "/api/citations/20170003941/downloads/20170003941.pdf",
+              "pdf": "/api/citations/20170003941/downloads/20170003941.pdf",
+              "fulltext": "/api/citations/20170003941/downloads/20170003941.txt"
+            }
+          }
+        ],
+        "downloadsAvailable": true,
+        "index": "submissions-2026-10-15-05-24"
+      },
+      "sha256": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+      "eligibility": "OFFICIAL_NASA_DOCUMENT_DOMAIN_REVIEW_REQUIRED",
+      "scientific_review": "NONE",
+      "acquisition_path": "EXISTING_UPLOAD_SERVICE_AFTER_METADATA_REJECTION"
+    }
+  },
+  "digest": "6083e1778ee76db2ae64dcfaf255d3b228af8450a1ddf56d25bb029f6f1ea4e4"
+}

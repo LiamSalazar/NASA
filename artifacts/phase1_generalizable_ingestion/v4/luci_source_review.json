@@ -1,0 +1,2615 @@
+{
+  "basis": "Developer source adjudication of the historical 19-target LUCI regression sample plus a fixed stratified first-by-page/id sample of 30 SOURCE_SUPPORTED proposals (6 entities, all 7 quantities, all 4 relations, first 13 statements). Not whole-document recall or independent expert gold. Duplicate supporting proposals are not independent scientific facts.",
+  "prepared": "luci_application_02/prepared.json",
+  "targets": [
+    {
+      "id": "entities-19-1",
+      "kind": "entities",
+      "evidence_id": "E-36fba4ad2dd3a80446e482de",
+      "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.\n•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-3af7193baad7f86aed6a7c03"
+      ],
+      "expectation": {
+        "page": 19,
+        "label": "LUCI: SIBAL fabric",
+        "class_id": "ExperimentFamily",
+        "boundary": "Source-defined result-heading group; not a named individual run or independently established distinct physical experiment."
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "entities-20-2",
+      "kind": "entities",
+      "evidence_id": "E-d21d6576e58973f04cbb79b6",
+      "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).\n•\nTotal base spread of ~6cm until \nextinction.\n•\nFlame base spread rate is not \nconstant; steady spread was not \nachieved.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-fcb91186f4e09d0a7e45b619"
+      ],
+      "expectation": {
+        "page": 20,
+        "label": "LUCI: PMMA",
+        "class_id": "ExperimentFamily",
+        "boundary": "Source-defined result-heading group; not a named individual run or independently established distinct physical experiment."
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "entities-24-3",
+      "kind": "entities",
+      "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+      "quote": "1-G Results: SIBAL fabric\n•\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn.\n•\nFlame width decreases suddenly at \n~24 seconds, and goes to 0 within 4 \nseconds.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-ccfaaa1c2b105f0143442fd4"
+      ],
+      "expectation": {
+        "page": 24,
+        "label": "1-G Results: SIBAL fabric",
+        "class_id": "ExperimentFamily",
+        "boundary": "Source-defined result-heading group; not a named individual run or independently established distinct physical experiment."
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "entities-28-4",
+      "kind": "entities",
+      "evidence_id": "E-94f2c30163d61cfbf33f137a",
+      "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location.\n•\nFlame tip spread was \n~linear until tip becomes \nobscured by sample holder.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-117eaa1378987bf9096e3348"
+      ],
+      "expectation": {
+        "page": 28,
+        "label": "1-G Results: PMMA",
+        "class_id": "ExperimentFamily",
+        "boundary": "Source-defined result-heading group; not a named individual run or independently established distinct physical experiment."
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-19-5",
+      "kind": "quantities",
+      "evidence_id": "E-36fba4ad2dd3a80446e482de",
+      "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.\n•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-8507a6f64822dfbbd62add31"
+      ],
+      "expectation": {
+        "page": 19,
+        "subject_label": "LUCI: SIBAL fabric",
+        "label_contains_any": [
+          "Flame base spread rate"
+        ],
+        "expression": ".92",
+        "unit": "mm/s",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-19-6",
+      "kind": "quantities",
+      "evidence_id": "E-36fba4ad2dd3a80446e482de",
+      "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.\n•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-afd51954224fd89b07b21abc"
+      ],
+      "expectation": {
+        "page": 19,
+        "subject_label": "LUCI: SIBAL fabric",
+        "label_contains_any": [
+          "Flame tip spread rate"
+        ],
+        "expression": "1.1",
+        "unit": "mm/s",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-21-7",
+      "kind": "quantities",
+      "evidence_id": "E-b7874f30c44529988c9a2b4d",
+      "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame tip spread is \napproximately linear.\n•\nFlame spread rate = 1.5 \nmm/s.\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-2d8379a10aad5e8f6797599d"
+      ],
+      "expectation": {
+        "page": 21,
+        "subject_label": "LUCI: PMMA",
+        "label_contains_any": [
+          "Flame spread rate"
+        ],
+        "expression": "1.5",
+        "unit": "mm/s",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-27-8",
+      "kind": "quantities",
+      "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+      "quote": "1-G Results: SIBAL\n•\nO2% varies slightly but is \nroughly constant at 20%.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-1e967e9b1c463180df9dc9b0"
+      ],
+      "expectation": {
+        "page": 27,
+        "subject_label": "1-G Results: SIBAL",
+        "label_contains_any": [
+          "oxygen concentration",
+          "oxygen",
+          "O2",
+          "O2%"
+        ],
+        "expression": "20",
+        "unit": "%",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-29-9",
+      "kind": "quantities",
+      "evidence_id": "E-4e83b44eb58f230065e2b311",
+      "quote": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.\n•\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length).\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-a5d73dffa3ac5100cf12ef8d"
+      ],
+      "expectation": {
+        "page": 29,
+        "subject_label": "1-G Results: PMMA",
+        "label_contains_any": [
+          "Flame tip"
+        ],
+        "expression": "~ 3.95",
+        "unit": "mm/s",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-42-10",
+      "kind": "quantities",
+      "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+      "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.\n•\nO2% decreases at a roughly \nconstant rate over the entire \nexperiment.\n",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-98b920868d6ec7720f73247b"
+      ],
+      "expectation": {
+        "page": 42,
+        "subject_label": "LUCI: SIBAL fabric",
+        "label_contains_any": [
+          "oxygen concentration",
+          "O2",
+          "O2%"
+        ],
+        "expression": "~20",
+        "unit": "%",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "quantities-42-11",
+      "kind": "quantities",
+      "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+      "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.\n•\nO2% decreases at a roughly \nconstant rate over the entire \nexperiment.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-560e2bce8959097372419e36"
+      ],
+      "expectation": {
+        "page": 42,
+        "subject_label": "LUCI: SIBAL fabric",
+        "label_contains_any": [
+          "oxygen concentration",
+          "O2",
+          "O2%"
+        ],
+        "expression": "~18",
+        "unit": "%",
+        "epistemic": "reported_quantity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-19-12",
+      "kind": "statements",
+      "evidence_id": "E-36fba4ad2dd3a80446e482de",
+      "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.\n•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.\n•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-94aaba8983cf400ac5d4032b",
+        "proposal-bcd796ea86be5f5eeec45e41"
+      ],
+      "expectation": {
+        "page": 19,
+        "subject_label": "LUCI: SIBAL fabric",
+        "text_contains": "Spread rates for char front, flame base, and flame tip are all linear",
+        "epistemic": "measured_observation"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-20-13",
+      "kind": "statements",
+      "evidence_id": "E-d21d6576e58973f04cbb79b6",
+      "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).\n•\nTotal base spread of ~6cm until \nextinction.\n•\nFlame base spread rate is not \nconstant; steady spread was not \nachieved.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-5eeaa394cafbcbd5e79b9761",
+        "proposal-a3e4002306cb6733a97f2803"
+      ],
+      "expectation": {
+        "page": 20,
+        "subject_label": "LUCI: PMMA",
+        "text_contains": "steady spread was not achieved",
+        "epistemic": "measured_observation"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-24-14",
+      "kind": "statements",
+      "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+      "quote": "1-G Results: SIBAL fabric\n•\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn.\n•\nFlame width decreases suddenly at \n~24 seconds, and goes to 0 within 4 \nseconds.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-1268bc70a5775e67d632f439",
+        "proposal-76d5de1146f600e98feed9a0"
+      ],
+      "expectation": {
+        "page": 24,
+        "subject_label": "1-G Results: SIBAL fabric",
+        "text_contains": "Flame width decreases suddenly",
+        "epistemic": "measured_observation"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-28-15",
+      "kind": "statements",
+      "evidence_id": "E-94f2c30163d61cfbf33f137a",
+      "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location.\n•\nFlame tip spread was \n~linear until tip becomes \nobscured by sample holder.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-c2b47ba27064612a7d40695c"
+      ],
+      "expectation": {
+        "page": 28,
+        "subject_label": "1-G Results: PMMA",
+        "text_contains": "Base was not accurately tracked",
+        "epistemic": "measured_observation"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "statements-37-16",
+      "kind": "statements",
+      "evidence_id": "E-ab863beddb4ab0a2517976fa",
+      "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.  The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.  \nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight. \n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-302168556ec3a5fb73cddbbc"
+      ],
+      "expectation": {
+        "page": 37,
+        "subject_label": "LUCI project",
+        "text_contains": "The LUCI project achieved the first-ever",
+        "epistemic": "author_reported_conclusion"
+      },
+      "review_note": "p37 LUCI and LUCI project are the same literal named source subject by the explicit original construction The LUCI project. This is an evaluation judgment, not a global alias or altered production proposal."
+    },
+    {
+      "id": "statements-37-17",
+      "kind": "statements",
+      "evidence_id": "E-ab863beddb4ab0a2517976fa",
+      "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.  The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.  \nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight. \n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-524c3062622efbdd82e1c1ca"
+      ],
+      "expectation": {
+        "page": 37,
+        "subject_label": "LUCI project",
+        "text_contains": "The results are applicable to NASA’s exploration efforts",
+        "epistemic": "author_reported_conclusion"
+      },
+      "review_note": "p37 LUCI and LUCI project are the same literal named source subject by the explicit original construction The LUCI project. This is an evaluation judgment, not a global alias or altered production proposal."
+    },
+    {
+      "id": "relations-24-18",
+      "kind": "relations",
+      "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+      "quote": "1-G Results: SIBAL fabric\n•\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn.\n•\nFlame width decreases suddenly at \n~24 seconds, and goes to 0 within 4 \nseconds.\n",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "expectation": {
+        "page": 24,
+        "subject_label": "1-G Results: SIBAL fabric",
+        "relation": "hasMaterial",
+        "object_id": "SIBAL Fabric"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    },
+    {
+      "id": "relations-30-19",
+      "kind": "relations",
+      "evidence_id": "E-883f133a5745d0142df1e007",
+      "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nGravity remains constant at \nEarth’s gravity for duration of \nburn.\n",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-30cf11b0a48fee194ad3958a"
+      ],
+      "expectation": {
+        "page": 30,
+        "subject_label": "1-G Results: PMMA",
+        "relation": "hasGravityCondition",
+        "object_id": "normal-gravity"
+      },
+      "review_note": "Checked original expression, unit, source role and exact documentary group."
+    }
+  ],
+  "proposal_sample": [
+    {
+      "proposal_id": "proposal-041a2e411f7fcd64ad15f6f4",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-3d0d479957889ee0ebba3428",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 1,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 52,
+          "quote": "Lunar Combustion Investigation: Flammability Results",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 1
+          }
+        },
+        {
+          "evidence_id": "E-3d0d479957889ee0ebba3428",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 1,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 93,
+          "quote": "Lunar Combustion Investigation: Flammability Results \nfrom a Rotating Sounding Rocket\nPaul V.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 1
+          }
+        },
+        {
+          "evidence_id": "E-0acbeed7a437e765685d020a",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 2,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 455,
+          "quote": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\nObjectives\nDemonstrate the feasibility of conducting material flammability experiments in partial-g on the spinning Blue Origin \nNew Shepard vehicle which simulates Lunar gravity with centrifugal force\nObtain data from the flight that will support other simulated Lunar-g experiments in drop towers and parabolic \nflight, actual Lunar-g experiments, and computer models.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-0acbeed7a437e765685d020a",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 2,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 464,
+          "end": 509,
+          "quote": "The LUCI scientific objectives were achieved.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 3,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 80,
+          "quote": "Page 3\nOverview\nConduct partial-g fire tests on the Blue Origin sounding rocket.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 3
+          }
+        },
+        {
+          "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 3,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 83,
+          "end": 164,
+          "quote": "Hypothesis: some materials burning in partial-g are more flammable than on Earth.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 3
+          }
+        },
+        {
+          "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 3,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 648,
+          "end": 771,
+          "quote": "The work directly addresses knowledge gaps in flammability and crew safety as defined in several \nNASA strategic documents.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 3
+          }
+        },
+        {
+          "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 12,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 97,
+          "quote": "•\nBlue Origin New Shepard sounding rocket yields Lunar gravity by using centrifugal acceleration.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 12
+          }
+        },
+        {
+          "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 12,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 98,
+          "end": 224,
+          "quote": "•\nThese are the first-ever, extended-duration (greater than 25 seconds) combustion tests performed in simulated Lunar gravity.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 12
+          }
+        },
+        {
+          "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 13,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 421,
+          "end": 924,
+          "quote": "Objectives\n• Burn SIBAL fabric & PMMA \n• Conduct first-ever, long duration observation and measurement of flame spread in a partial-g environment\n• Verify this platform is a viable means to obtain material flammability data in Lunar-g and will include an assessment of \nthe Coriolis force on results\n• Provide guidance for sample selection and test definition for a Lunar in-situ experiment\nData\n• First Flight\n• Measurements of flame spread rate and output of other diagnostics, including g-level vs.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 13
+          }
+        },
+        {
+          "evidence_id": "E-ab863beddb4ab0a2517976fa",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 37,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 131,
+          "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 37
+          }
+        }
+      ],
+      "proposal": {
+        "key": "entity-1e458f0f35c5be884b8b",
+        "label": "Lunar Combustion Investigation",
+        "class_id": "Investigation",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "quote": "Lunar Combustion Investigation: Flammability Results",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "quote": "Lunar Combustion Investigation: Flammability Results \nfrom a Rotating Sounding Rocket\nPaul V.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "quote": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\nObjectives\nDemonstrate the feasibility of conducting material flammability experiments in partial-g on the spinning Blue Origin \nNew Shepard vehicle which simulates Lunar gravity with centrifugal force\nObtain data from the flight that will support other simulated Lunar-g experiments in drop towers and parabolic \nflight, actual Lunar-g experiments, and computer models.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "quote": "The LUCI scientific objectives were achieved.",
+            "start": 464
+          },
+          {
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "quote": "Page 3\nOverview\nConduct partial-g fire tests on the Blue Origin sounding rocket.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "quote": "Hypothesis: some materials burning in partial-g are more flammable than on Earth.",
+            "start": 83
+          },
+          {
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "quote": "The work directly addresses knowledge gaps in flammability and crew safety as defined in several \nNASA strategic documents.",
+            "start": 648
+          },
+          {
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "quote": "•\nBlue Origin New Shepard sounding rocket yields Lunar gravity by using centrifugal acceleration.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "quote": "•\nThese are the first-ever, extended-duration (greater than 25 seconds) combustion tests performed in simulated Lunar gravity.",
+            "start": 98
+          },
+          {
+            "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+            "quote": "Objectives\n• Burn SIBAL fabric & PMMA \n• Conduct first-ever, long duration observation and measurement of flame spread in a partial-g environment\n• Verify this platform is a viable means to obtain material flammability data in Lunar-g and will include an assessment of \nthe Coriolis force on results\n• Provide guidance for sample selection and test definition for a Lunar in-situ experiment\nData\n• First Flight\n• Measurements of flame spread rate and output of other diagnostics, including g-level vs.",
+            "start": 421
+          },
+          {
+            "evidence_id": "E-ab863beddb4ab0a2517976fa",
+            "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-a92a1bd9f63568f5d15f9244",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 3,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 166,
+          "end": 258,
+          "quote": "This has \nimportant implications for the current 1-g material screening method used by NASA.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 3
+          }
+        },
+        {
+          "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 3,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 347,
+          "end": 436,
+          "quote": "Oxygen limits for upward and downward spread at partial-g will be compared to 1-g values.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 3
+          }
+        },
+        {
+          "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 3,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 439,
+          "end": 538,
+          "quote": "Measured flame characteristics in 1-g and partial-g will be compared to detailed model predictions.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 3
+          }
+        },
+        {
+          "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 12,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 907,
+          "end": 1025,
+          "quote": "•\nResults from this experiment are compared to related 1-g work, drop tower tests, aircraft experiments, and modeling.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 12
+          }
+        },
+        {
+          "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 13,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 925,
+          "end": 1034,
+          "quote": "time for the two samples\n• Sample closeout photos and photos before and after each test\n• Data from 1-g burns",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 13
+          }
+        },
+        {
+          "evidence_id": "E-d3aebe64259ea519e1693467",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 18,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 151,
+          "quote": "Potential Follow-on Objectives\n• Evaluate the hypothesis that some materials burning in partial-g environments may be more flammable \ncompared to 1-g.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 18
+          }
+        },
+        {
+          "evidence_id": "E-d3aebe64259ea519e1693467",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 18,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 485,
+          "end": 626,
+          "quote": "• Refine model using experiment results\n• Provide a bridge between current 1-g material screen method and actual behavior in reduced gravity.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 18
+          }
+        },
+        {
+          "evidence_id": "E-d3aebe64259ea519e1693467",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 18,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 627,
+          "end": 865,
+          "quote": "Data\n• Flammability limits (%O2) for a subset of materials in Lunar-g\n• Measurements of the flame spread rate over materials in exploration atmospheres\n• Sample closeout photos, and photos before and after each test\n• Data from 1-g burns",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 18
+          }
+        },
+        {
+          "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 24,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 110,
+          "quote": "1-G Results: SIBAL fabric\n•\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 24
+          }
+        },
+        {
+          "evidence_id": "E-a08131327d6385587996348e",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 25,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 86,
+          "quote": "1-G Results: SIBAL fabric\n•\nFlame tip spread rate is \n~double flame base spread \nrate.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 25
+          }
+        },
+        {
+          "evidence_id": "E-007124915589abdd7abc5e6e",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 26,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 75,
+          "quote": "1-G Results: SIBAL\n•\nGravity (in g’s) remains \nconstant at Earth’s gravity.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 26
+          }
+        },
+        {
+          "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 27,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 73,
+          "quote": "1-G Results: SIBAL\n•\nO2% varies slightly but is \nroughly constant at 20%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 27
+          }
+        },
+        {
+          "evidence_id": "E-94f2c30163d61cfbf33f137a",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 28,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 173,
+          "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 28
+          }
+        },
+        {
+          "evidence_id": "E-4e83b44eb58f230065e2b311",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 29,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 92,
+          "quote": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 29
+          }
+        },
+        {
+          "evidence_id": "E-883f133a5745d0142df1e007",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 30,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 116,
+          "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nGravity remains constant at \nEarth’s gravity for duration of \nburn.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 30
+          }
+        },
+        {
+          "evidence_id": "E-7b2423e2b4112606572b7b6e",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 33,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 152,
+          "quote": "SIBAL Flame Spread Fit Comparison\nFlame Spread Rates (from linear fits):\nPartial-\nG\n(mm/s)\n1-G\n(mm/s)\nRatio\nFlame \nBase\n.9\n1.5\n.6\nFlame \nTip\n1.1\n2.8\n.39",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 33
+          }
+        },
+        {
+          "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 34,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 134,
+          "quote": "SIBAL Flame Width Comparison\n•\nFlame extinction for 1-g \nexperiment occurs quicker \n(flame width decrease is \nsteeper than partial-g).",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 34
+          }
+        },
+        {
+          "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 34,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 135,
+          "end": 207,
+          "quote": "•\n1-g extinction happens ~ 45 \nseconds sooner than partial-g \nextinction",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 34
+          }
+        },
+        {
+          "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 36,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 137,
+          "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 36
+          }
+        }
+      ],
+      "proposal": {
+        "key": "entity-c1eca283910bc90ac737",
+        "label": "1-g",
+        "class_id": "GravityCondition",
+        "study": "unknown",
+        "support": [
+          {
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "quote": "This has \nimportant implications for the current 1-g material screening method used by NASA.",
+            "start": 166
+          },
+          {
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "quote": "Oxygen limits for upward and downward spread at partial-g will be compared to 1-g values.",
+            "start": 347
+          },
+          {
+            "evidence_id": "E-fff11db50ab02d9c3c5437c1",
+            "quote": "Measured flame characteristics in 1-g and partial-g will be compared to detailed model predictions.",
+            "start": 439
+          },
+          {
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "quote": "•\nResults from this experiment are compared to related 1-g work, drop tower tests, aircraft experiments, and modeling.",
+            "start": 907
+          },
+          {
+            "evidence_id": "E-b1a9f6a613faf9d539c3c1bb",
+            "quote": "time for the two samples\n• Sample closeout photos and photos before and after each test\n• Data from 1-g burns",
+            "start": 925
+          },
+          {
+            "evidence_id": "E-d3aebe64259ea519e1693467",
+            "quote": "Potential Follow-on Objectives\n• Evaluate the hypothesis that some materials burning in partial-g environments may be more flammable \ncompared to 1-g.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-d3aebe64259ea519e1693467",
+            "quote": "• Refine model using experiment results\n• Provide a bridge between current 1-g material screen method and actual behavior in reduced gravity.",
+            "start": 485
+          },
+          {
+            "evidence_id": "E-d3aebe64259ea519e1693467",
+            "quote": "Data\n• Flammability limits (%O2) for a subset of materials in Lunar-g\n• Measurements of the flame spread rate over materials in exploration atmospheres\n• Sample closeout photos, and photos before and after each test\n• Data from 1-g burns",
+            "start": 627
+          },
+          {
+            "evidence_id": "E-43050973b6a89b18f7e5ea5e",
+            "quote": "1-G Results: SIBAL fabric\n•\nFlame length is not completely \nconstant; flame shrinks more than \npartial-g burn.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-a08131327d6385587996348e",
+            "quote": "1-G Results: SIBAL fabric\n•\nFlame tip spread rate is \n~double flame base spread \nrate.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-007124915589abdd7abc5e6e",
+            "quote": "1-G Results: SIBAL\n•\nGravity (in g’s) remains \nconstant at Earth’s gravity.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+            "quote": "1-G Results: SIBAL\n•\nO2% varies slightly but is \nroughly constant at 20%.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-94f2c30163d61cfbf33f137a",
+            "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-4e83b44eb58f230065e2b311",
+            "quote": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-883f133a5745d0142df1e007",
+            "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nGravity remains constant at \nEarth’s gravity for duration of \nburn.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-7b2423e2b4112606572b7b6e",
+            "quote": "SIBAL Flame Spread Fit Comparison\nFlame Spread Rates (from linear fits):\nPartial-\nG\n(mm/s)\n1-G\n(mm/s)\nRatio\nFlame \nBase\n.9\n1.5\n.6\nFlame \nTip\n1.1\n2.8\n.39",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+            "quote": "SIBAL Flame Width Comparison\n•\nFlame extinction for 1-g \nexperiment occurs quicker \n(flame width decrease is \nsteeper than partial-g).",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-369175d9bd5f5634f84a0c6b",
+            "quote": "•\n1-g extinction happens ~ 45 \nseconds sooner than partial-g \nextinction",
+            "start": 135
+          },
+          {
+            "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+            "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-0c39e2e9ec5a1a6f6fb9b7bd",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-b901ec1e461ebf942f146e18",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 4,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 4
+          }
+        },
+        {
+          "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 12,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 358,
+          "end": 536,
+          "quote": "•\nTwo samples are burned simultaneously in air at normal pressure: Cotton-fiberglass composite fabric sheet and a 4-mm diameter \nrod of acrylic plastic (polymethyl methacrylate).",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 12
+          }
+        },
+        {
+          "evidence_id": "E-e701476789b9bf6dd3395377",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 16,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 181,
+          "end": 265,
+          "quote": "Right:4-mm-diameter PMMA rod burning upward in air in Lunar-g, 30 s \nafter ignition.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 16
+          }
+        },
+        {
+          "evidence_id": "E-d21d6576e58973f04cbb79b6",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 20,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 10,
+          "quote": "LUCI: PMMA",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 20
+          }
+        },
+        {
+          "evidence_id": "E-d21d6576e58973f04cbb79b6",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 20,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 191,
+          "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 20
+          }
+        },
+        {
+          "evidence_id": "E-94f2c30163d61cfbf33f137a",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 28,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 17,
+          "quote": "1-G Results: PMMA",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 28
+          }
+        },
+        {
+          "evidence_id": "E-94f2c30163d61cfbf33f137a",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 28,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 173,
+          "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 28
+          }
+        },
+        {
+          "evidence_id": "E-d6e291dc28d06c4dea34e721",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 43,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 10,
+          "quote": "LUCI: PMMA",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 43
+          }
+        },
+        {
+          "evidence_id": "E-d6e291dc28d06c4dea34e721",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 43,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 59,
+          "quote": "LUCI: PMMA\n•\nFlame base spread is \napproximately quadratic.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 43
+          }
+        },
+        {
+          "evidence_id": "E-49e271d94011afe76cb7c262",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 5,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "proposal": {
+        "key": "entity-2ba6c4269b0c26f1b898",
+        "label": "PMMA",
+        "class_id": "Material",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          },
+          {
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "quote": "•\nTwo samples are burned simultaneously in air at normal pressure: Cotton-fiberglass composite fabric sheet and a 4-mm diameter \nrod of acrylic plastic (polymethyl methacrylate).",
+            "start": 358
+          },
+          {
+            "evidence_id": "E-e701476789b9bf6dd3395377",
+            "quote": "Right:4-mm-diameter PMMA rod burning upward in air in Lunar-g, 30 s \nafter ignition.",
+            "start": 181
+          },
+          {
+            "evidence_id": "E-d21d6576e58973f04cbb79b6",
+            "quote": "LUCI: PMMA",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-d21d6576e58973f04cbb79b6",
+            "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-94f2c30163d61cfbf33f137a",
+            "quote": "1-G Results: PMMA",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-94f2c30163d61cfbf33f137a",
+            "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nBase was not accurately \ntracked towards the end of \nthe experiment; from \nobservation it remained at a \n~constant location.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-d6e291dc28d06c4dea34e721",
+            "quote": "LUCI: PMMA",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-d6e291dc28d06c4dea34e721",
+            "quote": "LUCI: PMMA\n•\nFlame base spread is \napproximately quadratic.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-19bd0866c75eb940531f98be",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-b901ec1e461ebf942f146e18",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 4,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 4
+          }
+        },
+        {
+          "evidence_id": "E-49e271d94011afe76cb7c262",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 5,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "proposal": {
+        "key": "entity-0a9328fada46f4b9ff68",
+        "label": "4-mm-DIA acrylic, (PMMA)",
+        "class_id": "Sample",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          },
+          {
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-31a286fc61536ac4f8494b75",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-b901ec1e461ebf942f146e18",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 4,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 4
+          }
+        },
+        {
+          "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 12,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 358,
+          "end": 536,
+          "quote": "•\nTwo samples are burned simultaneously in air at normal pressure: Cotton-fiberglass composite fabric sheet and a 4-mm diameter \nrod of acrylic plastic (polymethyl methacrylate).",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 12
+          }
+        },
+        {
+          "evidence_id": "E-e701476789b9bf6dd3395377",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 16,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 35,
+          "end": 142,
+          "quote": "Left: Edge view of SIBAL fabric (cotton-fiberglass blend) burning downward in Lunar-g 30 s \nafter ignition.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 16
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 55,
+          "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 39,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 27,
+          "quote": "LUCI Partial-G Recap: SIBAL",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 39
+          }
+        },
+        {
+          "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 42,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 42
+          }
+        },
+        {
+          "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 42,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 68,
+          "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 42
+          }
+        },
+        {
+          "evidence_id": "E-49e271d94011afe76cb7c262",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 5,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "proposal": {
+        "key": "entity-d32a19dd38afba3f0150",
+        "label": "SIBAL Fabric",
+        "class_id": "Material",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          },
+          {
+            "evidence_id": "E-6a062578a8bc9b381a5d6bf0",
+            "quote": "•\nTwo samples are burned simultaneously in air at normal pressure: Cotton-fiberglass composite fabric sheet and a 4-mm diameter \nrod of acrylic plastic (polymethyl methacrylate).",
+            "start": 358
+          },
+          {
+            "evidence_id": "E-e701476789b9bf6dd3395377",
+            "quote": "Left: Edge view of SIBAL fabric (cotton-fiberglass blend) burning downward in Lunar-g 30 s \nafter ignition.",
+            "start": 35
+          },
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+            "quote": "LUCI Partial-G Recap: SIBAL",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "quote": "LUCI: SIBAL fabric",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-439e92779236aadf9b1c668b",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-b901ec1e461ebf942f146e18",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 4,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 4
+          }
+        },
+        {
+          "evidence_id": "E-49e271d94011afe76cb7c262",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 5,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "proposal": {
+        "key": "entity-dcc3076056bf2ae17918",
+        "label": "Fabric 5 cm wide x 30 cm long",
+        "class_id": "Sample",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          },
+          {
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-1065e2c5cad7966b70628903",
+      "kind": "quantities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-ace382bc90bbdf2808dfba14",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 22,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 75,
+          "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nO2% decreases from 20% to \n14.3%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 22
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-5ee8a436c90c0981c571",
+        "label": "O2%",
+        "expression": "20",
+        "unit": "%",
+        "epistemic": "reported_quantity",
+        "support": [
+          {
+            "evidence_id": "E-ace382bc90bbdf2808dfba14",
+            "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nO2% decreases from 20% to \n14.3%.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-64782f8061fd84c30fe5d705",
+      "kind": "quantities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-ace382bc90bbdf2808dfba14",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 22,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 76,
+          "end": 190,
+          "quote": "•\nO2% rises back to 15.8% \nlikely due to the decrease in \ngravity (and thus buoyant \nflow) which occurred at 125s.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 22
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-5ee8a436c90c0981c571",
+        "label": "O2%",
+        "expression": "15.8",
+        "unit": "%",
+        "epistemic": "reported_quantity",
+        "support": [
+          {
+            "evidence_id": "E-ace382bc90bbdf2808dfba14",
+            "quote": "•\nO2% rises back to 15.8% \nlikely due to the decrease in \ngravity (and thus buoyant \nflow) which occurred at 125s.",
+            "start": 76
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-d481f3ddeb9e57e11c03e412",
+      "kind": "quantities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-ace382bc90bbdf2808dfba14",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 22,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 75,
+          "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nO2% decreases from 20% to \n14.3%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 22
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-5ee8a436c90c0981c571",
+        "label": "O2%",
+        "expression": "14.3",
+        "unit": "%",
+        "epistemic": "reported_quantity",
+        "support": [
+          {
+            "evidence_id": "E-ace382bc90bbdf2808dfba14",
+            "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nO2% decreases from 20% to \n14.3%.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-1e967e9b1c463180df9dc9b0",
+      "kind": "quantities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 27,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 73,
+          "quote": "1-G Results: SIBAL\n•\nO2% varies slightly but is \nroughly constant at 20%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 27
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-a1e0a37bd474cb67626e",
+        "label": "O2%",
+        "expression": "20",
+        "unit": "%",
+        "epistemic": "reported_quantity",
+        "support": [
+          {
+            "evidence_id": "E-dc9e4c8b9ff90290439d6f6a",
+            "quote": "1-G Results: SIBAL\n•\nO2% varies slightly but is \nroughly constant at 20%.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-98f2324bf5f1b03bac0aa8e4",
+      "kind": "quantities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-d4940e2063b4c03f3303beea",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 31,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 112,
+          "quote": "𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nO2% rises quickly in the \nbeginning, then decreases \n~linearly from 21% to 14.5%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 31
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-29a027d7e22acbe6e87d",
+        "label": "O2%",
+        "expression": "21",
+        "unit": "%",
+        "epistemic": "reported_quantity",
+        "support": [
+          {
+            "evidence_id": "E-d4940e2063b4c03f3303beea",
+            "quote": "𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nO2% rises quickly in the \nbeginning, then decreases \n~linearly from 21% to 14.5%.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-a2f5805916482e584b21d0db",
+      "kind": "quantities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-d4940e2063b4c03f3303beea",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 31,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 112,
+          "quote": "𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nO2% rises quickly in the \nbeginning, then decreases \n~linearly from 21% to 14.5%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 31
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-29a027d7e22acbe6e87d",
+        "label": "O2%",
+        "expression": "14.5",
+        "unit": "%",
+        "epistemic": "reported_quantity",
+        "support": [
+          {
+            "evidence_id": "E-d4940e2063b4c03f3303beea",
+            "quote": "𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nO2% rises quickly in the \nbeginning, then decreases \n~linearly from 21% to 14.5%.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-560e2bce8959097372419e36",
+      "kind": "quantities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 42,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 68,
+          "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 42
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-5ea73449ce5d8945703a",
+        "label": "O2%",
+        "expression": "~18",
+        "unit": "%",
+        "epistemic": "reported_quantity",
+        "support": [
+          {
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-0589fe13b80b335c01aa0c4a",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 55,
+          "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 42,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 42
+          }
+        },
+        {
+          "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 42,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 68,
+          "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 42
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-5ea73449ce5d8945703a",
+        "relation": "hasMaterial",
+        "object": "entity-d32a19dd38afba3f0150",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "quote": "LUCI: SIBAL fabric",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-a08c59685748dba98037683e",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 55,
+          "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 42,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 42
+          }
+        },
+        {
+          "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 42,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 68,
+          "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 42
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-5ea73449ce5d8945703a",
+        "relation": "hasMaterial",
+        "object": "entity-411927e0e3ade793f52a",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "quote": "LUCI: SIBAL fabric",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-dc4b3c3fe52caaa86c554e24",
+            "quote": "LUCI: SIBAL fabric\n•\nO2 concentration \ndecreases from ~20% to \n~18%.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-30cf11b0a48fee194ad3958a",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-883f133a5745d0142df1e007",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 30,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 116,
+          "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nGravity remains constant at \nEarth’s gravity for duration of \nburn.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 30
+          }
+        },
+        {
+          "evidence_id": "E-883f133a5745d0142df1e007",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 30,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 17,
+          "quote": "1-G Results: PMMA",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 30
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-df17e4e3d148216e390f",
+        "relation": "hasGravityCondition",
+        "object": "entity-289a3273448bba53a4ee",
+        "support": [
+          {
+            "evidence_id": "E-883f133a5745d0142df1e007",
+            "quote": "1-G Results: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nGravity remains constant at \nEarth’s gravity for duration of \nburn.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-9d0e4bf7c2c1ae906d43063e",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 39,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 27,
+          "quote": "LUCI Partial-G Recap: SIBAL",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 39
+          }
+        },
+        {
+          "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 39,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 162,
+          "quote": "LUCI Partial-G Recap: SIBAL\n•\nSemi-steady spread is achieved, \nduring which the constant flame \nwidth and length are observed (~3.2 \ncm and ~1.5 cm respectively).",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 39
+          }
+        },
+        {
+          "evidence_id": "E-d5f9930ae7882641030769e0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 40,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 27,
+          "quote": "LUCI Partial-G Recap: SIBAL",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 40
+          }
+        },
+        {
+          "evidence_id": "E-d5f9930ae7882641030769e0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 40,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 107,
+          "quote": "LUCI Partial-G Recap: SIBAL\n•\nPreheat Length: difference between \nflame base and char front fit \nequations.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 40
+          }
+        },
+        {
+          "evidence_id": "E-591e163edaa75d5ac8c895d0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 41,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 27,
+          "quote": "LUCI Partial-G Recap: SIBAL",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 41
+          }
+        },
+        {
+          "evidence_id": "E-591e163edaa75d5ac8c895d0",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 41,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 82,
+          "quote": "LUCI Partial-G Recap: SIBAL\n•\nGravity (in g’s) remains \nconstant at lunar gravity.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 41
+          }
+        },
+        {
+          "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 39,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 27,
+          "quote": "LUCI Partial-G Recap: SIBAL",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 39
+          }
+        }
+      ],
+      "proposal": {
+        "subject": "entity-8a7dc76fdfed3d8ec4aa",
+        "relation": "hasMaterial",
+        "object": "entity-66208fb6e9a42c145d1a",
+        "support": [
+          {
+            "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+            "quote": "LUCI Partial-G Recap: SIBAL",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-8e152fd5cc3f08cf75f79651",
+            "quote": "LUCI Partial-G Recap: SIBAL\n•\nSemi-steady spread is achieved, \nduring which the constant flame \nwidth and length are observed (~3.2 \ncm and ~1.5 cm respectively).",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-d5f9930ae7882641030769e0",
+            "quote": "LUCI Partial-G Recap: SIBAL",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-d5f9930ae7882641030769e0",
+            "quote": "LUCI Partial-G Recap: SIBAL\n•\nPreheat Length: difference between \nflame base and char front fit \nequations.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-591e163edaa75d5ac8c895d0",
+            "quote": "LUCI Partial-G Recap: SIBAL",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-591e163edaa75d5ac8c895d0",
+            "quote": "LUCI Partial-G Recap: SIBAL\n•\nGravity (in g’s) remains \nconstant at lunar gravity.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-480edb84b79db00f4831180a",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-3d0d479957889ee0ebba3428",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 1,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 93,
+          "quote": "Lunar Combustion Investigation: Flammability Results \nfrom a Rotating Sounding Rocket\nPaul V.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 1
+          }
+        }
+      ],
+      "proposal": {
+        "text": "Lunar Combustion Investigation: Flammability Results \nfrom a Rotating Sounding Rocket\nPaul V.",
+        "class_id": "Publication",
+        "epistemic": "documentary_context",
+        "subjects": [
+          "entity-1e458f0f35c5be884b8b"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "quote": "Lunar Combustion Investigation: Flammability Results \nfrom a Rotating Sounding Rocket\nPaul V.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-8ed0d35fef0b85b89f3581af",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-3d0d479957889ee0ebba3428",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 1,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 52,
+          "quote": "Lunar Combustion Investigation: Flammability Results",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 1
+          }
+        }
+      ],
+      "proposal": {
+        "text": "Lunar Combustion Investigation: Flammability Results",
+        "class_id": "Publication",
+        "epistemic": "documentary_context",
+        "subjects": [
+          "entity-1e458f0f35c5be884b8b"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-3d0d479957889ee0ebba3428",
+            "quote": "Lunar Combustion Investigation: Flammability Results",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-49bfcac9f4643f4367440241",
+      "kind": "statements",
+      "correct": false,
+      "critical": false,
+      "reason": "Objectives prose was typed as an experimental configuration; this is not a demonstrated parameter setting. No executed run or measured result was invented.",
+      "original_support": [
+        {
+          "evidence_id": "E-0acbeed7a437e765685d020a",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 2,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 455,
+          "quote": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\nObjectives\nDemonstrate the feasibility of conducting material flammability experiments in partial-g on the spinning Blue Origin \nNew Shepard vehicle which simulates Lunar gravity with centrifugal force\nObtain data from the flight that will support other simulated Lunar-g experiments in drop towers and parabolic \nflight, actual Lunar-g experiments, and computer models.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 2
+          }
+        }
+      ],
+      "proposal": {
+        "text": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\nObjectives\nDemonstrate the feasibility of conducting material flammability experiments in partial-g on the spinning Blue Origin \nNew Shepard vehicle which simulates Lunar gravity with centrifugal force\nObtain data from the flight that will support other simulated Lunar-g experiments in drop towers and parabolic \nflight, actual Lunar-g experiments, and computer models.",
+        "class_id": "ExperimentalCondition",
+        "epistemic": "experimental_configuration",
+        "subjects": [
+          "entity-1e458f0f35c5be884b8b"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-0acbeed7a437e765685d020a",
+            "quote": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket\nObjectives\nDemonstrate the feasibility of conducting material flammability experiments in partial-g on the spinning Blue Origin \nNew Shepard vehicle which simulates Lunar gravity with centrifugal force\nObtain data from the flight that will support other simulated Lunar-g experiments in drop towers and parabolic \nflight, actual Lunar-g experiments, and computer models.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-3336c131c45361c5860a33e5",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-b901ec1e461ebf942f146e18",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 4,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 4
+          }
+        }
+      ],
+      "proposal": {
+        "text": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+        "class_id": "ExperimentalCondition",
+        "epistemic": "experimental_configuration",
+        "subjects": [
+          "entity-dcc3076056bf2ae17918",
+          "entity-0a9328fada46f4b9ff68"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-b901ec1e461ebf942f146e18",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-ebacb41b5c8727846bfd68da",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-49e271d94011afe76cb7c262",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 5,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 250,
+          "end": 365,
+          "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 5
+          }
+        }
+      ],
+      "proposal": {
+        "text": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+        "class_id": "ExperimentalCondition",
+        "epistemic": "experimental_configuration",
+        "subjects": [
+          "entity-dcc3076056bf2ae17918",
+          "entity-0a9328fada46f4b9ff68"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-49e271d94011afe76cb7c262",
+            "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+            "start": 250
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-19c348f58f6aec4af30d399d",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 56,
+          "end": 194,
+          "quote": "•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "text": "•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-5ea73449ce5d8945703a"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.",
+            "start": 56
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-389e6cd6755a76f1fe67399d",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "text": "LUCI: SIBAL fabric",
+        "class_id": "Publication",
+        "epistemic": "documentary_context",
+        "subjects": [
+          "entity-5ea73449ce5d8945703a"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-94aaba8983cf400ac5d4032b",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 195,
+          "end": 291,
+          "quote": "•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "text": "•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-5ea73449ce5d8945703a"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).",
+            "start": 195
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-bcd796ea86be5f5eeec45e41",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 195,
+          "end": 291,
+          "quote": "•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "text": "•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-5ea73449ce5d8945703a"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "•\nSpread rates for char front, flame base, \nand flame tip are all linear (steady state \nspread).",
+            "start": 195
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-e2324366ae792d827491b689",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 56,
+          "end": 194,
+          "quote": "•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "text": "•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-5ea73449ce5d8945703a"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "•\nFlame tip spread rate = 1.1 mm/s\n•\nFlame tip spreads very slightly faster \nthan flame base, indicating a slowly \nshrinking flame length.",
+            "start": 56
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-ee4dd07a80c23d4fcf2461a8",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 55,
+          "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "text": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-5ea73449ce5d8945703a"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-f5295429f428b93b773b8f5b",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/unit, documentary scope and role checked; no additional scientific content or stronger causal/epistemic assertion was introduced.",
+      "original_support": [
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 55,
+          "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        },
+        {
+          "evidence_id": "E-36fba4ad2dd3a80446e482de",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 19,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 18,
+          "quote": "LUCI: SIBAL fabric",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 19
+          }
+        }
+      ],
+      "proposal": {
+        "text": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-5ea73449ce5d8945703a"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-36fba4ad2dd3a80446e482de",
+            "quote": "LUCI: SIBAL fabric\n•\nFlame base spread rate = .92 mm/s.",
+            "start": 0
+          }
+        ]
+      }
+    },
+    {
+      "proposal_id": "proposal-1ea9e56e462e6f3aad8f7a52",
+      "kind": "statements",
+      "correct": false,
+      "critical": false,
+      "reason": "Source reports flame-length behavior with a limit on later measurement, while this proposal calls it tentative interpretation. This understates the reported observational role, without upgrading certainty.",
+      "original_support": [
+        {
+          "evidence_id": "E-d21d6576e58973f04cbb79b6",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 20,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 191,
+          "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 20
+          }
+        },
+        {
+          "evidence_id": "E-d21d6576e58973f04cbb79b6",
+          "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+          "page": 20,
+          "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+          "start": 0,
+          "end": 10,
+          "quote": "LUCI: PMMA",
+          "locator": {
+            "file": "20250010653.pdf",
+            "page": 20
+          }
+        }
+      ],
+      "proposal": {
+        "text": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).",
+        "class_id": "NASAConclusion",
+        "epistemic": "tentative_interpretation",
+        "subjects": [
+          "entity-5ee8a436c90c0981c571"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-d21d6576e58973f04cbb79b6",
+            "quote": "LUCI: PMMA\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n•\nFlame length increases \n~linearly until flame tip becomes \nobscured by sample holder \n(could not measure flame length \naccurately beyond this point).",
+            "start": 0
+          }
+        ]
+      }
+    }
+  ],
+  "scientific_limitations": [
+    "One original relation target at p24 remains omitted.",
+    "Two noncritical role defects remain in the reviewed source-supported proposal sample; do not claim flawless epistemic accuracy.",
+    "Visual/table roles remain review-required. The three quantities from linear fits are not accepted as direct measurements.",
+    "The source-grounded ~3.95 mm/s quantity and original applications conclusion are recovered; scientific quantity semantics remain unresolved when no approved property is justified."
+  ]
+}

@@ -1,0 +1,758 @@
+{
+  "basis": "Original NASA LUCI evidence and retrospective developer judgments. SOURCE_SUPPORTED is independent software validation, not scientist approval.",
+  "positive_and_review_examples": [
+    {
+      "source_target": {
+        "id": "quantities-29-9",
+        "kind": "quantities",
+        "evidence_id": "E-4e83b44eb58f230065e2b311",
+        "quote": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.\n•\nFlame base location is \n~constant, so this can be \napproximated as flame \ngrowth rate (flame length).\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+        "outcome": "unresolved",
+        "proposal_ids": [
+          "proposal-a5d73dffa3ac5100cf12ef8d"
+        ],
+        "expectation": {
+          "page": 29,
+          "subject_label": "1-G Results: PMMA",
+          "label_contains_any": [
+            "Flame tip"
+          ],
+          "expression": "~ 3.95",
+          "unit": "mm/s",
+          "epistemic": "reported_quantity"
+        },
+        "review_note": "Checked original expression, unit, source role and exact documentary group."
+      },
+      "records": [
+        {
+          "id": "proposal-a5d73dffa3ac5100cf12ef8d",
+          "kind": "quantities",
+          "proposal": {
+            "subject": "entity-df17e4e3d148216e390f",
+            "label": "Flame tip grows at a rate",
+            "expression": "~ 3.95",
+            "unit": "mm/s",
+            "epistemic": "reported_quantity",
+            "support": [
+              {
+                "evidence_id": "E-4e83b44eb58f230065e2b311",
+                "quote": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.",
+                "start": 0
+              }
+            ]
+          },
+          "status": "UNRESOLVED",
+          "reasons": [
+            "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-4e83b44eb58f230065e2b311",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "page": 29,
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "start": 0,
+              "end": 92,
+              "quote": "1-G Results: PMMA\n•\nFlame tip grows at a rate of \n~ 3.95 mm/s at the beginning \nof the burn.",
+              "locator": {
+                "file": "20250010653.pdf",
+                "page": 29
+              }
+            }
+          ],
+          "native_scope_compatible": true,
+          "quantity_value_spans": [
+            {
+              "evidence_id": "E-4e83b44eb58f230065e2b311",
+              "start": 50,
+              "end": 61,
+              "quote": "~ 3.95 mm/s"
+            }
+          ],
+          "mapping": {
+            "kind": "unresolved_attribute",
+            "raw_label": "Flame tip grows at a rate",
+            "status": "UNKNOWN",
+            "property_id": null
+          },
+          "subject": "research-88a2411be5fc53d76df5:entity:df17e4e3d148216e390f",
+          "native_value_compatible": true
+        }
+      ]
+    },
+    {
+      "source_target": {
+        "id": "statements-37-16",
+        "kind": "statements",
+        "evidence_id": "E-ab863beddb4ab0a2517976fa",
+        "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.  The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.  \nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight. \n",
+        "outcome": "correct",
+        "proposal_ids": [
+          "proposal-302168556ec3a5fb73cddbbc"
+        ],
+        "expectation": {
+          "page": 37,
+          "subject_label": "LUCI project",
+          "text_contains": "The LUCI project achieved the first-ever",
+          "epistemic": "author_reported_conclusion"
+        },
+        "review_note": "p37 LUCI and LUCI project are the same literal named source subject by the explicit original construction The LUCI project. This is an evaluation judgment, not a global alias or altered production proposal."
+      },
+      "records": [
+        {
+          "id": "proposal-302168556ec3a5fb73cddbbc",
+          "kind": "statements",
+          "proposal": {
+            "text": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.",
+            "class_id": "NASAConclusion",
+            "epistemic": "author_reported_conclusion",
+            "subjects": [
+              "entity-d9922065a1caa7ac7919"
+            ],
+            "study": "current",
+            "support": [
+              {
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.",
+                "start": 0
+              }
+            ]
+          },
+          "status": "SOURCE_SUPPORTED",
+          "reasons": [],
+          "support_spans": [
+            {
+              "evidence_id": "E-ab863beddb4ab0a2517976fa",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "page": 37,
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "start": 0,
+              "end": 131,
+              "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.",
+              "locator": {
+                "file": "20250010653.pdf",
+                "page": 37
+              }
+            }
+          ],
+          "scope": [
+            "research-88a2411be5fc53d76df5:entity:d9922065a1caa7ac7919"
+          ]
+        }
+      ]
+    },
+    {
+      "source_target": {
+        "id": "statements-37-17",
+        "kind": "statements",
+        "evidence_id": "E-ab863beddb4ab0a2517976fa",
+        "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.  The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.  The data also provides \nfundamental understanding of fires burning at reduced gravity for comparison to sophisticated numerical models.  \nFinally, the experiment is a steppingstone to the ultimate goal of performing burn tests on the Lunar surface in the \nFlammability of Materials on the Moon (FM2) experiment which will fly on a SpaceX Human Lander System \nunmanned test flight. \n",
+        "outcome": "correct",
+        "proposal_ids": [
+          "proposal-524c3062622efbdd82e1c1ca"
+        ],
+        "expectation": {
+          "page": 37,
+          "subject_label": "LUCI project",
+          "text_contains": "The results are applicable to NASA’s exploration efforts",
+          "epistemic": "author_reported_conclusion"
+        },
+        "review_note": "p37 LUCI and LUCI project are the same literal named source subject by the explicit original construction The LUCI project. This is an evaluation judgment, not a global alias or altered production proposal."
+      },
+      "records": [
+        {
+          "id": "proposal-524c3062622efbdd82e1c1ca",
+          "kind": "statements",
+          "proposal": {
+            "text": "The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.",
+            "class_id": "NASAConclusion",
+            "epistemic": "author_reported_conclusion",
+            "subjects": [
+              "entity-d9922065a1caa7ac7919"
+            ],
+            "study": "current",
+            "support": [
+              {
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "quote": "The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.",
+                "start": 133
+              }
+            ]
+          },
+          "status": "SOURCE_SUPPORTED",
+          "reasons": [],
+          "support_spans": [
+            {
+              "evidence_id": "E-ab863beddb4ab0a2517976fa",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "page": 37,
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "start": 133,
+              "end": 322,
+              "quote": "The results are applicable to NASA’s exploration efforts in that they guide the selection of fire-safe \nmaterials and environments and ensure safety of future spacecraft and Lunar habitats.",
+              "locator": {
+                "file": "20250010653.pdf",
+                "page": 37
+              }
+            },
+            {
+              "evidence_id": "E-ab863beddb4ab0a2517976fa",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "page": 37,
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "start": 0,
+              "end": 131,
+              "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.",
+              "locator": {
+                "file": "20250010653.pdf",
+                "page": 37
+              }
+            }
+          ],
+          "scope_context": {
+            "basis": "UNIQUE_ORIGINAL_PARAGRAPH_STUDY_ANTECEDENT",
+            "support": [
+              {
+                "evidence_id": "E-ab863beddb4ab0a2517976fa",
+                "quote": "The LUCI project achieved the first-ever, extended duration combustion tests (greater than 25 seconds) in simulated \nLunar gravity.",
+                "start": 0
+              }
+            ]
+          },
+          "scope": [
+            "research-88a2411be5fc53d76df5:entity:d9922065a1caa7ac7919"
+          ]
+        }
+      ]
+    },
+    {
+      "source_target": {
+        "id": "expanded-quantity-20",
+        "kind": "quantities",
+        "evidence_id": "E-49e271d94011afe76cb7c262",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA);",
+        "page": 5,
+        "start": 250,
+        "end": 323,
+        "expression": "5",
+        "unit": "cm",
+        "outcome": "correct",
+        "proposal_ids": [
+          "proposal-65bed06695e547cbf5bcca68"
+        ],
+        "review_note": "Recovered correct specimenwidth/configuration role with existing sample_width accessor; original5cm preserved."
+      },
+      "records": [
+        {
+          "id": "proposal-65bed06695e547cbf5bcca68",
+          "kind": "quantities",
+          "proposal": {
+            "subject": "entity-dcc3076056bf2ae17918",
+            "label": "width",
+            "expression": "5",
+            "unit": "cm",
+            "epistemic": "experimental_configuration",
+            "support": [
+              {
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+                "start": 250
+              }
+            ]
+          },
+          "status": "SOURCE_SUPPORTED",
+          "reasons": [],
+          "support_spans": [
+            {
+              "evidence_id": "E-49e271d94011afe76cb7c262",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "page": 5,
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "start": 250,
+              "end": 365,
+              "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+              "locator": {
+                "file": "20250010653.pdf",
+                "page": 5
+              }
+            },
+            {
+              "evidence_id": "E-b901ec1e461ebf942f146e18",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "page": 4,
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "start": 250,
+              "end": 365,
+              "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+              "locator": {
+                "file": "20250010653.pdf",
+                "page": 4
+              }
+            }
+          ],
+          "native_scope_compatible": true,
+          "quantity_name_support": {
+            "basis": "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE",
+            "original_wordforms": [
+              "wide"
+            ],
+            "global_alias_activation": "NONE"
+          },
+          "quantity_value_spans": [
+            {
+              "evidence_id": "E-49e271d94011afe76cb7c262",
+              "start": 270,
+              "end": 274,
+              "quote": "5 cm"
+            }
+          ],
+          "mapping": {
+            "kind": "existing_source_attribute",
+            "raw_label": "width",
+            "status": "CANONICAL_SOURCE_ACCESSOR",
+            "property_id": null,
+            "source_accessor": "sample_width",
+            "existing_contract": {
+              "unit": "m",
+              "dimension": "length",
+              "role": "SPECIMEN_CHARACTERISTIC"
+            },
+            "activation": "NONE"
+          },
+          "source_role": "SPECIMEN_CHARACTERISTIC",
+          "native_representation": "STAGED_ORIGINAL_SPECIMEN_CHARACTERISTIC",
+          "subject": "research-88a2411be5fc53d76df5:entity:45f1b06b578fa001f88e",
+          "native_value_compatible": true,
+          "validated_variant_ids": [
+            "proposal-f8d54ad2c824e319a4c8fb33"
+          ]
+        }
+      ]
+    },
+    {
+      "source_target": {
+        "id": "expanded-quantity-21",
+        "kind": "quantities",
+        "evidence_id": "E-49e271d94011afe76cb7c262",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA);",
+        "page": 5,
+        "start": 250,
+        "end": 323,
+        "expression": "30",
+        "unit": "cm",
+        "outcome": "correct",
+        "proposal_ids": [
+          "proposal-30c133f011643d348a755927"
+        ],
+        "review_note": "Recovered correct specimenlength/configuration role with existing sample_length accessor; original30cm preserved."
+      },
+      "records": [
+        {
+          "id": "proposal-30c133f011643d348a755927",
+          "kind": "quantities",
+          "proposal": {
+            "subject": "entity-dcc3076056bf2ae17918",
+            "label": "length",
+            "expression": "30",
+            "unit": "cm",
+            "epistemic": "experimental_configuration",
+            "support": [
+              {
+                "evidence_id": "E-49e271d94011afe76cb7c262",
+                "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+                "start": 250
+              }
+            ]
+          },
+          "status": "SOURCE_SUPPORTED",
+          "reasons": [],
+          "support_spans": [
+            {
+              "evidence_id": "E-49e271d94011afe76cb7c262",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "page": 5,
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "start": 250,
+              "end": 365,
+              "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+              "locator": {
+                "file": "20250010653.pdf",
+                "page": 5
+              }
+            },
+            {
+              "evidence_id": "E-b901ec1e461ebf942f146e18",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "page": 4,
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "start": 250,
+              "end": 365,
+              "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA); \nignited with slight pause between \nthem.",
+              "locator": {
+                "file": "20250010653.pdf",
+                "page": 4
+              }
+            }
+          ],
+          "native_scope_compatible": true,
+          "quantity_name_support": {
+            "basis": "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE",
+            "original_wordforms": [
+              "long"
+            ],
+            "global_alias_activation": "NONE"
+          },
+          "quantity_value_spans": [
+            {
+              "evidence_id": "E-49e271d94011afe76cb7c262",
+              "start": 282,
+              "end": 287,
+              "quote": "30 cm"
+            }
+          ],
+          "mapping": {
+            "kind": "existing_source_attribute",
+            "raw_label": "length",
+            "status": "CANONICAL_SOURCE_ACCESSOR",
+            "property_id": null,
+            "source_accessor": "sample_length",
+            "existing_contract": {
+              "unit": "m",
+              "dimension": "length",
+              "role": "SPECIMEN_CHARACTERISTIC"
+            },
+            "activation": "NONE"
+          },
+          "source_role": "SPECIMEN_CHARACTERISTIC",
+          "native_representation": "STAGED_ORIGINAL_SPECIMEN_CHARACTERISTIC",
+          "subject": "research-88a2411be5fc53d76df5:entity:45f1b06b578fa001f88e",
+          "native_value_compatible": true,
+          "validated_variant_ids": [
+            "proposal-d969d07e9216b99ac7390e98"
+          ]
+        }
+      ]
+    },
+    {
+      "source_target": {
+        "id": "expanded-quantity-22",
+        "kind": "quantities",
+        "evidence_id": "E-49e271d94011afe76cb7c262",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "quote": "Two samples: Fabric 5 cm wide x 30 cm \nlong and 4-mm-DIA acrylic, (PMMA);",
+        "page": 5,
+        "start": 250,
+        "end": 323,
+        "expression": "4",
+        "unit": "mm",
+        "outcome": "omitted",
+        "proposal_ids": [],
+        "review_note": "No independently staged correct structured rod-diameter quantity; original expression remains in source and specimen narrative."
+      },
+      "records": []
+    },
+    {
+      "source_target": {
+        "id": "expanded-quantity-23",
+        "kind": "quantities",
+        "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+        "page": 36,
+        "start": 0,
+        "end": 138,
+        "expression": ".15",
+        "unit": "cm/s",
+        "outcome": "unresolved",
+        "proposal_ids": [
+          "pdf-quantity-d7215ecd0c3c63e4dbc88c0c"
+        ],
+        "review_note": "Original.15/cm/s partial-G column and PMMAcomparison page, row/column/bbox plus linear-fit sourcecue preserved. No invented experiment or approvedproperty."
+      },
+      "records": [
+        {
+          "id": "pdf-quantity-d7215ecd0c3c63e4dbc88c0c",
+          "kind": "quantities",
+          "status": "UNRESOLVED",
+          "proposal": {
+            "expression": ".15",
+            "unit": "cm/s",
+            "original_unit_candidates": [
+              {
+                "axis": "column",
+                "literal": "cm/s",
+                "recognized_unit_syntax": true
+              }
+            ],
+            "original_column_header": "Partial-G\n(cm/s)",
+            "original_row": [
+              {
+                "column_index": 0,
+                "header": "Partial-G\n(cm/s)",
+                "original_value": ".15"
+              },
+              {
+                "column_index": 1,
+                "header": "1-G\n(cm/s)",
+                "original_value": ".40"
+              },
+              {
+                "column_index": 2,
+                "header": "Ratio",
+                "original_value": ".38"
+              }
+            ],
+            "original_page_heading": "PMMA Flame Tip Comparison",
+            "original_role_cues": [
+              {
+                "quote": "Flame Tip Spread (from linear fits):",
+                "start": 72,
+                "end": 108
+              }
+            ],
+            "epistemic": "UNRESOLVED_REVIEW_REQUIRED",
+            "subject": "UNRESOLVED_ORIGINAL_TABLE_ROW_COLUMN_SCOPE"
+          },
+          "reasons": [
+            "ORIGINAL_TABLE_QUANTITY_ROLE_AND_EXPERIMENTAL_SCOPE_REQUIRE_REVIEW"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "page": 36,
+              "start": 0,
+              "end": 138,
+              "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+              "locator": {
+                "page": 36,
+                "table_index": 2,
+                "table_bbox": [
+                  668.8400268554688,
+                  241.58924102783203,
+                  931.5910339355469,
+                  366.42999267578125
+                ],
+                "row_index": 1,
+                "column_index": 0
+              }
+            }
+          ],
+          "source_table_record_id": "table-record-c641383bd9d0e978a7b7",
+          "scientific_execution_asserted": false,
+          "scientific_approval": "NONE",
+          "global_vocabulary_activation": "NONE",
+          "native_quantity_representation": "DEFERRED_PRESERVED_ORIGINAL_TABLE_LITERAL"
+        }
+      ]
+    },
+    {
+      "source_target": {
+        "id": "expanded-quantity-24",
+        "kind": "quantities",
+        "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+        "page": 36,
+        "start": 0,
+        "end": 138,
+        "expression": ".40",
+        "unit": "cm/s",
+        "outcome": "unresolved",
+        "proposal_ids": [
+          "pdf-quantity-767c655a316c3758103d8ca7"
+        ],
+        "review_note": "Original.40/cm/s 1-G column and matrix sourcecontext preserved; pending interpretation/ontology scope, never accepted measured value."
+      },
+      "records": [
+        {
+          "id": "pdf-quantity-767c655a316c3758103d8ca7",
+          "kind": "quantities",
+          "status": "UNRESOLVED",
+          "proposal": {
+            "expression": ".40",
+            "unit": "cm/s",
+            "original_unit_candidates": [
+              {
+                "axis": "column",
+                "literal": "cm/s",
+                "recognized_unit_syntax": true
+              }
+            ],
+            "original_column_header": "1-G\n(cm/s)",
+            "original_row": [
+              {
+                "column_index": 0,
+                "header": "Partial-G\n(cm/s)",
+                "original_value": ".15"
+              },
+              {
+                "column_index": 1,
+                "header": "1-G\n(cm/s)",
+                "original_value": ".40"
+              },
+              {
+                "column_index": 2,
+                "header": "Ratio",
+                "original_value": ".38"
+              }
+            ],
+            "original_page_heading": "PMMA Flame Tip Comparison",
+            "original_role_cues": [
+              {
+                "quote": "Flame Tip Spread (from linear fits):",
+                "start": 72,
+                "end": 108
+              }
+            ],
+            "epistemic": "UNRESOLVED_REVIEW_REQUIRED",
+            "subject": "UNRESOLVED_ORIGINAL_TABLE_ROW_COLUMN_SCOPE"
+          },
+          "reasons": [
+            "ORIGINAL_TABLE_QUANTITY_ROLE_AND_EXPERIMENTAL_SCOPE_REQUIRE_REVIEW"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "page": 36,
+              "start": 0,
+              "end": 138,
+              "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+              "locator": {
+                "page": 36,
+                "table_index": 2,
+                "table_bbox": [
+                  668.8400268554688,
+                  241.58924102783203,
+                  931.5910339355469,
+                  366.42999267578125
+                ],
+                "row_index": 1,
+                "column_index": 1
+              }
+            }
+          ],
+          "source_table_record_id": "table-record-c641383bd9d0e978a7b7",
+          "scientific_execution_asserted": false,
+          "scientific_approval": "NONE",
+          "global_vocabulary_activation": "NONE",
+          "native_quantity_representation": "DEFERRED_PRESERVED_ORIGINAL_TABLE_LITERAL"
+        }
+      ]
+    },
+    {
+      "source_target": {
+        "id": "expanded-quantity-25",
+        "kind": "quantities",
+        "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+        "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+        "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+        "page": 36,
+        "start": 0,
+        "end": 138,
+        "expression": ".38",
+        "unit": "",
+        "outcome": "unresolved",
+        "proposal_ids": [
+          "pdf-quantity-66da0a15cb51c225a37e5941"
+        ],
+        "review_note": "Original.38 ratio column preserved with sourcecontext; no unit invented where header lacks a unit. Quantitative semantic scope remains pending."
+      },
+      "records": [
+        {
+          "id": "pdf-quantity-66da0a15cb51c225a37e5941",
+          "kind": "quantities",
+          "status": "UNRESOLVED",
+          "proposal": {
+            "expression": ".38",
+            "unit": null,
+            "original_unit_candidates": [],
+            "original_column_header": "Ratio",
+            "original_row": [
+              {
+                "column_index": 0,
+                "header": "Partial-G\n(cm/s)",
+                "original_value": ".15"
+              },
+              {
+                "column_index": 1,
+                "header": "1-G\n(cm/s)",
+                "original_value": ".40"
+              },
+              {
+                "column_index": 2,
+                "header": "Ratio",
+                "original_value": ".38"
+              }
+            ],
+            "original_page_heading": "PMMA Flame Tip Comparison",
+            "original_role_cues": [
+              {
+                "quote": "Flame Tip Spread (from linear fits):",
+                "start": 72,
+                "end": 108
+              }
+            ],
+            "epistemic": "UNRESOLVED_REVIEW_REQUIRED",
+            "subject": "UNRESOLVED_ORIGINAL_TABLE_ROW_COLUMN_SCOPE"
+          },
+          "reasons": [
+            "ORIGINAL_TABLE_QUANTITY_ROLE_AND_EXPERIMENTAL_SCOPE_REQUIRE_REVIEW"
+          ],
+          "support_spans": [
+            {
+              "evidence_id": "E-01e78ac4900b35ec6ddd9644",
+              "source_id": "research-88a2411be5fc53d76df5:bb0aadd2f9543483",
+              "checksum": "bb0aadd2f9543483467b86796e6aa19f4e13c3f8169eec96134015f95ed61d79",
+              "page": 36,
+              "start": 0,
+              "end": 138,
+              "quote": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n",
+              "locator": {
+                "page": 36,
+                "table_index": 2,
+                "table_bbox": [
+                  668.8400268554688,
+                  241.58924102783203,
+                  931.5910339355469,
+                  366.42999267578125
+                ],
+                "row_index": 1,
+                "column_index": 2
+              }
+            }
+          ],
+          "source_table_record_id": "table-record-c641383bd9d0e978a7b7",
+          "scientific_execution_asserted": false,
+          "scientific_approval": "NONE",
+          "global_vocabulary_activation": "NONE",
+          "native_quantity_representation": "DEFERRED_PRESERVED_ORIGINAL_TABLE_LITERAL"
+        }
+      ]
+    }
+  ],
+  "negative_real_source_receipts": [
+    "ignition_exposed_regression/negative_replay.json",
+    "textiles_atomic_recovery/negative_replay.json",
+    "regulator_scope_replay/negative_replay.json"
+  ],
+  "known_supported_role_error": [
+    {
+      "proposal_id": "proposal-1ea9e56e462e6f3aad8f7a52",
+      "correct": false,
+      "critical": false,
+      "reason": "Page20 measured flame-length behavior and occlusion are overcautiously classified as tentative interpretation. Source text is correct, but role is inaccurate; not a fabricated measurement or wrong-run attribution."
+    }
+  ],
+  "negative_regression_tests": [
+    "tests/test_document_extraction.py",
+    "tests/test_scientific_scope.py"
+  ],
+  "critical_negatives": "Original cited/historical-to-current, model/derived-to-observed and strategy-to-executed upgrades remain disallowed; no ontology, original source or validator contract was weakened.",
+  "not_a_comprehensive_error_bound": true
+}

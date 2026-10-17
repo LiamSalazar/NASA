@@ -1,0 +1,127 @@
+{
+  "DOCUMENT_PROCESSING": {
+    "decision": "YES",
+    "evidence": [
+      "offline_final_08/validation.json",
+      "holdout_originals_verified_01.json"
+    ],
+    "limits": "Original text and table extraction; inaccessible figures remain explicit."
+  },
+  "ADAPTIVE_NEMOTRON_EXTRACTION": {
+    "decision": "PARTIAL",
+    "evidence": [
+      "provider_behavior_02.json",
+      "development_provider_attempts_01.json",
+      "provider_health_06.json"
+    ],
+    "limits": "Real grounded outputs and finite recovery; current live scientific acceptance is absent and provider completion is unreliable."
+  },
+  "SCIENTIFIC_ENTITY_RECOVERY": {
+    "decision": "PARTIAL",
+    "evidence": [
+      "scientific_quality_development_02.json",
+      "scientific_quality_holdout_01.json"
+    ],
+    "limits": "40 LUCI supported entities and 19 holdout material labels; investigation/run recovery is incomplete."
+  },
+  "EXPERIMENT_AND_GROUP_IDENTITY": {
+    "decision": "PARTIAL",
+    "evidence": [
+      "luci_development_review_07.json",
+      "scientific_quality_holdout_01.json"
+    ],
+    "limits": "Four of four selected LUCI groups recovered; current/cited/executed attribution remains incomplete."
+  },
+  "QUANTITY_AND_CONDITION_RECOVERY": {
+    "decision": "PARTIAL",
+    "evidence": [
+      "scientific_quality_development_02.json"
+    ],
+    "limits": "Eight reviewed supported quantities correct; selected reference one of seven mapped plus five grounded pending semantics. Table and method omissions remain."
+  },
+  "OBSERVATION_AND_CONCLUSION_ATTRIBUTION": {
+    "decision": "PARTIAL",
+    "evidence": [
+      "scientific_quality_development_02.json",
+      "quality_checks_09.json"
+    ],
+    "limits": "Five of six selected statements recovered. Four unsafe classifications now blocked; overall precision is not established."
+  },
+  "SEMANTIC_REUSE": {
+    "decision": "YES",
+    "evidence": [
+      "luci_live_07/prepared_11.json",
+      "offline_final_08/validation.json"
+    ],
+    "limits": "Approved material/gravity aliases and specimen accessors reused without global activation."
+  },
+  "ONTOLOGY_EXTENSION_STAGING": {
+    "decision": "YES",
+    "evidence": [
+      "luci_live_07/prepared_11.json",
+      "quality_checks_09.json"
+    ],
+    "limits": "Source-bearing semantic proposals remain isolated; novelty quality has not been comprehensively adjudicated."
+  },
+  "SOURCE_TRACEABILITY": {
+    "decision": "YES",
+    "evidence": [
+      "application_luci_verified_02.json",
+      "holdout_originals_verified_01.json",
+      "preservation_04_final.json"
+    ],
+    "limits": "454/454 LUCI and 50/50 holdout exact source spans; original PDF bytes exported."
+  },
+  "SCIENTIFIC_CONTENT_COVERAGE": {
+    "decision": "PARTIAL",
+    "evidence": [
+      "scientific_quality_development_02.json",
+      "scientific_quality_holdout_01.json"
+    ],
+    "limits": "17/19 limited LUCI reference items including five pending semantics. Interrupted holdout has zero of 24 complete requirements; comprehensive recall is not established."
+  },
+  "HUMAN_REVIEW_REQUIREMENTS": {
+    "decision": "PARTIAL",
+    "evidence": [
+      "application_luci_verified_02.json",
+      "scientific_quality_development_02.json"
+    ],
+    "limits": "Dependencies grouped by source/cause/term; precision of review requests and false rejections is not established."
+  },
+  "GENERALIZATION_TO_UNMODELED_RESEARCH": {
+    "decision": "NO",
+    "evidence": [
+      "scientific_quality_holdout_01.json",
+      "final_contract_freeze.json",
+      "post_freeze_development_audit_01.json"
+    ],
+    "limits": "Frozen unseen execution incomplete. Later LUCI corrections cannot claim acceptance from the older holdout."
+  },
+  "APPLICATION_END_TO_END_INGESTION": {
+    "decision": "YES_ISOLATED_DRAFT",
+    "evidence": [
+      "application_cli_luci_stdout_02.json",
+      "application_luci_verified_02.json",
+      "final_holdout_01/submission.json"
+    ],
+    "limits": "Normal CLI/service submission, preparation, validation and export. No Codex runtime or manual scientific mappings; review remains required."
+  },
+  "REGRESSION_AND_PRESERVATION": {
+    "decision": "YES",
+    "evidence": [
+      "quality_checks_09.json",
+      "offline_final_08/validation.json",
+      "canonical_shacl_01.json",
+      "preservation_04_final.json"
+    ],
+    "limits": "463 passing tests, Ruff, SHACL, idempotence and original bytes preserved. No unauthorized publication."
+  },
+  "PHASE1_COMPLETE": {
+    "decision": "NO",
+    "evidence": [
+      "scientific_quality_development_02.json",
+      "scientific_quality_holdout_01.json"
+    ],
+    "limits": "Meaningful scientific proposals demonstrated; reliable complete extraction and independent generalization are not demonstrated."
+  }
+}

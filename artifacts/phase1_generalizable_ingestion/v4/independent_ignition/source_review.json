@@ -1,0 +1,1943 @@
+{
+  "basis": "Developer independent-source adjudication against the prospective 30-target source reference. Target counts are a fixed sample, not exhaustive article recall. Precision uses first-by-page/id stratified 12 entities, all 11 supported statements, all 6 supported relations and the one supported (cited) quantity. No independent scientist approval is claimed.",
+  "targets": [
+    {
+      "id": "entities-01",
+      "kind": "entities",
+      "evidence_id": "E-9789e7f460fa978a04ae491e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 6,
+      "quote": "NASA White Sands Test Facility (WSTF) Upward High-flow Oxygen Index Testing",
+      "start": 1148,
+      "end": 1223,
+      "expectation": "A current experimental testing group, not a single executed run or an author institution.",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-98df9a85891a152027dfb047"
+      ],
+      "review_note": "Exact source identity/type and current/cited status checked."
+    },
+    {
+      "id": "entities-02",
+      "kind": "entities",
+      "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 7,
+      "quote": "NASA Glenn Research Center (GRC) Partial Gravity Testing",
+      "start": 545,
+      "end": 601,
+      "expectation": "A distinct current partial-gravity experimental group, not the WSTF tests.",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-12d81390f9cc2b19913eafe5"
+      ],
+      "review_note": "Exact source identity/type and current/cited status checked."
+    },
+    {
+      "id": "entities-03",
+      "kind": "entities",
+      "evidence_id": "E-8b1fc477e425ca4010535f3e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 8,
+      "quote": "PMMA",
+      "start": 618,
+      "end": 622,
+      "expectation": "Material identity; not a run or an unapproved new global material definition.",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-84d377110e79d7daf579f575"
+      ],
+      "review_note": "Exact source identity/type and current/cited status checked."
+    },
+    {
+      "id": "entities-04",
+      "kind": "entities",
+      "evidence_id": "E-8b1fc477e425ca4010535f3e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 8,
+      "quote": "Nomex Velcro",
+      "start": 892,
+      "end": 904,
+      "expectation": "Material/product identity distinct from cited Nomex fabric; not a new NASA discovery.",
+      "outcome": "correct",
+      "proposal_ids": [
+        "proposal-2034da0fc2c681d26a3d5c73"
+      ],
+      "review_note": "Exact source identity/type and current/cited status checked."
+    },
+    {
+      "id": "quantities-05",
+      "kind": "quantities",
+      "evidence_id": "E-9789e7f460fa978a04ae491e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 6,
+      "quote": "the planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia)",
+      "start": 58,
+      "end": 120,
+      "expectation": "test-program pressure context; experimental configuration, not a newly measured habitat condition",
+      "expression": "56.5",
+      "unit": "kPa",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-06",
+      "kind": "quantities",
+      "evidence_id": "E-9789e7f460fa978a04ae491e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 6,
+      "quote": "chamber that could provide continuous operation at 57 kPa.",
+      "start": 1287,
+      "end": 1345,
+      "expectation": "WSTF chamber capability/configuration; preserve 57 without replacing it with the separate 56.5 kPa expression",
+      "expression": "57",
+      "unit": "kPa",
+      "outcome": "incorrect",
+      "proposal_ids": [
+        "proposal-71dacdf2b52ddb496fb51627"
+      ],
+      "review_note": "Original 57 kPa and WSTF scope are retained, but a chamber capability/configuration is mislabeled reported_quantity and variable label chamber does not identify pressure. Proposal remains unresolved, not accepted as science."
+    },
+    {
+      "id": "quantities-07",
+      "kind": "quantities",
+      "evidence_id": "E-9789e7f460fa978a04ae491e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 6,
+      "quote": "where the 5.2 cm by 14.0 cm samples were tested.",
+      "start": 1428,
+      "end": 1476,
+      "expectation": "WSTF specimen dimension, not the GRC chamber dimension or a burn-spread measurement",
+      "expression": "5.2",
+      "unit": "cm",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-08",
+      "kind": "quantities",
+      "evidence_id": "E-9789e7f460fa978a04ae491e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 6,
+      "quote": "where the 5.2 cm by 14.0 cm samples were tested.",
+      "start": 1428,
+      "end": 1476,
+      "expectation": "second WSTF specimen dimension; preserve original expression and dimension ambiguity if necessary",
+      "expression": "14.0",
+      "unit": "cm",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-09",
+      "kind": "quantities",
+      "evidence_id": "E-9789e7f460fa978a04ae491e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 6,
+      "quote": "The igniter was a retractable \n2.2 mm OD ceramic rod",
+      "start": 1864,
+      "end": 1916,
+      "expectation": "WSTF igniter outside diameter, not a fuel specimen diameter",
+      "expression": "2.2",
+      "unit": "mm",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-10",
+      "kind": "quantities",
+      "evidence_id": "E-9789e7f460fa978a04ae491e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 6,
+      "quote": "the sample \nwas exposed to a 10 cm/s primer flow at the target oxygen \nconcentration.",
+      "start": 2216,
+      "end": 2301,
+      "expectation": "WSTF primer-flow configuration, not all WSTF test velocities and not GRC ignition flow",
+      "expression": "10",
+      "unit": "cm/s",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-0b8f7c9065a23886c96536fe"
+      ],
+      "review_note": "Exact primer-flow expression/unit/configuration retained at the explicit flow-condition subject, with unknown semantic mapping. WSTF group attachment remains unverified; no assignment to GRC is made."
+    },
+    {
+      "id": "quantities-11",
+      "kind": "quantities",
+      "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 7,
+      "quote": "The \nchamber is 299 l in volume with an I.D. of 81.2 cm and an internal height if 30.5 cm.",
+      "start": 715,
+      "end": 805,
+      "expectation": "GRC chamber volume; preserve original l and experimental group",
+      "expression": "299",
+      "unit": "l",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-12",
+      "kind": "quantities",
+      "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 7,
+      "quote": "The \nchamber is 299 l in volume with an I.D. of 81.2 cm and an internal height if 30.5 cm.",
+      "start": 715,
+      "end": 805,
+      "expectation": "GRC chamber internal diameter, not WSTF quartz-tube diameter",
+      "expression": "81.2",
+      "unit": "cm",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-13",
+      "kind": "quantities",
+      "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 7,
+      "quote": "The \nchamber is 299 l in volume with an I.D. of 81.2 cm and an internal height if 30.5 cm.",
+      "start": 715,
+      "end": 805,
+      "expectation": "GRC chamber internal height; original typo if is preserved as source text",
+      "expression": "30.5",
+      "unit": "cm",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-14",
+      "kind": "quantities",
+      "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 7,
+      "quote": "the \nchamber was rotated at 20.4 RPM for several minutes before the drop",
+      "start": 832,
+      "end": 904,
+      "expectation": "GRC rotation configuration before drop, not LUCI rocket rotation",
+      "expression": "20.4",
+      "unit": "RPM",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-15",
+      "kind": "quantities",
+      "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 7,
+      "quote": "The ignition region of the sample was exposed to a slow \nflow (~30 cm/s) of gas",
+      "start": 2194,
+      "end": 2273,
+      "expectation": "GRC ignition enhancement flow, not measured lunar buoyant velocity",
+      "expression": "~30",
+      "unit": "cm/s",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-16",
+      "kind": "quantities",
+      "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 10,
+      "quote": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s, \nbut the lunar gravity velocity is not known.",
+      "start": 1806,
+      "end": 1920,
+      "expectation": "cited estimate for 1-g; never a current measured or known lunar-g velocity",
+      "expression": "35",
+      "unit": "cm/s",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-17",
+      "kind": "quantities",
+      "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 10,
+      "quote": "The worst-case delta for these materials can be seen to be 2.3%.",
+      "start": 2933,
+      "end": 2997,
+      "expectation": "derived conservative compensation delta from fit/extrapolation/confidence assumptions, not directly observed flammability difference",
+      "expression": "2.3",
+      "unit": "%",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "statements-18",
+      "kind": "statements",
+      "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 7,
+      "quote": "To increase the number of tests \nfor repeatability, two samples were ignited and tested in each drop.",
+      "start": 1983,
+      "end": 2084,
+      "expectation": "Current GRC configuration/execution, not two invented named individual runs.",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-ce4f11eecb4ce3ef21df2f79"
+      ],
+      "review_note": "Original sentence and cautious/source-conclusion role retained. Source applicability is explicitly unresolved; this does not count as confirmed/scoped recovery."
+    },
+    {
+      "id": "statements-19",
+      "kind": "statements",
+      "evidence_id": "E-8b1fc477e425ca4010535f3e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 8,
+      "quote": "Five materials were tested in both facilities.",
+      "start": 376,
+      "end": 422,
+      "expectation": "Current experiment coverage; retain both WSTF and GRC comparison context.",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "statements-20",
+      "kind": "statements",
+      "evidence_id": "E-8b1fc477e425ca4010535f3e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 8,
+      "quote": "the actual velocity (induced by the simulated gravity) is not known.",
+      "start": 1472,
+      "end": 1540,
+      "expectation": "Explicit uncertainty for lunar-g flow; never replace with a measured velocity from a different condition.",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "statements-21",
+      "kind": "statements",
+      "evidence_id": "E-77a08c9b9b578997fe41bf78",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 9,
+      "quote": "In figures 7, 8 and 9, the \nlunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the \nWSTF testing.",
+      "start": 148,
+      "end": 305,
+      "expectation": "Reported comparative result with an extrapolated comparator; retain comparison and assumed-flow qualification.",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "statements-22",
+      "kind": "statements",
+      "evidence_id": "E-77a08c9b9b578997fe41bf78",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 9,
+      "quote": "Various differences in the test methods \nhave been considered (turbulence at high flow rates, ignition times, delay after ignition before initiating the test, \noxygen augmentation during ignition, and buoyancy-enhanced ignition heat transfer to the unburned fuel due to the \nsample orientation with respect to gravity) but have not been definitively found to be the cause.",
+      "start": 715,
+      "end": 1087,
+      "expectation": "Authors explicitly do not establish a cause; tentative interpretation/uncertainty, never causal finding.",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-f54e79c18c9b59339134d5f1"
+      ],
+      "review_note": "Original sentence and cautious/source-conclusion role retained. Source applicability is explicitly unresolved; this does not count as confirmed/scoped recovery."
+    },
+    {
+      "id": "statements-23",
+      "kind": "statements",
+      "evidence_id": "E-7e102620e031abdc88047395",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 11,
+      "quote": "One possible \nexplanation for this is that the quench boundary for these materials shift to higher velocities than seen in the lunar-g \ntests, putting the lunar-gravity tests on the quenching (HTL) branch.",
+      "start": 271,
+      "end": 476,
+      "expectation": "Tentative interpretation, not measured observation or confirmed explanation.",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-55ce6343c95e3f24d0c76be0"
+      ],
+      "review_note": "Original sentence and cautious/source-conclusion role retained. Source applicability is explicitly unresolved; this does not count as confirmed/scoped recovery."
+    },
+    {
+      "id": "statements-24",
+      "kind": "statements",
+      "evidence_id": "E-7e102620e031abdc88047395",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 11,
+      "quote": "Comparative testing in 1-g under forced flow and buoyant flow at lunar-g conditions has demonstrated that for \nsome materials, there is a clear increased flammability at lunar gravity conditions.",
+      "start": 1222,
+      "end": 1417,
+      "expectation": "Author conclusion scoped to some materials and comparison groups, never universal material flammability.",
+      "outcome": "unresolved",
+      "proposal_ids": [
+        "proposal-c29d677de5d08ded91de2277"
+      ],
+      "review_note": "Original sentence and cautious/source-conclusion role retained. Source applicability is explicitly unresolved; this does not count as confirmed/scoped recovery."
+    },
+    {
+      "id": "statements-25",
+      "kind": "statements",
+      "evidence_id": "E-7e102620e031abdc88047395",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 11,
+      "quote": "This suggests that \nincreased flammability at lunar conditions may not be a universal issue, however further research is needed to validate \nthis possibility.",
+      "start": 1549,
+      "end": 1707,
+      "expectation": "Tentative author conclusion with explicit further-research need; not absence-of-evidence invented knowledge gap.",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "relations-26",
+      "kind": "relations",
+      "evidence_id": "E-9789e7f460fa978a04ae491e",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 6,
+      "quote": "The WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) \nchamber that could provide continuous operation at 57 kPa.",
+      "start": 1226,
+      "end": 1345,
+      "expectation": "WSTF testing group has its documented pressure/configuration; not GRC attribution.",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "relations-27",
+      "kind": "relations",
+      "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 7,
+      "quote": "The GRC testing was conducted using the centrifuge test facility in the ZGRF 5.2 second drop tower (Fig. 6).3",
+      "start": 605,
+      "end": 714,
+      "expectation": "GRC group has its centrifuge/partial-gravity experimental condition; not all WSTF tests.",
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-28",
+      "kind": "quantities",
+      "evidence_id": "E-77a08c9b9b578997fe41bf78",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 9,
+      "quote": "1190",
+      "start": 2265,
+      "end": 2269,
+      "expectation": "Original PMMA density model-input table cell with its printed density header/unit and cited literature role; not a new current NASA observation.",
+      "expression": "1190",
+      "unit": "original table density header; do not silently replace glyphs",
+      "table_target": true,
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "quantities-29",
+      "kind": "quantities",
+      "evidence_id": "E-7e102620e031abdc88047395",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 11,
+      "quote": "2.3",
+      "start": 3789,
+      "end": 3792,
+      "expectation": "Polycarbonate table compensation delta with exact row/header and 95% confidence/extrapolation role; not direct measurement.",
+      "expression": "2.3",
+      "unit": "original delta-O2% column",
+      "table_target": true,
+      "outcome": "omitted",
+      "proposal_ids": [],
+      "review_note": "No adequately scoped/typed representation of this target in the frozen package; rejected attempts and literal source cells are not scientific recovery."
+    },
+    {
+      "id": "figures-30",
+      "kind": "figures",
+      "evidence_id": "E-77a08c9b9b578997fe41bf78",
+      "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+      "page": 9,
+      "quote": "Figure11: Polycarbonate, 8.2 psia UHOI values",
+      "start": 1854,
+      "end": 1899,
+      "expectation": "Plot point/curve pairs require original figure access; no numerical values invented from caption alone.",
+      "accessibility": "not recovered by current text-only/disabled-vision route",
+      "outcome": "inaccessible",
+      "proposal_ids": [],
+      "review_note": "Text caption retained but curve point pairs are not independently recovered; no point values are invented."
+    }
+  ],
+  "proposal_sample": [
+    {
+      "proposal_id": "proposal-96a76c1f5e12c95120f3957c",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-6283ed4dbded15da3815",
+        "label": "Solid Fuel Ignition Testing for Lunar Applications, Theory and Experimental Results",
+        "class_id": "Investigation",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "quote": "54th International Conference on Environmental Systems \nICES-2025-392 \n13-17 July 2025, Prague, Czech Republic \nSolid Fuel Ignition Testing for Lunar Applications, Theory \nand Experimental Results \nDavid Urban1, Sandra Olson2, Daniel Dietrich3, Dennis Stocker4, Michael Johnston5, Paul Ferkul6, Gary Ruff7, \nJennifer Zayac8  \nNASA Glenn Research Center, Cleveland, OH, 44135  \nSusana Harper9, Alfredo Juarez 10,Steven Peralta11 \nNASA JSC White Sands Test Facility, Las Cruces, NM 88012 \nCarlos Fernandez-Pello12,  \nUniversity of California, Berkeley, Berkeley, CA, 94720, USA \nMaria Thomsen13 \nUniversidad Adolfo Ibáñez, Santiago, Chile  \nYa-Ting Liao14 \nCase Western Reserve University, Cleveland, Ohio 44106 \nHarold Beeson15 \nWHA International Inc., Las Cruces, NM, 88007 \nand \nGregory Harrigan16 \n NASA Kennedy Space Center, Merritt Island, FL, 32899 \nTo address the risk of enhanced flammability in lunar gravity, NASA has initiated a \nprogram to develop a new test method that provides an estimate of the flammability \nenhancement expected in lunar gravity.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "quote": "Solid Fuel Ignition Testing for Lunar Applications, Theory",
+            "start": 112
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-42e3fea27934c8951f93eab2",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 1,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 0,
+          "end": 1062,
+          "quote": "54th International Conference on Environmental Systems \nICES-2025-392 \n13-17 July 2025, Prague, Czech Republic \nSolid Fuel Ignition Testing for Lunar Applications, Theory \nand Experimental Results \nDavid Urban1, Sandra Olson2, Daniel Dietrich3, Dennis Stocker4, Michael Johnston5, Paul Ferkul6, Gary Ruff7, \nJennifer Zayac8  \nNASA Glenn Research Center, Cleveland, OH, 44135  \nSusana Harper9, Alfredo Juarez 10,Steven Peralta11 \nNASA JSC White Sands Test Facility, Las Cruces, NM 88012 \nCarlos Fernandez-Pello12,  \nUniversity of California, Berkeley, Berkeley, CA, 94720, USA \nMaria Thomsen13 \nUniversidad Adolfo Ibáñez, Santiago, Chile  \nYa-Ting Liao14 \nCase Western Reserve University, Cleveland, Ohio 44106 \nHarold Beeson15 \nWHA International Inc., Las Cruces, NM, 88007 \nand \nGregory Harrigan16 \n NASA Kennedy Space Center, Merritt Island, FL, 32899 \nTo address the risk of enhanced flammability in lunar gravity, NASA has initiated a \nprogram to develop a new test method that provides an estimate of the flammability \nenhancement expected in lunar gravity.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 1
+          }
+        },
+        {
+          "evidence_id": "E-42e3fea27934c8951f93eab2",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 1,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 112,
+          "end": 170,
+          "quote": "Solid Fuel Ignition Testing for Lunar Applications, Theory",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 1
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-0102db84351448ef0e869d9d",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-f71504bd27a64742a1c5",
+        "label": "1-g",
+        "class_id": "GravityCondition",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+            "start": 630
+          },
+          {
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "quote": "The goal was to measure the change in the extinction limit between 1-g testing and lunar-g testing in the centrifuge.",
+            "start": 2908
+          },
+          {
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "quote": "Consequently a 5 second extinction criterion test program was developed to determine the change in the \nextinction limit in 1-g and lunar-g and apply this offset to NASA Test 1 flammability limits for lunar material \ncertification.",
+            "start": 3159
+          },
+          {
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "quote": "6 \nInternational Conference on Environmental Systems \n \n \nthe planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia) for several materials where the higher speed blow-off \nbehavior in 1-g could be compared to the flame extinguishment in lunar-gravity buoyant flow.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+            "start": 270
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 630,
+          "end": 879,
+          "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-129ac4d6a061d7397737e779",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 5,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2908,
+          "end": 3025,
+          "quote": "The goal was to measure the change in the extinction limit between 1-g testing and lunar-g testing in the centrifuge.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 5
+          }
+        },
+        {
+          "evidence_id": "E-129ac4d6a061d7397737e779",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 5,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 3159,
+          "end": 3390,
+          "quote": "Consequently a 5 second extinction criterion test program was developed to determine the change in the \nextinction limit in 1-g and lunar-g and apply this offset to NASA Test 1 flammability limits for lunar material \ncertification.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 5
+          }
+        },
+        {
+          "evidence_id": "E-9789e7f460fa978a04ae491e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 6,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 0,
+          "end": 268,
+          "quote": "6 \nInternational Conference on Environmental Systems \n \n \nthe planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia) for several materials where the higher speed blow-off \nbehavior in 1-g could be compared to the flame extinguishment in lunar-gravity buoyant flow.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 6
+          }
+        },
+        {
+          "evidence_id": "E-9789e7f460fa978a04ae491e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 6,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 270,
+          "end": 520,
+          "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 6
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-1307d5b350c1bc3624e43622",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-a4b685c17b1f1fa90773",
+        "label": "reduced gravity aircraft",
+        "class_id": "ExperimentFamily",
+        "study": "cited",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "Testing in drop towers and on reduced \ngravity aircraft2,3 has shown that materials can \nhave broader flammability limits (e.g.",
+            "start": 2309
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 0,
+          "end": 284,
+          "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2309,
+          "end": 2436,
+          "quote": "Testing in drop towers and on reduced \ngravity aircraft2,3 has shown that materials can \nhave broader flammability limits (e.g.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-53fc02277c7b1b830aa49f35",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-627c17788e21374ca4d3",
+        "label": "chemical igniter",
+        "class_id": "Intervention",
+        "study": "cited",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "Test 1 is an upward flammability \ntest that uses a consistent ignition source (known as the chemical igniter) that is considered to be a very strong ignition \nsource1.",
+            "start": 1353
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1353,
+          "end": 1520,
+          "quote": "Test 1 is an upward flammability \ntest that uses a consistent ignition source (known as the chemical igniter) that is considered to be a very strong ignition \nsource1.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-5e664569eef918b07a9c904c",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-0aab8a58f61adb039ffc",
+        "label": "highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g)",
+        "class_id": "ExperimentFamily",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+            "start": 630
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 630,
+          "end": 879,
+          "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-5f575d5d5d57581d76e31c16",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-7fc6c086b5c67ea778a7",
+        "label": "Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge",
+        "class_id": "ExperimentFamily",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+            "start": 630
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 630,
+          "end": 879,
+          "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-8eb2a2a076e66782cf5cff86",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-234fca701d5cda7936bb",
+        "label": "NASA GRC 5.2 second drop tower",
+        "class_id": "ExperimentFamily",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "However, lunar gravity testing is largely limited to using a centrifuge in the \nNASA GRC 5.2 second drop tower.",
+            "start": 354
+          },
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+            "start": 2585
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 354,
+          "end": 465,
+          "quote": "However, lunar gravity testing is largely limited to using a centrifuge in the \nNASA GRC 5.2 second drop tower.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2585,
+          "end": 2782,
+          "quote": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-9d54f92acd69ff28d9c34bbf",
+      "kind": "entities",
+      "correct": false,
+      "critical": false,
+      "reason": "Generic thinner materials is not a named specimen identity; source role needs review.",
+      "proposal": {
+        "key": "entity-7d204d5ebf53ab77e8cb",
+        "label": "thinner materials",
+        "class_id": "Sample",
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+            "start": 2585
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2585,
+          "end": 2782,
+          "quote": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-a747f067dfa2a4f59ec26fb9",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-b9bfa4fc796c07dc8d37",
+        "label": "1-g",
+        "class_id": "GravityCondition",
+        "study": "unknown",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+            "start": 630
+          },
+          {
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "quote": "Experimental Method \nThe goal was to measure the change in the extinction limit between 1-g testing and lunar-g testing in the centrifuge.",
+            "start": 2887
+          },
+          {
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "quote": "Consequently a 5 second extinction criterion test program was developed to determine the change in the \nextinction limit in 1-g and lunar-g and apply this offset to NASA Test 1 flammability limits for lunar material \ncertification.",
+            "start": 3159
+          },
+          {
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "quote": "6 \nInternational Conference on Environmental Systems \n \n \nthe planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia) for several materials where the higher speed blow-off \nbehavior in 1-g could be compared to the flame extinguishment in lunar-gravity buoyant flow.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+            "start": 270
+          },
+          {
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "quote": "During the ignition interval, the drop \nrig is hanging at the top of the tower and is spinning to produce a 1/6 g radial acceleration in addition to the 1-g vertical \nforce.",
+            "start": 2445
+          },
+          {
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "quote": "To estimate the change in the flammability limit at 1-g  compared to lunar-g, the \nextrapolated value from the WSTF testing can be compared to the extrapolated value at lunar g.",
+            "start": 598
+          },
+          {
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "quote": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s, \nbut the lunar gravity velocity is not known.",
+            "start": 1806
+          },
+          {
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "quote": "Given this uncertainty, 35 cm/s could be considered to be a \nconservatively high estimate of the buoyant 1-g velocity.",
+            "start": 2387
+          },
+          {
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "quote": "Extrapolating the worst-case 95% confidence interval slope \nfrom the data for each material (Table 2) from the presumed 1-g buoyant velocity of 35 cm/s to zero would give a \nconservative 1-g to lunar-g flammability delta that could be applied to other test methods.",
+            "start": 2627
+          },
+          {
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "quote": "Conclusion \nComparative testing in 1-g under forced flow and buoyant flow at lunar-g conditions has demonstrated that for \nsome materials, there is a clear increased flammability at lunar gravity conditions.",
+            "start": 1210
+          },
+          {
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "quote": "Other, higher temperature materials \nmay show decreased flammability at lunar conditions than would be predicted from 1-g testing.",
+            "start": 1418
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 630,
+          "end": 879,
+          "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-129ac4d6a061d7397737e779",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 5,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2887,
+          "end": 3025,
+          "quote": "Experimental Method \nThe goal was to measure the change in the extinction limit between 1-g testing and lunar-g testing in the centrifuge.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 5
+          }
+        },
+        {
+          "evidence_id": "E-129ac4d6a061d7397737e779",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 5,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 3159,
+          "end": 3390,
+          "quote": "Consequently a 5 second extinction criterion test program was developed to determine the change in the \nextinction limit in 1-g and lunar-g and apply this offset to NASA Test 1 flammability limits for lunar material \ncertification.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 5
+          }
+        },
+        {
+          "evidence_id": "E-9789e7f460fa978a04ae491e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 6,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 0,
+          "end": 268,
+          "quote": "6 \nInternational Conference on Environmental Systems \n \n \nthe planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia) for several materials where the higher speed blow-off \nbehavior in 1-g could be compared to the flame extinguishment in lunar-gravity buoyant flow.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 6
+          }
+        },
+        {
+          "evidence_id": "E-9789e7f460fa978a04ae491e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 6,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 270,
+          "end": 520,
+          "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 6
+          }
+        },
+        {
+          "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 7,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2445,
+          "end": 2618,
+          "quote": "During the ignition interval, the drop \nrig is hanging at the top of the tower and is spinning to produce a 1/6 g radial acceleration in addition to the 1-g vertical \nforce.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 7
+          }
+        },
+        {
+          "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 10,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 598,
+          "end": 775,
+          "quote": "To estimate the change in the flammability limit at 1-g  compared to lunar-g, the \nextrapolated value from the WSTF testing can be compared to the extrapolated value at lunar g.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 10
+          }
+        },
+        {
+          "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 10,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1806,
+          "end": 1920,
+          "quote": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s, \nbut the lunar gravity velocity is not known.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 10
+          }
+        },
+        {
+          "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 10,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2387,
+          "end": 2505,
+          "quote": "Given this uncertainty, 35 cm/s could be considered to be a \nconservatively high estimate of the buoyant 1-g velocity.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 10
+          }
+        },
+        {
+          "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 10,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2627,
+          "end": 2892,
+          "quote": "Extrapolating the worst-case 95% confidence interval slope \nfrom the data for each material (Table 2) from the presumed 1-g buoyant velocity of 35 cm/s to zero would give a \nconservative 1-g to lunar-g flammability delta that could be applied to other test methods.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 10
+          }
+        },
+        {
+          "evidence_id": "E-7e102620e031abdc88047395",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 11,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1210,
+          "end": 1417,
+          "quote": "Conclusion \nComparative testing in 1-g under forced flow and buoyant flow at lunar-g conditions has demonstrated that for \nsome materials, there is a clear increased flammability at lunar gravity conditions.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 11
+          }
+        },
+        {
+          "evidence_id": "E-7e102620e031abdc88047395",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 11,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1418,
+          "end": 1548,
+          "quote": "Other, higher temperature materials \nmay show decreased flammability at lunar conditions than would be predicted from 1-g testing.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 11
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-d50b5d74c5be32966b95379c",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-f07311930fd829fcdbf8",
+        "label": "thin cellulosic fuel",
+        "class_id": "Material",
+        "study": "cited",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "Extinction Boundary for opposed flame spread \nover thin cellulosic fuel (Ref.",
+            "start": 3303
+          },
+          {
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "quote": "This phenomenon was subsequently shown experimentally6 \nfor thin cellulosic materials in opposed flow (Fig 1).",
+            "start": 598
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 3303,
+          "end": 3380,
+          "quote": "Extinction Boundary for opposed flame spread \nover thin cellulosic fuel (Ref.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-07e53eaea60dd81ef207f392",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 3,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 598,
+          "end": 708,
+          "quote": "This phenomenon was subsequently shown experimentally6 \nfor thin cellulosic materials in opposed flow (Fig 1).",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 3
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-f3733d1b1af91dc4951ec058",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-92e3a00440a036531d06",
+        "label": "terrestrial",
+        "class_id": "GravityCondition",
+        "study": "unknown",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+            "start": 0
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 0,
+          "end": 284,
+          "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-f3efb9cc4578be960e164f32",
+      "kind": "entities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "key": "entity-9099f6942de8ec214c7c",
+        "label": "partial gravity levels close to those found on the moon",
+        "class_id": "GravityCondition",
+        "study": "cited",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+            "start": 0
+          },
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "Testing in drop towers and on reduced \ngravity aircraft2,3 has shown that materials can \nhave broader flammability limits (e.g.",
+            "start": 2309
+          },
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "oxygen \nlimits) at partial gravity levels close to those \nfound on the moon and this was identified as a \nrisk for the Human Landing System (HLS).",
+            "start": 2437
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 0,
+          "end": 284,
+          "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2309,
+          "end": 2436,
+          "quote": "Testing in drop towers and on reduced \ngravity aircraft2,3 has shown that materials can \nhave broader flammability limits (e.g.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        },
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2437,
+          "end": 2583,
+          "quote": "oxygen \nlimits) at partial gravity levels close to those \nfound on the moon and this was identified as a \nrisk for the Human Landing System (HLS).",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-047b07ceeacfef86811a879e",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "text": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+        "class_id": "ExperimentalCondition",
+        "epistemic": "experimental_configuration",
+        "subjects": [
+          "entity-0aab8a58f61adb039ffc",
+          "entity-7fc6c086b5c67ea778a7"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+            "start": 630
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 630,
+          "end": 879,
+          "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-6920c0ec7608ef833b8a9289",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "text": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+        "class_id": "ExperimentalCondition",
+        "epistemic": "experimental_configuration",
+        "subjects": [
+          "entity-234fca701d5cda7936bb",
+          "entity-7d204d5ebf53ab77e8cb"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+            "start": 2585
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2585,
+          "end": 2782,
+          "quote": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-986757c9c18a64826885ef91",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "text": "However, lunar gravity testing is largely limited to using a centrifuge in the \nNASA GRC 5.2 second drop tower.",
+        "class_id": "ExperimentalCondition",
+        "epistemic": "experimental_configuration",
+        "subjects": [
+          "entity-234fca701d5cda7936bb"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "However, lunar gravity testing is largely limited to using a centrifuge in the \nNASA GRC 5.2 second drop tower.",
+            "start": 354
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 354,
+          "end": 465,
+          "quote": "However, lunar gravity testing is largely limited to using a centrifuge in the \nNASA GRC 5.2 second drop tower.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-d4bc01c2084d8393c280105e",
+      "kind": "statements",
+      "correct": false,
+      "critical": true,
+      "reason": "Mixed fitted-curve figure caption or model-comparison procedure incorrectly accepted as measured_observation. This does not establish a direct physical measurement.",
+      "proposal": {
+        "text": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-0aab8a58f61adb039ffc",
+          "entity-7fc6c086b5c67ea778a7"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+            "start": 630
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 630,
+          "end": 879,
+          "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-6c9c37812597ba3c58f62e68",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "text": "NASA White Sands Test Facility (WSTF) Upward High-flow Oxygen Index Testing  \nThe WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) \nchamber that could provide continuous operation at 57 kPa.",
+        "class_id": "ExperimentalCondition",
+        "epistemic": "experimental_configuration",
+        "subjects": [
+          "entity-a0f786353cb3596c66c3"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "quote": "NASA White Sands Test Facility (WSTF) Upward High-flow Oxygen Index Testing  \nThe WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) \nchamber that could provide continuous operation at 57 kPa.",
+            "start": 1148
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9789e7f460fa978a04ae491e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 6,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1148,
+          "end": 1345,
+          "quote": "NASA White Sands Test Facility (WSTF) Upward High-flow Oxygen Index Testing  \nThe WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) \nchamber that could provide continuous operation at 57 kPa.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 6
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-a2fa04555f80f22c55af1758",
+      "kind": "statements",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "text": "NASA Glenn Research Center (GRC) Partial Gravity Testing   \nThe GRC testing was conducted using the centrifuge test facility in the ZGRF 5.2 second drop tower (Fig.",
+        "class_id": "ExperimentalCondition",
+        "epistemic": "experimental_configuration",
+        "subjects": [
+          "entity-b7370b383b1085bed159"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "quote": "NASA Glenn Research Center (GRC) Partial Gravity Testing   \nThe GRC testing was conducted using the centrifuge test facility in the ZGRF 5.2 second drop tower (Fig.",
+            "start": 545
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 7,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 545,
+          "end": 709,
+          "quote": "NASA Glenn Research Center (GRC) Partial Gravity Testing   \nThe GRC testing was conducted using the centrifuge test facility in the ZGRF 5.2 second drop tower (Fig.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 7
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-189c5596724160b9a5e2154d",
+      "kind": "statements",
+      "correct": false,
+      "critical": true,
+      "reason": "Mixed fitted-curve figure caption or model-comparison procedure incorrectly accepted as measured_observation. This does not establish a direct physical measurement.",
+      "proposal": {
+        "text": "The lunar-g limit\n \n    \n    \n \nFigure 7: 0.8 mm PMMA Sample, 8.2 psia \nUHOI values with the best fit for the WSTF data \nfor 60 cm/s and above with the GRC lunar gravity \ndata shown as a horizontal line.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-0e7f1da8622572beb85e"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "quote": "The lunar-g limit\n \n    \n    \n \nFigure 7: 0.8 mm PMMA Sample, 8.2 psia \nUHOI values with the best fit for the WSTF data \nfor 60 cm/s and above with the GRC lunar gravity \ndata shown as a horizontal line.",
+            "start": 1541
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-8b1fc477e425ca4010535f3e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 8,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1541,
+          "end": 1744,
+          "quote": "The lunar-g limit\n \n    \n    \n \nFigure 7: 0.8 mm PMMA Sample, 8.2 psia \nUHOI values with the best fit for the WSTF data \nfor 60 cm/s and above with the GRC lunar gravity \ndata shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-78e3985f2f37893bd4ce4a94",
+      "kind": "statements",
+      "correct": false,
+      "critical": true,
+      "reason": "Mixed fitted-curve figure caption or model-comparison procedure incorrectly accepted as measured_observation. This does not establish a direct physical measurement.",
+      "proposal": {
+        "text": "Figure 10: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for smolder extinction with the \nbest fit for the WSTF data with the GRC lunar \ngravity data shown as a horizontal line.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-7cc1f1bfbf9201038297",
+          "entity-07757be80d2212efa659"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "quote": "Figure 10: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for smolder extinction with the \nbest fit for the WSTF data with the GRC lunar \ngravity data shown as a horizontal line.",
+            "start": 2123
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-8b1fc477e425ca4010535f3e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 8,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2123,
+          "end": 2311,
+          "quote": "Figure 10: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for smolder extinction with the \nbest fit for the WSTF data with the GRC lunar \ngravity data shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-9237a3cf714d7bb966408722",
+      "kind": "statements",
+      "correct": false,
+      "critical": true,
+      "reason": "Mixed fitted-curve figure caption or model-comparison procedure incorrectly accepted as measured_observation. This does not establish a direct physical measurement.",
+      "proposal": {
+        "text": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-b005820295796e4a0f84"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "quote": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+            "start": 1746
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-8b1fc477e425ca4010535f3e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 8,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1746,
+          "end": 1893,
+          "quote": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-93edf882f8f1afbde09b6127",
+      "kind": "statements",
+      "correct": false,
+      "critical": true,
+      "reason": "Mixed fitted-curve figure caption or model-comparison procedure incorrectly accepted as measured_observation. This does not establish a direct physical measurement.",
+      "proposal": {
+        "text": "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for extinction of the gas phase \nflame with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-5a784950c75702c4d080",
+          "entity-07757be80d2212efa659"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "quote": "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for extinction of the gas phase \nflame with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+            "start": 1916
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-8b1fc477e425ca4010535f3e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 8,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1916,
+          "end": 2118,
+          "quote": "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for extinction of the gas phase \nflame with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-60da6e1cbda8fd3cbf9d5a2d",
+      "kind": "statements",
+      "correct": false,
+      "critical": true,
+      "reason": "Mixed fitted-curve figure caption or model-comparison procedure incorrectly accepted as measured_observation. This does not establish a direct physical measurement.",
+      "proposal": {
+        "text": "Figure11: Polycarbonate, 8.2 psia UHOI values \nwith the best fit for the WSTF data with the GRC \nlunar gravity data shown as a horizontal line.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "subjects": [
+          "entity-2b457df29c140488f7f8",
+          "entity-231c42c7af212bbd3a77"
+        ],
+        "study": "current",
+        "support": [
+          {
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "quote": "Figure11: Polycarbonate, 8.2 psia UHOI values \nwith the best fit for the WSTF data with the GRC \nlunar gravity data shown as a horizontal line.",
+            "start": 1854
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-77a08c9b9b578997fe41bf78",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 9,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1854,
+          "end": 1997,
+          "quote": "Figure11: Polycarbonate, 8.2 psia UHOI values \nwith the best fit for the WSTF data with the GRC \nlunar gravity data shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 9
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-5d705a3402b41a24d5a139eb",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "subject": "entity-a4b685c17b1f1fa90773",
+        "relation": "hasCondition",
+        "object": "entity-9099f6942de8ec214c7c",
+        "support": [
+          {
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+            "start": 0
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 2,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 0,
+          "end": 284,
+          "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-8090d80c2b59c9c3b76bb62c",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "subject": "entity-c8a73b35e286511e8288",
+        "relation": "usesSample",
+        "object": "entity-089f099995c5980d395f",
+        "support": [
+          {
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "quote": "The Saffire experiment found that both concurrent and opposed spread could be steady for samples roughly \n0.8 m in length for a thin cellulosic fuel10.",
+            "start": 4251
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-07e53eaea60dd81ef207f392",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 3,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 4251,
+          "end": 4402,
+          "quote": "The Saffire experiment found that both concurrent and opposed spread could be steady for samples roughly \n0.8 m in length for a thin cellulosic fuel10.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 3
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-0b942bc2b686878ab9811cb3",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "subject": "entity-0e7f1da8622572beb85e",
+        "relation": "usesSample",
+        "object": "entity-78b5159f9d09cd6c8df1",
+        "support": [
+          {
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "quote": "The lunar-g limit\n \n    \n    \n \nFigure 7: 0.8 mm PMMA Sample, 8.2 psia \nUHOI values with the best fit for the WSTF data \nfor 60 cm/s and above with the GRC lunar gravity \ndata shown as a horizontal line.",
+            "start": 1541
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-8b1fc477e425ca4010535f3e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 8,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1541,
+          "end": 1744,
+          "quote": "The lunar-g limit\n \n    \n    \n \nFigure 7: 0.8 mm PMMA Sample, 8.2 psia \nUHOI values with the best fit for the WSTF data \nfor 60 cm/s and above with the GRC lunar gravity \ndata shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-7ddb5ed531feb274b5aa1ebe",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "subject": "entity-b005820295796e4a0f84",
+        "relation": "usesSample",
+        "object": "entity-b11e0ef7874e77b277d3",
+        "support": [
+          {
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "quote": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+            "start": 1746
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-8b1fc477e425ca4010535f3e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 8,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1746,
+          "end": 1893,
+          "quote": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-827d648fff3e8504bf3aa32b",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "subject": "entity-5a784950c75702c4d080",
+        "relation": "hasMaterial",
+        "object": "entity-71d688e161cf83349261",
+        "support": [
+          {
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "quote": "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for extinction of the gas phase \nflame with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+            "start": 1916
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-8b1fc477e425ca4010535f3e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 8,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 1916,
+          "end": 2118,
+          "quote": "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for extinction of the gas phase \nflame with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-a79f749c1aea138054bb43dd",
+      "kind": "relations",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "subject": "entity-7cc1f1bfbf9201038297",
+        "relation": "hasMaterial",
+        "object": "entity-71d688e161cf83349261",
+        "support": [
+          {
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "quote": "Figure 10: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for smolder extinction with the \nbest fit for the WSTF data with the GRC lunar \ngravity data shown as a horizontal line.",
+            "start": 2123
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-8b1fc477e425ca4010535f3e",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 8,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 2123,
+          "end": 2311,
+          "quote": "Figure 10: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for smolder extinction with the \nbest fit for the WSTF data with the GRC lunar \ngravity data shown as a horizontal line.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 8
+          }
+        }
+      ]
+    },
+    {
+      "proposal_id": "proposal-8d383632140b693d8bfac37f",
+      "kind": "quantities",
+      "correct": true,
+      "critical": false,
+      "reason": "Original source name/value/role, cited/current status and documentary relation checked. Context entities and multiple supports are not independent executed experiments.",
+      "proposal": {
+        "subject": "entity-089f099995c5980d395f",
+        "label": "length",
+        "expression": "roughly \n0.8",
+        "unit": "m",
+        "epistemic": "reported_quantity",
+        "support": [
+          {
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "quote": "The Saffire experiment found that both concurrent and opposed spread could be steady for samples roughly \n0.8 m in length for a thin cellulosic fuel10.",
+            "start": 4251
+          }
+        ]
+      },
+      "original_support": [
+        {
+          "evidence_id": "E-07e53eaea60dd81ef207f392",
+          "source_id": "research-1d88231f39dc30cd2148:a7beb30e4beb5f5b",
+          "page": 3,
+          "checksum": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+          "start": 4251,
+          "end": 4402,
+          "quote": "The Saffire experiment found that both concurrent and opposed spread could be steady for samples roughly \n0.8 m in length for a thin cellulosic fuel10.",
+          "locator": {
+            "file": "20250002114.pdf",
+            "page": 3
+          }
+        }
+      ]
+    }
+  ],
+  "membership": "FAILED_FROZEN_V4_CYCLE2; exposed after this evaluation, never eligible to relabel as unseen for new code."
+}

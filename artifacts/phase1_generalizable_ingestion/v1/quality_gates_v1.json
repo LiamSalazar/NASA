@@ -1,0 +1,38 @@
+[
+  {
+    "command": [
+      "uv",
+      "run",
+      "ruff",
+      "format",
+      "--check",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 0.022332116001052782,
+    "output": "artifacts/phase1_generalizable_ingestion/v1/final_gate_0_v1.txt"
+  },
+  {
+    "command": [
+      "uv",
+      "run",
+      "ruff",
+      "check",
+      "."
+    ],
+    "exit_code": 0,
+    "seconds": 0.022405910000088625,
+    "output": "artifacts/phase1_generalizable_ingestion/v1/final_gate_1_v1.txt"
+  },
+  {
+    "command": [
+      "uv",
+      "run",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "seconds": 76.22387005099154,
+    "output": "artifacts/phase1_generalizable_ingestion/v1/final_gate_2_v1.txt"
+  }
+]
