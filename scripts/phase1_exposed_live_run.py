@@ -30,11 +30,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from nasa_fire_ai.config import Settings  # noqa: E402
-from nasa_fire_ai.evidence import EvidenceRegistry  # noqa: E402
-from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget  # noqa: E402
-from nasa_fire_ai.ingestion.extraction_resources import ProviderEnvelope  # noqa: E402
-from nasa_fire_ai.services.curation import CurationService  # noqa: E402
+from nasa_fire_ai.config import Settings
+from nasa_fire_ai.evidence import EvidenceRegistry
+from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget
+from nasa_fire_ai.ingestion.extraction_resources import ProviderEnvelope
+from nasa_fire_ai.services.curation import CurationService
 
 CREDENTIAL = re.compile(r"nvapi-[A-Za-z0-9_\-]{8,}")
 
