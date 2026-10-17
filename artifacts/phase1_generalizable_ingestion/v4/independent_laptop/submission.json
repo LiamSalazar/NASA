@@ -1,0 +1,717 @@
+{
+  "package": {
+    "id": "research-744f2693127046f63099",
+    "version": 2,
+    "title": "Characterization of Laptop Fires in Spacecraft",
+    "purpose": "An accidental fire involving the Lithium-Ion (Li-ion) battery in a laptop computer is one of the most likely fire scenarios on-board a spacecraft. These fires can occur from a defect in the battery that worsens with time, over-charging the battery and leading to failure or accidental damage caused by thermal runaway. While this is a relatively likely fire scenario, very little is known about the how a laptop computer fire would impact a sealed spacecraft. The heat release would likely cause a pressure rise, possibly exceeding the pressure limit of the vehicle and causing a relief valve to open. The combustion products from the fire could pose a short-term and long-term health hazard to the crew and the fire itself could cause injury to the crew and damage to the spacecraft. Despite the hazard posed by a laptop fire, there is little quantitative data on the fire size, heat release and toxic product formation. This paper presents the results of initial attempts to quantify the fire resulting from a failed laptop fire tested at the NASA White Sands Test Facility (WSTF). The data from the testing is useful to attempt to determine the fire size and characteristics such as maximum heat release rate, total heat release, maximum temperatures and fire duration are determined. Using existing models and correlations for fires, the measured fire characteristics are extrapolated to laptop fires on a vehicle the approximate size of the Orion spacecraft.",
+    "creator": "phase1-validation",
+    "inputs": [
+      {
+        "name": "20190027097.pdf",
+        "sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "bytes": 2560202,
+        "stored_input": "data/submissions/6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a.pdf"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 1,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nCharacterization of Laptop Fires in Spacecraft\nRosa E. Padilla ∗, Daniel L. Dietrich †, Gary A. Ruff ‡, and David L. Urban §\nNASA John H. Glenn Research Center, Cleveland, Ohio, 44135, USA\nKelly C. Lynch ¶\nUniversity of Kentucky, Chemical Engineering Department, Lexington, Kentucky, 40506, USA\nAlfredo Juarez∥, Susana A. Harper ∗∗\nWhite Sands Test Facility, Las Cruces, New Mexico, 88012, USA\nand\nChristopher R. Nagel ††\nNASA Johnson Space Center, Houston, Texas, 77058, USA\nAn accidental ﬁre involving the Lithium-Ion (Li-ion) battery in a laptop computer is one of the most likely\nﬁre scenarios on-board a spacecraft. These ﬁres can occur from a defect in the battery that worsens with time,\nover-charging the battery and leading to failure or accidental damage caused by thermal runaway. While this\nis a relatively likely ﬁre scenario, very little is known about the how a laptop computer ﬁre would impact a\nsealed spacecraft. The heat release would likely cause a pressure rise, possibly exceeding the pressure limit\nof the vehicle and causing a relief valve to open. The combustion products from the ﬁre could pose a short-\nterm and long-term health hazard to the crew and the ﬁre itself could cause injury to the crew and damage\nto the spacecraft. Despite the hazard posed by a laptop ﬁre, there is little quantitative data on the ﬁre size,\nheat release and toxic product formation. This paper presents the results of initial attempts to quantify the\nﬁre resulting from a failed laptop battery tested at the NASA White Sands Test Facility (WSTF). The ﬁre size\nand characteristics such as maximum heat release rate, total heat release, maximum temperatures and ﬁre\nduration are determined. Using existing models and correlations for ﬁres, the measured ﬁre characteristics are\nextrapolated to laptop ﬁres on a vehicle the approximate size of the Orion spacecraft.\nNomenclature\n∆Tc\n= Centerline temperature, K\n∆To\n= Temperature, K\nρ\n= Air density, kg/m3\nAs\n= Surface area, m\ncp\n= Speciﬁc heat, J/K\nD\n= Fire source diameter, m\n∗Aerospace Engineer, Combustion Physics and Reacting Processes Branch, Mail Stop 110-317L\n†Aerospace Engineer, Combustion Physics and Reacting Processes Branch, Mail Stop 110-3\n‡Aerospace Engineer, Exploration Systems Project Ofﬁce, Mail Stop, 162:321-43\n§Branch Chief, Combustion Physics and Reacting Processes Branch, Mail Stop 77:101\n¶Undergrad, University of Kentucky, Chemical Engineering Department, Lexington, KY, 40506, USA\n∥WSTF Flammability Project and Facility Lead, Materials and Components Laboratories, Mail Stop 800-116\n∗∗WSTF Standard Testing Project and Facility Manager, Mail Stop 803:100\n††Project Manager, Life Support Systems Branch (EC3), Orion ECLSS GFE, Mail Stop 7A:225\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 1
+        }
+      },
+      {
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 2,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nHF\n= Flame height, m\nQ\n= Heat Release rate, kW\nQc\n= Convective energy release, kW\nT∞\n= Ambient temperature, K\nz\n= Height above the ﬁre surface, m\nzo\n= Virtual origin, m\nI.\nIntroduction\nT\nHE demand for lithium-ion (Li-ion) batteries has increased throughout the years due to their attractive energy\ncharacteristics. Li-ion batteries are known for their wide range of high energy and power density and have\nbecome a preferred energy source for many ground and on orbit applications. Among the batteries available, the\ntraditional 18650 cylindrical cell was originally designed for portable electronics, such as hand held power tools and is\nnow in high demand by the automotive industry. Li-ion batteries are also present aboard current spacecraft; the 18650\ncells are found in satellites, powertools, and spacesuits as battery packs, while commercial laptops have either 18650\nbatteries or pouch cells [1]. The Li-ion polymer pouch cells are typically found inside laptop notebooks and in cellular\nphones. Li-ion batteries pose a serious safety risk for spacecraft and the crew since they can generate large quantities\nof heat during a thermal runaway event.\nLi-ion batteries can release toxic substances, among those are carbon monoxide (CO), carbon dioxdide (CO2) and\nother trace species. These gases can be fatal if inhaled in large quantities, primarily a concern to spacecraft crew as\nthese may be asphyxiant or can cause anoxia [2]. During a thermal runaway event, Li-ion batteries can release the\nﬂuorine content of the electrolyte and other materials in the battery, such as the polyvinylidene ﬂuoride (PVdF) binder\nand phosphoryl ﬂuoride (POF3) from the electrodes.\nIn addition, other gases may form such as hydrogen ﬂuoride (HF), and hydrogen cyanide (HCN)[2]. The total\namount of these toxic gases vary considerably depending on manufacturers, state of charge, battery type and chemistry.\nThere have been numerous studies of the failure modes and performance characteristics of a cylindrical or pouch\nbattery during a thermal run away event [3]. However, very few have focused on laptop battery ﬁres. Laptop battery\nfailures have happened worldwide due to defects in the interior parts, such as deformities in the cathode metal or\ndamage to the separator [4]. A few accidents involving laptop ﬁres have occurred through out the years, among those\nSony, HP and Dell, have recalled of 1.8 million batteries [5] due to being potential hazards caused from metallic\ndefects and unwanted contact between electrodes. Efforts from Meyer et al. [6], Juarez et al. [7] and Harper et al. [8]\nhave focused on studying the spacecraft smoke alarm thresholds and ﬁre suppression effectiveness on laptop ﬁres.\nThe studies examined laptops that the Orion Program identiﬁed as the largest stored-energy source that may be found\nonboard. The laptops identiﬁed were the Surface Pro 42 Whr with 4 cells and the Dell Model No. XPS 15 9560 with\nsix cells at 97 Wh.\nThis paper focuses on characterizing the ﬁre from a commercial Dell XPS laptop and Surface Pro tablet, that\nwas conducted at the NASA White Sands Test Facility [8]. Measurements of ﬂame height were extracted from the\ncombustion process and used to quantify the maximum heat release, total heat release and centerline temperature using\nHeskestad’s equations.\nII.\nExperimental Description\nFigure 1 shows a general schematic of the experimental apparatus used to perform battery ﬁre tests inside a 1.4 m3\n(50 ft3) chamber. This work used a Dell 97 Wh laptop that holds a 6 cell battery pack at a nominal 11.4 V and 25.8 Ahr\nrating and a Surface Pro that has 4 cells with a nominal 15.14 V and a 11.88 Ahr battery pack. Further speciﬁcations\nare found in Table 1. The testing included the laptop unit and the battery pack, which includes electronics and plastic\nhousing. In addition, the Surface Pro was tested with a keyboard attached. The laptops were charged to a state of\ncharge of 100%.\nInternational Conference on Environmental Systems\n2\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 2
+        }
+      },
+      {
+        "evidence_id": "E-7d3674715bb6963dd75f22c1",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 3,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nThermocouple (TC) \nPositions\nTC\n* Only \nType K\nThermocouple (TC)\n14.06”\n9.06”\nCamera\nThe Surface Pro 5 is also tested and has a similar TC arrangement\nFigure 1: A commercial laptop, Dell XPS 97Wh is forced into thermal runaway inside a 1.4 m3 (50 ft3) chamber. A\nstove top coil element is used to initiate the combustion process. Thermocouples are placed for event monitoring (red\ndots).\nThe laptop and tablet were heated externally to promote thermal runaway using a stove top coil element with\na power input at approximately a maximum of 1000 W. Two “sparkers” were used to ignite the gases that have\nbeen vented out or produced during the pyrolysis process. The chamber and the laptop were instrumented with\nthermocouples; two Type K thermocouples were reported by Harper et al. [8] as being placed at 0.61 m (24 in.) and\n0.864 m (34 in.) above the laptop to monitor potential worst-case cabin temperature conditions during a ﬁre event. The\ntemperature in the chamber stayed between 300-337.45 K. Each individual pouch cell had a thermocouple attached\nfor temperature data upon ignition and propagation. An additional thermocouple was placed above the external casing\nand above the heater element to verify adequate heat input.\nA video camera was placed inside the testing chamber and captured the burning process for all combustion events\n(as shown in Fig. 2). The ﬂame height was determined from a customized Matlab code developed for image processing\nof the digital still frames. Pixel data was obtained from the images and converted into real dimensions; the scale factor\nused was found by measuring the depth from one side of a laptop and divided by the number of pixels. Typical\nimages used for the analysis are seen in Fig. 2. The still images are converted to grayscale by eliminating the hue and\nsaturation information while retaining the luminance. The grayscale images are converted to binary by replacing all\npixels in the color image with luminance greater than the threshold level with 1 (white) and replacing all other pixels\nwith the value 0 (black). Figure 2 illustrates the ﬂame height as Hf and D as the diameter of the ﬁre.\nInternational Conference on Environmental Systems\n3\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 3
+        }
+      },
+      {
+        "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 4,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n𝑇𝑒𝑠𝑡𝑐ℎ𝑎𝑚𝑏𝑒𝑟:\n1.4 𝑚3 50𝑓𝑡3\nFlame Height, Hf\nDiameter, D\n𝑇∞=300-330.4 K\n𝑇𝑒𝑠𝑡𝑐ℎ𝑎𝑚𝑏𝑒𝑟:\n1.4 𝑚3 50𝑓𝑡3\nPi\nxel\ns\nPixels\nP\ni\nx\ne\nl\ns\nPixels\nFigure 2: Typical images capturing the burning process, test chamber volume, and ambient temperature. A black and\nwhite image used for the analysis of heat release is also shown.\nFire suppression was accomplished with a portable ﬁre extinguisher (PFE) assembly that holds 6 pounds of water\nand 1.2 lb of nitrogen pressurized to approximately 1270 psia. Details on the portable ﬁre extinguisher are further\ndiscussed in Rodriguez et al. [9] work. In addition, the work by Harper et al. [8] discusses the use of the PFE on a\nDell XPS 15 ﬁre and its capability of extinguishing a Dell XPS 15 with 2 lbs of water. The chamber was instrumented\nwith an Orion smoke detector, particulate sensor, and gas probes to perform toxicological analysis of CO, CO2 and\nO2, among other hydrocarbons.\nIII.\nResults\nI\nBurning Behavior\nFigures 3, 4, and 5 show the combustion process of a fully charged Dell XPS 97 Wh laptop. Images from the\nburning process for the Surface Pro are not shown in this paper. The burning of a laptop can be summarized into the\nfollowing stages: the heater is turned on and the laptop is heated for about 180 s, raising its temperature to pyrolize\nthe laptop or battery and cause a release of gaseous products. The laptop begins to decompose and shows a minimum\namount of white smoke (see Fig. 3a) and sparks under the mousepad and sides. The sparks resemble what has been\npreviously reported in literature to occur when solid electrolyte burns as its being ejected. These gases are ignited\nusing a sparker and the coil was shut off when the laptop was uniformly ignited over the exposed area. The Li-ion\nbattery pack is found under the mousepad region; the mousepad is shown to raise during the heating period which is\nan indication that pouch cells go through a minimum amount of swelling. The second phase shows a large amount of\nwhite smoke (see Fig. 3b) and more apparent sparks are released from the sides and underneath the mousepad. The\nventing period lasted for about 6 s. The released smoke is ignited and results in an aggressive ﬁreball (\"thermal\"[10])\noutburst 2 seconds after the end of the venting period (Fig. 4a). The white smoke is also observed midway during the\nﬁre suppression phase (Fig. 5a).\nInternational Conference on Environmental Systems\n4\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 4
+        }
+      },
+      {
+        "evidence_id": "E-c1bc65ad939838ad838b5871",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 5,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n(a) The heater is turned on and a small quantity of white smoke\nbegins to appear.\n(b) White smoke and sparks are released through the mousepad\nand from the sides of the laptop.\nFigure 3: Digital still images displaying the initial combustion event from a 97Wh Dell laptop.\nThe ﬁre begins to reduce in its hemispherical shape and instead elongates (Fig. 4c), showing three regions, a\ncontinuous, intermittent, and buoyant plume, as described by McCaffrey [11]. The ﬂame rapidly moves to the sides,\npulses and ﬂickers. The ﬂame abates and reduces in size signiﬁcantly while spreading above the region where the\nbattery pack is located (near the mouse pad area) and is shown in Fig. 4d. A second outburst occurs 4 seconds after\nintroducing water, as shown in Fig. 4e. After introducing water, the ﬁre grows in size brieﬂy and then begins to cool.\nVery near extinguishment the ﬁre is pushed to other areas in the laptop, as shown in Fig. 5a. A typical post image after\nthe ﬁre event is shown in Fig. 5b. The image was taken from Harper et al. [8] work. The image shows the thermal\nrunaway propagation which occurs across all cells when external heating was applied directly underneath the coil\nheater. A visual observation of the cells after combustion shows the exterior packaging foil of the battery pack and the\npouch cells completely burnt. Molten case material was also emitted in the Dell more than what was observed in the\nSurface Pro. In addition, the smoke may be due to the decomposition of the plastic case and a contribution from the\npouch cell material (i.e. separator melts). Similar heating behavior was observed with the Surface Pro, however, the\nﬁre was not suppressed and lasted for 8 minutes of continuous burning. A large amount of white smoke and a large\nﬁre size was also observed.\n(a) The ﬁrst ﬂame outburst.\n(b) The ﬂame moves to the sides.\n(c) An elongated plume appears.\n(d) Fire sits above mousepad area.\n(e) Second ﬁre outburst.\n(f) Flame abatement.\nFigure 4: Digital still images displaying the combustion process of a 97Wh Dell XPS laptop at different time stamps.\nInternational Conference on Environmental Systems\n5\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 5
+        }
+      },
+      {
+        "evidence_id": "E-c23c6e510e076592e4d7d0df",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 6,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n(a) Near extinguishment.\n(b) Thermal runaway propagation to\nall battery cells.\nFigure 5: Digital still images displaying the combustion process of a 97Wh Dell XPS laptop showing post images of\nthe battery pack.\nFigure 6a shows the evolution of the thermal runaway event in the Dell XPS 15 and the temperature proﬁle for the\nSurface Pro 5 is shown in Fig. 6b. The three stages that can observed in the plot are summarized in Fig. 6 as follow:\na linear rise in temperature until about 318 s to 415 K due to the initial heating applied by the coil. The temperature\nincreases upon heating until it reaches the melting temperature of the laptop casing. In addition, the temperature jump\nmay also be associated to the venting and decomposition period in a pouch cell. The melting temperature of a typical\npouch cell separator from either polyethylene or polypropylene is reported in literature to be between 403.15-438.15 K\n[12] which is close to the ﬁrst temperature jump. The second temperature jump is a typical thermal runaway behavior\nthat has also been captured in Li-ion 18650 battery studies. The thermal runaway onset temperature is between 513.4-\n600 K (shown as dashed ellipses in Fig. 6), which is higher than what is observed in 18650 and pouch cells. The\nthermal runaway event happens within a few seconds (6-36 s) and experiences a sharp temperature rise from 513.4 K\nto 943.4 K (Tmax) for the Dell XPS laptop and from 600 K to 800 K in 36 s for the Surface Pro. The average runaway\npower during this period can be estimated from the total energy released (discussed in Section III) that is at 326.2\nkJ for the Dell XPS this can produce about 54.3 kW within 6 s. The cooling stage occurs right after the Tmax peak\ntemperature, showing that cooling occurs at a faster rate for the Dell XPS than the Surface Pro.\n200\n400\n600\n800\n1000\n1200\nTime(s)\n300\n400\n500\n600\n700\n800\n900\nTemperature (K)\n800\n810\n820\nTime (s)\n600\n700\n800\n900\nTemperature (K)\nCooling\nStage\n(PFE)\nTmax\n6 s\n330 K\nHeating Stage\nSparker (Ignition) at\n240 s\nDell XPS 15 9560 (97 Wh)\nThermal Runaway\n     Onset\n(a) Temperature as a function of time for the Dell XPS.\n0\n200\n400\n600\n800\n1000\n1200\nTime(s)\n300\n400\n500\n600\n700\n800\n900\nTemperature (K)\nHeating         \nStage (140 s)   \nCooling Stage (no PFE)\nTmax\nSparker   \n(Ignition)\n420\n440\n460\nTime(sec)\n600\n700\n800\nTemperature (K)\nSurface Pro 5 (45 Wh)\n36 s\n200 K\nThermal Runaway\n     Onset \n(b) Temperature as a function of time for the Surface Pro.\nFigure 6: Temperature proﬁles showing the combustion event for the Dell XPS and the Surface Pro. The inset image\nzooms into the thermal runaway region.\nII\nFlame Height\nFigures 7, 8 and Fig. 9 show the ﬂame height and diameter as functions of time for the Dell XPS and Surface\nPro. In general, the ﬂame size for the Dell decreased with time, but exhibited large ﬂuctuations or ﬂare ups. The\nﬂame reaches a height of 0.85 m (t=281.1 s) during the ﬁrst outburst, 0.9 m (t=288.1 s), and 0.63 m (t=296.7 s). The\nﬂame height then decreases linearly to as low as 0.3 m (t=299-313 s). Figure 7 also shows locations where the water\nInternational Conference on Environmental Systems\n6\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 6
+        }
+      },
+      {
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 7,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nsuppression became active (t= 315-327 s). A fourth outburst was observed during the ﬁre suppression and caused the\nﬂame to reach a maximum of 0.65 m (319.2 s) as shown by the secondary outburst peak, in Fig. 7. Figure 8 shows\nthat the Surface Pro remained at a lower height than the Dell XPS 15. The ﬁre size reached a height above 0.8 m, and\nrapidly decreased to 0.6 m while remaining at about 0.15 m during abatement. Water was not used to extinguish the\nﬁre during the period that the combustion event was observed. Flame height measurements during the ﬁrst outburst\nare obscured by the amount of white smoke released during the event by ±2 in (0.05 m). In general, image processing\ncode can be tuned to capture the highest ﬁre intensity region, while leaving out areas that are not of interest.\n285\n290\n295\n300\n305\n310\n315\nTime (s)\n0\n0.1\n0.2\n0.3\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\nFlame Height (m)\nOutburst #1\nAbatement\nStable \nCombustion\nOutburst #2\nFire \nSuppression  (PFE)\nFigure 7: Measured ﬂame height for the Dell XPS as a function of time divided into various stages to describe the\nburning phenomena. Flame height reached between 0.85 and 0.6 m, respectively.\n550\n600\n650\n700\n750\n800\n850\n900\nTime (s)\n0\n0.1\n0.2\n0.3\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\nFlame Height (m)\nOutburst\nFigure 8: Measured ﬂame height as a function of time for the Surface Pro 5.\nInternational Conference on Environmental Systems\n7\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 7
+        }
+      },
+      {
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 8,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nThe ﬂame width is measured by analyzing the extracted images from the video. Figure 9 shows the ﬂame diameter\nreached over 0.9 m during the ﬁrst outburst (Fig. 4a) and thereafter it varies between 0.2-0.65 m. The second outburst\nhad a diameter of 0.7 m. The outburst are described in Dinenno et al., as a thermal or \"ﬁreball\" [2, 10], which occur\nfrom a sudden release of a ﬁnite volume of gaseous fuel that is ignited. Flame width for the Surface Pro is not shown\nin the paper. However, the Surface Pro showed a similar behavior, that is, a maximum diameter reached above 0.8 m\nand thereafter remained between 0.6 and decaying down to 0.2 m. The diameter of the Surface Pro was obscured since\nthe ﬁre propagated to different locations along the surface of the tablet.\n285\n290\n295\n300\n305\n310\n315\nTime(s)\n0\n0.1\n0.2\n0.3\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\nFlame Diameter (m)\nFigure 9: Flame diameter for the Dell XPS 15.\nIII\nHeat Release\nThe heat release rate (HRR) is among the most important parameters for understanding combustion processes. The\nheat release rate gives insight on the ﬁre size, rate of smoke production, and overall an evaluation for ﬁre assessment\nin a new environment [2]. In the event of an accidental ﬁre inside a spacecraft vehicle, the heat release will cause\na temperature rise in the cabin. The primary mechanism to dissipate the heat from the cabin gas is radiation and\nconvection heat transfer to the vehicle and through the ECLSS systems [13]. Preliminary measurements of heat\nrelease have been made in this paper using the WSTF data [8] as an effort to understand the impact that a ﬁre would\nhave inside a spacecraft vehicle. In addition, very little data is available on heat release measurements made on laptops\nunits. The cone calorimeter is most commonly used worldwide for measuring heat release for many materials and are\ndescribed in ASTM E1354 and ISO 5660 [14]. This work has measured heat release from a Dell 97 Wh laptop and\nSurface Pro 5 42 Wh ﬁre using measurements of ﬂame height. The Heskestad [15] correlation was used to calculate the\nenergy release rate, ˙Q (kW) and is typically used to characterize liquid pool ﬁres with a deﬁned ﬁre source diameter,\nD (m) and ﬂame height, HF(m),\nHf = 0.235 ˙Q2/5 −1.02D\n(1)\nThe heat release is based on ﬂame height measurements and on the diameter of the ﬂame. Figure 10 and 11 shows the\nmeasured heat release proﬁles as a function of time.Figure 10 shows the ﬁrst maximum HRR peak is observed during\nthe ﬁrst outburst (Fig. 4a) event, rising quickly up to 110 kW (t=281 s) and rapidly decaying thereafter; the ﬁst heat\nrelease outburst occurs at a temperature of 900 K based on the surface temperature measured on each cell (Fig. 6). The\ninitial outburst includes more heat that has been released from heating the laptop unit and battery material that was\nabruptly released from the laptop unit. A second heat release peak is observed at 75 kW (t=286.9 s), and following\nthat at 46 kW (t=294.8 s) peak during stable combustion abatement. However, at t=310 s and between 315-329 s, there\nis cooling that occurs from the discharge of the ﬁre extinguisher. A maximum outburst of 50 kW in heat release is\nInternational Conference on Environmental Systems\n8\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 8
+        }
+      },
+      {
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 9,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nobserved after introducing the water. The heat release proﬁle for the Surface 5 Pro is shown in Fig. 11. A maximum\nheat release rate value is observed above 80 kW during the ﬁrst outburst and rapidly decays to 50 kW. In general the\nheat release depletes thereafter. During the major heat release outbursts, preliminary measurements on toxic gases\nhave been observed, such as, HCL (max 30ppm), CO (max 350 ppm), CO2 (0.5% vol), and HCN (max 2.2 ppm) have\nbeen measured. A lack of data has been found for commercial laptops, however, the work by Larsson et al. [16, 17]\nhas performed a study with two Lenovo laptop battery packs, each at a nominal capacity of 16.8 Ah (each battery pack\nwith 6 cells); the heat release measured was between 35-57 kW. The battery packs included the electrical connectors,\nplastic housing and the electronic circuits, but did not include the laptop casing. However, assuming that the laptop\nis made from PolyMethylMethAcrylate, the work from Biteau et al. [18] has measured a maximum of 8 kW in heat\nrelease using various calorimetry methods. A typical heat release value for a 2.9 Ah (11 Wh) pouch cell was measured\nby Ribiere et. el. [19] to be 20 kW (at 100% state of charge). The heat release measurements were done with an\noxygen consumption method, which based on Ribiere et al. [19] estimates an uncertainty of 10%. Additional work\nfrom Hasegawa et al. [20] has measured heat release of a pallet of laptops which included their packaging. The results\nby Dietrich et al. [13] showed that ﬁres between 50 and 100 kW are detrimental and can cause severe damage to a\nperson tracheal or cause skin burns.\n285\n290\n295\n300\n305\n310\n315\n320\n325\nTime(s)\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n110\n Heat Release Rate (kW)\n100 % SOC, Total Heat Release: 338.4 kJ\nFigure 10: Heat release rate and total heat release are measured using Heskestad et al. [15] correlation for the Dell\nlaptop.\nInternational Conference on Environmental Systems\n9\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 9
+        }
+      },
+      {
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 10,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n550\n600\n650\n700\n750\n800\n850\n900\nTime(s)\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n110\n Heat Release Rate (kW)\n100 % SOC, Total Heat Release: 960 kJ\nFigure 11: Heat release rate and total heat release are measured using Heskestad et al. [15] correlation for the Surface\nPro tablet.\nFigure 12 summarizes typical ﬂames with corresponding measured ﬂame height versus heat release. The ﬂame\nheight is closely associated with the amount of energy being released by a ﬁre ( ˙Q). The deviation of the ﬂame height\nmeasurement grows with increasing heat release because the larger ﬂames ﬂicker more, yielding and increase in frame-\nto-frame variation in the ﬂame (shown as Fig. 4c). A difference in ± 30 kW was observed for ﬁres with longer plumes\nand less with steadier ﬁres ± 10 kW (shown in Fig. 4d). In addition, a high uncertainty in height and diameter resulted\nwith the ﬁrst and second major outbursts (Fig. 4a) and in the presence of high vapors (white smoke) release.\n117 kW\nD=0.9 m\nH\nHf=0.65 m\nFigure 12: Major combustion events are selected with corresponding heights and maximum heat release values.\nThe calculated total heat release was measured by integrating the heat release proﬁles, in Fig. 10 and 11 for the\nDell XPS laptop and the Surface Pro. The total heat release from the laptop was measured to be 338.2 kJ and 960 kJ for\nthe tablet, showing that the Surface Pro had a higher heat release due to a higher amount of material getting consumed\nand no water being introduced. Further work using various calorimetry measurements will be done to quantify and\nvalidate the total heat release measured in this preliminary study. As described in the experimental section, the Dell\n97 Wh laptop holds a 6 cell battery pack with a nominal 11.4 V and 8.5 Ahr rating. This gives a maximum stored\nenergy of 350 kJ. The Surface Pro has 4 cells with a total of 15.14 V for a 11.8 Ahr rating. This gives a maximum\nInternational Conference on Environmental Systems\n10\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 10
+        }
+      },
+      {
+        "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 11,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nstored energy of 647.5 kJ. Additional details are given in Table 1 and shows that the speciﬁc energy for the Surface\npro is higher than the Dell XPS. The total heat release for the Surface Pro indicates that more of the material was\nconsumed than with the Dell XPS. However, the Dell XPS was suppressed with water, which may be responsible for\nthe lower heat release. Larsson et al. [16, 17] performed a study with two Lenovo laptop battery packs, each at a\nnominal capacity of 16.8 Ah (each battery pack with 6 cells). The battery packs included the electrical connectors,\nplastic housing and the electronic circuits, but did not include the laptop casing. The total heat release measured was\n3,470 kJ (i.e. 1,735 kJ for one battery pack). In addition, the work from Ribiere et al. [19] and Walters et al. have\nfound that total heat release and maximum peak release are independent of state of charge. That is, at higher state of\ncharges, Ribiere et al. [19] measured a lower total heat release than at a lower state of charge. These preliminary heat\nrelease ﬁndings surpass the limits that a spacecraft and crew are able to tolerate.\nCharacteristics\nValues\nSurface Pro 6 (Calculated)\nDell XPS 15\nManufacturer\nMicrosoft\nDell\nNumber of Cells\n2S2P\n3S2P\nDimensions (mm)\n292 x 201 x 8.5\n13 x 235 x 357\nNominal Voltage (V)\n15.14\n11.4\nDischarge Capacity (Ah)\n11.88\n8.5\nDischarge Energy (Wh)\n179.86\n97\nMass (kg)\n0.77, 0.2-0.3 (estimate battery pack)\n1.8 ,0.34 (battery pack)\nBattery Pack Dimension (mm)\n254 x 101.6 x 3\n71.80 x 330.5 x 7.20\nStored Energy (kJ)\n647.5\n350\nSpeciﬁc Energy (Wh/kg)\n900-600\n285.3\nTable 1: Speciﬁcations of the Dell XPS 15 9560 and Surface Pro Tablet. The chemistry of the pouch cell has not been\nreported by the manufacturer.\nPredicted temperatures along the plume’s centerline axis are shown in Fig. 13 and are computed using Heskestad’s\n[21] Eq. (2), which depends on the convective energy release, ˙Qc (kW) (Qc=0.7 ˙Q) and the temperature of the ambient\ngas, T∞. The highest temperature observed inside the testing enclosure was T∞= 330 K.\n∆To = 9.1\n \nT∞\ngc2pρ2∞\n!1/3\n˙Qc\n2/3(z−zo)−5/3\n(2)\nwhere z (m) is the height above the ﬁre surface, total heat release rate ˙Q (kW). The virtual origin zo= 0.083 ˙Q2/5-1.02\nD (m) [21], depends on the diameter of the ﬁre source. Properties of ambient air (density, ρ (kg/m3) and speciﬁc heat,\ncp (kJ/kg K) are also included. Figure 13 shows the centerline temperature evaluated for ﬁres between 50 kW-110 kW\n(assuming complete combustion of the laptop unit) with a maximum ﬁre source diameter of 0.48 m (i.e for non-circular\nobjects, D =\np\n(4As)/π and As is the surface area of the laptop), which corresponds to the diameter of the Dell XPS. .\nInternational Conference on Environmental Systems\n11\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 11
+        }
+      },
+      {
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 12,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\n600\n800\n1000\n1200\n1400\n1600\n1800\nCenterline Temperature, Tc= \nT+ T\n, (K)\n Flame Height =0.45m\n         (Dell XPS 15)\nFigure 13: Predicted temperature on the plume’s centerline for 25, 75 and 100 kW ﬁres with a diameter of D=0.48 m.\nThe centerline temperature for a 25, 75 and 100 kW ﬁre at a height of 0.45 m results in plume temperatures above\n1550, 1380 K and 800 K, respectively. Future work will investigate and measure ﬂame temperatures with pyrometry\nmethods.\nIV.\nConclusion\nExperimental data from a test conducted at WSTF was used as an initial effort to characterize the ﬁre behavior\nin commercial laptops (DELL XPS 15 at 95 Wh and the Surface Pro 42 Wh). The test was conducted inside of a\n1.4 m3 (50 ft3) chamber to contain combustion by-products. Digital still frames were extracted and were used for\nmeasurements of height and heat release. The height measurements were then used to calculate the maximum heat\nrelease using Heskestad correlations, total heat release, and the centerline ﬂame temperature.\nA coil stove top at 1.0 kW was used to initiate thermal runaway. During the ﬁrst stage of the burning process, the\nlaptops and tablets were seen to release a drastic amount of white smoke for about 6 s due to material decomposition.\nThe venting period followed an aggressive ﬂame outburst. The Surface Pro was burnt continuously for 8 min, while\nthe Dell XPS was burning for 70 s and thereafter water suppression was introduced. The Dell XPS experienced a\nsecond outburst 3 s after the suppression event. The temperature proﬁle showed the dramatic thermal runaway event\nduring a short window span, that is between 6-36 s, while reaching a maximum temperature of 900 K. The temperature\nproﬁle also revealed thermal onset temperatures, between 513.4-600 K, higher than typically observed in the thermal\nrunaway processes for 18650 or pouch li-ion cells.\nUsing experimental measurements of ﬂame heights the heat release rate and total heat release was approximated\nwith the Heskestad correlations for the two commercial laptops. A heat release between 50-110 kW was observed\nduring the burning process of the laptop and tablet. The ﬂame heights varied between 0.85-0.2 m, while increasing\nwith an increase in heat release. In addition, the ﬂame diameter varied between 0.4 m-1.0 m, decreasing with an\nincrease in heat release. The total energy release associated with the combustion was computed based on experimental\nmeasurements of ﬂame height and found to be 338.4 kJ for the Dell XPS and 960 kJ for the Surface Pro tablet.\nCenterline temperatures between 1550-800 K were predicted using Heskestad’s correlation for ﬁre sizes between 25-\n100 kW and a ﬂame height of 0.45 m. Future work will focus on alternative ignition methods and calorimetry methods\nin order to validate the data that was presented in this paper.\nAcknowledgments\nThe work was supported by a collaborative effort from members across NASA Glenn Research Center, Johnson\nSpace Center, and White Sands Testing facility. The authors would like to acknowledge the members that conducted\nInternational Conference on Environmental Systems\n12\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 12
+        }
+      },
+      {
+        "evidence_id": "E-45a98eb184eab6e8fc96fdbd",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "document_id": "research-744f2693127046f63099:6112bfa713c9df89:document",
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "filename": "20190027097.pdf",
+        "page": 13,
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nthe experiments.\nReferences\n1 McKissock, B., Loyselle, P., and Vogel, E., “Guidelines on Lithium-ion Battery use in Space Applications,” 2009.\n2 DiNenno, P. J., SFPE Handbook of Fire Protection Engineering, SFPE, 2008.\n3 Park, S.-Y., Kim, D.-H., and Im, H.-S., “The Experimental Study for the Combustion-Property of Sandwich Panels\nusing ISO 5660 Cone Calorimeter,” Fire Science and Engineering, Vol. 20, No. 4, 2006, pp. 33–41.\n4 Spotnitz, R. and Franklin, J., “Abuse Behavior of High-power, Lithium-ion Cells,” Journal of Power Sources, Vol. 113,\nNo. 1, 2003, pp. 81–100.\n5 “US Consumer Products Safety Commission, HP Expands Recall of Notebook Computer Batteries Due to Fire\nHazard,Release 10-240, May 21, 2010,” .\n6 Meyer, E., “Spacecraft Fire Safety Research: Combustion of Lithium-ion Batteries to Predict Fire Scenarios,” 2018.\n7 Juarez, A., Harper, S. A., Hirsch, D. B., and Carriere, T., “Development of a Standard Test Scenario to Evaluate the\nEffectiveness of Portable Fire Extinguishers on Lithium-ion Battery Fires,” 2013.\n8 Harper, S., Juarez, A., Woods, B., Beeson, H., Coan-Skow, M. R., Nagel, C., Casper, S., and Tarver, S., “Orion\nPortable Fire Extinguisher Performance Testing against a Laptop Lithion-Ion Battery Stored Energy Fire-Method,\nMagnesium Fires, & Combustion By-product Toxicity,” 48th International Conference on Environmental Systems,\n2018.\n9 Rodriguez, B. R., “Development of the International Space Station (ISS) Fine Water Mist (FWM) Portable Fire\nExtinguisher,” 43rd International Conference on Environmental Systems, 2013, p. 3413.\n10 Quintiere, J., Fundamentals of Fire Phenomena, Wiley, 2006.\n11 McCaffrey, B., The SFPE Handbook of Fire Protection Engineering, Society of Fire Protection Engineers and National\nFire Protection Association, 1995.\n12 Roth, E., Doughty, D., and Franklin, J., “DSC Investigation of Exothermic Reactions Occurring at Elevated Tem-\nperatures in Lithium-ion Anodes Containing PVDF-based Binders,” Journal of Power Sources, Vol. 134, No. 2, 2004,\npp. 222–234.\n13 Dietrich, D. L., Niehaus, J., Ruff, G. A., Urban, D. L., Easton, J., and Takahashi, F., “Determination of Realistic\nFire Scenarios in Spacecraft,” 43rd International Conference on Environmental Systems, 2013, p. 3411.\n14 ISO, “Fire Tests Reaction to Fire Part 1: Rate of Heat Release from Building Products (Cone Calorimeter Method),”\nISO 5660-1: 1993 (E).\n15 Heskestad, G., “Fire Plumes, Flame Height, and Air Entertainment,” SFPE Handbook of Fire Protection Engineering,\nSpringer, 2016, pp. 396–428.\n16 Larsson, F., Andersson, P., Blomqvist, P., and Mellander, B.-E., “Toxic Fluoride Gas Emissions from Lithium-ion\nBattery Fires,” Scientiﬁc reports, Vol. 7, No. 1, 2017, pp. 10018.\n17 Larsson, F., Andersson, P., Blomqvist, P., Lorén, A., and Mellander, B.-E., “Characteristics of Lithium-Ion Batteries\nDuring Fire Tests,” Journal of Power Sources, Vol. 271, 2014, pp. 414–420.\n18 Biteau, H., Steinhaus, T., Simeoni, A., Schemel, C., Marlair, G., Bal, N., and Torero, J. L., “Calculation methods\nfor the heat release rate of materials of unknown composition,” 2008.\n19 Ribière, P., Grugeon, S., Morcrette, M., Boyanov, S., Laruelle, S., and Marlair, G., “Investigation on the Fire-\nInduced Hazards of Li-ion Battery Cells by Fire Calorimetry,” Energy & Environmental Science, Vol. 5, No. 1, 2012,\npp. 5271–5280.\n20 Hasegawa, H. K., Alvares, N. J., and White, J. A., “Fire Tests of Packaged and Palletized Computer Products,” Fire\ntechnology, Vol. 35, No. 4, 1999, pp. 291–307.\n21 Karlsson, B. and Quintiere, J., Enclosure Fire Dynamics, CRC press, 1999.\nInternational Conference on Environmental Systems\n13\n",
+        "checksum": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "locator": {
+          "file": "20190027097.pdf",
+          "page": 13
+        }
+      }
+    ],
+    "tables": [],
+    "entities": [
+      {
+        "id": "research-744f2693127046f63099",
+        "label": "Characterization of Laptop Fires in Spacecraft",
+        "class_id": "Investigation",
+        "evidence_ids": [
+          "E-0f305a14d05ae5e0e9a6acd2"
+        ]
+      }
+    ],
+    "relations": [],
+    "values": [],
+    "statements": [
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:5a914fdf48300174",
+        "text": "The white smoke is also observed midway during the\nﬁre suppression phase (Fig.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-6089d8c0bb27e503e9b211c8"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:0c83d336021a5d5b",
+        "text": "Molten case material was also emitted in the Dell more than what was observed in the\nSurface Pro.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-c1bc65ad939838ad838b5871"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:82cfe511e39e6b43",
+        "text": "Similar heating behavior was observed with the Surface Pro, however, the\nﬁre was not suppressed and lasted for 8 minutes of continuous burning.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-c1bc65ad939838ad838b5871"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:2eaad65289b73d4b",
+        "text": "A large amount of white smoke and a large\nﬁre size was also observed.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-c1bc65ad939838ad838b5871"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:5b77cc38458b79f2",
+        "text": "The three stages that can observed in the plot are summarized in Fig.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-c23c6e510e076592e4d7d0df"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:df4bf91fd9972145",
+        "text": "6), which is higher than what is observed in 18650 and pouch cells.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-c23c6e510e076592e4d7d0df"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:3c23d781d3e2e918",
+        "text": "A fourth outburst was observed during the ﬁre suppression and caused the\nﬂame to reach a maximum of 0.65 m (319.2 s) as shown by the secondary outburst peak, in Fig.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-bf4ca5ced33aa9e3bb781f34"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:7b7a8d7ddadda212",
+        "text": "Water was not used to extinguish the\nﬁre during the period that the combustion event was observed.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-bf4ca5ced33aa9e3bb781f34"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:8ad01b24dc61539a",
+        "text": "Figure 10 and 11 shows the\nmeasured heat release proﬁles as a function of time.Figure 10 shows the ﬁrst maximum HRR peak is observed during\nthe ﬁrst outburst (Fig.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-ff07f1ce747dfc492d89ae4b"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:1d5dbc67d4aa658b",
+        "text": "A second heat release peak is observed at 75 kW (t=286.9 s), and following\nthat at 46 kW (t=294.8 s) peak during stable combustion abatement.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-ff07f1ce747dfc492d89ae4b"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:c0f992347865d38e",
+        "text": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nobserved after introducing the water.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-6b80996b8f02b95aeda17768"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:25eb7ff3228d0aae",
+        "text": "A maximum\nheat release rate value is observed above 80 kW during the ﬁrst outburst and rapidly decays to 50 kW.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-6b80996b8f02b95aeda17768"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:4d8f9a3013ec8c71",
+        "text": "During the major heat release outbursts, preliminary measurements on toxic gases\nhave been observed, such as, HCL (max 30ppm), CO (max 350 ppm), CO2 (0.5% vol), and HCN (max 2.2 ppm) have\nbeen measured.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-6b80996b8f02b95aeda17768"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:de44cc971b5c1bfb",
+        "text": "A difference in ± 30 kW was observed for ﬁres with longer plumes\nand less with steadier ﬁres ± 10 kW (shown in Fig.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-cba3d9d6cbaada8d33d3531a"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:5f878d12f0087ac8",
+        "text": "The highest temperature observed inside the testing enclosure was T∞= 330 K.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-5a0144d0c1123dddd3d69fdb"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:ab716d6842544e28",
+        "text": "Future work will investigate and measure ﬂame temperatures with pyrometry\nmethods.",
+        "class_id": "OpenQuestion",
+        "epistemic": "open_question",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-68372f45e47f35c825c87d36"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:68c8c9455f2cd727",
+        "text": "Conclusion\nExperimental data from a test conducted at WSTF was used as an initial effort to characterize the ﬁre behavior\nin commercial laptops (DELL XPS 15 at 95 Wh and the Surface Pro 42 Wh).",
+        "class_id": "NASAConclusion",
+        "epistemic": "author_reported_conclusion",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-68372f45e47f35c825c87d36"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:a0014d7333a1d222",
+        "text": "The temperature\nproﬁle also revealed thermal onset temperatures, between 513.4-600 K, higher than typically observed in the thermal\nrunaway processes for 18650 or pouch li-ion cells.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-68372f45e47f35c825c87d36"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:9b2c8b64de3c896d",
+        "text": "A heat release between 50-110 kW was observed\nduring the burning process of the laptop and tablet.",
+        "class_id": "ReportedObservation",
+        "epistemic": "measured_observation",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-68372f45e47f35c825c87d36"
+        ],
+        "included": true
+      },
+      {
+        "id": "research-744f2693127046f63099:6112bfa713c9df89:statement:784c3c7e45f1ac2d",
+        "text": "Future work will focus on alternative ignition methods and calorimetry methods\nin order to validate the data that was presented in this paper.",
+        "class_id": "OpenQuestion",
+        "epistemic": "open_question",
+        "scope": [],
+        "origin": "prose",
+        "evidence_ids": [
+          "E-68372f45e47f35c825c87d36"
+        ],
+        "included": true
+      }
+    ],
+    "extensions": [],
+    "decisions": {},
+    "corrections": [],
+    "exclusions": [],
+    "contexts": [],
+    "contract_digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd",
+    "source_provenance": {
+      "publisher_origin": "NASA NTRS",
+      "source_url": "https://ntrs.nasa.gov/api/citations/20190027097/downloads/20190027097.pdf",
+      "nasa_id": "20190027097",
+      "metadata": {
+        "copyright": {
+          "thirdPartyPermissionsProduced": false,
+          "disclosedToPublic": false,
+          "containsIndication": false,
+          "publisherPermissionOrRightsToDistribute": false,
+          "belongsToUsGov": false,
+          "determinationType": "PUBLIC_USE_PERMITTED",
+          "thirdPartyContentCondition": "NOT_SET",
+          "belongsToContractor": false,
+          "disclosedInvention": false,
+          "submissionId": 20190027097,
+          "containsThirdPartyMaterial": false,
+          "belongsToPublisher": false,
+          "id": "0362c73a5d69490ba2d00c78ecb281ec",
+          "belongsToAuthors": false
+        },
+        "subjectCategories": [
+          "Space Transportation And Safety"
+        ],
+        "exportControl": {
+          "isExportControl": "NO",
+          "eccnNumber": "",
+          "submissionId": 20190027097,
+          "ear": "NO",
+          "id": "73e5dc885b4f49e895c2eb8053b95b3d",
+          "itar": "NO"
+        },
+        "distributionDate": "2019-07-17T15:08:52.0470000+00:00",
+        "otherReportNumbers": [
+          "GRC-E-DAA-TN67087",
+          "ICES-2019-188",
+          "Report Number: GRC-E-DAA-TN67087",
+          "Report Number: ICES-2019-188"
+        ],
+        "fundingNumbers": [
+          {
+            "number": "Intern",
+            "submissionId": 20190027097,
+            "id": "d67d614b6a57466b987e44137bb12691",
+            "type": "CONTRACT_GRANT"
+          },
+          {
+            "number": "NNC13BA10B",
+            "submissionId": 20190027097,
+            "id": "9c60ae2f359046868ca324883cd37759",
+            "type": "CONTRACT_GRANT"
+          },
+          {
+            "number": "089407.02.04.22",
+            "submissionId": 20190027097,
+            "id": "1f4943fc71e546e4809d6965388c82cd",
+            "type": "WBS"
+          }
+        ],
+        "title": "Characterization of Laptop Fires in Spacecraft",
+        "stiType": "CONFERENCE_PAPER",
+        "distribution": "PUBLIC",
+        "submittedDate": "2019-07-09T18:01:25.2830000+00:00",
+        "authorAffiliations": [
+          {
+            "sequence": 0,
+            "submissionId": 20190027097,
+            "meta": {
+              "author": {
+                "name": "Padilla, Rosa E."
+              },
+              "organization": {
+                "name": "Universities Space Research Association (USRA)",
+                "location": "Cleveland, OH, United States"
+              }
+            },
+            "id": "e1227b0c9e9e4ce7a4ee4780d6a845b2"
+          },
+          {
+            "sequence": 1,
+            "submissionId": 20190027097,
+            "meta": {
+              "author": {
+                "name": "Dietrich, Daniel L."
+              },
+              "organization": {
+                "name": "NASA Glenn Research Center",
+                "location": "Cleveland, OH, United States"
+              }
+            },
+            "id": "dc3d95a0f33942c7b8d2c981937494fc"
+          },
+          {
+            "sequence": 2,
+            "submissionId": 20190027097,
+            "meta": {
+              "author": {
+                "name": "Lynch, Kelly C."
+              },
+              "organization": {
+                "name": "Universities Space Research Association (USRA)",
+                "location": "Cleveland, OH, United States"
+              }
+            },
+            "id": "bbd586445c6a4676aff66aefc1b11904"
+          },
+          {
+            "sequence": 3,
+            "submissionId": 20190027097,
+            "meta": {
+              "author": {
+                "name": "Juarez, Alfredo"
+              },
+              "organization": {
+                "name": "Jacobs Engineering Group",
+                "location": "Houston, TX, United States"
+              }
+            },
+            "id": "c717a0615e7e46d1b1a1f9d649b4d50d"
+          },
+          {
+            "sequence": 4,
+            "submissionId": 20190027097,
+            "meta": {
+              "author": {
+                "name": "Nagel, Christopher R."
+              },
+              "organization": {
+                "name": "NASA Johnson Space Center",
+                "location": "Houston, TX, United States"
+              }
+            },
+            "id": "58f2f9ca58724d2a9165bf46cc2edc49"
+          },
+          {
+            "sequence": 5,
+            "submissionId": 20190027097,
+            "meta": {
+              "author": {
+                "name": "Harper, Susana A."
+              },
+              "organization": {
+                "name": "NASA White Sands Test Facility",
+                "location": "NM, United States"
+              }
+            },
+            "id": "92eee80c5c81474e92e7da573180d15c"
+          },
+          {
+            "sequence": 6,
+            "submissionId": 20190027097,
+            "meta": {
+              "author": {
+                "name": "Ruff, Gary A."
+              },
+              "organization": {
+                "name": "NASA Glenn Research Center",
+                "location": "Cleveland, OH, United States"
+              }
+            },
+            "id": "7bb3fa8ad91243ea91bc20f6bc4a74f9"
+          },
+          {
+            "sequence": 7,
+            "submissionId": 20190027097,
+            "meta": {
+              "author": {
+                "name": "Urban, David L."
+              },
+              "organization": {
+                "name": "NASA Glenn Research Center",
+                "location": "Cleveland, OH, United States"
+              }
+            },
+            "id": "7407e7ec9aaf4b24874866e8f0750174"
+          }
+        ],
+        "stiTypeDetails": "Conference Paper",
+        "technicalReviewType": "SINGLE_EXPERT",
+        "modified": "2025-08-31T18:39:21.7150190+00:00",
+        "id": 20190027097,
+        "legacyMeta": {
+          "__type": "LegacyMetaIndex, StrivesApi.ServiceModel",
+          "accessionNumber": ""
+        },
+        "created": "2019-07-09T18:01:25.2830000+00:00",
+        "center": {
+          "code": "GRC",
+          "name": "Glenn Research Center",
+          "id": "19eeb25fa404421d9eaa5f876e853e3c"
+        },
+        "onlyAbstract": false,
+        "sensitiveInformation": 2,
+        "abstract": "An accidental fire involving the Lithium-Ion (Li-ion) battery in a laptop computer is one of the most likely fire scenarios on-board a spacecraft. These fires can occur from a defect in the battery that worsens with time, over-charging the battery and leading to failure or accidental damage caused by thermal runaway. While this is a relatively likely fire scenario, very little is known about the how a laptop computer fire would impact a sealed spacecraft. The heat release would likely cause a pressure rise, possibly exceeding the pressure limit of the vehicle and causing a relief valve to open. The combustion products from the fire could pose a short-term and long-term health hazard to the crew and the fire itself could cause injury to the crew and damage to the spacecraft. Despite the hazard posed by a laptop fire, there is little quantitative data on the fire size, heat release and toxic product formation. This paper presents the results of initial attempts to quantify the fire resulting from a failed laptop fire tested at the NASA White Sands Test Facility (WSTF). The data from the testing is useful to attempt to determine the fire size and characteristics such as maximum heat release rate, total heat release, maximum temperatures and fire duration are determined. Using existing models and correlations for fires, the measured fire characteristics are extrapolated to laptop fires on a vehicle the approximate size of the Orion spacecraft.",
+        "isLessonsLearned": false,
+        "disseminated": "DOCUMENT_AND_METADATA",
+        "meetings": [
+          {
+            "submissionId": 20190027097,
+            "name": "American Institute of Aeronautics and Astronautics (AIAA)",
+            "location": "Reston, VA, United States",
+            "id": "6315bb1e1bbd451c914f1bcbfb77c228"
+          },
+          {
+            "country": "United States",
+            "submissionId": 20190027097,
+            "endDate": "2019-07-11T00:00:00.0000000+00:00",
+            "sponsors": [
+              {
+                "meta": {
+                  "organization": {
+                    "name": "American Institute of Aeronautics and Astronautics (AIAA)",
+                    "location": "Reston, VA, United States"
+                  }
+                },
+                "meetingId": "acee7ef3b0954c72b8dffed7667f2912",
+                "id": "5209b1b885614a668a56ed2339ffa007"
+              }
+            ],
+            "name": "International Conference on Environmental Systems",
+            "location": "Boston, MA",
+            "id": "acee7ef3b0954c72b8dffed7667f2912",
+            "startDate": "2019-07-07T00:00:00.0000000+00:00"
+          }
+        ],
+        "publications": [
+          {
+            "submissionId": 20190027097,
+            "id": "85deaed06f7948bbbd70f4102179e075",
+            "publicationDate": "2019-07-07T00:00:00.0000000+00:00"
+          }
+        ],
+        "status": "CURATED",
+        "related": [],
+        "downloads": [
+          {
+            "draft": false,
+            "mimetype": "application/pdf",
+            "name": "20190027097.pdf",
+            "type": "STI",
+            "links": {
+              "original": "/api/citations/20190027097/downloads/20190027097.pdf",
+              "pdf": "/api/citations/20190027097/downloads/20190027097.pdf",
+              "fulltext": "/api/citations/20190027097/downloads/20190027097.txt"
+            }
+          }
+        ],
+        "downloadsAvailable": true,
+        "index": "submissions-2026-10-15-05-24"
+      },
+      "sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+      "eligibility": "OFFICIAL_NASA_DOMAIN_DOCUMENT",
+      "scientific_review": "NONE"
+    }
+  },
+  "digest": "6c708688b233b5d5a797759fe5bbdbeab11b1e580dac8f4c3f7b004be19f06db"
+}

@@ -1,0 +1,1007 @@
+{
+  "ready": false,
+  "errors": [
+    "Does 'Pre-test flow visulation data for sample 1' identify an established material or a distinct specimen/material? Select the source-supported identity; lexical similarity does not establish equivalence.",
+    "Does 'Pre-test flow visulation data for sample 2' identify an established material or a distinct specimen/material? Select the source-supported identity; lexical similarity does not establish equivalence.",
+    "Does this table report executed experimental runs, or only documentary/planned information? Identify any non-run rows using the exception controls.",
+    "What does 'Burn Time (s)' represent in s? Select a known quantity, propose its definition, or retain it only as source context.",
+    "What does 'Camera 1' represent? Select a known quantity, propose its definition, or retain it only as source context.",
+    "What does 'Camera 2' represent? Select a known quantity, propose its definition, or retain it only as source context.",
+    "What does 'Ignition Power (W)' represent in W? Select a known quantity, propose its definition, or retain it only as source context.",
+    "What does 'Ignition Time (s)' represent in s? Select a known quantity, propose its definition, or retain it only as source context.",
+    "What does 'Percent O2' represent? Select a known quantity, propose its definition, or retain it only as source context.",
+    "What does 'Sample Length (cm)' represent in cm? Select a known quantity, propose its definition, or retain it only as source context.",
+    "What does 'Sample Thickness (cm)' represent in cm? Select a known quantity, propose its definition, or retain it only as source context.",
+    "What does 'Sample Width (cm)' represent in cm? Select a known quantity, propose its definition, or retain it only as source context."
+  ],
+  "questions": [
+    {
+      "id": "material:Pre-test flow visulation data for sample 1",
+      "kind": "identity",
+      "affected_records": 1,
+      "question": "Does 'Pre-test flow visulation data for sample 1' identify an established material or a distinct specimen/material? Select the source-supported identity; lexical similarity does not establish equivalence.",
+      "alternatives": [
+        "PMMA",
+        "SIBAL Fabric",
+        "distinct",
+        "documentary"
+      ],
+      "evidence_ids": [
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "material:Pre-test flow visulation data for sample 1",
+      "affected_entities": [],
+      "options": [
+        {
+          "selection": "PMMA",
+          "label": "PMMA",
+          "meaning": "PMMA",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "material:Pre-test flow visulation data for sample 1",
+              "selection": "PMMA",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "SIBAL Fabric",
+          "label": "SIBAL Fabric",
+          "meaning": "SIBAL Fabric",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "material:Pre-test flow visulation data for sample 1",
+              "selection": "SIBAL Fabric",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "distinct",
+          "label": "A distinct source-identified material",
+          "meaning": "A distinct source-identified material",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "material:Pre-test flow visulation data for sample 1",
+              "selection": "distinct",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "material:Pre-test flow visulation data for sample 1",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "material:Pre-test flow visulation data for sample 1"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 11
+    },
+    {
+      "id": "material:Pre-test flow visulation data for sample 2",
+      "kind": "identity",
+      "affected_records": 1,
+      "question": "Does 'Pre-test flow visulation data for sample 2' identify an established material or a distinct specimen/material? Select the source-supported identity; lexical similarity does not establish equivalence.",
+      "alternatives": [
+        "PMMA",
+        "SIBAL Fabric",
+        "distinct",
+        "documentary"
+      ],
+      "evidence_ids": [
+        "E-15d8f1afbac40635f17b555d"
+      ],
+      "question_id": "material:Pre-test flow visulation data for sample 2",
+      "affected_entities": [],
+      "options": [
+        {
+          "selection": "PMMA",
+          "label": "PMMA",
+          "meaning": "PMMA",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "material:Pre-test flow visulation data for sample 2",
+              "selection": "PMMA",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "SIBAL Fabric",
+          "label": "SIBAL Fabric",
+          "meaning": "SIBAL Fabric",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "material:Pre-test flow visulation data for sample 2",
+              "selection": "SIBAL Fabric",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "distinct",
+          "label": "A distinct source-identified material",
+          "meaning": "A distinct source-identified material",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "material:Pre-test flow visulation data for sample 2",
+              "selection": "distinct",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "material:Pre-test flow visulation data for sample 2",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "material:Pre-test flow visulation data for sample 2"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 11
+    },
+    {
+      "id": "table-role:research-20ea6c04d39a14251dca:c01f29c62455f0a3",
+      "kind": "table_role",
+      "affected_records": 4,
+      "question": "Does this table report executed experimental runs, or only documentary/planned information? Identify any non-run rows using the exception controls.",
+      "alternatives": [
+        "ExperimentalRun",
+        "documentary"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "table-role:research-20ea6c04d39a14251dca:c01f29c62455f0a3",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "ExperimentalRun",
+          "label": "Executed experimental runs",
+          "meaning": "Executed experimental runs",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "table-role:research-20ea6c04d39a14251dca:c01f29c62455f0a3",
+              "selection": "ExperimentalRun",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "table-role:research-20ea6c04d39a14251dca:c01f29c62455f0a3",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "table-role:research-20ea6c04d39a14251dca:c01f29c62455f0a3"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 4
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Burn Time (s)",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Burn Time (s)' represent in s? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Burn Time (s)",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Burn Time (s)",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Burn Time (s)",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Burn Time (s)"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 1",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Camera 1' represent? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "FlowDirection",
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 1",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "FlowDirection",
+          "label": "FlowDirection",
+          "meaning": "FlowDirection",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 1",
+              "selection": "FlowDirection",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 1",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 1",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 1"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 2",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Camera 2' represent? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "FlowDirection",
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 2",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "FlowDirection",
+          "label": "FlowDirection",
+          "meaning": "FlowDirection",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 2",
+              "selection": "FlowDirection",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 2",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 2",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Camera 2"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Power (W)",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Ignition Power (W)' represent in W? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Power (W)",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Power (W)",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Power (W)",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Power (W)"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Time (s)",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Ignition Time (s)' represent in s? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Time (s)",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Time (s)",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Time (s)",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Ignition Time (s)"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Percent O2",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Percent O2' represent? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "OxygenConcentration",
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Percent O2",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "OxygenConcentration",
+          "label": "OxygenConcentration",
+          "meaning": "OxygenConcentration",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Percent O2",
+              "selection": "OxygenConcentration",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Percent O2",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Percent O2",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Percent O2"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Length (cm)",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Sample Length (cm)' represent in cm? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Length (cm)",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Length (cm)",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Length (cm)",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Length (cm)"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Thickness (cm)",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Sample Thickness (cm)' represent in cm? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Thickness (cm)",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Thickness (cm)",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Thickness (cm)",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Thickness (cm)"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    },
+    {
+      "id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Width (cm)",
+      "kind": "mapping",
+      "affected_records": 2,
+      "question": "What does 'Sample Width (cm)' represent in cm? Select a known quantity, propose its definition, or retain it only as source context.",
+      "alternatives": [
+        "documentary",
+        "extension"
+      ],
+      "evidence_ids": [
+        "E-b2440b009a4259dfbcb43521",
+        "E-59663ba3352d800262217292",
+        "E-6e1084e63be7dc5822d488ae"
+      ],
+      "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Width (cm)",
+      "affected_entities": [
+        "SIBAL Fabric",
+        "research-20ea6c04d39a14251dca",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:0",
+        "research-20ea6c04d39a14251dca:c01f29c62455f0a3:run:1"
+      ],
+      "options": [
+        {
+          "selection": "documentary",
+          "label": "Retain as documentary evidence without this scientific assertion",
+          "meaning": "Retain as documentary evidence without this scientific assertion",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Width (cm)",
+              "selection": "documentary",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": false
+        },
+        {
+          "selection": "extension",
+          "label": "Propose and review a scientific definition absent from the vocabulary",
+          "meaning": "Propose and review a scientific definition absent from the vocabulary",
+          "operations": [
+            {
+              "action": "review_decision",
+              "question_id": "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Width (cm)",
+              "selection": "extension",
+              "rebuild": "affected table/context dependencies"
+            }
+          ],
+          "requires_extension_review": true
+        },
+        {
+          "selection": "another",
+          "label": "Another interpretation; explain briefly",
+          "meaning": "Prepare a typed correction preview; apply only after validation and review",
+          "operations": [],
+          "requires_preview": true
+        }
+      ],
+      "allows_multiple": false,
+      "required_validation": [
+        "entity identity",
+        "source evidence",
+        "scientific scope",
+        "ontology contracts",
+        "quantities and units",
+        "epistemic consistency",
+        "conflicts"
+      ],
+      "dependent_issues": [
+        "column:research-20ea6c04d39a14251dca:c01f29c62455f0a3:Sample Width (cm)"
+      ],
+      "readiness_implication": "Resolve this incorporation dependency; revalidate remaining issues",
+      "priority": 2
+    }
+  ],
+  "metrics": {
+    "distinct_decisions": 0,
+    "records_resolved": 0,
+    "duplicate_questions_avoided": 0,
+    "automatic_mappings": 2,
+    "manual_corrections": 0,
+    "ontology_extensions": 0,
+    "blockers": 12
+  }
+}

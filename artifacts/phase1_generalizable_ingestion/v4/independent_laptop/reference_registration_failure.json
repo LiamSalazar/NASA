@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-10-16T23:43:14.808199+00:00",
+  "decision": "FAILED_PROSPECTIVE_REFERENCE_FINALIZATION",
+  "external_restriction": false,
+  "code_commit": "4592ad75e4856764b2d48aa0637667ce7f4addf4",
+  "model_answer_content_inspected": false,
+  "model_attempt_states_without_content": [
+    {
+      "stage": "identity",
+      "state": "FINISHED"
+    },
+    {
+      "stage": "identity",
+      "state": "RECEIVING"
+    }
+  ],
+  "defect": "The pre-inference source-reference locator builder failed at a phenomenon target page number (thermal runaway appears on page5, not page4). Shell execution continued into preparation before the reference JSON was finalized. The campaign target definitions existed in the preceding tool input, but the stronger prospectively declared file boundary was not met.",
+  "action": "Interrupt and retain all execution receipts. Do not claim this as passing independent acceptance. Add a fail-closed reference-registration guard before any reserved preparation. This source lineage is now exposed development; no later repaired extraction is unseen."
+}

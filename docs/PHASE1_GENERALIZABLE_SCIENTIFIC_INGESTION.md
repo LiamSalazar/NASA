@@ -1,4 +1,74 @@
-# Phase 1 generalizable scientific ingestion — implemented, acceptance incomplete
+# Phase 1 scientific ingestion — v4 implementation and acceptance
+
+**PHASE1_COMPLETE = NO. Independent scientific acceptance failed.** The production NVIDIA integration and general extraction repairs are implemented. Scientific approval and shared-baseline publication remain disabled by this campaign. The scientific implementation is frozen at `cdb17f252a0eb000f5afdf2a2bc5b647b903db1c`, from initial HEAD `2aca475`; `artifacts/phase1_generalizable_ingestion/v4/changed_source_files.json` identifies all 22 changed implementation/test files. Final reporting commits may add documentation and receipts without changing that freeze.
+
+## Production model configuration and actual comparison
+
+Scientific extraction uses `NVIDIA_EXTRACTION_MODEL=nvidia/nemotron-3.5-super-vl-120b-a12b`, with the already-authorized `NVIDIA_SCIENCE_FALLBACK_MODELS=nvidia/nemotron-3-super-120b-a12b`. Existing `NVIDIA_MODEL` query/Lightning configuration remains compatible. The local ignored `.env` preserves the existing authorized key. Endpoint: `https://integrate.api.nvidia.com/v1`. No subscription, purchase, account changes or credentials enter Git or receipts.
+
+Matched original LUCI strict-schema tasks with 2,048 reasoning tokens completed for both candidates. On three page-37 author conclusions, VL recovered correct source scope/role **3/3**, Super **0/3**. On one complete page-29 quantity assignment both raw models scored **0/1**; validators and recovery remain necessary. Strict-task durations were **13.58/40.57 seconds for VL**, **67.05/80.27 for Super**. These are small developer source comparisons, not whole-paper precision or an independent scientific ranking. The historical Lightning v3 baseline is preserved. Ultra was subsequently justified by concrete primary-model failures, but its one matched development probe returned no completion before the 180-second diagnostic deadline; it is not selected.
+
+The real VL endpoint accepted a text-plus-PNG `image_url` data URL for original LUCI page 36. It misclassified fitted rates as reported measurements, so multimodal routing is optional through `NVIDIA_SCIENCE_VISION_MODEL` and disabled by default. Original PDF checksum, physical page, rendered-page hash and table bounds remain operational provenance. Image-only assertions cannot become unquestioned NASA facts. Requested/served model aliases are recorded; exact hosted weight versions are unavailable. See `v4/model_selection_final.json` and original comparison receipts.
+
+## General extraction changes
+
+- Provider-aware scientific selection, observable finite retries, compatible transport fallback with the original task/evidence, persisted validated partial output and same-source continuation. There is no model voting or fallback triggered by scientific disagreement.
+- Atomic bullet propositions, exact original offsets, abbreviation-safe spans, non-assertive identity context, true major-section scope, source-local exact figure/caption group references and review-only tested-article acronym resolution. Historical/cited work, planned tests, derived/model results, tentative interpretations and normative criteria retain separate roles.
+- Original dimensional wording reuses existing sample-width/length accessors only after source binding. Unknown scientific labels retain expressions, units and experimental scope as unresolved proposals; no global class/property/alias is invented.
+- Original PDF numeric cells retain row/column headings, original unit candidates, page/bbox/checksum and uncertainty. They remain unresolved until scientific subject/role/unit assignment is established; the software does not convert table presence into observation.
+- Independently validated identical inference variants preserve their full audit history with one active native assertion. Recovery revalidates the same original source and produces no duplicate native IDs.
+- Reserved-evaluation inference fails closed without a prospectively committed original-source reference, matching membership/source hash and unchanged code/model/ontology contracts. Production ingestion itself requires no gold answers.
+
+No LUCI/PMMA/SIBAL/Saffire/BASS answer branches or new ontology vocabulary were added. `v4/ontology_reuse_final.json` records the unchanged approved vocabulary and unresolved approach.
+
+## LUCI development results and honest denominators
+
+LUCI NTRS **20250010653** remains development/regression evidence. Full original 43-page source processing and successive real recovery runs use the normal service; original outputs, failures and controlled interruptions are preserved. The final `v4/luci_delivery` package has **667/667 exact source spans**, original-PDF export equality, **2,725 isolated RDF triples**, conforming SHACL, zero native-ID duplicates and two zero-call replays with identical digest. There are no approvals/publications.
+
+The expanded retrospective source sample has **31 targets**: four groups, nineteen quantities, six statements and two relations. Final results: **17 correct, 11 accurately unresolved, 3 omitted, 0 incorrect target recoveries**. Semantic recall is **17/31 (54.8%)**; original evidence retention is **28/31 (90.3%)**. Unresolved targets are not confirmed science. A selected 30-proposal regression precision audit scores **29/30**, with **zero critical false assignments in that sample**. One accepted tentative-versus-reported role error remains on page 20. This selected sample is neither random nor an exhaustive bound on the other 102 supported proposals. See `v4/luci_delivery_source_review_02.json` and `v4/luci_delivery_scientific_metrics.json`.
+
+The four experimental groups, original **5 cm / 30 cm** specimen dimensions, seven oxygen values and main author conclusions are recovered with source grounding. Approximately **3.95 mm/s** remains correctly scoped but unresolved; approximately **.6 mm/s** retains a derived role; original fitted comparison cells remain pending rather than becoming measured observations. Missing structured targets include the **4-mm** rod diameter (preserved in the sample label), **greater than 25 seconds** duration (preserved in the author conclusion), and one SIBAL material relationship. All example numbers and judgments trace to original source spans in the review/package receipts. No new scientific inference is asserted here.
+
+## Independent evaluation history
+
+Every cycle retains its original frozen membership, source and outcome. Repaired exposed cases never become unseen passes. The v3 wire-break investigation remains exposed.
+
+| Cycle / NASA investigation | Prospective result |
+| --- | --- |
+| 1 / 20250005133 battery calorimeter | Metadata domain-gate rejection before source body or inference; implementation acquisition false negative. |
+| 2 / 20250002114 lunar ignition | Valid frozen science failure: 4/29 correct, 5/29 pending, 19 omitted, 1 incorrect; one inaccessible target; precision 23/30, six critical false assignments. |
+| 3 / 20260003508 fire barriers | Structural audit failed after body acquisition, before model calls; no scientific pass. |
+| 4 / 20260005493 textile slides | Valid frozen science failure: 1/29 correct, 1/29 pending, 22 omitted, 5 incorrect; one inaccessible target; precision 6/15, six critical false assignments. |
+| 5 / 20190027097 laptop fires | Reference-registration protocol failed before a finalized gold file; no scientific pass or recall claim. |
+| 6 / 20170003941 oxygen regulator | Valid frozen science failure: 7/32 correct, 6/32 pending, 13 omitted, 6 incorrect; two inaccessible targets; precision 19/30, nine critical false assignments. Existing upload service recovered metadata-gate rejection with official NASA bytes. |
+| 7 / 20090043050 brass-filled PTFE | Valid frozen science failure: 7/34 correct, 15/34 pending, 12 omitted; two inaccessible targets; all-supported precision 28/29 (meaningful subset 26/27), zero critical false assignments. |
+
+The final cycle prospectively froze all 224 scientific code/script/domain/ontology files, effective model configuration and a 36-target source reference before its first inference. Fourteen primary attempts completed or failed within an 1,800-second session; one subsequent ordinary recovery request was explicitly operator-interrupted after no visible content and deterministic validation defects were identified. This interruption is recorded as an operator action, not an NVIDIA outage. A real 600-second VL deadline switched to Super with a byte-identical scientific task/evidence request; partial valid proposals survived. None of the source-reference answers were passed to inference. The frozen evaluation is a failure and is now exposed development evidence.
+
+The final source retains 125 original numeric table fields for review, but no source-supported quantities or target relations. Printed footnote prefixes adjoining wrapped batch labels fail literal identity checks; original thousands-separated numbers and reaction-count ratios exceed the numeric-expression grammar; current methods/results are frequently left unresolved. These are implementation and semantic-coverage limitations, not solely an external restriction. High proposal precision does not compensate for **7/34 (20.6%) semantic recall** and **22/34 (64.7%) target retention**. No post-evaluation code changes relabel this source as unseen.
+
+The later generic repairs reject the known six ignition, six textile and nine regulator critical errors in exposed development replay. Those replays are regression evidence, not independent acceptance. The latest regulator recovery/export also preserves 255/255 exact spans, original PDF, conforming SHACL and two identical zero-call replays. Independent references are developer original-source reviews prepared before inference, not independent expert gold; model pretraining exposure is unknown. Source-character coverage, graph size and model completion never substitute for scientific recall.
+
+## Normal application operation and validation
+
+Use the existing incorporation view or supported CLI; no Codex process or manual generated-JSON repair is required:
+
+```bash
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion initialize
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion submit --ntrs-id 20250010653
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion prepare PACKAGE_ID --model
+uv run python scripts/curate_research.py --workspace /tmp/nasa-ingestion prepare PACKAGE_ID --model --recover
+```
+
+`CurationService.submit_ntrs/submit/save → prepare_scientific → validate → export_package` preserves original retrieval, entity/relation proposals, approved ontology reuse, unresolved review issues and an isolated package. Export is available in the existing application/service; this campaign invokes neither approval nor publication. `v4/without_api_key` demonstrates usable offline preparation/export with no model calls and explicitly unestablished scientific completion. Some valid sources require the existing upload path because the metadata-only domain keyword gate is too narrow.
+
+At the frozen source commit: **509 tests pass**, `uv run ruff format --check .` reports 477 files formatted (478 on the final reporting recheck) and `uv run ruff check .` passes. Regressions include G2/G3 attribution negatives, original quantitative expressions/units, EvidenceRegistry, SemanticRegistry, original PDF/table traceability, SHACL, partial replay, recovery/idempotence, provider failures/fallback and unauthorized publication. Existing rdflib deprecation warnings are recorded. Both canonical SHACL sets conform on **24,014 unchanged triples**. All **1,501 protected original raw/canonical/domain/ontology/historical v1-v3 files** remain byte-identical.
+
+See `v4/README.md`, final checkpoint, acceptance decisions, preservation/quality receipts and verified compressed large JSON archives. Test counts and technical export success do not establish Phase 1 scientific completion. Phase 2 and shared-baseline publication have not begun.
+
+---
+
+# Historical v3 campaign — implemented, acceptance incomplete
 
 The normal submission-to-curation runtime is implemented and regression verified. **PHASE1_COMPLETE = NO.** Real Nemotron outputs now recover meaningful source-grounded LUCI proposals, but scientific coverage and attribution remain incomplete. The reserved evaluation produced material identities and an incomplete scientific execution; it did not demonstrate independent scientific acceptance. No package was approved or published.
 

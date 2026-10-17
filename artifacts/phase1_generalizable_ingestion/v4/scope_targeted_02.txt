@@ -1,0 +1,35 @@
+.......F................................................................ [ 41%]
+........................................................................ [ 82%]
+..............................                                           [100%]
+=================================== FAILURES ===================================
+_ test_static_specimen_dimension_variants_merge_without_changing_original_values _
+
+service = <nasa_fire_ai.services.curation.CurationService object at 0x772130dd7d10>
+
+    def test_static_specimen_dimension_variants_merge_without_changing_original_values(service):
+        p = submitted(service, "Film 5 cm wide was mounted. The film was inspected.")
+        o = Output().model_dump()
+        o["entities"] = [entity(p, "film", "Film 5 cm wide", "Sample", "Film 5 cm wide was mounted.")]
+        q = {
+            "subject": "film",
+            "label": "width",
+            "expression": "5",
+            "unit": "cm",
+            "epistemic": "experimental_configuration",
+            "support": support(p, "Film 5 cm wide was mounted."),
+        }
+        o["quantities"] = [q, copy.deepcopy(q)]
+        o["quantities"][1]["support"] = support(
+            p, "Film 5 cm wide was mounted. The film was inspected."
+        )
+        result = validate(service, p, o)
+        qs = [r for r in result["records"] if r["kind"] == "quantities"]
+>       assert len(qs) == 2 and all(r["status"] == "SOURCE_SUPPORTED" for r in qs)
+E       AssertionError: assert (2 == 2 and False)
+E        +  where 2 = len([{'id': 'proposal-6163bcb0ca6902e1051eda20', 'kind': 'quantities', 'proposal': {'subject': 'film', 'label': 'width', '... 'proposal': {'subject': 'film', 'label': 'width', 'expression': '5', 'unit': 'cm', ...}, 'status': 'UNRESOLVED', ...}])
+E        +  and   False = all(<generator object test_static_specimen_dimension_variants_merge_without_changing_original_values.<locals>.<genexpr> at 0x772130cad220>)
+
+tests/test_scientific_scope.py:235: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_scientific_scope.py::test_static_specimen_dimension_variants_merge_without_changing_original_values
+1 failed, 173 passed in 19.56s

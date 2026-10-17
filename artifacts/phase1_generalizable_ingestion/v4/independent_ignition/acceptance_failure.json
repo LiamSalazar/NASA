@@ -1,0 +1,25 @@
+{
+  "state": "SCIENTIFIC_ACCEPTANCE_FAILED",
+  "freeze": "independent_freeze_cycle2.json",
+  "prepared": "independent_ignition/prepared_3.json",
+  "implementation_unchanged_during_execution": true,
+  "scientific_reference_fixed_before_model": true,
+  "reference_targets": 30,
+  "accessible_target_denominator": 29,
+  "result": "Native output has 45 supported entity proposals, 11 statements, 6 relations, one cited quantity. It does not recover the current experimental quantities, scoped observations and author conclusions at the required level.",
+  "implementation_defects": [
+    "Roman-numbered sections and lettered method subsections do not reliably retain scope across pages.",
+    "Named method groups are recognized but their parameters and later conclusions fail source applicability.",
+    "Caption text containing best-fit curves can be incorrectly accepted as measured_observation; explicit linear-fit guards do not cover this wording.",
+    "A method-comparison sentence is incorrectly accepted as measured_observation."
+  ],
+  "critical_bad_supported_examples": [
+    "proposal-189c5596724160b9a5e2154d",
+    "proposal-78e3985f2f37893bd4ce4a94",
+    "proposal-9237a3cf714d7bb966408722",
+    "proposal-93edf882f8f1afbde09b6127",
+    "proposal-60da6e1cbda8fd3cbf9d5a2d"
+  ],
+  "cause": "Scientific ingestion/validation defects, not an unavailable NVIDIA model. One real transport deadline and an operator interruption were recovered; all attempts retained.",
+  "future_membership": "This investigation and ICES-2025-392/20250006779 lineage are now exposed development/negative regression evidence. It cannot be relabeled as an unseen passing test of later code. Any later independent acceptance must prospectively reserve another investigation."
+}

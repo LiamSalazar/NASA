@@ -1,0 +1,1288 @@
+{
+  "started_at": "2026-10-16T23:17:42.939268+00:00",
+  "completed_at": "2026-10-16T23:18:05.074527+00:00",
+  "attempts": [
+    {
+      "cache_key": "3daa77f2c507b74b00b0ee7370cb82f45aeaae6133164c965a6cbe0753a9af42",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "propositions",
+      "request": {
+        "stage": "propositions",
+        "focus": "statements",
+        "document_identity": {
+          "title": "Fire-Resistant Textile Development for Exploration Vehicles With Enriched-Oxygen Cabin Environments"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 1,
+            "start": 0,
+            "end": 655,
+            "section": "Fire-resistant Textile Development"
+          },
+          {
+            "page": 2,
+            "start": 0,
+            "end": 47,
+            "section": "Background"
+          },
+          {
+            "page": 2,
+            "start": 47,
+            "end": 1059,
+            "section": "Background"
+          },
+          {
+            "page": 3,
+            "start": 0,
+            "end": 650,
+            "section": "Flammability Testing Overview"
+          },
+          {
+            "page": 4,
+            "start": 0,
+            "end": 545,
+            "section": "Testing Methodology"
+          },
+          {
+            "page": 5,
+            "start": 0,
+            "end": 670,
+            "section": "Examples of Intravehicular Activity (IVA) Textiles"
+          },
+          {
+            "page": 6,
+            "start": 0,
+            "end": 747,
+            "section": "COTS Solutions"
+          },
+          {
+            "page": 7,
+            "start": 0,
+            "end": 364,
+            "section": "Fire-resistant Textile Assessment"
+          },
+          {
+            "page": 7,
+            "start": 364,
+            "end": 463,
+            "section": "Fire-resistant Textile Assessment"
+          },
+          {
+            "page": 7,
+            "start": 463,
+            "end": 541,
+            "section": "Fire-resistant Textile Assessment"
+          },
+          {
+            "page": 7,
+            "start": 541,
+            "end": 661,
+            "section": "Fire-resistant Textile Assessment"
+          },
+          {
+            "page": 7,
+            "start": 661,
+            "end": 791,
+            "section": "Fire-resistant Textile Assessment"
+          },
+          {
+            "page": 8,
+            "start": 0,
+            "end": 1050,
+            "section": "Fire-resistant Textile Strategy"
+          },
+          {
+            "page": 9,
+            "start": 0,
+            "end": 47,
+            "section": "Conclusion"
+          },
+          {
+            "page": 9,
+            "start": 47,
+            "end": 378,
+            "section": "Conclusion"
+          },
+          {
+            "page": 10,
+            "start": 0,
+            "end": 248,
+            "section": "9\nConclusion"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 1,
+            "quote": "National Aeronautics and Space Administration \n1\nFire-resistant Textile Development \nfor Exploration Vehicles with \nEnriched-Oxygen Cabin \nEnvironments\nICES-2026-301\nPresented by: Mary Walker, NASA JSC / Fire-Resistant \nTextile Development Project Manager\nCoauthors:\nKarim Aly, Bastion Technologies, Inc.",
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 1,
+            "quote": "Fire-resistant Textile Development",
+            "in_task": true
+          },
+          {
+            "id": "A3",
+            "page": 1,
+            "quote": "Tianqi Gao, Amentum\nKamili Shaw, NASA SSC\nTrade names and trademarks and company names are used in this report for identification only.",
+            "in_task": true
+          },
+          {
+            "id": "A4",
+            "page": 1,
+            "quote": "Their usage does not constitute an official \nendorsement, either expressed or implied, by the National Aeronautics and Space Administration.",
+            "in_task": true
+          },
+          {
+            "id": "A5",
+            "page": 1,
+            "quote": "55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+            "in_task": true
+          },
+          {
+            "id": "A6",
+            "page": 2,
+            "quote": "National Aeronautics and Space Administration",
+            "in_task": true
+          },
+          {
+            "id": "A7",
+            "page": 2,
+            "quote": "Background",
+            "in_task": true
+          },
+          {
+            "id": "A8",
+            "page": 2,
+            "quote": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+            "in_task": true
+          },
+          {
+            "id": "A9",
+            "page": 3,
+            "quote": "National Aeronautics and Space Administration \n3\nFlammability Testing Overview\n• NASA-STD-6001, Test 1\n• Coupon secured to test stand inside chamber at \nset pressure and O2 concentration\n• Bottom ignition upward flame propagation test\n• Burn length < 6”\n• No transfer of burning debris (melt / drip)\n• Typical textile flammability test process:\nFinal \nAssembly \nVerification\nFabric-Level \nTest\nLay Up \nTest\nConfiguration \nTest\n(w/ Thread, Zipper, \nVelcro, etc.)\npass\npass\npass\nSTART\nTest setup\nTextile being tested at various O2 \nconcentrations\nPost-test examination of \nsample\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+            "in_task": true
+          },
+          {
+            "id": "A10",
+            "page": 3,
+            "quote": "Flammability Testing Overview",
+            "in_task": true
+          },
+          {
+            "id": "A11",
+            "page": 4,
+            "quote": "National Aeronautics and Space Administration \n4\nTesting Methodology\n• The typical test configuration is Standard \nEdge Ignition (most conservative)\n• Most textiles are tested in a “J-\nconfiguration”\n• Ignitor placed at bottom of “J” to ignite surface of \nthe specimen\n• Metal fixture can be used to shield the vertical \nraw edges\n• Suitable for test specimens of materials that won’t \nhave any exposed raw edges in usage applications\nIgnitor\nTest specimen\nMetal \n“shield”\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+            "in_task": true
+          },
+          {
+            "id": "A12",
+            "page": 4,
+            "quote": "Testing Methodology",
+            "in_task": true
+          },
+          {
+            "id": "A13",
+            "page": 5,
+            "quote": "National Aeronautics and Space Administration \n5\n•\nFire-resistant textiles must be available to fabricate the end-item softgoods\n•\nCoupon-level flammability testing at 37% O2 shows increased propagation with configuration and layup testing as \ncompared with single material tests\n55th International Conference on Environmental Systems\nJuly 12-16, 2026\n5\nExamples of Intravehicular Activity (IVA) Textiles\nTextile\nExamples\nApplication\nExamples\nKnit\nWoven\nNonwoven\nSewing \nThread\nWebbing\nHook & \nLoop\nZipper\nBungee\nExercise \nClothing\nAmmonia \nCartridge Bag\nAcoustic \nBlanket\nEmergency \nMask\nCargo \nTie-Down\nCargo \nRestraint\nPortable Fire \nExtinguisher\nTemporary \nFastener",
+            "in_task": true
+          },
+          {
+            "id": "A14",
+            "page": 5,
+            "quote": "Examples of Intravehicular Activity (IVA) Textiles",
+            "in_task": true
+          },
+          {
+            "id": "A15",
+            "page": 6,
+            "quote": "National Aeronautics and Space Administration \n6\nCOTS Solutions\n• NASA’s textile engineering and development team \nhas been sourcing existing COTS textile products, \nmodifying COTS textiles, and developing custom \nfire-resistant solutions\n• Some NASA-developed Artemis Softgoods items will \nutilize COTS solutions:\n• Crew clothing outer jacket and pants\n• Cargo Transfer Bags\n• Sleeping Bags\n• Developed fire-resistant textile solutions:\n• 100% PBI knit fabric for crew clothing next-to-skin \nshirt\n• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+            "in_task": true
+          },
+          {
+            "id": "A16",
+            "page": 6,
+            "quote": "COTS Solutions",
+            "in_task": true
+          },
+          {
+            "id": "A17",
+            "page": 7,
+            "quote": "National Aeronautics and Space Administration \n7\nFire-resistant Textile Assessment\n• NASA Engineering and Safety Center (NESC) was requested to conduct an \nassessment and develop a strategy for the development of high priority \nfire-resistant textiles for softgoods applications within a vehicle cabin at \na minimum of 37% O2 at 8.2 psia\n• Agency-wide Assessment:",
+            "in_task": true
+          },
+          {
+            "id": "A18",
+            "page": 7,
+            "quote": "Fire-resistant Textile Assessment",
+            "in_task": true
+          },
+          {
+            "id": "A19",
+            "page": 7,
+            "quote": "parameters/metrics",
+            "in_task": true
+          },
+          {
+            "id": "A20",
+            "page": 7,
+            "quote": "opportunities for fire-resistant textiles",
+            "in_task": true
+          },
+          {
+            "id": "A21",
+            "page": 7,
+            "quote": "55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+            "in_task": true
+          },
+          {
+            "id": "A22",
+            "page": 8,
+            "quote": "National Aeronautics and Space Administration \n8\nFire-resistant Textile Strategy\nPhase 3\nCustom Textile Development\n•If no COTS solution can meet NASA-STD-6001B Test 1 and it is not possible to do incremental improvement over COTS solutions, \na custom major development effort is required with an industrial partner to design and develop a suitable solution that can \nmeet NASA’s specific needs\nPhase 2\nIncremental Improvement over COTS Solutions\n•If no COTS solution can meet NASA-STD-6001B Test 1 but a relatively low effort can be done to modify the COTS and increase \nthe chance of passing, it is recommended to pursue the incremental improvement/modification on the COTS solution and assess \nthe performance again\nPhase 1\nBaseline Testing of Available COTS Products\n•Evaluate and confirm whether COTS materials are available that can be certified for use at 37% O2/8.2 psia for each textile type\n•Certification testing will be performed at White Sands Test Facility (WSTF)\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+            "in_task": true
+          },
+          {
+            "id": "A23",
+            "page": 8,
+            "quote": "Fire-resistant Textile Strategy",
+            "in_task": true
+          },
+          {
+            "id": "A24",
+            "page": 9,
+            "quote": "National Aeronautics and Space Administration",
+            "in_task": true
+          },
+          {
+            "id": "A25",
+            "page": 9,
+            "quote": "Conclusion",
+            "in_task": true
+          },
+          {
+            "id": "A26",
+            "page": 9,
+            "quote": "• Fire-resistant Textile Development: \n• Critical priority for NASA to buy \ndown flammability risk\n• NASA’s textile engineering and \ndevelopment team is actively \nimplementing the NESC’s 3-phase \nstrategy\n• Goal to systematically mature \nmaterials that enable safer and \nmore sustainable human \nexploration missions\n9",
+            "in_task": true
+          },
+          {
+            "id": "A27",
+            "page": 10,
+            "quote": "National Aeronautics and Space Administration \n10\nQuestions or Feedback?",
+            "in_task": true
+          },
+          {
+            "id": "A28",
+            "page": 10,
+            "quote": "Mary L.",
+            "in_task": true
+          },
+          {
+            "id": "A29",
+            "page": 10,
+            "quote": "Walker\nNASA JSC / Fire-Resistant Textile Development Project Manager\n mary.walker@nasa.gov\n10\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+            "in_task": true
+          }
+        ],
+        "shared_context": {
+          "available": 1,
+          "selected_characters": 1049
+        },
+        "known_entities": [
+          {
+            "label": "Phase 3 Custom Textile Development",
+            "class_id": "ExperimentFamily",
+            "study": "current",
+            "key": "K1",
+            "support": [
+              "A22"
+            ]
+          },
+          {
+            "label": "Phase 1 Baseline Testing of Available COTS Products",
+            "class_id": "ExperimentFamily",
+            "study": "current",
+            "key": "K2",
+            "support": [
+              "A22"
+            ]
+          },
+          {
+            "label": "Phase 2 Incremental Improvement over COTS Solutions",
+            "class_id": "ExperimentFamily",
+            "study": "current",
+            "key": "K3",
+            "support": [
+              "A22"
+            ]
+          },
+          {
+            "label": "Fire-resistant patches",
+            "class_id": "Intervention",
+            "study": "current",
+            "key": "K4",
+            "support": [
+              "A15"
+            ]
+          },
+          {
+            "label": "100% PBI knit fabric",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K5",
+            "support": [
+              "A15"
+            ]
+          },
+          {
+            "label": "beta glass",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K6",
+            "support": [
+              "A8"
+            ]
+          },
+          {
+            "label": "PBI",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K7",
+            "support": [
+              "A8"
+            ]
+          },
+          {
+            "label": "Astro Velcro",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K8",
+            "support": [
+              "A8"
+            ]
+          },
+          {
+            "label": "100% PBI knit fabric for crew clothing next-to-skin shirt",
+            "class_id": "Intervention",
+            "study": "current",
+            "key": "K9",
+            "support": [
+              "A15"
+            ]
+          },
+          {
+            "label": "Durette",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K10",
+            "support": [
+              "A8"
+            ]
+          },
+          {
+            "label": "outer jacket fabric",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K11",
+            "support": [
+              "A15"
+            ]
+          },
+          {
+            "label": "Custom fire-resistant patches",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K12",
+            "support": [
+              "A15"
+            ]
+          }
+        ],
+        "schema": {
+          "$defs": {
+            "Statement": {
+              "additionalProperties": false,
+              "properties": {
+                "anchor": {
+                  "type": "string"
+                },
+                "epistemic": {
+                  "enum": [
+                    "measured_observation",
+                    "author_reported_conclusion",
+                    "tentative_interpretation",
+                    "hypothesis",
+                    "open_question",
+                    "normative_requirement",
+                    "guidance",
+                    "experimental_configuration",
+                    "derived_quantity",
+                    "documentary_context"
+                  ],
+                  "title": "Epistemic",
+                  "type": "string"
+                },
+                "subjects": {
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "K1",
+                      "K2",
+                      "K3",
+                      "K4",
+                      "K5",
+                      "K6",
+                      "K7",
+                      "K8",
+                      "K9",
+                      "K10",
+                      "K11",
+                      "K12"
+                    ]
+                  },
+                  "title": "Subjects",
+                  "type": "array"
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "anchor",
+                "epistemic",
+                "subjects",
+                "study"
+              ],
+              "title": "Statement",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "statements": {
+              "items": {
+                "$ref": "#/$defs/Statement"
+              },
+              "title": "Statements",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "statements"
+          ]
+        },
+        "original_tables": [
+          {
+            "physical_pdf_page": 8,
+            "original_cells": [
+              [
+                "Baseline Testing of Available COTS Products\nPhase 1\n•Evaluate and confirm whether COTS materials are available that can be certified for use at 37% O2/8.2 psia for each textile type\n•Certification testing will be performed at White Sands Test Facility (WSTF)",
+                "Baseline Testing of Available COTS Products\n•Evaluate and confirm whether COTS materials are available that can be certified for use at 37% O2/8.2 psia for each textile type\n•Certification testing will be performed at White Sands Test Facility (WSTF)"
+              ],
+              [
+                "Incremental Improvement over COTS Solutions\nPhase 2\n•If no COTS solution can meet NASA-STD-6001B Test 1 but a relatively low effort can be done to modify the COTS and increase\nthe chance of passing, it is recommended to pursue the incremental improvement/modification on the COTS solution and assess\nthe performance again",
+                "Incremental Improvement over COTS Solutions\n•If no COTS solution can meet NASA-STD-6001B Test 1 but a relatively low effort can be done to modify the COTS and increase\nthe chance of passing, it is recommended to pursue the incremental improvement/modification on the COTS solution and assess\nthe performance again"
+              ],
+              [
+                "Phase 3",
+                "Custom Textile Development\n•If no COTS solution can meet NASA-STD-6001B Test 1 and it is not possible to do incremental improvement over COTS solutions,\na custom major development effort is required with an industrial partner to design and develop a suitable solution that can\nmeet NASA’s specific needs"
+              ]
+            ],
+            "original_headers": [
+              "Baseline Testing of Available COTS Products\nPhase 1\n•Evaluate and confirm whether COTS materials are available that can be certified for use at 37% O2/8.2 psia for each textile type\n•Certification testing will be performed at White Sands Test Facility (WSTF)",
+              "Baseline Testing of Available COTS Products\n•Evaluate and confirm whether COTS materials are available that can be certified for use at 37% O2/8.2 psia for each textile type\n•Certification testing will be performed at White Sands Test Facility (WSTF)"
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          }
+        ],
+        "unstructured_statement_anchors": [],
+        "task": "Extract all source-backed statements in the task source anchors. Return ONLY the root key statements. The wider stage example does not require other keys for this focused task."
+      },
+      "max_output_tokens": 13312,
+      "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "scientific_propositions",
+          "schema": {
+            "$defs": {
+              "Statement": {
+                "additionalProperties": false,
+                "properties": {
+                  "anchor": {
+                    "type": "string"
+                  },
+                  "epistemic": {
+                    "enum": [
+                      "measured_observation",
+                      "author_reported_conclusion",
+                      "tentative_interpretation",
+                      "hypothesis",
+                      "open_question",
+                      "normative_requirement",
+                      "guidance",
+                      "experimental_configuration",
+                      "derived_quantity",
+                      "documentary_context"
+                    ],
+                    "title": "Epistemic",
+                    "type": "string"
+                  },
+                  "subjects": {
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "K1",
+                        "K2",
+                        "K3",
+                        "K4",
+                        "K5",
+                        "K6",
+                        "K7",
+                        "K8",
+                        "K9",
+                        "K10",
+                        "K11",
+                        "K12"
+                      ]
+                    },
+                    "title": "Subjects",
+                    "type": "array"
+                  },
+                  "study": {
+                    "default": "unknown",
+                    "enum": [
+                      "current",
+                      "cited",
+                      "unknown"
+                    ],
+                    "title": "Study",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "anchor",
+                  "epistemic",
+                  "subjects",
+                  "study"
+                ],
+                "title": "Statement",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "statements": {
+                "items": {
+                  "$ref": "#/$defs/Statement"
+                },
+                "title": "Statements",
+                "type": "array"
+              }
+            },
+            "title": "Output",
+            "type": "object",
+            "required": [
+              "statements"
+            ]
+          },
+          "strict": true
+        }
+      },
+      "raw_response": "{\"statements\": [{\"anchor\": \"A8\", \"epistemic\": \"author_reported_conclusion\", \"subjects\": [], \"study\": \"current\"}, {\"anchor\": \"A8\", \"epistemic\": \"author_reported_conclusion\", \"subjects\": [], \"study\": \"current\"}, {\"anchor\": \"A8\", \"epistemic\": \"author_reported_conclusion\", \"subjects\": [], \"study\": \"current\"}, {\"anchor\": \"A8\", \"epistemic\": \"author_reported_conclusion\", \"subjects\": [\"K6\", \"K7\", \"K10\", \"K8\"], \"study\": \"current\"}, {\"anchor\": \"A9\", \"epistemic\": \"experimental_configuration\", \"subjects\": [], \"study\": \"current\"}, {\"anchor\": \"A11\", \"epistemic\": \"experimental_configuration\", \"subjects\": [], \"study\": \"current\"}, {\"anchor\": \"A13\", \"epistemic\": \"measured_observation\", \"subjects\": [], \"study\": \"current\"}, {\"anchor\": \"A15\", \"epistemic\": \"measured_observation\", \"subjects\": [\"K5\"], \"study\": \"current\"}, {\"anchor\": \"A15\", \"epistemic\": \"measured_observation\", \"subjects\": [\"K4\", \"K11\"], \"study\": \"current\"}, {\"anchor\": \"A17\", \"epistemic\": \"normative_requirement\", \"subjects\": [], \"study\": \"current\"}, {\"anchor\": \"A22\", \"epistemic\": \"guidance\", \"subjects\": [\"K2\"], \"study\": \"current\"}, {\"anchor\": \"A22\", \"epistemic\": \"guidance\", \"subjects\": [\"K3\"], \"study\": \"current\"}, {\"anchor\": \"A22\", \"epistemic\": \"guidance\", \"subjects\": [\"K1\"], \"study\": \"current\"}, {\"anchor\": \"A26\", \"epistemic\": \"author_reported_conclusion\", \"subjects\": [], \"study\": \"current\"}]}",
+      "usage": {
+        "completion_tokens": 2517,
+        "prompt_tokens": 5356,
+        "total_tokens": 7873,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 2047,
+          "rejected_prediction_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "outcome": {
+        "segment_id": "window-7e61c9a57ac63283d12f69b2",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "e58feb5d20278fbcc7528a3e5f2e7d58a90088381ab7024da970e51ac86209a7",
+        "members": [
+          {
+            "id": "segment-f5b8c4bc82c6eddf9ac3439a",
+            "evidence_id": "E-9eccab003a28d4537146f46f",
+            "start": 0,
+            "end": 655
+          },
+          {
+            "id": "segment-8e74c8adbe6545126a27255a",
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "start": 0,
+            "end": 47
+          },
+          {
+            "id": "segment-22246c0036139255bb8ce471",
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "start": 47,
+            "end": 1059
+          },
+          {
+            "id": "segment-5d9bb72e3e6e189179dd0e91",
+            "evidence_id": "E-a7c86b01125408b0bc61990c",
+            "start": 0,
+            "end": 650
+          },
+          {
+            "id": "segment-3a48fb8bbac698f5810bb9ef",
+            "evidence_id": "E-e7864f0e4561ac19fe023324",
+            "start": 0,
+            "end": 545
+          },
+          {
+            "id": "segment-6f20dbdd1c0c2557b3a454f6",
+            "evidence_id": "E-f60f771bcd75cde2422d3120",
+            "start": 0,
+            "end": 670
+          },
+          {
+            "id": "segment-a8a53b33f50d48d9477579f5",
+            "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+            "start": 0,
+            "end": 747
+          },
+          {
+            "id": "segment-f970246dbeaef664b268be9d",
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "start": 0,
+            "end": 364
+          },
+          {
+            "id": "segment-669f1fc6cc77423f23a326dd",
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "start": 364,
+            "end": 463
+          },
+          {
+            "id": "segment-997952cc8077b7fae4067227",
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "start": 463,
+            "end": 541
+          },
+          {
+            "id": "segment-cbec51b5a6c7f2b599dd0d00",
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "start": 541,
+            "end": 661
+          },
+          {
+            "id": "segment-106d0f994581f052e9873fb7",
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "start": 661,
+            "end": 791
+          },
+          {
+            "id": "segment-a8a07fe6ed7bb27a71a4714b",
+            "evidence_id": "E-45bf95f619ffa782389d0f3c",
+            "start": 0,
+            "end": 1050
+          },
+          {
+            "id": "segment-ec293d0a18a07b1728acc71a",
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "start": 0,
+            "end": 47
+          },
+          {
+            "id": "segment-44206f55b730f253e1675e20",
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "start": 47,
+            "end": 378
+          },
+          {
+            "id": "segment-c7824efb3e0d2a98729601d8",
+            "evidence_id": "E-12131a8fc9bc13e02ba7dc65",
+            "start": 0,
+            "end": 248
+          }
+        ],
+        "evidence_id": "E-9eccab003a28d4537146f46f",
+        "start": 0,
+        "end": 6793,
+        "deterministic": "COMPLETE",
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "attempts": 1,
+        "source_anchors": 29,
+        "known_entities_selected": 12,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 6679,
+        "proposed_items": 12,
+        "request_bytes": 19111,
+        "reserved_tokens_per_attempt": 34551,
+        "output_tokens": 13312,
+        "context_token_estimate": 24443,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 2517,
+          "prompt_tokens": 5356,
+          "total_tokens": 7873,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 13312,
+          "thinking_enabled": true,
+          "reasoning_budget": 2048,
+          "image_count": 0,
+          "response_headers": {},
+          "duration_seconds": 18.9894303330002,
+          "time_to_first_token_seconds": 18.982433298002434,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 8152
+        },
+        "schema_errors": [],
+        "source_errors": [
+          {
+            "proposal_id": "proposal-f49c454742d0cc440eb5069a",
+            "kind": "statements",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ],
+            "proposal": {
+              "text": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "subjects": [],
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+                  "quote": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 60
+                }
+              ]
+            }
+          },
+          {
+            "proposal_id": "proposal-f49c454742d0cc440eb5069a",
+            "kind": "statements",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ],
+            "proposal": {
+              "text": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "subjects": [],
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+                  "quote": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 60
+                }
+              ]
+            }
+          },
+          {
+            "proposal_id": "proposal-f49c454742d0cc440eb5069a",
+            "kind": "statements",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ],
+            "proposal": {
+              "text": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "subjects": [],
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+                  "quote": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 60
+                }
+              ]
+            }
+          },
+          {
+            "proposal_id": "proposal-a6aa5cd3d6b3a040925f1a02",
+            "kind": "statements",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ],
+            "proposal": {
+              "text": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "subjects": [
+                "entity-75e455de383be5561e2e",
+                "entity-785268d0ae7410593c00",
+                "entity-c417b540d14a03b60c1b",
+                "entity-79b2cb82d0e863069590"
+              ],
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+                  "quote": "• Oxygen-enriched cabin exploration atmospheres (>30% O2) are preferred to shorten prebreathing \ntime and maximize the duration of EVAs\n• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)\n• Greatly increases flammability risk\nArtemis missions planning elevated oxygen cabin environments (>30% O2)\n• Selection of fire-resistant textiles is a key part of NASA’s fire prevention strategy to ensure large-\nscale flame propagation events do not occur\n• Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% \nO2 environments\n• Most of the fibers and textiles developed during Apollo (100% O2) and Skylab (70% O2) (i.e., beta \nglass, PBI, Durette, Astro Velcro) that are no longer commercially available due to discontinuation \nof raw materials and closure of the original manufacturers\nSignificant need for improved non-flammable textiles\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 60
+                }
+              ]
+            }
+          },
+          {
+            "proposal_id": "proposal-c0ba69acadc92657c51f96bb",
+            "kind": "statements",
+            "reasons": [
+              "SCIENTIFIC_INFERENCE_IS_NOT_OBSERVATION"
+            ],
+            "proposal": {
+              "text": "National Aeronautics and Space Administration \n5\n•\nFire-resistant textiles must be available to fabricate the end-item softgoods\n•\nCoupon-level flammability testing at 37% O2 shows increased propagation with configuration and layup testing as \ncompared with single material tests\n55th International Conference on Environmental Systems\nJuly 12-16, 2026\n5\nExamples of Intravehicular Activity (IVA) Textiles\nTextile\nExamples\nApplication\nExamples\nKnit\nWoven\nNonwoven\nSewing \nThread\nWebbing\nHook & \nLoop\nZipper\nBungee\nExercise \nClothing\nAmmonia \nCartridge Bag\nAcoustic \nBlanket\nEmergency \nMask\nCargo \nTie-Down\nCargo \nRestraint\nPortable Fire \nExtinguisher\nTemporary \nFastener",
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "subjects": [],
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-f60f771bcd75cde2422d3120",
+                  "quote": "National Aeronautics and Space Administration \n5\n•\nFire-resistant textiles must be available to fabricate the end-item softgoods\n•\nCoupon-level flammability testing at 37% O2 shows increased propagation with configuration and layup testing as \ncompared with single material tests\n55th International Conference on Environmental Systems\nJuly 12-16, 2026\n5\nExamples of Intravehicular Activity (IVA) Textiles\nTextile\nExamples\nApplication\nExamples\nKnit\nWoven\nNonwoven\nSewing \nThread\nWebbing\nHook & \nLoop\nZipper\nBungee\nExercise \nClothing\nAmmonia \nCartridge Bag\nAcoustic \nBlanket\nEmergency \nMask\nCargo \nTie-Down\nCargo \nRestraint\nPortable Fire \nExtinguisher\nTemporary \nFastener",
+                  "start": 0
+                }
+              ]
+            }
+          },
+          {
+            "proposal_id": "proposal-e99fb75b075cc9ab962a82bc",
+            "kind": "statements",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ],
+            "proposal": {
+              "text": "National Aeronautics and Space Administration \n6\nCOTS Solutions\n• NASA’s textile engineering and development team \nhas been sourcing existing COTS textile products, \nmodifying COTS textiles, and developing custom \nfire-resistant solutions\n• Some NASA-developed Artemis Softgoods items will \nutilize COTS solutions:\n• Crew clothing outer jacket and pants\n• Cargo Transfer Bags\n• Sleeping Bags\n• Developed fire-resistant textile solutions:\n• 100% PBI knit fabric for crew clothing next-to-skin \nshirt\n• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "subjects": [
+                "entity-42bc781bacf0fa87df88"
+              ],
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "National Aeronautics and Space Administration \n6\nCOTS Solutions\n• NASA’s textile engineering and development team \nhas been sourcing existing COTS textile products, \nmodifying COTS textiles, and developing custom \nfire-resistant solutions\n• Some NASA-developed Artemis Softgoods items will \nutilize COTS solutions:\n• Crew clothing outer jacket and pants\n• Cargo Transfer Bags\n• Sleeping Bags\n• Developed fire-resistant textile solutions:\n• 100% PBI knit fabric for crew clothing next-to-skin \nshirt\n• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 0
+                }
+              ]
+            }
+          },
+          {
+            "proposal_id": "proposal-fe3f23217cc71b2859a8bb26",
+            "kind": "statements",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ],
+            "proposal": {
+              "text": "National Aeronautics and Space Administration \n6\nCOTS Solutions\n• NASA’s textile engineering and development team \nhas been sourcing existing COTS textile products, \nmodifying COTS textiles, and developing custom \nfire-resistant solutions\n• Some NASA-developed Artemis Softgoods items will \nutilize COTS solutions:\n• Crew clothing outer jacket and pants\n• Cargo Transfer Bags\n• Sleeping Bags\n• Developed fire-resistant textile solutions:\n• 100% PBI knit fabric for crew clothing next-to-skin \nshirt\n• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "subjects": [
+                "entity-3e0b9f19805dccbc164b",
+                "entity-c9471b1d4f20c9e4629f"
+              ],
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "National Aeronautics and Space Administration \n6\nCOTS Solutions\n• NASA’s textile engineering and development team \nhas been sourcing existing COTS textile products, \nmodifying COTS textiles, and developing custom \nfire-resistant solutions\n• Some NASA-developed Artemis Softgoods items will \nutilize COTS solutions:\n• Crew clothing outer jacket and pants\n• Cargo Transfer Bags\n• Sleeping Bags\n• Developed fire-resistant textile solutions:\n• 100% PBI knit fabric for crew clothing next-to-skin \nshirt\n• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 0
+                }
+              ]
+            }
+          },
+          {
+            "proposal_id": "proposal-11f897d6ec9d90bc7bfb6540",
+            "kind": "statements",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ],
+            "proposal": {
+              "text": "National Aeronautics and Space Administration \n7\nFire-resistant Textile Assessment\n• NASA Engineering and Safety Center (NESC) was requested to conduct an \nassessment and develop a strategy for the development of high priority \nfire-resistant textiles for softgoods applications within a vehicle cabin at \na minimum of 37% O2 at 8.2 psia\n• Agency-wide Assessment:",
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "subjects": [],
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-19ec34000c827178fbbabbe9",
+                  "quote": "National Aeronautics and Space Administration \n7\nFire-resistant Textile Assessment\n• NASA Engineering and Safety Center (NESC) was requested to conduct an \nassessment and develop a strategy for the development of high priority \nfire-resistant textiles for softgoods applications within a vehicle cabin at \na minimum of 37% O2 at 8.2 psia\n• Agency-wide Assessment:",
+                  "start": 0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "state": "FINISHED"
+    }
+  ]
+}

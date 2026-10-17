@@ -1,0 +1,48 @@
+{
+  "basis": "Developer source adjudication of the historical 19-target LUCI regression sample plus a fixed stratified first-by-page/id sample of 30 SOURCE_SUPPORTED proposals (6 entities, all 7 quantities, all 4 relations, first 13 statements). Not whole-document recall or independent expert gold. Duplicate supporting proposals are not independent scientific facts. Final-code replay retains all 19 target judgments; the rejected Objectives proposal is replaced by the next first-by-page/id supported statement, independently checked against the PMMA page-20 base-spread bullet. Historical 28/30 result remains preserved. Expanded retrospective LUCI development audit adds12 quantities spanning configuration, table-derived values, derivation, duration and oxygen extrema. Chosen from original source; model responses are exposed, so this is development coverage, not prospective independent acceptance. Incorrect pending proposals never count as accurately unresolved.",
+  "target_count": 31,
+  "outcomes": {
+    "correct": 15,
+    "inaccessible": 0,
+    "incorrect": 3,
+    "omitted": 6,
+    "unresolved": 7
+  },
+  "by_kind": {
+    "entities": {
+      "correct": 4
+    },
+    "quantities": {
+      "unresolved": 7,
+      "correct": 4,
+      "incorrect": 3,
+      "omitted": 5
+    },
+    "statements": {
+      "correct": 6
+    },
+    "relations": {
+      "omitted": 1,
+      "correct": 1
+    }
+  },
+  "semantic_recall": {
+    "numerator": 15,
+    "denominator": 31
+  },
+  "evidence_retention": {
+    "numerator": 22,
+    "denominator": 31
+  },
+  "reviewed_proposal_precision": {
+    "numerator": 29,
+    "denominator": 30
+  },
+  "incorrect_critical_assignments_in_sample": 0,
+  "unreviewed_supported_proposals": 111,
+  "unresolved_is_confirmed_science": false,
+  "input_sha256": {
+    "artifacts/phase1_generalizable_ingestion/v4/luci_application_final/prepared.json": "4e791129a24ecc7da2d7543779d0030d3df4344710c45c0d871b2c39ba771e78",
+    "artifacts/phase1_generalizable_ingestion/v4/luci_expanded_source_review.json": "bfcc2e06ae36a3cb61988cddf7b68b23a123bea7c1a15c10b105fb0cf43e078c"
+  }
+}

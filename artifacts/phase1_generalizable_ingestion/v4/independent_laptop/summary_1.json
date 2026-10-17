@@ -1,0 +1,3650 @@
+{
+  "source": "reserved",
+  "package_id": "research-744f2693127046f63099",
+  "digest": "f92d7dc8bfff32c7c2609dffa5d62eb43565573c7ea84beebda42ae82891b2b8",
+  "processing": {
+    "budget": {
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "timeout_seconds": 1800.0,
+      "recovery_only": false,
+      "call_timeout_seconds": null,
+      "retries": 2,
+      "segment_chars": 18049,
+      "reasoning_tokens": null,
+      "recovery_rounds": 2,
+      "stream": true
+    },
+    "resource_policy": {
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "throughput_tokens_per_second": 35.0,
+        "request_timeout_seconds": 600.0
+      },
+      "scientific_item_ceiling": null,
+      "adaptive": true
+    },
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "configured_fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "new_model_calls": 2,
+    "restored_proposals_after_source_validation": 0,
+    "recovered_cached_proposals_after_source_validation": 0,
+    "targeted_recovery_mode": false,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "tokens_consumed_or_reserved": 57244,
+    "cached_segments": 0,
+    "duration_seconds": 43.45844010899964,
+    "outcomes": [
+      {
+        "segment_id": "window-4308dca602513542aee26d28",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "b3dcf481cea5ba8e5f4d87c576b32ac0a42ea9274c41744090ee1ca06663fbdb",
+        "members": [
+          {
+            "id": "segment-29b1a14218b57e0265e1d4ab",
+            "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+            "start": 0,
+            "end": 2832
+          },
+          {
+            "id": "segment-349b935ff0e8839855833775",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 0,
+            "end": 276
+          },
+          {
+            "id": "segment-ff1d1165e926597024a8d5b5",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 276,
+            "end": 3416
+          },
+          {
+            "id": "segment-497cc23a209eb14fd30f7163",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 3416,
+            "end": 4098
+          },
+          {
+            "id": "segment-6e446a90fc050e3f810b719b",
+            "evidence_id": "E-7d3674715bb6963dd75f22c1",
+            "start": 0,
+            "end": 2306
+          },
+          {
+            "id": "segment-a26adcc611bddbab9d947f42",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 0,
+            "end": 1021
+          },
+          {
+            "id": "segment-d52a84afa5ea60c67abf849d",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 1021,
+            "end": 2514
+          },
+          {
+            "id": "segment-8d68663b546fca97c5be070f",
+            "evidence_id": "E-c1bc65ad939838ad838b5871",
+            "start": 0,
+            "end": 2250
+          },
+          {
+            "id": "segment-b3e025089411138cf5033cb7",
+            "evidence_id": "E-c23c6e510e076592e4d7d0df",
+            "start": 0,
+            "end": 3252
+          }
+        ],
+        "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+        "start": 0,
+        "end": 17252,
+        "deterministic": "COMPLETE",
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "attempts": 1,
+        "source_anchors": 153,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 17088,
+        "proposed_items": 12,
+        "request_bytes": 36969,
+        "reserved_tokens_per_attempt": 46876,
+        "output_tokens": 6144,
+        "context_token_estimate": 27022,
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 2629,
+          "prompt_tokens": 11618,
+          "total_tokens": 14247,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 6144,
+          "thinking_enabled": true,
+          "reasoning_budget": 2048,
+          "image_count": 0,
+          "response_headers": {},
+          "duration_seconds": 34.84126012399793,
+          "time_to_first_token_seconds": 34.83216272400023,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 6721
+        },
+        "schema_errors": [],
+        "source_errors": [
+          {
+            "proposal_id": "proposal-e14680273e648a4eb5765706",
+            "kind": "entities",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ],
+            "proposal": {
+              "key": "entity-1b24f3b7fadae34b7fe5",
+              "label": "portable fire extinguisher (PFE) assembly",
+              "class_id": "Intervention",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+                  "quote": "Fire suppression was accomplished with a portable ﬁre extinguisher (PFE) assembly that holds 6 pounds of water\nand 1.2 lb of nitrogen pressurized to approximately 1270 psia.",
+                  "start": 417
+                },
+                {
+                  "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+                  "quote": "[8] discusses the use of the PFE on a\nDell XPS 15 ﬁre and its capability of extinguishing a Dell XPS 15 with 2 lbs of water.",
+                  "start": 723
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "segment_id": "window-c622208dbe61530e059712ad",
+        "stage": "identity",
+        "focus": null,
+        "cache_key": "2938749d2447ee312d52a8613ef2d253c464d0234e334f25f298a9bb633d9137",
+        "members": [
+          {
+            "id": "segment-f578576de109546dea482132",
+            "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+            "start": 0,
+            "end": 1505
+          },
+          {
+            "id": "segment-f4933ce350326055ba46f62a",
+            "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+            "start": 0,
+            "end": 3337
+          },
+          {
+            "id": "segment-d198bf2293a41faac7da78ab",
+            "evidence_id": "E-6b80996b8f02b95aeda17768",
+            "start": 0,
+            "end": 2066
+          },
+          {
+            "id": "segment-2d1b4461e31f335bf1449c56",
+            "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+            "start": 0,
+            "end": 2061
+          },
+          {
+            "id": "segment-fbbce1a8e43d0a0357e38e61",
+            "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+            "start": 0,
+            "end": 2865
+          },
+          {
+            "id": "segment-96e79507ac0e036539fa5718",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 0,
+            "end": 599
+          },
+          {
+            "id": "segment-e9bded207146aa7a33a677e9",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 599,
+            "end": 2967
+          }
+        ],
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "start": 0,
+        "end": 14801,
+        "deterministic": "COMPLETE",
+        "model": "FAILED",
+        "attempts": 1,
+        "source_anchors": 127,
+        "known_entities_selected": 0,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 14659,
+        "proposed_items": 0,
+        "request_bytes": 32066,
+        "reserved_tokens_per_attempt": 42997,
+        "output_tokens": 7168,
+        "context_token_estimate": 25594,
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 7168,
+          "thinking_enabled": true,
+          "reasoning_budget": 2048,
+          "image_count": 0,
+          "response_headers": {},
+          "duration_seconds": 2.4309562950002146,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 812,
+          "usage": null,
+          "finish_reason": null
+        },
+        "error_type": "interrupted"
+      },
+      {
+        "segment_id": "window-4308dca602513542aee26d28",
+        "stage": "propositions",
+        "focus": null,
+        "cache_key": "ed134a5580fcaebf7bdeb78b8676348173789c676e6418a32348a44adde7275d",
+        "members": [
+          {
+            "id": "segment-29b1a14218b57e0265e1d4ab",
+            "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+            "start": 0,
+            "end": 2832
+          },
+          {
+            "id": "segment-349b935ff0e8839855833775",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 0,
+            "end": 276
+          },
+          {
+            "id": "segment-ff1d1165e926597024a8d5b5",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 276,
+            "end": 3416
+          },
+          {
+            "id": "segment-497cc23a209eb14fd30f7163",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 3416,
+            "end": 4098
+          },
+          {
+            "id": "segment-6e446a90fc050e3f810b719b",
+            "evidence_id": "E-7d3674715bb6963dd75f22c1",
+            "start": 0,
+            "end": 2306
+          },
+          {
+            "id": "segment-a26adcc611bddbab9d947f42",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 0,
+            "end": 1021
+          },
+          {
+            "id": "segment-d52a84afa5ea60c67abf849d",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 1021,
+            "end": 2514
+          },
+          {
+            "id": "segment-8d68663b546fca97c5be070f",
+            "evidence_id": "E-c1bc65ad939838ad838b5871",
+            "start": 0,
+            "end": 2250
+          },
+          {
+            "id": "segment-b3e025089411138cf5033cb7",
+            "evidence_id": "E-c23c6e510e076592e4d7d0df",
+            "start": 0,
+            "end": 3252
+          }
+        ],
+        "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+        "start": 0,
+        "end": 17252,
+        "deterministic": "COMPLETE",
+        "model": "PROVIDER_BLOCKED",
+        "attempts": 0,
+        "source_anchors": 154,
+        "known_entities_selected": 11,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 19455,
+        "proposed_items": 0,
+        "request_bytes": 42179,
+        "reserved_tokens_per_attempt": 80343,
+        "output_tokens": 32768,
+        "context_token_estimate": 57067
+      },
+      {
+        "segment_id": "window-c622208dbe61530e059712ad",
+        "stage": "propositions",
+        "focus": null,
+        "cache_key": "bfb077ce916b6d599e55f07ceb6f0d80a06bf1d4f4d016240ce429ed187e2193",
+        "members": [
+          {
+            "id": "segment-f578576de109546dea482132",
+            "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+            "start": 0,
+            "end": 1505
+          },
+          {
+            "id": "segment-f4933ce350326055ba46f62a",
+            "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+            "start": 0,
+            "end": 3337
+          },
+          {
+            "id": "segment-d198bf2293a41faac7da78ab",
+            "evidence_id": "E-6b80996b8f02b95aeda17768",
+            "start": 0,
+            "end": 2066
+          },
+          {
+            "id": "segment-2d1b4461e31f335bf1449c56",
+            "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+            "start": 0,
+            "end": 2061
+          },
+          {
+            "id": "segment-fbbce1a8e43d0a0357e38e61",
+            "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+            "start": 0,
+            "end": 2865
+          },
+          {
+            "id": "segment-96e79507ac0e036539fa5718",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 0,
+            "end": 599
+          },
+          {
+            "id": "segment-e9bded207146aa7a33a677e9",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 599,
+            "end": 2967
+          }
+        ],
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "start": 0,
+        "end": 14801,
+        "deterministic": "COMPLETE",
+        "model": "PROVIDER_BLOCKED",
+        "attempts": 0,
+        "source_anchors": 132,
+        "known_entities_selected": 4,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 17343,
+        "proposed_items": 0,
+        "request_bytes": 37046,
+        "reserved_tokens_per_attempt": 75128,
+        "output_tokens": 32768,
+        "context_token_estimate": 54460
+      },
+      {
+        "segment_id": "window-4308dca602513542aee26d28",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "b235d6332f9f57beebd9fa30076ab36a37a51ae08e5b6179ee748ce97eef0930",
+        "members": [
+          {
+            "id": "segment-29b1a14218b57e0265e1d4ab",
+            "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+            "start": 0,
+            "end": 2832
+          },
+          {
+            "id": "segment-349b935ff0e8839855833775",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 0,
+            "end": 276
+          },
+          {
+            "id": "segment-ff1d1165e926597024a8d5b5",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 276,
+            "end": 3416
+          },
+          {
+            "id": "segment-497cc23a209eb14fd30f7163",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 3416,
+            "end": 4098
+          },
+          {
+            "id": "segment-6e446a90fc050e3f810b719b",
+            "evidence_id": "E-7d3674715bb6963dd75f22c1",
+            "start": 0,
+            "end": 2306
+          },
+          {
+            "id": "segment-a26adcc611bddbab9d947f42",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 0,
+            "end": 1021
+          },
+          {
+            "id": "segment-d52a84afa5ea60c67abf849d",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 1021,
+            "end": 2514
+          },
+          {
+            "id": "segment-8d68663b546fca97c5be070f",
+            "evidence_id": "E-c1bc65ad939838ad838b5871",
+            "start": 0,
+            "end": 2250
+          },
+          {
+            "id": "segment-b3e025089411138cf5033cb7",
+            "evidence_id": "E-c23c6e510e076592e4d7d0df",
+            "start": 0,
+            "end": 3252
+          }
+        ],
+        "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+        "start": 0,
+        "end": 17252,
+        "deterministic": "COMPLETE",
+        "model": "PROVIDER_BLOCKED",
+        "attempts": 0,
+        "source_anchors": 154,
+        "known_entities_selected": 11,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 19455,
+        "proposed_items": 0,
+        "request_bytes": 40690,
+        "reserved_tokens_per_attempt": 50402,
+        "output_tokens": 7168,
+        "context_token_estimate": 29297
+      },
+      {
+        "segment_id": "window-c622208dbe61530e059712ad",
+        "stage": "relationships",
+        "focus": null,
+        "cache_key": "b30bc61cf5a04b2bd9275efd2927a0bd5eb9df3a10d770fafacd813bfa3c9077",
+        "members": [
+          {
+            "id": "segment-f578576de109546dea482132",
+            "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+            "start": 0,
+            "end": 1505
+          },
+          {
+            "id": "segment-f4933ce350326055ba46f62a",
+            "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+            "start": 0,
+            "end": 3337
+          },
+          {
+            "id": "segment-d198bf2293a41faac7da78ab",
+            "evidence_id": "E-6b80996b8f02b95aeda17768",
+            "start": 0,
+            "end": 2066
+          },
+          {
+            "id": "segment-2d1b4461e31f335bf1449c56",
+            "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+            "start": 0,
+            "end": 2061
+          },
+          {
+            "id": "segment-fbbce1a8e43d0a0357e38e61",
+            "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+            "start": 0,
+            "end": 2865
+          },
+          {
+            "id": "segment-96e79507ac0e036539fa5718",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 0,
+            "end": 599
+          },
+          {
+            "id": "segment-e9bded207146aa7a33a677e9",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 599,
+            "end": 2967
+          }
+        ],
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "start": 0,
+        "end": 14801,
+        "deterministic": "COMPLETE",
+        "model": "PROVIDER_BLOCKED",
+        "attempts": 0,
+        "source_anchors": 132,
+        "known_entities_selected": 4,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 17343,
+        "proposed_items": 0,
+        "request_bytes": 35552,
+        "reserved_tokens_per_attempt": 45176,
+        "output_tokens": 7168,
+        "context_token_estimate": 26684
+      },
+      {
+        "segment_id": "window-4308dca602513542aee26d28",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "5d8bf02ed39c3668acdd38dc5d6f8b0be2731d33534597bdc569d1c7a7ed6e4e",
+        "members": [
+          {
+            "id": "segment-29b1a14218b57e0265e1d4ab",
+            "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+            "start": 0,
+            "end": 2832
+          },
+          {
+            "id": "segment-349b935ff0e8839855833775",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 0,
+            "end": 276
+          },
+          {
+            "id": "segment-ff1d1165e926597024a8d5b5",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 276,
+            "end": 3416
+          },
+          {
+            "id": "segment-497cc23a209eb14fd30f7163",
+            "evidence_id": "E-dcf35e39f059b967c7e4e114",
+            "start": 3416,
+            "end": 4098
+          },
+          {
+            "id": "segment-6e446a90fc050e3f810b719b",
+            "evidence_id": "E-7d3674715bb6963dd75f22c1",
+            "start": 0,
+            "end": 2306
+          },
+          {
+            "id": "segment-a26adcc611bddbab9d947f42",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 0,
+            "end": 1021
+          },
+          {
+            "id": "segment-d52a84afa5ea60c67abf849d",
+            "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+            "start": 1021,
+            "end": 2514
+          },
+          {
+            "id": "segment-8d68663b546fca97c5be070f",
+            "evidence_id": "E-c1bc65ad939838ad838b5871",
+            "start": 0,
+            "end": 2250
+          },
+          {
+            "id": "segment-b3e025089411138cf5033cb7",
+            "evidence_id": "E-c23c6e510e076592e4d7d0df",
+            "start": 0,
+            "end": 3252
+          }
+        ],
+        "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+        "start": 0,
+        "end": 17252,
+        "deterministic": "COMPLETE",
+        "model": "PROVIDER_BLOCKED",
+        "attempts": 0,
+        "source_anchors": 154,
+        "known_entities_selected": 11,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 19455,
+        "proposed_items": 0,
+        "request_bytes": 43521,
+        "reserved_tokens_per_attempt": 79202,
+        "output_tokens": 32768,
+        "context_token_estimate": 56497,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      },
+      {
+        "segment_id": "window-c622208dbe61530e059712ad",
+        "stage": "propositions",
+        "focus": "quantities",
+        "cache_key": "47c77cdb825eda94c39382f27087ebbd01b6d4be5686d44a3919425b22065c23",
+        "members": [
+          {
+            "id": "segment-f578576de109546dea482132",
+            "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+            "start": 0,
+            "end": 1505
+          },
+          {
+            "id": "segment-f4933ce350326055ba46f62a",
+            "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+            "start": 0,
+            "end": 3337
+          },
+          {
+            "id": "segment-d198bf2293a41faac7da78ab",
+            "evidence_id": "E-6b80996b8f02b95aeda17768",
+            "start": 0,
+            "end": 2066
+          },
+          {
+            "id": "segment-2d1b4461e31f335bf1449c56",
+            "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+            "start": 0,
+            "end": 2061
+          },
+          {
+            "id": "segment-fbbce1a8e43d0a0357e38e61",
+            "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+            "start": 0,
+            "end": 2865
+          },
+          {
+            "id": "segment-96e79507ac0e036539fa5718",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 0,
+            "end": 599
+          },
+          {
+            "id": "segment-e9bded207146aa7a33a677e9",
+            "evidence_id": "E-68372f45e47f35c825c87d36",
+            "start": 599,
+            "end": 2967
+          }
+        ],
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "start": 0,
+        "end": 14801,
+        "deterministic": "COMPLETE",
+        "model": "PROVIDER_BLOCKED",
+        "attempts": 0,
+        "source_anchors": 132,
+        "known_entities_selected": 4,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 17343,
+        "proposed_items": 0,
+        "request_bytes": 42380,
+        "reserved_tokens_per_attempt": 78240,
+        "output_tokens": 32768,
+        "context_token_estimate": 56016,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
+      }
+    ],
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "deterministic_characters": 36085,
+    "model_characters": 0
+  },
+  "scientific_coverage": {
+    "basis": "Literal source-cue/quantity inventory plus independent proposal validation; NOT comprehensive scientific recall or expert gold",
+    "read_content": {
+      "source_characters": 36085,
+      "segmented_characters": 36085,
+      "units": 13,
+      "segments": 19
+    },
+    "scientific_content_identified": {
+      "candidate_units": 15,
+      "literal_quantity_occurrences": 122,
+      "numeric_pdf_table_cells": 10
+    },
+    "scientific_information_structured": {
+      "entities:SOURCE_SUPPORTED": 11,
+      "entities:REJECTED": 1,
+      "statements:UNRESOLVED": 3,
+      "statements:SOURCE_SUPPORTED": 37,
+      "statements:REJECTED": 2
+    },
+    "source_supported_relationships": 0,
+    "unresolved": 3,
+    "rejected": 3,
+    "table_quantity_candidates": 0,
+    "pdf_table_quantity_inventory": [
+      {
+        "table_record_id": "table-record-fc0ab6525dfa7cf93e9c",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 5,
+        "column_index": 1,
+        "original_expression": "15.14",
+        "original_column_header": "Values",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Nominal Voltage (V)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "15.14"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "11.4"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-fc0ab6525dfa7cf93e9c",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 5,
+        "column_index": 2,
+        "original_expression": "11.4",
+        "original_column_header": "",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Nominal Voltage (V)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "15.14"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "11.4"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-bfad153ec9851372749f",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 6,
+        "column_index": 1,
+        "original_expression": "11.88",
+        "original_column_header": "Values",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Discharge Capacity (Ah)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "11.88"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "8.5"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-bfad153ec9851372749f",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 6,
+        "column_index": 2,
+        "original_expression": "8.5",
+        "original_column_header": "",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Discharge Capacity (Ah)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "11.88"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "8.5"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-6b0e1f26d33818eb0ad8",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 7,
+        "column_index": 1,
+        "original_expression": "179.86",
+        "original_column_header": "Values",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Discharge Energy (Wh)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "179.86"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "97"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-6b0e1f26d33818eb0ad8",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 7,
+        "column_index": 2,
+        "original_expression": "97",
+        "original_column_header": "",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Discharge Energy (Wh)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "179.86"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "97"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-00f24f73295bda662826",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 10,
+        "column_index": 1,
+        "original_expression": "647.5",
+        "original_column_header": "Values",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Stored Energy (kJ)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "647.5"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "350"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-00f24f73295bda662826",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 10,
+        "column_index": 2,
+        "original_expression": "350",
+        "original_column_header": "",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Stored Energy (kJ)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "647.5"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "350"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-7e059aa26a6bb933c0cd",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 11,
+        "column_index": 1,
+        "original_expression": "900-600",
+        "original_column_header": "Values",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Specific Energy (Wh/kg)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "900-600"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "285.3"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      },
+      {
+        "table_record_id": "table-record-7e059aa26a6bb933c0cd",
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 11,
+        "table_index": 5,
+        "row_index": 11,
+        "column_index": 2,
+        "original_expression": "285.3",
+        "original_column_header": "",
+        "header_unit_candidate": null,
+        "original_row": [
+          {
+            "column_index": 0,
+            "header": "Characteristics",
+            "original_value": "Specific Energy (Wh/kg)"
+          },
+          {
+            "column_index": 1,
+            "header": "Values",
+            "original_value": "900-600"
+          },
+          {
+            "column_index": 2,
+            "header": null,
+            "original_value": "285.3"
+          }
+        ],
+        "table_bbox": [
+          108.43299865722656,
+          197.61102294921875,
+          503.5670635516827,
+          345.4570007324219
+        ],
+        "state": "SOURCE_CELL_RETAINED_SEMANTIC_SCOPE_UNRESOLVED",
+        "scientific_execution_asserted": false
+      }
+    ],
+    "native_quantity_representation_deferred": 0,
+    "detected_quantity_occurrences_structured": 0,
+    "literal_proposition_candidates": [
+      {
+        "id": "anchor-b6f2eb26539d3a0ccb1f",
+        "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+        "page": 1,
+        "start": 1803,
+        "end": 1975,
+        "quote": "Using existing models and correlations for ﬁres, the measured ﬁre characteristics are\nextrapolated to laptop ﬁres on a vehicle the approximate size of the Orion spacecraft.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-18bbf817c07a729ea77e",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "page": 2,
+        "start": 1396,
+        "end": 1543,
+        "quote": "These gases can be fatal if inhaled in large quantities, primarily a concern to spacecraft crew as\nthese may be asphyxiant or can cause anoxia [2].",
+        "proposal_ids": [
+          "proposal-264c9c8da7f9a456f5e5f4e4"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-e441d72fa60dc6d5ceeb",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "page": 2,
+        "start": 1780,
+        "end": 1875,
+        "quote": "In addition, other gases may form such as hydrogen ﬂuoride (HF), and hydrogen cyanide (HCN)[2].",
+        "proposal_ids": [
+          "proposal-37a860c5f73fb5c48d1ec49f"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-7186cf48e7559e349d39",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "page": 2,
+        "start": 2005,
+        "end": 2161,
+        "quote": "There have been numerous studies of the failure modes and performance characteristics of a cylindrical or pouch\nbattery during a thermal run away event [3].",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-2b519f2ddbdc5339408b",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "page": 2,
+        "start": 2810,
+        "end": 2934,
+        "quote": "The studies examined laptops that the Orion Program identiﬁed as the largest stored-energy source that may be found\nonboard.",
+        "proposal_ids": [
+          "proposal-264ddc7337694f3fbdecaa37"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-268e66d24a0bd36ce987",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "page": 2,
+        "start": 3058,
+        "end": 3222,
+        "quote": "This paper focuses on characterizing the ﬁre from a commercial Dell XPS laptop and Surface Pro tablet, that\nwas conducted at the NASA White Sands Test Facility [8].",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-2ca5aa394322e1c5744c",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "page": 2,
+        "start": 3223,
+        "end": 3415,
+        "quote": "Measurements of ﬂame height were extracted from the\ncombustion process and used to quantify the maximum heat release, total heat release and centerline temperature using\nHeskestad’s equations.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-e3fabb789f72fb295f45",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "page": 2,
+        "start": 3445,
+        "end": 3577,
+        "quote": "Figure 1 shows a general schematic of the experimental apparatus used to perform battery ﬁre tests inside a 1.4 m3\n(50 ft3) chamber.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-1c2f25a268ab6ec0590c",
+        "evidence_id": "E-7d3674715bb6963dd75f22c1",
+        "page": 3,
+        "start": 655,
+        "end": 767,
+        "quote": "Two “sparkers” were used to ignite the gases that have\nbeen vented out or produced during the pyrolysis process.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-98d3180a28d296fbe0f9",
+        "evidence_id": "E-7d3674715bb6963dd75f22c1",
+        "page": 3,
+        "start": 1593,
+        "end": 1786,
+        "quote": "Pixel data was obtained from the images and converted into real dimensions; the scale factor\nused was found by measuring the depth from one side of a laptop and divided by the number of pixels.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-0fd073ee5a41d0ca241e",
+        "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+        "page": 4,
+        "start": 1714,
+        "end": 1840,
+        "quote": "These gases are ignited\nusing a sparker and the coil was shut off when the laptop was uniformly ignited over the exposed area.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-56b6e38efb5036100ced",
+        "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+        "page": 4,
+        "start": 2229,
+        "end": 2372,
+        "quote": "The released smoke is ignited and results in an aggressive ﬁreball (\"thermal\"[10])\noutburst 2 seconds after the end of the venting period (Fig.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-db416e8dfa20ee5ccedd",
+        "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+        "page": 4,
+        "start": 2378,
+        "end": 2456,
+        "quote": "The white smoke is also observed midway during the\nﬁre suppression phase (Fig.",
+        "proposal_ids": [
+          "proposal-68a8b7807154d64f77a33d67"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-f32d0c352e740a9dcd48",
+        "evidence_id": "E-c1bc65ad939838ad838b5871",
+        "page": 5,
+        "start": 1305,
+        "end": 1447,
+        "quote": "A visual observation of the cells after combustion shows the exterior packaging foil of the battery pack and the\npouch cells completely burnt.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-4f30f2f730e6f463279d",
+        "evidence_id": "E-c1bc65ad939838ad838b5871",
+        "page": 5,
+        "start": 1448,
+        "end": 1545,
+        "quote": "Molten case material was also emitted in the Dell more than what was observed in the\nSurface Pro.",
+        "proposal_ids": [
+          "proposal-b1928eedd1f0f9d69388c6f5"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-ff392d03b1c1474ce476",
+        "evidence_id": "E-c1bc65ad939838ad838b5871",
+        "page": 5,
+        "start": 1546,
+        "end": 1674,
+        "quote": "In addition, the smoke may be due to the decomposition of the plastic case and a contribution from the\npouch cell material (i.e.",
+        "proposal_ids": [
+          "proposal-4f723dd3db4fbd0b82c71b04"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-ebeabc30877fdf8f8a09",
+        "evidence_id": "E-c1bc65ad939838ad838b5871",
+        "page": 5,
+        "start": 1693,
+        "end": 1836,
+        "quote": "Similar heating behavior was observed with the Surface Pro, however, the\nﬁre was not suppressed and lasted for 8 minutes of continuous burning.",
+        "proposal_ids": [
+          "proposal-bbd000c9bda0938fb54bb3c2"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-c4b12a63c97436ec2ed0",
+        "evidence_id": "E-c1bc65ad939838ad838b5871",
+        "page": 5,
+        "start": 1837,
+        "end": 1906,
+        "quote": "A large amount of white smoke and a large\nﬁre size was also observed.",
+        "proposal_ids": [
+          "proposal-cb73560e846bdf5842d5ae52"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-5ec4c20a8e7d61e4a97d",
+        "evidence_id": "E-c23c6e510e076592e4d7d0df",
+        "page": 6,
+        "start": 466,
+        "end": 535,
+        "quote": "The three stages that can observed in the plot are summarized in Fig.",
+        "proposal_ids": [
+          "proposal-ba0721bc4cc12ca714fd1f2c"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-dbef0fbe0f311605e4ba",
+        "evidence_id": "E-c23c6e510e076592e4d7d0df",
+        "page": 6,
+        "start": 755,
+        "end": 868,
+        "quote": "In addition, the temperature jump\nmay also be associated to the venting and decomposition period in a pouch cell.",
+        "proposal_ids": [
+          "proposal-3a9d50130faa638c96868e2d"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-55acf4efe4efb7789459",
+        "evidence_id": "E-c23c6e510e076592e4d7d0df",
+        "page": 6,
+        "start": 1298,
+        "end": 1365,
+        "quote": "6), which is higher than what is observed in 18650 and pouch cells.",
+        "proposal_ids": [
+          "proposal-6b781e66f01bcb1e683ac316"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-db664e272bc550016c34",
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "page": 7,
+        "start": 149,
+        "end": 314,
+        "quote": "A fourth outburst was observed during the ﬁre suppression and caused the\nﬂame to reach a maximum of 0.65 m (319.2 s) as shown by the secondary outburst peak, in Fig.",
+        "proposal_ids": [
+          "proposal-bc1f41674806487c0e736472"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-68ec0fd19b1ae1c4f4b7",
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "page": 7,
+        "start": 527,
+        "end": 625,
+        "quote": "Water was not used to extinguish the\nﬁre during the period that the combustion event was observed.",
+        "proposal_ids": [
+          "proposal-eccad4e1dddfad72fa1d36b0"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-5cb4d4d4c950c79b070a",
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "page": 7,
+        "start": 626,
+        "end": 763,
+        "quote": "Flame height measurements during the ﬁrst outburst\nare obscured by the amount of white smoke released during the event by ±2 in (0.05 m).",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-3c097ebef51a95843e7e",
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "page": 7,
+        "start": 906,
+        "end": 1210,
+        "quote": "285\n290\n295\n300\n305\n310\n315\nTime (s)\n0\n0.1\n0.2\n0.3\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\nFlame Height (m)\nOutburst #1\nAbatement\nStable \nCombustion\nOutburst #2\nFire \nSuppression  (PFE)\nFigure 7: Measured ﬂame height for the Dell XPS as a function of time divided into various stages to describe the\nburning phenomena.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-afad7f2ce5d22bad9d40",
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "page": 7,
+        "start": 1270,
+        "end": 1452,
+        "quote": "550\n600\n650\n700\n750\n800\n850\n900\nTime (s)\n0\n0.1\n0.2\n0.3\n0.4\n0.5\n0.6\n0.7\n0.8\n0.9\n1\nFlame Height (m)\nOutburst\nFigure 8: Measured ﬂame height as a function of time for the Surface Pro 5.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-5da83a3ba5cadc659a76",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 0,
+        "end": 183,
+        "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nThe ﬂame width is measured by analyzing the extracted images from the video.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-be4d30824699333fecd7",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 361,
+        "end": 526,
+        "quote": "The outburst are described in Dinenno et al., as a thermal or \"ﬁreball\" [2, 10], which occur\nfrom a sudden release of a ﬁnite volume of gaseous fuel that is ignited.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-61cd6d2909c3c90d3e83",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 1571,
+        "end": 1753,
+        "quote": "Preliminary measurements of heat\nrelease have been made in this paper using the WSTF data [8] as an effort to understand the impact that a ﬁre would\nhave inside a spacecraft vehicle.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-f6f34b8efecaecc694f1",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 1754,
+        "end": 1848,
+        "quote": "In addition, very little data is available on heat release measurements made on laptops\nunits.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-f4214d9f421d8e29cba0",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 1849,
+        "end": 1998,
+        "quote": "The cone calorimeter is most commonly used worldwide for measuring heat release for many materials and are\ndescribed in ASTM E1354 and ISO 5660 [14].",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-78c2572d4e128062d8a1",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 1999,
+        "end": 2122,
+        "quote": "This work has measured heat release from a Dell 97 Wh laptop and\nSurface Pro 5 42 Wh ﬁre using measurements of ﬂame height.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-1266ab7805ad05b2b0d9",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 2123,
+        "end": 2443,
+        "quote": "The Heskestad [15] correlation was used to calculate the\nenergy release rate, ˙Q (kW) and is typically used to characterize liquid pool ﬁres with a deﬁned ﬁre source diameter,\nD (m) and ﬂame height, HF(m),\nHf = 0.235 ˙Q2/5 −1.02D\n(1)\nThe heat release is based on ﬂame height measurements and on the diameter of the ﬂame.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-9b1d7e42294939bc59af",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 2444,
+        "end": 2607,
+        "quote": "Figure 10 and 11 shows the\nmeasured heat release proﬁles as a function of time.Figure 10 shows the ﬁrst maximum HRR peak is observed during\nthe ﬁrst outburst (Fig.",
+        "proposal_ids": [
+          "proposal-688be8e017c19f2543e5f78a"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-673ddcb359d886df5f6b",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 2608,
+        "end": 2813,
+        "quote": "4a) event, rising quickly up to 110 kW (t=281 s) and rapidly decaying thereafter; the ﬁst heat\nrelease outburst occurs at a temperature of 900 K based on the surface temperature measured on each cell (Fig.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-72ef4e67d675d53357dc",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "page": 8,
+        "start": 2980,
+        "end": 3121,
+        "quote": "A second heat release peak is observed at 75 kW (t=286.9 s), and following\nthat at 46 kW (t=294.8 s) peak during stable combustion abatement.",
+        "proposal_ids": [
+          "proposal-e563e0dc1e1f88dfd35c6caa"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-48cce29203fcbb012335",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 0,
+        "end": 144,
+        "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\nobserved after introducing the water.",
+        "proposal_ids": [
+          "proposal-e53bc9623cdae1e921dc3d6e"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-2e37983eb68ce416faa1",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 212,
+        "end": 323,
+        "quote": "A maximum\nheat release rate value is observed above 80 kW during the ﬁrst outburst and rapidly decays to 50 kW.",
+        "proposal_ids": [
+          "proposal-3218d1a98ba9465b629f0fe9"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-fa78b2347f3f09ba29d5",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 373,
+        "end": 575,
+        "quote": "During the major heat release outbursts, preliminary measurements on toxic gases\nhave been observed, such as, HCL (max 30ppm), CO (max 350 ppm), CO2 (0.5% vol), and HCN (max 2.2 ppm) have\nbeen measured.",
+        "proposal_ids": [
+          "proposal-c1bd349a5b582c362dd63fed"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-93143d3dc9513b74ebcc",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 666,
+        "end": 854,
+        "quote": "[16, 17]\nhas performed a study with two Lenovo laptop battery packs, each at a nominal capacity of 16.8 Ah (each battery pack\nwith 6 cells); the heat release measured was between 35-57 kW.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-b79c2d4dffa2f959cecc",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 1092,
+        "end": 1178,
+        "quote": "[18] has measured a maximum of 8 kW in heat\nrelease using various calorimetry methods.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-62808b761fd6b6af9531",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 1179,
+        "end": 1267,
+        "quote": "A typical heat release value for a 2.9 Ah (11 Wh) pouch cell was measured\nby Ribiere et.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-2148cc52fdab1ecfaf8a",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 1316,
+        "end": 1420,
+        "quote": "The heat release measurements were done with an\noxygen consumption method, which based on Ribiere et al.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-29c0fe55964b0564854d",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 1496,
+        "end": 1581,
+        "quote": "[20] has measured heat release of a pallet of laptops which included their packaging.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-2b145606d2f8ed888460",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "page": 9,
+        "start": 1743,
+        "end": 1975,
+        "quote": "285\n290\n295\n300\n305\n310\n315\n320\n325\nTime(s)\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n110\n Heat Release Rate (kW)\n100 % SOC, Total Heat Release: 338.4 kJ\nFigure 10: Heat release rate and total heat release are measured using Heskestad et al.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-58b930a6bcfe886c7016",
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "page": 10,
+        "start": 0,
+        "end": 333,
+        "quote": "49th International Conference on Environmental Systems\nICES-2019-188\n7-11 July 2019, Boston, Massachusetts\n550\n600\n650\n700\n750\n800\n850\n900\nTime(s)\n0\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n110\n Heat Release Rate (kW)\n100 % SOC, Total Heat Release: 960 kJ\nFigure 11: Heat release rate and total heat release are measured using Heskestad et al.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-1223620a7a099461feaa",
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "page": 10,
+        "start": 379,
+        "end": 474,
+        "quote": "Figure 12 summarizes typical ﬂames with corresponding measured ﬂame height versus heat release.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-b0995dd0ab28185675b3",
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "page": 10,
+        "start": 570,
+        "end": 765,
+        "quote": "The deviation of the ﬂame height\nmeasurement grows with increasing heat release because the larger ﬂames ﬂicker more, yielding and increase in frame-\nto-frame variation in the ﬂame (shown as Fig.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-2e00a3efbed263690160",
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "page": 10,
+        "start": 771,
+        "end": 886,
+        "quote": "A difference in ± 30 kW was observed for ﬁres with longer plumes\nand less with steadier ﬁres ± 10 kW (shown in Fig.",
+        "proposal_ids": [
+          "proposal-23f2c6697785988da4128e2b"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-f07c9271168dd2437f39",
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "page": 10,
+        "start": 1200,
+        "end": 1295,
+        "quote": "The calculated total heat release was measured by integrating the heat release proﬁles, in Fig.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-4aed81f786be92806b5d",
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "page": 10,
+        "start": 1351,
+        "end": 1582,
+        "quote": "The total heat release from the laptop was measured to be 338.2 kJ and 960 kJ for\nthe tablet, showing that the Surface Pro had a higher heat release due to a higher amount of material getting consumed\nand no water being introduced.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-e7680eb428dacfcc9bff",
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "page": 10,
+        "start": 1583,
+        "end": 1731,
+        "quote": "Further work using various calorimetry measurements will be done to quantify and\nvalidate the total heat release measured in this preliminary study.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-3f9c611f7c57d980c8db",
+        "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+        "page": 11,
+        "start": 373,
+        "end": 474,
+        "quote": "However, the Dell XPS was suppressed with water, which may be responsible for\nthe lower heat release.",
+        "proposal_ids": [
+          "proposal-da50568833e1d60c0005bd69"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-2fba6bc258d9bb1636d6",
+        "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+        "page": 11,
+        "start": 765,
+        "end": 815,
+        "quote": "The total heat release measured was\n3,470 kJ (i.e.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-83894d517aa68e1d757e",
+        "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+        "page": 11,
+        "start": 1062,
+        "end": 1135,
+        "quote": "[19] measured a lower total heat release than at a lower state of charge.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-04fa567b0043b737b0f5",
+        "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+        "page": 11,
+        "start": 2093,
+        "end": 2169,
+        "quote": "The highest temperature observed inside the testing enclosure was T∞= 330 K.",
+        "proposal_ids": [
+          "proposal-02cd9e12f507248798966406"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-35aa7424db31da965862",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 516,
+        "end": 598,
+        "quote": "Future work will investigate and measure ﬂame temperatures with pyrometry\nmethods.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-adc8d2a67e18d544ce11",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 614,
+        "end": 796,
+        "quote": "Experimental data from a test conducted at WSTF was used as an initial effort to characterize the ﬁre behavior\nin commercial laptops (DELL XPS 15 at 95 Wh and the Surface Pro 42 Wh).",
+        "proposal_ids": [
+          "proposal-8ffea639d6108312fc05c73f"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-bf16f237d154feeddeb1",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 797,
+        "end": 890,
+        "quote": "The test was conducted inside of a\n1.4 m3 (50 ft3) chamber to contain combustion by-products.",
+        "proposal_ids": [
+          "proposal-016fafdb1417fe32e92827bd"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-8296947fdfcffd42af84",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 891,
+        "end": 985,
+        "quote": "Digital still frames were extracted and were used for\nmeasurements of height and heat release.",
+        "proposal_ids": [
+          "proposal-dddb77e845332d16b4e0d120"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-0719dadaf73f4270613d",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 986,
+        "end": 1149,
+        "quote": "The height measurements were then used to calculate the maximum heat\nrelease using Heskestad correlations, total heat release, and the centerline ﬂame temperature.",
+        "proposal_ids": [
+          "proposal-724a7ae436b302196048d7db"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-4eae29cac752a09af957",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 1819,
+        "end": 2001,
+        "quote": "The temperature\nproﬁle also revealed thermal onset temperatures, between 513.4-600 K, higher than typically observed in the thermal\nrunaway processes for 18650 or pouch li-ion cells.",
+        "proposal_ids": [
+          "proposal-b4cbb928ec99e45e522c8ece",
+          "proposal-dee4b3b7a217133bd2102542"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-fefae3847be503596ba1",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 2002,
+        "end": 2175,
+        "quote": "Using experimental measurements of ﬂame heights the heat release rate and total heat release was approximated\nwith the Heskestad correlations for the two commercial laptops.",
+        "proposal_ids": [
+          "proposal-278be04ed034db31ea4560d8"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-704cf47c7223ed6c4d60",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 2176,
+        "end": 2274,
+        "quote": "A heat release between 50-110 kW was observed\nduring the burning process of the laptop and tablet.",
+        "proposal_ids": [
+          "proposal-337964bc6f72b94cb9d624c4",
+          "proposal-31f74d8f626ff0dbdecebdca"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-1d1c14018ec61679e61f",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 2474,
+        "end": 2673,
+        "quote": "The total energy release associated with the combustion was computed based on experimental\nmeasurements of ﬂame height and found to be 338.4 kJ for the Dell XPS and 960 kJ for the Surface Pro tablet.",
+        "proposal_ids": [
+          "proposal-ad7077bfe82bbdad53a742c8"
+        ],
+        "state": "RETAINED_STATEMENT"
+      },
+      {
+        "id": "anchor-5654c9194af1e2537169",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "page": 12,
+        "start": 2824,
+        "end": 2966,
+        "quote": "Future work will focus on alternative ignition methods and calorimetry methods\nin order to validate the data that was presented in this paper.",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "anchor-b542f21b7ac59b2783a9",
+        "evidence_id": "E-45a98eb184eab6e8fc96fdbd",
+        "page": 13,
+        "start": 681,
+        "end": 824,
+        "quote": "5 “US Consumer Products Safety Commission, HP Expands Recall of Notebook Computer Batteries Due to Fire\nHazard,Release 10-240, May 21, 2010,” .",
+        "proposal_ids": [],
+        "state": "NOT_STRUCTURED"
+      }
+    ],
+    "unstructured_proposition_candidates": 38,
+    "model_proposed_items": 12,
+    "inaccessible_content": [
+      {
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 3,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 4,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 5,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 6,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      },
+      {
+        "input_sha256": "6112bfa713c9df8936f79b933e1262706fee4e7cdae7c2b5bfb9d31611f2726a",
+        "page": 10,
+        "kind": "IMAGE_CONTENT_NOT_INTERPRETED",
+        "reason": "Text and detected table cells only; no OCR or figure interpretation"
+      }
+    ],
+    "source_units": [
+      {
+        "id": "coverage-20318ddb2e0259a0056c",
+        "evidence_id": "E-0f305a14d05ae5e0e9a6acd2",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 1,
+        "start": 0,
+        "end": 2832,
+        "section": "Characterization of Laptop Fires in Spacecraft",
+        "scientific_cues": [
+          "Test",
+          "results",
+          "Test",
+          "measured"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "7A",
+            "expression": "7",
+            "unit": "A",
+            "start": 2825,
+            "end": 2827,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 1
+        },
+        "proposal_ids": [
+          "proposal-f6a9eef0acdae64916ae4c4e"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-0caec0792da18fe826b5",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 2,
+        "start": 276,
+        "end": 3416,
+        "section": "I.\nIntroduction",
+        "scientific_cues": [
+          "may",
+          "may",
+          "run",
+          "may",
+          "Test",
+          "Measurements"
+        ],
+        "quantity_inventory": [],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 3
+        },
+        "proposal_ids": [
+          "proposal-df35ed24fe7b654bc76e7caa",
+          "proposal-2c175f9716de0c0732c97780",
+          "proposal-264c9c8da7f9a456f5e5f4e4",
+          "proposal-37a860c5f73fb5c48d1ec49f",
+          "proposal-264ddc7337694f3fbdecaa37"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-a7cddc468ed58ceeea1f",
+        "evidence_id": "E-dcf35e39f059b967c7e4e114",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 2,
+        "start": 3416,
+        "end": 4098,
+        "section": "II.\nExperimental Description",
+        "scientific_cues": [
+          "tests"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "1.4 m3",
+            "expression": "1.4",
+            "unit": "m3",
+            "start": 3553,
+            "end": 3559,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "11.4 V",
+            "expression": "11.4",
+            "unit": "V",
+            "start": 3659,
+            "end": 3665,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "15.14 V",
+            "expression": "15.14",
+            "unit": "V",
+            "start": 3736,
+            "end": 3743,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "100%",
+            "expression": "100",
+            "unit": "%",
+            "start": 4040,
+            "end": 4044,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4
+        },
+        "proposal_ids": [
+          "proposal-df35ed24fe7b654bc76e7caa",
+          "proposal-2c175f9716de0c0732c97780",
+          "proposal-5e8d383fefe7d0b45569b440",
+          "proposal-e87102e06a187a80899fd58d"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-820277b7c45073339081",
+        "evidence_id": "E-7d3674715bb6963dd75f22c1",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 3,
+        "start": 0,
+        "end": 2306,
+        "section": "II.\nExperimental Description",
+        "scientific_cues": [
+          "ignite",
+          "ignition",
+          "measuring"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "1.4 m3",
+            "expression": "1.4",
+            "unit": "m3",
+            "start": 343,
+            "end": 349,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1000 W",
+            "expression": "1000",
+            "unit": "W",
+            "start": 647,
+            "end": 653,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.61 m",
+            "expression": "0.61",
+            "unit": "m",
+            "start": 912,
+            "end": 918,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.864 m",
+            "expression": "0.864",
+            "unit": "m",
+            "start": 932,
+            "end": 939,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "300-337.45 K",
+            "expression": "300-337.45",
+            "unit": "K",
+            "start": 1093,
+            "end": 1105,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4
+        },
+        "proposal_ids": [
+          "proposal-870ed80774933a96fee5861c",
+          "proposal-5e8d383fefe7d0b45569b440",
+          "proposal-9a8480130b9e234efcbd28b8",
+          "proposal-2d1a58816ad12ae139661ed6"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-0352044fe1252ee40dca",
+        "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 4,
+        "start": 0,
+        "end": 1021,
+        "section": "II.\nExperimental Description",
+        "scientific_cues": [
+          "test"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "300-330.4 K",
+            "expression": "300-330.4",
+            "unit": "K",
+            "start": 165,
+            "end": 176,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "approximately 1270 psia",
+            "expression": "approximately 1270",
+            "unit": "psia",
+            "start": 566,
+            "end": 589,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "REJECTED": 1,
+          "SOURCE_SUPPORTED": 4
+        },
+        "proposal_ids": [
+          "proposal-e14680273e648a4eb5765706",
+          "proposal-5e8d383fefe7d0b45569b440",
+          "proposal-3b83f37b98b4e5d839210b7a",
+          "proposal-c2c8e8a6d1e9e3c334395abf",
+          "proposal-66660cb7268c47a0d99afb44"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-fdf372a8b0fb8a489ae4",
+        "evidence_id": "E-6089d8c0bb27e503e9b211c8",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 4,
+        "start": 1021,
+        "end": 2514,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "Results",
+          "ignited",
+          "ignited",
+          "ignited",
+          "results",
+          "observed"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "about 180 s",
+            "expression": "about 180",
+            "unit": "s",
+            "start": 1346,
+            "end": 1357,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "about 6 s",
+            "expression": "about 6",
+            "unit": "s",
+            "start": 2218,
+            "end": 2227,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "2 seconds",
+            "expression": "2",
+            "unit": "seconds",
+            "start": 2321,
+            "end": 2330,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 1
+        },
+        "proposal_ids": [
+          "proposal-68a8b7807154d64f77a33d67"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-9d19a7b65f33685aa406",
+        "evidence_id": "E-c1bc65ad939838ad838b5871",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 5,
+        "start": 0,
+        "end": 2250,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "observation",
+          "observed",
+          "may",
+          "observed",
+          "observed"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "4 seconds",
+            "expression": "4",
+            "unit": "seconds",
+            "start": 816,
+            "end": 825,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "8 minutes",
+            "expression": "8",
+            "unit": "minutes",
+            "start": 1804,
+            "end": 1813,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 4
+        },
+        "proposal_ids": [
+          "proposal-b1928eedd1f0f9d69388c6f5",
+          "proposal-bbd000c9bda0938fb54bb3c2",
+          "proposal-cb73560e846bdf5842d5ae52",
+          "proposal-4f723dd3db4fbd0b82c71b04"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-62ed6c0e1500519c50dc",
+        "evidence_id": "E-c23c6e510e076592e4d7d0df",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 6,
+        "start": 0,
+        "end": 3252,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "observed",
+          "may",
+          "observed",
+          "Ignition",
+          "Ignition"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "6 as",
+            "expression": "6",
+            "unit": "as",
+            "start": 536,
+            "end": 540,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "about 318 s",
+            "expression": "about 318",
+            "unit": "s",
+            "start": 584,
+            "end": 595,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "415 K",
+            "expression": "415",
+            "unit": "K",
+            "start": 599,
+            "end": 604,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "403.15-438.15 K",
+            "expression": "403.15-438.15",
+            "unit": "K",
+            "start": 1009,
+            "end": 1024,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "513.4-\n600 K",
+            "expression": "513.4-\n600",
+            "unit": "K",
+            "start": 1251,
+            "end": 1263,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "6-36 s",
+            "expression": "6-36",
+            "unit": "s",
+            "start": 1422,
+            "end": 1428,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "513.4 K",
+            "expression": "513.4",
+            "unit": "K",
+            "start": 1476,
+            "end": 1483,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "943.4 K",
+            "expression": "943.4",
+            "unit": "K",
+            "start": 1487,
+            "end": 1494,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "600 K",
+            "expression": "600",
+            "unit": "K",
+            "start": 1535,
+            "end": 1540,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "800 K",
+            "expression": "800",
+            "unit": "K",
+            "start": 1544,
+            "end": 1549,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "36 s",
+            "expression": "36",
+            "unit": "s",
+            "start": 1553,
+            "end": 1557,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "326.2\nkJ",
+            "expression": "326.2",
+            "unit": "kJ",
+            "start": 1710,
+            "end": 1718,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "about 54.3 kW",
+            "expression": "about 54.3",
+            "unit": "kW",
+            "start": 1753,
+            "end": 1766,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "6 s",
+            "expression": "6",
+            "unit": "s",
+            "start": 1774,
+            "end": 1777,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "6 s",
+            "expression": "6",
+            "unit": "s",
+            "start": 2083,
+            "end": 2086,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "330 K",
+            "expression": "330",
+            "unit": "K",
+            "start": 2087,
+            "end": 2092,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "240 s",
+            "expression": "240",
+            "unit": "s",
+            "start": 2129,
+            "end": 2134,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "140 s",
+            "expression": "140",
+            "unit": "s",
+            "start": 2347,
+            "end": 2352,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "36 s",
+            "expression": "36",
+            "unit": "s",
+            "start": 2479,
+            "end": 2483,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "200 K",
+            "expression": "200",
+            "unit": "K",
+            "start": 2484,
+            "end": 2489,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.85 m",
+            "expression": "0.85",
+            "unit": "m",
+            "start": 2992,
+            "end": 2998,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "281.1 s",
+            "expression": "281.1",
+            "unit": "s",
+            "start": 3002,
+            "end": 3009,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.9 m",
+            "expression": "0.9",
+            "unit": "m",
+            "start": 3037,
+            "end": 3042,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "288.1 s",
+            "expression": "288.1",
+            "unit": "s",
+            "start": 3046,
+            "end": 3053,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.63 m",
+            "expression": "0.63",
+            "unit": "m",
+            "start": 3060,
+            "end": 3066,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "296.7 s",
+            "expression": "296.7",
+            "unit": "s",
+            "start": 3070,
+            "end": 3077,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.3 m",
+            "expression": "0.3",
+            "unit": "m",
+            "start": 3133,
+            "end": 3138,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "299-313 s",
+            "expression": "299-313",
+            "unit": "s",
+            "start": 3142,
+            "end": 3151,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 5
+        },
+        "proposal_ids": [
+          "proposal-df35ed24fe7b654bc76e7caa",
+          "proposal-2c175f9716de0c0732c97780",
+          "proposal-ba0721bc4cc12ca714fd1f2c",
+          "proposal-6b781e66f01bcb1e683ac316",
+          "proposal-3a9d50130faa638c96868e2d"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-9376b1cf23d4ebd93553",
+        "evidence_id": "E-bf4ca5ced33aa9e3bb781f34",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 7,
+        "start": 0,
+        "end": 1505,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "observed",
+          "observed",
+          "measurements",
+          "Measured",
+          "Measured"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "315-327 s",
+            "expression": "315-327",
+            "unit": "s",
+            "start": 137,
+            "end": 146,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.65 m",
+            "expression": "0.65",
+            "unit": "m",
+            "start": 249,
+            "end": 255,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "319.2 s",
+            "expression": "319.2",
+            "unit": "s",
+            "start": 257,
+            "end": 264,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.8 m",
+            "expression": "0.8",
+            "unit": "m",
+            "start": 439,
+            "end": 444,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.6 m",
+            "expression": "0.6",
+            "unit": "m",
+            "start": 471,
+            "end": 476,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "about 0.15 m",
+            "expression": "about 0.15",
+            "unit": "m",
+            "start": 496,
+            "end": 508,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.05 m",
+            "expression": "0.05",
+            "unit": "m",
+            "start": 755,
+            "end": 761,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.6 m",
+            "expression": "0.6",
+            "unit": "m",
+            "start": 1249,
+            "end": 1254,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2
+        },
+        "proposal_ids": [
+          "proposal-bc1f41674806487c0e736472",
+          "proposal-eccad4e1dddfad72fa1d36b0"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-cc80abafbad9c9ebeb7d",
+        "evidence_id": "E-ff07f1ce747dfc492d89ae4b",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 8,
+        "start": 0,
+        "end": 3337,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "measured",
+          "ignited",
+          "measurements",
+          "measurements",
+          "measuring",
+          "measured",
+          "measurements",
+          "measurements",
+          "measured",
+          "observed",
+          "measured",
+          "observed"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "over 0.9 m",
+            "expression": "over 0.9",
+            "unit": "m",
+            "start": 225,
+            "end": 235,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.2-0.65 m",
+            "expression": "0.2-0.65",
+            "unit": "m",
+            "start": 304,
+            "end": 314,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.7 m",
+            "expression": "0.7",
+            "unit": "m",
+            "start": 354,
+            "end": 359,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.8 m",
+            "expression": "0.8",
+            "unit": "m",
+            "start": 680,
+            "end": 685,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.2 m",
+            "expression": "0.2",
+            "unit": "m",
+            "start": 743,
+            "end": 748,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "110 kW",
+            "expression": "110",
+            "unit": "kW",
+            "start": 2640,
+            "end": 2646,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "281 s",
+            "expression": "281",
+            "unit": "s",
+            "start": 2650,
+            "end": 2655,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "900 K",
+            "expression": "900",
+            "unit": "K",
+            "start": 2747,
+            "end": 2752,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "75 kW",
+            "expression": "75",
+            "unit": "kW",
+            "start": 3022,
+            "end": 3027,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "286.9 s",
+            "expression": "286.9",
+            "unit": "s",
+            "start": 3031,
+            "end": 3038,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "46 kW",
+            "expression": "46",
+            "unit": "kW",
+            "start": 3063,
+            "end": 3068,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "294.8 s",
+            "expression": "294.8",
+            "unit": "s",
+            "start": 3072,
+            "end": 3079,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "310 s",
+            "expression": "310",
+            "unit": "s",
+            "start": 3136,
+            "end": 3141,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "315-329 s",
+            "expression": "315-329",
+            "unit": "s",
+            "start": 3154,
+            "end": 3163,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "50 kW",
+            "expression": "50",
+            "unit": "kW",
+            "start": 3260,
+            "end": 3265,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2
+        },
+        "proposal_ids": [
+          "proposal-688be8e017c19f2543e5f78a",
+          "proposal-e563e0dc1e1f88dfd35c6caa"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-420deaea88b4ea61e1e3",
+        "evidence_id": "E-6b80996b8f02b95aeda17768",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 9,
+        "start": 0,
+        "end": 2066,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "observed",
+          "observed",
+          "measurements",
+          "observed",
+          "measured",
+          "measured",
+          "measured",
+          "measured",
+          "measurements",
+          "measured",
+          "results",
+          "measured"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "11. A",
+            "expression": "11.",
+            "unit": "A",
+            "start": 208,
+            "end": 213,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "80 kW",
+            "expression": "80",
+            "unit": "kW",
+            "start": 264,
+            "end": 269,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "50 kW",
+            "expression": "50",
+            "unit": "kW",
+            "start": 317,
+            "end": 322,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.5%",
+            "expression": "0.5",
+            "unit": "%",
+            "start": 523,
+            "end": 527,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "35-57 kW",
+            "expression": "35-57",
+            "unit": "kW",
+            "start": 845,
+            "end": 853,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "8 kW",
+            "expression": "8",
+            "unit": "kW",
+            "start": 1123,
+            "end": 1127,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "20 kW",
+            "expression": "20",
+            "unit": "kW",
+            "start": 1283,
+            "end": 1288,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "100%",
+            "expression": "100",
+            "unit": "%",
+            "start": 1293,
+            "end": 1297,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "10%",
+            "expression": "10",
+            "unit": "%",
+            "start": 1454,
+            "end": 1457,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "100 kW",
+            "expression": "100",
+            "unit": "kW",
+            "start": 1650,
+            "end": 1656,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "100 %",
+            "expression": "100",
+            "unit": "%",
+            "start": 1848,
+            "end": 1853,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "338.4 kJ",
+            "expression": "338.4",
+            "unit": "kJ",
+            "start": 1879,
+            "end": 1887,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 3
+        },
+        "proposal_ids": [
+          "proposal-e53bc9623cdae1e921dc3d6e",
+          "proposal-3218d1a98ba9465b629f0fe9",
+          "proposal-c1bd349a5b582c362dd63fed"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-ce3efab3c2e93240b17c",
+        "evidence_id": "E-cba3d9d6cbaada8d33d3531a",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 10,
+        "start": 0,
+        "end": 2061,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "measured",
+          "measured",
+          "measurement",
+          "observed",
+          "measured",
+          "measured",
+          "measurements",
+          "measured"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "100 %",
+            "expression": "100",
+            "unit": "%",
+            "start": 208,
+            "end": 213,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "960 kJ",
+            "expression": "960",
+            "unit": "kJ",
+            "start": 239,
+            "end": 245,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "30 kW",
+            "expression": "30",
+            "unit": "kW",
+            "start": 789,
+            "end": 794,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "10 kW",
+            "expression": "10",
+            "unit": "kW",
+            "start": 866,
+            "end": 871,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "117 kW",
+            "expression": "117",
+            "unit": "kW",
+            "start": 1065,
+            "end": 1071,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.9 m",
+            "expression": "0.9",
+            "unit": "m",
+            "start": 1074,
+            "end": 1079,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.65 m",
+            "expression": "0.65",
+            "unit": "m",
+            "start": 1085,
+            "end": 1091,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "338.2 kJ",
+            "expression": "338.2",
+            "unit": "kJ",
+            "start": 1409,
+            "end": 1417,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "960 kJ",
+            "expression": "960",
+            "unit": "kJ",
+            "start": 1422,
+            "end": 1428,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "11.4 V",
+            "expression": "11.4",
+            "unit": "V",
+            "start": 1839,
+            "end": 1845,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "350 kJ",
+            "expression": "350",
+            "unit": "kJ",
+            "start": 1904,
+            "end": 1910,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "15.14 V",
+            "expression": "15.14",
+            "unit": "V",
+            "start": 1956,
+            "end": 1963,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 1
+        },
+        "proposal_ids": [
+          "proposal-23f2c6697785988da4128e2b"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-e9f48d17acbea3cce0e3",
+        "evidence_id": "E-5a0144d0c1123dddd3d69fdb",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 11,
+        "start": 0,
+        "end": 2865,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "may",
+          "measured",
+          "measured",
+          "observed"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "647.5 kJ",
+            "expression": "647.5",
+            "unit": "kJ",
+            "start": 124,
+            "end": 132,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "470 kJ",
+            "expression": "470",
+            "unit": "kJ",
+            "start": 803,
+            "end": 809,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "735 kJ",
+            "expression": "735",
+            "unit": "kJ",
+            "start": 818,
+            "end": 824,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "330 K",
+            "expression": "330",
+            "unit": "K",
+            "start": 2163,
+            "end": 2168,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "9.1\n \nT",
+            "expression": "9.1",
+            "unit": "T",
+            "start": 2176,
+            "end": 2183,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "50 kW-110",
+            "expression": "50",
+            "unit": "kW-110",
+            "start": 2563,
+            "end": 2572,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.48 m",
+            "expression": "0.48",
+            "unit": "m",
+            "start": 2664,
+            "end": 2670,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 2
+        },
+        "proposal_ids": [
+          "proposal-02cd9e12f507248798966406",
+          "proposal-da50568833e1d60c0005bd69"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      },
+      {
+        "id": "coverage-14b42b5aebd0ee29f224",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 12,
+        "start": 0,
+        "end": 599,
+        "section": "III.\nResults",
+        "scientific_cues": [
+          "results",
+          "measure"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "0.45m",
+            "expression": "0.45",
+            "unit": "m",
+            "start": 221,
+            "end": 226,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "100 kW",
+            "expression": "100",
+            "unit": "kW",
+            "start": 324,
+            "end": 330,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.48 m",
+            "expression": "0.48",
+            "unit": "m",
+            "start": 357,
+            "end": 363,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "100 kW",
+            "expression": "100",
+            "unit": "kW",
+            "start": 409,
+            "end": 415,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.45 m",
+            "expression": "0.45",
+            "unit": "m",
+            "start": 435,
+            "end": 441,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1380 K",
+            "expression": "1380",
+            "unit": "K",
+            "start": 484,
+            "end": 490,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "800 K",
+            "expression": "800",
+            "unit": "K",
+            "start": 495,
+            "end": 500,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "REJECTED": 1
+        },
+        "proposal_ids": [
+          "proposal-8e41b99087b9486e49ab13b8"
+        ],
+        "state": "NOT_STRUCTURED"
+      },
+      {
+        "id": "coverage-8bb06efd35a1cb0701c0",
+        "evidence_id": "E-68372f45e47f35c825c87d36",
+        "source_id": "research-744f2693127046f63099:6112bfa713c9df89",
+        "page": 12,
+        "start": 599,
+        "end": 2967,
+        "section": "IV.\nConclusion",
+        "scientific_cues": [
+          "Conclusion",
+          "test",
+          "test",
+          "measurements",
+          "measurements",
+          "observed",
+          "measurements",
+          "observed",
+          "measurements",
+          "ignition"
+        ],
+        "quantity_inventory": [
+          {
+            "original_expression_with_unit": "1.4 m3",
+            "expression": "1.4",
+            "unit": "m3",
+            "start": 832,
+            "end": 838,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1.0 kW",
+            "expression": "1.0",
+            "unit": "kW",
+            "start": 1170,
+            "end": 1176,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "about 6 s",
+            "expression": "about 6",
+            "unit": "s",
+            "start": 1342,
+            "end": 1351,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "70 s",
+            "expression": "70",
+            "unit": "s",
+            "start": 1525,
+            "end": 1529,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "3 s",
+            "expression": "3",
+            "unit": "s",
+            "start": 1622,
+            "end": 1625,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "6-36 s",
+            "expression": "6-36",
+            "unit": "s",
+            "start": 1764,
+            "end": 1770,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "900 K",
+            "expression": "900",
+            "unit": "K",
+            "start": 1812,
+            "end": 1817,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "513.4-600 K",
+            "expression": "513.4-600",
+            "unit": "K",
+            "start": 1892,
+            "end": 1903,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "50-110 kW",
+            "expression": "50-110",
+            "unit": "kW",
+            "start": 2199,
+            "end": 2208,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.85-0.2 m",
+            "expression": "0.85-0.2",
+            "unit": "m",
+            "start": 2307,
+            "end": 2317,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.4 m-1",
+            "expression": "0.4",
+            "unit": "m-1",
+            "start": 2416,
+            "end": 2423,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "338.4 kJ",
+            "expression": "338.4",
+            "unit": "kJ",
+            "start": 2609,
+            "end": 2617,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "960 kJ",
+            "expression": "960",
+            "unit": "kJ",
+            "start": 2639,
+            "end": 2645,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "1550-800 K",
+            "expression": "1550-800",
+            "unit": "K",
+            "start": 2706,
+            "end": 2716,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "25-\n100 kW",
+            "expression": "25-\n100",
+            "unit": "kW",
+            "start": 2784,
+            "end": 2794,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          },
+          {
+            "original_expression_with_unit": "0.45 m",
+            "expression": "0.45",
+            "unit": "m",
+            "start": 2816,
+            "end": 2822,
+            "proposal_ids": [],
+            "source_supported_proposals": 0,
+            "unresolved_proposals": 0,
+            "state": "NOT_STRUCTURED"
+          }
+        ],
+        "proposal_statuses": {
+          "SOURCE_SUPPORTED": 19,
+          "REJECTED": 1
+        },
+        "proposal_ids": [
+          "proposal-8ffea639d6108312fc05c73f",
+          "proposal-b4cbb928ec99e45e522c8ece",
+          "proposal-337964bc6f72b94cb9d624c4",
+          "proposal-7a79264c4fff9ac5bc60afdb",
+          "proposal-016fafdb1417fe32e92827bd",
+          "proposal-dddb77e845332d16b4e0d120",
+          "proposal-724a7ae436b302196048d7db",
+          "proposal-daf612beed9fea591be6c04f",
+          "proposal-f33adb32a6a3c2632650dffa",
+          "proposal-b91f51cc7de5683bc7bbd593",
+          "proposal-9b4aafc34418bf6d8191e327",
+          "proposal-26e524506b775c33f6936f15",
+          "proposal-383fc7921d097527e9c8acfb",
+          "proposal-dee4b3b7a217133bd2102542",
+          "proposal-278be04ed034db31ea4560d8",
+          "proposal-31f74d8f626ff0dbdecebdca",
+          "proposal-bff88c74da349b63da3d98d1",
+          "proposal-4f4dc301748b25912f5e03b9",
+          "proposal-ad7077bfe82bbdad53a742c8",
+          "proposal-bc832ff6356025b192146d40"
+        ],
+        "state": "HAS_SOURCE_SUPPORTED_STRUCTURE"
+      }
+    ],
+    "outstanding_source_units": [
+      "coverage-20318ddb2e0259a0056c",
+      "coverage-a7cddc468ed58ceeea1f",
+      "coverage-820277b7c45073339081",
+      "coverage-0352044fe1252ee40dca",
+      "coverage-fdf372a8b0fb8a489ae4",
+      "coverage-9d19a7b65f33685aa406",
+      "coverage-62ed6c0e1500519c50dc",
+      "coverage-9376b1cf23d4ebd93553",
+      "coverage-cc80abafbad9c9ebeb7d",
+      "coverage-420deaea88b4ea61e1e3",
+      "coverage-ce3efab3c2e93240b17c",
+      "coverage-e9f48d17acbea3cce0e3",
+      "coverage-14b42b5aebd0ee29f224",
+      "coverage-8bb06efd35a1cb0701c0"
+    ],
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "empty_model_is_scientific_success": false
+  },
+  "source_integrity_errors": [],
+  "approvals": 0,
+  "publications": 0,
+  "sqlite_integrity": "ok"
+}

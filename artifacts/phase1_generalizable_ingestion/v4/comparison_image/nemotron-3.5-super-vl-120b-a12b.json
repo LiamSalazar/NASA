@@ -1,0 +1,171 @@
+{
+  "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+  "endpoint": "https://integrate.api.nvidia.com/v1",
+  "task": {
+    "title": "Lunar Combustion Investigation: Flammability Results from a Rotating Sounding Rocket",
+    "original_pages": [
+      {
+        "page": 36,
+        "text": "PMMA Flame Tip Comparison\nPartial-G\n(cm/s)\n1-G\n(cm/s)\nRatio\n.15\n.40\n.38\nFlame Tip Spread (from linear fits):\n𝑥𝑓𝑏\n𝑥𝑓𝑡\nSample\nFlame\ng\n𝑙𝑓\n𝑉𝑓\n"
+      }
+    ]
+  },
+  "image": {
+    "sha256": "6f3ae076afdd471f0fdba95dff7683bd3a9d4f88f268e94c88f10f0b3d562c32",
+    "bytes": 99834,
+    "page": [
+      36
+    ]
+  },
+  "system": "Interpret only supplied original NASA evidence. Return JSON with keys\nentities, quantities, statements. Each is an array of objects. Entities: label,\nkind, page, quote. Quantities: label, expression, unit, subject, epistemic, page,\nquote. Statements: text, subject, epistemic, page, quote. Every quote must be an\nexact contiguous original span. Preserve approximate values, original units,\nscope and uncertainty. Separate experimental_configuration, reported_quantity,\nderived_quantity, measured_observation, author_conclusion, tentative_interpretation,\nplanned_work. A linear fit is derived, not a direct measurement. Do not infer\ncauses, executed runs, or distribute group results to other groups. Recover all\nscientifically meaningful content, omit diagram-symbol fragments.",
+  "state": "COMPLETED",
+  "content": "{\"entities\": [{\"label\": \"PMMA Flame Tip Comparison\", \"kind\": \"study\", \"page\": 36, \"quote\": \"PMMA Flame Tip Comparison\"}, {\"label\": \"Partial-G Flame Tip Location\", \"kind\": \"data series\", \"page\": 36, \"quote\": \"Partial-G Flame Tip Location\"}, {\"label\": \"1-G Flame Tip Location\", \"kind\": \"data series\", \"page\": 36, \"quote\": \"1-G Flame Tip Location\"}, {\"label\": \"Linear Fits\", \"kind\": \"data series\", \"page\": 36, \"quote\": \"Linear Fits\"}, {\"label\": \"Flame Tip Spread (from linear fits)\", \"kind\": \"quantity group\", \"page\": 36, \"quote\": \"Flame Tip Spread (from linear fits):\"}, {\"label\": \"Sample\", \"kind\": \"diagram element\", \"page\": 36, \"quote\": \"Sample\"}, {\"label\": \"Flame\", \"kind\": \"diagram element\", \"page\": 36, \"quote\": \"Flame\"}, {\"label\": \"g\", \"kind\": \"diagram element\", \"page\": 36, \"quote\": \"g\"}, {\"label\": \"Vf\", \"kind\": \"diagram element\", \"page\": 36, \"quote\": \"Vf\"}, {\"label\": \"xf_t\", \"kind\": \"diagram element\", \"page\": 36, \"quote\": \"xf_t\"}, {\"label\": \"xf_b\", \"kind\": \"diagram element\", \"page\": 36, \"quote\": \"xf_b\"}, {\"label\": \"lf\", \"kind\": \"diagram element\", \"page\": 36, \"quote\": \"lf\"}], \"quantities\": [{\"label\": \"Partial-G Flame Tip Spread\", \"expression\": \".15\", \"unit\": \"cm/s\", \"subject\": \"Partial-G Flame Tip Location\", \"epistemic\": \"reported_quantity\", \"page\": 36, \"quote\": \".15\"}, {\"label\": \"1-G Flame Tip Spread\", \"expression\": \".40\", \"unit\": \"cm/s\", \"subject\": \"1-G Flame Tip Location\", \"epistemic\": \"reported_quantity\", \"page\": 36, \"quote\": \".40\"}, {\"label\": \"Ratio of Partial-G to 1-G Flame Tip Spread\", \"expression\": \".38\", \"unit\": null, \"subject\": \"Flame Tip Spread\", \"epistemic\": \"derived_quantity\", \"page\": 36, \"quote\": \".38\"}], \"statements\": [{\"text\": \"Flame Tip Spread (from linear fits): Partial-G .15 cm/s, 1-G .40 cm/s, Ratio .38\", \"subject\": \"Flame Tip Spread\", \"epistemic\": \"reported_quantity\", \"page\": 36, \"quote\": \"Flame Tip Spread (from linear fits): .15 .40 .38\"}]}",
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 649,
+    "prompt_tokens": 1183,
+    "total_tokens": 1832,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "transport": {
+    "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "stream": true,
+    "max_output_tokens": 8192,
+    "thinking_enabled": false,
+    "reasoning_budget": 0,
+    "response_headers": {},
+    "duration_seconds": 4.777973011998256,
+    "time_to_first_token_seconds": 4.7716545590010355,
+    "served_models": [
+      "private/nvidia/nemotron-3.5-super-120b-a12b"
+    ],
+    "reasoning_characters": 0
+  },
+  "parsed": {
+    "entities": [
+      {
+        "label": "PMMA Flame Tip Comparison",
+        "kind": "study",
+        "page": 36,
+        "quote": "PMMA Flame Tip Comparison"
+      },
+      {
+        "label": "Partial-G Flame Tip Location",
+        "kind": "data series",
+        "page": 36,
+        "quote": "Partial-G Flame Tip Location"
+      },
+      {
+        "label": "1-G Flame Tip Location",
+        "kind": "data series",
+        "page": 36,
+        "quote": "1-G Flame Tip Location"
+      },
+      {
+        "label": "Linear Fits",
+        "kind": "data series",
+        "page": 36,
+        "quote": "Linear Fits"
+      },
+      {
+        "label": "Flame Tip Spread (from linear fits)",
+        "kind": "quantity group",
+        "page": 36,
+        "quote": "Flame Tip Spread (from linear fits):"
+      },
+      {
+        "label": "Sample",
+        "kind": "diagram element",
+        "page": 36,
+        "quote": "Sample"
+      },
+      {
+        "label": "Flame",
+        "kind": "diagram element",
+        "page": 36,
+        "quote": "Flame"
+      },
+      {
+        "label": "g",
+        "kind": "diagram element",
+        "page": 36,
+        "quote": "g"
+      },
+      {
+        "label": "Vf",
+        "kind": "diagram element",
+        "page": 36,
+        "quote": "Vf"
+      },
+      {
+        "label": "xf_t",
+        "kind": "diagram element",
+        "page": 36,
+        "quote": "xf_t"
+      },
+      {
+        "label": "xf_b",
+        "kind": "diagram element",
+        "page": 36,
+        "quote": "xf_b"
+      },
+      {
+        "label": "lf",
+        "kind": "diagram element",
+        "page": 36,
+        "quote": "lf"
+      }
+    ],
+    "quantities": [
+      {
+        "label": "Partial-G Flame Tip Spread",
+        "expression": ".15",
+        "unit": "cm/s",
+        "subject": "Partial-G Flame Tip Location",
+        "epistemic": "reported_quantity",
+        "page": 36,
+        "quote": ".15"
+      },
+      {
+        "label": "1-G Flame Tip Spread",
+        "expression": ".40",
+        "unit": "cm/s",
+        "subject": "1-G Flame Tip Location",
+        "epistemic": "reported_quantity",
+        "page": 36,
+        "quote": ".40"
+      },
+      {
+        "label": "Ratio of Partial-G to 1-G Flame Tip Spread",
+        "expression": ".38",
+        "unit": null,
+        "subject": "Flame Tip Spread",
+        "epistemic": "derived_quantity",
+        "page": 36,
+        "quote": ".38"
+      }
+    ],
+    "statements": [
+      {
+        "text": "Flame Tip Spread (from linear fits): Partial-G .15 cm/s, 1-G .40 cm/s, Ratio .38",
+        "subject": "Flame Tip Spread",
+        "epistemic": "reported_quantity",
+        "page": 36,
+        "quote": "Flame Tip Spread (from linear fits): .15 .40 .38"
+      }
+    ]
+  }
+}

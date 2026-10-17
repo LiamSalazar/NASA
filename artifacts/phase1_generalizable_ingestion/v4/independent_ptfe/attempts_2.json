@@ -1,0 +1,1663 @@
+{
+  "started_at": "2026-10-17T15:45:44.372997+00:00",
+  "completed_at": "2026-10-17T15:51:18.693799+00:00",
+  "attempts": [
+    {
+      "cache_key": "3a0c85004d0a0b691a840d4906531ab33bd9500c2734dbec827bf0fae97146ce",
+      "contract": "contextual-scientific-ingestion-v3",
+      "stage": "propositions",
+      "request": {
+        "stage": "propositions",
+        "focus": "statements",
+        "document_identity": {
+          "title": "Oxygen Compatibility of Brass-Filled PTFE Compared to Commonly Used Fluorinated Polymers for Oxygen Systems"
+        },
+        "contracts": {
+          "classes": {
+            "Material": {
+              "definition": "",
+              "label": "Material"
+            },
+            "Sample": {
+              "definition": "",
+              "label": "Sample"
+            },
+            "ExperimentalRun": {
+              "definition": "",
+              "label": "ExperimentalRun"
+            },
+            "Investigation": {
+              "definition": "",
+              "label": "Investigation"
+            },
+            "ExperimentFamily": {},
+            "Measurement": {
+              "definition": "",
+              "label": "Measurement"
+            },
+            "ExperimentalCondition": {
+              "definition": "",
+              "label": "ExperimentalCondition"
+            },
+            "Publication": {
+              "definition": "",
+              "label": "Publication"
+            },
+            "Document": {},
+            "SafetyStatement": {},
+            "ReportedObservation": {},
+            "Intervention": {
+              "definition": "",
+              "label": "Intervention"
+            },
+            "NASAConclusion": {
+              "definition": "",
+              "label": "NASAConclusion"
+            },
+            "SafetyImplication": {
+              "definition": "",
+              "label": "SafetyImplication"
+            },
+            "Requirement": {
+              "definition": "",
+              "label": "Requirement"
+            },
+            "Guidance": {
+              "definition": "",
+              "label": "Guidance"
+            },
+            "DesignCriterion": {
+              "definition": "",
+              "label": "DesignCriterion"
+            },
+            "TestCriterion": {
+              "definition": "",
+              "label": "TestCriterion"
+            },
+            "OpenQuestion": {},
+            "Geometry": {
+              "definition": "",
+              "label": "Geometry"
+            },
+            "AtmosphereCondition": {
+              "definition": "",
+              "label": "AtmosphereCondition"
+            },
+            "FlowCondition": {
+              "definition": "",
+              "label": "FlowCondition"
+            },
+            "GravityCondition": {
+              "definition": "",
+              "label": "GravityCondition"
+            },
+            "PressureCondition": {
+              "definition": "",
+              "label": "PressureCondition"
+            },
+            "Observation": {
+              "definition": "",
+              "label": "Observation"
+            },
+            "CombustionPhenomenon": {
+              "definition": "",
+              "label": "CombustionPhenomenon"
+            },
+            "Ignition": {
+              "definition": "",
+              "label": "Ignition"
+            },
+            "FlameGrowth": {
+              "definition": "",
+              "label": "FlameGrowth"
+            },
+            "FlameSpread": {
+              "definition": "",
+              "label": "FlameSpread"
+            },
+            "StableBurning": {
+              "definition": "",
+              "label": "StableBurning"
+            },
+            "Quenching": {
+              "definition": "",
+              "label": "Quenching"
+            },
+            "Blowoff": {
+              "definition": "",
+              "label": "Blowoff"
+            },
+            "Extinction": {
+              "definition": "",
+              "label": "Extinction"
+            },
+            "SafetyKnowledge": {
+              "definition": "",
+              "label": "SafetyKnowledge"
+            },
+            "NormativeStatement": {
+              "definition": "",
+              "label": "NormativeStatement"
+            },
+            "NASAIdentifiedOpenQuestion": {
+              "definition": "",
+              "label": "NASAIdentifiedOpenQuestion"
+            },
+            "NASAStandard": {
+              "definition": "",
+              "label": "NASAStandard"
+            }
+          },
+          "information_classes": [
+            "DesignCriterion",
+            "ExperimentalCondition",
+            "ExperimentalRun",
+            "Guidance",
+            "Intervention",
+            "Measurement",
+            "NASAConclusion",
+            "OpenQuestion",
+            "Publication",
+            "ReportedObservation",
+            "Requirement",
+            "SafetyImplication",
+            "TestCriterion"
+          ],
+          "properties": [
+            {
+              "property_id": "AirflowVelocity",
+              "dimension": "velocity",
+              "canonical_unit": "m/s",
+              "datatype": "numeric",
+              "aliases": [
+                "airflow velocity",
+                "airflow",
+                "air flow",
+                "flow velocity",
+                "forced flow"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "OxygenConcentration",
+              "dimension": "fraction",
+              "canonical_unit": "fraction",
+              "datatype": "numeric",
+              "aliases": [
+                "oxygen concentration",
+                "oxygen",
+                "O2"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "Pressure",
+              "dimension": "pressure",
+              "canonical_unit": "Pa",
+              "datatype": "numeric",
+              "aliases": [
+                "pressure"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            },
+            {
+              "property_id": "FlowDirection",
+              "dimension": "none",
+              "canonical_unit": null,
+              "datatype": "categorical",
+              "aliases": [
+                "flow direction"
+              ],
+              "context": null,
+              "status": "CANONICAL"
+            }
+          ],
+          "relations": [
+            "belongTo",
+            "belongsToExperimentFamily",
+            "belongsToInvestigation",
+            "concerns",
+            "hasCondition",
+            "hasGravityCondition",
+            "hasIntervention",
+            "hasMaterial",
+            "hasMeasurement",
+            "hasObservation",
+            "hasPhenomenon",
+            "hasRun",
+            "madeOf",
+            "observesPhenomenon",
+            "reportedBy",
+            "usesSample"
+          ],
+          "aliases": [
+            {
+              "aliases": [
+                "PMMA",
+                "PMMA",
+                "polymethyl methacrylate"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "SIBAL Fabric",
+                "SIBAL Fabric",
+                "Sibal"
+              ],
+              "relation": "hasMaterial"
+            },
+            {
+              "aliases": [
+                "microgravity",
+                "microgravity",
+                "low-g"
+              ],
+              "relation": "hasGravityCondition"
+            },
+            {
+              "aliases": [
+                "normal-gravity",
+                "normal gravity",
+                "normal-gravity",
+                "terrestrial",
+                "1-g",
+                "1g"
+              ],
+              "relation": "hasGravityCondition"
+            }
+          ],
+          "ontology_datatype_properties": {
+            "evidenceRef": {
+              "definition": "",
+              "ranges": []
+            },
+            "conditionType": {
+              "definition": "",
+              "ranges": []
+            },
+            "value": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedValue": {
+              "definition": "Original source value, retaining numeric or textual representation.",
+              "ranges": []
+            },
+            "reportedUnit": {
+              "definition": "Original reported unit; declaration does not validate its dimensional meaning.",
+              "ranges": []
+            },
+            "canonicalUnit": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "reportedUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalLowerValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "canonicalUpperValue": {
+              "definition": "",
+              "ranges": []
+            },
+            "isApproximate": {
+              "definition": "",
+              "ranges": []
+            },
+            "geometry": {
+              "definition": "Literal specimen geometry description; no geometric inference or class membership is entailed.",
+              "ranges": []
+            },
+            "scopeApplicability": {
+              "definition": "",
+              "ranges": []
+            },
+            "text": {
+              "definition": "",
+              "ranges": []
+            },
+            "title": {
+              "definition": "",
+              "ranges": []
+            }
+          },
+          "digest": "3c77f8decad9f0aa727329a1d2d3d7abe982f0ac8e106e199f394c2e1ea246bd"
+        },
+        "segments": [
+          {
+            "page": 1,
+            "start": 0,
+            "end": 1895,
+            "section": "UNSPECIFIED"
+          },
+          {
+            "page": 2,
+            "start": 0,
+            "end": 1400,
+            "section": "UNSPECIFIED"
+          },
+          {
+            "page": 3,
+            "start": 0,
+            "end": 1735,
+            "section": "3\nIntroduction"
+          },
+          {
+            "page": 4,
+            "start": 0,
+            "end": 895,
+            "section": "3\nIntroduction"
+          },
+          {
+            "page": 4,
+            "start": 895,
+            "end": 1617,
+            "section": "3\nIntroduction"
+          },
+          {
+            "page": 5,
+            "start": 0,
+            "end": 1992,
+            "section": "3\nIntroduction"
+          },
+          {
+            "page": 6,
+            "start": 0,
+            "end": 1349,
+            "section": "3\nIntroduction"
+          },
+          {
+            "page": 6,
+            "start": 1349,
+            "end": 2015,
+            "section": "3\nIntroduction"
+          },
+          {
+            "page": 7,
+            "start": 0,
+            "end": 2062,
+            "section": "3\nIntroduction"
+          },
+          {
+            "page": 8,
+            "start": 0,
+            "end": 1066,
+            "section": "3\nIntroduction"
+          }
+        ],
+        "original_logical_sections": [
+          {
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+            "start": 0,
+            "end": 14,
+            "title": "3\nIntroduction"
+          },
+          {
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+            "start": 895,
+            "end": 922,
+            "title": "Experimental\nTest Apparatus"
+          },
+          {
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+            "start": 1349,
+            "end": 1371,
+            "title": "Results and Discussion"
+          }
+        ],
+        "source_anchors": [
+          {
+            "id": "A1",
+            "page": 1,
+            "quote": "Journal of Testing and Evaluation, Month Year Vol XX, No.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A2",
+            "page": 1,
+            "quote": "X\nPaper ID: \nAvailable online at: www.astm.org\nPublished XXXX \nStephen D Herald1, Paul M Frisby2, and Samuel Eddie Davis3\nOxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems\nABSTRACT:  Safe and reliable seal materials for high-pressure oxygen systems sometimes \nappear to be extinct species when sought out by oxygen systems designers.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A3",
+            "page": 1,
+            "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to",
+            "statement_eligible": false,
+            "in_task": true
+          },
+          {
+            "id": "A4",
+            "page": 1,
+            "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+            "statement_eligible": false,
+            "in_task": true
+          },
+          {
+            "id": "A5",
+            "page": 1,
+            "quote": "Materials that \nseal well are easy to find, but these materials are typically incompatible with oxygen, \nespecially in cryogenic liquid form.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A6",
+            "page": 1,
+            "quote": "This incompatibility can result in seals that leak, or \nmuch worse, seals that easily ignite and burn during use.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A7",
+            "page": 1,
+            "quote": "Materials that are compatible with \noxygen are easy to find, such as the long list of compatible metals, but these metallic \nmaterials are limiting as seal materials.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A8",
+            "page": 1,
+            "quote": "A material that seals well and is oxygen compatible \nhas been the big game in the designer’s safari.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A9",
+            "page": 1,
+            "quote": "Scientists at the Materials Combustion Research Facility (MCRF), part of \nNASA/Marshall Space Flight Center (MSFC), are constantly searching for better materials \nand processes to improve the safety of oxygen systems.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A10",
+            "page": 1,
+            "quote": "One focus of this effort is \nimproving the characteristics of polymers used in the presence of an oxygen enriched \nenvironment.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A11",
+            "page": 1,
+            "quote": "1 Test Group Lead Engineer, INFOPRO CORP., Materials Test Branch, Materials Combustion Research Facility \nNASA George C.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A12",
+            "page": 1,
+            "quote": "Marshall Space Flight Center, Huntsville, AL 35812 USA.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A13",
+            "page": 1,
+            "quote": "2 Materials Engineer, INFOPRO CORP., Materials Test Branch, Materials Combustion Research Facility NASA \nGeorge C.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A14",
+            "page": 1,
+            "quote": "Marshall Space Flight Center, Huntsville, AL 35812 USA.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A15",
+            "page": 1,
+            "quote": "3 Materials Engineer, NASA, Materials Test Branch, Materials Combustion Research Facility NASA George C.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A16",
+            "page": 1,
+            "quote": "Marshall Space Flight Center, Huntsville, AL 35812 USA.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A17",
+            "page": 2,
+            "quote": "2   \nVery few systems can be built which contain no polymeric materials; therefore, \nmaterials which have good impact resistance, low heat of combustion, high auto-ignition \ntemperature and that maintain good mechanical properties are essential.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A18",
+            "page": 2,
+            "quote": "The scientists and \nengineers at the Materials Combustion Research Facility, in cooperation with seal suppliers, \nare currently testing a new formulation of polytetrafluoroethylene (PTFE) with Brass filler.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A19",
+            "page": 2,
+            "quote": "This Brass-filled PTFE is showing great promise as a seal and seat material for high-\npressure oxygen systems.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A20",
+            "page": 2,
+            "quote": "Early research has demonstrated very encouraging results, which \ncould rank this material as one of the best fluorinated polymers ever tested.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A21",
+            "page": 2,
+            "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A22",
+            "page": 2,
+            "quote": "A similar metal filled fluorinated polymer, Salox-M®, was tested in \ncomparison to Brass-filled PTFE to demonstrate the importance of the metal chosen and \nrelative percentage of filler.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A23",
+            "page": 2,
+            "quote": "General conclusions on the oxygen compatibility of this \nformulation are drawn, with an emphasis on comparing and contrasting the materials \nperformance to the performance of the current state-of-the-art oxygen compatible polymers.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A24",
+            "page": 2,
+            "quote": "KEYWORDS: Oxygen Systems, Polytetrafluoroethylene, Fluorinated Polymers, MAPTIS",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A25",
+            "page": 3,
+            "quote": "Safe and reliable seal materials for high-pressure oxygen systems sometimes appear to \nbe extinct species when sought out by oxygen systems designers.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A26",
+            "page": 3,
+            "quote": "Materials that seal well \nare easy to find, but these materials are typically incompatible with oxygen, especially in \ncryogenic liquid form.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A27",
+            "page": 3,
+            "quote": "This incompatibility can result in seals that leak, or much worse, \nseals that easily ignite and burn during use.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A28",
+            "page": 3,
+            "quote": "Materials that are compatible with oxygen are \neasy to find, such as the long list of compatible metals, but these metallic materials are \nlimiting as seal materials.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A29",
+            "page": 3,
+            "quote": "A material that seals well and is oxygen compatible has been the \nbig game in the oxygen system designer’s safari.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A30",
+            "page": 3,
+            "quote": "Scientists at the Materials Combustion Research Facility (MCRF), part of \nNASA/Marshall Space Flight Center (MSFC), are constantly searching for better materials \nand processes to improve the safety of oxygen systems.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A31",
+            "page": 3,
+            "quote": "One focus of this effort is \nimproving the characteristics of polymers used in the presence of oxygen.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A32",
+            "page": 3,
+            "quote": "Very few \nsystems can be built which contain no polymeric materials; therefore, materials which have \ngood impact resistance, low heat of combustion, high auto-ignition temperature and that \nmaintain good mechanical properties are essential.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A33",
+            "page": 3,
+            "quote": "The Search for a Better Polymer\nPolymeric materials are widely used as seals and seat materials in oxygen systems.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A34",
+            "page": 3,
+            "quote": "One of the most frequent causes of fires in oxygen systems using polymeric materials is \nignition of the polymer which promotes to surrounding materials and results in a \ncatastrophic failure.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A35",
+            "page": 3,
+            "quote": "According to previous studies [1] the most compatible materials in \noxygen systems are fluorinated polymeric materials such as PTFE and PCTFE.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A36",
+            "page": 3,
+            "quote": "This",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A37",
+            "page": 4,
+            "quote": "4   \nmeasure of compatibility is determined by favorable characteristics for oxygen use such as \nhigh oxygen index (ignition resistance), low heat of combustion, and high auto-ignition \ntemperature.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A38",
+            "page": 4,
+            "quote": "This knowledge has allowed the MCRF, in conjunction with other groups \nwithin MSFC, to begin to experiment with different PTFE and PCTFE based polymers.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A39",
+            "page": 4,
+            "quote": "From both internal experience and previous studies, metal filled polymers seem to be the \nkey to improved properties among oxygen compatible materials.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A40",
+            "page": 4,
+            "quote": "Existing Data Library\nThe data used to compare Brass-filled PTFE to other polymers was obtained from other \nASTM papers as well as NASA’s Materials and Processes Technical Information System \n(MAPTIS).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A41",
+            "page": 4,
+            "quote": "The MAPTIS database is housed at the NASA George C.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A42",
+            "page": 4,
+            "quote": "Marshall Space Flight \nCenter and is available to the public, with minimal limitations, at the web site \nhttp://maptis.nasa.gov.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A43",
+            "page": 4,
+            "quote": "Experimental\nTest Apparatus\nThe data discussed in this paper were obtained by the use of both in-house equipment and the \nuse of preexisting documented results.  The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter to determine the heat of combustion.  \nThree other testers were also required in order to provide necessary data.  These were the in-\nhouse ambient-pressure mechanical impact, high-pressure mechanical impact, and autogenous \nignition temperature (AIT) testers.  Heat of combustion, AIT, ambient and high-pressure \nmechanical impact experiments were conducted in accordance with ASTM G-72, ASTM G-86, \nASTM D-4809 and NASA-STD-6001, respectively.  ",
+            "statement_eligible": false,
+            "in_task": true
+          },
+          {
+            "id": "A44",
+            "page": 4,
+            "quote": "The data discussed in this paper were obtained by the use of both in-house equipment and the \nuse of preexisting documented results.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A45",
+            "page": 4,
+            "quote": "The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter to determine the heat of combustion.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A46",
+            "page": 4,
+            "quote": "Three other testers were also required in order to provide necessary data.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A47",
+            "page": 4,
+            "quote": "These were the in-\nhouse ambient-pressure mechanical impact, high-pressure mechanical impact, and autogenous \nignition temperature (AIT) testers.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A48",
+            "page": 4,
+            "quote": "Heat of combustion, AIT, ambient and high-pressure \nmechanical impact experiments were conducted in accordance with ASTM G-72, ASTM G-86, \nASTM D-4809 and NASA-STD-6001, respectively.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A49",
+            "page": 5,
+            "quote": "5\nProcedure \nHeat of combustion—The measurement of the heat of combustion was calculated internally \nby the software programmed on the Parr 6200, which was verified by comparison to a benzoic \nacid standard supplied by Sigma Aldrich.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A50",
+            "page": 5,
+            "quote": "5\nProcedure \nHeat of combustion—The measurement of the heat of combustion was calculated internally \nby the software programmed on the Parr 6200, which was verified by comparison to a benzoic \nacid standard supplied by Sigma Aldrich.  The heat of combustion sample was placed inside a \nmetallic combustion cup, and an ignition wire was positioned above the sample as to touch the \ntop of the sample but not come in contact with any metal other than the terminal leads.  In order \nto assure that combustion will occur, a mineral oil spike was used, and for which the calculations \ncorrected.  The combustion chamber was sealed and pressurized with GOX, lowered into the \nwater bath, and the ignition wire leads were attached to the top of the combustion chamber.  \nAfter the test was over, the calorimeter displayed the gross heat content of the sample in calories \nper gram weight of sample. \nAutogeneous Ignition Test—The samples for AIT were prepared per the standard and placed \ninto a small glass test tube.  The test tube was placed into the sample holder and a thermocouple \nwas positioned inside the test tube near the sample.  The chamber was purged several times with \nGOX to insure a 100% oxygen environment prior to pressurizing the chamber to the test \npressure.  Once the test pressure was reached, the system was monitored in order to assure that \nthe chamber was properly sealed.  The external heater was started and allowed to increase the \ntemperature of the sample at a rate of 9 degrees F/min.  The indication of autogenous ignition \nwas the rapid increase of temperature and pressure.  If the system temperature rises above 425°C \nprior to ignition of the sample, then the AIT is recorded as >425°C.\nMechanical Impact Test—For ambient-pressure mechanical impact testing, samples were \npositioned in the test chamber, which was cryogenically cooled with Nitrogen, and submerged in \nLOX.  The samples were impacted with 98 Joules of energy (72 ft-lbs) while reactions were ",
+            "statement_eligible": false,
+            "in_task": true
+          },
+          {
+            "id": "A51",
+            "page": 5,
+            "quote": "The heat of combustion sample was placed inside a \nmetallic combustion cup, and an ignition wire was positioned above the sample as to touch the \ntop of the sample but not come in contact with any metal other than the terminal leads.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A52",
+            "page": 5,
+            "quote": "In order \nto assure that combustion will occur, a mineral oil spike was used, and for which the calculations \ncorrected.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A53",
+            "page": 5,
+            "quote": "The combustion chamber was sealed and pressurized with GOX, lowered into the \nwater bath, and the ignition wire leads were attached to the top of the combustion chamber.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A54",
+            "page": 5,
+            "quote": "After the test was over, the calorimeter displayed the gross heat content of the sample in calories \nper gram weight of sample.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A55",
+            "page": 5,
+            "quote": "Autogeneous Ignition Test—The samples for AIT were prepared per the standard and placed \ninto a small glass test tube.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A56",
+            "page": 5,
+            "quote": "The test tube was placed into the sample holder and a thermocouple \nwas positioned inside the test tube near the sample.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A57",
+            "page": 5,
+            "quote": "The chamber was purged several times with \nGOX to insure a 100% oxygen environment prior to pressurizing the chamber to the test \npressure.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A58",
+            "page": 5,
+            "quote": "Once the test pressure was reached, the system was monitored in order to assure that \nthe chamber was properly sealed.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A59",
+            "page": 5,
+            "quote": "The external heater was started and allowed to increase the \ntemperature of the sample at a rate of 9 degrees F/min.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A60",
+            "page": 5,
+            "quote": "The indication of autogenous ignition \nwas the rapid increase of temperature and pressure.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A61",
+            "page": 5,
+            "quote": "If the system temperature rises above 425°C \nprior to ignition of the sample, then the AIT is recorded as >425°C.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A62",
+            "page": 5,
+            "quote": "Mechanical Impact Test—For ambient-pressure mechanical impact testing, samples were \npositioned in the test chamber, which was cryogenically cooled with Nitrogen, and submerged in \nLOX.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A63",
+            "page": 5,
+            "quote": "The samples were impacted with 98 Joules of energy (72 ft-lbs) while reactions were",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A64",
+            "page": 6,
+            "quote": "6   \ndetected by the operator in terms of a visual flash or audible noise.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A65",
+            "page": 6,
+            "quote": "6   \ndetected by the operator in terms of a visual flash or audible noise.  The high-pressure \nmechanical impact test can be operated in a LOX or GOX mode, depending on the parameters of \nthe test.  In order to achieve 100% oxygen inside the test chamber, several lower pressure oxygen\npurges were required prior to the chamber being pressurized to the full test pressure.  Once the \nchamber was brought up to the required test pressure, the plummet was allowed to impact the \nsample at 98 Joules of energy (72 ft-lbs).  The detection of a reaction was indicated by the \nillumination of a photodiode, which was positioned outside of the chamber with an optical \nviewing port.  After several series of tests were conducted for both ambient and high-pressure \nmechanical impact, the samples were analyzed for signs of combustion that may not have been \ndetected by the operator or equipment.  The pass/fail criterion for a material, in both ambient and \nhigh-pressure mechanical impact, is determined by the number of reactions recorded in a series \nof tests.  A sample is said to have passed the mechanical impact test at the given pressure and \ntemperature if no reactions are recorded out of 20 samples.  If one sample out of 20 reacts, then \n40 additional samples must be tested without any reactions in order for the material to pass the \ntest. ",
+            "statement_eligible": false,
+            "in_task": true
+          },
+          {
+            "id": "A66",
+            "page": 6,
+            "quote": "The high-pressure \nmechanical impact test can be operated in a LOX or GOX mode, depending on the parameters of \nthe test.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A67",
+            "page": 6,
+            "quote": "In order to achieve 100% oxygen inside the test chamber, several lower pressure oxygen\npurges were required prior to the chamber being pressurized to the full test pressure.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A68",
+            "page": 6,
+            "quote": "Once the \nchamber was brought up to the required test pressure, the plummet was allowed to impact the \nsample at 98 Joules of energy (72 ft-lbs).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A69",
+            "page": 6,
+            "quote": "The detection of a reaction was indicated by the \nillumination of a photodiode, which was positioned outside of the chamber with an optical \nviewing port.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A70",
+            "page": 6,
+            "quote": "After several series of tests were conducted for both ambient and high-pressure \nmechanical impact, the samples were analyzed for signs of combustion that may not have been \ndetected by the operator or equipment.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A71",
+            "page": 6,
+            "quote": "The pass/fail criterion for a material, in both ambient and \nhigh-pressure mechanical impact, is determined by the number of reactions recorded in a series \nof tests.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A72",
+            "page": 6,
+            "quote": "A sample is said to have passed the mechanical impact test at the given pressure and \ntemperature if no reactions are recorded out of 20 samples.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A73",
+            "page": 6,
+            "quote": "If one sample out of 20 reacts, then \n40 additional samples must be tested without any reactions in order for the material to pass the \ntest.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A74",
+            "page": 6,
+            "quote": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A75",
+            "page": 6,
+            "quote": "In Table 1, heat of combustion data for the Fluorinated compounds are presented as an average \nof three tests according the ASTM Standard D-3286 along with a standard deviation calculated \nfrom the presented data.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A76",
+            "page": 6,
+            "quote": "The heat of combustion data for Brass-filled PTFE presented in Table 2 \nwas determined by the MCRF at MSFC.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A77",
+            "page": 6,
+            "quote": "The caloric content per gram of material for Brass-",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A78",
+            "page": 7,
+            "quote": "7\nfilled PTFE was 12% lower than the caloric content of the non-Brass-filled PTFE determined by\nChou and Giedorowicz.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A79",
+            "page": 7,
+            "quote": "The reported values for the heat of combustion of TFE-Teflon® (PTFE) \nin the Safe Use of Oxygen and Oxygen Systems vary substantially between the different test \nfacilities with an average of 1483 (cal/gram) and standard deviation of 208 (cal/gram) [2].",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A80",
+            "page": 7,
+            "quote": "Although this value is lower than that reported by Chou and Giedorowicz, their value still falls \nwithin the acceptable range of error.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A81",
+            "page": 7,
+            "quote": "The lower heat of combustion of the Brass-filled PTFE further exemplifies the material’s \ncompatibility in oxygen systems.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A82",
+            "page": 7,
+            "quote": "The comparison of Brass-filled PTFE to the other Fluorinated \npolymers studied by Chou and Giedorowicz in terms of heat of combustion, shows that Brass-\nfilled PTFE has a 48% lower caloric content than Kel-F® 81 (PCTFE)  and a 66% lower caloric \ncontent per gram than Viton® A, Viton® A-500, and Fluorel®.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A83",
+            "page": 7,
+            "quote": "As defined in the ASTM and\nNASA-STD-6001A standards for AIT testing, a sample that ignites above a temperature of 425 \nºC is recorded as having an AIT temperature >425 ºC and the actual value is not specified.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A84",
+            "page": 7,
+            "quote": "Due \nto this limitation, the only comparison that can be made between the Brass-filled PTFE and \nTeflon® is that they both auto ignite above 425ºC and both materials experience a pressure rise \nof roughly 700 psi, which can be seen in Tables 3 and 4.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A85",
+            "page": 7,
+            "quote": "When compared to the other materials, \nBrass-filled PTFE has an AIT value 44% greater than both Viton® A and Viton® A-500 and \n30% greater than Fluorel®.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A86",
+            "page": 7,
+            "quote": "These percentages are only valid for the comparison of an AIT value \nthat is below the maximum test temperature of 425 ºC.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A87",
+            "page": 7,
+            "quote": "The determination that a material is oxygen compatible cannot be made exclusively by AIT \nand heat of combustion data.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A88",
+            "page": 7,
+            "quote": "A good example of the need for several different parameters to be \nconsidered in the criteria for an oxygen compatible material is evident upon the comparison of \nthe AIT data of Brass-filled PTFE and Kel-F® 81 (PCTFE).",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A89",
+            "page": 7,
+            "quote": "The AIT for Brass-filled PTFE is",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A90",
+            "page": 8,
+            "quote": "8   \nonly 5% higher than for Kel-F® 81 (PCTFE) based on the maximum temperature threshold in \nthe standard.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A91",
+            "page": 8,
+            "quote": "As mentioned previously, the heat of combustion for Kel-F® 81 (PCTFE) is 48% \nhigher than that of the Brass-filled PTFE, which indicates that, upon ignition, the material can \nsupply 48% more energy into the burning system.",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A92",
+            "page": 8,
+            "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+            "statement_eligible": true,
+            "in_task": true
+          },
+          {
+            "id": "A93",
+            "page": 9,
+            "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.",
+            "statement_eligible": false,
+            "in_task": false
+          },
+          {
+            "id": "A94",
+            "page": 9,
+            "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.  The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.  Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.  Figure 1, below, is a pretest picture of the Brass-\nfilled PTFE, which is blue in color and came pre-cut into a circular sample from the distributor.  \nAlthough the name indicates that the material is Brass-filled, the small slivers cannot be seen on \nthe surface in the picture.  A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.  A post-test picture of a reacting sample was not taken due to complete combustion \nof the sample in a LOX environment.  The post-test picture of a non-reactive sample shows that \nthe material is extruded in an outward radial direction when it is struck by the pin.  Part of the \nsample was trapped under the pin, generating a thin compressed layer.  A small sliver of the \nBrass filling can be seen in the center of the compressed layer.\nThe mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.  The data shows \nthat Brass-filled PTFE is highly compatible with both LOX and GOX systems.  It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.  In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.  Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.  Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.  A second batch of the Brass-filled PTFE ",
+            "statement_eligible": false,
+            "in_task": false
+          },
+          {
+            "id": "A95",
+            "page": 9,
+            "quote": "Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.",
+            "statement_eligible": false,
+            "in_task": false
+          },
+          {
+            "id": "A96",
+            "page": 9,
+            "quote": "A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.",
+            "statement_eligible": false,
+            "in_task": false
+          },
+          {
+            "id": "A97",
+            "page": 14,
+            "quote": "14   \nTeflon® and Kel-F® 81 both passed the material acceptability test up to a pressure of 1,500 psia, \nwhereas Fluorel® began reacting at pressures above 500 psia; therefore, failing the test.  These \nsame materials were also tested in a GOX environment at ambient temperature and varying \npressures.  Previous work conducted at MSFC in 1972 determined that materials mechanically \nimpacted were considerably more reactive in pressurized GOX than in a pressurized LOX \nenvironment [4].  By comparison of the Brass-filled PTFE in Table 3 to TFE-Teflon® (PTFE) in \nTable 5, it can be seen that their performance in high pressure LOX systems is very similar at 98 \nJ and 0.062 inches in thickness.  The results presented in Table 5 demonstrate the superior \nperformance of the Brass-filled PTFE over Kel-F® 81 (PCTFE) and Fluorel®.  \nThe data presented in Table 6 are high-pressure GOX impact results determined by the \ntesters at White Sands Test Facility (WSTF) and MSFC.  In most cases, the reactivity of \nmaterials increases from either a decrease in thickness or an increase in pressure [2].  The data \nlisted in Table 6 indicate that the reactivity of TFE-Teflon® (PTFE) tested at 72 ft-lbs with a \nsample thickness of 0.062 inches increases by 25% as the pressure is increased from 60 psia to \n3,250 psia.  The reactivity of the same material increases by 20% as the thickness of the material \nis decreased by half.  Comparing TFE-Teflon® (PTFE) to Brass-filled PTFE, the data indicates \nthat under the same conditions, i.e. thickness, impact energy and pressure, the Brass-filled PTFE\noutperforms the virgin PTFE.  The data also shows that the Brass-filled PTFE significantly \noutperforms Kel-F® 81 (PCTFE) and Viton® A.  The data presented in Table 6 depicts Fluorel® \nas having no reactions at varying pressures and sample thicknesses.  However, it is not known \nhow the material would behave at double the maximum pressure presented in the table.",
+            "statement_eligible": false,
+            "in_task": false
+          },
+          {
+            "id": "A98",
+            "page": 14,
+            "quote": "The data also shows that the Brass-filled PTFE significantly \noutperforms Kel-F® 81 (PCTFE) and Viton® A.",
+            "statement_eligible": false,
+            "in_task": false
+          },
+          {
+            "id": "A99",
+            "page": 14,
+            "quote": "The data presented in Table 6 depicts Fluorel® \nas having no reactions at varying pressures and sample thicknesses.",
+            "statement_eligible": false,
+            "in_task": false
+          }
+        ],
+        "shared_context": {
+          "available": 6,
+          "selected_characters": 8150
+        },
+        "known_entities": [
+          {
+            "label": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+            "class_id": "Investigation",
+            "study": "current",
+            "key": "K1",
+            "support": [
+              "A4",
+              "A2"
+            ]
+          },
+          {
+            "label": "Viton® A",
+            "class_id": "Material",
+            "study": "cited",
+            "key": "K2",
+            "support": [
+              "A98"
+            ]
+          },
+          {
+            "label": "Brass-filled PTFE",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K3",
+            "support": [
+              "A2",
+              "A21"
+            ]
+          },
+          {
+            "label": "Viton® A",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K4",
+            "support": [
+              "A21"
+            ]
+          },
+          {
+            "label": "Kel-F® 81 (PCTFE)",
+            "class_id": "Material",
+            "study": "cited",
+            "key": "K5",
+            "support": [
+              "A98"
+            ]
+          },
+          {
+            "label": "Fluorel®",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K6",
+            "support": [
+              "A21"
+            ]
+          },
+          {
+            "label": "Kel-F® 81",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K7",
+            "support": [
+              "A21",
+              "A74"
+            ]
+          },
+          {
+            "label": "Salox-M®",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K8",
+            "support": [
+              "A22"
+            ]
+          },
+          {
+            "label": "Algoflon®",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K9",
+            "support": [
+              "A21"
+            ]
+          },
+          {
+            "label": "Mechanical Impact Test",
+            "class_id": "Intervention",
+            "study": "current",
+            "key": "K10",
+            "support": [
+              "A93"
+            ]
+          },
+          {
+            "label": "TFE-Teflon® (PTFE)",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K11",
+            "support": [
+              "A21",
+              "A74"
+            ]
+          },
+          {
+            "label": "TFE-Teflon® (PTFE)",
+            "class_id": "Material",
+            "study": "cited",
+            "key": "K12",
+            "support": [
+              "A95"
+            ]
+          },
+          {
+            "label": "Viton® A-500",
+            "class_id": "Material",
+            "study": "current",
+            "key": "K13",
+            "support": [
+              "A21"
+            ]
+          },
+          {
+            "label": "Fluorel®",
+            "class_id": "Material",
+            "study": "cited",
+            "key": "K14",
+            "support": [
+              "A99"
+            ]
+          },
+          {
+            "label": "Brass-filled PTFE sample",
+            "class_id": "Sample",
+            "study": "current",
+            "key": "K15",
+            "support": [
+              "A96"
+            ]
+          }
+        ],
+        "schema": {
+          "$defs": {
+            "Statement": {
+              "additionalProperties": false,
+              "properties": {
+                "anchor": {
+                  "type": "string"
+                },
+                "epistemic": {
+                  "enum": [
+                    "measured_observation",
+                    "author_reported_conclusion",
+                    "tentative_interpretation",
+                    "hypothesis",
+                    "open_question",
+                    "normative_requirement",
+                    "guidance",
+                    "experimental_configuration",
+                    "derived_quantity",
+                    "documentary_context"
+                  ],
+                  "title": "Epistemic",
+                  "type": "string"
+                },
+                "subjects": {
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "K1",
+                      "K2",
+                      "K3",
+                      "K4",
+                      "K5",
+                      "K6",
+                      "K7",
+                      "K8",
+                      "K9",
+                      "K10",
+                      "K11",
+                      "K12",
+                      "K13",
+                      "K14",
+                      "K15"
+                    ]
+                  },
+                  "title": "Subjects",
+                  "type": "array"
+                },
+                "study": {
+                  "default": "unknown",
+                  "enum": [
+                    "current",
+                    "cited",
+                    "unknown"
+                  ],
+                  "title": "Study",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "anchor",
+                "epistemic",
+                "subjects",
+                "study"
+              ],
+              "title": "Statement",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "statements": {
+              "items": {
+                "$ref": "#/$defs/Statement"
+              },
+              "title": "Statements",
+              "type": "array"
+            }
+          },
+          "title": "Output",
+          "type": "object",
+          "required": [
+            "statements"
+          ]
+        },
+        "original_tables": [
+          {
+            "physical_pdf_page": 8,
+            "original_cells": [
+              [
+                "Material",
+                "heat of combustion (cal/gram)",
+                "Standard Deviation (cal/gram)"
+              ],
+              [
+                "aTFE-Teflon® (PTFE)",
+                "1517",
+                "24.33"
+              ],
+              [
+                "aKel-F® 81 (PCTFE)",
+                "2556",
+                "17.09"
+              ],
+              [
+                "aViton® A",
+                "3992",
+                "18.01"
+              ],
+              [
+                "aViton® A-500",
+                "3934",
+                "11.06"
+              ],
+              [
+                "aFluorel®",
+                "3992",
+                "16.74"
+              ],
+              [
+                "bBrass-filled PTFE",
+                "1332",
+                "13.81"
+              ]
+            ],
+            "original_headers": [
+              "Material",
+              "heat of combustion (cal/gram)",
+              "Standard Deviation (cal/gram)"
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          },
+          {
+            "physical_pdf_page": 8,
+            "original_cells": [
+              [
+                "Material",
+                "AIT (°C)",
+                "Initial Test Pressure\n(psia)",
+                "Final Test Pressure\n(psia)"
+              ],
+              [
+                "aTFE-Teflon® (PTFE)",
+                ">425",
+                "1500",
+                "2200"
+              ],
+              [
+                "aKel-F® 81 (PCTFE)",
+                "404.3",
+                "1500",
+                "2200"
+              ],
+              [
+                "aViton® A",
+                "239",
+                "1500",
+                "2000"
+              ],
+              [
+                "aViton® A-500",
+                "239",
+                "1500",
+                "2000"
+              ],
+              [
+                "aFluorel®",
+                "296",
+                "1500",
+                "2100"
+              ],
+              [
+                "bBrass-filled PTFE",
+                ">425",
+                "1500",
+                "2268"
+              ],
+              [
+                "bTFE-Teflon® (PTFE)",
+                ">425",
+                "1500",
+                "2396"
+              ]
+            ],
+            "original_headers": [
+              "Material",
+              "AIT (°C)",
+              "Initial Test Pressure\n(psia)",
+              "Final Test Pressure\n(psia)"
+            ],
+            "header_external": false,
+            "semantic_status": "UNAPPROVED_LAYOUT_ONLY_NOT_EXECUTION_EVIDENCE"
+          }
+        ],
+        "unstructured_statement_anchors": [],
+        "task": "Extract all source-backed statements in the task source anchors. Return ONLY the root key statements. The wider stage example does not require other keys for this focused task."
+      },
+      "max_output_tokens": 23552,
+      "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "scientific_propositions",
+          "schema": {
+            "$defs": {
+              "Statement": {
+                "additionalProperties": false,
+                "properties": {
+                  "anchor": {
+                    "type": "string"
+                  },
+                  "epistemic": {
+                    "enum": [
+                      "measured_observation",
+                      "author_reported_conclusion",
+                      "tentative_interpretation",
+                      "hypothesis",
+                      "open_question",
+                      "normative_requirement",
+                      "guidance",
+                      "experimental_configuration",
+                      "derived_quantity",
+                      "documentary_context"
+                    ],
+                    "title": "Epistemic",
+                    "type": "string"
+                  },
+                  "subjects": {
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "K1",
+                        "K2",
+                        "K3",
+                        "K4",
+                        "K5",
+                        "K6",
+                        "K7",
+                        "K8",
+                        "K9",
+                        "K10",
+                        "K11",
+                        "K12",
+                        "K13",
+                        "K14",
+                        "K15"
+                      ]
+                    },
+                    "title": "Subjects",
+                    "type": "array"
+                  },
+                  "study": {
+                    "default": "unknown",
+                    "enum": [
+                      "current",
+                      "cited",
+                      "unknown"
+                    ],
+                    "title": "Study",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "anchor",
+                  "epistemic",
+                  "subjects",
+                  "study"
+                ],
+                "title": "Statement",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "statements": {
+                "items": {
+                  "$ref": "#/$defs/Statement"
+                },
+                "title": "Statements",
+                "type": "array"
+              }
+            },
+            "title": "Output",
+            "type": "object",
+            "required": [
+              "statements"
+            ]
+          },
+          "strict": true
+        }
+      },
+      "raw_response": "",
+      "usage": null,
+      "outcome": {
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "stage": "propositions",
+        "focus": "statements",
+        "cache_key": "56eebd78f15518a926d092a63a095bf5758ba89c51e7efbb060cdf2b1e7c4b8e",
+        "members": [
+          {
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "start": 0,
+            "end": 1895
+          },
+          {
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "start": 0,
+            "end": 1400
+          },
+          {
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "start": 0,
+            "end": 1735
+          },
+          {
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "start": 0,
+            "end": 895
+          },
+          {
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "start": 895,
+            "end": 1617
+          },
+          {
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "start": 0,
+            "end": 1992
+          },
+          {
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "start": 0,
+            "end": 1349
+          },
+          {
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "start": 1349,
+            "end": 2015
+          },
+          {
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "start": 0,
+            "end": 2062
+          },
+          {
+            "id": "segment-1dad77136938feecb86b170a",
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "start": 0,
+            "end": 1066
+          }
+        ],
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "start": 0,
+        "end": 13782,
+        "deterministic": "COMPLETE",
+        "model": "FAILED",
+        "attempts": 1,
+        "source_anchors": 99,
+        "known_entities_selected": 15,
+        "reasoning_tokens": 2048,
+        "source_anchor_characters": 22449,
+        "proposed_items": 0,
+        "request_bytes": 40128,
+        "reserved_tokens_per_attempt": 65829,
+        "output_tokens": 23552,
+        "context_token_estimate": 45202,
+        "transport": {
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "stream": true,
+          "max_output_tokens": 23552,
+          "thinking_enabled": true,
+          "reasoning_budget": 2048,
+          "image_count": 0,
+          "response_headers": {},
+          "duration_seconds": 282.98814019800193,
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "reasoning_characters": 8942,
+          "usage": null,
+          "finish_reason": null
+        },
+        "error_type": "interrupted"
+      },
+      "state": "FINISHED"
+    }
+  ]
+}

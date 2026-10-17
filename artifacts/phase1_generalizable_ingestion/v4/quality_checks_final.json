@@ -1,0 +1,66 @@
+{
+  "source_commit": "cdb17f252a0eb000f5afdf2a2bc5b647b903db1c",
+  "commands": [
+    {
+      "command": "uv run ruff format --check .",
+      "exit_code": 0,
+      "receipt": "ruff_format_scope_final_02.txt",
+      "result": "477 files already formatted"
+    },
+    {
+      "command": "uv run ruff check .",
+      "exit_code": 0,
+      "receipt": "ruff_check_scope_final.txt",
+      "result": "All checks passed!"
+    },
+    {
+      "command": "uv run pytest -q",
+      "environment": {
+        "PYTEST_ADDOPTS": "-o tmp_path_retention_count=0"
+      },
+      "exit_code": 0,
+      "receipt": "pytest_scope_final.txt",
+      "result": "509 passed, 72960 existing rdflib deprecation warnings, 92.19 seconds"
+    }
+  ],
+  "targeted_receipt": "scope_targeted_03.txt",
+  "coverage": [
+    "RDF/SHACL",
+    "G2/G3 scientific attribution negatives",
+    "original expression and units",
+    "EvidenceRegistry",
+    "SemanticRegistry",
+    "curation-service integration",
+    "recovery/idempotence",
+    "partial-result replay",
+    "unauthorized publication",
+    "provider failures and compatible fallback",
+    "original PDF/table traceability",
+    "prospective independent-reference boundary"
+  ],
+  "scientific_acceptance_from_test_count": false,
+  "delivery_documentation_ruff_recheck": {
+    "format": {
+      "command": "uv run ruff format --check .",
+      "receipt": "ruff_format_delivery.txt",
+      "exit_code": 0,
+      "result": "478 files already formatted"
+    },
+    "lint": {
+      "command": "uv run ruff check .",
+      "receipt": "ruff_check_delivery.txt",
+      "exit_code": 0
+    }
+  },
+  "final_delivery_test_run": {
+    "command": "uv run pytest -q",
+    "environment": {
+      "PYTEST_ADDOPTS": "-o tmp_path_retention_count=0"
+    },
+    "exit_code": 0,
+    "receipt": "pytest_delivery.txt",
+    "result": "509 passed, 72960 existing rdflib deprecation warnings, 81.01 seconds"
+  },
+  "final_delivery_format_receipt": "ruff_format_delivery_final.txt",
+  "final_delivery_lint_receipt": "ruff_check_delivery_final.txt"
+}

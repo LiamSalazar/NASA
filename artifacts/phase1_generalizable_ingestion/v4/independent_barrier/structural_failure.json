@@ -1,0 +1,11 @@
+{
+  "membership": "FAILED_PRE_INFERENCE_STRUCTURAL_AUDIT_CYCLE3",
+  "ntrs_id": "20260003508",
+  "code_commit": "23e9c67a9cdd0cffd2bbd6235f4a020d2a4562c5",
+  "model_calls": 0,
+  "scientific_precision_recall": "NOT_MEASURED; source reference was not fixed and model preparation was not started.",
+  "source_body_acquired_and_read": true,
+  "defect": "The frozen heading recognizer supports Roman numerals only for a fixed list of section names. An ordinary Roman-numbered section with another title can fail to terminate the preceding lettered group scope. This risks false applicability.",
+  "action": "Preserve this source/freeze and treat its ICES-2026-155 lineage as exposed development evidence. Repair the general section-boundary recognizer, then prospectively reserve a different investigation. Do not relabel this source as unseen for new code.",
+  "source_sha256": "282f4fbd1b98cc8546dc61bcf7b10e6e0fa5b13b30cad0d6e0ae7b840a0c325e"
+}

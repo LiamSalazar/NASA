@@ -1,0 +1,29 @@
+{
+  "implementation_commit": "c2cfbcb5a864e8e53fb5dc40cac5e95dd92d6ae7",
+  "source_files": [
+    ".env.example",
+    "scripts/compare_nvidia_science.py",
+    "scripts/run_phase1_scientific_validation.py",
+    "scripts/score_scientific_review.py",
+    "scripts/verify_scientific_package.py",
+    "src/nasa_fire_ai/config.py",
+    "src/nasa_fire_ai/ingestion/document_extraction.py",
+    "src/nasa_fire_ai/ingestion/document_structure.py",
+    "src/nasa_fire_ai/ingestion/narrative_candidates.py",
+    "src/nasa_fire_ai/ingestion/scientific_coverage.py",
+    "src/nasa_fire_ai/ingestion/scientific_media.py",
+    "src/nasa_fire_ai/llm/scientific_provider.py",
+    "tests/test_adaptive_extraction.py",
+    "tests/test_document_extraction.py",
+    "tests/test_source_review_metrics.py"
+  ],
+  "required_commands": {
+    "uv run ruff format --check .": "PASS; 473 files",
+    "uv run ruff check .": "PASS",
+    "uv run pytest -q": "474 passed; pytest_final.txt"
+  },
+  "scientific_contract_regressions": "Full suite includes G2/G3 attribution negatives, quantitative/unit/scope invariants, EvidenceRegistry, SemanticRegistry, preservation, partial replay, curation, idempotence, unauthorized publication and provider failure cases.",
+  "canonical_shacl": "canonical_shacl.json; both existing shapes pass, 24014 triples.",
+  "frozen_files_changed": [],
+  "credential_files_committed": false
+}
