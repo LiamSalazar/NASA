@@ -117,6 +117,31 @@ def test_flattened_exponent_and_dash_sign_need_confirmation():
     assert parse_numeric_expression("–40")["status"] == "NOT_NUMERIC"
 
 
+def test_superscript_exponent_flattened_by_pdf_text_is_kept_but_unconfirmed():
+    from decimal import Decimal
+
+    parsed = parse_numeric_expression("1350 ×103")
+    assert parsed["status"] == "AMBIGUOUS"
+    assert parsed["ambiguities"] == ["FLATTENED_EXPONENT_UNCONFIRMED"]
+    assert [Decimal(v) for v in values("1350 ×103")[0]] == [Decimal(1350000)]
+    # "x" is a dimension separator, and 10 followed by 0 is a literal number.
+    assert parse_numeric_expression("5 x 103")["status"] == "NOT_NUMERIC"
+    assert parse_numeric_expression("5 ×100")["status"] == "NOT_NUMERIC"
+    assert [m.group() for m in source_numeric_matches("ΔHc = 1350 ×103 J/kg")] == ["1350 ×103"]
+
+
+def test_bound_and_order_of_magnitude_words_keep_their_literal_qualifier():
+    high = parse_numeric_expression("as high as ~700")["endpoints"][0]["qualifier"]
+    assert high["operator"] == "<=" and high["approximate"]
+    assert high["literal"] == "as high as ~"
+    low = parse_numeric_expression("as low as -50")["endpoints"][0]["qualifier"]
+    assert low["operator"] == ">="
+    order = parse_numeric_expression("on the order of 150")["endpoints"][0]["qualifier"]
+    assert order["approximate"] and order["literal"] == "on the order of"
+    assert parse_numeric_expression("approximately a")["status"] == "NOT_NUMERIC"
+    assert parse_numeric_expression("~.9 and 4.3")["status"] == "NOT_NUMERIC"
+
+
 def test_footnote_symbols_are_annotations_not_digits():
     parsed = parse_numeric_expression("12.5†")
     assert parsed["footnote_markers"] == ["†"]

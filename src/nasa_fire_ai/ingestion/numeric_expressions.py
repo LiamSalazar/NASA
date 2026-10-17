@@ -28,12 +28,25 @@ PARSE_LITERAL = rf"(?:{GROUPED}|\d+(?:[.,]\d+)?|[.,]\d+|\d+\.)"
 EXPONENT = (
     rf"(?:[eE]{SIGN}?\d+"
     rf"|\s*[×xX·*]\s*10\s*(?:\^\s*{SIGN}?\d+|\*\*\s*{SIGN}?\d+|[⁻⁺]?[{_SUPERSCRIPT_DIGITS}]+"
-    rf"|{SIGN}\d+))"
+    rf"|{SIGN}\d+)"
+    # PDF text often flattens "×10³" to "×103". Only the multiplication sign
+    # introduces this reading, never "x" (used for dimensions), and the result
+    # is always reported as ambiguous.
+    r"|\s*×\s*10[1-9]\d?(?![\d.,]))"
 )
 POWER_OF_TEN = rf"10\s*(?:\^\s*{SIGN}?\d+|[⁻⁺]?[{_SUPERSCRIPT_DIGITS}]+)"
 
-APPROXIMATE = r"~|∼|≈|≃|(?i:about|approximately|approx\.?|roughly|nearly|circa|ca\.)(?=\s|\d|\.\d)"
+APPROXIMATE = (
+    r"~|∼|≈|≃|(?i:about|approximately|approx\.?|roughly|nearly|circa|ca\.|around|"
+    r"on the order of|of the order of)(?=\s|\d|\.\d)"
+)
 INEQUALITY_WORDS = {
+    "as high as": "<=",
+    "as much as": "<=",
+    "as many as": "<=",
+    "as low as": ">=",
+    "as little as": ">=",
+    "as few as": ">=",
     "less than or equal to": "<=",
     "greater than or equal to": ">=",
     "no more than": "<=",
