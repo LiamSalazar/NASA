@@ -1,0 +1,830 @@
+{
+ "basis": "Live exposed-regression run of the frozen 36-target PTFE reference (NTRS 20090043050). Two-lens adversarial assistant adjudication against original source text: one adjudicator per 4 targets, protocol-accounting and scientific-fidelity verifiers, judge on dispute; every SOURCE_SUPPORTED non-duplicate proposal judged by a judge and a skeptic. Not independent expert gold; not an independent evaluation (source exposed).",
+ "source_reference_sha256": "814a0feb55ea058b42ddc41829dfd59b982a66afd9dc9f2f061b7360af67107b",
+ "targets": [
+  {
+   "id": "entities-01",
+   "kind": "entities",
+   "page": 1,
+   "evidence_id": "E-12420d47b8affc1483755bb9",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+   "start": 180,
+   "end": 288,
+   "expectation": "Current documentary investigation, not an individual executed test.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-9bddc5ffca7b99b9c629e511"
+   ],
+   "review_note": "Page 1 gives the paper title verbatim. proposal-9bddc5ffca7b99b9c629e511 is a SOURCE_SUPPORTED, non-duplicate entity with exactly that label, class_id Investigation and study current. That is a documentary investigation, not an executed test. Its extra page-19 support quote, from the Beeson handbook reference, does not change the entity's identity or role.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "entities-02",
+   "kind": "entities",
+   "page": 4,
+   "evidence_id": "E-3df3718143d8a6097de5cce9",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Brass-filled PTFE samples",
+   "start": 1061,
+   "end": 1086,
+   "expectation": "Current tested specimen collection, not a newly invented run.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "Page 4 says the paper's Brass-filled PTFE samples were tested in a Parr 6200 bomb calorimeter, a current collection of specimens. No entity proposal of any status models this sample collection. The Sample-class entities cover only the Table 3 batch rows (Batch #1 to #4, page 12), which are sub-cohorts. proposal-5e4e1c7ce97d7b60b4a070bc is the Material identity, not the specimens. The only matching proposal is UNRESOLVED statement proposal-599e68fb9b3a3dc44601c6fb, which is a different kind and does not count.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "entities-03",
+   "kind": "entities",
+   "page": 2,
+   "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Brass-filled PTFE",
+   "start": 461,
+   "end": 478,
+   "expectation": "Material identity distinct from physical samples and from Salox-M composition.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-5e4e1c7ce97d7b60b4a070bc"
+   ],
+   "review_note": "proposal-5e4e1c7ce97d7b60b4a070bc is SOURCE_SUPPORTED and non-duplicate, labelled 'Brass-filled PTFE', with class_id Material and study current. Its support comes from page 2 ('a new formulation of ... PTFE with Brass filler') and the Table 1 row on page 8. It is a material identity, separate from the Sample-class batch entities and from the Salox-M Material entity.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "entities-04",
+   "kind": "entities",
+   "page": 10,
+   "evidence_id": "E-3c5dda18c88e5f979ff19901",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Salox-M®",
+   "start": 733,
+   "end": 741,
+   "expectation": "Bronze-filled PTFE material, not Brass-filled PTFE and not an executed run.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-616d048cc157a677664dda6f"
+   ],
+   "review_note": "proposal-616d048cc157a677664dda6f is SOURCE_SUPPORTED and non-duplicate, labelled Salox-M, with class_id Material and study current. Its page 10 support says Salox-M 'uses Bronze filler in PTFE instead of Brass' and is '40% Bronze and 60% PTFE'. That makes it a Bronze-filled PTFE material, separate from Brass-filled PTFE and not an executed run. The separate Sample row entity proposal-3af8f51b08f8df90240c4eb8 (aSalox-M) does not contradict this.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "entities-05",
+   "kind": "entities",
+   "page": 11,
+   "evidence_id": "E-0893f504fcae06fdbd60b10e",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Algoflon® E2",
+   "start": 250,
+   "end": 262,
+   "expectation": "Pre-sintered material variant; do not merge with F7.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-3e8bf19c8bd93a2bafe4d129"
+   ],
+   "review_note": "Final judgment after re-reading the source. Page 11 (E-0893f504fcae06fdbd60b10e) says 'Algoflon E2 is a PTFE virgin granular resin which has been pre-sintered' and that it was thermally treated at or above the melting point. proposal-3e8bf19c8bd93a2bafe4d129 qualifies: kind entities, SOURCE_SUPPORTED, duplicate_of null, label 'Algoflon E2', class Material, study current. Its support quotes those exact pre-sintered and thermal-treatment sentences. It is separate from the F7 Material entity (proposal-f9e3ee36fabd436e91cd51c4). The generic 'Algoflon' entity (proposal-d88825f3ef8b7ce17affba8b) only quotes the page 2 list of materials, so it merges neither variant. Current lineage is right: the page 13 Table 3 row 'aAlgoflon E2' carries footnote a, NASA-STD 6001 MSFC. I do not cite proposal-5ff5e7cf61d6bad7dffa9c26 ('aAlgoflon E2'). Its class is Sample, a Table 3 test-row cohort, not the material variant the expectation describes. Its support quotes are also cut off at 'aAlgoflo' on page 13, before the E2 row, so they never show E2 or pre-sintering. It is distinct from F7 and not wrong, so it is not an incorrect proposal. It just does not express this target in the required role. No SOURCE_SUPPORTED entity merges E2 with F7.",
+   "verification": "RESOLVED_BY_JUDGE_AFTER_DISPUTE"
+  },
+  {
+   "id": "entities-06",
+   "kind": "entities",
+   "page": 11,
+   "evidence_id": "E-0893f504fcae06fdbd60b10e",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Algoflon® F7",
+   "start": 435,
+   "end": 447,
+   "expectation": "Distinct virgin granular material variant; not E2 or generic allAlgoflon behavior.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-f9e3ee36fabd436e91cd51c4"
+   ],
+   "review_note": "Final judgment after re-reading the source. Page 11 (E-0893f504fcae06fdbd60b10e) says 'Algoflon F7 is a PTFE virgin granular resin', designed as a molding resin for thin skived tape. proposal-f9e3ee36fabd436e91cd51c4 qualifies: kind entities, SOURCE_SUPPORTED, duplicate_of null, label 'Algoflon F7', class Material, study current. Its support quotes those F7-specific sentences. It is separate from the E2 entity (proposal-3e8bf19c8bd93a2bafe4d129) and from the generic 'Algoflon' entity (proposal-d88825f3ef8b7ce17affba8b). The generic entity only quotes the page 2 material list and attributes no F7 or blanket Algoflon behavior. Current lineage is right: the page 13 Table 3 row 'aAlgoflon F7' carries footnote a, NASA-STD 6001 MSFC. I do not cite proposal-031289469c8fa1b60e3f215d ('aAlgoflon F7'). Its class is Sample, a test-row cohort, not the virgin granular material variant the expectation requires. Its support quotes are also cut off at 'aAlgoflo', so they never show the F7 row label or any F7 description. It does not misstate F7, so it is not incorrect, but it does not qualify in the required role. No SOURCE_SUPPORTED entity merges F7 with E2 or with generic Algoflon.",
+   "verification": "RESOLVED_BY_JUDGE_AFTER_DISPUTE"
+  },
+  {
+   "id": "entities-07",
+   "kind": "entities",
+   "page": 12,
+   "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "aBrass-filled PTFE\n(Batch #1)",
+   "start": 289,
+   "end": 318,
+   "expectation": "Source-defined first batch/cohort, not a single named run. Footnotea origin and condition rows remain important.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-0617692d53fb28a218d0118e"
+   ],
+   "review_note": "In Table 3 on page 12, 'aBrass-filled PTFE (Batch #1)' heads four condition rows: LOX 0/20, GOX 0/20, LOX 4/80 and GOX 0/80. proposal-0617692d53fb28a218d0118e is SOURCE_SUPPORTED, not a duplicate, and labelled exactly 'aBrass-filled PTFE (Batch #1)', keeping the footnote-a marker. Its class is Sample, so it is a batch/specimen cohort rather than an ExperimentalRun, as the expectation requires. Its study is current, which matches footnote a ('NASA-STD 6001 MSFC') on page 13. It is a separate entity from Batches #2 to #4. Its stored support quote is cut off at 300 characters but comes from the same Table 3 page.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "entities-08",
+   "kind": "entities",
+   "page": 12,
+   "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "aBrass-filled PTFE\n(Batch #2)",
+   "start": 504,
+   "end": 533,
+   "expectation": "Distinct second batch/cohort; do not merge row outcomes with batch1.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-1a89fb08fcedc20e8846b16a"
+   ],
+   "review_note": "In Table 3 on page 12, 'aBrass-filled PTFE (Batch #2)' heads its own rows: GOX 0/20 and LOX 1/60. proposal-1a89fb08fcedc20e8846b16a is SOURCE_SUPPORTED, not a duplicate, and labelled exactly 'aBrass-filled PTFE (Batch #2)'. Its class is Sample and its study is current, which matches footnote a (NASA-STD 6001 MSFC). It is a separate entity from Batch #1 (proposal-0617692d53fb28a218d0118e), so the row outcomes of the two batches are not merged at the entity level.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-09",
+   "kind": "quantities",
+   "page": 8,
+   "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "1332",
+   "start": 613,
+   "end": 617,
+   "expectation": "Current MSFC Brass-filled PTFE calorimetric result in Table1; preserve software/oil-spike measurement provenance and printed unit, not all literature rows as currentNASA.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "pdf-quantity-13dcacad136bfdab6a385d9b"
+   ],
+   "review_note": "Page 8 Table 1 prints Brass-filled PTFE (footnote b, NASA-STD-6001) heat of combustion 1332 cal/gram. No SOURCE_SUPPORTED quantity covers it. The only structured quantity, proposal-59c8764fcefacdd2d078a544 (1332 cal/gram), is REJECTED with QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE and does not count. pdf-quantity-13dcacad136bfdab6a385d9b is the only cell with 1332 and keeps the exact original value. Its role, current-MSFC lineage and unit are still unresolved: the unit is null because the cal/gram header was not bound.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-10",
+   "kind": "quantities",
+   "page": 8,
+   "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "13.81",
+   "start": 618,
+   "end": 623,
+   "expectation": "Brass-filled PTFE standard deviation, derived statistic; not a separate heat-of-combustion measurement or assumed numberofNASAtrials.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "pdf-quantity-c786073628380363528308fb"
+   ],
+   "review_note": "Page 8 Table 1 prints a Brass-filled PTFE standard deviation of 13.81 cal/gram, which is a derived statistic. The structured proposal-037929af5e0fa08382e91103 (Standard Deviation 13.81) is REJECTED and does not count. pdf-quantity-c786073628380363528308fb is the only cell with 13.81 and keeps the exact value. Its epistemic role is UNRESOLVED_REVIEW_REQUIRED and its unit is null. It does not turn the value into a separate heat-of-combustion measurement, but its role as a derived statistic is not established, so it stays unresolved.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-11",
+   "kind": "quantities",
+   "page": 8,
+   "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "bBrass-filled PTFE\n>425\n1500\n2268",
+   "start": 942,
+   "end": 975,
+   "expectation": "Table2 Brass-filled PTFE AIT lower-bound/recording limit; actualAIT unknown above425, never exact425.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "pdf-quantity-ecc52743c53a7bc07b2a73de"
+   ],
+   "review_note": "Page 8 Table 2 has three '>425' AIT cells: aTFE-Teflon, bBrass-filled PTFE and bTFE-Teflon. The cell proposals come out in row-major order: 0ae23... is aPTFE, ecc527... is the Brass row (just before 1500/2268) and 00e4ee... is bTFE (just before 1500/2396). So pdf-quantity-ecc52743c53a7bc07b2a73de holds the Brass-filled PTFE AIT cell. It keeps the '>425' lower bound and never states an exact 425. The degree-C unit is not bound and the scope is unresolved. Structured AIT '>425' proposal-9af186769976ef6822729f49 is REJECTED and cites Table 1 text, so it does not count.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-12",
+   "kind": "quantities",
+   "page": 8,
+   "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "bBrass-filled PTFE\n>425\n1500\n2268",
+   "start": 942,
+   "end": 975,
+   "expectation": "Current Brass-filled PTFE AIT initial pressure; not final2268 or mechanical-impact10000.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "pdf-quantity-9bd008a35c1101bf1a915cc1"
+   ],
+   "review_note": "Page 8 Table 2, Brass-filled PTFE (footnote b, NASA-STD-6001 MSFC) row: initial test pressure 1500 psia, final 2268. Seven 1500 psia cells exist. In row-major emission order, pdf-quantity-9bd008a35c1101bf1a915cc1 sits between the Brass '>425' (ecc527...) and the 2268 final-pressure cell (2c1315...), so it is the Brass initial-pressure cell. Its unit, psia, comes from the column header, and it is kept separate from the final 2268 value. Its role as an initial-pressure configuration value is unresolved. Structured 1500 proposal-db17b5eb7766037832a1a88d is REJECTED and does not count.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-13",
+   "kind": "quantities",
+   "page": 8,
+   "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "bBrass-filled PTFE\n>425\n1500\n2268",
+   "start": 942,
+   "end": 975,
+   "expectation": "Current Brass-filled PTFE final pressure in AIT test, not Teflon2396 or initial1500.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "pdf-quantity-2c13159d59bb2947beb821ff"
+   ],
+   "review_note": "Page 8 Table 2 (footnote b, NASA-STD-6001 MSFC) lists the current Brass-filled PTFE row as >425 °C AIT, 1500 psia initial and 2268 psia final pressure. The run has no SOURCE_SUPPORTED quantities. The only structured 2268 psia proposal is REJECTED (proposal-bb0e009728294fdc59dc0760), so it does not count. UNRESOLVED table-cell proposal pdf-quantity-2c13159d59bb2947beb821ff keeps the exact cell value 2268 psia from page 8. That value appears only in the Brass-filled PTFE row; the Teflon row's 2396 psia and the 1500 psia initial cells are separate proposals. Its row/column scope and current-MSFC role are still unassigned and need scientist review.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-14",
+   "kind": "quantities",
+   "page": 7,
+   "evidence_id": "E-c74df4a8aec87bacb518676c",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "was 12% lower than the caloric content of the non-Brass-filled PTFE",
+   "start": 14,
+   "end": 81,
+   "expectation": "Author-derived comparison with cited Chou/Giedorowicz data, not directly measured fraction or oxygen concentration.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "Page 7 says Brass-filled PTFE's heat of combustion 'was 12% lower than the caloric content of the non-Brass-filled PTFE determined by Chou and Giedorowicz'. This is an author-derived comparison against cited data. The only quantity proposal for it, proposal-b5b5fc19db68bd923a464005 (12 %, derived_quantity), is REJECTED with QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE. The UNRESOLVED proposal-d1f921f923d1b2f5fc2fc578 is a statement, a different kind. No SOURCE_SUPPORTED or UNRESOLVED quantity and no table-cell proposal keeps this value.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-15",
+   "kind": "quantities",
+   "page": 9,
+   "evidence_id": "E-6bf1df5933d78592dccc7298",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX",
+   "start": 1559,
+   "end": 1625,
+   "expectation": "Current mechanical-impact input energy/configuration, preserve original Joules and batch/environment applicability.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "Page 9 says the current MSFC Brass-filled PTFE samples were impacted with 98 Joules at 10,000 psia in both LOX and GOX: first 20 samples, then 80 more of the same batch. The only 98 Joules quantity proposals, proposal-0bd5161f090f962b1855c9ef and proposal-72d2097204ca05c201153d2b, are REJECTED (subject not in applicable source). The UNRESOLVED 98 Joules proposals 7ee55baa…, 8dbd4307…, 5fae59c4… and 9b3676cc… are statements, a different kind. No table-cell quantity proposal holds 98 J, so nothing keeps the input energy with its batch and LOX/GOX scope.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-16",
+   "kind": "quantities",
+   "page": 9,
+   "evidence_id": "E-6bf1df5933d78592dccc7298",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX",
+   "start": 1559,
+   "end": 1625,
+   "expectation": "Current mechanical-impact pressure, not AIT1500 or all comparison conditions.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "Page 9 body text gives 10,000 psia as the current mechanical-impact test pressure for Brass-filled PTFE in LOX and GOX. The page-9 quantity proposals for it, proposal-b23b241dac3bdf897a4100b0 and proposal-9f6c82d8b4de310bcf11d6db (System Pressure 10,000 psia), are both REJECTED. The UNRESOLVED 10,000 psia table-cell proposals come from the Table 3 pages (12 and 13). They do not preserve this page-9 body-text value, so they do not count as retained evidence for this target. No SOURCE_SUPPORTED or qualifying UNRESOLVED quantity exists.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-17",
+   "kind": "quantities",
+   "page": 10,
+   "evidence_id": "E-3c5dda18c88e5f979ff19901",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "reaction percentage decreased in a LOX environment from \n5% in batch 1 to less than 2% in batch 2.",
+   "start": 241,
+   "end": 339,
+   "expectation": "Firstbatch LOX reaction fraction; derived from outcome counts and not GOX reaction rate. Source paragraph contains contradictory zero-vs4/80 claims requiring review.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "Page 10 says the Brass-filled PTFE LOX reaction percentage fell from 5% in batch 1 to less than 2% in batch 2. Page 9 contradicts itself: it reports no LOX reactions out of 80, then says four of the additional 80 LOX samples reacted. The live run has no SOURCE_SUPPORTED quantity. No non-PDF quantity proposal (any status) carries the 5% or <2% value. The only page-10 quantities are REJECTED ones that bind 98 J, 10,000 psia and 1/60 to the sentence, and REJECTED proposals do not count. pdf-quantity-86e13f30f528ae2eb6d3ab02 is UNRESOLVED and keeps the page-12 Table 3 Batch #1 LOX cell 4/80, which the 5% is derived from. It does not preserve the target's own value (5%, in body text), and its row scope is unbound, so it does not count as retained evidence. The UNRESOLVED statements that repeat the sentence (proposal-fb3ce1e72c07bc127bcfad0d, proposal-4ef182709ba761476bbd6027, proposal-1d27101f10a2ce3fb07a7213) are a different kind and do not count.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "quantities-18",
+   "kind": "quantities",
+   "page": 10,
+   "evidence_id": "E-3c5dda18c88e5f979ff19901",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "The composition of Salox-M® is 40% \nBronze and 60% PTFE.",
+   "start": 788,
+   "end": 844,
+   "expectation": "Salox-M bronze composition, not Brass-filled PTFE filler fraction which is explicitly unknown.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "Page 10 states the Salox-M composition as 40% Bronze and 60% PTFE. It also says the Brass fraction in Brass-filled PTFE is not known. No quantity proposal of any status carries the 40% Bronze or 60% PTFE composition: the only 40 and 60 quantities are impact energies (40 ft-lbs) or pressures (60 psia). The sentence survives only in UNRESOLVED statements (proposal-a4d4b8b85c8e4160b677b35f, proposal-44e57719d1598600abc87b27) and as support for the Salox-M entity. Both are different kinds and do not count for a quantity target.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-19",
+   "kind": "statements",
+   "page": 4,
+   "evidence_id": "E-3df3718143d8a6097de5cce9",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "The data used to compare Brass-filled PTFE to other polymers was obtained from other \nASTM papers as well as NASA’s Materials and Processes Technical Information System \n(MAPTIS).",
+   "start": 531,
+   "end": 710,
+   "expectation": "Comparison lineage includes thirdparty and historicalNASA sources; not all rows current originalMCRF observations.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-6b9cc239dd5e5597b51e6cf1"
+   ],
+   "review_note": "proposal-6b9cc239dd5e5597b51e6cf1 is SOURCE_SUPPORTED with duplicate_of null. It reproduces the page-4 Existing Data Library sentence word for word: the data used to compare Brass-filled PTFE to other polymers came from other ASTM papers and NASA's MAPTIS. It is classed Publication / documentary_context with study current (the current paper describing its own data library), and its subject entity is the Brass-filled PTFE entity. It records where the comparison data came from as documentary context, not as new MCRF observations, so the third-party and historical-NASA lineage the expectation requires is kept. No SOURCE_SUPPORTED statement asserts this wrongly.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-20",
+   "kind": "statements",
+   "page": 4,
+   "evidence_id": "E-3df3718143d8a6097de5cce9",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter",
+   "start": 1057,
+   "end": 1168,
+   "expectation": "Current calorimetric method/specimen association, not inferred new runs.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-599e68fb9b3a3dc44601c6fb"
+   ],
+   "review_note": "Page 4 says the Brass-filled PTFE samples were evaluated with a Parr 6200 oxygen bomb calorimeter to determine the heat of combustion. No SOURCE_SUPPORTED statement carries this. proposal-599e68fb9b3a3dc44601c6fb is UNRESOLVED with duplicate_of null and keeps the full sentence word for word as ExperimentalCondition / experimental_configuration, study current. It was held for review (reasons: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE, STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED; subjects empty), so the link between the method and the specimen is not established. It still faithfully retains the current calorimetric-method content and does not invent new test runs.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-21",
+   "kind": "statements",
+   "page": 5,
+   "evidence_id": "E-e662ddc659fd07d444d0f55a",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "a mineral oil spike was used, and for which the calculations \ncorrected.",
+   "start": 518,
+   "end": 590,
+   "expectation": "Calorimetric procedure explicitly corrects spike contribution; not uncorrected pure-polymer energy or autonomous derived data.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-a21ba194f1a0d02c3bd5c43c"
+   ],
+   "review_note": "Page 5 heat-of-combustion procedure says a mineral oil spike was used and the calculations corrected for it. No SOURCE_SUPPORTED statement covers page 5. UNRESOLVED proposal-a21ba194f1a0d02c3bd5c43c (ExperimentalCondition, current, experimental_configuration, duplicate_of null) keeps the full sentence word for word, including the spike correction. It does not present the result as uncorrected pure-polymer energy or as autonomous derived data. Its configuration role is flagged as not established, so it stays pending scientist review.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-22",
+   "kind": "statements",
+   "page": 5,
+   "evidence_id": "E-e662ddc659fd07d444d0f55a",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "If the system temperature rises above 425°C \nprior to ignition of the sample, then the AIT is recorded as >425°C.",
+   "start": 1606,
+   "end": 1719,
+   "expectation": "Normative recording rule/censoring threshold, not measured exactAIT425.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-b26157c3882338c0abacb222"
+   ],
+   "review_note": "Page 5 AIT procedure says that if the system temperature rises above 425 C before ignition, the AIT is recorded as >425 C. This is a conditional recording or censoring rule, not a measured exact AIT. No SOURCE_SUPPORTED statement covers it. UNRESOLVED proposal-b26157c3882338c0abacb222 (ExperimentalCondition, current, duplicate_of null) keeps the conditional rule word for word, without turning it into a measured 425 C value. Its role is typed as configuration rather than normative, and the flag CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION is set, so scope and role are not fully established. The similar page 7 rule proposal-e94eb91ea98176d9cc0766b4 is REJECTED and a different passage, so it does not count.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-23",
+   "kind": "statements",
+   "page": 6,
+   "evidence_id": "E-c7cced937631a3202586213b",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "If one sample out of 20 reacts, then \n40 additional samples must be tested without any reactions in order for the material to pass the \ntest.",
+   "start": 1206,
+   "end": 1347,
+   "expectation": "Conditional normative criterion, not observed reaction counts or universal zero hazard.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-a0c2eb8fe086f280b3bd3b7d",
+    "proposal-5f3b7296e70dccce971d5d66"
+   ],
+   "review_note": "Page 6 pass/fail criterion: if 1 of 20 samples reacts, 40 more must be tested with no reactions for the material to pass. No SOURCE_SUPPORTED statement covers page 6. UNRESOLVED proposal-a0c2eb8fe086f280b3bd3b7d is typed Requirement with normative_requirement. It keeps the conditional criterion word for word, with study left unknown. UNRESOLVED proposal-5f3b7296e70dccce971d5d66 is typed ExperimentalCondition and current, and also keeps the text word for word. Neither turns the criterion into observed reaction counts or a claim of zero hazard. Subject applicability and study lineage are still flagged as unresolved.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-24",
+   "kind": "statements",
+   "page": 9,
+   "evidence_id": "E-6bf1df5933d78592dccc7298",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.",
+   "start": 279,
+   "end": 405,
+   "expectation": "Cited Chou/Giedorowicz result; not currentMSFC whole-table observation or high-pressure result.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-ab6330799815408cc5ba8009"
+   ],
+   "review_note": "Page 9 says Chou and Giedorowicz's data show only TFE-Teflon (PTFE) passed the LOX mechanical impact test at ambient pressure. This is a cited result, not an MSFC high-pressure (Table 3) observation. No SOURCE_SUPPORTED statement covers it. UNRESOLVED proposal-ab6330799815408cc5ba8009 (ReportedObservation, study=cited, measured_observation, duplicate_of null) keeps the sentence word for word, with cited lineage and the ambient-pressure LOX scope. UNRESOLVED proposal-4ee9b0d72b89b6cff39b1ef6 has the same text and study=cited, but types it as NASAConclusion/author_reported_conclusion, a less fitting role, so it is not cited here. The flag CURRENT_OR_CITED_STUDY_UNRESOLVED keeps it pending review.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-25",
+   "kind": "statements",
+   "page": 9,
+   "evidence_id": "E-6bf1df5933d78592dccc7298",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.",
+   "start": 1933,
+   "end": 2092,
+   "expectation": "Internal source conflict: preserve both statements and Table3LOX4/80; do not silently resolve or confidently accept zeroLOXreactions.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-780e98b9b3734982854362d6",
+    "proposal-c9438eae952b20806d13c02d",
+    "proposal-e1bf75c2decc5b1d0394dd23",
+    "proposal-363e999255bd3a4cbeb500bb"
+   ],
+   "review_note": "Page 9 says no LOX or GOX reactions in the 80 extra impacts, then says 4 of the additional 80 LOX samples reacted. No SOURCE_SUPPORTED statement covers either sentence. The only supported statements nearby are the p9 Table 3 documentary pointer and the p12 Table 3 Batch #1 0/20 rows, and neither accepts zero LOX reactions. Both conflicting sentences are kept verbatim as separate UNRESOLVED, non-duplicate ReportedObservation statements: 780e98/c9438e with no subject, and e1bf75/363e99 linked to Batch #1. So the contradiction is preserved, not resolved. Scope is still unestablished (reasons: experimental scope and subject applicability unresolved), and no statement cross-checks it against the Table 3 LOX 4/80 row. That rules out correct.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-26",
+   "kind": "statements",
+   "page": 10,
+   "evidence_id": "E-3c5dda18c88e5f979ff19901",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "the second batch of Brass-filled PTFE performed the same as the first \nbatch in a GOX environment and the reaction percentage decreased in a LOX environment from \n5% in batch 1 to less than 2% in batch 2.",
+   "start": 135,
+   "end": 339,
+   "expectation": "Second batch comparison and its distinct outcome rows; original source group identity preserved.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-fb3ce1e72c07bc127bcfad0d",
+    "proposal-4ef182709ba761476bbd6027",
+    "proposal-1d27101f10a2ce3fb07a7213"
+   ],
+   "review_note": "The p10 sentence says batch 2 matched batch 1 in GOX and that the LOX reaction percentage fell from 5% (batch 1) to under 2% (batch 2). It is kept verbatim in three UNRESOLVED, non-duplicate ReportedObservation statements (current study). fb3ce1 links both batch entities (#2 and #1), 4ef182 links batch #2 only, and 1d2710 has no subjects. No SOURCE_SUPPORTED statement expresses the batch comparison. The separate outcome rows for each batch and the percentages, which do not match the table, are not fully established, so the outcome is unresolved, not correct.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-27",
+   "kind": "statements",
+   "page": 10,
+   "evidence_id": "E-3c5dda18c88e5f979ff19901",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Since the exact chemical \nmake up of the Brass component or its relative percentage in Brass-filled PTFE is not known, it \ncan only be speculated that the main component of the Brass is Zinc",
+   "start": 1074,
+   "end": 1264,
+   "expectation": "Explicit unknown composition and tentative speculation; never a confirmed zinc fraction or an invented NASA gap.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-9b826fe532bfcdecf50ea180",
+    "proposal-6ceb7c210080378d0899ff86"
+   ],
+   "review_note": "Page 10 states that the Brass composition and its percentage are unknown, and that zinc as the main Brass component can only be speculated. This is kept verbatim in UNRESOLVED NASAConclusion statements: 9b826f (tentative_interpretation) and 6ceb7c (hypothesis), both non-duplicate. 9c84f8 duplicates 9b826f and is not cited. The tentative role is preserved, and no SOURCE_SUPPORTED statement asserts a confirmed zinc fraction or composition. Subject and scope are still flagged unresolved, so the outcome is unresolved, not correct.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-28",
+   "kind": "statements",
+   "page": 11,
+   "evidence_id": "E-0893f504fcae06fdbd60b10e",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+   "start": 728,
+   "end": 896,
+   "expectation": "Reported E2/F7 contrast; preserve environment/pressure exception, never allAlgoflon equivalent.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-9548c9995149f15f1c756343",
+    "proposal-8eb7677ed116ea654395364f"
+   ],
+   "review_note": "The p11 sentence contrasts the two Algoflon types: pre-sintered E2 had no reactions under Brass-filled PTFE conditions, while F7 did not perform well in LOX. It is kept verbatim in UNRESOLVED ReportedObservation 9548c9 (non-duplicate; d27f93 duplicates it and is not cited). The pressure exception that follows (F7 passed only after the pressure dropped to 5,000 psia) is kept in UNRESOLVED 8eb767. No SOURCE_SUPPORTED statement claims the Algoflon types are equivalent or states the contrast. The subject links and the environment/pressure scope are unestablished, so the outcome is unresolved.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-29",
+   "kind": "statements",
+   "page": 18,
+   "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "The \ndata presented clearly show that the choice of the filler material and the percentage of filler \nrelative to PTFE can make all the difference",
+   "start": 857,
+   "end": 1003,
+   "expectation": "Author conclusion, not newly inferred causal mechanism by the assistant.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-ebb84f5bcb6fc37d38cbf6cb"
+   ],
+   "review_note": "Page 18 Conclusions: proposal-ebb84f5bcb6fc37d38cbf6cb is SOURCE_SUPPORTED with duplicate_of null and is in live_supported. It is a statement with class NASAConclusion, epistemic author_reported_conclusion and study current. Its text reproduces the authors' sentence that the data show filler choice and filler percentage relative to PTFE 'can make all the difference', so it is kept as the authors' conclusion. It adds no causal mechanism. The UNRESOLVED twin proposal-4a8685800ac7967ccb92084c is not needed.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "statements-30",
+   "kind": "statements",
+   "page": 18,
+   "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Even though the Brass-filled PTFE performs similarly to TFE-Teflon® in a high-pressure LOX \nenvironment, its performance far exceeds that of TFE-Teflon® in a high-pressure GOX \nenvironment",
+   "start": 1055,
+   "end": 1243,
+   "expectation": "Author comparative conclusion with LOX/GOX distinction; bestchoice wording is theauthors evaluation, not an assistant recommendation or universal certification.",
+   "outcome": "correct",
+   "proposal_ids": [
+    "proposal-f8fe5e939d4a34e7d345e58d"
+   ],
+   "review_note": "Page 18: proposal-f8fe5e939d4a34e7d345e58d is SOURCE_SUPPORTED with duplicate_of null and is in live_supported. It is a statement with class NASAConclusion, epistemic author_reported_conclusion and study current. Its text quotes the authors word for word: the material performs similarly to TFE-Teflon in high-pressure LOX and far exceeds it in high-pressure GOX. The 'best choice for oxygen systems' clause is kept as the authors' evaluation, not as an assistant recommendation or a general certification. The LOX/GOX distinction is preserved.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "relations-31",
+   "kind": "relations",
+   "page": 4,
+   "evidence_id": "E-3df3718143d8a6097de5cce9",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter",
+   "start": 1057,
+   "end": 1168,
+   "expectation": "Investigation uses its current Brass-filled PTFE specimens/method; not every comparative literature material tested in-house.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "The page 4 source says the Brass-filled PTFE samples in this paper were evaluated with a Parr 6200 oxygen bomb calorimeter to get the heat of combustion. No SOURCE_SUPPORTED relation proposals exist. The only relation citing page 4 is proposal-f2bb1b47339f70ee0a88fe12 (hasIntervention, about the impact/AIT testers), which is REJECTED. The UNRESOLVED 'concerns' relations proposal-cbe3b69a12e1fa1cdf223c25 and proposal-ef5b9845581943da204e41d1 link the Investigation to Brass-filled PTFE. Their support comes only from the page 1 title and page 2 scope, and neither captures the in-house calorimetry specimens or method. No relation mentions Parr or the calorimeter.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "relations-32",
+   "kind": "relations",
+   "page": 9,
+   "evidence_id": "E-6bf1df5933d78592dccc7298",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX",
+   "start": 1559,
+   "end": 1625,
+   "expectation": "Current mechanical-impact specimen/group has its specified LOX/GOX conditions, not AIT configuration.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "Page 9: the current Brass-filled PTFE mechanical-impact specimens were impacted at 98 J and 10,000 psia in both LOX and GOX under NASA-STD-6001. Two relation proposals cite this passage: proposal-23b69016c5f174bf29311a03 (hasIntervention Brass-filled PTFE to Mechanical Impact Test) and proposal-068b90ca64bd92054aacf1ab. Both are REJECTED (RELATION_ENDPOINT_CLASS_CONTRADICTION), so neither counts. The only UNRESOLVED relations nearby are four page 12 madeOf links from Table 3 rows to Brass-filled PTFE, for example proposal-6f4161e9eef89182a0f69476. They state material composition and do not keep the 98 J, 10,000 psia, LOX/GOX condition assignment. No SOURCE_SUPPORTED relation exists.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "relations-33",
+   "kind": "relations",
+   "page": 10,
+   "evidence_id": "E-3c5dda18c88e5f979ff19901",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Salox-M® uses Bronze filler in PTFE instead of Brass.",
+   "start": 733,
+   "end": 786,
+   "expectation": "Original material-component relation, not wrong Brass material or new implicit global relation.",
+   "outcome": "omitted",
+   "proposal_ids": [],
+   "review_note": "Page 10 says 'Salox-M uses Bronze filler in PTFE instead of Brass' (40% Bronze / 60% PTFE). No relation proposal links Salox-M to Bronze, and no Bronze entity was proposed at all. The only relation proposals that cite this page-10 sentence are REJECTED: proposal-3a7f06a880a40a108e12c2af (Salox-M concerns Investigation) and proposal-7232d2202118aeaf01bb4ff3. No SOURCE_SUPPORTED or UNRESOLVED relation involves Salox-M (entity-77a80608...). The sentence survives only as UNRESOLVED statements (e.g. proposal-8124a08578d664ba4b846aca), which are a different kind and do not count. No wrong Brass composition relation was asserted either, so the outcome is omitted, not incorrect.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "relations-34",
+   "kind": "relations",
+   "page": 12,
+   "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "aBrass-filled PTFE\n(Batch #1)",
+   "start": 289,
+   "end": 318,
+   "expectation": "Firstbatch cohort uses its Brass-filled PTFE material/specimens with original row grouping; not secondbatch outcome transfer.",
+   "outcome": "unresolved",
+   "proposal_ids": [
+    "proposal-6f4161e9eef89182a0f69476"
+   ],
+   "review_note": "Table 3 on page 12 groups rows under the heading 'aBrass-filled PTFE (Batch #1)': LOX 0/20, GOX 0/20, LOX 4/80, GOX 0/80. proposal-6f4161e9eef89182a0f69476 is an UNRESOLVED madeOf relation (duplicate_of null) supported by page 12. Its subject is research-local entity c535a2faad49f20cc721, which the run's prepared package labels 'aBrass-filled PTFE (Batch #1)' (Sample). Its object, entity 3146bf392859aee0ce4d, recomputes as the Brass-filled PTFE Material. It keeps Batch #1 as its own cohort, separate from the Batch #2-4 madeOf proposals (6182f968..., c813e053..., db44fea3...), and carries no outcome over from another batch. It is held for review because of LOCAL_SUBJECT_BINDING_UNRESOLVED and RELATION_ENTAILMENT_REQUIRES_REVIEW, and no SOURCE_SUPPORTED relation exists, so the target is retained but not correct.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "figures-35",
+   "kind": "figures",
+   "page": 11,
+   "evidence_id": "E-0893f504fcae06fdbd60b10e",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Figure – 1 Pretest photo of the Brass-filled PTFE",
+   "start": 991,
+   "end": 1040,
+   "expectation": "Photo-only microstructure/filler fraction cannot be numerically inferred by default text route.",
+   "outcome": "inaccessible",
+   "proposal_ids": [],
+   "review_note": "'Figure 1 Pretest photo of the Brass-filled PTFE' (page 11) is a photograph. The extractable text gives only the caption, and the body says only that the photo shows a blue, pre-cut circular sample. The Brass microstructure and filler fraction exist only in the image; the text says the percentage is unknown and only estimates it as 'far less than 40%' from Figures 1 and 2. The run has no figure-kind proposal. No SOURCE_SUPPORTED quantity invents a Brass fraction, and the caption appears only as a documentary statement (proposal-97a424a6019d16958100cc51), which is a different kind.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  },
+  {
+   "id": "figures-36",
+   "kind": "figures",
+   "page": 12,
+   "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+   "source_id": "research-ec42a926a29616a70757:c9de8948bdf14643",
+   "quote": "Figure – 2 Mechanical impact 10,000 psi GOX post test photo",
+   "start": 6,
+   "end": 65,
+   "expectation": "Photo-only dimensions/metal fraction cannot be invented from caption.",
+   "outcome": "inaccessible",
+   "proposal_ids": [],
+   "review_note": "'Figure 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE' (page 12) is a photograph. The text gives only the caption, plus the page-9 statement that the photo shows a non-reacting, high-energy impact. Specimen dimensions, damage and metal fraction are visible only in the image. The run has no figure-kind proposal and no SOURCE_SUPPORTED quantity taken from the photo. The caption appears only inside statements (proposal-4d624b1eeb3087644062b301, proposal-ef1c4448e2e0900e13ebf58d), which are a different kind.",
+   "verification": "CONFIRMED_BY_BOTH_VERIFIERS"
+  }
+ ],
+ "proposal_sample": [
+  {
+   "proposal_id": "proposal-9bddc5ffca7b99b9c629e511",
+   "correct": true,
+   "critical": false,
+   "reason": "The label is the paper's title on page 1. Class Investigation with current lineage fits target entities-01, which describes the current documentary investigation rather than a single executed test. One flaw: the third support quote is reference [2] on page 19 (the Beeson et al. ASTM handbook). That is a cited work, not this investigation, so it should be dropped from support. It does not change the entity's identity.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-5e4e1c7ce97d7b60b4a070bc",
+   "correct": true,
+   "critical": false,
+   "reason": "Brass-filled PTFE is the central material of the paper. Page 2 says MCRF is 'currently testing' it, and the Table 1 row carries footnote b (NASA-STD-6001), which marks MSFC data. Class Material and current lineage are right. The entity is the material, kept separate from the Batch #1-#4 samples and from Salox-M. It says nothing about the brass fraction, which the paper states is unknown (page 10), so it fits target entities-03.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-60af6e21157263f169d61c9e",
+   "correct": true,
+   "critical": false,
+   "reason": "TFE-Teflon (PTFE) is a real named comparison material, and current lineage is defensible. Table 2 has a footnote-b row ('NASA-STD-6001 MSFC': >425, 1500, 2396 psia), which is the same MSFC lineage as the Brass-filled PTFE row. The lineage is mixed, though. The Table 1 and Table 2 footnote-a rows come from Chou and Giedorowicz, Tables 4-6 come from ABMA, MSFC/WSTF [4] and MAPTIS, and the conclusion of statement target statements-24 is cited. Those rows must not be read as current MSFC observations. The support is also weak: it quotes the cited Table 1 'a' row and a page 12 Table 3 snippet that does not contain TFE-Teflon at all.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-265c36bd88838be0b3f4d5d3",
+   "correct": false,
+   "critical": true,
+   "reason": "Wrong lineage: Viton A is tagged study=current, but the paper never tested it in-house. Page 6 says 'Previous research conducted by Chou and Giedorowicz examined ... Viton A'. Its rows in Tables 1 and 2 are footnote a (ASTM, Chou and Giedorowicz). Its Table 4 row is ABMA. Its Table 6 rows are historical MSFC/WSTF results cited as [4]. It has no footnote-b MSFC row anywhere, and it is absent from the current Table 3. The proposal's page 12 support quote does not even mention Viton A. Page 4 states that comparison data came from other ASTM papers and MAPTIS (target statements-19), so this entity should be cited, not current.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-94cb9044f8391571fd4a549b",
+   "correct": false,
+   "critical": true,
+   "reason": "Wrong lineage: Viton A-500 appears only in the footnote-a rows of Table 1 (heat of combustion 3934 cal/g, 'ASTM D328 Chou and Giedorowicz') and Table 2 (AIT 239 °C, 'ASTM-AIT Chou and Giedorowicz'). Page 6 says it was among the materials Chou and Giedorowicz examined. MSFC did not test it in this work, so study=current wrongly suggests in-house observations. It should carry cited lineage.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-e08a22dd6027e46b9a8e59f5",
+   "correct": false,
+   "critical": true,
+   "reason": "Wrong lineage: every Fluorel data point is cited or historical. Tables 1 and 2 are footnote a (Chou and Giedorowicz), Table 4 is 'Determined by ABMA', and Table 5 is Kennedy Space Center / MSFC-WSTF data cited as [4], described on pages 13-14. Table 6 is historical MSFC/WSTF data cited as [4]. Fluorel has no footnote-b MSFC row and is not in the current Table 3. The page 12 support snippet does not contain Fluorel. Tagging it study=current misattributes cited results to the current investigation.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-d88825f3ef8b7ce17affba8b",
+   "correct": true,
+   "critical": false,
+   "reason": "Algoflon is a real named material: page 2 lists it as a compared polymer. Current lineage is right, because page 11 says two types were 'tested at the same conditions' and Table 3 rows are footnote a, 'NASA-STD 6001 MSFC'. This entity is only the family name, however. The tested materials are Algoflon E2 and Algoflon F7, which are accepted separately and gave opposite LOX results: E2 had 0/20 at 10,000 psia, while F7 failed at 10,000 psia and passed only at 5,000 psia. No E2 or F7 outcome may be attached to this generic entity (targets entities-05 and -06). Its only support is the page 2 list.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-616d048cc157a677664dda6f",
+   "correct": true,
+   "critical": false,
+   "reason": "Salox-M is a distinct material that MSFC tested in this work. Page 2 says it 'was tested in comparison to Brass-filled PTFE', and its Table 3 rows are footnote a, 'NASA-STD 6001 MSFC'. Page 10 defines it as bronze-filled PTFE (40% bronze, 60% PTFE), so class Material with current lineage is right. It stays separate from Brass-filled PTFE, as target entities-04 expects. The 40% composition belongs to Salox-M only and must not be read as the brass fraction of Brass-filled PTFE, which is unknown.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-3e8bf19c8bd93a2bafe4d129",
+   "correct": true,
+   "critical": false,
+   "reason": "Page 11 names Algoflon E2 as a pre-sintered PTFE virgin granular resin. It was tested at MSFC under the same conditions as the Brass-filled PTFE (Table 3, footnote a = NASA-STD 6001 MSFC: 0/20 GOX and 0/20 LOX at 98 J, 10,000 psia). Material is the right class and current is the right lineage. It is kept separate from F7, as entities-05 expects.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-f9e3ee36fabd436e91cd51c4",
+   "correct": true,
+   "critical": false,
+   "reason": "Page 11 defines Algoflon F7 as a PTFE virgin granular resin designed as a skived-tape molding resin, which makes it a separate variant from pre-sintered E2. It is current MSFC-tested material (Table 3, footnote a), so Material and current are right. The support quotes describe only F7 and do not merge it with E2 or with generic Algoflon behavior.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-0617692d53fb28a218d0118e",
+   "correct": true,
+   "critical": false,
+   "reason": "Table 3 on page 12 defines Batch #1 as a real tested cohort with four condition rows (LOX 0/20, GOX 0/20, LOX 4/80, GOX 0/80), all marked footnote a = NASA-STD 6001 MSFC. That makes it current MSFC specimens, not a single invented run. Sample is the closest class: the ontology has no Batch class, and Sample keeps it distinct from the Brass-filled PTFE Material. The leading 'a' in the label is the footnote marker, not part of the material name. It should be normalized or kept as a provenance annotation, but it does not change the subject. The page 9 conflict (no reactions in 80 vs 4/80) concerns observation rows and must stay unresolved at that level; it does not affect this entity.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-1a89fb08fcedc20e8846b16a",
+   "correct": true,
+   "critical": false,
+   "reason": "Batch #2 is real. Page 10 says a second batch was tested under the same conditions to check batch-to-batch variability, and Table 3 gives it its own rows (GOX 0/20, LOX 1/60, MSFC footnote a). Sample and current are appropriate, and it stays distinct from Batch #1, as entities-08 requires. The support snippet is the same truncated page 12 text, cut off at 'aBrass-fill', so it never shows '(Batch #2)'. The page itself confirms the label, so this is a weak-evidence issue, not a wrong subject. The 'a' prefix is a footnote marker.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-3fed3776d74f515dc056d2b0",
+   "correct": true,
+   "critical": false,
+   "reason": "Page 10 says two additional batches were tested at the same conditions with zero reactions. Table 3 lists Batch #3 with GOX 0/20 and LOX 0/20 at 98 J, 10,000 psia (MSFC footnote a). So it is a real current sample cohort, and Sample is appropriate. The support snippet is truncated before the batch number, but page 12 contains the label. The 'a' prefix is a footnote marker.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-fc69615b9597e83fc4360f12",
+   "correct": true,
+   "critical": false,
+   "reason": "Batch #4 is the second of the 'two additional batches' on page 10. In Table 3 its GOX 0/20 row is on page 12 and its LOX 0/20 row continues on page 13. It is a real current MSFC cohort (footnote a), and Sample is appropriate. The support covers only the truncated page 12 header, which shows neither '(Batch #4)' nor its page 13 row. The source still confirms the entity, so this is non-critical. The 'a' prefix is a footnote marker.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-3af8f51b08f8df90240c4eb8",
+   "correct": true,
+   "critical": false,
+   "reason": "The page 13 support shows the Salox-M rows of Table 3 (98/75/54/68/39 J, 10,000 and 5,000 psia, LOX), all marked footnote a = MSFC NASA-STD 6001. Page 10 confirms these are this paper's own Salox-M impact results. So a Sample for the MSFC-tested Salox-M specimens is current and correct. It is separate from the Salox-M Material proposal, and it stays a bronze-filled specimen set, not Brass-filled PTFE and not an executed run (entities-04). The 'a' prefix is a footnote marker and should not become part of the name.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-031289469c8fa1b60e3f215d",
+   "correct": true,
+   "critical": false,
+   "reason": "Table 3 on page 13 lists Algoflon F7 specimens tested at MSFC (footnote a): GOX 0/20 at 10,000 psia, then LOX at 10,000 to 1,000 psia, passing only at 5,000 psia or below. This matches the page 11 statement that F7 needed the pressure dropped to 5,000 psia. As an MSFC-tested specimen set, it is correctly current and Sample, distinct from the F7 Material. The page 13 support quote ends at 'aAlgoflo', so it never shows 'F7'; the source page confirms the label. The 'a' prefix is a footnote marker.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-5ff5e7cf61d6bad7dffa9c26",
+   "correct": true,
+   "critical": false,
+   "reason": "Algoflon E2 is a real specimen set tested in this paper. Page 11 says two Algoflon types were tested under the same conditions as Brass-filled PTFE. Table 3 on page 13 lists E2 rows (GOX 0/20 and LOX 0/20 at 10,000 psia, 98 J), and footnote 'a' marks them as NASA-STD 6001 MSFC data. So class Sample with current lineage is right, and it stays distinct from the E2 Material entity. Two non-critical defects: the label keeps the footnote marker 'a', and the support quotes don't reach the E2 rows. They cite the Batch #1 header, Batch #4 and the Salox-M rows (2/2, 2/4, 2/25, 2/18), and are cut off at the start of the F7 header ('aAlgoflo'). The evidence anchor should be re-pointed to the E2 rows so a reviewer doesn't link Salox-M reactions to E2.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-41160ef059bbb0bea82d990e",
+   "correct": true,
+   "critical": false,
+   "reason": "The Mechanical Impact Test is a named test method that this investigation ran. Page 4 lists in-house ambient-pressure and high-pressure mechanical impact testers run per NASA-STD-6001. Page 9 and Table 3 report the MSFC impact results (98 J, 10,000 psia, LOX/GOX). It is the only test-method entity, and class Intervention fits how the schema models methods (hasIntervention from the investigation). Current lineage is acceptable because MSFC ran the test. Chou/Giedorowicz and KSC also used it, but those are separate cited results, not this entity.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-71b6b3294e2d6c7ce6b7222e",
+   "correct": true,
+   "critical": false,
+   "reason": "Verbatim page 18 conclusion. It names MCRF/MSFC research and Brass-filled PTFE, so author_reported_conclusion with current lineage and the investigation as subject is right. The claim of 'all of the positive characteristics' is an author evaluation. Labelling it a conclusion rather than a measured observation keeps it separate from the mixed impact data (4/80 LOX in Batch #1, 1/60 in Batch #2).",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-b7c322972dab13d2e681122b",
+   "correct": true,
+   "critical": false,
+   "reason": "Verbatim page 18 author synthesis about low heat of combustion, elevated AIT and very high mechanical-shock resistance in LOX/GOX. As an author_reported_conclusion with current lineage it is correctly attributed. Classed this way, it doesn't promote the censored AIT (>425 C) to an exact value or erase the LOX reactions in Table 3 (4/80, 1/60). The suitability wording stays the authors' evaluation, not a normative requirement.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-ebb84f5bcb6fc37d38cbf6cb",
+   "correct": true,
+   "critical": false,
+   "reason": "This matches target statements-29: an author conclusion on page 18 about the choice and percentage of filler, not a causal mechanism the assistant inferred. The role (author_reported_conclusion) and current lineage are right. Reviewers should note that the source says the Brass percentage is unknown (page 10), so the filler-percentage claim rests on the Salox-M comparison (40% bronze). That is correctly left as the authors' claim.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-f8fe5e939d4a34e7d345e58d",
+   "correct": true,
+   "critical": false,
+   "reason": "This matches target statements-30: the authors' comparison on page 18, similar to TFE-Teflon in high-pressure LOX and far better in high-pressure GOX. The LOX/GOX distinction is preserved. 'Best choice for oxygen systems' stays labelled as author_reported_conclusion, not normative_requirement and not an assistant recommendation, which is the right role. Current lineage is right for the conclusion itself, even though the TFE-Teflon comparison rows come from KSC (Table 5) and WSTF/MSFC (Table 6).",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-2e0c543b34914800fda612f5",
+   "correct": true,
+   "critical": false,
+   "reason": "Page 18 (E-1684eeeb...) opens the authors' Conclusions with this exact sentence. It is an evaluative claim about material safety in the authors' own voice and carries no citation. Recording it as NASAConclusion/author_reported_conclusion therefore reports what the authors state without turning it into a measured observation. The judge's case for 'critical' does not hold. The record does not adjudicate whether PTFE is safe, and the same Conclusions paragraph says Brass-filled PTFE 'performs similarly to TFE-Teflon' in high-pressure LOX, so the source contains no contradiction to resolve. The judge's Table 6 reading is the reviewer's own inference. Documentary_context also does not fit. That role covers statements about the document (title, 'this paper will compare', data-source notes, captions), and this sentence is a substantive claim about seat and seal materials. The pipeline also labels uncited author background claims as 'current' (e.g. the page 3 fire-cause sentence). This is not a cited result promoted to a current one, so there is no lineage swap. There are two minor, non-critical defects. The text keeps the stray '18' page number and the 'Conclusions' heading. 'Unknown' lineage would better signal that the claim rests on prior experience rather than this study's data. Neither creates a false scientific record.",
+   "verification": "RESOLVED_BY_JUDGE_AFTER_DISPUTE"
+  },
+  {
+   "proposal_id": "proposal-38dd70176bd9b6f1ce8e05cc",
+   "correct": false,
+   "critical": false,
+   "reason": "On page 18, 'The search for a polymer ... has become an ongoing expedition' is narrative framing. It repeats the 'constantly searching for better materials' and 'safari' motif from pages 1 and 3. The pipeline files those earlier sentences as Publication/documentary_context (e.g. proposal-26af50d, proposal-2c7677a). The sentence describes research activity and draws no conclusion from the paper's data, so classing it as NASAConclusion/author_reported_conclusion is a wrong role. The error is not critical. The sentence states no measurement, value, test outcome or comparison result. It does not promote cited or historical data to current findings, and it does not touch any of the known source conflicts (table inconsistencies, the 0/80 vs 4/80 LOX contradiction, unknown Brass fraction, mixed ASTM/MAPTIS/MSFC rows). The misclassification adds noise to the conclusions set but does not mislead about the science.",
+   "verification": "RESOLVED_BY_JUDGE_AFTER_DISPUTE"
+  },
+  {
+   "proposal_id": "proposal-83c77dfec2fab3c14c70d837",
+   "correct": false,
+   "critical": false,
+   "reason": "documentary_context, current and an Investigation subject are reasonable roles for front matter, but this is not a single source statement. The span starts with the cut-off 'X' of the page-1 template 'Vol XX, No. X', then runs on through the 'Paper ID:' and 'Published XXXX' placeholders, the author byline (three persons), the title and the metaphorical abstract opener ('extinct species'). It carries no scientific claim, brings author names into the package, and repeats the title already held by the Investigation entity. Packaging noise, not a wrong subject, value or lineage.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-a84efe50dde33bc9714499fb",
+   "correct": true,
+   "critical": false,
+   "reason": "The page-2 sentence states the paper's comparison scope, so documentary_context for the current paper is the right role. It does not claim the comparator values are MSFC measurements; those come from footnote-a Chou/Giedorowicz and MAPTIS sources. Linking Brass-filled PTFE and the named comparator materials is appropriate. Only six subject ids are given for the seven materials named in the sentence, likely because the Kel-F 81 entity was rejected. That makes the links incomplete but not wrong.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-6b9cc239dd5e5597b51e6cf1",
+   "correct": true,
+   "critical": false,
+   "reason": "The page-4 'Existing Data Library' sentence is correctly kept as documentary_context. It is the current paper's own statement that the comparison data come from other ASTM papers and MAPTIS, which preserves the third-party and historical lineage that target statements-19 requires. It is not turned into an observation, so it does not imply that all table rows are current MCRF results. Attaching it to the Brass-filled PTFE entity follows the sentence's own wording ('data used to compare Brass-filled PTFE').",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-72f4d0cd609978770c59f7be",
+   "correct": true,
+   "critical": false,
+   "reason": "The page-9 sentence only points to where the data are ('can be seen in Table 3'), so documentary_context is right. The current lineage matches the source: Table 3's footnote a reads 'NASA-STD 6001 MSFC', and the sentence says the materials were 'tested at MSFC'. It makes no measured claim and carries no values.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-97a424a6019d16958100cc51",
+   "correct": true,
+   "critical": false,
+   "reason": "The Figure 1 caption ('Pretest photo of the Brass-filled PTFE', page 11) is correctly treated as documentary_context about the current Brass-filled PTFE specimen. No microstructure, dimension or filler fraction is inferred from the photo, which matches target figures-35.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-4d624b1eeb3087644062b301",
+   "correct": false,
+   "critical": true,
+   "reason": "The span runs the Figure 2 caption into the Table 3 title and header, then gives only Batch #1 rows. It ends mid-row at 'GOX/75°F 10,000 0', which is the 0.06824 thickness cut off, so the 0/20 GOX result and the 4/80 LOX Batch #1 row (central to the page-9 contradiction) are lost. Yet as a measured_observation it is linked to all four batch entities (Batch #1 to #4). That moves Batch #1's LOX 0/20 outcome onto Batches #2 to #4, whose actual rows differ (for example Batch #2 LOX 1/60). This is the row-merging that target entities-08 forbids: a wrong subject/group assignment. The same span is also accepted again as proposal-ef1c4 with a conflicting role.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-9d56e8445c8bf295296404f7",
+   "correct": true,
+   "critical": false,
+   "reason": "The page-9 opener ('Another test used to assess the viability... is the Mechanical Impact Test') is general method background. documentary_context linked to the Mechanical Impact Test entity is appropriate. It does not take on the cited Chou/Giedorowicz pass/fail result from the next sentence. The leading '9' is just a page-number artifact.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  },
+  {
+   "proposal_id": "proposal-ef1c4448e2e0900e13ebf58d",
+   "correct": false,
+   "critical": true,
+   "reason": "This repeats the page-12 span of proposal-4d624 but labels it Publication/documentary_context, even though it holds measured MSFC Table 3 data (footnote a, NASA-STD 6001 MSFC: Batch #1 LOX 0/20). Measured rows are thereby demoted to context, and the two accepted copies of one span disagree on role. It has the same wrong subject links: Batch #2, #3 and #4 are attached to text holding only Batch #1 rows. It has the same truncation at '10,000 0', which drops the GOX 0/20 result and the 4/80 LOX row. Wrong role and wrong group assignment.",
+   "verification": "CONFIRMED_BY_SKEPTIC"
+  }
+ ]
+}

@@ -92,13 +92,34 @@ offered to the model as Q candidates.
   - an earlier-grammar superset check;
   - integration through `validate_output` and `pdf_table_quantities`.
 
+## Units inherited from table headers (`4a2f99d`)
+
+A table value binds to a unit only through the literal "(unit)" in its own
+column header on a supporting page; see `pdf_quantities.header_unit_binding`.
+The binding is recorded in `record["unit_binding"]` with its table locator and
+no conversion, and unit comparison is case-sensitive.
+
+On the live PTFE raw output, `QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION` fell from
+48 to 30. The remaining 30 are all in continuation tables whose detected header
+is a data row.
+
+## Live run
+
+`ptfe_live_2b7d1d6/` contains a real Nemotron run of the exposed PTFE source
+through the ordinary application, plus an equal-standard comparison with v4.
+See its README.
+
 ## Checkpoint
 
-- **Done:** defect 2 syntax and integration.
+- **Done:**
+  - defect 2 syntax and integration;
+  - header-unit inheritance;
+  - a live exposed run and its equal-standard review.
 - **Not done:** CSV table path (`curation.parse_value` / line ~2900 in
   `document_extraction.py`) still uses the earlier NUMBER grammar.
   - It was left unchanged to avoid colliding with concurrent curation work.
-- **Next executable action:** scope repair for the 56 PTFE quantities blocked
-  at `QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE`. Reproduce with:
-  - `uv run python scripts/phase1_numeric_replay.py --output <new dir> --packages independent_ptfe/prepared_1.json.gz`
-- A live re-run with Nemotron was not performed: no API key in this environment.
+- **Next executable actions (M1/M2 owner):**
+  - continuation-table header inheritance (pages 13, 16, 17);
+  - row/batch subject binding for table quantities;
+  - comparator-material lineage.
+  - Reproduce offline with `uv run python scripts/phase1_numeric_replay.py --output <new dir> --packages artifacts/phase1_generalizable_ingestion/v5/numeric_expression_grammar/ptfe_live_2b7d1d6/prepared.json.gz`.
