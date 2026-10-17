@@ -265,11 +265,13 @@ class LocalVectorIndex:
             stream.flush()
             os.fsync(stream.fileno())
         os.replace(temporary, self.metadata_path)
-        descriptor = os.open(self.root, os.O_RDONLY)
-        try:
-            os.fsync(descriptor)
-        finally:
-            os.close(descriptor)
+        # Windows cannot open a directory for fsync; os.replace is already atomic there.
+        if os.name != "nt":
+            descriptor = os.open(self.root, os.O_RDONLY)
+            try:
+                os.fsync(descriptor)
+            finally:
+                os.close(descriptor)
 
     def sync(self, vectors_by_id: dict[str, list[float]], metadata: dict) -> dict[str, int]:
         """Update changed/new IDs and remove stale IDs without new embeddings for unchanged text."""

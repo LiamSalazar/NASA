@@ -92,7 +92,10 @@ def test_experiment_question_not_conceptual():
 
 def test_csv_round_trip_duplicates_and_multiline(tmp_path):
     source = tmp_path / "table.csv"
-    source.write_text('Test,Length (mm),Note\na,2,"line one\nline two"\na,2,"line one\nline two"\n')
+    source.write_text(
+        'Test,Length (mm),Note\na,2,"line one\nline two"\na,2,"line one\nline two"\n',
+        newline="\n",
+    )
     headers, rows, metadata = table_cells(source, tmp_path)
     registry = EvidenceRegistry(tmp_path / "evidence.sqlite")
     for ordinal, row in enumerate(rows, 2):
@@ -106,6 +109,19 @@ def test_csv_round_trip_duplicates_and_multiline(tmp_path):
     locators[0]["original_value"] = "fabricated"
     with pytest.raises(ValueError, match="cell mismatch"):
         round_trip(locators[0], tmp_path)
+
+
+def test_csv_round_trip_preserves_crlf_inside_quoted_cell(tmp_path):
+    source = tmp_path / "table.csv"
+    source.write_bytes(b'Test,Note\r\na,"line one\r\nline two"\r\n')
+    headers, rows, metadata = table_cells(source, tmp_path)
+    assert rows == [["a", "line one\r\nline two"]]
+    registry = EvidenceRegistry(tmp_path / "evidence.sqlite")
+    register_cells(registry, "E-2", metadata, 2, headers, rows[0])
+    locators = [
+        json.loads(r[0]) for r in registry.db.execute("SELECT locator_json FROM structured_cells")
+    ]
+    assert all(round_trip(locator, tmp_path) for locator in locators)
 
 
 def test_related_groups_keep_all_ids_and_deduplicate_citations():

@@ -7,12 +7,15 @@ from pathlib import Path
 
 def table_cells(path, root):
     path = Path(path)
-    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    data = path.read_bytes()
+    digest = hashlib.sha256(data).hexdigest()
+    # Decode bytes directly: read_text would translate CRLF inside quoted cells,
+    # while round_trip reads with newline="" and keeps the original characters.
     try:
-        text = path.read_text(encoding="utf-8-sig")
+        text = data.decode("utf-8-sig")
         encoding = "utf-8-sig"
     except UnicodeDecodeError:
-        text = path.read_text(encoding="cp1252")
+        text = data.decode("cp1252")
         encoding = "cp1252"
     import io
 

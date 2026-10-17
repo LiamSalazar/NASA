@@ -2119,8 +2119,9 @@ class CurationService:
             if hashlib.sha256(graph_file.read_bytes()).hexdigest() != graph_sha:
                 raise ValueError("Approved RDF version checksum conflict")
         else:
-            with graph_file.open("x") as handle:
-                handle.write(graph_data)
+            # Binary mode keeps LF bytes on every platform so graph_sha256 stays valid.
+            with graph_file.open("xb") as handle:
+                handle.write(graph_data.encode())
         receipt = {
             "status": "ACTIVE",
             "digest": exact_digest,

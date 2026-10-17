@@ -217,7 +217,7 @@ def test_new_registered_property_without_special_parser_branch(native):
 
 def test_reconstructed_csv_preserves_multiline_and_logical_locator(tmp_path):
     path = tmp_path / "table.csv"
-    path.write_text('Run,Note\na,"line one\nline two"\n')
+    path.write_text('Run,Note\na,"line one\nline two"\n', newline="\n")
     headers, rows, metadata = table_cells(path, tmp_path)
     registry = EvidenceRegistry(tmp_path / "e.sqlite")
     registry.add_source({"source_id": "synthetic"})
