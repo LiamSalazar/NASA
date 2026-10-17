@@ -28,8 +28,12 @@ def original_table_unit(header, row):
 
 
 def pdf_table_quantities(package, document):
-    from nasa_fire_ai.ingestion.document_extraction import quantity_expression_pattern
+    from nasa_fire_ai.ingestion.numeric_expressions import (
+        decimal_convention,
+        parse_numeric_expression,
+    )
 
+    convention = decimal_convention("\n".join(e.get("text", "") for e in package["evidence"]))
     result = []
     for row in table_records(document):
         if row["kind"] != "STRUCTURED_TABLE_RECORD":
@@ -52,7 +56,14 @@ def pdf_table_quantities(package, document):
         ]
         for cell in row["cells"]:
             original = cell["original_value"]
-            if not original or not re.fullmatch(quantity_expression_pattern(), original.strip()):
+            if not original:
+                continue
+            # Grouped thousands, ratios such as reactions/tests, signed and
+            # annotated values stay preserved; syntax assigns no scientific role.
+            numeric = parse_numeric_expression(
+                original.strip(), convention=convention, table_cell=True
+            )
+            if numeric["status"] == "NOT_NUMERIC":
                 continue
             header = cell.get("header") or ""
             unit, unit_candidates = original_table_unit(header, row["cells"])
@@ -64,6 +75,7 @@ def pdf_table_quantities(package, document):
                     "status": "UNRESOLVED",
                     "proposal": {
                         "expression": original,
+                        "numeric_expression": numeric,
                         "unit": unit,
                         "original_unit_candidates": unit_candidates,
                         "original_column_header": header,

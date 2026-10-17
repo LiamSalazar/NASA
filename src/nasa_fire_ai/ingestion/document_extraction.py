@@ -1482,6 +1482,11 @@ def quantity_name_value_binding(
 ):
     """Locate values in the named variable's clause, including repeated numbers."""
     separator = r";|[.!?](?!\d)(?=\s|$)|\b(?:and|while|whereas)\b(?=\s+(?:[A-Za-z][\w%-]*\s+){1,6}(?:was|were|is|are|=)\s+)"
+    from nasa_fire_ai.ingestion.numeric_expressions import (
+        same_expression,
+        source_numeric_matches,
+    )
+
     result = []
     pattern = rf"(?<![\w.])({quantity_expression_pattern()})(?![\d.eE])"
     for span in spans:
@@ -1497,8 +1502,12 @@ def quantity_name_value_binding(
             clause = span["quote"][begin:end]
             if not any(mentions(label, clause) for label in labels):
                 continue
-            matches = list(re.finditer(pattern, clause))
-            if re.search(r"\brespectively\b", clause, re.IGNORECASE) and len(matches) > 1:
+            # Whole expressions keep "10,000" and "−40" intact; ordered parallel
+            # values are counted on whole expressions only.
+            matches = source_numeric_matches(clause, include_endpoints=False)
+            if not (re.search(r"\brespectively\b", clause, re.IGNORECASE) and len(matches) > 1):
+                matches = source_numeric_matches(clause)
+            else:
                 # Ordered parallel values are not interchangeable merely because
                 # they share a unit and paragraph. Resolve the explicit noun list.
                 prefix = clause[: matches[0].start()]
@@ -1515,10 +1524,7 @@ def quantity_name_value_binding(
                     else []
                 )
             for match in matches:
-                if (
-                    normalized_with_offsets(match.group())[0]
-                    != normalized_with_offsets(expression)[0]
-                ):
+                if not same_expression(match.group(), expression):
                     continue
                 if temporal_coordinate and not re.search(
                     r"\bat\s*(?:t\s*=\s*)?$|\bt\s*=\s*$", clause[: match.start()], re.IGNORECASE
@@ -1708,13 +1714,10 @@ def qualified_material_heading(label, document, semantic):
 
 
 def quantity_expression_pattern():
-    from nasa_fire_ai.query.numeric_mentions import NUMBER
+    """Source-finding grammar; see ingestion.numeric_expressions for its contract."""
+    from nasa_fire_ai.ingestion.numeric_expressions import numeric_expression_pattern
 
-    qualifier = r"(?:~\s*|≈\s*|[<>≤≥]\s*|(?:greater\s+than|less\s+than|more\s+than|at\s+least|at\s+most|about|approximately|roughly|over|under)\s+)?"
-    word = r"(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|half|quarter)"
-    words = rf"{word}(?:[\s-]+(?:(?:and|to)\s+)?(?:a\s+)?{word})*"
-    value = rf"(?:{NUMBER}|{words})"
-    return rf"{qualifier}{value}(?:\s*(?:[-–]|±|\+/-|to)\s*{value})?"
+    return numeric_expression_pattern()
 
 
 def validate_output(output, package, document, semantic):
@@ -1724,6 +1727,19 @@ def validate_output(output, package, document, semantic):
     scientific approval. Unproven semantic entailment is review-required.
     """
     evidence = {e["evidence_id"]: e for e in package["evidence"]}
+    from nasa_fire_ai.ingestion.numeric_expressions import (
+        decimal_convention,
+        parse_numeric_expression,
+        same_expression,
+        source_numeric_matches,
+        split_embedded_unit,
+    )
+
+    # The document's own unambiguous numerals decide whether "1,250" groups
+    # thousands; without that evidence the expression stays ambiguous.
+    numeric_convention = decimal_convention(
+        "\n".join(e.get("text", "") for e in package["evidence"])
+    )
     entities, records, mappings = {}, [], []
     key_signatures = {}
     for item in output["entities"]:
@@ -2327,9 +2343,32 @@ def validate_output(output, package, document, semantic):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("NEGATION_OR_LOCAL_EXCEPTION_REQUIRES_REVIEW")
                 elif kind == "quantities":
-                    pattern = quantity_expression_pattern()
-                    if not re.fullmatch(pattern, item["expression"]):
-                        raise ValueError("QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION")
+                    numeric = parse_numeric_expression(
+                        item["expression"], convention=numeric_convention
+                    )
+                    if numeric["status"] == "NOT_NUMERIC":
+                        # A model may copy the original unit into the expression.
+                        # Separate it deterministically; the unit must still be
+                        # bound to the value in the source below.
+                        split = split_embedded_unit(
+                            item["expression"], item["unit"], convention=numeric_convention
+                        )
+                        if split and split["status"] == "UNIT_MISMATCH":
+                            raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
+                        if not split:
+                            raise ValueError("QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION")
+                        if normalized(item["label"]) == normalized(item["expression"]):
+                            raise ValueError("QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME")
+                        record["expression_normalization"] = {
+                            "original_expression": item["expression"],
+                            "original_unit": item["unit"],
+                            **split,
+                        }
+                        item["expression"], item["unit"] = split["expression"], split["unit"]
+                        numeric = parse_numeric_expression(
+                            item["expression"], convention=numeric_convention
+                        )
+                    record["numeric_expression"] = numeric
                     subject = entities.get(item["subject"])
                     if not subject:
                         raise ValueError("UNKNOWN_QUANTITY_ENDPOINT")
@@ -2359,15 +2398,21 @@ def validate_output(output, package, document, semantic):
                     candidates = [
                         (match, s["quote"])
                         for s in spans
-                        for match in re.finditer(
-                            rf"(?<![\w.])({pattern})(?![\d.eE])",
-                            s["quote"],
-                        )
-                        if normalized_with_offsets(match.group(1))[0]
-                        == normalized_with_offsets(item["expression"])[0]
+                        for match in source_numeric_matches(s["quote"])
+                        if same_expression(match.group(1), item["expression"])
                     ]
                     if not candidates:
                         raise ValueError("QUANTITY_EXPRESSION_ABSENT")
+                    source_expression = candidates[0][0].group(1)
+                    if source_expression != item["expression"]:
+                        # Keep the original writing (for example "−40"), not a
+                        # model glyph variant of it; the difference is recorded.
+                        record.setdefault("expression_normalization", {}).update(
+                            model_expression=item["expression"],
+                            source_expression=source_expression,
+                            glyph_basis="SOURCE_GLYPH_VARIANT_OF_SAME_EXPRESSION",
+                        )
+                        item["expression"] = source_expression
                     if item["unit"] and not any(
                         re.match(
                             r"\s*[-‑]?\s*" + re.escape(item["unit"]) + r"(?!\w)",
@@ -2569,7 +2614,13 @@ def validate_output(output, package, document, semantic):
                     if not prop and not accessor:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED")
-                    if item["unit"] is None:
+                    if numeric["status"] == "AMBIGUOUS":
+                        # Candidate readings are preserved; a reviewer chooses.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("NUMERIC_EXPRESSION_AMBIGUOUS")
+                    # An original count ratio (for example reactions/tests) is
+                    # dimensionless and kept as written, never divided into a scalar.
+                    if item["unit"] is None and numeric["form"] != "RATIO":
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("QUANTITY_UNIT_UNSPECIFIED")
                     if item["epistemic"] == "reported_quantity" and re.search(
