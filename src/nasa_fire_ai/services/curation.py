@@ -956,7 +956,8 @@ class CurationService:
             spans = record["support_spans"]
             item = record["proposal"]
             candidate_id = package_id + ":" + record["id"] + ":" + digest(record)[:12]
-            candidate_ids.add(candidate_id)
+            if not record.get("duplicate_of"):
+                candidate_ids.add(candidate_id)
             self.registry.stage_semantic_candidate(
                 {
                     "candidate_id": candidate_id,
@@ -971,7 +972,11 @@ class CurationService:
                     else "CANDIDATE_NEW_CONCEPT"
                     if record["kind"] == "concepts"
                     else "KNOWN_AMBIGUOUS",
-                    "review_status": "REJECTED" if record["status"] == "REJECTED" else "PENDING",
+                    "review_status": "SUPERSEDED"
+                    if record.get("duplicate_of")
+                    else "REJECTED"
+                    if record["status"] == "REJECTED"
+                    else "PENDING",
                     "proposal": {
                         "contract": extraction["contract"],
                         "package_id": package_id,
@@ -1000,7 +1005,11 @@ class CurationService:
         if not extraction:
             return
         records = sorted(
-            [r for r in extraction["records"] if r["status"] != "REJECTED"],
+            [
+                r
+                for r in extraction["records"]
+                if r["status"] != "REJECTED" and not r.get("duplicate_of")
+            ],
             key=lambda r: r["status"] != "SOURCE_SUPPORTED",
         )
         semantic = self.property_registry(package)

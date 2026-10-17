@@ -8,7 +8,7 @@ from nasa_fire_ai.ingestion.pdf import extract_pdf_tables
 
 VERSION = "scientific-document-structure-v1"
 HEADING = re.compile(
-    r"(?m)^(?:#{1,6}\s+[^\n]+|(?:[A-Z]|[IVXLCDM]+|\d+(?:\.\d+)*)\.\s+[A-Z][^\n]{2,180}|(?:(?:\d+(?:\.\d+)*|[IVXLCDM]+)[.)]?\s+)?"
+    r"(?m)^[ \t]*(?:#{1,6}\s+[^\n]+|(?:[A-Z]|[IVXLCDM]+|\d+(?:\.\d+)*)\.\s+[A-Z][^\n]{2,180}|(?:(?:\d+(?:\.\d+)*|[IVXLCDM]+)[.)]?\s+)?"
     r"(?:abstract|introduction|background|experimental(?:\s+\w+){0,3}|"
     r"methods|outcomes?|findings|results(?:\s+and\s+discussion)?|discussion|conclusions?|"
     r"summary(?:\s+and\s+conclusions)?|references|acknowledg\w*|appendix[^\n]*))\s*$",
@@ -112,8 +112,8 @@ def structure(package, root, max_chars=6500):
             {
                 "evidence_id": eid,
                 "source_id": sid,
-                "start": m.start(),
-                "end": m.end(),
+                "start": m.start() + len(m.group()) - len(m.group().lstrip()),
+                "end": m.end() - len(m.group()) + len(m.group().rstrip()),
                 "title": m.group().strip(),
             }
             for m in transitions
@@ -224,6 +224,24 @@ def structure(package, root, max_chars=6500):
         "sections": sections,
         "layout_headings": layout,
         "segments": segments,
+        "figures": [
+            {
+                "evidence_id": e["evidence_id"],
+                "source_id": e["source_id"],
+                "number": m.group(1),
+                "start": m.start(),
+                "end": m.end(),
+                "first_line_end": e["text"].find("\n", m.start())
+                if "\n" in e["text"][m.start() :]
+                else len(e["text"]),
+                "quote": m.group(),
+            }
+            for e in package["evidence"]
+            for m in re.finditer(
+                r"(?mi)^[ \t]*(?:Figure|Fig\.?)\s+(\d+)\s*[-–—:.][^\n]*(?:\n(?!\s*\n)[^\n]+)*",
+                e["text"],
+            )
+        ],
         "context_anchors": anchors,
         "detected_tables": tables,
         "limitations": limitations,

@@ -67,7 +67,7 @@ def coverage(package, document, validation, outcomes, table_quantities):
     literal_quantity = re.compile(
         rf"(?<![\w.])(?P<expression>{quantity_expression_pattern()})\s*[-‑]?\s*(?P<unit>{units})(?!\w)"
     )
-    records = validation["records"]
+    records = [r for r in validation["records"] if not r.get("duplicate_of")]
     prose = statement_candidates(package, document, validation)
     anchors = []
     for segment in document["segments"]:
@@ -199,6 +199,9 @@ def coverage(package, document, validation, outcomes, table_quantities):
         ),
         "unresolved": sum(r["status"] == "UNRESOLVED" for r in records),
         "rejected": sum(r["status"] == "REJECTED" for r in records),
+        "superseded_inference_variants": sum(
+            bool(r.get("duplicate_of")) for r in validation["records"]
+        ),
         "table_quantity_candidates": len(table_quantities),
         "pdf_table_quantity_inventory": numeric_cells,
         "native_quantity_representation_deferred": sum(

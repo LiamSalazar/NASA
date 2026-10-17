@@ -49,6 +49,8 @@ def score(prepared, review):
     for p in proposals:
         if records[p["proposal_id"]]["status"] != "SOURCE_SUPPORTED":
             raise ValueError("Accepted-proposal precision requires SOURCE_SUPPORTED records")
+        if records[p["proposal_id"]].get("duplicate_of"):
+            raise ValueError("Duplicate inference variants cannot inflate scientific precision")
         if not isinstance(p["correct"], bool) or not p.get("reason"):
             raise ValueError("Each precision judgment requires a boolean and source rationale")
     correct = sum(p["correct"] for p in proposals)
@@ -68,7 +70,8 @@ def score(prepared, review):
             not p["correct"] and p.get("critical", False) for p in proposals
         ),
         "unreviewed_supported_proposals": sum(
-            r["status"] == "SOURCE_SUPPORTED" for r in records.values()
+            r["status"] == "SOURCE_SUPPORTED" and not r.get("duplicate_of")
+            for r in records.values()
         )
         - len(proposals),
         "unresolved_is_confirmed_science": False,

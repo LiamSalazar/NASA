@@ -373,12 +373,22 @@ def role_errors(statement):
         ):
             errors.append("SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT")
         if re.search(
-            r"\b(?:may|might|hypothes\w*|likely|possibly|not\s+clear|suggest\w*)\b",
+            r"\b(?:may|might|hypothes\w*|likely|possibly|not\s+clear|suggest\w*|(?:seem|appear)(?:s|ed)?\s+to)\b",
             text,
             re.IGNORECASE,
         ):
             errors.append("UNCERTAINTY_CANNOT_BECOME_CONFIRMED")
     observation_text = text
+    if role == "measured_observation" and re.search(
+        r"\b(?:thus|hence|thereby|therefore)\s+indicat\w*\b", text, re.IGNORECASE
+    ):
+        errors.append("INFERRED_INTERPRETATION_IS_NOT_DIRECT_OBSERVATION")
+    if role == "measured_observation" and re.search(
+        r"\b(?:model|simulation|analysis|prediction)\s+(?:confirmed|showed|shows|indicated|predicts|predicted|found)\b",
+        text,
+        re.IGNORECASE,
+    ):
+        errors.append("MODEL_RESULT_IS_NOT_DIRECT_OBSERVATION")
     if role != "documentary_context" and len(re.findall(r"(?m)^\s*[•●▪◦]", text)) > 1:
         errors.append("MULTIPLE_BULLETS_REQUIRE_SEPARATE_EPISTEMIC_REVIEW")
     if role == "measured_observation":
@@ -540,7 +550,7 @@ def original_research_passage(spans, document):
     """Documentary author attribution, never inheritance by every member run."""
     if not spans or not all(
         re.search(
-            r"\b(?:results?|discussion|conclusions?|methods?|experimental|testing|verification)\b",
+            r"\b(?:results?|discussion|conclusions?|methods?|experimental|tests?|testing|verification|disassembly|inspection|analysis)\b",
             section_for_span(s, document),
             re.IGNORECASE,
         )
@@ -734,6 +744,10 @@ def applicable(subject, spans, entities, document):
         subject, spans, entities, document
     ):
         return True
+    from nasa_fire_ai.ingestion.scientific_scope import figure_group_support
+
+    if figure_group_support(subject, spans, entities, document):
+        return True
     if entity["class_id"] == "ExperimentFamily":
         for span in spans:
             heading = document.get("layout_headings", {}).get(span["evidence_id"])
@@ -775,12 +789,9 @@ def applicable(subject, spans, entities, document):
 
 
 def section_for_span(span, document):
-    candidates = [
-        s
-        for s in document["segments"]
-        if s["evidence_id"] == span["evidence_id"] and s["start"] <= span["start"] < s["end"]
-    ]
-    return candidates[0]["section"] if candidates else "UNSPECIFIED"
+    from nasa_fire_ai.ingestion.scientific_scope import logical_section
+
+    return logical_section(span, document)
 
 
 def resolve_explicit_scopes(output, document):
@@ -1308,6 +1319,9 @@ def grounded_entities(output, package, document, semantic, window, context=None)
         and e["source_id"] == window["members"][0]["source_id"]
     ]
     local_text = " ".join(s["text"] for s in window["members"])
+    from nasa_fire_ai.ingestion.scientific_scope import test_article_alias_review
+
+    figure_refs = set(re.findall(r"\b(?:Figures?|Figs?\.?)\s+(\d+)\b", local_text, re.IGNORECASE))
     text = local_text
     if context:
         text += " " + " ".join(a["quote"] for a in context["anchors"])
@@ -1323,6 +1337,21 @@ def grounded_entities(output, package, document, semantic, window, context=None)
         if (
             not mentions(entity["label"], text)
             and not (entity["class_id"] == "Investigation" and entity["study"] == "current")
+            and not any(
+                test_article_alias_review(
+                    entity["key"],
+                    [{**m, "quote": m["text"]}],
+                    validation["entities_by_key"],
+                    document,
+                )
+                for m in window["members"]
+            )
+            and not any(
+                f["number"] in figure_refs
+                and f["source_id"] == entity["source_id"]
+                and mentions(entity["label"], f["quote"])
+                for f in document.get("figures", [])
+            )
             and not any(
                 group_section_support(
                     entity["key"],
@@ -1975,6 +2004,13 @@ def validate_output(output, package, document, semantic):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CURRENT_OR_CITED_STUDY_UNRESOLVED")
                 elif kind == "statements":
+                    from nasa_fire_ai.ingestion.scientific_scope import page_continuation_context
+
+                    continuation = page_continuation_context(spans, evidence)
+                    if continuation and item["epistemic"] != "documentary_context":
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW")
+                        record["source_continuation_context"] = continuation
                     exact = next(
                         (
                             recover_span(
@@ -2099,6 +2135,16 @@ def validate_output(output, package, document, semantic):
                         )
                     for subject in item["subjects"]:
                         section_proof = group_section_support(subject, spans, entities, document)
+                        from nasa_fire_ai.ingestion.scientific_scope import figure_group_support
+
+                        figure_proof = figure_group_support(subject, spans, entities, document)
+                        if figure_proof:
+                            record["scope_context"] = {
+                                "basis": "EXPLICIT_ORIGINAL_FIGURE_GROUP_REFERENCE",
+                                "support": figure_proof,
+                                "image_interpretation": False,
+                            }
+                            spans += locate(figure_proof, evidence)
                         if section_proof:
                             record["scope_context"] = {
                                 "basis": "EXACT_ORIGINAL_GROUP_SUBSECTION",
@@ -2141,8 +2187,8 @@ def validate_output(output, package, document, semantic):
                         raise ValueError("UNKNOWN_STATEMENT_ENDPOINT")
                     for subject in item["subjects"]:
                         entity = entities[subject]
-                        if entity["class_id"] == "ExperimentalRun" and any(
-                            e["class_id"] == "ExperimentalRun"
+                        if entity["class_id"] in {"ExperimentalRun", "ExperimentFamily"} and any(
+                            e["class_id"] == entity["class_id"]
                             and e["source_id"] == spans[0]["source_id"]
                             and key not in item["subjects"]
                             and normalized(e["label"]) != normalized(entity["label"])
@@ -2171,7 +2217,7 @@ def validate_output(output, package, document, semantic):
                             for s in spans
                         )
                         and not re.search(
-                            r"\b(?:conclud\w*|results\s+(?:show|indicate|are\s+applicable)|demonstrat\w*|achieved|(?:is|are)\s+feasible|this\s+(?:shows|indicates))\b",
+                            r"\b(?:conclud\w*|results\s+(?:show|indicate|are\s+applicable)|demonstrat\w*|achieved|indicat\w*|(?:is|are)\s+feasible|this\s+(?:shows|indicates))\b",
                             item["text"],
                             re.IGNORECASE,
                         )
@@ -2289,9 +2335,18 @@ def validate_output(output, package, document, semantic):
                         raise ValueError("UNKNOWN_QUANTITY_ENDPOINT")
                     scope_eligible = quantity_scope_eligible(subject, semantic)
                     record["native_scope_compatible"] = scope_eligible
+                    from nasa_fire_ai.ingestion.scientific_scope import (
+                        figure_group_support,
+                        test_article_alias_review,
+                    )
+
+                    alias_review = test_article_alias_review(
+                        item["subject"], spans, entities, document
+                    )
                     if (
                         not applicable(item["subject"], spans, entities, document)
                         and scope_eligible
+                        and not alias_review
                     ):
                         raise ValueError("QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE")
                     if not scope_eligible:
@@ -2324,6 +2379,14 @@ def validate_output(output, package, document, semantic):
                     section_proof = group_section_support(
                         item["subject"], spans, entities, document
                     )
+                    figure_proof = figure_group_support(item["subject"], spans, entities, document)
+                    if figure_proof:
+                        record["scope_context"] = {
+                            "basis": "EXPLICIT_ORIGINAL_FIGURE_GROUP_REFERENCE",
+                            "support": figure_proof,
+                            "image_interpretation": False,
+                        }
+                        spans += locate(figure_proof, evidence)
                     if section_proof:
                         record["scope_context"] = {
                             "basis": "EXACT_ORIGINAL_GROUP_SUBSECTION",
@@ -2332,6 +2395,8 @@ def validate_output(output, package, document, semantic):
                         spans += locate(section_proof, evidence)
                     if (
                         not section_proof
+                        and not figure_proof
+                        and not alias_review
                         and not local_binding(item["subject"], item["expression"], spans, entities)
                         and not (
                             entities[item["subject"]]["class_id"] == "ExperimentFamily"
@@ -2493,6 +2558,14 @@ def validate_output(output, package, document, semantic):
                     )
                     if not record["native_value_compatible"]:
                         record["native_representation"] = "DEFERRED_PRESERVED_ORIGINAL_LITERAL"
+                    if alias_review:
+                        record["status"] = "UNRESOLVED"
+                        record["scope_context"] = alias_review
+                        record["native_value_compatible"] = False
+                        record["native_representation"] = "DEFERRED_SOURCE_TEST_ARTICLE_ALIAS_SCOPE"
+                        record["reasons"].append(
+                            "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW"
+                        )
                     if not prop and not accessor:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED")
@@ -2558,6 +2631,25 @@ def validate_output(output, package, document, semantic):
                         if prop or matches
                         else "ONTOLOGY_EXTENSION_REVIEW"
                     )
+                if (
+                    kind in {"statements", "quantities"}
+                    and item.get("epistemic") in {"measured_observation", "reported_quantity"}
+                    and any(
+                        re.search(
+                            r"\b(?:analysis|model|simulation|prediction)\b",
+                            section_for_span(s, document),
+                            re.IGNORECASE,
+                        )
+                        for s in spans
+                    )
+                ):
+                    record["status"] = "UNRESOLVED"
+                    record["reasons"].append(
+                        "MODEL_OR_ANALYSIS_SECTION_OBSERVATION_ROLE_REQUIRES_REVIEW"
+                    )
+                    if kind == "quantities":
+                        record["native_value_compatible"] = False
+                        record["native_representation"] = "DEFERRED_MODEL_OR_ANALYSIS_CONTEXT"
             except (ValueError, TypeError, KeyError) as error:
                 record["status"] = "REJECTED"
                 record["reasons"].append(str(error))
@@ -2619,6 +2711,9 @@ def validate_output(output, package, document, semantic):
             r["status"] = "REJECTED"
             if reason not in r["reasons"]:
                 r["reasons"].append(reason)
+    from nasa_fire_ai.ingestion.scientific_scope import consolidate_validated_variants
+
+    consolidate_validated_variants(records, entities, evidence, document)
     # Group by underlying reason AND documentary source, not one question per assertion.
     issues = {}
     for record in records:
@@ -3048,8 +3143,16 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             "document_identity": {"title": package["title"]},
             "contracts": contracts,
             "segments": [
-                {k: member[k] for k in ("page", "start", "end", "section")}
+                {
+                    **{k: member[k] for k in ("page", "start", "end")},
+                    "section": section_for_span(member, document),
+                }
                 for member in window["members"]
+            ],
+            "original_logical_sections": [
+                h
+                for h in document["sections"]
+                if any(h["evidence_id"] == m["evidence_id"] for m in window["members"])
             ],
             "source_anchors": [
                 {
@@ -3295,19 +3398,39 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         {e["evidence_id"]: e for e in package["evidence"]},
                     )
                     scoped = original_heading_scope(spans, checked_entities, document)
+                    from nasa_fire_ai.ingestion.scientific_scope import (
+                        figure_group_support,
+                        test_article_alias_review,
+                    )
+
                     candidate["source_applicable_subjects"] = [
                         ref
                         for ref in eligible_keys
-                        if applicable(wire_entities[ref], spans, checked_entities, document)
-                        and (
-                            local_binding(
-                                wire_entities[ref], q["expression"], spans, checked_entities
+                        if (
+                            applicable(wire_entities[ref], spans, checked_entities, document)
+                            and (
+                                local_binding(
+                                    wire_entities[ref], q["expression"], spans, checked_entities
+                                )
+                                or (
+                                    scoped
+                                    and checked_entities[scoped[0]]["id"]
+                                    == checked_entities[wire_entities[ref]]["id"]
+                                )
                             )
-                            or (
-                                scoped
-                                and checked_entities[scoped[0]]["id"]
-                                == checked_entities[wire_entities[ref]]["id"]
-                            )
+                        )
+                        or figure_group_support(
+                            wire_entities[ref], spans, checked_entities, document
+                        )
+                        or test_article_alias_review(
+                            wire_entities[ref], spans, checked_entities, document
+                        )
+                    ]
+                    candidate["source_scope_review_only_subjects"] = [
+                        ref
+                        for ref in candidate["source_applicable_subjects"]
+                        if test_article_alias_review(
+                            wire_entities[ref], spans, checked_entities, document
                         )
                     ]
                 request["contracts"] = {
