@@ -1,0 +1,226 @@
+{
+  "kind": "PHASE1_CLOSURE_EXPOSED_SOURCE_REPLAY_COMPARISON",
+  "inputs": "Saved v4 application receipts (raw Nemotron proposals); 0 model calls",
+  "base_code": "118ec71efab33724aa9085d62530d707df110ea9",
+  "closure_code": "7997b5823a8333fbaf7805e81eff757e95eda304",
+  "scientific_acceptance": "STATUS CHANGES ONLY; NEW SOURCE_SUPPORTED RECORDS ARE NOT REVIEWED HERE",
+  "sources": {
+    "luci_application_final": {
+      "base": {
+        "entities": {
+          "SOURCE_SUPPORTED": 26,
+          "UNRESOLVED": 1,
+          "REJECTED": 2
+        },
+        "quantities": {
+          "UNRESOLVED": 24,
+          "SOURCE_SUPPORTED": 7,
+          "REJECTED": 4
+        },
+        "statements": {
+          "UNRESOLVED": 140,
+          "SOURCE_SUPPORTED": 89,
+          "REJECTED": 27
+        },
+        "relations": {
+          "SOURCE_SUPPORTED": 4,
+          "UNRESOLVED": 9,
+          "REJECTED": 7
+        }
+      },
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 26,
+          "UNRESOLVED": 1,
+          "REJECTED": 2
+        },
+        "quantities": {
+          "UNRESOLVED": 24,
+          "SOURCE_SUPPORTED": 7,
+          "REJECTED": 4
+        },
+        "statements": {
+          "UNRESOLVED": 156,
+          "SOURCE_SUPPORTED": 69,
+          "REJECTED": 31
+        },
+        "relations": {
+          "SOURCE_SUPPORTED": 4,
+          "UNRESOLVED": 9,
+          "REJECTED": 7
+        }
+      },
+      "previously_supported_now_held_or_rejected": {
+        "statements -> UNRESOLVED: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN": 18,
+        "statements -> REJECTED: TABLE_REGION_IS_NOT_A_STATEMENT": 2
+      },
+      "newly_supported_non_duplicate": {}
+    },
+    "independent_ptfe_application": {
+      "base": {
+        "entities": {
+          "SOURCE_SUPPORTED": 18,
+          "UNRESOLVED": 12
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 209,
+          "SOURCE_SUPPORTED": 11
+        },
+        "relations": {
+          "UNRESOLVED": 6,
+          "REJECTED": 18
+        }
+      },
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 14,
+          "UNRESOLVED": 16
+        },
+        "quantities": {},
+        "statements": {
+          "SOURCE_SUPPORTED": 47,
+          "UNRESOLVED": 170,
+          "REJECTED": 3
+        },
+        "relations": {
+          "UNRESOLVED": 6,
+          "REJECTED": 18
+        }
+      },
+      "previously_supported_now_held_or_rejected": {
+        "entities -> UNRESOLVED: CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED": 3,
+        "entities -> UNRESOLVED: NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY": 1,
+        "statements -> UNRESOLVED: OBSERVATION_DESCRIBES_A_PROCEDURE": 1
+      },
+      "newly_supported_non_duplicate": {
+        "statements <- NEW_ID": 2,
+        "statements <- UNRESOLVED": 34
+      }
+    },
+    "independent_regulator_application": {
+      "base": {
+        "entities": {
+          "SOURCE_SUPPORTED": 9,
+          "UNRESOLVED": 22
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 149,
+          "SOURCE_SUPPORTED": 21,
+          "REJECTED": 4
+        },
+        "relations": {
+          "UNRESOLVED": 3,
+          "REJECTED": 8
+        }
+      },
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 9,
+          "UNRESOLVED": 22
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 140,
+          "SOURCE_SUPPORTED": 30,
+          "REJECTED": 4
+        },
+        "relations": {
+          "UNRESOLVED": 3,
+          "REJECTED": 8
+        }
+      },
+      "previously_supported_now_held_or_rejected": {
+        "statements -> UNRESOLVED: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN": 1
+      },
+      "newly_supported_non_duplicate": {
+        "statements <- UNRESOLVED": 10
+      }
+    },
+    "independent_textiles_application": {
+      "base": {
+        "entities": {
+          "SOURCE_SUPPORTED": 10,
+          "UNRESOLVED": 12
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 21,
+          "REJECTED": 15,
+          "SOURCE_SUPPORTED": 4
+        },
+        "relations": {
+          "UNRESOLVED": 1,
+          "REJECTED": 5
+        }
+      },
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 10,
+          "UNRESOLVED": 12
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 23,
+          "REJECTED": 15,
+          "SOURCE_SUPPORTED": 2
+        },
+        "relations": {
+          "UNRESOLVED": 1,
+          "REJECTED": 5
+        }
+      },
+      "previously_supported_now_held_or_rejected": {
+        "statements -> UNRESOLVED: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN": 2
+      },
+      "newly_supported_non_duplicate": {}
+    },
+    "independent_ignition_application": {
+      "base": {
+        "entities": {
+          "SOURCE_SUPPORTED": 38,
+          "UNRESOLVED": 20
+        },
+        "quantities": {
+          "UNRESOLVED": 9,
+          "REJECTED": 21
+        },
+        "statements": {
+          "UNRESOLVED": 255,
+          "SOURCE_SUPPORTED": 4,
+          "REJECTED": 8
+        },
+        "relations": {
+          "REJECTED": 33,
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 4
+        }
+      },
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 38,
+          "UNRESOLVED": 20
+        },
+        "quantities": {
+          "UNRESOLVED": 9,
+          "REJECTED": 21
+        },
+        "statements": {
+          "UNRESOLVED": 255,
+          "SOURCE_SUPPORTED": 3,
+          "REJECTED": 9
+        },
+        "relations": {
+          "REJECTED": 33,
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 4
+        }
+      },
+      "previously_supported_now_held_or_rejected": {
+        "statements -> UNRESOLVED: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE": 1
+      },
+      "newly_supported_non_duplicate": {}
+    }
+  }
+}
