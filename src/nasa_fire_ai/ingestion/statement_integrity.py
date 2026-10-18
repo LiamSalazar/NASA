@@ -1,0 +1,175 @@
+"""Whole-statement integrity checks read from the original page text.
+
+These checks never repair or reinterpret a statement. They mark, for review,
+statements that are not one whole source proposition (cut at an abbreviation or
+at a page break), observations whose own source prints a conflicting count, and
+one source span accepted with incompatible epistemic roles.
+"""
+
+import re
+
+ABBREVIATION_END = re.compile(
+    r"(?:\b(?:i\.\s?e|e\.\s?g|vs|cf|approx|ca|Figs?|Eqs?|No|Refs?)\.|\bet\s+al\.)\s*$",
+    re.IGNORECASE,
+)
+TERMINAL = re.compile(r"[.!?:;\"”’)\]]\s*$")
+CONTINUING_TAIL = re.compile(
+    r"(?:[,(–—-]|\b(?:of|the|a|an|and|or|nor|to|in|for|with|by|from|as|at|on|that|which|than|whose|its|their)\b)\s*$",
+    re.IGNORECASE,
+)
+OBSERVATION_CUE = re.compile(
+    r"\b(?:test\w*|react\w*|pass(?:ed|es)?|fail\w*|impact\w*|ignit\w*|burn\w*|flam\w*|extinguish\w*"
+    r"|measur\w*|observ\w*|shown|show(?:s|ed|ing)?|result\w*|data|record\w*|detect\w*|seen"
+    r"|pictur\w*|photo\w*|imag\w*|produc\w*|perform\w*|exhibit\w*|found|reach\w*|increas\w*"
+    r"|decreas\w*|rose|fell|remain\w*|became|occur\w*|spread\w*|grew|shrank|reduc\w*)\b",
+    re.IGNORECASE,
+)
+PURPOSE = re.compile(r"\b(?:in\s+order\s+to|so\s+as\s+to)\b", re.IGNORECASE)
+CRITERION = re.compile(
+    r"\b(?:is|are)\s+said\s+to\b|\bpass/fail\b|\bcriteri(?:on|a)\b"
+    r"|\bif\b[^.;]*\b(?:then|is\s+recorded|are\s+recorded|must|shall)\b",
+    re.IGNORECASE,
+)
+WORD_NUMBERS = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+}
+EVENT = r"(?:react\w*|ignit\w*|fail\w*|burn\w*)"
+NEGATED_COUNT = re.compile(
+    rf"\b(?:no|zero|none|neither|not\s+any|without\s+any)\b[^.;]*?\b{EVENT}[^.;]*?"
+    r"\b(?:out\s+of|of)\s+(?:the\s+)?(?:[a-z]+\s+){0,2}?(\d[\d,]*)\b",
+    re.IGNORECASE,
+)
+POSITIVE_COUNT = re.compile(
+    r"\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:of|out\s+of)\s+(?:the\s+)?"
+    rf"(?:[a-z]+\s+){{0,3}}?(\d[\d,]*)\b[^.;]*?\b{EVENT}",
+    re.IGNORECASE,
+)
+ROLE_FAMILY = {
+    "measured_observation": "OBSERVATION",
+    "derived_quantity": "DERIVATION",
+    "experimental_configuration": "CONFIGURATION",
+    "author_reported_conclusion": "INTERPRETATION",
+    "tentative_interpretation": "INTERPRETATION",
+    "hypothesis": "INTERPRETATION",
+    "normative_requirement": "NORM",
+    "guidance": "NORM",
+    "open_question": "QUESTION",
+    "documentary_context": "DOCUMENTARY",
+}
+
+
+def _body_bounds(text):
+    """Page text without a leading or trailing page-number line."""
+    begin = re.match(r"\s*\d{1,4}\s*\n", text)
+    end = re.search(r"\n\s*\d{1,4}\s*$", text)
+    return (begin.end() if begin else 0), (end.start() if end else len(text.rstrip()))
+
+
+def fragment_context(text, location, evidence):
+    """Why a statement is not one whole source sentence, or None.
+
+    ``location`` is the statement's exact original span: evidence_id, start, end.
+    """
+    if ABBREVIATION_END.search(text.strip()):
+        return {"basis": "STATEMENT_ENDS_AT_ABBREVIATION", "quote": text.strip()[-12:]}
+    page = evidence[location["evidence_id"]]
+    begin, end = _body_bounds(page["text"])
+    pages = [
+        p
+        for p in evidence.values()
+        if p["source_id"] == page["source_id"] and p.get("page") is not None
+    ]
+    after = [p for p in pages if p.get("page") == (page.get("page") or 0) + 1]
+    # A slide bullet may end a page without punctuation; only a word that needs
+    # its continuation ("of", "the", a comma) shows the sentence goes on.
+    if (
+        after
+        and not TERMINAL.search(text)
+        and CONTINUING_TAIL.search(text)
+        and not page["text"][location["end"] : end].strip()
+    ):
+        return {"basis": "SENTENCE_CONTINUES_ON_NEXT_PDF_PAGE", "quote": text.strip()[-60:]}
+    before = [p for p in pages if p.get("page") == (page.get("page") or 0) - 1]
+    if before and not page["text"][begin : location["start"]].strip():
+        previous = before[0]["text"]
+        tail = previous[: _body_bounds(previous)[1]].rstrip()
+        if CONTINUING_TAIL.search(tail):
+            return {"basis": "SENTENCE_STARTS_ON_PREVIOUS_PDF_PAGE", "quote": tail[-60:]}
+    return None
+
+
+def _count(value):
+    value = value.lower().replace(",", "")
+    return WORD_NUMBERS.get(value, int(value) if value.isdigit() else None)
+
+
+def count_conflict(location, evidence, window=600):
+    """A nearby source sentence giving a non-zero count of the same total.
+
+    "Neither ... showed any reactions out of the 80 impacts" next to "Four of
+    the additional 80 LOX samples reacted" is a conflict printed by the source;
+    both statements stay for review instead of one being accepted.
+    """
+    text = evidence[location["evidence_id"]]["text"]
+    own = text[location["start"] : location["end"]]
+    nearby = text[max(0, location["start"] - window) : location["end"] + window]
+    for negated in NEGATED_COUNT.finditer(own):
+        total = _count(negated.group(1))
+        for positive in POSITIVE_COUNT.finditer(nearby):
+            if _count(positive.group(2)) == total and (_count(positive.group(1)) or 0) > 0:
+                return {"basis": "SOURCE_PRINTS_CONFLICTING_COUNTS", "quote": positive.group()}
+    for positive in POSITIVE_COUNT.finditer(own):
+        if not (_count(positive.group(1)) or 0) > 0:
+            continue
+        total = _count(positive.group(2))
+        for negated in NEGATED_COUNT.finditer(nearby):
+            if _count(negated.group(1)) == total:
+                return {"basis": "SOURCE_PRINTS_CONFLICTING_COUNTS", "quote": negated.group()}
+    return None
+
+
+def observation_cue(text):
+    """Whether a passage reports testing or an observed result, not a procedure.
+
+    A purpose clause ("a picture was taken in order to show ...") describes
+    what was done, not what was observed.
+    """
+    return bool(OBSERVATION_CUE.search(text or "")) and not PURPOSE.search(text or "")
+
+
+def stated_criterion(text):
+    """Whether a passage states an acceptance or recording rule."""
+    return bool(CRITERION.search(text or ""))
+
+
+def conflicting_roles(records):
+    """Accepted statements on one source span with incompatible epistemic roles.
+
+    Returns the ids of the records to hold for review.
+    """
+    groups = {}
+    for record in records:
+        if record["kind"] != "statements" or record["status"] != "SOURCE_SUPPORTED":
+            continue
+        located = record.get("statement_location")
+        if not located:
+            continue
+        key = (located["evidence_id"], located["start"], located["end"])
+        groups.setdefault(key, []).append(record)
+    held = set()
+    for members in groups.values():
+        families = {
+            ROLE_FAMILY.get(r["proposal"]["epistemic"], r["proposal"]["epistemic"]) for r in members
+        }
+        if len(families) > 1:
+            held.update(r["id"] for r in members)
+    return held

@@ -41,13 +41,23 @@ def logical_section(span, document):
     )
     candidates = []
     for h in headings:
+        # Strip only an outline number ("3", "2.1.") or a punctuated letter/roman
+        # numeral ("A.", "IV)"); an unpunctuated first word ("Results") is the title.
         body = re.sub(
-            r"^(?:#+\s*|(?:\d+(?:\.\d+)*|[A-Z]+)[.)]?\s+)", "", h["title"], flags=re.IGNORECASE
+            r"^(?:#+\s*|\d+(?:\.\d+)*[.)]?\s+|[A-Z][.)]\s+|[IVXLCDM]+[.)]\s+)",
+            "",
+            h["title"],
+            flags=re.IGNORECASE,
         ).strip()
         if norm(body) == norm(document.get("package_title", "")):
             continue
+        # A major heading printed alone on its line may be followed directly by
+        # its first subsection title ("Experimental" then "Test Apparatus").
+        first_line = body.split("\n", 1)[0].strip()
         major = (
-            bool(ROMAN.match(h["title"])) if roman_mode else bool(STANDARD_SECTION.fullmatch(body))
+            bool(ROMAN.match(h["title"]))
+            if roman_mode
+            else bool(STANDARD_SECTION.fullmatch(body) or STANDARD_SECTION.fullmatch(first_line))
         )
         if re.fullmatch(r"references|acknowledg\w*|abstract|nomenclature", body, re.IGNORECASE):
             major = True

@@ -563,13 +563,20 @@ def original_research_passage(spans, document):
     ):
         return False
     text = " ".join(s["quote"] for s in spans)
-    return not re.search(
-        r"\b(?:prior|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
-        text,
-        re.IGNORECASE,
-    ) and not re.search(
-        r"\b[A-Z][a-z]+\s+et\s+al\b|\b(?!(?:Figure|Table|Equation|Test|Run)\d)[A-Z][a-z]+(?:[’']s)?\d{1,3}\b",
-        text,
+    from nasa_fire_ai.ingestion.study_attribution import cited_attribution_nearby
+
+    return (
+        not re.search(
+            r"\b(?:prior|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
+            text,
+            re.IGNORECASE,
+        )
+        and not re.search(
+            r"\b[A-Z][a-z]+\s+et\s+al\b|\b(?!(?:Figure|Table|Equation|Test|Run)\d)[A-Z][a-z]+(?:[’']s)?\d{1,3}\b",
+            text,
+        )
+        # A results section can still report a cited study's data by name.
+        and not cited_attribution_nearby(spans, document)
     )
 
 
@@ -587,6 +594,27 @@ def document_statement_scope(subject, spans, entities, document):
             for e in entities.values()
         )
     )
+
+
+def document_investigation(spans, entities, document):
+    """The one current document investigation whose research section holds spans.
+
+    Returns its entity key, or None when there is no such investigation, more
+    than one, or the passage is not the paper's own research text.
+    """
+    roots = [
+        key
+        for key, e in entities.items()
+        if e.get("class_id") == "Investigation"
+        and e.get("study") == "current"
+        and e.get("validation_status") == "SOURCE_SUPPORTED"
+        and normalized(e.get("label", "")) == normalized(document.get("package_title", ""))
+    ]
+    if len({entities[k]["id"] for k in roots}) != 1:
+        return None
+    if not document_statement_scope(roots[0], spans, entities, document):
+        return None
+    return roots[0]
 
 
 def original_derivation_context(text, spans, evidence):
@@ -2019,6 +2047,19 @@ def validate_output(output, package, document, semantic):
                     }:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CURRENT_OR_CITED_STUDY_UNRESOLVED")
+                    if item["study"] == "current" and item["class_id"] in {"Material", "Sample"}:
+                        from nasa_fire_ai.ingestion.table_continuity import (
+                            group_lineage,
+                            label_variants,
+                        )
+
+                        # A comparator printed only in cited or externally
+                        # sourced table rows was not established as tested here.
+                        lineage = group_lineage(label_variants(item["label"], document), document)
+                        if lineage and lineage["status"] == "CITED_OR_EXTERNAL_ONLY":
+                            record["status"] = "UNRESOLVED"
+                            record["reasons"].append("CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED")
+                            record["lineage_context"] = lineage
                 elif kind == "statements":
                     from nasa_fire_ai.ingestion.scientific_scope import page_continuation_context
 
@@ -2029,13 +2070,16 @@ def validate_output(output, package, document, semantic):
                         record["source_continuation_context"] = continuation
                     exact = next(
                         (
-                            recover_span(
-                                evidence[s["evidence_id"]]["text"],
-                                item["text"],
-                                s["start"]
-                                if normalized(item["text"]) == normalized(s["quote"])
-                                else None,
-                            )
+                            {
+                                **recover_span(
+                                    evidence[s["evidence_id"]]["text"],
+                                    item["text"],
+                                    s["start"]
+                                    if normalized(item["text"]) == normalized(s["quote"])
+                                    else None,
+                                ),
+                                "evidence_id": s["evidence_id"],
+                            }
                             for s in spans
                             if normalized(item["text"]) in normalized(s["quote"])
                         ),
@@ -2044,6 +2088,38 @@ def validate_output(output, package, document, semantic):
                     if not exact:
                         raise ValueError("STATEMENT_NOT_SUPPORTED_LITERAL_SPAN")
                     item["text"] = exact["span"]
+                    record["statement_location"] = {
+                        "evidence_id": exact["evidence_id"],
+                        "start": exact["start"],
+                        "end": exact["end"],
+                    }
+                    from nasa_fire_ai.ingestion.statement_integrity import (
+                        count_conflict,
+                        fragment_context,
+                        observation_cue,
+                    )
+                    from nasa_fire_ai.ingestion.table_continuity import table_region_rows
+
+                    # Whole printed table rows are table content; their values
+                    # stay in row-bound cell records, never one prose claim.
+                    if table_region_rows(item["text"], document):
+                        raise ValueError("TABLE_REGION_IS_NOT_A_STATEMENT")
+                    fragment = fragment_context(
+                        item["text"], record["statement_location"], evidence
+                    )
+                    if fragment and item["epistemic"] != "documentary_context":
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE")
+                        record["source_fragment_context"] = fragment
+                    conflict = (
+                        count_conflict(record["statement_location"], evidence)
+                        if item["epistemic"] == "measured_observation"
+                        else None
+                    )
+                    if conflict:
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("SOURCE_PRINTS_CONFLICTING_COUNTS")
+                        record["source_conflict_context"] = conflict
                     if item["epistemic"] != "documentary_context" and normalized(item["text"]) in {
                         normalized(package["title"]),
                         *[
@@ -2108,6 +2184,26 @@ def validate_output(output, package, document, semantic):
                             item["subjects"] = [subject]
                             item["study"] = entities[subject]["study"]
                             spans += locate(proof, evidence)
+                        elif (
+                            item["study"] == "current"
+                            # A material description is not the study's own
+                            # observation merely because it is printed there.
+                            and (
+                                item["epistemic"] != "measured_observation"
+                                or observation_cue(item["text"])
+                            )
+                            and (root := document_investigation(spans, entities, document))
+                        ):
+                            # The paper's own research section, with one current
+                            # investigation, scopes the statement to that study;
+                            # the named materials stay as proposed subjects only.
+                            record["scope_context"] = {
+                                "basis": "ORIGINAL_RESEARCH_SECTION_AT_DOCUMENT_INVESTIGATION_SCOPE",
+                                "support": entities[root]["support"],
+                                "scope_is_individual_run": False,
+                                "distributes_to_members": False,
+                            }
+                            item["subjects"] = [root]
                         else:
                             item["subjects"] = []
                             record["status"] = "UNRESOLVED"
@@ -2149,6 +2245,15 @@ def validate_output(output, package, document, semantic):
                         record["reasons"].append(
                             "CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION"
                         )
+                    from nasa_fire_ai.ingestion.statement_integrity import stated_criterion
+
+                    # "A sample is said to have passed ... if ..." is an acceptance
+                    # or recording rule, not how the apparatus was configured.
+                    if item["epistemic"] == "experimental_configuration" and stated_criterion(
+                        item["text"]
+                    ):
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("CONFIGURATION_STATEMENT_STATES_A_CRITERION")
                     for subject in item["subjects"]:
                         section_proof = group_section_support(subject, spans, entities, document)
                         from nasa_fire_ai.ingestion.scientific_scope import figure_group_support
@@ -2346,6 +2451,10 @@ def validate_output(output, package, document, semantic):
                     numeric = parse_numeric_expression(
                         item["expression"], convention=numeric_convention
                     )
+                    if numeric["form"] == "LIST":
+                        # Two set-points are two quantities; one record cannot
+                        # hold both, and choosing one would invent the binding.
+                        raise ValueError("QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES")
                     if numeric["status"] == "NOT_NUMERIC":
                         # A model may copy the original unit into the expression.
                         # Separate it deterministically; the unit must still be
@@ -2382,10 +2491,35 @@ def validate_output(output, package, document, semantic):
                     alias_review = test_article_alias_review(
                         item["subject"], spans, entities, document
                     )
+                    from nasa_fire_ai.ingestion.table_continuity import (
+                        header_names,
+                        label_variants,
+                        table_cell_spans,
+                        table_row_binding,
+                    )
+
+                    # A table value belongs to the row group its first column
+                    # names, including continuation rows and footnote-marked
+                    # labels; the original row is kept as its context.
+                    table_binding = (
+                        table_row_binding(
+                            label_variants(subject["label"], document),
+                            item["expression"],
+                            item["unit"],
+                            {s["page"] for s in spans},
+                            document,
+                        )
+                        if subject.get("validation_status") == "SOURCE_SUPPORTED"
+                        and all(s["source_id"] == subject["source_id"] for s in spans)
+                        else None
+                    )
+                    if table_binding:
+                        record["table_row_binding"] = table_binding
                     if (
                         not applicable(item["subject"], spans, entities, document)
                         and scope_eligible
                         and not alias_review
+                        and not table_binding
                     ):
                         raise ValueError("QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE")
                     if not scope_eligible:
@@ -2451,6 +2585,7 @@ def validate_output(output, package, document, semantic):
                         not section_proof
                         and not figure_proof
                         and not alias_review
+                        and not table_binding
                         and not local_binding(item["subject"], item["expression"], spans, entities)
                         and not (
                             entities[item["subject"]]["class_id"] == "ExperimentFamily"
@@ -2507,7 +2642,51 @@ def validate_output(output, package, document, semantic):
                         labels.extend(semantic.properties[prop].aliases)
                     adjacent_names = []
                     temporal_coordinate = False
-                    if not any(mentions(label, s["quote"]) for label in labels for s in spans):
+                    if table_binding:
+                        # The column header names the variable of every bound
+                        # cell; the value is located inside its printed row.
+                        headers = sorted({h["column_header"] or "" for h in table_binding["rows"]})
+                        if not all(
+                            any(header_names(name, header) for name in labels) for header in headers
+                        ):
+                            raise ValueError("QUANTITY_NAME_IS_NOT_TABLE_COLUMN_HEADER")
+                        record["quantity_name_support"] = {
+                            "basis": "ORIGINAL_TABLE_COLUMN_HEADER",
+                            "original_column_headers": headers,
+                            "global_alias_activation": "NONE",
+                        }
+                        pages = {h["page"] for h in table_binding["rows"]}
+                        page_texts = [
+                            {"evidence_id": key, "start": 0, "quote": ref["text"]}
+                            for key, ref in evidence.items()
+                            if ref["page"] in pages and ref["source_id"] == spans[0]["source_id"]
+                        ]
+                        cells = table_cell_spans(table_binding["rows"], page_texts)
+                        if len(cells) != len(table_binding["rows"]):
+                            raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
+                        record["quantity_value_spans"] = []
+                        for cell in cells:
+                            inner = cell["quote"].find(item["expression"])
+                            if inner < 0:
+                                raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
+                            record["quantity_value_spans"].append(
+                                {
+                                    "evidence_id": cell["evidence_id"],
+                                    "start": cell["start"] + inner,
+                                    "end": cell["start"] + inner + len(item["expression"]),
+                                    "quote": item["expression"],
+                                    "table_cell": cell["quote"],
+                                    "table_row": cell["table_row"],
+                                }
+                            )
+                        if table_binding["status"] == "AMBIGUOUS":
+                            record["status"] = "UNRESOLVED"
+                            record["reasons"].append("TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS")
+                        lineage = [e for h in table_binding["rows"] for e in h["lineage"]]
+                        if lineage and subject.get("study") == "current":
+                            record["status"] = "UNRESOLVED"
+                            record["reasons"].append("TABLE_ROW_LINEAGE_NOT_CURRENT_STUDY")
+                    elif not any(mentions(label, s["quote"]) for label in labels for s in spans):
                         adjacent_names = source_dimension_adjectives(item["label"], item["unit"])
                         labels.extend(adjacent_names)
                         if adjacent_names:
@@ -2533,17 +2712,18 @@ def validate_output(output, package, document, semantic):
                                 "basis": "EXPLICIT_SOURCE_TEMPORAL_COORDINATE",
                                 "global_alias_activation": "NONE",
                             }
-                    if not any(mentions(label, s["quote"]) for label in labels for s in spans):
-                        raise ValueError("QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT")
-                    record["quantity_value_spans"] = quantity_name_value_binding(
-                        labels,
-                        item["expression"],
-                        # A header-inherited unit is already bound to its column.
-                        None if record.get("unit_binding") else item["unit"],
-                        spans,
-                        adjacent_names,
-                        temporal_coordinate,
-                    )
+                    if not table_binding:
+                        if not any(mentions(label, s["quote"]) for label in labels for s in spans):
+                            raise ValueError("QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT")
+                        record["quantity_value_spans"] = quantity_name_value_binding(
+                            labels,
+                            item["expression"],
+                            # A header-inherited unit is already bound to its column.
+                            None if record.get("unit_binding") else item["unit"],
+                            spans,
+                            adjacent_names,
+                            temporal_coordinate,
+                        )
                     if not record["quantity_value_spans"]:
                         raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
                     if item["epistemic"] == "reported_quantity" and explicit_quantity_derivation(
@@ -2635,7 +2815,16 @@ def validate_output(output, package, document, semantic):
                         record["reasons"].append("QUANTITY_UNIT_UNSPECIFIED")
                     if item["epistemic"] == "reported_quantity" and re.search(
                         r"\b(?:will|would|planned|proposed|set\s+to|initial|maintained|specified|simulat\w*|predict\w*|derived|derivative|(?:linear|quadratic|regression|curve|polynomial)\s+fits?|shall|must)\b",
-                        " ".join(s["quote"] for s in spans),
+                        # A bound table cell's role is read from its own column
+                        # header and table caption, not from the whole page.
+                        " ".join(
+                            [
+                                (h["column_header"] or "") + " " + (h["table_caption"] or "")
+                                for h in table_binding["rows"]
+                            ]
+                            if table_binding
+                            else [s["quote"] for s in spans]
+                        ),
                         re.IGNORECASE,
                     ):
                         raise ValueError("CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT")
@@ -2773,7 +2962,15 @@ def validate_output(output, package, document, semantic):
             if reason not in r["reasons"]:
                 r["reasons"].append(reason)
     from nasa_fire_ai.ingestion.scientific_scope import consolidate_validated_variants
+    from nasa_fire_ai.ingestion.statement_integrity import conflicting_roles
 
+    # One source sentence accepted both as, say, a configuration and as an
+    # interpretation contradicts itself; neither reading is promoted.
+    held = conflicting_roles(records)
+    for record in records:
+        if record["id"] in held:
+            record["status"] = "UNRESOLVED"
+            record["reasons"].append("CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN")
     consolidate_validated_variants(records, entities, evidence, document)
     # Group by underlying reason AND documentary source, not one question per assertion.
     issues = {}

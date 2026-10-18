@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 
 from nasa_fire_ai.ingestion.pdf import extract_pdf_tables
+from nasa_fire_ai.ingestion.table_continuity import link_continuation_tables
 
 VERSION = "scientific-document-structure-v1"
 HEADING = re.compile(
@@ -243,7 +244,9 @@ def structure(package, root, max_chars=6500):
             )
         ],
         "context_anchors": anchors,
-        "detected_tables": tables,
+        # A continuation table inherits the header of the table it continues;
+        # cells and locators stay exactly as detected.
+        "detected_tables": link_continuation_tables(tables),
         "limitations": limitations,
         "coverage": {
             "source_characters": sum(len(e["text"]) for e in package["evidence"]),

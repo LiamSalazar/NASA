@@ -64,8 +64,25 @@ def pdf_table_quantities(package, document):
         decimal_convention,
         parse_numeric_expression,
     )
+    from nasa_fire_ai.ingestion.study_attribution import reference_authors
+    from nasa_fire_ai.ingestion.table_continuity import row_lineage, table_rows
 
     convention = decimal_convention("\n".join(e.get("text", "") for e in package["evidence"]))
+    # The printed row group (material, batch) and its footnote lineage are kept
+    # as review context; they do not resolve the cell's scientific scope.
+    authors = reference_authors(document)
+    groups = {
+        (r["table_index"], r["row_index"]): {
+            "group_label": r["group_label"],
+            "group_label_original": r["group_label_original"],
+            "footnote_marker": r["footnote_marker"],
+            "footnote_legend": r["footnote_legend"],
+            "table_caption": r["table_caption"],
+            "continuation_of": r["continuation_of"],
+            "cited_or_external_lineage": row_lineage(r, authors),
+        }
+        for r in table_rows(document)
+    }
     result = []
     for row in table_records(document):
         if row["kind"] != "STRUCTURED_TABLE_RECORD":
@@ -112,6 +129,7 @@ def pdf_table_quantities(package, document):
                         "original_unit_candidates": unit_candidates,
                         "original_column_header": header,
                         "original_row": row["cells"],
+                        "original_row_group": groups.get((row["table_index"], row["row_index"])),
                         "original_page_heading": document.get("layout_headings", {})
                         .get(e["evidence_id"], {})
                         .get("quote"),

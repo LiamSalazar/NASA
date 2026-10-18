@@ -139,7 +139,35 @@ def test_bound_and_order_of_magnitude_words_keep_their_literal_qualifier():
     order = parse_numeric_expression("on the order of 150")["endpoints"][0]["qualifier"]
     assert order["approximate"] and order["literal"] == "on the order of"
     assert parse_numeric_expression("approximately a")["status"] == "NOT_NUMERIC"
-    assert parse_numeric_expression("~.9 and 4.3")["status"] == "NOT_NUMERIC"
+
+
+def test_separate_values_printed_together_are_a_list_never_one_quantity():
+    listed = parse_numeric_expression("~.9 and 4.3")
+    assert (listed["status"], listed["form"]) == ("AMBIGUOUS", "LIST")
+    assert "MULTIPLE_VALUES_IN_ONE_EXPRESSION" in listed["ambiguities"]
+    assert [e["value_candidates"] for e in listed["endpoints"]] == [["0.9"], ["4.3"]]
+    assert listed["endpoints"][0]["qualifier"]["approximate"]
+    assert len(parse_numeric_expression("3, 4 and 5")["endpoints"]) == 3
+    # Digit grouping and two-sided forms are not lists.
+    assert parse_numeric_expression("1,500")["form"] == "SCALAR"
+    assert parse_numeric_expression("between 2 and 3")["form"] == "BETWEEN"
+    assert parse_numeric_expression("Alpha and Beta")["status"] == "NOT_NUMERIC"
+
+
+def test_stored_values_never_turn_bounds_or_unresolved_grouping_into_exact_numbers():
+    from nasa_fire_ai.services.curation import CurationService
+
+    def stored(raw):
+        value = CurationService.parse_value(raw, "kPa", None)
+        assert value["raw_expression"] == raw
+        return value["reported_value"], value["lower"], value["upper"], value["approximate"]
+
+    assert stored("−40") == (-40.0, None, None, False)
+    assert stored("about 25") == (25.0, None, None, True)
+    assert stored("2 – 3") == (None, 2.0, 3.0, False)
+    # Kept literally: a bound, a ratio, an uncertainty, unresolved grouping, a list.
+    for raw in (">425", "< 5", "2/20", "1.5 ± 0.2", "1,500", "~.9 and 4.3"):
+        assert stored(raw) == (raw, None, None, False)
 
 
 def test_footnote_symbols_are_annotations_not_digits():

@@ -404,6 +404,17 @@ def parse_numeric_expression(expression, *, convention=None, table_cell=False):
     if single is not None:
         single["role"] = "value"
         return done("SCALAR", [single])
+    # "~.9 and 4.3" or "3, 4 and 5": separate values printed together. A comma
+    # must be followed by a space, so digit grouping such as "1,500" never splits.
+    parts = re.split(r"\s*,\s+(?:(?:and|or)\s+)?|\s+(?:and|or)\s+", text)
+    if len(parts) > 1:
+        local = []
+        items = [_endpoint(part, convention, local) for part in parts]
+        if all(item is not None for item in items):
+            for index, item in enumerate(items, 1):
+                item["role"] = f"item_{index}"
+            ambiguities.extend([*local, "MULTIPLE_VALUES_IN_ONE_EXPRESSION"])
+            return done("LIST", items, scalar_value_asserted=False)
     if re.fullmatch(legacy_quantity_pattern(), text):
         return done(
             "WORDS",

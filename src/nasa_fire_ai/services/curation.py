@@ -1608,24 +1608,33 @@ class CurationService:
     def parse_value(raw, unit, prop):
         if prop and prop.datatype == "categorical":
             return GenericValue(reported_value=raw, raw_expression=raw).model_dump()
-        from nasa_fire_ai.query.numeric_mentions import NUMBER
+        from nasa_fire_ai.ingestion.numeric_expressions import parse_numeric_expression
 
-        ranged = re.fullmatch(rf"\s*({NUMBER})\s*[-–]\s*({NUMBER})\s*", raw)
-        if ranged:
-            return GenericValue(
-                lower=float(ranged[1]),
-                upper=float(ranged[2]),
-                reported_unit=unit,
-                raw_expression=raw,
-            ).model_dump()
-        numbers = re.findall(NUMBER, raw)
-        if len(numbers) == 1:
-            return GenericValue(
-                reported_value=float(numbers[0]),
-                reported_unit=unit,
-                approximate=bool(re.match(r"\s*(?:~|≈|about\b|approximately\b|roughly\b)", raw)),
-                raw_expression=raw,
-            ).model_dump()
+        # The shared syntax-only grammar gives one reading or keeps the literal:
+        # a bound such as ">425" or an unresolved "1,500" is never stored as an
+        # exact number, and "−40" keeps its sign.
+        parsed = parse_numeric_expression(str(raw).strip(), table_cell=True)
+        ends = parsed.get("endpoints") or []
+        if parsed["status"] == "PARSED" and all(
+            len(e.get("value_candidates", [])) == 1
+            and not (e.get("qualifier") or {}).get("operator")
+            for e in ends
+        ):
+            values = [float(e["value_candidates"][0]) for e in ends]
+            if parsed["form"] == "SCALAR":
+                return GenericValue(
+                    reported_value=values[0],
+                    reported_unit=unit,
+                    approximate=bool((ends[0].get("qualifier") or {}).get("approximate")),
+                    raw_expression=raw,
+                ).model_dump()
+            if parsed["form"] in {"RANGE", "BETWEEN", "FROM_TO"} and values[0] <= values[1]:
+                return GenericValue(
+                    lower=values[0],
+                    upper=values[1],
+                    reported_unit=unit,
+                    raw_expression=raw,
+                ).model_dump()
         return GenericValue(reported_value=raw, reported_unit=unit, raw_expression=raw).model_dump()
 
     def property_registry(self, package):
