@@ -1,194 +1,102 @@
-# Phase 1 closure: tables, scope and lineage (`diego/research`)
+# Phase 1 closure on `diego/research`: tables, numeric grammar, scope, lineage, coverage, eligibility
 
-**Status: `PHASE1_COMPLETE=NO`.** The closure code removes every critical error
-found on the live PTFE runs and keeps precision above the §11 target there.
-Recall and retention on that exposed source stay below the frozen v4 minima.
-The remaining gaps need decisions outside this branch (see "Blockers for
-Liam").
+**Status: `PHASE1_COMPLETE=NO`.** The engineering of M1 and M2 is implemented in the
+ordinary application and measured on the exposed corpus. On the exposed PTFE
+source every known critical error is gone and reviewed precision is 0.98, but
+recall is 0.50–0.53 against the §11 target of 0.80, so §12 readiness is not
+demonstrated and no new holdout was consumed. What still blocks recall needs
+decisions outside this branch (see "Blockers for Liam").
 
-PTFE is `EXPOSED_DEVELOPMENT_REGRESSION_ONLY`, so nothing here is an
-independent evaluation. The holdout was deliberately not run.
+PTFE (NTRS 20090043050) is `EXPOSED_DEVELOPMENT_REGRESSION_ONLY`; nothing here
+is an independent evaluation. All reviews are by the branch author from full
+records; 22 judgments are reused from the earlier two-lens review for
+byte-identical records.
 
-## What changed
+## Code (commits on `diego/research`, main untouched at `54445d0`)
 
-Commits `e19b7c0` and `7997b58`.
+| Commit | Change |
+| --- | --- |
+| `4a2f99d`, `2b7d1d6`, `80d8d69`, `118ec71` | Numeric grammar (§5), header-unit binding, first live run and equal-standard review (`../numeric_expression_grammar/`). |
+| `e19b7c0` | Continuation tables, row groups, legend-backed markers, row/cell binding; comparator lineage; section-title bug; document-investigation scope; statement integrity; CSV grammar; `LIST`. |
+| `7997b58` | Cited-table observations, procedures, value-labelled entities, lower-case page resumption. |
+| `ac639df` | Footnote identity in both directions, `madeOf` by printed name, omission recovery through the split path, curation gated to `SOURCE_SUPPORTED`, "prior to" and "was used" cues, per-category precision in the scorer, table-structure receipt. |
+| `6ba33aa` | A normalised identity keeps its printed anchor (`grounded_entities`); §8 source eligibility on four questions; the live runner re-judges the citation on file. |
+| `adeada4` | Criteria, caveats and pointers typed as observations, glued caption lines, mid-sentence starts, page-end auxiliaries and front matter are held. |
+| `63e9bb9` | Omission recovery retried once on the halves only when the request did not fit or was cut short. |
 
-- **Tables** (`ingestion/table_continuity.py`, new):
-  - a data-first table right after a headed table with the same columns is its
-    continuation and inherits the header;
-  - row groups (material, batch) carry down, also across a continuation;
-  - a leading letter is a footnote marker only when the text printed with that
-    table has its legend line; legends are read per table, not per page;
-  - a model quantity binds to its row group as `UNIQUE`, `GROUP_CONSTANT` or
-    `AMBIGUOUS` (held), needs the column header as its name, and is located in
-    its exact printed cell;
-  - PDF cell proposals keep row group, legend and lineage as review context.
-- **Lineage** (`ingestion/study_attribution.py`, new):
-  - a table caption citation (`[4]`), a legend naming an author of the
-    document's own reference list, or "obtained from" marks rows as cited or
-    external;
-  - a material marked `current` that appears only in such rows is held
-    (`CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED`);
-  - cited work keeps a passage out of current-study scope when it is named in
-    the passage, or appears as an author name or bracket citation in the
-    sentence before it;
-  - a measured observation that reads a table whose caption cites a reference
-    is never scoped to the current study.
-- **Scope:**
-  - `logical_section` no longer strips the first word of a section title
-    ("Results and Discussion" was read as "and Discussion", so the whole PTFE
-    paper fell under "Introduction");
-  - a major heading followed by a subsection on the next line stays major;
-  - a research-section statement whose proposed subjects are materials is
-    scoped to the one current document investigation. The materials stay as
-    proposed subjects. A measured observation also needs test or result
-    wording.
-- **Statement integrity** (`ingestion/statement_integrity.py`, new). These are
-  rejected:
-  - whole printed table rows used as a "statement";
+Quality at `63e9bb9`: `ruff format --check`, `ruff check` and `pytest` pass (639 tests; 572 before the closure).
 
-  These are held for review:
-  - statements cut at an abbreviation or a page break;
-  - observations whose source prints a conflicting count;
-  - acceptance or recording rules typed as configuration;
-  - observations stating a purpose ("in order to show"), which describe a
-    procedure;
-  - entities labelled with a value and unit ("72 ft-lbs (98J)");
-  - one source span accepted with incompatible roles.
-- **Numbers:**
-  - CSV/export values use the shared grammar: `>425`, `< 5` and an unresolved
-    `1,500` stay literal, and `−40` keeps its sign;
-  - `~.9 and 4.3` is a `LIST` and cannot be one quantity.
-- **Tool:** `scripts/phase1_offline_replay.py` replays every proposal kind of a
-  saved package with 0 model calls.
-- **Quality:**
-  - 615 tests pass: 572 before, plus 43 new synthetic positives, critical
-    negatives and metamorphic twins;
-  - `ruff check` and `ruff format --check` are clean.
+## Measurements
 
-## Measurement 1: first live PTFE run, replayed offline
+### PTFE raw output replayed offline (0 model calls, same 36 frozen targets, 34 accessible)
 
-The input is the raw Nemotron proposals of the live run at `2b7d1d6`, with 0
-model calls and the same 36 frozen targets. Scoring uses
-`scripts/score_scientific_review.py`. Precision covers every non-duplicate
-`SOURCE_SUPPORTED` record (59), not a sample.
+| Input | Code | Correct | Retained | Precision (by kind) | Critical | Review |
+| --- | --- | --- | --- | --- | --- | --- |
+| First live run (`2b7d1d6` proposals) | `118ec71` | 15/34 | 25/34 | 57/59 | 0 | `ptfe_live_replay_7997b58/review/` (judged at the equivalent code) |
+| First live run | `63e9bb9` | **17/34 = 0.50** | 25/34 = 0.74 | **64/65** (entities 15/15, statements 45/46, relations 4/4) | **0** | `ptfe_live_replay_63e9bb9/review/` |
+| Second live run (`e19b7c0` proposals) | `63e9bb9` | **18/34 = 0.53** (17/34 if the p9-anchored specimen is not credited for the p4 target, see `review_errata.json`) | 26/34 = 0.76 | **61/62** (entities 18/18, statements 41/42, relations 2/2) | **0** | `ptfe_live_e19b7c0/revalidated_63e9bb9/review/` |
 
-| Metric | Live review (records at `2b7d1d6`) | Closure replay (`7997b58`) | Required | Result |
-|---|---|---|---|---|
-| Semantic recall | 10/34 = 0.294 | 15/34 = 0.441 | v4 min 0.50; §11 0.80 | **FAIL** |
-| Evidence retention | 25/34 = 0.735 | 25/34 = 0.735 | v4 min 0.75 | **FAIL** (one target short) |
-| Reviewed precision | 25/32 = 0.781 | 57/59 = 0.966 | §11 0.95 | PASS on this exposed source |
-| Critical errors | 5 | 0 | 0 | PASS on this exposed source |
-| Unreviewed supported records | 0 | 0 | 0 | PASS |
+Targets recovered by the closure code and not before: statements 20, 21, 23, 26, 27, 28 and relations 34 (first run); entities 7, 8, statements 21 and relations 31 (second run). The one remaining incorrect record per run is a non-critical role error (a narrative framing sentence typed as a conclusion; an instrument readout typed as an observation).
 
-- **Newly correct:** statements 20, 23, 26, 27 and 28.
-- **Critical errors removed:**
-  - Viton A, Viton A-500 and Fluorel lose `current` lineage (cited rows only);
-  - the page-12 Table 3 dump is rejected as a statement, in both its
-    observation and its documentary reading.
-- **The 2 remaining incorrect records** were already incorrect in the live
-  review, and neither is critical: the page-18 narrative framing sentence and
-  the page-1 front-matter span.
-- **Review basis:** 22 judgments are reused for byte-identical records. The
-  other 37 are author adjudication of full records, not an independent review.
+### Live runs through the ordinary application
 
-## Measurement 2: second live run at `e19b7c0`
+| Run | Code loaded | Calls / time | Status | Result |
+| --- | --- | --- | --- | --- |
+| `../numeric_expression_grammar/ptfe_live_2b7d1d6/` | `2b7d1d6` | 19 / 1,066 s | partial coverage | 10/34, 25/34, 25/32, 5 critical (two-lens review) |
+| `ptfe_live_e19b7c0/` | `e19b7c0` | 13 / 783 s | partial coverage | as produced 51/56 with 1 critical; revalidated at `63e9bb9`: 18/34, 26/34, 61/62, 0 critical |
+| `ptfe_live_6ba33aa/` | `6ba33aa` (its `summary.json.gz` prints `adeada4` because that commit landed while the process ran; the loaded modules were `6ba33aa`) | 39 / 2,078 s | partial coverage, deadline exceeded | 60 supported non-duplicate records, not reviewed; the pages 9–18 window was split for the first time, but 22 calls chased finished empty answers on pages 1–8 and the deadline deferred the halves and the relationships stage, which `63e9bb9` bounds |
+| `ptfe_live_63e9bb9/` | `63e9bb9` | running when this was committed | pending | pending: receipts and review to be added (see CHECKPOINT.md) |
 
-`ptfe_live_e19b7c0/` holds a new live run through the ordinary application
-(`submit/save/prepare_scientific`).
-
-- **Calls:** 13 model calls in 783 s with `nvidia/nemotron-3.5-super-vl-120b-a12b`.
-- **Coverage:** `PARTIAL_MODEL_COVERAGE`, the same status as the first run.
-- **Integrity:** no source integrity errors, SQLite `ok`, 0 approvals,
-  0 publications, and no credentials in any file.
-- **Model output differed sharply from the first run:**
-  - 20 quantity proposals instead of 179;
-  - one generic "Brass-filled PTFE sample" entity instead of per-batch
-    entities. Its table values are rejected because that label is not a
-    printed row group.
-
-| Metric | As produced (`e19b7c0`) | Revalidated (`7997b58`) | Required | Result |
-|---|---|---|---|---|
-| Semantic recall | 14/34 = 0.412 | 14/34 = 0.412 | v4 min 0.50 | **FAIL** |
-| Evidence retention | 24/34 = 0.706 | 24/34 = 0.706 | v4 min 0.75 | **FAIL** |
-| Reviewed precision | 51/56 = 0.911 | 51/52 = 0.981 | §11 0.95 | FAIL as produced; PASS revalidated |
-| Critical errors | 1 | 0 | 0 | FAIL as produced; PASS revalidated |
-
-- **The critical error as produced:** "The reactivity of the same material
-  increases by 20%…" reports cited Table 6 data as a current-study
-  observation.
-- **The four rules added in `7997b58` came from adjudicating this run:**
-  cited-table observations, purpose clauses, value-labelled entities, and a
-  page that resumes in lower case. The revalidated column is therefore **not
-  independent** of the errors it fixes.
-- **The one remaining incorrect record:** "the calorimeter displayed the gross
-  heat content…" is a method typed as an observation.
-- **Review files:** the run's targets and judgments are in
-  `ptfe_live_e19b7c0/revalidated_7997b58/review/`. The as-produced figures use
-  the same judgments, plus the four held records judged incorrect (one of them
-  critical).
-
-## Measurement 3: the five exposed v4 receipts, replayed
-
-`exposed_sources_replay/comparison.json` compares the same saved raw proposals
-under the base code (`118ec71`) and the closure code (`7997b58`). It reports
-status changes only, and the newly supported records are not reviewed.
+### Five exposed v4 receipts replayed (`exposed_sources_replay/comparison.json`, `118ec71` → `63e9bb9`)
 
 | Source | Previously supported, now held or rejected | Newly supported |
-|---|---|---|
-| LUCI | 20: 18 conflicting roles, 2 slide tables | 0 |
-| PTFE (v4) | 5: 3 comparator lineage, 1 value-labelled entity, 1 procedure | 36 |
-| Regulator | 1: conflicting roles | 10 |
-| Textiles | 2: conflicting roles | 0 |
+| --- | --- | --- |
+| LUCI | 20: 18 incompatible roles on one span, 2 slide tables | 0 |
+| PTFE (v4 run) | 6: 3 comparator lineage, 1 value-labelled entity, 1 procedure, 1 front matter | 35, read one by one; the role errors found were fixed at `adeada4` |
+| Regulator | 4: 1 incompatible roles, 3 fragments (caption line, mid-sentence start, page-end auxiliary) | 9, read one by one |
+| Textiles | 2: incompatible roles | 0 |
 | Ignition | 1: sentence cut at "(e.g." | 0 |
 
-The earlier LUCI reviews had already judged one reading of such a
-conflicting-role pair as incorrect. The rule holds both readings rather than
-guessing which one is right.
+### Other receipts at `63e9bb9`
+
+- `historical_negatives_receipt.json`: the 21 critical false attributions of v4 (ignition 6, regulator 9, textiles 6) and the 5 critical ones of the first live PTFE review are all `REJECTED` or `UNRESOLVED` under the current validators; 0 critical regressions; 2 known non-critical incorrect records remain supported.
+- `curation_projection_receipt.json`: on the PTFE package the curation layer now includes 46 `SOURCE_SUPPORTED` statements and holds 137 unresolved ones (41 cited) with `review_status`; 4 `madeOf` relations; 0 values (no vocabulary). Before the closure all 196 contextual statements were included and projected as `APPROVED`.
+- `source_eligibility_receipt.json` (§8): the repaired screening applied to the five official citations on file; NTRS 20090043050 and 20170003941, which the old keyword gate rejected, are established by their own metadata (oxygen systems, EMU/PLSS; MSFC and JSC); the other three still pass.
+- `table_structure_receipt.json`: layout recovery on the five sources (only PTFE prints continuation tables: pages 13, 16 and 17; 32 row groups; 96 legend-backed rows; 69 cited or external rows).
+- `review_errata.json`: corrections to earlier review notes, in both directions, without editing frozen targets or earlier reviews.
+
+## §18 matrix for this branch's part (M1, M2, integration)
+
+Each PASS names its reproducible evidence; FAIL and PARTIAL say why.
+
+| Item | Result | Evidence |
+| --- | --- | --- |
+| DOCUMENT_STRUCTURE_RECOVERY | PASS on the exposed corpus | continuation tables with inherited headers, row groups across pages, per-table legends (`table_structure_receipt.json`, `tests/test_table_continuity.py`); the section-title bug fixed (`tests/test_phase1_closure.py`) |
+| TABLE_AND_BATCH_IDENTITY | PASS | batch cohorts recovered in both PTFE runs with the marker kept as an annotation and the legend recorded; entity ids no longer depend on the marker; a letter without a legend stays in the name; `Alpha-500` is not `Alpha` |
+| NUMERIC_EXPRESSION_PARSING | PASS | `../numeric_expression_grammar/`, `tests/test_numeric_expressions.py` (bounds, grouping, ratios, lists, header units, CSV path) |
+| QUANTITY_AND_UNIT_ATTRIBUTION | PARTIAL | every table quantity binds to its row group, printed cell and header unit (`UNIQUE` / `GROUP_CONSTANT` / `AMBIGUOUS` held); none can be accepted without property vocabulary, so 0/10 quantity targets are correct and 5/10 are retained |
+| EXPERIMENT_AND_GROUP_IDENTITY | PARTIAL | batches, `madeOf` by printed name and specimen-material association recovered; conditions and interventions proposed on a Material are rejected as class contradictions, and the model omits the investigation-to-group relations |
+| SCIENTIFIC_SCOPE_RESOLUTION | PASS for the mechanisms, recall-limited | document-investigation scope, cited attribution and cited tables, comparator lineage, local and anaphoric guards; statements 9/12 correct in both runs, the other 3 correctly held (count conflict, cited result, recording rule) |
+| OBSERVATION_AND_CONCLUSION_ATTRIBUTION | PASS | the critical Table 3 dump rejected; criteria, caveats, pointers, procedures and incompatible roles held; 0 critical in every review at the closure code; 2 known non-critical role errors |
+| SOURCE_TRACEABILITY | PASS | exact spans, printed-cell spans, original hash `c9de8948…`, SQLite `ok` in every run |
+| SEMANTIC_AND_ONTOLOGY_REUSE | PARTIAL | existing ontology relation `madeOf` and existing accessors reused; no vocabulary activated; the property gap is documented, not bypassed |
+| SCIENTIFIC_CONTENT_COVERAGE | FAIL | 17–18 of 34 targets correct; 8–9 omitted; quantities and relations are the gap |
+| TARGETED_OMISSION_RECOVERY | PARTIAL | the oversized window is split and retried; retries bounded at `63e9bb9`; runs still end `PARTIAL_MODEL_COVERAGE` (fourth run pending) |
+| HUMAN_REVIEW_REQUIREMENT_PREPARATION | PASS | unresolved records kept with `review_status` and `review_reasons`, grouped review requirements, nothing unresolved projected as approved |
+| APPLICATION_END_TO_END_INGESTION | PASS | four live runs through `submit → save → prepare_scientific → validate`, no developer transformation, no credentials, 0 approvals/publications; §8 screening in `submit_ntrs` |
+| INDEPENDENT_GENERALIZATION | NOT EVALUATED | §12 readiness not demonstrated (recall 0.50–0.53 on the exposed source); no holdout consumed |
+| SCIENTIFIC_PRECISION | PASS on exposed PTFE (0.98, 0 critical), NOT EVALUATED on a frozen acceptance set | reviews above; by-kind precision in each `scientific_metrics.json` |
+| SCIENTIFIC_RECALL | FAIL | 0.50 and 0.53 against 0.80 |
+| REGRESSION_AND_PRESERVATION | PASS | 639 tests; historical negatives receipt; originals and frozen v1–v4 receipts unchanged; no receipt overwritten |
+| PHASE1_COMPLETE | NO | acceptance needs a frozen holdout after readiness, and readiness needs the blockers below |
 
 ## Blockers for Liam
 
-1. **Vocabulary blocks all 10 PTFE quantity targets.** The semantic registry
-   has 4 properties: `AirflowVelocity`, `FlowDirection`, `OxygenConcentration`
-   and `Pressure`. Without approved properties no quantity can be
-   `SOURCE_SUPPORTED`. The PTFE values need:
-   - heat of combustion;
-   - AIT, including the `>425 °C` censored bound;
-   - impact energy;
-   - test or system pressure (perhaps an alias of `Pressure`);
-   - reactions/tests as a ratio.
-
-   Only `sample_thickness` exists, as an accessor. Approving vocabulary is
-   ontology governance, not something this branch may do.
-2. **Scorer semantics.** Some targets are best handled as `UNRESOLVED`:
-   - statements-25 is a source count conflict;
-   - statements-24 is a cited result;
-   - statements-22 is a recording rule.
-
-   The scorer only credits `SOURCE_SUPPORTED`, so these cannot count as
-   recovered. A "correctly held" outcome would need Liam's decision and a newly
-   frozen protocol.
-3. **Model omissions and variance** (prompts and stage design):
-   - the relations for targets 32–33 are missing or class-contradicting, for
-     example `hasIntervention` on a Material;
-   - batch entities exist in one run but not the other;
-   - text quantities are missing or unbound (98 J and 10,000 psia on p9, 12%,
-     5%, 40/60%).
-
-   Two live runs of the same paper differ by 159 quantity proposals.
-4. **Files of Liam's that this branch edits:**
-   - `document_extraction.py`
-   - `document_structure.py`
-   - `scientific_scope.py` (the `logical_section` bug fix)
-   - `pdf_quantities.py`
-   - `services/curation.py` (`parse_value`)
-
-   Validation output changes, so saved prepared packages must be regenerated
-   (`validate()` reports "regenerate"). Continuation tables now keep their first
-   data row as data, so `pdf-quantity` ids on continuation pages change. The
-   frozen PTFE targets reference only page-8 ids, which are unchanged.
-5. **Holdout not run.** The exposed-source minima are not met, so spending the
-   holdout now would only confirm a known failure and use up the source.
+1. **Vocabulary and units.** The semantic registry has 4 properties and `units.py` lacks psi/psia, °C, J, ft-lbf and cal/g; every PTFE quantity target is bound and held for this reason alone. Approving properties (heat of combustion, AIT with the `>425 °C` bound kept, impact energy, test pressure, reaction counts as pairs) is ontology governance.
+2. **Scorer semantics.** Targets whose correct handling is `UNRESOLVED` can never count as recovered; a "correctly held" outcome needs a new frozen protocol.
+3. **Model omissions and variance** (prompts and stages): relations on the wrong class, batch entities in one run and not the next, text quantities unbound; 179 vs 20 vs 103 quantity proposals across runs of the same paper.
+4. **Files of Liam's edited by this branch:** `document_extraction.py`, `document_structure.py`, `scientific_scope.py`, `pdf_quantities.py`, `services/curation.py`, `scripts/score_scientific_review.py` (additive) and the NTRS screening test. Saved prepared packages must be regenerated (`validate()` says "regenerate").
+5. **Holdout.** Not run on purpose (§12).
 
 ## Reproduce
 
@@ -200,22 +108,16 @@ uv run python scripts/phase1_offline_replay.py artifacts/phase1_generalizable_in
 uv run python scripts/score_scientific_review.py PREPARED.json REVIEW.json --output METRICS.json
 ```
 
-The scorer reads plain JSON, so decompress `prepared.json.gz` first. The live
-run used:
-
 ```bash
 uv run python scripts/phase1_exposed_live_run.py --pdf 20090043050.pdf --provenance-from artifacts/phase1_generalizable_ingestion/v4/independent_ptfe_application/prepared.json.gz --workspace OUTSIDE_REPO --directory OUT --timeout-seconds 1800
 ```
 
-The NTRS PDF is `c9de8948…`.
+The scorer reads plain JSON (decompress `prepared.json.gz` first). The NTRS PDF is `c9de8948…`.
 
 ## Files
 
-- `ptfe_live_replay_118ec71/`: base replay of the first live run's raw output.
-- `ptfe_live_replay_7997b58/`: closure replay, `review/source_review.json` and
-  `review/scientific_metrics.json`.
-- `ptfe_live_e19b7c0/`: second live run, as produced (`prepared.json.gz`,
-  `attempts.json.gz`, `summary.json.gz`, `validation.json.gz`,
-  `submission.json`).
-  - `revalidated_7997b58/`: its offline revalidation, review and metrics.
-- `exposed_sources_replay/comparison.json`: five-source status comparison.
+- `ptfe_live_replay_118ec71/`, `ptfe_live_replay_7997b58/`, `ptfe_live_replay_63e9bb9/`: the first live run's raw output replayed under the base, the first closure and the final code; the last two carry `review/`.
+- `ptfe_live_e19b7c0/`: second live run as produced, with `revalidated_7997b58/` and `revalidated_63e9bb9/` (review in each).
+- `ptfe_live_6ba33aa/`: third live run as produced (not reviewed; its lesson is the retry bound).
+- `ptfe_live_63e9bb9/`: fourth live run as produced, with `review/`.
+- `exposed_sources_replay/comparison.json`, `historical_negatives_receipt.json`, `curation_projection_receipt.json`, `source_eligibility_receipt.json`, `table_structure_receipt.json`, `review_errata.json`, `CHECKPOINT.md`.

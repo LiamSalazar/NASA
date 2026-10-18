@@ -2,7 +2,7 @@
   "kind": "PHASE1_CLOSURE_EXPOSED_SOURCE_REPLAY_COMPARISON",
   "inputs": "Saved v4 application receipts (raw Nemotron proposals); 0 model calls",
   "base_code": "118ec71efab33724aa9085d62530d707df110ea9",
-  "closure_code": "7997b5823a8333fbaf7805e81eff757e95eda304",
+  "closure_code": "63e9bb9c0e9816187cc7a7477460b1e48c451931",
   "scientific_acceptance": "STATUS CHANGES ONLY; NEW SOURCE_SUPPORTED RECORDS ARE NOT REVIEWED HERE",
   "sources": {
     "luci_application_final": {
@@ -79,23 +79,26 @@
         },
         "quantities": {},
         "statements": {
-          "SOURCE_SUPPORTED": 47,
-          "UNRESOLVED": 170,
+          "SOURCE_SUPPORTED": 44,
+          "UNRESOLVED": 173,
           "REJECTED": 3
         },
         "relations": {
-          "UNRESOLVED": 6,
+          "UNRESOLVED": 5,
+          "SOURCE_SUPPORTED": 1,
           "REJECTED": 18
         }
       },
       "previously_supported_now_held_or_rejected": {
         "entities -> UNRESOLVED: CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED": 3,
         "entities -> UNRESOLVED: NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY": 1,
+        "statements -> UNRESOLVED: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE": 1,
         "statements -> UNRESOLVED: OBSERVATION_DESCRIBES_A_PROCEDURE": 1
       },
       "newly_supported_non_duplicate": {
         "statements <- NEW_ID": 2,
-        "statements <- UNRESOLVED": 34
+        "statements <- UNRESOLVED": 32,
+        "relations <- UNRESOLVED": 1
       }
     },
     "independent_regulator_application": {
@@ -122,8 +125,8 @@
         },
         "quantities": {},
         "statements": {
-          "UNRESOLVED": 140,
-          "SOURCE_SUPPORTED": 30,
+          "UNRESOLVED": 144,
+          "SOURCE_SUPPORTED": 26,
           "REJECTED": 4
         },
         "relations": {
@@ -132,10 +135,11 @@
         }
       },
       "previously_supported_now_held_or_rejected": {
-        "statements -> UNRESOLVED: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN": 1
+        "statements -> UNRESOLVED: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN": 1,
+        "statements -> UNRESOLVED: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE": 3
       },
       "newly_supported_non_duplicate": {
-        "statements <- UNRESOLVED": 10
+        "statements <- UNRESOLVED": 9
       }
     },
     "independent_textiles_application": {
@@ -167,8 +171,7 @@
           "SOURCE_SUPPORTED": 2
         },
         "relations": {
-          "UNRESOLVED": 1,
-          "REJECTED": 5
+          "REJECTED": 6
         }
       },
       "previously_supported_now_held_or_rejected": {

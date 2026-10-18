@@ -1,0 +1,31 @@
+{
+  "kind": "PHASE1_CURATION_PROJECTION_RECEIPT",
+  "git_head": "63e9bb9c0e9816187cc7a7477460b1e48c451931",
+  "input": "artifacts/phase1_generalizable_ingestion/v5/phase1_closure/ptfe_live_replay_63e9bb9/prepared.json.gz",
+  "input_sha256": "60e392fbbcf36b43aadfc982fa4d89c1e6786087819db49e6e4cfb96110db8c7",
+  "model_calls": 0,
+  "rule": "Only SOURCE_SUPPORTED records are included as established statements, values or relations; unresolved ones stay in the package with review_status and review_reasons and are excluded from the isolated store.",
+  "validated_records": {
+    "SOURCE_SUPPORTED": 75,
+    "UNRESOLVED": 257,
+    "REJECTED": 132
+  },
+  "statements": {
+    "contextual": 183,
+    "included": 45,
+    "included_by_status": {
+      "SOURCE_SUPPORTED": 45
+    },
+    "held_by_status": {
+      "UNRESOLVED": 138
+    },
+    "included_with_cited_or_unknown_study": 0,
+    "held_with_cited_or_unknown_study": 41
+  },
+  "values_included": 0,
+  "relations_included": 4,
+  "entities_by_review_status": {
+    "SOURCE_SUPPORTED": 15,
+    "UNRESOLVED": 6
+  }
+}

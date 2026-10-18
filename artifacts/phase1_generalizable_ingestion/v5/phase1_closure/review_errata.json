@@ -1,0 +1,58 @@
+{
+  "kind": "PHASE1_CLOSURE_REVIEW_ERRATA",
+  "basis": "Corrections to review notes written by the branch author in artifacts/phase1_generalizable_ingestion/v5/phase1_closure/. The earlier review files are not edited; the frozen 36 PTFE targets (source_reference_sha256 814a0feb55ea058b42ddc41829dfd59b982a66afd9dc9f2f061b7360af67107b) are unchanged. Each entry says whether the correction counts for or against the system.",
+  "entries": [
+    {
+      "review": "ptfe_live_e19b7c0/revalidated_7997b58/review/source_review.json",
+      "targets": [
+        "entities-07",
+        "entities-08"
+      ],
+      "note_as_written": "This run proposed no batch entities; all Table 3 values went to one generic 'Brass-filled PTFE sample'.",
+      "correction": "The run did propose the four batches as ExperimentFamily with the marker-free label ('Brass-filled PTFE (Batch #1)', proposal-26f486d5b556081efa567ff8; '(Batch #2)', proposal-1e6046e9740747e9bda217de). They were REJECTED with ENTITY_LABEL_ABSENT_FROM_SUPPORT because the page prints the label with its footnote marker ('aBrass-filled PTFE (Batch #1)'). The scored outcome 'omitted' was right for a rejected proposal; the explanation was wrong. The quantities of that run were attached to the generic sample, as the note said.",
+      "direction": "in favour of the system (the failure was a validation defect, since repaired)",
+      "scored_outcome_changes": "none in that review; the repaired code is scored in a new review"
+    },
+    {
+      "review": "ptfe_live_e19b7c0/revalidated_7997b58/review/source_review.json",
+      "targets": [
+        "entities-02"
+      ],
+      "note_as_written": "Sample 'Brass-filled PTFE sample' recovers the concept; its anchors are on p9, not the p4 target sentence.",
+      "correction": "Kept as 'correct' with the caveat stated: the frozen target quote is the p4 phrase 'Brass-filled PTFE samples' and the accepted entity is anchored on p9 ('pretest picture of the Brass-filled PTFE ... circular sample'). A stricter reading that requires the target span itself to be anchored would count this target as omitted; the headline recall for that run is then 17/34 instead of 18/34. Both figures are reported.",
+      "direction": "against the system (possible over-credit)",
+      "scored_outcome_changes": "none; both readings reported"
+    },
+    {
+      "review": "ptfe_live_replay_7997b58/review/source_review.json",
+      "targets": [
+        "entities-07",
+        "entities-08"
+      ],
+      "note_as_written": "reused from the live review: the batch entities are correct cohorts",
+      "correction": "In that replay the accepted labels still carried the glued footnote marker ('aBrass-filled PTFE (Batch #1)'), which section 4 of the Phase 1 prompt says must not become part of the subject name. The identity was right, the label was not clean. The repaired code records the marker and legend separately and normalizes the label.",
+      "direction": "against the earlier review (a label defect was not called out)",
+      "scored_outcome_changes": "none; outcome 'correct' stands for the identity, the defect is fixed in the new replay"
+    },
+    {
+      "review": "ptfe_live_replay_7997b58/review/source_review.json and ptfe_live_e19b7c0/revalidated_7997b58/review/source_review.json",
+      "targets": [
+        "quantities-15",
+        "quantities-16",
+        "quantities-14"
+      ],
+      "note_as_written": "No quantity proposal for the p9 98 J / 10,000 psia configuration; no proposal for the 12% comparison.",
+      "correction": "True for the second live run. For the first live run the model did propose 98 Joules and 10,000 psia with Batch #1 as subject (the p9 passage says 'It was impacted' and never names the batch) and 12% with the Investigation as subject; all were REJECTED with QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE. 'Omitted' is still the scored outcome for a rejected proposal.",
+      "direction": "neutral (explanation corrected, outcome unchanged)",
+      "scored_outcome_changes": "none"
+    },
+    {
+      "review": "README.md (closure, blockers for Liam)",
+      "targets": [],
+      "note_as_written": "Only sample_thickness exists, as an accessor.",
+      "correction": "domain/source_field_accessors.yaml also declares sample_length and sample_width. The point stands: no accessor or property covers heat of combustion, AIT, impact energy, test pressure or reaction counts.",
+      "direction": "neutral",
+      "scored_outcome_changes": "none"
+    }
+  ]
+}
