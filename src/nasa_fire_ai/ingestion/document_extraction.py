@@ -1387,9 +1387,15 @@ def grounded_entities(output, package, document, semantic, window, context=None)
     text = local_text
     if context:
         text += " " + " ".join(a["quote"] for a in context["anchors"])
+    from nasa_fire_ai.ingestion.table_continuity import printed_label_forms
+
+    def named(label, passage):
+        # A row group label may be printed with its legend-backed footnote marker.
+        return any(mentions(form, passage) for form in printed_label_forms(label, document))
+
     entities.sort(
         key=lambda e: (
-            not mentions(e["label"], local_text),
+            not named(e["label"], local_text),
             e["class_id"] not in {"Investigation", "ExperimentFamily"},
             e["key"],
         )
@@ -1397,7 +1403,7 @@ def grounded_entities(output, package, document, semantic, window, context=None)
     selected = []
     for entity in entities:
         if (
-            not mentions(entity["label"], text)
+            not named(entity["label"], text)
             and not (entity["class_id"] == "Investigation" and entity["study"] == "current")
             and not any(
                 test_article_alias_review(
@@ -1432,7 +1438,7 @@ def grounded_entities(output, package, document, semantic, window, context=None)
             )
         ):
             continue
-        supports = [s for s in entity["support"] if mentions(entity["label"], s["quote"])]
+        supports = [s for s in entity["support"] if named(entity["label"], s["quote"])]
         local = [
             s
             for s in supports
@@ -1440,7 +1446,12 @@ def grounded_entities(output, package, document, semantic, window, context=None)
         ]
         # The original precise identity location stays available; irrelevant
         # support attachments must not replicate the entire document in each task.
-        chosen = local or sorted(supports, key=lambda s: len(s["quote"]))[:1]
+        # A validated identity never travels without its own anchor.
+        chosen = (
+            local
+            or sorted(supports, key=lambda s: len(s["quote"]))[:1]
+            or list(entity["support"][:1])
+        )
         selected.append(
             {**{k: entity[k] for k in ("key", "label", "class_id", "study")}, "support": chosen}
         )

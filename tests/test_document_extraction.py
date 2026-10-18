@@ -1511,9 +1511,30 @@ def test_ntrs_spacesuit_fire_screening_and_unrelated_source_rejection(service):
     )
     assert prepared["processing"]["new_model_calls"] == 0
     assert service.validate_originals(prepared["package"]) == []
+    # Fire wording without a NASA fire-safety context is uncertain: acquired for
+    # review, never silently accepted as domain knowledge.
+    adapter.fetch_metadata.return_value["modified"] = "second-version"
     adapter.fetch_metadata.return_value["abstract"] = "Synthetic ignition in a laboratory."
     adapter.fetch_metadata.return_value["title"] = "Synthetic combustion laboratory"
-    with pytest.raises(ValueError, match="relevant"):
+    uncertain = pymupdf.open()
+    uncertain.new_page().insert_text((50, 50), "Synthetic ignition laboratory fixture.")
+    response.iter_bytes.return_value = [uncertain.tobytes()]
+    with patch("httpx.stream", return_value=nullcontext(response)):
+        held = service.submit_ntrs("12345", "tester", adapter=adapter)
+    provenance = held["package"]["source_provenance"]
+    assert provenance["eligibility"] == "OFFICIAL_NASA_DOCUMENT_DOMAIN_REVIEW_REQUIRED"
+    assert provenance["eligibility_assessment"]["domain_relevance"]["status"] == "UNCERTAIN"
+    # Research outside the domain is not acquired.
+    adapter.fetch_metadata.return_value["modified"] = "third-version"
+    adapter.fetch_metadata.return_value["abstract"] = "Synthetic planetary spectroscopy."
+    adapter.fetch_metadata.return_value["title"] = "Synthetic spectroscopy survey"
+    unrelated = pymupdf.open()
+    unrelated.new_page().insert_text((50, 50), "Synthetic spectroscopy fixture.")
+    response.iter_bytes.return_value = [unrelated.tobytes()]
+    with (
+        patch("httpx.stream", return_value=nullcontext(response)),
+        pytest.raises(ValueError, match="relevant"),
+    ):
         service.submit_ntrs("12345", "tester", adapter=adapter)
 
 

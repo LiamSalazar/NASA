@@ -876,35 +876,42 @@ class CurationService:
 
         from nasa_fire_ai.ingestion.autonomous import official_download
         from nasa_fire_ai.ingestion.phase1 import NTRSAdapter
+        from nasa_fire_ai.ingestion.source_eligibility import assess, content_text, explanation
 
         metadata = (adapter or NTRSAdapter()).fetch_metadata(str(nasa_id))
         url = official_download(metadata)
-        descriptive = " ".join(
-            [metadata.get("title", ""), metadata.get("abstract", ""), *metadata.get("keywords", [])]
-        )
-        if not re.search(
-            r"\b(?:combust\w*|flam\w*|fire\w*)\b", descriptive, re.IGNORECASE
-        ) or not re.search(
-            r"\b(?:microgravity|partial.gravity|reduced.gravity|lunar|spacecraft|spacesuit|space.station|space.fire|spaceflight)\b",
-            descriptive,
-            re.IGNORECASE,
-        ):
+
+        def fetch():
+            with httpx.stream("GET", url, timeout=40, follow_redirects=False) as response:
+                response.raise_for_status()
+                chunks, size = [], 0
+                for chunk in response.iter_bytes():
+                    size += len(chunk)
+                    if size > 50 * 1024 * 1024:
+                        raise ValueError("Official submission exceeds 50 MiB acquisition limit")
+                    chunks.append(chunk)
+            return b"".join(chunks)
+
+        # Identity, NASA involvement, domain relevance and accessibility are
+        # judged separately: a short keyword list never decides alone, the
+        # document's own first pages are read when the citation is not enough,
+        # and uncertain relevance goes to review instead of rejection.
+        data = None
+        assessment = assess(metadata)
+        if assessment["domain_relevance"]["status"] != "ESTABLISHED":
+            data = fetch()
+            assessment = assess(metadata, content_text(data))
+        if assessment["extraction_eligibility"] == "INELIGIBLE":
             raise ValueError(
-                "Citation does not establish relevant reduced-gravity combustion or spacecraft fire safety"
+                "Citation does not establish relevant reduced-gravity combustion or spacecraft "
+                "fire safety: " + explanation(assessment)
             )
         key = digest(["official-ntrs-submission-v1", str(nasa_id), url, metadata.get("modified")])
         cached = self.registry.get_phase3_cache(key, "official_submission")
         if cached:
             return {**self.get(cached["package_id"]), "duplicate": True}
-        with httpx.stream("GET", url, timeout=40, follow_redirects=False) as response:
-            response.raise_for_status()
-            chunks, size = [], 0
-            for chunk in response.iter_bytes():
-                size += len(chunk)
-                if size > 50 * 1024 * 1024:
-                    raise ValueError("Official submission exceeds 50 MiB acquisition limit")
-                chunks.append(chunk)
-        data = b"".join(chunks)
+        if data is None:
+            data = fetch()
         saved = self.submit(
             metadata["title"],
             metadata.get("abstract", "Official NASA research submission"),
@@ -918,7 +925,8 @@ class CurationService:
             "nasa_id": str(nasa_id),
             "metadata": metadata,
             "sha256": hashlib.sha256(data).hexdigest(),
-            "eligibility": "OFFICIAL_NASA_DOMAIN_DOCUMENT",
+            "eligibility": assessment["eligibility"],
+            "eligibility_assessment": assessment,
             "scientific_review": "NONE",
         }
         saved = self.save(package, creator)
@@ -2130,6 +2138,11 @@ class CurationService:
             if not package.get("source_provenance"):
                 errors.append(
                     "Scientific source eligibility review required: establish NASA involvement and domain relevance"
+                )
+            elif package["source_provenance"].get("eligibility") != "OFFICIAL_NASA_DOMAIN_DOCUMENT":
+                errors.append(
+                    "Scientific source eligibility review required: "
+                    + str(package["source_provenance"].get("eligibility"))
                 )
             if extraction["contract_digest"] != self.contract_digest():
                 errors.append("Scientific extraction contracts changed; prepare a new version")

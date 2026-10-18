@@ -102,8 +102,18 @@ def main():
             [(reference["inputs"][0]["name"], data)],
             reference["creator"],
         )
-        # Official acquisition provenance only; never a scientific mapping.
-        submission["package"]["source_provenance"] = reference.get("source_provenance")
+        # Official acquisition provenance only; never a scientific mapping. The
+        # citation on file is re-judged by the current eligibility screening and
+        # the label recorded at acquisition is kept beside it.
+        provenance = dict(reference.get("source_provenance") or {})
+        if provenance.get("metadata"):
+            from nasa_fire_ai.ingestion.source_eligibility import assess
+
+            assessment = assess(provenance["metadata"])
+            provenance["eligibility_recorded_at_acquisition"] = provenance.get("eligibility")
+            provenance["eligibility"] = assessment["eligibility"]
+            provenance["eligibility_assessment"] = assessment
+        submission["package"]["source_provenance"] = provenance
         submission = service.save(submission["package"], reference["creator"])
         package_id = submission["package"]["id"]
         before = {

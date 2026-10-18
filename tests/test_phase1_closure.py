@@ -592,3 +592,15 @@ def test_a_cut_short_omission_recovery_is_retried_on_the_window_halves(service):
     )
     # The halves carry fewer anchors than the whole window that was cut short.
     assert len(focused) >= 2 and min(focused) < max(focused), (trace, focused)
+
+
+def test_a_normalized_identity_still_travels_with_its_printed_anchor(service):
+    from nasa_fire_ai.ingestion.document_extraction import grounded_entities
+
+    p = submitted(service, TEXT)
+    document = with_tables(service, p)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "alpha", "aAlpha", "ExperimentFamily", "aAlpha")]
+    window = {"members": document["segments"]}
+    [known] = grounded_entities(o, p, document, service.semantic, window)
+    assert known["label"] == "Alpha" and known["support"] == o["entities"][0]["support"]
