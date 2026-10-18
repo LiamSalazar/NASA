@@ -567,7 +567,9 @@ def original_research_passage(spans, document):
 
     return (
         not re.search(
-            r"\b(?:prior|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
+            # "prior to ignition" orders a procedure; "prior work" or "prior to
+            # this study" points at earlier research.
+            r"\b(?:prior(?!\s+to\s+(?:ignition|testing|impact|pressuriz\w*|heat\w*|load\w*|cool\w*|fill\w*|exposure|each\b|every\b|the\s+(?:test|drop|run|impact|burn|sample|chamber)\b))|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
             text,
             re.IGNORECASE,
         )
@@ -594,6 +596,31 @@ def document_statement_scope(subject, spans, entities, document):
             for e in entities.values()
         )
     )
+
+
+def subject_label_names_material(subject_label, material_label):
+    """A specimen or group whose printed name is the material name plus a qualifier.
+
+    "Alpha (Lot 1)" and "Alpha samples" are made of Alpha by construction of the
+    name. "Alpha-500" or "Brass-filled Alpha" are different names, so nothing is
+    inferred for them.
+    """
+    subject, material = normalized(subject_label), normalized(material_label)
+    if len(material) < 3:
+        return None
+    qualifier = re.fullmatch(
+        re.escape(material)
+        + r"(?:\s*\((?P<paren>(?:batch|lot|group|series|set|run|sample|specimen)\b[^()]*|#?\d+[^()]*)\)"
+        + r"|\s+(?P<noun>samples?|specimens?|coupons?|batch(?:es)?|lots?)\b.*)",
+        subject,
+    )
+    if not qualifier:
+        return None
+    return {
+        "basis": "SUBJECT_LABEL_NAMES_MATERIAL",
+        "material_label": material_label,
+        "qualifier": (qualifier.group("paren") or qualifier.group("noun")).strip(),
+    }
 
 
 def document_investigation(spans, entities, document):
@@ -766,7 +793,14 @@ def applicable(subject, spans, entities, document):
 
         if peers and (not overlaps(entity["spans"]) or any(overlaps(e["spans"]) for e in peers)):
             return False
-    if any(mentions(entity["label"], s["quote"]) for s in spans):
+    from nasa_fire_ai.ingestion.table_continuity import printed_label_forms
+
+    # A row group label may be printed with its legend-backed footnote marker.
+    if any(
+        mentions(form, s["quote"])
+        for form in printed_label_forms(entity["label"], document)
+        for s in spans
+    ):
         return True
     if group_section_support(subject, spans, entities, document) or document_conclusion_scope(
         subject, spans, entities, document
@@ -1800,6 +1834,27 @@ def validate_output(output, package, document, semantic):
                 if kind == "entities":
                     if item["key"] in ambiguous_keys:
                         raise ValueError("AMBIGUOUS_ENTITY_KEY")
+                    from nasa_fire_ai.ingestion.table_continuity import (
+                        printed_label_forms,
+                        row_group_identity,
+                    )
+
+                    printed = row_group_identity(item["label"], document)
+                    if (
+                        printed
+                        and printed["footnote_marker"]
+                        and normalized(item["label"]) != normalized(printed["group_label"])
+                    ):
+                        # "aAlpha (Lot 1)": a legend-backed footnote marker printed
+                        # with a row group label is an annotation, not the name.
+                        record["label_normalization"] = {
+                            "original_label": item["label"],
+                            "label": re.sub(r"\s+", " ", printed["group_label"]),
+                            "footnote_marker": printed["footnote_marker"],
+                            "footnote_legend": printed["footnote_legend"],
+                            "basis": "LEGEND_BACKED_FOOTNOTE_MARKER_ON_ROW_GROUP_LABEL",
+                        }
+                        item["label"] = record["label_normalization"]["label"]
                     if item["class_id"] == "Material" and qualified_material_heading(
                         item["label"], document, semantic
                     ):
@@ -1894,13 +1949,26 @@ def validate_output(output, package, document, semantic):
                         record["research_execution_role"] = "PLANNED_FUTURE_RESEARCH"
                         record["reasons"].append("FUTURE_RESEARCH_IS_NOT_CURRENT_INVESTIGATION")
                     label_spans = contiguous_support(spans, evidence)
-                    if not any(mentions(item["label"], s["quote"]) for s in label_spans):
+                    forms = printed_label_forms(item["label"], document)
+                    if not any(mentions(f, s["quote"]) for f in forms for s in label_spans):
                         raise ValueError("ENTITY_LABEL_ABSENT_FROM_SUPPORT")
                     if not any(mentions(item["label"], s["quote"]) for s in spans):
-                        record["identity_support"] = {
-                            "basis": "CONTIGUOUS_ORIGINAL_SOURCE_SPANS",
-                            "support": label_spans,
-                        }
+                        marked = [
+                            f for f in forms[1:] if any(mentions(f, s["quote"]) for s in spans)
+                        ]
+                        if marked:
+                            # The page prints the name with its footnote marker.
+                            record["identity_support"] = {
+                                "basis": "LEGEND_BACKED_FOOTNOTE_MARKER_ON_ROW_GROUP_LABEL",
+                                "printed_form": marked[0],
+                                "footnote_marker": printed["footnote_marker"],
+                                "footnote_legend": printed["footnote_legend"],
+                            }
+                        else:
+                            record["identity_support"] = {
+                                "basis": "CONTIGUOUS_ORIGINAL_SOURCE_SPANS",
+                                "support": label_spans,
+                            }
                     if (
                         has_class(item["class_id"], "ExperimentalCondition", semantic)
                         and item["class_id"] != "ExperimentalCondition"
@@ -2238,7 +2306,7 @@ def validate_output(output, package, document, semantic):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE")
                     if item["epistemic"] == "experimental_configuration" and not re.search(
-                        r"\b(?:initial\w*|set\w*|configur\w*|conditions?|maintain\w*|gravity|pressure|temperature|flow|atmospher\w*|oxygen|introduc\w*|ignit\w*|chamber|(?:samples?|specimens?)\s+(?:were|are|was|is)\s+(?:mounted|placed|tested|burned))\b",
+                        r"\b(?:initial\w*|set\w*|configur\w*|conditions?|maintain\w*|gravity|pressure|temperature|flow|atmospher\w*|oxygen|introduc\w*|ignit\w*|chamber|(?:samples?|specimens?)\s+(?:were|are|was|is)\s+(?:mounted|placed|tested|burned)|(?:was|were)\s+(?:used|employed|applied|added|injected|installed))\b",
                         item["text"],
                         re.IGNORECASE,
                     ):
@@ -2388,6 +2456,7 @@ def validate_output(output, package, document, semantic):
                         "hasPhenomenon": (experiment, {"CombustionPhenomenon"}),
                         "belongsToInvestigation": (experiment, {"Investigation"}),
                         "belongsToExperimentFamily": (experiment, {"ExperimentFamily"}),
+                        "madeOf": ({"Sample", "ExperimentFamily", "ExperimentalRun"}, {"Material"}),
                     }
                     if item["relation"] in endpoint_types and not all(
                         any(
@@ -2417,6 +2486,15 @@ def validate_output(output, package, document, semantic):
                     if binding:
                         record["context_resolution"] = binding
                         spans += locate(binding["support"], evidence)
+                    if not binding and item["relation"] == "madeOf":
+                        # "Alpha (Lot 1)" or "Alpha samples" are made of Alpha by
+                        # construction of their printed name.
+                        named = subject_label_names_material(
+                            entities[item["subject"]]["label"], entities[item["object"]]["label"]
+                        )
+                        if named:
+                            binding = {"status": "SUPPORTED", **named}
+                            record["context_resolution"] = binding
                     if item["relation"] == "hasGravityCondition" and not binding:
                         from nasa_fire_ai.ingestion.document_context import gravity_binding
 
@@ -2431,6 +2509,12 @@ def validate_output(output, package, document, semantic):
                     if not all(
                         applicable(item[e], spans, entities, document)
                         for e in ("subject", "object")
+                    ) and not (
+                        # The material is named inside the subject's own label.
+                        binding
+                        and binding.get("basis") == "SUBJECT_LABEL_NAMES_MATERIAL"
+                        and applicable(item["subject"], spans, entities, document)
+                        and entities[item["object"]].get("validation_status") == "SOURCE_SUPPORTED"
                     ):
                         raise ValueError("RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE")
                     if not (binding and binding["status"] == "SUPPORTED") and not local_binding(
@@ -4278,6 +4362,10 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 break
             before = len(gaps)
             result = process_stage(window, "propositions", "quantities")
+            # A recovery request can exceed the provider context, or be cut
+            # short, although the window's ordinary stages fit: recover the
+            # gaps on the window's halves instead of silently keeping them.
+            process_task(window, "propositions", "quantities", result=result)
             updated = coverage(
                 package,
                 document,
@@ -4313,9 +4401,9 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         )
         for window in windows:
             if any(m["evidence_id"] in unresolved_ids for m in window["members"]):
-                process_stage(window, "propositions", "statements")
+                process_task(window, "propositions", "statements")
         for window in windows:
-            process_stage(window, "relationships")
+            process_task(window, "relationships")
     for window, stage, result in deferred:
         process_task(window, stage, result=result)
     resolve_explicit_scopes(output, document)

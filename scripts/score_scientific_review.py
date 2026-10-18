@@ -55,6 +55,16 @@ def score(prepared, review):
             raise ValueError("Each precision judgment requires a boolean and source rationale")
     correct = sum(p["correct"] for p in proposals)
     accessible = len(seen) - counts["inaccessible"]
+    # Category-level precision and critical counts, reported beside the aggregate.
+    precision_by_kind = {}
+    for p in proposals:
+        kind = records[p["proposal_id"]].get("kind", "unspecified")
+        entry = precision_by_kind.setdefault(
+            kind, {"numerator": 0, "denominator": 0, "incorrect_critical": 0}
+        )
+        entry["denominator"] += 1
+        entry["numerator"] += bool(p["correct"])
+        entry["incorrect_critical"] += bool(not p["correct"] and p.get("critical", False))
     return {
         "basis": review["basis"],
         "target_count": len(seen),
@@ -66,6 +76,7 @@ def score(prepared, review):
             "denominator": accessible,
         },
         "reviewed_proposal_precision": {"numerator": correct, "denominator": len(proposals)},
+        "reviewed_proposal_precision_by_kind": precision_by_kind,
         "incorrect_critical_assignments_in_sample": sum(
             not p["correct"] and p.get("critical", False) for p in proposals
         ),

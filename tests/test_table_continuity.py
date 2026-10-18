@@ -7,6 +7,8 @@ from nasa_fire_ai.ingestion.table_continuity import (
     header_names,
     label_variants,
     link_continuation_tables,
+    printed_label_forms,
+    row_group_identity,
     table_cell_spans,
     table_region_rows,
     table_row_binding,
@@ -217,3 +219,26 @@ def test_table_region_is_whole_printed_rows_not_prose():
     rows_text = printed(doc["detected_tables"][1]["cells"])
     assert table_region_rows(rows_text, doc)
     assert not table_region_rows("Beta was tested at 100 kPa with no reactions.", doc)
+
+
+def test_row_group_identity_is_found_from_either_printed_form():
+    doc = two_page_table()
+    for label in ("aAlpha (Lot 1)", "Alpha (Lot 1)", "Alpha  (Lot 1)"):
+        identity = row_group_identity(label, doc)
+        assert identity["group_label"] == "Alpha (Lot 1)"
+        assert identity["group_label_original"] == "aAlpha (Lot 1)"
+        assert identity["footnote_marker"] == "a"
+        assert identity["footnote_legend"] == ["Synthetic standard MSFC"]
+    assert row_group_identity("Gamma", doc) is None
+    assert printed_label_forms("Alpha (Lot 1)", doc) == ["Alpha (Lot 1)", "aAlpha (Lot 1)"]
+    assert printed_label_forms("aAlpha (Lot 1)", doc) == ["aAlpha (Lot 1)", "Alpha (Lot 1)"]
+    assert printed_label_forms("Gamma", doc) == ["Gamma"]
+
+
+def test_without_a_legend_the_letter_stays_part_of_the_printed_name():
+    doc = two_page_table()
+    for segment in doc["segments"]:
+        segment["text"] = segment["text"].replace("a-\nSynthetic standard MSFC\n", "")
+    identity = row_group_identity("aAlpha (Lot 1)", doc)
+    assert identity["group_label"] == "aAlpha (Lot 1)" and identity["footnote_marker"] is None
+    assert row_group_identity("Alpha (Lot 1)", doc) is None

@@ -183,14 +183,30 @@ def _table_texts(document, tables):
     return result
 
 
+_ROWS_CACHE = {}
+
+
 def table_rows(document):
     """Data rows of every detected table with their group label and marker.
 
     The first column names a row's group (material, specimen, batch). An empty
     or marker-only first cell inherits the group above it, including from the
-    table a continuation table continues.
+    table a continuation table continues. Validation asks for the rows of one
+    document many times, so the result is kept while that table list is alive.
     """
     tables = document.get("detected_tables", [])
+    segments = document.get("segments", [])
+    cached = _ROWS_CACHE.get(id(tables))
+    if cached and cached[0] is tables and cached[1] is segments:
+        return cached[2]
+    rows = _table_rows(tables, document)
+    if len(_ROWS_CACHE) >= 8:
+        _ROWS_CACHE.pop(next(iter(_ROWS_CACHE)))
+    _ROWS_CACHE[id(tables)] = (tables, segments, rows)
+    return rows
+
+
+def _table_rows(tables, document):
     texts = _table_texts(document, tables)
     rows = []
     for chain in _chains(tables):
@@ -294,15 +310,46 @@ def group_lineage(labels, document):
     }
 
 
+def row_group_identity(label, document):
+    """The printed row group a label names, with or without its footnote marker.
+
+    Returns None when no table prints the label as a row group; otherwise the
+    marker-free group label, the form the page prints ("aAlpha (Lot 1)"), the
+    legend-backed marker and its legend. Spacing artifacts are ignored.
+    """
+    for row in table_rows(document):
+        if not row["group_label"]:
+            continue
+        if _key(row["group_label"]) == _key(label) or _key(row["group_label_original"]) == _key(
+            label
+        ):
+            return {
+                "group_label": row["group_label"],
+                "group_label_original": row["group_label_original"],
+                "footnote_marker": row["footnote_marker"],
+                "footnote_legend": row["footnote_legend"],
+                "page": row["page"],
+                "table_index": row["table_index"],
+            }
+    return None
+
+
+def printed_label_forms(label, document):
+    """The label plus every way its row group is printed (with and without marker)."""
+    forms = [label]
+    identity = row_group_identity(label, document)
+    for form in (identity["group_label_original"], identity["group_label"]) if identity else ():
+        if form and _key(form) not in {_key(f) for f in forms}:
+            forms.append(form)
+    return forms
+
+
 def label_variants(label, document):
     """The label itself plus its form without a legend-backed footnote marker."""
-    variants = [label]
-    for row in table_rows(document):
-        if _key(row["group_label_original"]) == _key(label) and row["group_label"]:
-            if row["group_label"] not in variants:
-                variants.append(row["group_label"])
-            break
-    return variants
+    identity = row_group_identity(label, document)
+    if identity and _key(identity["group_label"]) != _key(label):
+        return [label, identity["group_label"]]
+    return [label]
 
 
 def _cell_matches(cell, expression, unit):

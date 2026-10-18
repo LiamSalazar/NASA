@@ -1030,6 +1030,7 @@ class CurationService:
                         "evidence_ids": sorted({s["evidence_id"] for s in record["support_spans"]}),
                         "origin": "contextual",
                         "study": entity["study"],
+                        "review_status": record["status"],
                     }
                 )
                 existing.add(record["entity_id"])
@@ -1072,13 +1073,15 @@ class CurationService:
                     and entity_keys[k]["class_id"]
                     in {"ExperimentalRun", "ExperimentFamily", "Investigation", "Sample"}
                 ]
-                if match and scope:
+                if match and scope and record["status"] == "SOURCE_SUPPORTED":
                     match["scope"] = scope
                     match["support_spans"] = record["support_spans"]
                     match["scientific_proposal_id"] = record["id"]
                     match["evidence_ids"] = refs
                     statement_texts.add(statement_key(match))
                 else:
+                    # An unresolved proposal stays in the package for review but
+                    # is never included as established, exported knowledge.
                     candidate = {
                         "id": record["id"],
                         "text": item["text"],
@@ -1089,7 +1092,9 @@ class CurationService:
                         "study": item["study"],
                         "evidence_ids": refs,
                         "support_spans": record["support_spans"],
-                        "included": True,
+                        "included": record["status"] == "SOURCE_SUPPORTED",
+                        "review_status": record["status"],
+                        "review_reasons": list(record["reasons"]),
                         "scientific_proposal_id": record["id"],
                     }
                     if statement_key(candidate) not in statement_texts:
@@ -1107,6 +1112,7 @@ class CurationService:
                 )
             elif (
                 kind == "quantities"
+                and record["status"] == "SOURCE_SUPPORTED"
                 and record.get("mapping", {}).get("property_id")
                 and record.get("native_value_compatible", True)
                 and record.get("native_scope_compatible", True)
@@ -2801,7 +2807,10 @@ def project_package(store, package):
     for extension in package["extensions"]:
         activate_extension(store, extension)
     for entity in package["entities"]:
-        if entity["id"] in excluded:
+        if entity["id"] in excluded or entity.get("review_status") not in (
+            None,
+            "SOURCE_SUPPORTED",
+        ):
             continue
         store.add_entity(
             entity["id"],

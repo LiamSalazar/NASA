@@ -307,3 +307,288 @@ def test_an_observation_stating_a_purpose_describes_a_procedure(service):
     record = run(service, p, o, structure(p, service.root))[-1]
     assert record["status"] == "UNRESOLVED"
     assert "OBSERVATION_DESCRIBES_A_PROCEDURE" in record["reasons"]
+
+
+def test_footnote_marker_printed_with_a_row_group_is_not_part_of_the_entity_name(service):
+    p = submitted(service, TEXT)
+    document = with_tables(service, p)
+    outcomes = {}
+    for label in ("aAlpha", "Alpha"):
+        o = Output().model_dump()
+        o["entities"] = [entity(p, "alpha", label, "ExperimentFamily", "aAlpha")]
+        outcomes[label] = run(service, p, o, document)[-1]
+    glued, clean = outcomes["aAlpha"], outcomes["Alpha"]
+    assert glued["status"] == clean["status"] == "SOURCE_SUPPORTED"
+    # Both runs name the same group; the marker is kept as an annotation.
+    assert glued["proposal"]["label"] == clean["proposal"]["label"] == "Alpha"
+    assert glued["entity_id"] == clean["entity_id"]
+    assert glued["label_normalization"]["footnote_marker"] == "a"
+    assert glued["label_normalization"]["footnote_legend"] == ["Synthetic standard lab"]
+    assert clean["identity_support"]["basis"] == "LEGEND_BACKED_FOOTNOTE_MARKER_ON_ROW_GROUP_LABEL"
+    assert clean["identity_support"]["printed_form"] == "aAlpha"
+
+
+def test_a_letter_without_a_legend_stays_in_the_name_and_a_clean_label_is_absent(service):
+    p = submitted(service, TEXT.replace("a-\nSynthetic standard lab\n", ""))
+    document = with_tables(service, p)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "alpha", "aAlpha", "ExperimentFamily", "aAlpha")]
+    kept = run(service, p, o, document)[-1]
+    assert kept["status"] == "SOURCE_SUPPORTED" and kept["proposal"]["label"] == "aAlpha"
+    assert "label_normalization" not in kept
+    o["entities"] = [entity(p, "alpha", "Alpha", "ExperimentFamily", "aAlpha")]
+    absent = run(service, p, o, document)[-1]
+    assert absent["status"] == "REJECTED"
+    assert absent["reasons"] == ["ENTITY_LABEL_ABSENT_FROM_SUPPORT"]
+
+
+def configuration_record(service, text):
+    p = submitted(service, "# Synthetic study\nII. Methods\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
+    o["statements"] = [
+        {
+            "text": text,
+            "class_id": "ExperimentalCondition",
+            "epistemic": "experimental_configuration",
+            "subjects": ["root"],
+            "study": "current",
+            "support": support(p, text),
+        }
+    ]
+    return run(service, p, o, structure(p, service.root))[-1]
+
+
+def test_a_reagent_or_device_that_was_used_is_a_configuration(service):
+    used = configuration_record(service, "A mineral oil spike was used to assure combustion.")
+    assert "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE" not in used["reasons"]
+    documentary = configuration_record(
+        service, "The data used in this comparison were obtained from other papers."
+    )
+    assert "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE" in documentary["reasons"]
+
+
+def test_prior_to_a_procedure_step_is_not_prior_research(service):
+    from nasa_fire_ai.ingestion.document_extraction import original_research_passage
+
+    procedure = (
+        "If the temperature rises above 425 C prior to ignition, the AIT is recorded as >425 C."
+    )
+    lineage = "Prior to this study, Alpha had not been tested at pressure."
+    text = "# Synthetic study\nII. Methods\n" + procedure + "\n" + lineage + "\n"
+    p = submitted(service, text)
+    d = structure(p, service.root)
+
+    def span(sentence):
+        start = text.index(sentence)
+        return {
+            "evidence_id": p["evidence"][0]["evidence_id"],
+            "start": start,
+            "end": start + len(sentence),
+            "quote": sentence,
+        }
+
+    assert original_research_passage([span(procedure)], d)
+    assert not original_research_passage([span(lineage)], d)
+
+
+def test_unresolved_proposals_stay_for_review_but_are_never_included_as_knowledge(service):
+    first, second = "Alpha seals were tested at 10 J.", "Beta seals passed every test."
+    p = submitted(service, first + " " + second)
+    page = p["evidence"][0]
+
+    def record(rid, text, status, reasons):
+        start = page["text"].index(text)
+        return {
+            "id": rid,
+            "kind": "statements",
+            "status": status,
+            "reasons": reasons,
+            "support_spans": [
+                {
+                    "evidence_id": page["evidence_id"],
+                    "source_id": page["source_id"],
+                    "page": 1,
+                    "start": start,
+                    "end": start + len(text),
+                    "quote": text,
+                }
+            ],
+            "proposal": {
+                "text": text,
+                "class_id": "ReportedObservation",
+                "epistemic": "measured_observation",
+                "subjects": [],
+                "study": "current",
+            },
+        }
+
+    p["scientific_extraction"] = {
+        "records": [
+            record("proposal-ok", first, "SOURCE_SUPPORTED", []),
+            record(
+                "proposal-held", second, "UNRESOLVED", ["STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE"]
+            ),
+        ],
+        "entities_by_key": {},
+    }
+    service.attach_scientific_proposals(p)
+    by_id = {s["id"]: s for s in p["statements"] if s.get("origin") == "contextual"}
+    assert by_id["proposal-ok"]["included"] is True
+    assert by_id["proposal-ok"]["review_status"] == "SOURCE_SUPPORTED"
+    assert by_id["proposal-held"]["included"] is False
+    assert by_id["proposal-held"]["review_status"] == "UNRESOLVED"
+    assert by_id["proposal-held"]["review_reasons"] == ["STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE"]
+
+
+def relation(package, subject, name, obj, quote):
+    return {"subject": subject, "relation": name, "object": obj, "support": support(package, quote)}
+
+
+def test_subject_label_names_material_only_with_a_qualifier():
+    from nasa_fire_ai.ingestion.document_extraction import subject_label_names_material as names
+
+    assert names("Brass-filled PTFE (Batch #2)", "Brass-filled PTFE")["qualifier"] == "batch #2"
+    assert names("Brass-filled PTFE sample", "Brass-filled PTFE")["qualifier"] == "sample"
+    assert names("Alpha\n(Lot 1)", "Alpha")["qualifier"] == "lot 1"
+    for subject, material in [
+        ("Viton A-500", "Viton A"),
+        ("Salox-M", "Brass-filled PTFE"),
+        ("Brass-filled PTFE", "PTFE"),
+        ("Alpha (cited)", "Alpha"),
+        ("Alpha", "Alpha"),
+        ("PT", "PT"),
+    ]:
+        assert names(subject, material) is None
+
+
+def test_a_group_or_sample_named_after_its_material_is_made_of_it(service):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    text = (
+        "# Synthetic study\nII. Results\nAlpha was tested. Alpha (Lot 1) passed. "
+        "Alpha-500 failed. Beta samples burned."
+    )
+    p = submitted(service, text)
+    # The draft-local registry carries the ontology's madeOf once extraction exists.
+    p["scientific_extraction"] = {"records": []}
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "alpha", "Alpha", "Material", "Alpha was tested."),
+        entity(p, "lot", "Alpha (Lot 1)", "ExperimentFamily", "Alpha (Lot 1) passed."),
+        entity(p, "a500", "Alpha-500", "Sample", "Alpha-500 failed."),
+        entity(p, "beta", "Beta samples", "Sample", "Beta samples burned."),
+    ]
+    o["relations"] = [
+        relation(p, "lot", "madeOf", "alpha", "Alpha (Lot 1) passed."),
+        relation(p, "a500", "madeOf", "alpha", "Alpha-500 failed."),
+        relation(p, "beta", "madeOf", "alpha", "Beta samples burned."),
+        relation(p, "alpha", "madeOf", "alpha", "Alpha was tested."),
+    ]
+    records = validate_output(
+        copy.deepcopy(o), p, structure(p, service.root), extraction_semantic(service, p)
+    )["records"]
+    rels = [r for r in records if r["kind"] == "relations"]
+    assert rels[0]["status"] == "SOURCE_SUPPORTED", rels[0]["reasons"]
+    assert rels[0]["context_resolution"]["basis"] == "SUBJECT_LABEL_NAMES_MATERIAL"
+    assert rels[0]["context_resolution"]["qualifier"] == "lot 1"
+    assert all(r["status"] != "SOURCE_SUPPORTED" for r in rels[1:])
+    assert rels[3]["reasons"] == ["RELATION_ENDPOINT_CLASS_CONTRADICTION"]
+
+
+def test_a_cut_short_omission_recovery_is_retried_on_the_window_halves(service):
+    import json
+    from types import SimpleNamespace
+    from unittest.mock import Mock
+
+    from test_adaptive_extraction import response
+
+    from nasa_fire_ai.config import Settings
+    from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget
+
+    text = (
+        "Run A1 was tested at pressure 20 Pa.\n"
+        + "Documentary background context. " * 45
+        + "\nA1 oxygen concentration was measured at 21%."
+    )
+    p = submitted(service, text)
+    c = Mock()
+    focused = []
+
+    def respond(**kwargs):
+        request = json.loads(kwargs["messages"][1]["content"])
+        result = {k: [] for k in request["schema"]["properties"]}
+        subject = request["known_entities"][0]["key"] if request["known_entities"] else "a1"
+        if request["stage"] == "identity":
+            a = next(a for a in request["source_anchors"] if "Run A1" in a["quote"])
+            result["entities"] = [
+                {
+                    "key": "a1",
+                    "label": "A1",
+                    "class_id": "ExperimentalRun",
+                    "study": "current",
+                    "support": [a["id"]],
+                }
+            ]
+        elif request["stage"] == "propositions" and request.get("focus") == "quantities":
+            local = [a for a in request["source_anchors"] if a["in_task"]]
+            focused.append(len(local))
+            whole = any("pressure 20" in a["quote"] for a in local) and any(
+                "21%" in a["quote"] for a in local
+            )
+            if whole:
+                # The recovery request over the whole window is cut short.
+                return SimpleNamespace(
+                    choices=[
+                        SimpleNamespace(
+                            message=SimpleNamespace(content='{"quantities":['),
+                            finish_reason="length",
+                        )
+                    ],
+                    usage=None,
+                )
+            candidates = request["unstructured_quantity_candidates"]
+            if candidates:
+                result["quantities"] = [
+                    {
+                        "quantity_ref": candidates[0]["id"],
+                        "subject": subject,
+                        "label": "oxygen concentration",
+                        "epistemic": "reported_quantity",
+                    }
+                ]
+        elif request["stage"] == "propositions":
+            a = next(a for a in request["source_anchors"] if "pressure" in a["quote"])
+            result["quantities"] = [
+                {
+                    "subject": subject,
+                    "label": "pressure",
+                    "expression": "20",
+                    "unit": "Pa",
+                    "epistemic": "experimental_configuration",
+                    "support": [a["id"]],
+                }
+            ]
+        return response(result)
+
+    c.client.with_options.return_value.chat.completions.create.side_effect = respond
+    result = service.prepare_scientific(
+        p["id"],
+        Settings(root=service.root),
+        model_enabled=True,
+        client=c,
+        budget=ExtractionBudget(max_output_tokens=256),
+    )
+    records = result["package"]["scientific_extraction"]["records"]
+    trace = [
+        (o["stage"], o.get("focus"), o["model"], o["attempts"], o.get("recovery"))
+        for o in result["processing"]["outcomes"]
+    ]
+    assert any(
+        r["kind"] == "quantities" and r["proposal"]["expression"] == "21" for r in records
+    ), (
+        trace,
+        focused,
+    )
+    # The halves carry fewer anchors than the whole window that was cut short.
+    assert len(focused) >= 2 and min(focused) < max(focused), (trace, focused)
