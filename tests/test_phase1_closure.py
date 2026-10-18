@@ -606,15 +606,17 @@ def test_a_normalized_identity_still_travels_with_its_printed_anchor(service):
     assert known["label"] == "Alpha" and known["support"] == o["entities"][0]["support"]
 
 
-def observation_record(service, text):
+def observation_record(
+    service, text, epistemic="measured_observation", class_id="ReportedObservation"
+):
     p = submitted(service, "# Synthetic study\nII. Results\n" + text + "\n")
     o = Output().model_dump()
     o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
     o["statements"] = [
         {
             "text": text,
-            "class_id": "ReportedObservation",
-            "epistemic": "measured_observation",
+            "class_id": class_id,
+            "epistemic": epistemic,
             "subjects": ["root"],
             "study": "current",
             "support": support(p, text),
@@ -639,3 +641,45 @@ def test_rules_caveats_and_pointers_typed_as_observations_are_held(service):
         service, "Alpha seals were tested at 10 J and passed with no reactions."
     )
     assert not any(r.startswith("OBSERVATION_") for r in observed["reasons"]), observed["reasons"]
+
+
+def test_a_test_step_without_an_outcome_is_not_an_observation(service):
+    step = observation_record(
+        service, "Each Alpha seal was impacted with 98 J at 10,000 psia in LOX."
+    )
+    assert step["status"] == "UNRESOLVED" and "OBSERVATION_DESCRIBES_A_PROCEDURE" in step["reasons"]
+    observed = observation_record(
+        service,
+        "Each Alpha seal was impacted with 98 J at 10,000 psia and passed with no reactions.",
+    )
+    assert not any(r.startswith("OBSERVATION_") for r in observed["reasons"]), observed["reasons"]
+
+
+def test_a_validity_caveat_typed_as_an_interpretation_is_held(service):
+    caveat = "These percentages are only valid for an AIT value below the maximum test temperature."
+    record = observation_record(
+        service, caveat, epistemic="tentative_interpretation", class_id="NASAConclusion"
+    )
+    assert record["status"] == "UNRESOLVED", record["reasons"]
+    assert "INTERPRETATION_STATES_A_VALIDITY_CAVEAT" in record["reasons"]
+    reading = observation_record(
+        service,
+        "Since the filler fraction is not known, it can only be speculated that the filler is zinc.",
+        epistemic="tentative_interpretation",
+        class_id="NASAConclusion",
+    )
+    assert "INTERPRETATION_STATES_A_VALIDITY_CAVEAT" not in reading["reasons"]
+
+
+def test_a_table_caption_with_a_dash_is_not_an_experiment_family(service):
+    caption = "Table 3—Impact data of synthetic compounds"
+    series = "Alpha impact series"
+    p = submitted(service, "# Synthetic study\nII. Results\n" + caption + "\n" + series + "\n")
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "fam", caption, "ExperimentFamily", caption)]
+    record = run(service, p, o, structure(p, service.root))[-1]
+    assert record["status"] == "UNRESOLVED"
+    assert "CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY" in record["reasons"]
+    o["entities"] = [entity(p, "fam", series, "ExperimentFamily", series)]
+    record = run(service, p, o, structure(p, service.root))[-1]
+    assert "CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY" not in record["reasons"]

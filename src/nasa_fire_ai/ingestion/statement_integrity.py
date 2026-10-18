@@ -37,6 +37,23 @@ RULE_OR_CAVEAT = re.compile(
     r"|(?:is|are)\s+(?:not\s+)?(?:required|necessary|permitted|allowed))\b",
     re.IGNORECASE,
 )
+VALIDITY_CAVEAT = re.compile(
+    r"\b(?:is|are|was|were)\s+(?:only\s+)?(?:valid|applicable)(?:\s+only)?\s+(?:for|when|if"
+    r"|within|below|above|under|between|up\s+to)\b",
+    re.IGNORECASE,
+)
+APPLIED_STEP = re.compile(
+    r"\b(?:was|were)\s+(?:impacted|struck|tested|exposed|subjected|heated|pressurized|loaded"
+    r"|placed|positioned|submerged|immersed|purged|sealed|prepared|cooled|dropped|mounted)\b",
+    re.IGNORECASE,
+)
+OUTCOME_CUE = re.compile(
+    r"\b(?:react\w*|pass(?:ed|es)?|fail\w*|ignit\w*|burn\w*|flam\w*|extinguish\w*|observ\w*"
+    r"|shown|show(?:s|ed|ing)?|result\w*|detect\w*|seen|found|produc\w*|perform\w*|exhibit\w*"
+    r"|increas\w*|decreas\w*|rose|fell|remain\w*|became|occur\w*|spread\w*|grew|shrank|reduc\w*"
+    r"|no\s+(?:reaction|ignition|flash|change)s?|zero)\b",
+    re.IGNORECASE,
+)
 FRONT_MATTER = re.compile(
     r"(?:Available\s+online|Paper\s+ID|Published\s+[A-Z0-9]|doi:|©|Vol\.?\s*[\w]+,\s*No\.)",
     re.IGNORECASE,
@@ -193,6 +210,20 @@ def documentary_pointer(text):
 def rule_or_caveat(text):
     """Whether a passage states a rule, requirement or validity caveat."""
     return bool(RULE_OR_CAVEAT.search(text or ""))
+
+
+def validity_caveat(text):
+    """Whether a passage states the conditions under which a value or comparison holds."""
+    return bool(VALIDITY_CAVEAT.search(text or ""))
+
+
+def procedure_without_outcome(text):
+    """Whether a passage only says what was done to the specimens, with no outcome.
+
+    "Each was impacted with 98 J at 10,000 psia" is a test step; it becomes an
+    observation only when the passage also reports what happened.
+    """
+    return bool(APPLIED_STEP.search(text or "")) and not OUTCOME_CUE.search(text or "")
 
 
 def conflicting_roles(records):

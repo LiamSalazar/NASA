@@ -1897,7 +1897,9 @@ def validate_output(output, package, document, semantic):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("UNREGISTERED_CLASS_NEEDS_SEMANTIC_REVIEW")
                     if item["class_id"] == "ExperimentFamily" and re.match(
-                        r"(?:Figure|Fig\.?|Table)\s*\d+\s*[:.]", item["label"], re.IGNORECASE
+                        r"(?:Figure|Fig\.?|Table)\s*(?:[-–—]\s*\d+|\d+\s*[-–—:.])",
+                        item["label"],
+                        re.IGNORECASE,
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY")
@@ -2184,8 +2186,10 @@ def validate_output(output, package, document, semantic):
                         documentary_pointer,
                         fragment_context,
                         observation_cue,
+                        procedure_without_outcome,
                         rule_or_caveat,
                         stated_criterion,
+                        validity_caveat,
                     )
                     from nasa_fire_ai.ingestion.study_attribution import cited_table_reference
                     from nasa_fire_ai.ingestion.table_continuity import table_region_rows
@@ -2201,9 +2205,11 @@ def validate_output(output, package, document, semantic):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE")
                         record["source_fragment_context"] = fragment
-                    if item["epistemic"] == "measured_observation" and PURPOSE.search(item["text"]):
-                        # "A picture was taken in order to show ..." is what was
-                        # done, not what was observed.
+                    if item["epistemic"] == "measured_observation" and (
+                        PURPOSE.search(item["text"]) or procedure_without_outcome(item["text"])
+                    ):
+                        # "A picture was taken in order to show ..." and "Each was
+                        # impacted with 98 J" are what was done, not what was observed.
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("OBSERVATION_DESCRIBES_A_PROCEDURE")
                     if item["epistemic"] == "measured_observation":
@@ -2217,6 +2223,14 @@ def validate_output(output, package, document, semantic):
                             if test(item["text"]):
                                 record["status"] = "UNRESOLVED"
                                 record["reasons"].append(reason)
+                    if item["epistemic"] in {
+                        "tentative_interpretation",
+                        "author_reported_conclusion",
+                    } and validity_caveat(item["text"]):
+                        # The conditions under which a comparison holds are a
+                        # caveat on the analysis, not an interpretation of it.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("INTERPRETATION_STATES_A_VALIDITY_CAVEAT")
                     conflict = (
                         count_conflict(record["statement_location"], evidence)
                         if item["epistemic"] == "measured_observation"

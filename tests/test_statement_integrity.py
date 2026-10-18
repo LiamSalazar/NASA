@@ -257,3 +257,19 @@ def test_journal_front_matter_is_not_a_statement():
     sentence = "The data were published after the tests."
     ev = pages("1\n" + sentence + "\n")
     assert fragment_context(sentence, located(ev, "E1", sentence), ev) is None
+
+
+def test_validity_caveats_and_bare_test_steps_are_recognised():
+    from nasa_fire_ai.ingestion.statement_integrity import (
+        procedure_without_outcome,
+        validity_caveat,
+    )
+
+    assert validity_caveat("These percentages are only valid for a value below 425 C.")
+    assert not validity_caveat("The comparison is valid.")
+    assert not validity_caveat("It can only be speculated that the filler is zinc.")
+    assert procedure_without_outcome(
+        "Each was impacted with 98 J at 10,000 psia in LOX and in GOX."
+    )
+    assert not procedure_without_outcome("It was impacted with 98 J and passed with no reactions.")
+    assert not procedure_without_outcome("A small sliver of the filling can be seen in the layer.")
