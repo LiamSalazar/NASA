@@ -4365,6 +4365,32 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     for e in ambiguous
                 ):
                     process_task(window, "identity", "entities")
+
+    def recover_stage(window, stage, focus=None):
+        """One recovery request, retried once on the window's halves.
+
+        A recovery request can exceed the provider context, or be cut short,
+        although the window's ordinary stages fit. It is then asked once more
+        on each half; a half that still does not fit stays a reported gap. An
+        empty answer that the model finished is not chased into smaller pieces.
+        """
+        result = process_stage(window, stage, focus)
+        if (
+            result["model"] in {"NEEDS_CONTEXT_SPLIT", "PARTIAL_SOURCE", "PARTIAL_SCHEMA"}
+            or result.get("recovery") == "SPLIT_TRUNCATED_TASK"
+            or (
+                result["model"] == "EMPTY_WITH_SOURCE_CANDIDATES"
+                and result.get("finish_reason") == "length"
+            )
+        ):
+            children = split_window(window)
+            if children:
+                recovery_windows.extend(children)
+                halves = [process_stage(child, stage, focus) for child in children]
+                if all(h["model"] in {"COMPLETE", "COMPLETE_WITH_REJECTIONS"} for h in halves):
+                    result["model"] = "RECOVERED_BY_SPLIT"
+        return result
+
     # Target omissions detected against original literal quantities. Progress is
     # a shrinking set of source locations, never a model's claim of completeness.
     for window in windows:
@@ -4386,11 +4412,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             if not gaps:
                 break
             before = len(gaps)
-            result = process_stage(window, "propositions", "quantities")
-            # A recovery request can exceed the provider context, or be cut
-            # short, although the window's ordinary stages fit: recover the
-            # gaps on the window's halves instead of silently keeping them.
-            process_task(window, "propositions", "quantities", result=result)
+            result = recover_stage(window, "propositions", "quantities")
             updated = coverage(
                 package,
                 document,
@@ -4426,9 +4448,9 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         )
         for window in windows:
             if any(m["evidence_id"] in unresolved_ids for m in window["members"]):
-                process_task(window, "propositions", "statements")
+                recover_stage(window, "propositions", "statements")
         for window in windows:
-            process_task(window, "relationships")
+            recover_stage(window, "relationships")
     for window, stage, result in deferred:
         process_task(window, stage, result=result)
     resolve_explicit_scopes(output, document)
