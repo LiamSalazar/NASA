@@ -1964,6 +1964,12 @@ def validate_output(output, package, document, semantic):
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("STATEMENT_IS_NOT_NAMED_ENTITY")
+                    # "72 ft-lbs (98J)" is a value with its unit, not a named
+                    # intervention, material or specimen. A bare number may
+                    # still be a run label ("Run 3"), so only value+unit counts.
+                    if (split_embedded_unit(item["label"], None) or {}).get("status") == "SPLIT":
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY")
                     eid = (
                         package["id"]
                         + ":entity:"
@@ -2094,10 +2100,12 @@ def validate_output(output, package, document, semantic):
                         "end": exact["end"],
                     }
                     from nasa_fire_ai.ingestion.statement_integrity import (
+                        PURPOSE,
                         count_conflict,
                         fragment_context,
                         observation_cue,
                     )
+                    from nasa_fire_ai.ingestion.study_attribution import cited_table_reference
                     from nasa_fire_ai.ingestion.table_continuity import table_region_rows
 
                     # Whole printed table rows are table content; their values
@@ -2107,10 +2115,15 @@ def validate_output(output, package, document, semantic):
                     fragment = fragment_context(
                         item["text"], record["statement_location"], evidence
                     )
-                    if fragment and item["epistemic"] != "documentary_context":
+                    if fragment:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE")
                         record["source_fragment_context"] = fragment
+                    if item["epistemic"] == "measured_observation" and PURPOSE.search(item["text"]):
+                        # "A picture was taken in order to show ..." is what was
+                        # done, not what was observed.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("OBSERVATION_DESCRIBES_A_PROCEDURE")
                     conflict = (
                         count_conflict(record["statement_location"], evidence)
                         if item["epistemic"] == "measured_observation"
@@ -2190,7 +2203,12 @@ def validate_output(output, package, document, semantic):
                             # observation merely because it is printed there.
                             and (
                                 item["epistemic"] != "measured_observation"
-                                or observation_cue(item["text"])
+                                or (
+                                    observation_cue(item["text"])
+                                    # Data read from a cited table are not
+                                    # this study's own observation.
+                                    and not cited_table_reference(spans, document)
+                                )
                             )
                             and (root := document_investigation(spans, entities, document))
                         ):

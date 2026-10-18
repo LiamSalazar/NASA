@@ -277,3 +277,33 @@ def test_first_word_of_a_section_title_is_not_an_outline_prefix(service):
     assert section_for_span({**span, "start": text.index("Beta passed")}, d) == (
         "Results and Discussion"
     )
+
+
+def test_a_value_with_its_unit_is_not_a_named_entity(service):
+    text = "Each sample was impacted at 72 ft-lbs (98J) in the impact tester."
+    p = submitted(service, "# Synthetic study\nII. Results\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "energy", "72 ft-lbs (98J)", "Intervention", text)]
+    record = run(service, p, o, structure(p, service.root))[-1]
+    assert record["status"] == "UNRESOLVED"
+    assert "NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY" in record["reasons"]
+
+
+def test_an_observation_stating_a_purpose_describes_a_procedure(service):
+    text = "A post-test picture of an Alpha sample was taken in order to show the extruded layer."
+    p = submitted(service, "# Synthetic study\nII. Results\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
+    o["statements"] = [
+        {
+            "text": text,
+            "class_id": "ReportedObservation",
+            "epistemic": "measured_observation",
+            "subjects": ["root"],
+            "study": "current",
+            "support": support(p, text),
+        }
+    ]
+    record = run(service, p, o, structure(p, service.root))[-1]
+    assert record["status"] == "UNRESOLVED"
+    assert "OBSERVATION_DESCRIBES_A_PROCEDURE" in record["reasons"]

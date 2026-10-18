@@ -176,3 +176,26 @@ def test_one_span_accepted_with_incompatible_roles_is_held():
         record("f", "documentary_context", start=90, status="UNRESOLVED"),
     ]
     assert conflicting_roles(records) == {"a", "b"}
+
+
+def test_data_read_from_a_table_whose_caption_cites_a_reference_is_cited():
+    from nasa_fire_ai.ingestion.study_attribution import cited_table_reference
+
+    text = (
+        "TABLE 6— Comparison data [4]\nRows.\nTABLE 3— Our data\nRows.\n"
+        "The data listed in Table 6 indicate a 25% increase. The reactivity of the same material "
+        "increases by 20%. The data in Table 3 show no reactions."
+    )
+    d = doc(text)
+    assert cited_table_reference(
+        [span(text, "The reactivity of the same material increases by 20%.")], d
+    )
+    assert cited_table_reference([span(text, "The data in Table 3 show no reactions.")], d) is None
+
+
+def test_a_page_that_resumes_in_lower_case_continues_the_sentence():
+    ev = pages("1\nA second batch of the material\n", "2\nwas tested under the same conditions.\n")
+    quote = "A second batch of the material"
+    assert fragment_context(quote, located(ev, "E1", quote), ev)["basis"] == (
+        "SENTENCE_CONTINUES_ON_NEXT_PDF_PAGE"
+    )

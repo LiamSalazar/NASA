@@ -92,3 +92,46 @@ def cited_attribution_nearby(spans, document):
                     "reference_authors": named,
                 }
     return None
+
+
+def cited_tables(document):
+    """Numbers of tables whose own printed caption cites a reference ("[4]")."""
+    numbers = set()
+    for segment in document.get("segments", []):
+        for caption in re.finditer(
+            r"(?m)^[ \t]*(?:TABLE|Table)[ \t]+(\d+)[ \t]*[—–:.|-][^\n]*", segment.get("text", "")
+        ):
+            if CITATION.search(caption.group()):
+                numbers.add(caption.group(1))
+    return numbers
+
+
+def cited_table_reference(spans, document):
+    """A passage, or the sentence before it, that reads data from a cited table.
+
+    "The data listed in Table 6 indicate ... The reactivity of the same material
+    increases ..." reports a cited table, not an observation of the current
+    study, even without an author name nearby.
+    """
+    numbers = cited_tables(document)
+    if not numbers:
+        return None
+    pattern = re.compile(r"\bTables?\s+(\d+)(?:\s*(?:,|and|&)\s*(\d+))?", re.IGNORECASE)
+    for span in spans:
+        text = _evidence_text(document, span["evidence_id"])
+        start = span.get("start")
+        prefix = text[:start].rstrip() if start is not None and start <= len(text) else ""
+        sentences = re.split(r"(?<=[.!?])\s+", prefix) if prefix else []
+        nearby = (
+            sentences[-2:] if sentences and not re.search(r"[.!?]$", prefix) else sentences[-1:]
+        )
+        for passage in [span.get("quote", ""), *nearby]:
+            for match in pattern.finditer(passage):
+                cited = {n for n in match.groups() if n} & numbers
+                if cited:
+                    return {
+                        "basis": "PASSAGE_READS_A_CITED_TABLE",
+                        "quote": passage.strip(),
+                        "cited_tables": sorted(cited),
+                    }
+    return None

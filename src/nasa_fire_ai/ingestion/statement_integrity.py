@@ -90,14 +90,13 @@ def fragment_context(text, location, evidence):
     ]
     after = [p for p in pages if p.get("page") == (page.get("page") or 0) + 1]
     # A slide bullet may end a page without punctuation; only a word that needs
-    # its continuation ("of", "the", a comma) shows the sentence goes on.
-    if (
-        after
-        and not TERMINAL.search(text)
-        and CONTINUING_TAIL.search(text)
-        and not page["text"][location["end"] : end].strip()
-    ):
-        return {"basis": "SENTENCE_CONTINUES_ON_NEXT_PDF_PAGE", "quote": text.strip()[-60:]}
+    # its continuation ("of", "the", a comma), or a next page that resumes in
+    # lower case, shows the sentence goes on.
+    if after and not TERMINAL.search(text) and not page["text"][location["end"] : end].strip():
+        following = after[0]["text"]
+        resumed = following[_body_bounds(following)[0] :].lstrip()[:1].islower()
+        if CONTINUING_TAIL.search(text) or resumed:
+            return {"basis": "SENTENCE_CONTINUES_ON_NEXT_PDF_PAGE", "quote": text.strip()[-60:]}
     before = [p for p in pages if p.get("page") == (page.get("page") or 0) - 1]
     if before and not page["text"][begin : location["start"]].strip():
         previous = before[0]["text"]
