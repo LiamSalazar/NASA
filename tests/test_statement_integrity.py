@@ -199,3 +199,61 @@ def test_a_page_that_resumes_in_lower_case_continues_the_sentence():
     assert fragment_context(quote, located(ev, "E1", quote), ev)["basis"] == (
         "SENTENCE_CONTINUES_ON_NEXT_PDF_PAGE"
     )
+
+
+def test_a_caption_line_glued_to_a_sentence_is_a_fragment():
+    ev = pages("1\nFigure 20 - SEM of the filter\nThe presence of the contaminant makes sense.\n")
+    quote = "Figure 20 - SEM of the filter\nThe presence of the contaminant makes sense."
+    assert fragment_context(quote, located(ev, "E1", quote), ev)["basis"] == (
+        "STATEMENT_INCLUDES_A_CAPTION_LINE"
+    )
+    sentence = "Figure 1, below, is a pretest picture of the sample."
+    ev = pages("1\n" + sentence + "\n")
+    assert fragment_context(sentence, located(ev, "E1", sentence), ev) is None
+
+
+def test_a_lower_case_start_after_an_unfinished_line_is_a_previous_sentence_tail():
+    ev = pages(
+        "1\nwith elevated regulator body\ntemperature  This sought to expand the demonstration.\n"
+    )
+    quote = "temperature  This sought to expand the demonstration."
+    assert fragment_context(quote, located(ev, "E1", quote), ev)["basis"] == (
+        "STATEMENT_STARTS_MID_SENTENCE"
+    )
+    ev = pages("1\nThe bath was heated. pH was measured after each run.\n")
+    quote = "pH was measured after each run."
+    assert fragment_context(quote, located(ev, "E1", quote), ev) is None
+
+
+def test_an_auxiliary_at_a_page_end_continues_the_sentence():
+    ev = pages(
+        "1\nThe impacts were performed at rates faster than could be\n", "2\nAchieved in flight.\n"
+    )
+    quote = "The impacts were performed at rates faster than could be"
+    assert fragment_context(quote, located(ev, "E1", quote), ev)["basis"] == (
+        "SENTENCE_CONTINUES_ON_NEXT_PDF_PAGE"
+    )
+
+
+def test_pointers_rules_and_caveats_are_not_observations():
+    from nasa_fire_ai.ingestion.statement_integrity import documentary_pointer, rule_or_caveat
+
+    assert documentary_pointer("The results for Alpha are shown in Table 3.")
+    assert not documentary_pointer("It can be seen in Table 3 that Alpha passed.")
+    assert rule_or_caveat("The determination cannot be made from AIT alone.")
+    assert rule_or_caveat("These percentages are only valid below 425 C.")
+    assert not rule_or_caveat("The F7 required the pressure to be dropped to 5,000 psia.")
+    # A perception that failed is an observation, not a rule.
+    assert not rule_or_caveat("The small slivers cannot be seen on the surface in the picture.")
+
+
+def test_journal_front_matter_is_not_a_statement():
+    block = "X\nPaper ID:\nAvailable online at: www.example.org\nPublished XXXX\nA. Author1\nSynthetic title"
+    ev = pages("1\n" + block + "\nABSTRACT: Synthetic words.\n")
+    assert (
+        fragment_context(block, located(ev, "E1", block), ev)["basis"]
+        == "STATEMENT_IS_FRONT_MATTER"
+    )
+    sentence = "The data were published after the tests."
+    ev = pages("1\n" + sentence + "\n")
+    assert fragment_context(sentence, located(ev, "E1", sentence), ev) is None

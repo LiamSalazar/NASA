@@ -14,7 +14,9 @@ ABBREVIATION_END = re.compile(
 )
 TERMINAL = re.compile(r"[.!?:;\"”’)\]]\s*$")
 CONTINUING_TAIL = re.compile(
-    r"(?:[,(–—-]|\b(?:of|the|a|an|and|or|nor|to|in|for|with|by|from|as|at|on|that|which|than|whose|its|their)\b)\s*$",
+    r"(?:[,(–—-]|\b(?:of|the|a|an|and|or|nor|to|in|for|with|by|from|as|at|on|that|which|than"
+    r"|whose|its|their|be|been|being|was|were|is|are|has|have|had|not|will|would|could"
+    r"|should|may|might|can)\b)\s*$",
     re.IGNORECASE,
 )
 OBSERVATION_CUE = re.compile(
@@ -25,6 +27,23 @@ OBSERVATION_CUE = re.compile(
     re.IGNORECASE,
 )
 PURPOSE = re.compile(r"\b(?:in\s+order\s+to|so\s+as\s+to)\b", re.IGNORECASE)
+POINTER = re.compile(
+    r"\b(?:are|is|were|was)\s+(?:shown|presented|listed|given|summarized|tabulated|plotted"
+    r"|depicted)\s+in\s+(?:Table|Figure|Fig\.?|Appendix)\b",
+    re.IGNORECASE,
+)
+RULE_OR_CAVEAT = re.compile(
+    r"\b(?:(?:cannot|can\s+only)(?!\s+be\s+(?:seen|observed|detected|distinguished|resolved|identified|measured)\b)|must|shall|should|ought\s+to|(?:is|are)\s+only\s+valid"
+    r"|(?:is|are)\s+(?:not\s+)?(?:required|necessary|permitted|allowed))\b",
+    re.IGNORECASE,
+)
+FRONT_MATTER = re.compile(
+    r"(?:Available\s+online|Paper\s+ID|Published\s+[A-Z0-9]|doi:|©|Vol\.?\s*[\w]+,\s*No\.)",
+    re.IGNORECASE,
+)
+CAPTION_LINE = re.compile(
+    r"^\s*(?:Figure|Fig\.?|Table)\s*[-–—]?\s*\d+\s*[-–—:.]\s*[^\n]*\n\s*\S", re.IGNORECASE
+)
 CRITERION = re.compile(
     r"\b(?:is|are)\s+said\s+to\b|\bpass/fail\b|\bcriteri(?:on|a)\b"
     r"|\bif\b[^.;]*\b(?:then|is\s+recorded|are\s+recorded|must|shall)\b",
@@ -81,8 +100,24 @@ def fragment_context(text, location, evidence):
     """
     if ABBREVIATION_END.search(text.strip()):
         return {"basis": "STATEMENT_ENDS_AT_ABBREVIATION", "quote": text.strip()[-12:]}
+    if CAPTION_LINE.match(text):
+        # A figure or table caption line glued to the sentence that follows it.
+        return {"basis": "STATEMENT_INCLUDES_A_CAPTION_LINE", "quote": text.strip()[:60]}
+    if text.count("\n") >= 3 and FRONT_MATTER.search(text):
+        # Journal front matter (byline, placeholders, URL) is not one proposition.
+        return {"basis": "STATEMENT_IS_FRONT_MATTER", "quote": text.strip()[:60]}
     page = evidence[location["evidence_id"]]
     begin, end = _body_bounds(page["text"])
+    stripped = text.lstrip()
+    if stripped[:1].islower() and not re.match(r"(?:pH\b|[a-z][-\d])", stripped):
+        # A lower-case start after text that did not end a sentence is the tail
+        # of the previous sentence ("temperature  This sought to ...").
+        before = page["text"][: location["start"]].rstrip()
+        if before and not TERMINAL.search(before) and not re.search(r"\n\s*\d{1,4}\s*$", before):
+            return {
+                "basis": "STATEMENT_STARTS_MID_SENTENCE",
+                "quote": before[-40:] + " | " + stripped[:40],
+            }
     pages = [
         p
         for p in evidence.values()
@@ -148,6 +183,16 @@ def observation_cue(text):
 def stated_criterion(text):
     """Whether a passage states an acceptance or recording rule."""
     return bool(CRITERION.search(text or ""))
+
+
+def documentary_pointer(text):
+    """Whether a passage only points at where results are printed."""
+    return bool(POINTER.search(text or ""))
+
+
+def rule_or_caveat(text):
+    """Whether a passage states a rule, requirement or validity caveat."""
+    return bool(RULE_OR_CAVEAT.search(text or ""))
 
 
 def conflicting_roles(records):

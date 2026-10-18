@@ -604,3 +604,38 @@ def test_a_normalized_identity_still_travels_with_its_printed_anchor(service):
     window = {"members": document["segments"]}
     [known] = grounded_entities(o, p, document, service.semantic, window)
     assert known["label"] == "Alpha" and known["support"] == o["entities"][0]["support"]
+
+
+def observation_record(service, text):
+    p = submitted(service, "# Synthetic study\nII. Results\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
+    o["statements"] = [
+        {
+            "text": text,
+            "class_id": "ReportedObservation",
+            "epistemic": "measured_observation",
+            "subjects": ["root"],
+            "study": "current",
+            "support": support(p, text),
+        }
+    ]
+    return run(service, p, o, structure(p, service.root))[-1]
+
+
+def test_rules_caveats_and_pointers_typed_as_observations_are_held(service):
+    held = {
+        "A sample is said to have passed the test if no reactions are recorded out of 20 samples.": "OBSERVATION_STATES_A_CRITERION",
+        "The determination of compatibility cannot be made from AIT data alone.": "OBSERVATION_STATES_A_RULE_OR_CAVEAT",
+        "The impact results for Alpha are shown in Table 3.": "OBSERVATION_IS_A_DOCUMENTARY_POINTER",
+    }
+    for text, reason in held.items():
+        record = observation_record(service, text)
+        assert record["status"] == "UNRESOLVED" and reason in record["reasons"], (
+            text,
+            record["reasons"],
+        )
+    observed = observation_record(
+        service, "Alpha seals were tested at 10 J and passed with no reactions."
+    )
+    assert not any(r.startswith("OBSERVATION_") for r in observed["reasons"]), observed["reasons"]

@@ -2181,8 +2181,11 @@ def validate_output(output, package, document, semantic):
                     from nasa_fire_ai.ingestion.statement_integrity import (
                         PURPOSE,
                         count_conflict,
+                        documentary_pointer,
                         fragment_context,
                         observation_cue,
+                        rule_or_caveat,
+                        stated_criterion,
                     )
                     from nasa_fire_ai.ingestion.study_attribution import cited_table_reference
                     from nasa_fire_ai.ingestion.table_continuity import table_region_rows
@@ -2203,6 +2206,17 @@ def validate_output(output, package, document, semantic):
                         # done, not what was observed.
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("OBSERVATION_DESCRIBES_A_PROCEDURE")
+                    if item["epistemic"] == "measured_observation":
+                        # A recording or acceptance rule, a validity caveat and a
+                        # pointer to where results are printed are not observations.
+                        for test, reason in (
+                            (stated_criterion, "OBSERVATION_STATES_A_CRITERION"),
+                            (rule_or_caveat, "OBSERVATION_STATES_A_RULE_OR_CAVEAT"),
+                            (documentary_pointer, "OBSERVATION_IS_A_DOCUMENTARY_POINTER"),
+                        ):
+                            if test(item["text"]):
+                                record["status"] = "UNRESOLVED"
+                                record["reasons"].append(reason)
                     conflict = (
                         count_conflict(record["statement_location"], evidence)
                         if item["epistemic"] == "measured_observation"
