@@ -1107,3 +1107,40 @@ def test_a_column_the_document_applies_holds_settings_not_results(service):
     # A count is never made a setting by a sentence that also counts samples.
     assert reactions["proposal"]["epistemic"] == "reported_quantity"
     assert "role_recovery" not in reactions
+
+
+def test_a_columns_state_word_settles_a_setting_versus_result_conflict(service):
+    text = (
+        "# Synthetic study\nII. Results\nTABLE 1— AIT data\nMaterial\nInitial Pressure (psia)\n"
+        "Final Pressure (psia)\naBeta\n1500\n2268\na-\nSynthetic standard lab\n"
+    )
+    rows = [
+        ["Material", "Initial Pressure (psia)", "Final Pressure (psia)"],
+        ["aBeta", "1500", "2268"],
+    ]
+    p = submitted(service, text)
+    document = with_tables(service, p, rows)
+    table = "\n".join(v for row in rows for v in row)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "lot", "aBeta", "Sample", "aBeta")]
+    o["quantities"] = [
+        {
+            "subject": "lot",
+            "label": name,
+            "expression": value,
+            "unit": "psia",
+            "epistemic": role,
+            "support": support(p, table),
+        }
+        for name, value in [("Initial Pressure", "1500"), ("Final Pressure", "2268")]
+        for role in ("experimental_configuration", "reported_quantity")
+    ]
+    records = {
+        (r["proposal"]["label"], r["proposal"]["epistemic"]): r
+        for r in proposed(run(service, p, o, document))
+        if r["kind"] == "quantities"
+    }
+    assert records[("Final Pressure", "reported_quantity")]["status"] == "SOURCE_SUPPORTED"
+    assert records[("Final Pressure", "experimental_configuration")]["status"] == "UNRESOLVED"
+    # "initial" makes the reported reading of the same cell the one that is wrong.
+    assert records[("Initial Pressure", "reported_quantity")]["status"] != "SOURCE_SUPPORTED"

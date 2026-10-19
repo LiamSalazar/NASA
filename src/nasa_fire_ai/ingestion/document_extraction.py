@@ -3124,6 +3124,52 @@ def recover_statement_roles(records, output, package, document, semantic):
             break
 
 
+def state_settled_roles(records, held):
+    """Settle a setting-versus-result conflict on one table cell from its column's state word.
+
+    "Initial Test Pressure" names the state a test is set to; "Final Test
+    Pressure" names the state measured at its end. Only a conflict between
+    exactly those two roles on one bound cell is settled; the other reading is
+    still held.
+    """
+    groups = {}
+    for record in records:
+        if (
+            record["id"] in held
+            and record["kind"] == "quantities"
+            and record.get("table_row_binding")
+        ):
+            key = tuple((v["evidence_id"], v["start"]) for v in record["quantity_value_spans"])
+            groups.setdefault(key, []).append(record)
+    settled = {}
+    for members in groups.values():
+        roles = {r["proposal"]["epistemic"] for r in members}
+        if roles != {"experimental_configuration", "reported_quantity"}:
+            continue
+        headers = {
+            h["column_header"] or "" for r in members for h in r["table_row_binding"]["rows"]
+        }
+        words = {w.lower() for h in headers for w in re.findall(r"[A-Za-z]+", h)}
+        if words & {"initial", "set", "nominal", "starting"} and not words & {"final", "measured"}:
+            keep = "experimental_configuration"
+        elif words & {"final", "measured"} and not words & {
+            "initial",
+            "set",
+            "nominal",
+            "starting",
+        }:
+            keep = "reported_quantity"
+        else:
+            continue
+        for r in members:
+            settled[r["id"]] = {
+                "basis": "COLUMN_STATE_WORD_SETTLES_SETTING_OR_RESULT",
+                "column_headers": sorted(headers),
+                "kept": r["proposal"]["epistemic"] == keep,
+            }
+    return settled
+
+
 def validate_output(output, package, document, semantic, recover_roles=True):
     """Independent validation recomputed from source text and approved contracts.
 
@@ -4185,7 +4231,12 @@ def validate_output(output, package, document, semantic, recover_roles=True):
     # One source sentence accepted both as, say, a configuration and as an
     # interpretation contradicts itself; neither reading is promoted.
     held = conflicting_roles(records)
+    settled = state_settled_roles(records, held)
     for record in records:
+        if record["id"] in settled:
+            record["role_settlement"] = settled[record["id"]]
+            if settled[record["id"]]["kept"]:
+                continue
         if record["id"] in held:
             record["status"] = "UNRESOLVED"
             record["reasons"].append("CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN")
