@@ -2894,7 +2894,17 @@ def recover_group_classes(output, document):
     from nasa_fire_ai.ingestion.table_continuity import printed_in_material_column
 
     for index, e in enumerate(entities):
-        if e["class_id"] == "ExperimentFamily" and printed_in_material_column(e["label"], document):
+        if (
+            e["class_id"] == "ExperimentFamily"
+            and printed_in_material_column(e["label"], document)
+            # "Alpha (Batch #1)" names a group of Alpha, not another substance.
+            and not any(
+                subject_label_names_material(form, other["label"])
+                and normalized(form) != normalized(other["label"])
+                for form in label_variants(e["label"], document)
+                for other in output["entities"]
+            )
+        ):
             # "TFE-Teflon® (PTFE)" printed in a table's Material column is the
             # substance tested, not a family of experiments.
             recovered[e["key"]] = {
@@ -3111,7 +3121,9 @@ def structure_relation_candidates(output, document):
     from nasa_fire_ai.ingestion.table_continuity import group_rows_printing, label_variants
 
     groups = [e for e in output["entities"] if e["class_id"] in {"Sample", "ExperimentFamily"}]
-    proposed = {(r["subject"], r["relation"], r["object"]) for r in output["relations"]}
+    # A model proposal of the same relation does not replace the printed one:
+    # the model's own support may not hold it, the printed structure does.
+    proposed = set()
     candidates = []
     for group in groups:
         for other in output["entities"]:
@@ -3201,7 +3213,12 @@ def recover_statement_roles(records, output, package, document, semantic):
         if record["kind"] != "statements" or record["status"] != "UNRESOLVED":
             continue
         reasons = set(record["reasons"])
+        # A recording or acceptance rule applies to the study's procedure, not
+        # to one specimen: its subject is revalidated at the study's scope.
+        rule_scope = "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED" in reasons
         for allowed, required, (epistemic, class_id) in ROLE_RECOVERY:
+            if epistemic == "normative_requirement" and rule_scope:
+                allowed = allowed | {"STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED"}
             if not reasons or not reasons <= allowed or not reasons & required:
                 continue
             from nasa_fire_ai.ingestion.statement_integrity import (
@@ -3236,6 +3253,17 @@ def recover_statement_roles(records, output, package, document, semantic):
             ):
                 break  # a caption or a pointer reports no observed result
             item = {**record["proposal"], "epistemic": epistemic, "class_id": class_id}
+            if epistemic == "normative_requirement" and rule_scope:
+                roots = [
+                    e["key"]
+                    for e in output["entities"]
+                    if e["class_id"] == "Investigation"
+                    and e.get("study") == "current"
+                    and normalized(e["label"]) == normalized(document.get("package_title", ""))
+                ]
+                if len(roots) != 1:
+                    break
+                item["subjects"] = roots
             trial = {
                 "entities": output["entities"],
                 "statements": [item],
@@ -3262,6 +3290,8 @@ def recover_statement_roles(records, output, package, document, semantic):
                         "held_for": sorted(reasons),
                         "recovered_epistemic": epistemic,
                         "method": "FULL_REVALIDATION_WITH_THE_DETECTED_ROLE",
+                        "proposed_subjects": original.get("subjects", []),
+                        "rule_scoped_to_study": epistemic == "normative_requirement" and rule_scope,
                     },
                 )
             break

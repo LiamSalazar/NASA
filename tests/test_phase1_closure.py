@@ -529,7 +529,7 @@ def test_a_group_or_sample_named_after_its_material_is_made_of_it(service):
     records = validate_output(
         copy.deepcopy(o), p, structure(p, service.root), extraction_semantic(service, p)
     )["records"]
-    rels = [r for r in records if r["kind"] == "relations"]
+    rels = [r for r in proposed(records) if r["kind"] == "relations"]
     assert rels[0]["status"] == "SOURCE_SUPPORTED", rels[0]["reasons"]
     assert rels[0]["context_resolution"]["basis"] == "SUBJECT_LABEL_NAMES_MATERIAL"
     assert rels[0]["context_resolution"]["qualifier"] == "lot 1"
@@ -1353,3 +1353,21 @@ def test_a_documentary_figure_statement_that_reports_what_it_shows_is_held():
     assert documented_observation("A small sliver of the filling can be seen in the layer.")
     assert not documented_observation("The data shows that Alpha is highly compatible.")
     assert not documented_observation("The impact results are shown in Figure 3.")
+
+
+def test_a_recording_rule_proposed_for_a_specimen_is_recovered_at_the_studys_scope(service):
+    text = "If the sample temperature rises above 425°C, then the AIT is recorded as >425°C."
+    named = "Alpha samples were prepared for the AIT test."
+    record = results_record(
+        service,
+        text,
+        [("s", "Alpha samples", "Sample", named, "current")],
+        ["s"],
+        "experimental_configuration",
+        "ExperimentalCondition",
+        before=named + " ",
+    )
+    assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
+    assert record["proposal"]["epistemic"] == "normative_requirement"
+    assert record["role_recovery"]["rule_scoped_to_study"] is True
+    assert record["role_recovery"]["proposed_subjects"] == ["s"]

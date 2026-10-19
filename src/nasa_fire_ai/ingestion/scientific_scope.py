@@ -326,6 +326,15 @@ def consolidate_validated_variants(records, entities, evidence, document):
                     item["unit"],
                     tuple(sorted(record["reasons"])),
                 )
+        if (
+            kind == "relations"
+            and record["status"] == "SOURCE_SUPPORTED"
+            and record.get("subject")
+            and record.get("object")
+        ):
+            # One relation between the same two entities, proposed by the model
+            # and by the printed structure, is one assertion.
+            key = (kind, record["status"], record["subject"], item["relation"], record["object"])
         if key is None and kind == "quantities" and record.get("quantity_value_spans"):
             # The same printed value, subject, name, unit and role proposed twice.
             key = (
