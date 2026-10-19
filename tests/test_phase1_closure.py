@@ -157,6 +157,31 @@ def test_comparator_printed_only_in_cited_rows_is_not_established_as_tested_here
     assert "CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED" not in own["reasons"]
 
 
+def lineage_entity(service, legend, label, study, row_label="aBeta"):
+    p = submitted(service, LINEAGE.format(legend=legend).replace("aBeta", row_label))
+    rows = [["Material", "Energy (J)", "Reactions/Tests"], [row_label, "10", "0/20"]]
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "beta", label, "Material", "Beta seals were compared.", study=study)]
+    return run(service, p, o, with_tables(service, p, rows))[-1]
+
+
+def test_material_printed_only_in_this_studys_rows_is_not_only_cited(service):
+    own = lineage_entity(service, "Synthetic standard lab", "Beta", "cited")
+    assert own["status"] == "UNRESOLVED"
+    assert "CITED_STUDY_CONTRADICTED_BY_CURRENT_TABLE_ROWS" in own["reasons"]
+    # Rows that do carry a cited lineage leave a cited comparator as it is.
+    cited = lineage_entity(service, "Data of Smith", "Beta", "cited")
+    assert "CITED_STUDY_CONTRADICTED_BY_CURRENT_TABLE_ROWS" not in cited["reasons"]
+
+
+def test_row_group_with_a_parenthetical_name_counts_for_the_material(service):
+    current = lineage_entity(service, "Data of Smith", "Beta", "current", "aBeta (BT)")
+    assert "CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED" in current["reasons"]
+    # A different name that merely starts the same way is not the same material.
+    other = lineage_entity(service, "Data of Smith", "Bet", "current", "aBeta (BT)")
+    assert "CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED" not in other["reasons"]
+
+
 SCOPE = (
     "# Synthetic study\nII. Results\n{before}"
     "Alpha seals were tested at 10 J and passed with no reactions.\n"

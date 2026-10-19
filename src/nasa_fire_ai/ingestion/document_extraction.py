@@ -2805,18 +2805,38 @@ def validate_output(output, package, document, semantic):
                     }:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CURRENT_OR_CITED_STUDY_UNRESOLVED")
-                    if item["study"] == "current" and item["class_id"] in {"Material", "Sample"}:
+                    if item["study"] in {"current", "cited"} and item["class_id"] in {
+                        "Material",
+                        "Sample",
+                    }:
                         from nasa_fire_ai.ingestion.table_continuity import (
                             group_lineage,
-                            label_variants,
+                            material_row_labels,
                         )
 
+                        lineage = group_lineage(
+                            material_row_labels(item["label"], document), document
+                        )
                         # A comparator printed only in cited or externally
-                        # sourced table rows was not established as tested here.
-                        lineage = group_lineage(label_variants(item["label"], document), document)
-                        if lineage and lineage["status"] == "CITED_OR_EXTERNAL_ONLY":
+                        # sourced table rows was not established as tested here;
+                        # one printed only in this study's rows is not only cited.
+                        if (
+                            item["study"] == "current"
+                            and lineage
+                            and lineage["status"] == "CITED_OR_EXTERNAL_ONLY"
+                        ):
                             record["status"] = "UNRESOLVED"
                             record["reasons"].append("CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED")
+                            record["lineage_context"] = lineage
+                        if (
+                            item["study"] == "cited"
+                            and lineage
+                            and lineage["status"] == "NOT_CONTRADICTED"
+                        ):
+                            record["status"] = "UNRESOLVED"
+                            record["reasons"].append(
+                                "CITED_STUDY_CONTRADICTED_BY_CURRENT_TABLE_ROWS"
+                            )
                             record["lineage_context"] = lineage
                 elif kind == "statements":
                     from nasa_fire_ai.ingestion.scientific_scope import page_continuation_context

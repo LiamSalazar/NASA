@@ -352,6 +352,18 @@ def label_variants(label, document):
     return [label]
 
 
+def material_row_labels(label, document):
+    """Row-group labels printed for one named material, including a group that
+    only adds a parenthetical to the name ("Kel-F® 81" → "Kel-F®81 (PCTFE)")."""
+    labels = label_variants(label, document)
+    stems = {_key(v) for v in labels}
+    for row in table_rows(document):
+        group = row["group_label"] or ""
+        if any(_key(group).startswith(stem + "(") for stem in stems) and group not in labels:
+            labels.append(group)
+    return labels
+
+
 def _cell_matches(cell, expression, unit):
     text = re.sub(r"\s+", " ", (cell or "").strip())
     if not text:
