@@ -3897,6 +3897,19 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     } and procedure_without_interpretation(item["text"]):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("INTERPRETATION_DESCRIBES_A_PROCEDURE")
+                    if item["epistemic"] == "tentative_interpretation" and not re.search(
+                        r"\b(?:suggest\w*|speculat\w*|possib\w*|likely|probabl\w*|may|might|could"
+                        r"|appear\w*|seem\w*|indicat\w*|determin\w*|believ\w*|expect\w*|assum\w*"
+                        r"|estimat\w*|presum\w*|impl(?:y|ies|ied)|due\s+to|because|therefore|thus"
+                        r"|hence|attribut\w*|explain\w*|concern\w*|would|should|if|unless|whether"
+                        r"|thought|predict\w*|caus\w*)\b",
+                        item["text"],
+                        re.IGNORECASE,
+                    ):
+                        # "The composition of Salox-M® is 40% Bronze and 60% PTFE"
+                        # states a fact; a tentative interpretation hedges or infers.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE")
                     if item["epistemic"] == "experimental_configuration" and validity_caveat(
                         item["text"]
                     ):

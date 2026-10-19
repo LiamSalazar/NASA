@@ -1371,3 +1371,15 @@ def test_a_recording_rule_proposed_for_a_specimen_is_recovered_at_the_studys_sco
     assert record["proposal"]["epistemic"] == "normative_requirement"
     assert record["role_recovery"]["rule_scoped_to_study"] is True
     assert record["role_recovery"]["proposed_subjects"] == ["s"]
+
+
+def test_a_tentative_interpretation_must_hedge_or_infer(service):
+    def tentative(text):
+        return observation_record(
+            service, text, epistemic="tentative_interpretation", class_id="NASAConclusion"
+        )
+
+    fact = tentative("The composition of Alpha is 40% Bronze and 60% PTFE.")
+    assert "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE" in fact["reasons"]
+    hedged = tentative("It can only be speculated that the filler of Alpha is Zinc.")
+    assert "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE" not in hedged["reasons"]
