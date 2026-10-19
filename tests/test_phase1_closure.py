@@ -1241,3 +1241,66 @@ def test_a_test_medium_is_not_a_tested_material(service):
     assert gox["status"] == "UNRESOLVED"
     assert "TEST_MEDIUM_IS_NOT_A_TESTED_MATERIAL" in gox["reasons"]
     assert "TEST_MEDIUM_IS_NOT_A_TESTED_MATERIAL" not in alpha["reasons"]
+
+
+def results_record(service, text, entities, subjects, epistemic, class_id, before=""):
+    p = submitted(service, "# Synthetic study\nII. Results\n" + before + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study"),
+        *[entity(p, key, label, cls, quote, study) for key, label, cls, quote, study in entities],
+    ]
+    o["statements"] = [
+        {
+            "text": text,
+            "class_id": class_id,
+            "epistemic": epistemic,
+            "subjects": subjects,
+            "study": "current",
+            "support": support(p, text),
+        }
+    ]
+    return run(service, p, o, structure(p, service.root))[-1]
+
+
+def test_a_cited_family_name_inside_a_current_variant_name_keeps_current_scope(service):
+    named = "Alpha E2 and Alpha F7 seals were prepared here."
+    text = "The E2 Alpha seals were tested at 10 J and passed with no reactions."
+    record = results_record(
+        service,
+        text,
+        [
+            ("fam", "Alpha", "Material", named, "cited"),
+            ("e2", "Alpha E2", "Material", named, "current"),
+        ],
+        ["e2"],
+        "measured_observation",
+        "ReportedObservation",
+        before=named + " ",
+    )
+    assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
+    assert record["scope_context"]["basis"] == (
+        "ORIGINAL_RESEARCH_SECTION_AT_DOCUMENT_INVESTIGATION_SCOPE"
+    )
+
+
+def test_a_result_held_only_for_its_conclusion_role_is_recovered_as_an_observation(service):
+    def conclusion(text):
+        return results_record(
+            service,
+            text,
+            [("alpha", "Alpha", "Material", text, "current")],
+            ["alpha"],
+            "author_reported_conclusion",
+            "NASAConclusion",
+        )
+
+    result = conclusion("It was shown that Alpha seals produced no reactions at 10 J.")
+    assert result["status"] == "SOURCE_SUPPORTED", result["reasons"]
+    assert result["role_recovery"]["recovered_epistemic"] == "measured_observation"
+    for text in (
+        "The Alpha data discussed here were obtained from preexisting documented results.",
+        "Alpha seals produced no reactions, so Alpha is therefore a suitable candidate.",
+    ):
+        held = conclusion(text)
+        assert "role_recovery" not in held, text

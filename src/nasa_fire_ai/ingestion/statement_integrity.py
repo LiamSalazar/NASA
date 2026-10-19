@@ -241,6 +241,32 @@ def procedure_without_outcome(text):
     return bool(APPLIED_STEP.search(text or "")) and not OUTCOME_CUE.search(text or "")
 
 
+DETECTION_METHOD = re.compile(
+    r"^\s*the\s+detection\s+of\b[^.;]*?\b(?:was|were|is|are)\s+(?:indicated|determined|made|signall?ed)\s+by\b",
+    re.IGNORECASE,
+)
+DATA_PROVENANCE = re.compile(
+    r"\b(?:data|results?|values?)\b[^.;]*?\b(?:were|was|are|is)\s+(?:obtained|taken|collected"
+    r"|gathered|compiled|drawn|acquired|sourced)\b",
+    re.IGNORECASE,
+)
+
+
+def reported_outcome(text):
+    """Whether a passage reports what happened, not only what was done, used or sourced.
+
+    "The detection of a reaction was indicated by a photodiode" says how an
+    outcome is detected, and "The data ... were obtained by ..." where data came
+    from; neither reports an outcome.
+    """
+    text = text or ""
+    return bool(
+        OUTCOME_CUE.search(text)
+        and not DETECTION_METHOD.search(text)
+        and not DATA_PROVENANCE.search(text)
+    )
+
+
 def procedure_without_interpretation(text):
     """Whether a passage only says what was done to or with the specimens.
 

@@ -596,10 +596,36 @@ def document_statement_scope(subject, spans, entities, document):
         and all(s["source_id"] == entity["source_id"] for s in spans)
         and original_research_passage(spans, document)
         and not any(
-            e.get("study") == "cited" and mentions(e["label"], " ".join(s["quote"] for s in spans))
+            e.get("study") == "cited"
+            and cited_mention_outside_current_names(
+                e["label"], " ".join(s["quote"] for s in spans), entities
+            )
             for e in entities.values()
         )
     )
+
+
+def cited_mention_outside_current_names(label, text, entities):
+    """Whether a cited entity is named in text other than inside a current variant's name.
+
+    "the pre-sintered E2 Algoflon®" names the current Material "Algoflon® E2";
+    the family name it contains is not a mention of the cited "Algoflon®".
+    """
+    text = normalized(text)
+    cited = normalized(label)
+    variants = [
+        set(re.findall(r"[\w®™-]+", normalized(e["label"]))) - set(re.findall(r"[\w®™-]+", cited))
+        for e in entities.values()
+        if e.get("study") == "current"
+        and e.get("validation_status") == "SOURCE_SUPPORTED"
+        and mentions(label, e["label"])
+        and normalized(e["label"]) != cited
+    ]
+    for match in re.finditer(r"(?<![\w-])" + re.escape(cited) + r"(?![\w-])", text):
+        window = set(re.findall(r"[\w®™-]+", text[max(0, match.start() - 30) : match.end() + 30]))
+        if not any(extra and extra <= window for extra in variants):
+            return True
+    return False
 
 
 def subject_label_names_material(subject_label, material_label):
@@ -3134,6 +3160,18 @@ ROLE_RECOVERY = (
         {"DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE"},
         ("measured_observation", "ReportedObservation"),
     ),
+    (
+        {"AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW"},
+        {"AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW"},
+        ("measured_observation", "ReportedObservation"),
+    ),
+)
+# Wording that makes a passage an inference rather than a reported result.
+INFERENCE = re.compile(
+    r"\b(?:suggest\w*|conclu\w*|likely|probabl\w*|due\s+to|because|therefore|thus|hence"
+    r"|recommend\w*|attribut\w*|explain\w*|may|might|could|should|believ\w*|expect\w*"
+    r"|appears?|seems?|candidate|suitable|acceptable|ideal|best)\b",
+    re.IGNORECASE,
 )
 
 
@@ -3146,9 +3184,25 @@ def recover_statement_roles(records, output, package, document, semantic):
         for allowed, required, (epistemic, class_id) in ROLE_RECOVERY:
             if not reasons or not reasons <= allowed or not reasons & required:
                 continue
-            from nasa_fire_ai.ingestion.statement_integrity import observation_cue
+            from nasa_fire_ai.ingestion.statement_integrity import (
+                observation_cue,
+                reported_outcome,
+            )
 
             text = record["proposal"]["text"]
+            if (
+                "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW" in reasons
+                and record["proposal"]["epistemic"] == "author_reported_conclusion"
+                and (INFERENCE.search(text) or not reported_outcome(text))
+            ):
+                break  # an inference outside the conclusions stays an interpretation
+            if record["proposal"]["epistemic"] not in {
+                "author_reported_conclusion",
+                "derived_quantity",
+                "measured_observation",
+                "experimental_configuration",
+            }:
+                break
             if epistemic == "measured_observation" and not (
                 observation_cue(text)
                 and re.search(
@@ -3693,6 +3747,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         observation_cue,
                         procedure_without_interpretation,
                         procedure_without_outcome,
+                        reported_outcome,
                         rule_or_caveat,
                         stated_criterion,
                         validity_caveat,
@@ -3724,8 +3779,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     # Narrative of what was done next asserts no study result.
                     same_cited = (
                         cited_same_anaphor(spans, document)
-                        if item["study"] == "current"
-                        and item["epistemic"] != "documentary_context"
+                        if item["study"] == "current" and item["epistemic"] != "documentary_context"
                         else None
                     )
                     if same_cited:
@@ -3970,6 +4024,45 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                                     "basis": "UNIQUE_ORIGINAL_PARAGRAPH_STUDY_ANTECEDENT",
                                     "support": proof,
                                 }
+                    if (
+                        item["subjects"]
+                        and item["epistemic"] != "documentary_context"
+                        and item["study"] == "current"
+                        and not all(
+                            applicable(s, spans, entities, document)
+                            or document_statement_scope(s, spans, entities, document)
+                            for s in item["subjects"]
+                        )
+                        and all(
+                            s in entities
+                            and entities[s]["class_id"] == "Sample"
+                            # The passage itself names the specimens or their
+                            # material ("the second batch of Brass-filled PTFE").
+                            and mentions(re.split(r"\s*\(", entities[s]["label"])[0], item["text"])
+                            for s in item["subjects"]
+                        )
+                        and (
+                            item["epistemic"] != "measured_observation"
+                            or (
+                                observation_cue(item["text"])
+                                and reported_outcome(item["text"])
+                                and not cited_table_reference(spans, document)
+                            )
+                        )
+                        and (root := document_investigation(spans, entities, document))
+                    ):
+                        # Specimens whose own group passage is not established are
+                        # treated like named materials: the paper's own research
+                        # section scopes the statement to the study, and the
+                        # specimens stay as proposed subjects only.
+                        record.setdefault("proposed_subjects", list(item["subjects"]))
+                        record["scope_context"] = {
+                            "basis": "ORIGINAL_RESEARCH_SECTION_AT_DOCUMENT_INVESTIGATION_SCOPE",
+                            "support": entities[root]["support"],
+                            "scope_is_individual_run": False,
+                            "distributes_to_members": False,
+                        }
+                        item["subjects"] = [root]
                     if not item["subjects"] or not all(
                         applicable(s, spans, entities, document)
                         or document_statement_scope(s, spans, entities, document)
