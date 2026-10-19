@@ -5337,7 +5337,10 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         and o.get("focus") is None
         and o["model"] in {"COMPLETE", "COMPLETE_WITH_REJECTIONS", "CACHE_REPLAY"}
     }
-    for stage in STAGES:
+    # Relationships run after the targeted recovery below: the printed structure
+    # already proposes memberships and row conditions, and a deadline must not
+    # starve the recovery of omitted source values.
+    for stage in [stage for stage in STAGES if stage != "relationships"]:
         if recovery_only and stage != "identity":
             continue
         for window in windows:
@@ -5473,6 +5476,16 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 result["coverage_recovery"] = "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS"
                 break
             result["coverage_recovery"] = "VERIFIED_SOURCE_QUANTITY_PROGRESS"
+    if not recovery_only:
+        for window in windows:
+            result = process_stage(window, "relationships")
+            if result["model"] not in {
+                "COMPLETE",
+                "COMPLETE_WITH_REJECTIONS",
+                "CACHE_REPLAY",
+                "DISABLED",
+            }:
+                deferred.append((window, "relationships", result))
     if recovery_only:
         from nasa_fire_ai.ingestion.scientific_coverage import statement_candidates
 
