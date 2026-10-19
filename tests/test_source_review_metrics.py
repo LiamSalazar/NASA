@@ -86,3 +86,26 @@ def test_unresolved_or_invented_reference_cannot_inflate_correct_recovery():
     bad["targets"][2]["quote"] = "Invented reference"
     with pytest.raises(ValueError, match="not an exact original"):
         review_module.score(prepared, bad)
+
+
+def test_correct_quantity_with_only_a_staged_property_is_reported_apart():
+    prepared, review = fixture()
+    records = prepared["package"]["scientific_extraction"]["records"]
+    records.append(
+        {
+            "id": "staged",
+            "status": "SOURCE_SUPPORTED",
+            "mapping": {"kind": "staged_property_proposal", "property_id": None},
+        }
+    )
+    review["targets"][1].update(outcome="correct", proposal_ids=["staged"])
+    review["proposal_sample"].append(
+        {"proposal_id": "staged", "correct": True, "reason": "Value, unit and row verified."}
+    )
+    metrics = review_module.score(prepared, review)
+    assert metrics["semantic_recall"] == {"numerator": 2, "denominator": 3}
+    assert metrics["semantic_recall_approved_properties_only"] == {
+        "numerator": 1,
+        "denominator": 3,
+        "correct_quantity_targets_with_staged_property_only": 1,
+    }

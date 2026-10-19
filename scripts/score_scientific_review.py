@@ -22,6 +22,7 @@ def score(prepared, review):
         }
     )
     seen = set()
+    staged_quantities = 0
     allowed = {"correct", "incorrect", "unresolved", "omitted", "inaccessible"}
     counts = Counter()
     by_kind = {}
@@ -43,6 +44,10 @@ def score(prepared, review):
                 raise ValueError("Unresolved accounting requires an unresolved proposal")
         counts[target["outcome"]] += 1
         by_kind.setdefault(target["kind"], Counter())[target["outcome"]] += 1
+        if target["outcome"] == "correct" and target["kind"] == "quantities":
+            # A correct value whose property is only staged is reported apart.
+            approved = all(records[p].get("mapping", {}).get("property_id") for p in refs)
+            staged_quantities += not approved
     proposals = review["proposal_sample"]
     if len({p["proposal_id"] for p in proposals}) != len(proposals):
         raise ValueError("Duplicate precision judgment")
@@ -71,6 +76,11 @@ def score(prepared, review):
         "outcomes": {k: counts[k] for k in sorted(allowed)},
         "by_kind": {k: dict(v) for k, v in by_kind.items()},
         "semantic_recall": {"numerator": counts["correct"], "denominator": accessible},
+        "semantic_recall_approved_properties_only": {
+            "numerator": counts["correct"] - staged_quantities,
+            "denominator": accessible,
+            "correct_quantity_targets_with_staged_property_only": staged_quantities,
+        },
         "evidence_retention": {
             "numerator": counts["correct"] + counts["unresolved"],
             "denominator": accessible,
@@ -95,11 +105,14 @@ def main():
     parser.add_argument("review", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    result = score(json.loads(args.prepared.read_text()), json.loads(args.review.read_text()))
+    result = score(
+        json.loads(args.prepared.read_text(encoding="utf-8")),
+        json.loads(args.review.read_text(encoding="utf-8")),
+    )
     result["input_sha256"] = {
         str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in (args.prepared, args.review)
     }
-    with args.output.open("x") as f:
+    with args.output.open("x", encoding="utf-8", newline="\n") as f:
         json.dump(result, f, indent=2, ensure_ascii=False)
     print(json.dumps(result))
 
