@@ -2921,10 +2921,29 @@ def recover_group_classes(output, document):
         entities.append(e)
     from nasa_fire_ai.ingestion.table_continuity import printed_in_material_column
 
+    material_names = {
+        normalized(other["label"])
+        for other in output["entities"]
+        if other["class_id"] == "Material"
+    }
     for index, e in enumerate(entities):
         if (
-            e["class_id"] == "ExperimentFamily"
-            and printed_in_material_column(e["label"], document)
+            e["key"] not in recovered
+            and (
+                (
+                    e["class_id"] == "ExperimentFamily"
+                    and printed_in_material_column(e["label"], document)
+                )
+                # A "sample" named exactly as a material, with no qualifier, is
+                # that material ("Brass-filled PTFE", "Viton® A").
+                or (
+                    e["class_id"] == "Sample"
+                    and (
+                        printed_in_material_column(e["label"], document)
+                        or normalized(e["label"]) in material_names
+                    )
+                )
+            )
             # "Alpha (Batch #1)" names a group of Alpha, not another substance.
             and not any(
                 subject_label_names_material(form, other["label"])
@@ -2936,9 +2955,11 @@ def recover_group_classes(output, document):
             # "TFE-Teflon® (PTFE)" printed in a table's Material column is the
             # substance tested, not a family of experiments.
             recovered[e["key"]] = {
-                "proposed_class_id": "ExperimentFamily",
+                "proposed_class_id": e["class_id"],
                 "recovered_class_id": "Material",
-                "basis": "PRINTED_MATERIAL_COLUMN_NAMES_A_MATERIAL",
+                "basis": "PRINTED_MATERIAL_COLUMN_NAMES_A_MATERIAL"
+                if printed_in_material_column(e["label"], document)
+                else "SAMPLE_NAMED_EXACTLY_AS_A_PROPOSED_MATERIAL",
             }
             entities[index] = {**e, "class_id": "Material"}
     if not recovered:
@@ -3144,12 +3165,35 @@ def structure_quantity_candidates(output, package, document):
         for row in table_rows(document):
             if _key(row["group_label"]) not in keys or row_lineage(row, authors):
                 continue
+            own_row = _key(row["group_label"]) in {
+                _key(v) for v in label_variants(subject["label"], document)
+            }
             for cell in row["cells"][1:]:
-                header = cell["header"] or ""
-                if not re.search(r"\bstandard\s+deviations?\b", header, re.IGNORECASE):
-                    continue
+                header = re.sub(r"\s+", " ", cell["header"] or "").strip()
                 unit = re.search(r"\(([^()]*)\)\s*$", header)
                 number = (cell["original_value"] or "").strip()
+                if re.search(r"\bstandard\s+deviations?\b", header, re.IGNORECASE):
+                    epistemic = "derived_quantity"
+                elif (
+                    # A current row's own measured or set value under a column
+                    # whose header prints its unit ("AIT (°C)", "Initial Test
+                    # Pressure (psia)"): the validator decides subject and role.
+                    own_row and unit and re.fullmatch(r"[<>≤≥]?\s*\d[\d,]*(?:\.\d+)?", number)
+                ):
+                    epistemic = (
+                        "experimental_configuration"
+                        # A set-up value or a specimen's own dimension is how the
+                        # test was configured; anything else is read as reported.
+                        if re.search(
+                            r"\b(?:initial|set|nominal|applied|thickness|diameter|length|width"
+                            r"|mass|weight|size)\b",
+                            header,
+                            re.IGNORECASE,
+                        )
+                        else "reported_quantity"
+                    )
+                else:
+                    continue
                 page = pages.get(row["page"])
                 position = page["text"].find(number) if page and number else -1
                 if position < 0 or (subject["key"], number, unit and unit[1]) in proposed:
@@ -3161,7 +3205,7 @@ def structure_quantity_candidates(output, package, document):
                         "label": re.sub(r"\s*\([^()]*\)\s*$", "", header).strip(),
                         "expression": number,
                         "unit": unit[1] if unit else None,
-                        "epistemic": "derived_quantity",
+                        "epistemic": epistemic,
                         "support": [
                             {"evidence_id": page["evidence_id"], "quote": number, "start": position}
                         ],
@@ -3354,6 +3398,99 @@ def recover_statement_roles(records, output, package, document, semantic):
                     },
                 )
             break
+
+
+CONCLUSION_ROLE_HOLDS = {
+    "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "INTERPRETATION_DESCRIBES_A_PROCEDURE",
+    "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+}
+
+
+def recover_conclusion_roles(records, output, package, document, semantic):
+    """Revalidate a held "conclusion" that is a rule, a data source or a procedure.
+
+    "If the system temperature rises above 425°C ... then the AIT is recorded
+    as >425°C" is a recording rule, "The data used to compare ... were obtained
+    from ..." says where data came from, and "The samples ... were evaluated
+    using a Parr 6200 calorimeter" is a method step; none is the authors'
+    conclusion. Held only for that role or for its scope, the passage is
+    revalidated once with the role its own wording states, at the study's scope.
+    """
+    from nasa_fire_ai.ingestion.statement_integrity import (
+        DATA_PROVENANCE,
+        DETECTION_METHOD,
+        documentary_pointer,
+        procedure_without_interpretation,
+        reported_outcome,
+        stated_criterion,
+    )
+
+    roots = [
+        e["key"]
+        for e in output["entities"]
+        if e["class_id"] == "Investigation"
+        and e.get("study") == "current"
+        and normalized(e["label"]) == normalized(document.get("package_title", ""))
+    ]
+    if len(roots) != 1:
+        return
+    for record in records:
+        proposal = record["proposal"]
+        reasons = set(record["reasons"])
+        if (
+            record["kind"] != "statements"
+            or record["status"] != "UNRESOLVED"
+            or record.get("role_recovery")
+            or proposal.get("study") != "current"
+            or proposal["epistemic"]
+            not in {"author_reported_conclusion", "tentative_interpretation"}
+            or not reasons
+            or not reasons <= CONCLUSION_ROLE_HOLDS
+        ):
+            continue
+        text = proposal["text"]
+        if stated_criterion(text):
+            role = ("normative_requirement", "Requirement")
+        elif DATA_PROVENANCE.search(text) or documentary_pointer(text):
+            role = ("documentary_context", "Publication")
+        elif (
+            procedure_without_interpretation(text) or DETECTION_METHOD.search(text)
+        ) and not reported_outcome(text):
+            role = ("experimental_configuration", "ExperimentalCondition")
+        else:
+            continue
+        item = {**proposal, "epistemic": role[0], "class_id": role[1], "subjects": roots}
+        trial = {
+            "entities": output["entities"],
+            "statements": [item],
+            "relations": [],
+            "quantities": [],
+            "concepts": [],
+        }
+        result = validate_output(trial, package, document, semantic, recover_roles=False)
+        match = next(
+            (
+                r
+                for r in result["records"]
+                if r["kind"] == "statements" and not r.get("candidate_origin")
+            ),
+            None,
+        )
+        if match and match["status"] == "SOURCE_SUPPORTED":
+            record.update(
+                {k: v for k, v in match.items() if k not in {"id"}},
+                role_recovery={
+                    "proposed_epistemic": proposal["epistemic"],
+                    "proposed_class_id": proposal["class_id"],
+                    "held_for": sorted(reasons),
+                    "recovered_epistemic": role[0],
+                    "method": "FULL_REVALIDATION_WITH_THE_ROLE_ITS_WORDING_STATES",
+                    "proposed_subjects": proposal.get("subjects", []),
+                    "rule_scoped_to_study": True,
+                },
+            )
 
 
 def state_settled_roles(records, held):
@@ -4585,6 +4722,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
             records.append(record)
     if recover_roles:
         recover_statement_roles(records, output, package, document, semantic)
+        recover_conclusion_roles(records, output, package, document, semantic)
     # A repaired, explicitly scoped group supersedes an unresolved whole-study
     # typing of that exact source heading. Endpoints are never remapped.
     repaired_groups = {

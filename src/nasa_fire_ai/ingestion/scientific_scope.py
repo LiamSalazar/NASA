@@ -335,6 +335,26 @@ def consolidate_validated_variants(records, entities, evidence, document):
             # One relation between the same two entities, proposed by the model
             # and by the printed structure, is one assertion.
             key = (kind, record["status"], record["subject"], item["relation"], record["object"])
+        binding = record.get("table_row_binding") or {}
+        if key is None and kind == "quantities" and binding.get("rows"):
+            # One table cell bound through the same printed row(s), proposed by
+            # the model and by the printed structure, is one assertion.
+            key = (
+                kind,
+                record["status"],
+                record.get("subject"),
+                norm(item["label"]),
+                item["expression"],
+                item["unit"],
+                item["epistemic"],
+                tuple(
+                    sorted(
+                        (r.get("page"), r.get("row_index"), r.get("column_index"))
+                        for r in binding["rows"]
+                    )
+                ),
+                tuple(sorted(record["reasons"])),
+            )
         if key is None and kind == "quantities" and record.get("quantity_value_spans"):
             # The same printed value, subject, name, unit and role proposed twice.
             key = (

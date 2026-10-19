@@ -81,7 +81,7 @@ def table_output(package, *quantities):
 def test_value_in_a_continuation_row_binds_to_its_row_group_and_exact_cell(service):
     p = submitted(service, TEXT)
     o = table_output(p, quantity("2/20"))
-    record = run(service, p, o, with_tables(service, p))[-1]
+    record = proposed(run(service, p, o, with_tables(service, p)))[-1]
     assert record["status"] != "REJECTED", record["reasons"]
     binding = record["table_row_binding"]
     assert binding["status"] == "UNIQUE"
@@ -91,19 +91,21 @@ def test_value_in_a_continuation_row_binds_to_its_row_group_and_exact_cell(servi
     assert text[cell["start"] : cell["end"]] == "2/20" and cell["start"] == text.index("2/20")
     assert record["quantity_name_support"]["basis"] == "ORIGINAL_TABLE_COLUMN_HEADER"
     # Without the detected table the same proposal has no subject binding.
-    plain = run(service, p, o, structure(p, service.root))[-1]
+    plain = proposed(run(service, p, o, structure(p, service.root)))[-1]
     assert plain["status"] == "UNRESOLVED" and plain["subject"] is None
     assert "QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED" in plain["reasons"]
 
 
 def test_value_in_several_but_not_all_group_rows_stays_unresolved(service):
     p = submitted(service, TEXT)
-    record = run(service, p, table_output(p, quantity("0/20")), with_tables(service, p))[-1]
+    record = proposed(run(service, p, table_output(p, quantity("0/20")), with_tables(service, p)))[
+        -1
+    ]
     assert record["table_row_binding"]["status"] == "AMBIGUOUS"
     assert record["status"] == "UNRESOLVED"
     assert "TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS" in record["reasons"]
-    energy = run(
-        service, p, table_output(p, quantity("10", "Energy", "J")), with_tables(service, p)
+    energy = proposed(
+        run(service, p, table_output(p, quantity("10", "Energy", "J")), with_tables(service, p))
     )[-1]
     assert energy["table_row_binding"]["status"] == "GROUP_CONSTANT"
     assert "TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS" not in energy["reasons"]
@@ -111,8 +113,8 @@ def test_value_in_several_but_not_all_group_rows_stays_unresolved(service):
 
 def test_table_value_needs_the_column_header_as_its_name(service):
     p = submitted(service, TEXT)
-    record = run(
-        service, p, table_output(p, quantity("2/20", label="Outcome")), with_tables(service, p)
+    record = proposed(
+        run(service, p, table_output(p, quantity("2/20", label="Outcome")), with_tables(service, p))
     )[-1]
     assert record["status"] == "REJECTED"
     assert record["reasons"] == ["QUANTITY_NAME_IS_NOT_TABLE_COLUMN_HEADER"]
@@ -767,7 +769,7 @@ def material_quantity_record(service, legend):
             "support": support(p, sentence),
         }
     ]
-    return run(service, p, o, with_tables(service, p, rows))[-1]
+    return proposed(run(service, p, o, with_tables(service, p, rows)))[-1]
 
 
 def test_prose_value_of_a_material_this_document_tests_is_scoped_to_this_study(service):
@@ -1303,14 +1305,16 @@ def test_a_result_held_only_for_its_conclusion_role_is_recovered_as_an_observati
         "Alpha seals produced no reactions, so Alpha is therefore a suitable candidate.",
     ):
         held = conclusion(text)
-        assert "role_recovery" not in held, text
+        assert held.get("role_recovery", {}).get("recovered_epistemic") != (
+            "measured_observation"
+        ), text
 
 
 def test_a_material_column_name_proposed_as_an_experiment_family_is_a_material(service):
     p = submitted(service, TEXT)
     o = Output().model_dump()
     o["entities"] = [entity(p, "fam", "Alpha", "ExperimentFamily", "aAlpha")]
-    family = run(service, p, o, with_tables(service, p))[-1]
+    family = proposed(run(service, p, o, with_tables(service, p)))[-1]
     assert family["class_recovery"]["recovered_class_id"] == "Material"
     assert family["class_recovery"]["basis"] == "PRINTED_MATERIAL_COLUMN_NAMES_A_MATERIAL"
 
@@ -1453,3 +1457,53 @@ def test_a_printed_batch_row_group_of_a_tested_material_is_a_specimen_candidate(
     o["entities"] = [entity(p, "alpha", "Alpha", "Material", "Alpha (Batch #1)")]
     labels = {c["label"]: c["class_id"] for c in structure_entity_candidates(o, p, document)}
     assert labels.get("Alpha (Batch #1)") == "Sample", labels
+
+
+def test_a_held_conclusion_that_is_a_rule_source_or_procedure_takes_that_role(service):
+    def conclusion(text):
+        return results_record(
+            service,
+            text,
+            [("alpha", "Alpha", "Material", text, "current")],
+            ["alpha"],
+            "author_reported_conclusion",
+            "NASAConclusion",
+        )
+
+    rule = conclusion(
+        "If the Alpha temperature rises above 425°C, then the AIT is recorded as >425°C."
+    )
+    assert rule["status"] == "SOURCE_SUPPORTED", rule["reasons"]
+    assert rule["proposal"]["epistemic"] == "normative_requirement"
+    source = conclusion(
+        "The Alpha data discussed here were obtained from preexisting documented results."
+    )
+    assert source["proposal"]["epistemic"] == "documentary_context", source["reasons"]
+    result = conclusion("Alpha seals were tested at 10 J and were shown to produce zero reactions.")
+    assert (
+        result.get("role_recovery", {}).get("recovered_epistemic") != "experimental_configuration"
+    )
+
+
+def test_numeric_cells_of_a_tested_materials_own_rows_are_quantity_candidates(service):
+    from nasa_fire_ai.ingestion.document_extraction import structure_quantity_candidates
+
+    rows = [
+        ["Material", "AIT (°C)", "Initial Test Pressure (psia)", "Sample Thickness (inches)"],
+        ["Alpha", ">425", "1500", "0.062"],
+    ]
+    text = (
+        "# Synthetic study\nII. Results\nTABLE 2— Synthetic AIT data\n"
+        + "\n".join(v for row in rows for v in row)
+        + "\n"
+    )
+    p = submitted(service, text)
+    document = with_tables(service, p, rows)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "alpha", "Alpha", "Material", "Alpha")]
+    roles = {c["label"]: c["epistemic"] for c in structure_quantity_candidates(o, p, document)}
+    assert roles == {
+        "AIT": "reported_quantity",
+        "Initial Test Pressure": "experimental_configuration",
+        "Sample Thickness": "experimental_configuration",
+    }, roles
