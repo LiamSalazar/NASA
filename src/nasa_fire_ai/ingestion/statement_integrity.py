@@ -100,6 +100,7 @@ ROLE_FAMILY = {
     "guidance": "NORM",
     "open_question": "QUESTION",
     "documentary_context": "DOCUMENTARY",
+    "reported_quantity": "OBSERVATION",
 }
 
 
@@ -227,13 +228,26 @@ def procedure_without_outcome(text):
 
 
 def conflicting_roles(records):
-    """Accepted statements on one source span with incompatible epistemic roles.
+    """Accepted statements or quantity values on one source span with incompatible roles.
 
     Returns the ids of the records to hold for review.
     """
     groups = {}
     for record in records:
-        if record["kind"] != "statements" or record["status"] != "SOURCE_SUPPORTED":
+        if record["status"] != "SOURCE_SUPPORTED":
+            continue
+        if record["kind"] == "quantities" and record.get("quantity_value_spans"):
+            # One printed value read both as a set-up input and as a result.
+            key = (
+                "quantities",
+                record.get("subject"),
+                tuple(
+                    (v["evidence_id"], v["start"], v["end"]) for v in record["quantity_value_spans"]
+                ),
+            )
+            groups.setdefault(key, []).append(record)
+            continue
+        if record["kind"] != "statements":
             continue
         located = record.get("statement_location")
         if not located:

@@ -1630,18 +1630,107 @@ def quantity_name_value_binding(
     return result
 
 
+def value_sentences(value_spans, evidence):
+    """The original sentence around each bound value, stopping at captions."""
+    result = []
+    for value in value_spans:
+        text = evidence[value["evidence_id"]]["text"]
+        cuts = [
+            m.end()
+            for m in re.finditer(
+                r"[.!?](?=\s)|\n\s*\n|\n(?=\s*(?:table|figure|fig\.)\s*\d)", text, re.IGNORECASE
+            )
+        ]
+        begin = max([c for c in cuts if c <= value["start"]], default=0)
+        end = min([c for c in cuts if c >= value["end"]], default=len(text))
+        result.append(text[begin:end])
+    return result
+
+
+# English state modifiers that name when or where the same physical quantity was
+# read ("initial pressure"), never a different quantity ("vapor pressure").
+STATE_QUALIFIERS = frozenset(
+    {
+        "initial",
+        "final",
+        "starting",
+        "test",
+        "system",
+        "chamber",
+        "ambient",
+        "operating",
+        "maximum",
+        "max",
+        "minimum",
+        "min",
+        "peak",
+        "mean",
+        "average",
+        "nominal",
+    }
+)
+
+
 def resolve_source_property(semantic, label, unit):
     """Reuse an approved alias with an explicit unit suffix, without adding aliases."""
     status, prop = semantic.resolve_property(label, unit)
     if prop or not unit:
         return status, prop
+    stems = [label]
     for suffix in (unit, "(" + unit + ")", "[" + unit + "]"):
         if label.endswith(suffix):
             stem = label[: -len(suffix)].strip()
+            stems.append(stem)
             candidate_status, candidate = semantic.resolve_property(stem, unit)
             if candidate:
                 return candidate_status, candidate
+    # "Initial Pressure (psia)" is an approved pressure read in a stated state; the
+    # approved contract still checks the unit dimension. Other modifiers stay unknown.
+    for stem in stems:
+        words = normalized(stem).split()
+        for cut in range(1, len(words)):
+            if words[cut - 1] not in STATE_QUALIFIERS:
+                break
+            candidate_status, candidate = semantic.resolve_property(" ".join(words[cut:]), unit)
+            if candidate:
+                return "CANONICAL_STATE_QUALIFIED", candidate
     return status, prop
+
+
+def property_proposal(item, subject, spans, semantic):
+    """A staged, source-grounded property proposal; never an activated definition."""
+    from nasa_fire_ai.normalization.units import interpret
+
+    term = item["label"]
+    for suffix in (item["unit"] or "", "(" + (item["unit"] or "") + ")"):
+        if suffix and term.endswith(suffix):
+            term = term[: -len(suffix)].strip()
+    unit = interpret(item["unit"])
+    candidates = []
+    for prop in semantic.properties.values():
+        try:
+            from nasa_fire_ai.normalization.units import normalize
+
+            same = bool(unit) and normalize(1, unit["original_unit"])[1] == prop.canonical_unit
+        except ValueError:
+            same = False
+        if same:
+            candidates.append(prop.property_id)
+    return {
+        "id": "property-proposal-" + identity([normalized(term), unit and unit["dimension"]])[:20],
+        "kind": "property",
+        "term": term,
+        "dimension": unit["dimension"] if unit else None,
+        "canonical_unit": unit["canonical_unit"] if unit else None,
+        "original_units": [item["unit"]] if item["unit"] else [],
+        "applicable_subject_classes": [subject["class_id"]],
+        "approved_properties_examined": sorted(semantic.properties),
+        # Same dimension is not the same quantity; these are only reviewer leads.
+        "same_dimension_approved_properties": candidates,
+        "evidence_ids": sorted({s["evidence_id"] for s in spans}),
+        "activation": "NONE",
+        "status": "STAGED_FOR_ONTOLOGY_REVIEW",
+    }
 
 
 def explicit_quantity_derivation(labels, values, spans):
@@ -1793,6 +1882,543 @@ def quantity_expression_pattern():
     return numeric_expression_pattern()
 
 
+def validate_quantity_subject(
+    item,
+    record,
+    spans,
+    entities,
+    document,
+    semantic,
+    evidence,
+    numeric_convention,
+    subject_checks=True,
+):
+    """Validate one quantity proposal for its proposed subject; raises on rejection."""
+    from nasa_fire_ai.ingestion.numeric_expressions import (
+        parse_numeric_expression,
+        same_expression,
+        source_numeric_matches,
+        split_embedded_unit,
+    )
+
+    numeric = parse_numeric_expression(item["expression"], convention=numeric_convention)
+    if numeric["form"] == "LIST":
+        # Two set-points are two quantities; one record cannot
+        # hold both, and choosing one would invent the binding.
+        raise ValueError("QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES")
+    if numeric["status"] == "NOT_NUMERIC":
+        # A model may copy the original unit into the expression.
+        # Separate it deterministically; the unit must still be
+        # bound to the value in the source below.
+        split = split_embedded_unit(item["expression"], item["unit"], convention=numeric_convention)
+        if split and split["status"] == "UNIT_MISMATCH":
+            raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
+        if not split:
+            raise ValueError("QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION")
+        if normalized(item["label"]) == normalized(item["expression"]):
+            raise ValueError("QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME")
+        record["expression_normalization"] = {
+            "original_expression": item["expression"],
+            "original_unit": item["unit"],
+            **split,
+        }
+        item["expression"], item["unit"] = split["expression"], split["unit"]
+        numeric = parse_numeric_expression(item["expression"], convention=numeric_convention)
+    record["numeric_expression"] = numeric
+    subject = entities.get(item["subject"])
+    if not subject:
+        raise ValueError("UNKNOWN_QUANTITY_ENDPOINT")
+    scope_eligible = quantity_scope_eligible(subject, semantic)
+    record["native_scope_compatible"] = scope_eligible
+    from nasa_fire_ai.ingestion.scientific_scope import (
+        figure_group_support,
+        test_article_alias_review,
+    )
+
+    alias_review = test_article_alias_review(item["subject"], spans, entities, document)
+    from nasa_fire_ai.ingestion.table_continuity import (
+        header_names,
+        label_variants,
+        table_cell_spans,
+        table_row_binding,
+    )
+
+    # A table value belongs to the row group its first column
+    # names, including continuation rows and footnote-marked
+    # labels; the original row is kept as its context.
+    table_binding = (
+        table_row_binding(
+            label_variants(subject["label"], document),
+            item["expression"],
+            item["unit"],
+            {s["page"] for s in spans},
+            document,
+        )
+        if subject.get("validation_status") == "SOURCE_SUPPORTED"
+        and all(s["source_id"] == subject["source_id"] for s in spans)
+        else None
+    )
+    if table_binding:
+        record["table_row_binding"] = table_binding
+    if (
+        subject_checks
+        and not applicable(item["subject"], spans, entities, document)
+        and scope_eligible
+        and not alias_review
+        and not table_binding
+    ):
+        raise ValueError("QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE")
+    if (
+        not scope_eligible
+        and subject["class_id"] == "Material"
+        and subject.get("study") == "current"
+        and table_binding
+        and table_binding["status"] == "UNIQUE"
+        and not any(row["lineage"] for row in table_binding["rows"])
+    ):
+        # One printed row of a current-study table names this material: the value
+        # is the material as tested here, never a general property of the material.
+        record["scope_context"] = {
+            "basis": "CURRENT_STUDY_TABLE_ROW_OF_NAMED_MATERIAL",
+            "experimental_scope": "DOCUMENT_INVESTIGATION",
+            "general_material_property": False,
+        }
+    elif not scope_eligible:
+        record["status"] = "UNRESOLVED"
+        record["reasons"].append(
+            "QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE_NOT_MATERIAL_CONCEPT"
+            if subject["class_id"] == "Material"
+            else "QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE"
+        )
+    candidates = [
+        (match, s["quote"])
+        for s in spans
+        for match in source_numeric_matches(s["quote"])
+        if same_expression(match.group(1), item["expression"])
+    ]
+    if not candidates:
+        raise ValueError("QUANTITY_EXPRESSION_ABSENT")
+    source_expression = candidates[0][0].group(1)
+    if source_expression != item["expression"]:
+        # Keep the original writing (for example "−40"), not a
+        # model glyph variant of it; the difference is recorded.
+        record.setdefault("expression_normalization", {}).update(
+            model_expression=item["expression"],
+            source_expression=source_expression,
+            glyph_basis="SOURCE_GLYPH_VARIANT_OF_SAME_EXPRESSION",
+        )
+        item["expression"] = source_expression
+    if item["unit"] and not any(
+        re.match(
+            r"\s*[-‑]?\s*" + re.escape(item["unit"]) + r"(?!\w)",
+            quote[match.end() :],
+        )
+        for match, quote in candidates
+    ):
+        # A table value may state its unit only in its own
+        # column header, e.g. "System Pressure (psia)".
+        from nasa_fire_ai.ingestion.pdf_quantities import header_unit_binding
+
+        inherited = header_unit_binding(item["expression"], item["unit"], spans, document)
+        if not inherited:
+            raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
+        record["unit_binding"] = inherited
+    section_proof = group_section_support(item["subject"], spans, entities, document)
+    figure_proof = figure_group_support(item["subject"], spans, entities, document)
+    if figure_proof:
+        record["scope_context"] = {
+            "basis": "EXPLICIT_ORIGINAL_FIGURE_GROUP_REFERENCE",
+            "support": figure_proof,
+            "image_interpretation": False,
+        }
+        spans += locate(figure_proof, evidence)
+    if section_proof:
+        record["scope_context"] = {
+            "basis": "EXACT_ORIGINAL_GROUP_SUBSECTION",
+            "support": section_proof,
+        }
+        spans += locate(section_proof, evidence)
+    if (
+        subject_checks
+        and not section_proof
+        and not figure_proof
+        and not alias_review
+        and not table_binding
+        and not local_binding(item["subject"], item["expression"], spans, entities)
+        and not (
+            entities[item["subject"]]["class_id"] == "ExperimentFamily"
+            and all(
+                normalized(
+                    document.get("layout_headings", {}).get(s["evidence_id"], {}).get("quote", "")
+                )
+                == normalized(entities[item["subject"]]["label"])
+                for s in spans
+            )
+        )
+    ):
+        raise ValueError("QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED")
+    if normalized(item["label"]) in {
+        normalized(item["expression"]),
+        normalized(item["unit"] or ""),
+        normalized(item["expression"] + " " + (item["unit"] or "")),
+        normalized(item["expression"] + (item["unit"] or "")),
+    }:
+        raise ValueError("QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME")
+    status, prop = resolve_source_property(semantic, item["label"], item["unit"])
+    # Reuse declared dimensional nouns to block, for example,
+    # a width assigned the time until that width vanished. This
+    # checks compatibility only; it activates no accessor/mapping.
+    from nasa_fire_ai.normalization.units import normalize
+
+    noun = normalized(item["label"]).split()[-1:]
+    expected_units = {
+        definition["unit"]
+        for name, definition in getattr(semantic, "source_field_accessors", {}).items()
+        if noun and name.split("_")[-1] == noun[0] and definition.get("unit")
+    }
+    if len(expected_units) == 1 and item["unit"]:
+        try:
+            original_unit = (
+                "s"
+                if re.fullmatch(r"seconds?|minutes?|hours?", item["unit"], re.IGNORECASE)
+                else normalize(1, item["unit"])[1]
+            )
+            expected_unit = normalize(1, next(iter(expected_units)))[1]
+        except ValueError:
+            pass
+        else:
+            if original_unit != expected_unit:
+                raise ValueError("QUANTITY_NAME_UNIT_DIMENSION_CONTRADICTION")
+    labels = [item["label"]]
+    if prop:
+        labels.extend(semantic.properties[prop].aliases)
+    adjacent_names = []
+    temporal_coordinate = False
+    if table_binding:
+        # The column header names the variable of every bound
+        # cell; the value is located inside its printed row.
+        headers = sorted({h["column_header"] or "" for h in table_binding["rows"]})
+        if not all(any(header_names(name, header) for name in labels) for header in headers):
+            raise ValueError("QUANTITY_NAME_IS_NOT_TABLE_COLUMN_HEADER")
+        record["quantity_name_support"] = {
+            "basis": "ORIGINAL_TABLE_COLUMN_HEADER",
+            "original_column_headers": headers,
+            "global_alias_activation": "NONE",
+        }
+        pages = {h["page"] for h in table_binding["rows"]}
+        page_texts = [
+            {"evidence_id": key, "start": 0, "quote": ref["text"]}
+            for key, ref in evidence.items()
+            if ref["page"] in pages and ref["source_id"] == spans[0]["source_id"]
+        ]
+        cells = table_cell_spans(table_binding["rows"], page_texts)
+        if len(cells) != len(table_binding["rows"]):
+            raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
+        record["quantity_value_spans"] = []
+        for cell in cells:
+            inner = cell["quote"].find(item["expression"])
+            if inner < 0:
+                raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
+            record["quantity_value_spans"].append(
+                {
+                    "evidence_id": cell["evidence_id"],
+                    "start": cell["start"] + inner,
+                    "end": cell["start"] + inner + len(item["expression"]),
+                    "quote": item["expression"],
+                    "table_cell": cell["quote"],
+                    "table_row": cell["table_row"],
+                }
+            )
+        if table_binding["status"] == "AMBIGUOUS":
+            record["status"] = "UNRESOLVED"
+            record["reasons"].append("TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS")
+        lineage = [e for h in table_binding["rows"] for e in h["lineage"]]
+        if lineage and subject.get("study") == "current":
+            record["status"] = "UNRESOLVED"
+            record["reasons"].append("TABLE_ROW_LINEAGE_NOT_CURRENT_STUDY")
+    elif not any(mentions(label, s["quote"]) for label in labels for s in spans):
+        adjacent_names = source_dimension_adjectives(item["label"], item["unit"])
+        labels.extend(adjacent_names)
+        if adjacent_names:
+            record["quantity_name_support"] = {
+                "basis": "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE",
+                "original_wordforms": adjacent_names,
+                "global_alias_activation": "NONE",
+            }
+        if normalized(item["label"]) == "time" and item["unit"] in {
+            "s",
+            "second",
+            "seconds",
+            "min",
+            "minute",
+            "minutes",
+            "h",
+            "hour",
+            "hours",
+        }:
+            temporal_coordinate = True
+            labels.extend(["at", "t"])
+            record["quantity_name_support"] = {
+                "basis": "EXPLICIT_SOURCE_TEMPORAL_COORDINATE",
+                "global_alias_activation": "NONE",
+            }
+    if not table_binding:
+        if not any(mentions(label, s["quote"]) for label in labels for s in spans):
+            raise ValueError("QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT")
+        record["quantity_value_spans"] = quantity_name_value_binding(
+            labels,
+            item["expression"],
+            # A header-inherited unit is already bound to its column.
+            None if record.get("unit_binding") else item["unit"],
+            spans,
+            adjacent_names,
+            temporal_coordinate,
+        )
+    if not record["quantity_value_spans"]:
+        raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
+    if item["epistemic"] == "reported_quantity" and explicit_quantity_derivation(
+        labels, record["quantity_value_spans"], spans
+    ):
+        raise ValueError("EXPLICIT_DERIVATION_IS_NOT_REPORTED_MEASUREMENT")
+    record["mapping"] = {
+        "kind": "existing_attribute" if prop else "unresolved_attribute",
+        "raw_label": item["label"],
+        "status": status,
+        "property_id": prop,
+    }
+    accessor = None
+    if not prop and subject["class_id"] == "Sample":
+        from nasa_fire_ai.normalization.units import normalize
+
+        stem = re.sub(r"^(?:sample|specimen)\s+", "", normalized(item["label"]))
+        name = "sample_" + stem.replace(" ", "_")
+        if name not in getattr(semantic, "source_field_accessors", {}):
+            # Reuse only word forms of already approved specimen
+            # accessors. The original label remains unchanged.
+            alternatives = [
+                n
+                for n in getattr(semantic, "source_field_accessors", {})
+                if n.startswith("sample_")
+                and stem in source_dimension_adjectives(n.removeprefix("sample_"), item["unit"])
+            ]
+            if len(alternatives) == 1:
+                name = alternatives[0]
+        definition = getattr(semantic, "source_field_accessors", {}).get(name)
+        try:
+            if (
+                definition
+                and normalize(1, item["unit"] or "")[1] == normalize(1, definition["unit"])[1]
+            ):
+                accessor = name
+        except ValueError:
+            pass
+        if accessor:
+            record["mapping"].update(
+                kind="existing_source_attribute",
+                status="CANONICAL_SOURCE_ACCESSOR",
+                source_accessor=accessor,
+                existing_contract=definition,
+                activation="NONE",
+            )
+            record["source_role"] = definition["role"]
+            record["native_representation"] = "STAGED_ORIGINAL_SPECIMEN_CHARACTERISTIC"
+            if item["epistemic"] == "reported_quantity" and not any(
+                re.search(r"\b(?:measur\w*|observ\w*)\b", s["quote"], re.IGNORECASE) for s in spans
+            ):
+                record["status"] = "UNRESOLVED"
+                record["scientific_role_conflict"] = True
+                record["reasons"].append("SPECIMEN_CHARACTERISTIC_IS_NOT_ESTABLISHED_MEASUREMENT")
+    record["subject"] = entities[item["subject"]]["id"]
+    record["native_value_compatible"] = native_quantity_expression(item["expression"])
+    if not record["native_value_compatible"]:
+        record["native_representation"] = "DEFERRED_PRESERVED_ORIGINAL_LITERAL"
+    if alias_review:
+        record["status"] = "UNRESOLVED"
+        record["scope_context"] = alias_review
+        record["native_value_compatible"] = False
+        record["native_representation"] = "DEFERRED_SOURCE_TEST_ARTICLE_ALIAS_SCOPE"
+        record["reasons"].append("TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW")
+    from nasa_fire_ai.normalization.units import interpret
+
+    unit_meaning = interpret(item["unit"])
+    if unit_meaning:
+        record["unit_interpretation"] = unit_meaning
+    if status == "CANONICAL_STATE_QUALIFIED":
+        record["mapping"]["state_qualified_label"] = item["label"]
+    if not prop and not accessor:
+        if unit_meaning or (item["unit"] is None and numeric["form"] == "RATIO"):
+            # A missing property does not invalidate a bound source
+            # quantity: the value stands, its property is staged.
+            record["mapping"].update(
+                kind="staged_property_proposal",
+                status="STAGED_PROPERTY_PROPOSAL",
+                property_proposal=property_proposal(item, subject, spans, semantic),
+            )
+            record["semantic_property_status"] = "STAGED_PROPOSAL_NOT_APPROVED"
+        else:
+            record["status"] = "UNRESOLVED"
+            record["reasons"].append("QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED")
+    if numeric["status"] == "AMBIGUOUS":
+        # Candidate readings are preserved; a reviewer chooses.
+        record["status"] = "UNRESOLVED"
+        record["reasons"].append("NUMERIC_EXPRESSION_AMBIGUOUS")
+    # An original count ratio (for example reactions/tests) is
+    # dimensionless and kept as written, never divided into a scalar.
+    if item["unit"] is None and numeric["form"] != "RATIO":
+        record["status"] = "UNRESOLVED"
+        record["reasons"].append("QUANTITY_UNIT_UNSPECIFIED")
+    if item["epistemic"] == "reported_quantity" and re.search(
+        r"\b(?:will|would|planned|proposed|set\s+to|initial|maintained|specified|simulat\w*|predict\w*|derived|derivative|(?:linear|quadratic|regression|curve|polynomial)\s+fits?|shall|must|standard\s+deviations?|std\.?\s+dev\.?|variances?)\b",
+        # A bound table cell's role is read from its own column
+        # header and table caption, not from the whole page.
+        " ".join(
+            [
+                (h["column_header"] or "") + " " + (h["table_caption"] or "")
+                for h in table_binding["rows"]
+            ]
+            if table_binding
+            # A prose value's role is read from its own sentence, not from a
+            # neighbouring table column ("Initial Pressure") on the same page.
+            else value_sentences(record["quantity_value_spans"], evidence)
+        ),
+        re.IGNORECASE,
+    ):
+        raise ValueError("CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT")
+    derivation = next(
+        (
+            context
+            for s in spans
+            if (context := original_derivation_context(s["quote"], [s], evidence))
+        ),
+        None,
+    )
+    if derivation and item["epistemic"] == "reported_quantity":
+        record["status"] = "UNRESOLVED"
+        record["scientific_role_conflict"] = True
+        record["reasons"].append("DERIVED_CONTEXT_IS_NOT_DIRECT_OBSERVATION")
+        record["epistemic_context"] = {
+            "basis": "NEAREST_ORIGINAL_DERIVATION_OF_SAME_VARIABLE",
+            "support": locate([derivation], evidence),
+        }
+
+
+SUBJECT_REJECTIONS = frozenset(
+    {"QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE", "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED"}
+)
+SUBJECT_HOLDS = frozenset(
+    {
+        "QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE",
+        "QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE_NOT_MATERIAL_CONCEPT",
+    }
+)
+
+
+def validate_quantity(item, record, spans, entities, document, semantic, evidence, convention):
+    """Validate a quantity; when only its subject fails, recover or keep the value.
+
+    The proposed subject is revalidated, never silently replaced: every other
+    source-supported experimental subject is tried with the full validator, one
+    surviving subject is adopted with its provenance, and otherwise the bound
+    source value is kept UNRESOLVED without the rejected association.
+    """
+    original = (copy.deepcopy(item), copy.deepcopy(record), list(spans))
+
+    def attempt(subject_key, subject_checks=True):
+        trial_item, trial_record = copy.deepcopy(original[0]), copy.deepcopy(original[1])
+        trial_item["subject"] = subject_key
+        trial_record["proposal"] = trial_item
+        trial_spans = list(original[2])
+        trial_record["support_spans"] = trial_spans
+        validate_quantity_subject(
+            trial_item,
+            trial_record,
+            trial_spans,
+            entities,
+            document,
+            semantic,
+            evidence,
+            convention,
+            subject_checks,
+        )
+        return trial_item, trial_record, trial_spans
+
+    def adopt(result):
+        trial_item, trial_record, trial_spans = result
+        item.clear()
+        item.update(trial_item)
+        spans[:] = trial_spans
+        record.clear()
+        record.update(trial_record, proposal=item, support_spans=spans)
+
+    proposed = original[0]["subject"]
+    try:
+        result = attempt(proposed)
+        reason = next((r for r in result[1]["reasons"] if r in SUBJECT_HOLDS), None)
+        if not reason:
+            adopt(result)
+            return
+    except ValueError as error:
+        reason = str(error)
+        if reason not in SUBJECT_REJECTIONS or proposed not in entities:
+            raise
+        result = None
+    source_ids = {s["source_id"] for s in original[2]}
+    recovered = []
+    for key, entity in entities.items():
+        if (
+            key == proposed
+            or entity.get("validation_status") != "SOURCE_SUPPORTED"
+            or entity["class_id"] == "Investigation"  # never a silent fallback
+            or entity["source_id"] not in source_ids
+            or not (quantity_scope_eligible(entity, semantic) or entity["class_id"] == "Material")
+        ):
+            continue
+        try:
+            trial = attempt(key)
+        except ValueError:
+            continue
+        if not any(r in SUBJECT_HOLDS for r in trial[1]["reasons"]):
+            recovered.append((key, trial))
+    basis = {
+        "proposed_subject": entities[proposed]["id"],
+        "proposed_subject_rejection": reason,
+        "method": "FULL_REVALIDATION_WITH_EACH_SOURCE_SUPPORTED_EXPERIMENTAL_SUBJECT",
+    }
+    if len(recovered) == 1:
+        adopt(recovered[0][1])
+        record["subject_recovery"] = {
+            **basis,
+            "recovered_subject": entities[recovered[0][0]]["id"],
+            "status": "RECOVERED",
+        }
+        return
+    if result is not None:
+        # A held, non-experimental subject stays held as before; leads are recorded.
+        adopt(result)
+        if recovered:
+            record["subject_recovery"] = {
+                **basis,
+                "status": "UNRESOLVED",
+                "alternatives": sorted(entities[key]["id"] for key, _ in recovered),
+            }
+        return
+    if result is None:
+        # The value is checked against the source with no subject attached; a
+        # value that fails on its own is still rejected for its own reason.
+        result = attempt(proposed, subject_checks=False)
+    adopt(result)
+    record["status"] = "UNRESOLVED"
+    record["subject"] = None
+    if reason not in record["reasons"]:
+        record["reasons"].append(reason)
+    record["reasons"].append("QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED")
+    record["subject_recovery"] = {
+        **basis,
+        "status": "UNRESOLVED",
+        "alternatives": sorted(entities[key]["id"] for key, _ in recovered),
+    }
+
+
 def validate_output(output, package, document, semantic):
     """Independent validation recomputed from source text and approved contracts.
 
@@ -1802,9 +2428,6 @@ def validate_output(output, package, document, semantic):
     evidence = {e["evidence_id"]: e for e in package["evidence"]}
     from nasa_fire_ai.ingestion.numeric_expressions import (
         decimal_convention,
-        parse_numeric_expression,
-        same_expression,
-        source_numeric_matches,
         split_embedded_unit,
     )
 
@@ -2589,406 +3212,20 @@ def validate_output(output, package, document, semantic):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("NEGATION_OR_LOCAL_EXCEPTION_REQUIRES_REVIEW")
                 elif kind == "quantities":
-                    numeric = parse_numeric_expression(
-                        item["expression"], convention=numeric_convention
+                    validate_quantity(
+                        item,
+                        record,
+                        spans,
+                        entities,
+                        document,
+                        semantic,
+                        evidence,
+                        numeric_convention,
                     )
-                    if numeric["form"] == "LIST":
-                        # Two set-points are two quantities; one record cannot
-                        # hold both, and choosing one would invent the binding.
-                        raise ValueError("QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES")
-                    if numeric["status"] == "NOT_NUMERIC":
-                        # A model may copy the original unit into the expression.
-                        # Separate it deterministically; the unit must still be
-                        # bound to the value in the source below.
-                        split = split_embedded_unit(
-                            item["expression"], item["unit"], convention=numeric_convention
-                        )
-                        if split and split["status"] == "UNIT_MISMATCH":
-                            raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
-                        if not split:
-                            raise ValueError("QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION")
-                        if normalized(item["label"]) == normalized(item["expression"]):
-                            raise ValueError("QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME")
-                        record["expression_normalization"] = {
-                            "original_expression": item["expression"],
-                            "original_unit": item["unit"],
-                            **split,
-                        }
-                        item["expression"], item["unit"] = split["expression"], split["unit"]
-                        numeric = parse_numeric_expression(
-                            item["expression"], convention=numeric_convention
-                        )
-                    record["numeric_expression"] = numeric
-                    subject = entities.get(item["subject"])
-                    if not subject:
-                        raise ValueError("UNKNOWN_QUANTITY_ENDPOINT")
-                    scope_eligible = quantity_scope_eligible(subject, semantic)
-                    record["native_scope_compatible"] = scope_eligible
-                    from nasa_fire_ai.ingestion.scientific_scope import (
-                        figure_group_support,
-                        test_article_alias_review,
-                    )
-
-                    alias_review = test_article_alias_review(
-                        item["subject"], spans, entities, document
-                    )
-                    from nasa_fire_ai.ingestion.table_continuity import (
-                        header_names,
-                        label_variants,
-                        table_cell_spans,
-                        table_row_binding,
-                    )
-
-                    # A table value belongs to the row group its first column
-                    # names, including continuation rows and footnote-marked
-                    # labels; the original row is kept as its context.
-                    table_binding = (
-                        table_row_binding(
-                            label_variants(subject["label"], document),
-                            item["expression"],
-                            item["unit"],
-                            {s["page"] for s in spans},
-                            document,
-                        )
-                        if subject.get("validation_status") == "SOURCE_SUPPORTED"
-                        and all(s["source_id"] == subject["source_id"] for s in spans)
-                        else None
-                    )
-                    if table_binding:
-                        record["table_row_binding"] = table_binding
-                    if (
-                        not applicable(item["subject"], spans, entities, document)
-                        and scope_eligible
-                        and not alias_review
-                        and not table_binding
-                    ):
-                        raise ValueError("QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE")
-                    if not scope_eligible:
-                        record["status"] = "UNRESOLVED"
-                        record["reasons"].append(
-                            "QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE_NOT_MATERIAL_CONCEPT"
-                            if subject["class_id"] == "Material"
-                            else "QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE"
-                        )
-                    candidates = [
-                        (match, s["quote"])
-                        for s in spans
-                        for match in source_numeric_matches(s["quote"])
-                        if same_expression(match.group(1), item["expression"])
-                    ]
-                    if not candidates:
-                        raise ValueError("QUANTITY_EXPRESSION_ABSENT")
-                    source_expression = candidates[0][0].group(1)
-                    if source_expression != item["expression"]:
-                        # Keep the original writing (for example "−40"), not a
-                        # model glyph variant of it; the difference is recorded.
-                        record.setdefault("expression_normalization", {}).update(
-                            model_expression=item["expression"],
-                            source_expression=source_expression,
-                            glyph_basis="SOURCE_GLYPH_VARIANT_OF_SAME_EXPRESSION",
-                        )
-                        item["expression"] = source_expression
-                    if item["unit"] and not any(
-                        re.match(
-                            r"\s*[-‑]?\s*" + re.escape(item["unit"]) + r"(?!\w)",
-                            quote[match.end() :],
-                        )
-                        for match, quote in candidates
-                    ):
-                        # A table value may state its unit only in its own
-                        # column header, e.g. "System Pressure (psia)".
-                        from nasa_fire_ai.ingestion.pdf_quantities import header_unit_binding
-
-                        inherited = header_unit_binding(
-                            item["expression"], item["unit"], spans, document
-                        )
-                        if not inherited:
-                            raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
-                        record["unit_binding"] = inherited
-                    section_proof = group_section_support(
-                        item["subject"], spans, entities, document
-                    )
-                    figure_proof = figure_group_support(item["subject"], spans, entities, document)
-                    if figure_proof:
-                        record["scope_context"] = {
-                            "basis": "EXPLICIT_ORIGINAL_FIGURE_GROUP_REFERENCE",
-                            "support": figure_proof,
-                            "image_interpretation": False,
-                        }
-                        spans += locate(figure_proof, evidence)
-                    if section_proof:
-                        record["scope_context"] = {
-                            "basis": "EXACT_ORIGINAL_GROUP_SUBSECTION",
-                            "support": section_proof,
-                        }
-                        spans += locate(section_proof, evidence)
-                    if (
-                        not section_proof
-                        and not figure_proof
-                        and not alias_review
-                        and not table_binding
-                        and not local_binding(item["subject"], item["expression"], spans, entities)
-                        and not (
-                            entities[item["subject"]]["class_id"] == "ExperimentFamily"
-                            and all(
-                                normalized(
-                                    document.get("layout_headings", {})
-                                    .get(s["evidence_id"], {})
-                                    .get("quote", "")
-                                )
-                                == normalized(entities[item["subject"]]["label"])
-                                for s in spans
-                            )
-                        )
-                    ):
-                        raise ValueError("QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED")
-                    if normalized(item["label"]) in {
-                        normalized(item["expression"]),
-                        normalized(item["unit"] or ""),
-                        normalized(item["expression"] + " " + (item["unit"] or "")),
-                        normalized(item["expression"] + (item["unit"] or "")),
-                    }:
-                        raise ValueError("QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME")
-                    status, prop = resolve_source_property(semantic, item["label"], item["unit"])
-                    # Reuse declared dimensional nouns to block, for example,
-                    # a width assigned the time until that width vanished. This
-                    # checks compatibility only; it activates no accessor/mapping.
-                    from nasa_fire_ai.normalization.units import normalize
-
-                    noun = normalized(item["label"]).split()[-1:]
-                    expected_units = {
-                        definition["unit"]
-                        for name, definition in getattr(
-                            semantic, "source_field_accessors", {}
-                        ).items()
-                        if noun and name.split("_")[-1] == noun[0] and definition.get("unit")
-                    }
-                    if len(expected_units) == 1 and item["unit"]:
-                        try:
-                            original_unit = (
-                                "s"
-                                if re.fullmatch(
-                                    r"seconds?|minutes?|hours?", item["unit"], re.IGNORECASE
-                                )
-                                else normalize(1, item["unit"])[1]
-                            )
-                            expected_unit = normalize(1, next(iter(expected_units)))[1]
-                        except ValueError:
-                            pass
-                        else:
-                            if original_unit != expected_unit:
-                                raise ValueError("QUANTITY_NAME_UNIT_DIMENSION_CONTRADICTION")
-                    labels = [item["label"]]
-                    if prop:
-                        labels.extend(semantic.properties[prop].aliases)
-                    adjacent_names = []
-                    temporal_coordinate = False
-                    if table_binding:
-                        # The column header names the variable of every bound
-                        # cell; the value is located inside its printed row.
-                        headers = sorted({h["column_header"] or "" for h in table_binding["rows"]})
-                        if not all(
-                            any(header_names(name, header) for name in labels) for header in headers
-                        ):
-                            raise ValueError("QUANTITY_NAME_IS_NOT_TABLE_COLUMN_HEADER")
-                        record["quantity_name_support"] = {
-                            "basis": "ORIGINAL_TABLE_COLUMN_HEADER",
-                            "original_column_headers": headers,
-                            "global_alias_activation": "NONE",
-                        }
-                        pages = {h["page"] for h in table_binding["rows"]}
-                        page_texts = [
-                            {"evidence_id": key, "start": 0, "quote": ref["text"]}
-                            for key, ref in evidence.items()
-                            if ref["page"] in pages and ref["source_id"] == spans[0]["source_id"]
-                        ]
-                        cells = table_cell_spans(table_binding["rows"], page_texts)
-                        if len(cells) != len(table_binding["rows"]):
-                            raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
-                        record["quantity_value_spans"] = []
-                        for cell in cells:
-                            inner = cell["quote"].find(item["expression"])
-                            if inner < 0:
-                                raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
-                            record["quantity_value_spans"].append(
-                                {
-                                    "evidence_id": cell["evidence_id"],
-                                    "start": cell["start"] + inner,
-                                    "end": cell["start"] + inner + len(item["expression"]),
-                                    "quote": item["expression"],
-                                    "table_cell": cell["quote"],
-                                    "table_row": cell["table_row"],
-                                }
-                            )
-                        if table_binding["status"] == "AMBIGUOUS":
-                            record["status"] = "UNRESOLVED"
-                            record["reasons"].append("TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS")
-                        lineage = [e for h in table_binding["rows"] for e in h["lineage"]]
-                        if lineage and subject.get("study") == "current":
-                            record["status"] = "UNRESOLVED"
-                            record["reasons"].append("TABLE_ROW_LINEAGE_NOT_CURRENT_STUDY")
-                    elif not any(mentions(label, s["quote"]) for label in labels for s in spans):
-                        adjacent_names = source_dimension_adjectives(item["label"], item["unit"])
-                        labels.extend(adjacent_names)
-                        if adjacent_names:
-                            record["quantity_name_support"] = {
-                                "basis": "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE",
-                                "original_wordforms": adjacent_names,
-                                "global_alias_activation": "NONE",
-                            }
-                        if normalized(item["label"]) == "time" and item["unit"] in {
-                            "s",
-                            "second",
-                            "seconds",
-                            "min",
-                            "minute",
-                            "minutes",
-                            "h",
-                            "hour",
-                            "hours",
-                        }:
-                            temporal_coordinate = True
-                            labels.extend(["at", "t"])
-                            record["quantity_name_support"] = {
-                                "basis": "EXPLICIT_SOURCE_TEMPORAL_COORDINATE",
-                                "global_alias_activation": "NONE",
-                            }
-                    if not table_binding:
-                        if not any(mentions(label, s["quote"]) for label in labels for s in spans):
-                            raise ValueError("QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT")
-                        record["quantity_value_spans"] = quantity_name_value_binding(
-                            labels,
-                            item["expression"],
-                            # A header-inherited unit is already bound to its column.
-                            None if record.get("unit_binding") else item["unit"],
-                            spans,
-                            adjacent_names,
-                            temporal_coordinate,
-                        )
-                    if not record["quantity_value_spans"]:
-                        raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
-                    if item["epistemic"] == "reported_quantity" and explicit_quantity_derivation(
-                        labels, record["quantity_value_spans"], spans
-                    ):
-                        raise ValueError("EXPLICIT_DERIVATION_IS_NOT_REPORTED_MEASUREMENT")
-                    record["mapping"] = {
-                        "kind": "existing_attribute" if prop else "unresolved_attribute",
-                        "raw_label": item["label"],
-                        "status": status,
-                        "property_id": prop,
-                    }
-                    accessor = None
-                    if not prop and subject["class_id"] == "Sample":
-                        from nasa_fire_ai.normalization.units import normalize
-
-                        stem = re.sub(r"^(?:sample|specimen)\s+", "", normalized(item["label"]))
-                        name = "sample_" + stem.replace(" ", "_")
-                        if name not in getattr(semantic, "source_field_accessors", {}):
-                            # Reuse only word forms of already approved specimen
-                            # accessors. The original label remains unchanged.
-                            alternatives = [
-                                n
-                                for n in getattr(semantic, "source_field_accessors", {})
-                                if n.startswith("sample_")
-                                and stem
-                                in source_dimension_adjectives(
-                                    n.removeprefix("sample_"), item["unit"]
-                                )
-                            ]
-                            if len(alternatives) == 1:
-                                name = alternatives[0]
-                        definition = getattr(semantic, "source_field_accessors", {}).get(name)
-                        try:
-                            if (
-                                definition
-                                and normalize(1, item["unit"] or "")[1]
-                                == normalize(1, definition["unit"])[1]
-                            ):
-                                accessor = name
-                        except ValueError:
-                            pass
-                        if accessor:
-                            record["mapping"].update(
-                                kind="existing_source_attribute",
-                                status="CANONICAL_SOURCE_ACCESSOR",
-                                source_accessor=accessor,
-                                existing_contract=definition,
-                                activation="NONE",
-                            )
-                            record["source_role"] = definition["role"]
-                            record["native_representation"] = (
-                                "STAGED_ORIGINAL_SPECIMEN_CHARACTERISTIC"
-                            )
-                            if item["epistemic"] == "reported_quantity" and not any(
-                                re.search(r"\b(?:measur\w*|observ\w*)\b", s["quote"], re.IGNORECASE)
-                                for s in spans
-                            ):
-                                record["status"] = "UNRESOLVED"
-                                record["scientific_role_conflict"] = True
-                                record["reasons"].append(
-                                    "SPECIMEN_CHARACTERISTIC_IS_NOT_ESTABLISHED_MEASUREMENT"
-                                )
-                    record["subject"] = entities[item["subject"]]["id"]
-                    record["native_value_compatible"] = native_quantity_expression(
-                        item["expression"]
-                    )
-                    if not record["native_value_compatible"]:
-                        record["native_representation"] = "DEFERRED_PRESERVED_ORIGINAL_LITERAL"
-                    if alias_review:
-                        record["status"] = "UNRESOLVED"
-                        record["scope_context"] = alias_review
-                        record["native_value_compatible"] = False
-                        record["native_representation"] = "DEFERRED_SOURCE_TEST_ARTICLE_ALIAS_SCOPE"
-                        record["reasons"].append(
-                            "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW"
-                        )
-                    if not prop and not accessor:
-                        record["status"] = "UNRESOLVED"
-                        record["reasons"].append("QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED")
-                    if numeric["status"] == "AMBIGUOUS":
-                        # Candidate readings are preserved; a reviewer chooses.
-                        record["status"] = "UNRESOLVED"
-                        record["reasons"].append("NUMERIC_EXPRESSION_AMBIGUOUS")
-                    # An original count ratio (for example reactions/tests) is
-                    # dimensionless and kept as written, never divided into a scalar.
-                    if item["unit"] is None and numeric["form"] != "RATIO":
-                        record["status"] = "UNRESOLVED"
-                        record["reasons"].append("QUANTITY_UNIT_UNSPECIFIED")
-                    if item["epistemic"] == "reported_quantity" and re.search(
-                        r"\b(?:will|would|planned|proposed|set\s+to|initial|maintained|specified|simulat\w*|predict\w*|derived|derivative|(?:linear|quadratic|regression|curve|polynomial)\s+fits?|shall|must)\b",
-                        # A bound table cell's role is read from its own column
-                        # header and table caption, not from the whole page.
-                        " ".join(
-                            [
-                                (h["column_header"] or "") + " " + (h["table_caption"] or "")
-                                for h in table_binding["rows"]
-                            ]
-                            if table_binding
-                            else [s["quote"] for s in spans]
-                        ),
-                        re.IGNORECASE,
-                    ):
-                        raise ValueError("CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT")
-                    derivation = next(
-                        (
-                            context
-                            for s in spans
-                            if (context := original_derivation_context(s["quote"], [s], evidence))
-                        ),
-                        None,
-                    )
-                    if derivation and item["epistemic"] == "reported_quantity":
-                        record["status"] = "UNRESOLVED"
-                        record["scientific_role_conflict"] = True
-                        record["reasons"].append("DERIVED_CONTEXT_IS_NOT_DIRECT_OBSERVATION")
-                        record["epistemic_context"] = {
-                            "basis": "NEAREST_ORIGINAL_DERIVATION_OF_SAME_VARIABLE",
-                            "support": locate([derivation], evidence),
-                        }
                 elif kind == "concepts":
                     if not any(mentions(item["term"], s["quote"]) for s in spans):
                         raise ValueError("CONCEPT_TERM_ABSENT")
-                    status, prop = semantic.resolve_property(item["term"])
+                    _status, prop = semantic.resolve_property(item["term"])
                     matches = [
                         c
                         for c in semantic.class_metadata

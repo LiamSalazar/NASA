@@ -87,7 +87,8 @@ def test_value_in_a_continuation_row_binds_to_its_row_group_and_exact_cell(servi
     assert record["quantity_name_support"]["basis"] == "ORIGINAL_TABLE_COLUMN_HEADER"
     # Without the detected table the same proposal has no subject binding.
     plain = run(service, p, o, structure(p, service.root))[-1]
-    assert plain["status"] == "REJECTED"
+    assert plain["status"] == "UNRESOLVED" and plain["subject"] is None
+    assert "QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED" in plain["reasons"]
 
 
 def test_value_in_several_but_not_all_group_rows_stays_unresolved(service):

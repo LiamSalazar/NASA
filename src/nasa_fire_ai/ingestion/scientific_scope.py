@@ -326,6 +326,21 @@ def consolidate_validated_variants(records, entities, evidence, document):
                     item["unit"],
                     tuple(sorted(record["reasons"])),
                 )
+        if key is None and kind == "quantities" and record.get("quantity_value_spans"):
+            # The same printed value, subject, name, unit and role proposed twice.
+            key = (
+                kind,
+                record["status"],
+                record.get("subject"),
+                norm(item["label"]),
+                item["expression"],
+                item["unit"],
+                item["epistemic"],
+                tuple(
+                    (v["evidence_id"], v["start"], v["end"]) for v in record["quantity_value_spans"]
+                ),
+                tuple(sorted(record["reasons"])),
+            )
         if key is None:
             continue
         if key not in primary:

@@ -186,9 +186,18 @@ def test_two_specimen_dimensions_bind_only_inside_their_original_names(service):
         == "SOURCE_SUPPORTED"
     )
     q["subject"] = "rod"
-    result = validate_output(o, p, structure(p, service.root), semantic)["records"][-1]
-    assert result["status"] == "REJECTED"
-    assert "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED" in result["reasons"]
+    result = validate_output(o, p, structure(p, service.root), semantic)
+    record = result["records"][-1]
+    # The rod association is rejected; the value is revalidated on its own subject.
+    film, rod = (result["entities_by_key"][k]["id"] for k in ("film", "rod"))
+    assert record["subject"] == film != rod
+    assert record["subject_recovery"] == {
+        "proposed_subject": rod,
+        "proposed_subject_rejection": "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+        "method": "FULL_REVALIDATION_WITH_EACH_SOURCE_SUPPORTED_EXPERIMENTAL_SUBJECT",
+        "recovered_subject": film,
+        "status": "RECOVERED",
+    }
 
 
 def test_original_method_subsection_scope_crosses_pdf_pages_without_crossing_groups(service):
@@ -240,7 +249,12 @@ def test_original_method_subsection_scope_crosses_pdf_pages_without_crossing_gro
     assert positive["scope_context"]["basis"] == "EXACT_ORIGINAL_GROUP_SUBSECTION"
     assert positive["scope_context"]["support"][0]["evidence_id"] == first["evidence_id"]
     o["quantities"][0]["subject"] = "beta"
-    assert validate_output(o, p, document, semantic)["records"][-1]["status"] == "REJECTED"
+    result = validate_output(o, p, document, semantic)
+    moved = result["records"][-1]
+    # Beta never receives the Alpha-subsection value; it is revalidated on Alpha.
+    assert moved["subject"] == result["entities_by_key"]["alpha"]["id"]
+    assert moved["subject_recovery"]["proposed_subject"] == result["entities_by_key"]["beta"]["id"]
+    assert moved["scope_context"]["basis"] == "EXACT_ORIGINAL_GROUP_SUBSECTION"
 
 
 def test_group_subsection_cannot_promote_individual_run_value_to_whole_group(service):
@@ -263,11 +277,12 @@ def test_group_subsection_cannot_promote_individual_run_value_to_whole_group(ser
             "support": support(p, "Run A1 was tested at pressure 20 Pa."),
         }
     ]
+    result = validate_output(o, p, structure(p, service.root), extraction_semantic(service, p))
+    record = result["records"][-1]
+    # The whole group never receives the run's value; the narrowest subject does.
+    assert record["subject"] == result["entities_by_key"]["a1"]["id"]
     assert (
-        validate_output(o, p, structure(p, service.root), extraction_semantic(service, p))[
-            "records"
-        ][-1]["status"]
-        == "REJECTED"
+        record["subject_recovery"]["proposed_subject"] == (result["entities_by_key"]["alpha"]["id"])
     )
 
 
@@ -290,7 +305,11 @@ def test_arbitrary_numbered_section_ends_previous_group_scope(service, boundary)
         }
     ]
     result = validate_output(o, p, structure(p, service.root), extraction_semantic(service, p))
-    assert result["records"][-1]["status"] == "REJECTED"
+    record = result["records"][-1]
+    # The value is kept from the source, but no group association is asserted.
+    assert record["status"] == "UNRESOLVED" and record["subject"] is None
+    assert record["subject_recovery"]["alternatives"] == []
+    assert "QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED" in record["reasons"]
 
 
 def test_floating_figure_does_not_inherit_following_group(service):
@@ -1791,7 +1810,14 @@ def test_same_named_specimens_cannot_exchange_results(service):
     o["quantities"] = [q]
     assert validate(service, p, o)["records"][-1]["status"] != "REJECTED"
     q["subject"] = "second"
-    assert validate(service, p, o)["records"][-1]["status"] == "REJECTED"
+    result = validate(service, p, o)
+    record = result["records"][-1]
+    # The second specimen never receives the first one's value.
+    assert record["subject"] == result["entities_by_key"]["first"]["id"]
+    assert (
+        record["subject_recovery"]["proposed_subject"]
+        == (result["entities_by_key"]["second"]["id"])
+    )
 
 
 def test_supported_narrative_run_survives_normal_curation_identity_validation(service):
@@ -1859,7 +1885,10 @@ def test_physical_pdf_group_heading_preserves_scope_and_local_exception(service)
     ]
     assert validate_output(o, p, d, service.semantic)["records"][-1]["status"] == "SOURCE_SUPPORTED"
     o["quantities"][0]["subject"] = "beta"
-    assert validate_output(o, p, d, service.semantic)["records"][-1]["status"] == "REJECTED"
+    result = validate_output(o, p, d, service.semantic)
+    # Beta's page never receives the value; it is revalidated under Alpha's heading.
+    assert result["records"][-1]["subject"] == result["entities_by_key"]["alpha"]["id"]
+    assert result["records"][-1]["subject_recovery"]["status"] == "RECOVERED"
     assert service.validate_originals(p) == []
 
 
@@ -2082,7 +2111,12 @@ def test_respectively_binds_parallel_values_to_their_original_variable(
     ]
     r = validate(service, p, o)["records"][-1]
     if valid:
-        assert r["status"] == "UNRESOLVED"  # Quantity vocabulary is not approved.
+        # The value stands; its unapproved property is staged, never activated.
+        assert r["status"] == "SOURCE_SUPPORTED"
+        assert r["mapping"]["kind"] == "staged_property_proposal"
+        assert r["mapping"]["property_id"] is None
+        assert r["mapping"]["property_proposal"]["activation"] == "NONE"
+        assert r["mapping"]["property_proposal"]["dimension"] == "length"
         assert r["quantity_value_spans"][0]["quote"] == expression + " cm"
     else:
         assert r["status"] == "REJECTED"
@@ -2239,7 +2273,8 @@ def test_source_dimensional_adjectives_bind_to_adjacent_values_only(
     ]
     r = validate(service, p, o)["records"][-1]
     if valid:
-        assert r["status"] == "UNRESOLVED"
+        assert r["status"] == "SOURCE_SUPPORTED"
+        assert r["mapping"]["kind"] == "staged_property_proposal"
         assert r["quantity_name_support"]["global_alias_activation"] == "NONE"
         assert r["quantity_value_spans"][0]["quote"] == expression + " cm"
         from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
@@ -2504,3 +2539,98 @@ def test_nearest_derivation_context_is_variable_specific(service, quote, role, e
         assert any("derivative" in s["quote"] for s in record["support_spans"])
     else:
         assert "epistemic_context" not in record
+
+
+@pytest.mark.parametrize(
+    ("label", "unit", "property_id"),
+    [
+        ("Initial Pressure (psia)", "psia", "Pressure"),
+        ("final pressure", "psia", "Pressure"),
+        ("vapor pressure", "psia", None),  # a different quantity, not a state
+        ("initial pressure", "psig", None),  # gauge is not the absolute contract
+    ],
+)
+def test_state_qualified_label_reuses_approved_property_only(service, label, unit, property_id):
+    from nasa_fire_ai.ingestion.document_extraction import resolve_source_property
+
+    status, prop = resolve_source_property(service.semantic, label, unit)
+    assert prop == property_id
+    assert status == ("CANONICAL_STATE_QUALIFIED" if property_id else "UNKNOWN")
+
+
+def test_unknown_property_is_staged_with_source_units_never_activated(service):
+    text = "Run A1 was tested. The A1 heat of combustion was 1332 cal/g."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "run", "A1", "ExperimentalRun", text)]
+    o["quantities"] = [
+        {
+            "subject": "run",
+            "label": "heat of combustion",
+            "expression": "1332",
+            "unit": "cal/g",
+            "epistemic": "reported_quantity",
+            "support": support(p, text),
+        }
+    ]
+    r = validate(service, p, o)["records"][-1]
+    assert r["status"] == "SOURCE_SUPPORTED"
+    staged = r["mapping"]["property_proposal"]
+    assert r["mapping"]["property_id"] is None
+    assert staged["term"] == "heat of combustion"
+    assert (staged["dimension"], staged["canonical_unit"]) == ("specific_energy", "J/kg")
+    assert staged["original_units"] == ["cal/g"]
+    assert staged["activation"] == "NONE" and staged["status"] == "STAGED_FOR_ONTOLOGY_REVIEW"
+    assert "heat of combustion" not in {
+        a for prop in service.semantic.properties.values() for a in prop.aliases
+    }
+    assert r["unit_interpretation"]["original_unit"] == "cal/g"
+
+
+def test_subject_recovery_never_falls_back_to_the_investigation(service):
+    text = "Run A1 was tested. Pressure was maintained at 20 Pa."
+    p = submitted(service, "# Synthetic study\n" + text)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study"),
+        entity(p, "run", "A1", "ExperimentalRun", "Run A1 was tested."),
+    ]
+    o["quantities"] = [
+        {
+            "subject": "run",
+            "label": "pressure",
+            "expression": "20",
+            "unit": "Pa",
+            "epistemic": "experimental_configuration",
+            "support": support(p, "Pressure was maintained at 20 Pa."),
+        }
+    ]
+    result = validate(service, p, o)
+    r = result["records"][-1]
+    if r["status"] == "UNRESOLVED":
+        assert r["subject"] is None
+        assert result["entities_by_key"]["root"]["id"] not in r["subject_recovery"]["alternatives"]
+    else:
+        assert r["subject"] != result["entities_by_key"]["root"]["id"]
+
+
+def test_value_absent_from_source_is_rejected_even_without_a_subject(service):
+    text = "Run A1 was tested. Run B1 was tested at pressure 20 Pa."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "a1", "A1", "ExperimentalRun", "Run A1 was tested."),
+        entity(p, "b1", "B1", "ExperimentalRun", "Run B1 was tested at pressure 20 Pa."),
+    ]
+    o["quantities"] = [
+        {
+            "subject": "a1",
+            "label": "pressure",
+            "expression": "30",
+            "unit": "Pa",
+            "epistemic": "experimental_configuration",
+            "support": support(p, text),
+        }
+    ]
+    r = validate(service, p, o)["records"][-1]
+    assert r["status"] == "REJECTED"

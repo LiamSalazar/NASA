@@ -66,7 +66,12 @@ def test_figure_reference_binds_printed_quantity_to_exact_group_only(service):
     assert r["scope_context"]["basis"] == "EXPLICIT_ORIGINAL_FIGURE_GROUP_REFERENCE"
     assert r["scope_context"]["image_interpretation"] is False
     o["quantities"][0]["subject"] = "b"
-    assert validate(service, p, o)["records"][-1]["status"] == "REJECTED"
+    result = validate(service, p, o)
+    # Figure 1 prints Alpha, so Beta never receives the value.
+    assert result["records"][-1]["subject"] == result["entities_by_key"]["a"]["id"]
+    assert result["records"][-1]["scope_context"]["basis"] == (
+        "EXPLICIT_ORIGINAL_FIGURE_GROUP_REFERENCE"
+    )
 
 
 def test_test_article_acronym_preserves_literal_quantity_for_review_never_autoaccepts(service):

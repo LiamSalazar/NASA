@@ -13,3 +13,24 @@ def test_units():
 def test_unknown_unit():
     with pytest.raises(ValueError):
         normalize(1, "furlong")
+
+
+def test_source_units_with_dimensions_and_pressure_reference():
+    from nasa_fire_ai.normalization.units import interpret
+
+    assert normalize(10000, "psia") == (pytest.approx(68947572.93), "Pa")
+    assert normalize(98, "Joules") == (98, "J")
+    assert normalize(72, "ft-lbf") == (pytest.approx(97.6189), "J")
+    assert normalize(1332, "cal/g") == (pytest.approx(5573088), "J/kg")
+    # Affine scales convert with their offset, never as a pure factor.
+    assert normalize(425, "°C") == (pytest.approx(698.15), "K")
+    assert normalize(32, "°F") == (pytest.approx(273.15), "K")
+    assert interpret("psia")["pressure_reference"] == "ABSOLUTE"
+    assert interpret("psi")["pressure_reference"] == "UNSPECIFIED"
+    # Gauge pressure has no stated ambient; it is never an absolute pressure.
+    assert interpret("psig")["canonical_unit"] == "Pa_gauge"
+    assert interpret("°C")["conversion"] == "AFFINE"
+    # One dimension covers distinct quantities; the unit names no property.
+    assert interpret("J")["dimension"] == interpret("ft-lbf")["dimension"] == "energy"
+    assert "property" not in interpret("J")
+    assert interpret("furlong") is None and interpret(None) is None
