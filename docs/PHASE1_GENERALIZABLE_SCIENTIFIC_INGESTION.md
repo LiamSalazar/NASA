@@ -1,3 +1,25 @@
+# Phase 1 scientific ingestion — v6 milestone 1 on `diego/research` (quantities and subjects)
+
+**PHASE1_COMPLETE = NO.** This section adds milestone 1 of the consolidated mandate (work packages A and B) on top of the v5 closure below, which is unchanged. Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone1/` (README, CHECKPOINT, replays, reviews, metrics, exposed-source comparison, historical negatives).
+
+## What the validation path does now (`ingestion/document_extraction.py`, `normalization/units.py`)
+
+- **Units and dimensions.** `units.interpret` reports the dimension, canonical unit and, for pressure, the reference (`psia` absolute, `psig` gauge and never absolute, `psi` unspecified); °C and °F convert with their offset; J, ft-lbf, cal/g and inches are linear. A unit never implies a property.
+- **Approved properties.** A label made of an approved alias plus state modifiers (`initial`, `final`, `test`, `system`, `chamber`, …) reuses that property with status `CANONICAL_STATE_QUALIFIED`; any other modifier leaves it unknown.
+- **Unknown properties.** A bound source value whose property is not approved stays `SOURCE_SUPPORTED` with `mapping.kind = staged_property_proposal` (term, dimension, units, subject class, evidence, same-dimension approved properties as leads, `activation: NONE`). Curation projects only approved properties, so a staged one never enters the isolated store as a value. Staging needs printed name–value syntax; otherwise the value is held as before.
+- **Subjects.** `validate_quantity` revalidates a rejected subject (`QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE`, `QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED`) with the full validator against every other source-supported experimental subject, never the Investigation; one survivor is adopted with `subject_recovery`, otherwise the value is kept `UNRESOLVED` with `subject = None` and the alternatives. A current-study table row (no cited lineage) that names a material scopes its value to the material as tested in this investigation (`general_material_property: False`).
+- **Roles.** The configuration/derived cue of a prose value is read in the value's own sentence; standard deviations are dispersion statistics; one printed value accepted under two roles is held; exact duplicates are consolidated.
+
+## Measured (offline replay, 0 model calls, 36 frozen PTFE targets, 34 accessible)
+
+| Run | v5 (`0ade8f1`) | v6 M1 (`b5cc4d8`) | Approved-property only | Precision | Critical |
+| --- | --- | --- | --- | --- | --- |
+| First live run | 17/34 | 21/34 = 0.62 | 19/34 | 87/88 | 0 |
+| Second live run | 18/34 | 22/34 = 0.65 | 20/34 | 70/71 | 0 |
+| Fourth live run | 14/34 | 18/34 = 0.53 | 16/34 | 65/66 | 0 |
+
+Targets 9 (1332 cal/gram), 11 (AIT `>425` °C as a bound), 12 and 13 (1500 / 2268 psia) are newly correct in every run. LUCI gains 9 correct staged quantities; ignition, regulator, textiles and the v4 PTFE package have no new supported quantity; the 29 historical negatives show 0 critical regressions. Recall stays below 0.80: the narrative values (targets 14–18), the omitted specimen entity and relations, and several held statements are milestone 2.
+
 # Phase 1 scientific ingestion — v5 closure on `diego/research` (M1, M2 and the §18 matrix)
 
 **PHASE1_COMPLETE = NO.** This section describes what the code on `diego/research` actually does after the v5 closure work, how to run it, what was measured on the exposed sources, and what still blocks acceptance. Receipts are under `artifacts/phase1_generalizable_ingestion/v5/` (`numeric_expression_grammar/` for the numeric grammar, `phase1_closure/` for tables, scope, lineage, coverage, eligibility and the §18 matrix). The v4 record below this section is unchanged.

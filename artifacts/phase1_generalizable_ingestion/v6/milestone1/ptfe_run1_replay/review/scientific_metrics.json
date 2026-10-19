@@ -1,0 +1,79 @@
+{
+  "basis": "Author adjudication at v6 milestone 1 of the offline replay of saved raw proposals (r1); same 36 frozen targets. Earlier judgments reused only for byte-identical proposal ids that remain active SOURCE_SUPPORTED; every newly active record judged from its full record against the printed original. Earlier basis: Equal-standard adjudication of the live PTFE raw output replayed offline through the Phase 1 closure code at 7997b58 (tables, scope, lineage, statement integrity); the records it references are byte-identical to the e19b7c0 replay where it was first adjudicated. Same 36 frozen targets. Precision covers every non-duplicate SOURCE_SUPPORTED record. Author adjudication, not an independent review; not expert gold. Updated at the closure-completion commit: footnote-marker identity in both directions, madeOf by printed name, procedure cues; prior judgments reused only for byte-identical records. Updated at the closure-completion commit: footnote-marker identity in both directions, madeOf by printed name, procedure cues; prior judgments reused only for byte-identical records. Not an independent review; not expert gold.",
+  "target_count": 36,
+  "outcomes": {
+    "correct": 21,
+    "inaccessible": 2,
+    "incorrect": 0,
+    "omitted": 9,
+    "unresolved": 4
+  },
+  "by_kind": {
+    "entities": {
+      "correct": 7,
+      "omitted": 1
+    },
+    "quantities": {
+      "correct": 4,
+      "unresolved": 1,
+      "omitted": 5
+    },
+    "statements": {
+      "correct": 9,
+      "unresolved": 3
+    },
+    "relations": {
+      "omitted": 3,
+      "correct": 1
+    },
+    "figures": {
+      "inaccessible": 2
+    }
+  },
+  "semantic_recall": {
+    "numerator": 21,
+    "denominator": 34
+  },
+  "semantic_recall_approved_properties_only": {
+    "numerator": 19,
+    "denominator": 34,
+    "correct_quantity_targets_with_staged_property_only": 2
+  },
+  "evidence_retention": {
+    "numerator": 25,
+    "denominator": 34
+  },
+  "reviewed_proposal_precision": {
+    "numerator": 87,
+    "denominator": 88
+  },
+  "reviewed_proposal_precision_by_kind": {
+    "entities": {
+      "numerator": 15,
+      "denominator": 15,
+      "incorrect_critical": 0
+    },
+    "statements": {
+      "numerator": 45,
+      "denominator": 46,
+      "incorrect_critical": 0
+    },
+    "relations": {
+      "numerator": 4,
+      "denominator": 4,
+      "incorrect_critical": 0
+    },
+    "quantities": {
+      "numerator": 23,
+      "denominator": 23,
+      "incorrect_critical": 0
+    }
+  },
+  "incorrect_critical_assignments_in_sample": 0,
+  "unreviewed_supported_proposals": 0,
+  "unresolved_is_confirmed_science": false,
+  "input_sha256": {
+    "artifacts/phase1_generalizable_ingestion/v6/milestone1/ptfe_run1_replay/prepared.json.gz (decompressed)": "2cec39044f6c2ea5fb2aa74808c72ff92d280042c8cbded6edc1c7c2bfb9276c",
+    "artifacts/phase1_generalizable_ingestion/v6/milestone1/ptfe_run1_replay/review/source_review.json": "9b9ddd8fd342394b1b391fcd0538f6c3df1b0e5a6673391ee60752ffc5689159"
+  }
+}

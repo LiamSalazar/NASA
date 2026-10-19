@@ -1,0 +1,73 @@
+{
+  "basis": "Author adjudication at v6 milestone 1 of the offline replay of saved raw proposals (r4); same 36 frozen targets. Earlier judgments reused only for byte-identical proposal ids that remain active SOURCE_SUPPORTED; every newly active record judged from its full record against the printed original. Earlier basis: Author adjudication of the fourth live PTFE run (raw proposals produced at 63e9bb9: 16 model calls, 1,954 s, PARTIAL_MODEL_COVERAGE), replayed offline at 0ade8f1 (the three holds added after the as-produced review). Same 36 frozen targets. Precision covers every non-duplicate SOURCE_SUPPORTED record; a judgment from the first or second run is reused when the proposal id (a hash of the proposal content) is identical, with the differing record fields listed; everything else judged from the full record. Not an independent review; not expert gold. Not an independent review; not expert gold.",
+  "target_count": 36,
+  "outcomes": {
+    "correct": 18,
+    "inaccessible": 2,
+    "incorrect": 0,
+    "omitted": 10,
+    "unresolved": 6
+  },
+  "by_kind": {
+    "entities": {
+      "correct": 7,
+      "omitted": 1
+    },
+    "quantities": {
+      "correct": 4,
+      "unresolved": 1,
+      "omitted": 5
+    },
+    "statements": {
+      "correct": 7,
+      "unresolved": 5
+    },
+    "relations": {
+      "omitted": 4
+    },
+    "figures": {
+      "inaccessible": 2
+    }
+  },
+  "semantic_recall": {
+    "numerator": 18,
+    "denominator": 34
+  },
+  "semantic_recall_approved_properties_only": {
+    "numerator": 16,
+    "denominator": 34,
+    "correct_quantity_targets_with_staged_property_only": 2
+  },
+  "evidence_retention": {
+    "numerator": 24,
+    "denominator": 34
+  },
+  "reviewed_proposal_precision": {
+    "numerator": 65,
+    "denominator": 66
+  },
+  "reviewed_proposal_precision_by_kind": {
+    "entities": {
+      "numerator": 16,
+      "denominator": 16,
+      "incorrect_critical": 0
+    },
+    "statements": {
+      "numerator": 45,
+      "denominator": 46,
+      "incorrect_critical": 0
+    },
+    "quantities": {
+      "numerator": 4,
+      "denominator": 4,
+      "incorrect_critical": 0
+    }
+  },
+  "incorrect_critical_assignments_in_sample": 0,
+  "unreviewed_supported_proposals": 0,
+  "unresolved_is_confirmed_science": false,
+  "input_sha256": {
+    "artifacts/phase1_generalizable_ingestion/v6/milestone1/ptfe_run4_replay/prepared.json.gz (decompressed)": "e5c4f5a44b24dd45750d073f8e864738e468b38aa620d80099d46b7d978eacc5",
+    "artifacts/phase1_generalizable_ingestion/v6/milestone1/ptfe_run4_replay/review/source_review.json": "6323821adaeb6e5bbad7b8b6de0c82b93e015e9e087605385a35c52a32c801e7"
+  }
+}
