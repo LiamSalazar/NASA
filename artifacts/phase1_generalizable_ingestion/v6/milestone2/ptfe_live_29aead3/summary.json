@@ -1,0 +1,3536 @@
+{
+  "approvals": 0,
+  "attempts": 17,
+  "completed_at": "2026-10-19T01:39:55.529358+00:00",
+  "configuration": {
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "max_model_calls": null,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 1800.0,
+    "vision_model": null
+  },
+  "digest": "103f82c7eb66f6d79d479f53a0cbe8f9d206436d1a8b58d683895983c5e88955",
+  "git_head": "29aead301a5bfc67c2d8d44341379f53cf470d1e",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20090043050/downloads/20090043050.pdf",
+  "package_id": "research-ec42a926a29616a70757",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 14759,
+      "stream": true,
+      "timeout_seconds": 1800.0
+    },
+    "cached_segments": 0,
+    "configured_fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "deterministic_characters": 29500,
+    "duration_seconds": 1206.471187499992,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "model_characters": 750,
+    "new_model_calls": 17,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "4b9a1675fc3ed43ce81d2f9b7bfab3cb8bf4ca656a81b66fcc485ee6182792bf",
+        "context_token_estimate": 24869,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 8192,
+        "proposed_items": 9,
+        "reasoning_tokens": 2048,
+        "request_bytes": 28567,
+        "reserved_tokens_per_attempt": 40522,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 13539,
+        "source_anchors": 88,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 17.921500000025844,
+          "image_count": 0,
+          "max_output_tokens": 8192,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8838,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 17.89147950001643
+        },
+        "usage": {
+          "completion_tokens": 2472,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 8720,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 11192
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "666f411c9d306e64e0e4836fa34607bb71d6820f1d23d645eb1fc19199dd314a",
+        "context_token_estimate": 27446,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 7168,
+        "proposed_items": 57,
+        "reasoning_tokens": 2048,
+        "request_bytes": 35770,
+        "reserved_tokens_per_attempt": 46701,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 14454,
+        "source_anchors": 75,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "Intervention",
+              "key": "entity-5830ca80ee5ad316473c",
+              "label": "43 ft-lbs (59J)",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+                  "quote": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-bf6f08b210b5e689f9b26b63",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "Intervention",
+              "key": "entity-bdaef236eeedb18f680b",
+              "label": "45 ft-lbs (61J)",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+                  "quote": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-7f9a9ac1e3f32ee165069bce",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-b75f58a1bfb6cea0e66f",
+              "label": "Brass-filled PTFE (Batch #1) 72 ft-lbs (98J) LOX/-297°F 10,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.",
+                  "start": 1559
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-50263afafb965cb55a06cf6d",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-d3a01385dc15b070d478",
+              "label": "Brass-filled PTFE (Batch #1) 72 ft-lbs (98J) GOX/75°F 10,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.",
+                  "start": 1559
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-bb407e0a1614657dc59d617d",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-1e8755302dd792d8a3d9",
+              "label": "Brass-filled PTFE (Batch #1) 72 ft-lbs (98J) LOX/-297°F 10,000 psia 0.06823 in",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.",
+                  "start": 1725
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.",
+                  "start": 1933
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.",
+                  "start": 2009
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-d4d8d76f3bcfbcad7793ca57",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-ca45c4f9d4c5e21353a0",
+              "label": "Brass-filled PTFE (Batch #1) 72 ft-lbs (98J) GOX/75°F 10,000 psia 0.06824 in",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.",
+                  "start": 1725
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.",
+                  "start": 1933
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-2cf89e433bf298cf65e60b6e",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-096a2e4130d3bdf94431",
+              "label": "Brass-filled PTFE (Batch #2) 72 ft-lbs (98J) GOX/75°F 10,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "10   \nwas tested under the same conditions in order to determine the variability from batch to batch.",
+                  "start": 0
+                },
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "It \ncan be seen in Table 3 that the second batch of Brass-filled PTFE performed the same as the first \nbatch in a GOX environment and the reaction percentage decreased in a LOX environment from \n5% in batch 1 to less than 2% in batch 2.",
+                  "start": 103
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-cbd568af4827af2d0c1e54cf",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-d7c5fb7ff78b6373fcf9",
+              "label": "Brass-filled PTFE (Batch #2) 72 ft-lbs (98J) LOX/-297°F 10,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "10   \nwas tested under the same conditions in order to determine the variability from batch to batch.",
+                  "start": 0
+                },
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "It \ncan be seen in Table 3 that the second batch of Brass-filled PTFE performed the same as the first \nbatch in a GOX environment and the reaction percentage decreased in a LOX environment from \n5% in batch 1 to less than 2% in batch 2.",
+                  "start": 103
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-81b84f7d447beb22e1fce2a6",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-cab2eb134758f06917e3",
+              "label": "Brass-filled PTFE (Batch #3) 72 ft-lbs (98J) GOX/75°F 10,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "Two additional batches were tested at the same \nconditions and were shown to produce zero reactions out of the samples tested.",
+                  "start": 341
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-9a4dc289d17d04d87d027d8d",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-c7afcd400c957eaa00a0",
+              "label": "Brass-filled PTFE (Batch #3) 72 ft-lbs (98J) LOX/-297°F 10,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "Two additional batches were tested at the same \nconditions and were shown to produce zero reactions out of the samples tested.",
+                  "start": 341
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-e70a42703feec94b4e6859a0",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-aca8bb7afc1015c5b6bf",
+              "label": "Brass-filled PTFE (Batch #4) 72 ft-lbs (98J) GOX/75°F 10,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "Two additional batches were tested at the same \nconditions and were shown to produce zero reactions out of the samples tested.",
+                  "start": 341
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-dfe252dac5973100744869c2",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-1733693fff155d7bbacd",
+              "label": "Brass-filled PTFE (Batch #4) 72 ft-lbs (98J) LOX/-297°F 10,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-e3524e80215a25e6e95f6df5",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-953f9377324bafffaf4e",
+              "label": "Salox-M® 72 ft-lbs (98J) LOX/-297°F 10,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The mechanical impact results for Salox-M® impacted with 98, \n55, and 40 Joules at 10,000 psia in LOX are shown in Table 3.",
+                  "start": 1321
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-421ae972b3c126ab2b3b0142",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-efea4c3e798b7ad97adf",
+              "label": "Salox-M® 55 ft-lbs (75J) LOX/-297°F 10,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The impact energy was reduced by 50% in order to meet the pass/fail acceptance \ncriteria.",
+                  "start": 1798
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-63858322891da1def6bf34db",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-a0ff15a058054959fb04",
+              "label": "Salox-M® 40 ft-lbs (54J) LOX/-297°F 10,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The impact energy was reduced by 50% in order to meet the pass/fail acceptance \ncriteria.",
+                  "start": 1798
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-e876847b4ccc2453b57d3cce",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-f7fa1f18ecf8da13548f",
+              "label": "Salox-M® 50 ft-lbs (68J) LOX/-297°F 5,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "In fact, reducing the \npressure by 50% alone did not show the Salox-M® to be acceptable in an oxygen enriched \nenvironment.",
+                  "start": 1673
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-d30c2bd9a052dec645fc60b4",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-90ebd4b1b4eec2436637",
+              "label": "Salox-M® 36 ft-lbs (39J) LOX/-297°F 5,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-2894500fadc194e927711b5e",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-c02b638b8b7f27bc4b3c",
+              "label": "Algoflon® F7 72 ft-lbs (98J) GOX/75°F 10,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "As stated previously, two types of Algoflon® were tested, using both a \nLOX and GOX environment.",
+                  "start": 612
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-4507612cf947584ef4ef1fbe",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-7e48933c124cfb2c075c",
+              "label": "Algoflon® F7 72 ft-lbs (98J) LOX/-297°F 10,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "As stated previously, two types of Algoflon® were tested, using both a \nLOX and GOX environment.",
+                  "start": 612
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "The F7 required the pressure to be dropped to 5,000 psia in \norder for the material to pass.",
+                  "start": 898
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-547c7e23ab3ac7d754829bb4",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-9d81d7019c22c9e8d764",
+              "label": "Algoflon® F7 72 ft-lbs (98J) LOX/-297°F 9,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "The F7 required the pressure to be dropped to 5,000 psia in \norder for the material to pass.",
+                  "start": 898
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-f63014f29d6baf02b4248e88",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-92b51cc65fcb77bb8bc3",
+              "label": "Algoflon® F7 72 ft-lbs (98J) LOX/-297°F 8,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "The F7 required the pressure to be dropped to 5,000 psia in \norder for the material to pass.",
+                  "start": 898
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-2a9d580141297642a2af6c00",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-dda72beb97db460e1f12",
+              "label": "Algoflon® F7 72 ft-lbs (98J) LOX/-297°F 6,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "The F7 required the pressure to be dropped to 5,000 psia in \norder for the material to pass.",
+                  "start": 898
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-a854da25800d24216aa0637e",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-5aac730d93596949dfb2",
+              "label": "Algoflon® F7 72 ft-lbs (98J) LOX/-297°F 5,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "The F7 required the pressure to be dropped to 5,000 psia in \norder for the material to pass.",
+                  "start": 898
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-90cca1ebae403d47da6257ec",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-913b87221bd675a7c8ea",
+              "label": "Algoflon® F7 72 ft-lbs (98J) LOX/-297°F 1,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "The F7 required the pressure to be dropped to 5,000 psia in \norder for the material to pass.",
+                  "start": 898
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-622c56e5ec6e8996b98b0c00",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-9bce2383a2828610d7c8",
+              "label": "Algoflon® E2 72 ft-lbs (98J) GOX/75°F 10,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "As stated previously, two types of Algoflon® were tested, using both a \nLOX and GOX environment.",
+                  "start": 612
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-9596d152f04489b1d07e6c35",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-1c8f0cb0a0398e714c2b",
+              "label": "Algoflon® E2 72 ft-lbs (98J) LOX/-297°F 10,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "As stated previously, two types of Algoflon® were tested, using both a \nLOX and GOX environment.",
+                  "start": 612
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-b117d0433dd7c066e3820976",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 71.38370790000772,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8357,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 71.22181260000798
+        },
+        "usage": {
+          "completion_tokens": 5810,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14477,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 20287
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "d4cd476650cecf8db8ce783ea21457d785709ac8f47b19d51d8647abbc2fe716",
+        "context_token_estimate": 12451,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 6144,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 7828,
+        "reserved_tokens_per_attempt": 17735,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 670,
+        "source_anchors": 10,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 11.79297989999759,
+          "image_count": 0,
+          "max_output_tokens": 6144,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9058,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 11.788036299985833
+        },
+        "usage": {
+          "completion_tokens": 2054,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 2683,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 4737
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "2f9edb444abe40feaf1b0a385f6b6ddc89fb5134972b4cfef72c14db6f0f7a4a",
+        "context_token_estimate": 47227,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 11,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 23552,
+        "proposed_items": 109,
+        "reasoning_tokens": 2048,
+        "request_bytes": 40987,
+        "reserved_tokens_per_attempt": 69879,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 22398,
+        "source_anchors": 99,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-12420d47b8affc1483755bb9",
+                  "quote": "X\nPaper ID: \nAvailable online at: www.astm.org\nPublished XXXX \nStephen D Herald1, Paul M Frisby2, and Samuel Eddie Davis3\nOxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems\nABSTRACT:  Safe and reliable seal materials for high-pressure oxygen systems sometimes \nappear to be extinct species when sought out by oxygen systems designers.",
+                  "start": 58
+                }
+              ],
+              "text": "X\nPaper ID: \nAvailable online at: www.astm.org\nPublished XXXX \nStephen D Herald1, Paul M Frisby2, and Samuel Eddie Davis3\nOxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems\nABSTRACT:  Safe and reliable seal materials for high-pressure oxygen systems sometimes \nappear to be extinct species when sought out by oxygen systems designers."
+            },
+            "proposal_id": "proposal-74bbc2a44174d752a20a8bfa",
+            "reasons": [
+              "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+              "UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "2   \nVery few systems can be built which contain no polymeric materials; therefore, \nmaterials which have good impact resistance, low heat of combustion, high auto-ignition \ntemperature and that maintain good mechanical properties are essential.",
+                  "start": 0
+                }
+              ],
+              "text": "2   \nVery few systems can be built which contain no polymeric materials; therefore, \nmaterials which have good impact resistance, low heat of combustion, high auto-ignition \ntemperature and that maintain good mechanical properties are essential."
+            },
+            "proposal_id": "proposal-a34f320d23ca8b970d305e43",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-3146bf392859aee0ce4d",
+                "entity-a08e72f564264a6d322a",
+                "entity-58122169d6fcc6717641",
+                "entity-020c8f2265c4ef288593",
+                "entity-f10d94b63e32c6a28d52",
+                "entity-7a44b90efde1ff69f710"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ],
+              "text": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®."
+            },
+            "proposal_id": "proposal-22eca90f63594b196c194923",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+                  "quote": "Safe and reliable seal materials for high-pressure oxygen systems sometimes appear to \nbe extinct species when sought out by oxygen systems designers.",
+                  "start": 15
+                }
+              ],
+              "text": "Safe and reliable seal materials for high-pressure oxygen systems sometimes appear to \nbe extinct species when sought out by oxygen systems designers."
+            },
+            "proposal_id": "proposal-5f83d89f78364db787c878b8",
+            "reasons": [
+              "UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+                  "quote": "One focus of this effort is \nimproving the characteristics of polymers used in the presence of oxygen.",
+                  "start": 928
+                }
+              ],
+              "text": "One focus of this effort is \nimproving the characteristics of polymers used in the presence of oxygen."
+            },
+            "proposal_id": "proposal-30916a5cf2e28dd2e9b499ab",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-a08e72f564264a6d322a",
+                "entity-58122169d6fcc6717641",
+                "entity-020c8f2265c4ef288593",
+                "entity-f10d94b63e32c6a28d52"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®.",
+                  "start": 1372
+                }
+              ],
+              "text": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®."
+            },
+            "proposal_id": "proposal-b41f14a1fa0c4cb13bebd8d9",
+            "reasons": [
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-a08e72f564264a6d322a",
+                "entity-41e015d86f040b5bc4d1",
+                "entity-020c8f2265c4ef288593",
+                "entity-f10d94b63e32c6a28d52",
+                "entity-3146bf392859aee0ce4d",
+                "entity-a08e72f564264a6d322a"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "text": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC"
+            },
+            "proposal_id": "proposal-284a3da4923d7b28cca1a378",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "derived_quantity",
+              "expression": "12%",
+              "label": "heat of combustion",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "7\nfilled PTFE was 12% lower than the caloric content of the non-Brass-filled PTFE determined by\nChou and Giedorowicz.",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-b5b5fc19db68bd923a464005",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "derived_quantity",
+              "expression": "5%",
+              "label": "AIT",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "8   \nonly 5% higher than for Kel-F® 81 (PCTFE) based on the maximum temperature threshold in \nthe standard.",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-0bd4aff44d362045c2ec60c5",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "1517",
+              "label": "heat of combustion",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-93000f9b8e76d0c8eaf8aab2",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "24.33",
+              "label": "Standard Deviation",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-528b256f0ecb4836db592f16",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "2556",
+              "label": "heat of combustion",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-3e6b5ed41cb08ef68840bdc4",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "17.09",
+              "label": "Standard Deviation",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-2d6f2b68ffa9ce7d7db30676",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "3992",
+              "label": "heat of combustion",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-975988765cca44508644aec1",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "18.01",
+              "label": "Standard Deviation",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-211e99a48bc06aa534ed29d0",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "3934",
+              "label": "heat of combustion",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-bd8b2452a8db16efe32c013e",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "11.06",
+              "label": "Standard Deviation",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-839cf6e6e233c1288a8a6215",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "3992",
+              "label": "heat of combustion",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-975988765cca44508644aec1",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "16.74",
+              "label": "Standard Deviation",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-38581a0864616edccd520523",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "13.81",
+              "label": "Standard Deviation",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-037929af5e0fa08382e91103",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "404.3",
+              "label": "AIT",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "°C"
+            },
+            "proposal_id": "proposal-3a15f8b6c9b1a9d924f0e3e6",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "239",
+              "label": "AIT",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "°C"
+            },
+            "proposal_id": "proposal-a50d9f554685ca75ccfa7c5d",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "239",
+              "label": "AIT",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "°C"
+            },
+            "proposal_id": "proposal-a50d9f554685ca75ccfa7c5d",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "296",
+              "label": "AIT",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "°C"
+            },
+            "proposal_id": "proposal-6f9b5ff0764315a264aa6b4c",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "425",
+              "label": "temperature",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "If the system temperature rises above 425°C \nprior to ignition of the sample, then the AIT is recorded as >425°C.",
+                  "start": 1606
+                }
+              ],
+              "unit": "°C"
+            },
+            "proposal_id": "proposal-f80e038bc37134327acbd85e",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 74.94169479998527,
+          "image_count": 0,
+          "max_output_tokens": 23552,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9368,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 74.91272910000407
+        },
+        "usage": {
+          "completion_tokens": 6853,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 12045,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 18898
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "12231bc424e794d45566518cae33db1a8f96f51eaff427690d82e4fd83347842",
+        "context_token_estimate": 59992,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "fallbacks": [
+          {
+            "from": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+            "reason": "deadline",
+            "task_and_evidence_preserved": true,
+            "to": "nvidia/nemotron-3-super-120b-a12b"
+          }
+        ],
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 17,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 93,
+        "reasoning_tokens": 2048,
+        "request_bytes": 48015,
+        "reserved_tokens_per_attempt": 86192,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22522,
+        "source_anchors": 83,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-18e62ade734e66116a75",
+                "entity-77a80608b4dccc77e6e6"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "In comparison to the Brass-filled PTFE, a similar metal filled PTFE compound named \nSalox-M® uses Bronze filler in PTFE instead of Brass.",
+                  "start": 649
+                }
+              ],
+              "text": "In comparison to the Brass-filled PTFE, a similar metal filled PTFE compound named \nSalox-M® uses Bronze filler in PTFE instead of Brass."
+            },
+            "proposal_id": "proposal-ce905c260c56dc72de98c77e",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-18e62ade734e66116a75"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The mechanical impact results for Salox-M® impacted with 98, \n55, and 40 Joules at 10,000 psia in LOX are shown in Table 3.",
+                  "start": 1321
+                }
+              ],
+              "text": "The mechanical impact results for Salox-M® impacted with 98, \n55, and 40 Joules at 10,000 psia in LOX are shown in Table 3."
+            },
+            "proposal_id": "proposal-0d02f81204ec75853c43cd4c",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-5cf7dd1b2a63a3445532",
+                "entity-e6c9a781d95213c2bf28"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "As stated previously, two types of Algoflon® were tested, using both a \nLOX and GOX environment.",
+                  "start": 612
+                }
+              ],
+              "text": "As stated previously, two types of Algoflon® were tested, using both a \nLOX and GOX environment."
+            },
+            "proposal_id": "proposal-3a400c2a77792025b69e65aa",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-27bf6c95a1bcb71e7e64",
+                "entity-74b13c8c4d833cd41cc1",
+                "entity-eb162b287f5f924ddc0a",
+                "entity-ebff29039c4bf21da4c6"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ],
+              "text": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20"
+            },
+            "proposal_id": "proposal-b859cc07d7bf3389f58293a2",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-74b13c8c4d833cd41cc1"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ],
+              "text": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J."
+            },
+            "proposal_id": "proposal-2590b4cc48487cf09a5e7957",
+            "reasons": [
+              "CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-41335ada533b5784210a7fb3",
+                  "quote": "15\nTABLE 4— Ambient Pressure Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact \nEnergy \n(ft-\nlbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.00197\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naKel-F®81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naViton® A\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/200\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.0645\n0/100\na-\nDetermined by ABMA\nTABLE 5—High Pressure LOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact\nEnergy\n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions/ \nTests\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.125\n3/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.125\n4/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n6/20",
+                  "start": 0
+                }
+              ],
+              "text": "15\nTABLE 4— Ambient Pressure Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact \nEnergy \n(ft-\nlbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.00197\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naKel-F®81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naViton® A\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/200\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.0645\n0/100\na-\nDetermined by ABMA\nTABLE 5—High Pressure LOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact\nEnergy\n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions/ \nTests\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.125\n3/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.125\n4/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n6/20"
+            },
+            "proposal_id": "proposal-87c81e4165ada783f07549cf",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-89c792e84b33563bf7b01cea",
+                  "quote": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20",
+                  "start": 0
+                }
+              ],
+              "text": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20"
+            },
+            "proposal_id": "proposal-6d8d966830fdb44b511cedc6",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+                  "quote": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS",
+                  "start": 0
+                }
+              ],
+              "text": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS"
+            },
+            "proposal_id": "proposal-03847b216b863184bde919d0",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "0/20",
+              "label": "Reactions/Tests",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-46e74e2e72fe731347eb2fbb",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 97.33218330002273,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 4969,
+          "requested_model": "nvidia/nemotron-3-super-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "nvidia/nemotron-3-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 97.14392200001748
+        },
+        "usage": {
+          "completion_tokens": 5612,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 18241,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 23853
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "d4868433f90ff33b971c059dc3d40ed3ece608f15d4871ab548fdd8f6e232ccc",
+        "context_token_estimate": 20858,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 12,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 7168,
+        "proposed_items": 10,
+        "reasoning_tokens": 2048,
+        "request_bytes": 21009,
+        "reserved_tokens_per_attempt": 33524,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 9738,
+        "source_anchors": 26,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 19.765625300002284,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8655,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 19.737968000001274
+        },
+        "usage": {
+          "completion_tokens": 2376,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 6696,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 9072
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "502fc72591a311323550706e8f36d808f9c19941e3b2e7dd15b36765d2cb4377",
+        "context_token_estimate": 31262,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 11,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 9216,
+        "proposed_items": 16,
+        "reasoning_tokens": 2048,
+        "request_bytes": 40524,
+        "reserved_tokens_per_attempt": 52284,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 22398,
+        "source_anchors": 99,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a08e72f564264a6d322a",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-b96a0c752bc6a02a0967d238",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-58122169d6fcc6717641",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-26a5a3a3c9db04a7f9dd9f6b",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-020c8f2265c4ef288593",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-8d0c67628c9d533886bcdaba",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f10d94b63e32c6a28d52",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-ad23efa921ef82fde61a745d",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7a44b90efde1ff69f710",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-af8ec0873a2807bd764fea3d",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-77a80608b4dccc77e6e6",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "A similar metal filled fluorinated polymer, Salox-M®, was tested in \ncomparison to Brass-filled PTFE to demonstrate the importance of the metal chosen and \nrelative percentage of filler.",
+                  "start": 900
+                }
+              ]
+            },
+            "proposal_id": "proposal-7232d2202118aeaf01bb4ff3",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-3146bf392859aee0ce4d",
+              "relation": "hasMaterial",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-3df3718143d8a6097de5cce9",
+                  "quote": "The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter to determine the heat of combustion.",
+                  "start": 1057
+                },
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "The heat of combustion data for Brass-filled PTFE presented in Table 2 \nwas determined by the MCRF at MSFC.",
+                  "start": 1854
+                }
+              ]
+            },
+            "proposal_id": "proposal-74962dbb00a4ebcbf640ea04",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a08e72f564264a6d322a",
+              "relation": "hasMaterial",
+              "subject": "entity-a08e72f564264a6d322a",
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®.",
+                  "start": 1372
+                },
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ]
+            },
+            "proposal_id": "proposal-7d379399d3914d2afb6d6ee7",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-41e015d86f040b5bc4d1",
+              "relation": "hasMaterial",
+              "subject": "entity-41e015d86f040b5bc4d1",
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®.",
+                  "start": 1372
+                },
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ]
+            },
+            "proposal_id": "proposal-e6537d093c0dc1c810792d4a",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-020c8f2265c4ef288593",
+              "relation": "hasMaterial",
+              "subject": "entity-020c8f2265c4ef288593",
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®.",
+                  "start": 1372
+                },
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "The comparison of Brass-filled PTFE to the other Fluorinated \npolymers studied by Chou and Giedorowicz in terms of heat of combustion, shows that Brass-\nfilled PTFE has a 48% lower caloric content than Kel-F® 81 (PCTFE)  and a 66% lower caloric \ncontent per gram than Viton® A, Viton® A-500, and Fluorel®.",
+                  "start": 637
+                },
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "When compared to the other materials, \nBrass-filled PTFE has an AIT value 44% greater than both Viton® A and Viton® A-500 and \n30% greater than Fluorel®.",
+                  "start": 1407
+                },
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ]
+            },
+            "proposal_id": "proposal-0d01b2ba8e789d04d2f322d7",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f10d94b63e32c6a28d52",
+              "relation": "hasMaterial",
+              "subject": "entity-f10d94b63e32c6a28d52",
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®.",
+                  "start": 1372
+                },
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "The comparison of Brass-filled PTFE to the other Fluorinated \npolymers studied by Chou and Giedorowicz in terms of heat of combustion, shows that Brass-\nfilled PTFE has a 48% lower caloric content than Kel-F® 81 (PCTFE)  and a 66% lower caloric \ncontent per gram than Viton® A, Viton® A-500, and Fluorel®.",
+                  "start": 637
+                },
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "When compared to the other materials, \nBrass-filled PTFE has an AIT value 44% greater than both Viton® A and Viton® A-500 and \n30% greater than Fluorel®.",
+                  "start": 1407
+                },
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ]
+            },
+            "proposal_id": "proposal-d84ce74ac0116c1d1bde683c",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-77a80608b4dccc77e6e6",
+              "relation": "hasMaterial",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "A similar metal filled fluorinated polymer, Salox-M®, was tested in \ncomparison to Brass-filled PTFE to demonstrate the importance of the metal chosen and \nrelative percentage of filler.",
+                  "start": 900
+                }
+              ]
+            },
+            "proposal_id": "proposal-5cd8d27ebaaaff269ef6bdae",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7a44b90efde1ff69f710",
+              "relation": "hasMaterial",
+              "subject": "entity-7a44b90efde1ff69f710",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-f1836efb355271f75eb122f2",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 21.88578799998504,
+          "image_count": 0,
+          "max_output_tokens": 9216,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 6900,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 21.85619520000182
+        },
+        "usage": {
+          "completion_tokens": 2531,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 11729,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 8672,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 14260
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "1b2b097efd2fdf6002f0b3e70f134bd4df51ad5ee1058d09e62c3dd3350fc422",
+        "context_token_estimate": 34335,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 17,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 9216,
+        "proposed_items": 15,
+        "reasoning_tokens": 2048,
+        "request_bytes": 46586,
+        "reserved_tokens_per_attempt": 58430,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22522,
+        "source_anchors": 83,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a08e72f564264a6d322a",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-b96a0c752bc6a02a0967d238",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-58122169d6fcc6717641",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-26a5a3a3c9db04a7f9dd9f6b",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-020c8f2265c4ef288593",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                },
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "The data also shows that the Brass-filled PTFE significantly \noutperforms Kel-F® 81 (PCTFE) and Viton® A.",
+                  "start": 1622
+                }
+              ]
+            },
+            "proposal_id": "proposal-901ba777924422ce000253df",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f10d94b63e32c6a28d52",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                },
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "The results presented in Table 5 demonstrate the superior \nperformance of the Brass-filled PTFE over Kel-F® 81 (PCTFE) and Fluorel®.",
+                  "start": 698
+                }
+              ]
+            },
+            "proposal_id": "proposal-70f129a8a862cf0db1769c27",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7a44b90efde1ff69f710",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-af8ec0873a2807bd764fea3d",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-77a80608b4dccc77e6e6",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "A similar metal filled fluorinated polymer, Salox-M®, was tested in \ncomparison to Brass-filled PTFE to demonstrate the importance of the metal chosen and \nrelative percentage of filler.",
+                  "start": 900
+                },
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "In comparison to the Brass-filled PTFE, a similar metal filled PTFE compound named \nSalox-M® uses Bronze filler in PTFE instead of Brass.",
+                  "start": 649
+                }
+              ]
+            },
+            "proposal_id": "proposal-a1bb6383a9acd608611f8a94",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-5cf7dd1b2a63a3445532",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "Two types of Algoflon®, another PTFE based material, were tested at the same conditions in \norder to compare them to the Brass-filled PTFE.",
+                  "start": 109
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "Algoflon® E2 is a PTFE virgin granular resin \nwhich has been pre-sintered.",
+                  "start": 250
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                }
+              ]
+            },
+            "proposal_id": "proposal-ea4908d978c2977e66c14786",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-e6c9a781d95213c2bf28",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "Two types of Algoflon®, another PTFE based material, were tested at the same conditions in \norder to compare them to the Brass-filled PTFE.",
+                  "start": 109
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "Algoflon® F7 is a PTFE virgin granular resin.",
+                  "start": 435
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "The F7 required the pressure to be dropped to 5,000 psia in \norder for the material to pass.",
+                  "start": 898
+                }
+              ]
+            },
+            "proposal_id": "proposal-acc5176d7503bdefdae1df7c",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-41e015d86f040b5bc4d1",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "The results presented in Table 5 demonstrate the superior \nperformance of the Brass-filled PTFE over Kel-F® 81 (PCTFE) and Fluorel®.",
+                  "start": 698
+                },
+                {
+                  "evidence_id": "E-89c792e84b33563bf7b01cea",
+                  "quote": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-98f823049494db33426a828c",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 16.299770500016166,
+          "image_count": 0,
+          "max_output_tokens": 9216,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7033,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 16.2727986999962
+        },
+        "usage": {
+          "completion_tokens": 2588,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 17674,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 20262
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "76592a09387d72d7994da97a371137a9784636ed4041e1b8066484c449901bd7",
+        "context_token_estimate": 18368,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 12,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 6144,
+        "proposed_items": 18,
+        "reasoning_tokens": 2048,
+        "request_bytes": 20867,
+        "reserved_tokens_per_attempt": 29569,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 9738,
+        "source_anchors": 26,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a08e72f564264a6d322a",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-12420d47b8affc1483755bb9",
+                  "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+                  "start": 180
+                }
+              ]
+            },
+            "proposal_id": "proposal-d183e6ef1c1d3d5f7ba0e887",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-58122169d6fcc6717641",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-12420d47b8affc1483755bb9",
+                  "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+                  "start": 180
+                }
+              ]
+            },
+            "proposal_id": "proposal-a78ee126cd8d5fe4a2236f3d",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-020c8f2265c4ef288593",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-12420d47b8affc1483755bb9",
+                  "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+                  "start": 180
+                }
+              ]
+            },
+            "proposal_id": "proposal-5f96ca05ce87002e5a5f6663",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f10d94b63e32c6a28d52",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-12420d47b8affc1483755bb9",
+                  "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+                  "start": 180
+                }
+              ]
+            },
+            "proposal_id": "proposal-37a58324091e0820d59a29ff",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-5cf7dd1b2a63a3445532",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-12420d47b8affc1483755bb9",
+                  "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+                  "start": 180
+                }
+              ]
+            },
+            "proposal_id": "proposal-d5fa86513f228c1fe592c247",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-e6c9a781d95213c2bf28",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-12420d47b8affc1483755bb9",
+                  "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+                  "start": 180
+                }
+              ]
+            },
+            "proposal_id": "proposal-1dcaf89d1774281bcd056f22",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-77a80608b4dccc77e6e6",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-12420d47b8affc1483755bb9",
+                  "quote": "Oxygen Compatibility of Brass-Filled PTFE Compared to \nCommonly Used Fluorinated Polymers for Oxygen Systems",
+                  "start": 180
+                }
+              ]
+            },
+            "proposal_id": "proposal-467f1abf67be936dedfd4a0e",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 14.117782699991949,
+          "image_count": 0,
+          "max_output_tokens": 6144,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7436,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 14.08900849998463
+        },
+        "usage": {
+          "completion_tokens": 2288,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 6474,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 8762
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "4105f3a6b579d6c1647cbb07851d5cfa59a8d0dd5580762df4c4f498274b8153",
+        "context_token_estimate": 43847,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 11,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 23552,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 36967,
+        "reserved_tokens_per_attempt": 63118,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 22398,
+        "source_anchors": 99,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 4.235975999996299,
+          "image_count": 0,
+          "max_output_tokens": 23552,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 1958,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 4.2284087000007275
+        },
+        "usage": {
+          "completion_tokens": 559,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 551,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 10822,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 11381
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "a7246a0d5d7569429ca6e57b38255c7a63f011635d317f3d38fdeab9f95201e4",
+        "context_token_estimate": 69419,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "focus": "quantities",
+        "known_entities_selected": 17,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 68545,
+        "reserved_tokens_per_attempt": 105047,
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22522,
+        "source_anchors": 83,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 3,
+        "cache_key": "487788b8c29402dd689e7a19d8dcf27764ecbec64b45e8174465cc9d1c8de922",
+        "context_token_estimate": 53671,
+        "deterministic": "COMPLETE",
+        "end": 7312,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 17,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1241,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-87af50db6650a9cf9d2691d5",
+            "start": 0
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 37759,
+        "reserved_tokens_per_attempt": 73551,
+        "schema_errors": [],
+        "segment_id": "window-771e3929023b9561b04eae83",
+        "source_anchor_characters": 15638,
+        "source_anchors": 60,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 5.095916999998735,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 2098,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 5.066243299981579
+        },
+        "usage": {
+          "completion_tokens": 469,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 461,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 12951,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 13420
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "10e473ce6fbb3c28e71e09f32ceb768f3fa4e6e834c8db826b768fe1214287c6",
+        "context_token_estimate": 60497,
+        "deterministic": "COMPLETE",
+        "end": 8547,
+        "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 12,
+        "members": [
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-a736d64b81fd539f8526efce",
+            "start": 1241
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 51007,
+        "reserved_tokens_per_attempt": 87202,
+        "schema_errors": [],
+        "segment_id": "window-914aec72dc010fb80e9ef8f0",
+        "source_anchor_characters": 16379,
+        "source_anchors": 36,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 1241,
+        "transport": {
+          "duration_seconds": 5.7401408000150695,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 2256,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 5.7107049000042025
+        },
+        "usage": {
+          "completion_tokens": 497,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 489,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 19391,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 19888
+        }
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 431520
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "c9de8948bdf14643e96f5666eba566827eb7842cbe6c085c6e411fe29cd8237a",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-19T01:19:47.943679+00:00",
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Original PDF quantities retain unresolved role and experimental scope for scientific review",
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+    "Scientific preparation review dependency: CITED_STUDY_APPLICABILITY_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFIGURATION_STATEMENT_STATES_A_CRITERION",
+    "Scientific preparation review dependency: CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED",
+    "Scientific preparation review dependency: DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: RELATION_ENTAILMENT_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: SOURCE_PRINTS_CONFLICTING_COUNTS",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific preparation review dependency: TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS",
+    "Scientific quantity native representation deferred; original literal retained: proposal-1fdc6b1b3a317a71ef649b3c",
+    "Scientific quantity native representation deferred; original literal retained: proposal-585bc29e5a6f8e139d6a143a",
+    "Scientific quantity native representation deferred; original literal retained: proposal-69af27aa9191515918697419",
+    "Scientific quantity native representation deferred; original literal retained: proposal-a1626ebb9064fe88461430e7",
+    "Scientific quantity native representation deferred; original literal retained: proposal-e48cbe0efbd8dfcab9faeec3",
+    "Select source-supported scope for proposal-4f2522a9405bc2affc0d6215",
+    "Select source-supported scope for proposal-72f4d0cd609978770c59f7be",
+    "Select source-supported scope for research-ec42a926a29616a70757:c9de8948bdf14643:statement:4bc799d6dfe970df",
+    "Which identified runs do these author reported conclusion statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these documentary context statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}

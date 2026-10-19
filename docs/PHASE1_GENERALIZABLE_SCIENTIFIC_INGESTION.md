@@ -20,6 +20,10 @@
 
 Targets 9 (1332 cal/gram), 11 (AIT `>425` °C as a bound), 12 and 13 (1500 / 2268 psia) are newly correct in every run. LUCI gains 9 correct staged quantities; ignition, regulator, textiles and the v4 PTFE package have no new supported quantity; the 29 historical negatives show 0 critical regressions. Recall stays below 0.80: the narrative values (targets 14–18), the omitted specimen entity and relations, and several held statements are milestone 2.
 
+## Milestone 2, part 1 (`v6/milestone2/`)
+
+The fifth live run (`29aead3`, 17 calls, 1,208 s, `PARTIAL_MODEL_COVERAGE`, 0 approvals) scores 17/34 = 0.50 with precision 69/77 as produced. It typed Algoflon® E2/F7 and Salox-M® as cited, although their Table 3 rows are MSFC tests, and Kel-F® 81 as current, although it is printed only in cited rows. A material whose printed rows contradict its study label is now held in both directions (`8bc0d04`), and a validity caveat typed as a configuration is held (`2a64310`). At `2a64310` the run scores 17/34 with precision 69/72 = 0.96 and 0 critical. The remaining gap is the model's repeated omission of the same targets in every run (entity 02, values 14–18, statement 19, relations 31–33).
+
 # Phase 1 scientific ingestion — v5 closure on `diego/research` (M1, M2 and the §18 matrix)
 
 **PHASE1_COMPLETE = NO.** This section describes what the code on `diego/research` actually does after the v5 closure work, how to run it, what was measured on the exposed sources, and what still blocks acceptance. Receipts are under `artifacts/phase1_generalizable_ingestion/v5/` (`numeric_expression_grammar/` for the numeric grammar, `phase1_closure/` for tables, scope, lineage, coverage, eligibility and the §18 matrix). The v4 record below this section is unchanged.
