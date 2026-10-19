@@ -417,6 +417,26 @@ def _unqualified(header):
     return " ".join(words)
 
 
+def group_rows_printing(group_labels, text, document):
+    """Rows of the subject's own groups, with no cited lineage, that print this cell text."""
+    keys = {_key(v) for v in group_labels if v}
+    wanted = _norm(text)
+    authors = reference_authors(document)
+    return [
+        {
+            "page": row["page"],
+            "table_caption": row["table_caption"],
+            "group_label": row["group_label"],
+            "column_header": cell["header"],
+            "original_cell": cell["original_value"],
+        }
+        for row in table_rows(document)
+        if _key(row["group_label"]) in keys and not row_lineage(row, authors)
+        for cell in row["cells"][1:]
+        if wanted and _norm(cell["original_value"]) == wanted
+    ]
+
+
 def printed_in_table(document, page, text):
     """Whether a detected table on that page prints this exact text in one cell."""
     wanted = _norm(text)

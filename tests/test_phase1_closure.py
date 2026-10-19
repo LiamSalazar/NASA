@@ -890,3 +890,59 @@ def test_a_row_group_of_a_material_is_preferred_over_the_material(service):
     record = result["records"][-1]
     assert record["subject"] == result["entities_by_key"]["lot"]["id"], record["reasons"]
     assert record["subject_recovery"]["status"] == "RECOVERED"
+
+
+CONDITIONS = (
+    "# Synthetic study\nII. Results\nTABLE 1— Impact data\n"
+    "Material\nTest Conditions\nReactions/Tests\n"
+    "aBeta (Lot #1)\nLOX/-200°F\n0/20\nGOX/70°F\n0/20\na-\n{legend}\n"
+    "Beta was tested in LOX/-200°F and GOX/70°F.\n"
+    "References\n[1] Smith, A. B., “Synthetic paper,” 1999.\n"
+)
+CONDITION_ROWS = [
+    ["Material", "Test Conditions", "Reactions/Tests"],
+    ["aBeta (Lot #1)", "LOX/-200°F", "0/20"],
+    ["", "GOX/70°F", "0/20"],
+]
+
+
+def structural_records(service, legend="Synthetic standard lab", condition_study="current"):
+    p = submitted(service, CONDITIONS.format(legend=legend))
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "beta", "Beta", "Material", "Beta was tested in LOX/-200°F and GOX/70°F."),
+        entity(p, "lot", "aBeta (Lot #1)", "Sample", "aBeta (Lot #1)"),
+        entity(
+            p,
+            "lox",
+            "LOX/-200°F",
+            "ExperimentalCondition",
+            "tested in LOX/-200°F",
+            study=condition_study,
+        ),
+    ]
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    records = validate_output(
+        copy.deepcopy(o),
+        p,
+        with_tables(service, p, CONDITION_ROWS),
+        extraction_semantic(service, p),
+    )["records"]
+    return {
+        r["proposal"]["relation"]: r
+        for r in records
+        if r["kind"] == "relations" and r.get("candidate_origin") == "PRINTED_SOURCE_STRUCTURE"
+    }
+
+
+def test_printed_structure_proposes_membership_and_row_conditions_for_validation(service):
+    relations = structural_records(service)
+    assert relations["madeOf"]["status"] == "SOURCE_SUPPORTED"
+    condition = relations["hasCondition"]
+    assert condition["status"] == "SOURCE_SUPPORTED", condition["reasons"]
+    assert condition["context_resolution"]["basis"] == "SUBJECT_TABLE_ROWS_PRINT_CONDITION"
+    # A cited condition entity is never attached to this study's group.
+    assert "hasCondition" not in structural_records(service, condition_study="cited")
+    # Rows with a cited lineage do not give this group its condition.
+    assert "hasCondition" not in structural_records(service, legend="Data of Smith")

@@ -2741,6 +2741,48 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
     }
 
 
+def structure_relation_candidates(output, document):
+    """Relations the printed structure itself proposes, for the same validator.
+
+    A group printed as "<material> (qualifier)" is made of that material; a
+    group whose own table rows print a condition was tested under it. These are
+    candidates, never facts: every one is validated like a model proposal.
+    """
+    from nasa_fire_ai.ingestion.table_continuity import group_rows_printing, label_variants
+
+    groups = [e for e in output["entities"] if e["class_id"] in {"Sample", "ExperimentFamily"}]
+    proposed = {(r["subject"], r["relation"], r["object"]) for r in output["relations"]}
+    candidates = []
+    for group in groups:
+        for other in output["entities"]:
+            relation = None
+            if other["class_id"] == "Material" and any(
+                subject_label_names_material(form, other["label"])
+                for form in label_variants(group["label"], document)
+            ):
+                relation = "madeOf"
+            elif (
+                other["class_id"] == "ExperimentalCondition"
+                and other["study"] == group["study"]
+                and group_rows_printing(
+                    label_variants(group["label"], document), other["label"], document
+                )
+            ):
+                relation = "hasCondition"
+            if relation and (group["key"], relation, other["key"]) not in proposed:
+                proposed.add((group["key"], relation, other["key"]))
+                candidates.append(
+                    {
+                        "subject": group["key"],
+                        "relation": relation,
+                        "object": other["key"],
+                        "support": list(group["support"])
+                        + ([] if relation == "madeOf" else list(other["support"])),
+                    }
+                )
+    return candidates
+
+
 def validate_output(output, package, document, semantic):
     """Independent validation recomputed from source text and approved contracts.
 
@@ -2773,8 +2815,9 @@ def validate_output(output, package, document, semantic):
         )
         key_signatures.setdefault(item["key"], set()).add(signature)
     ambiguous_keys = {k for k, signatures in key_signatures.items() if len(signatures) > 1}
+    structural = structure_relation_candidates(output, document)
     for kind in ("entities", "statements", "relations", "quantities", "concepts"):
-        for original in output[kind]:
+        for original in output[kind] + (structural if kind == "relations" else []):
             item = copy.deepcopy(original)
             record = {
                 "id": "proposal-" + identity([CONTRACT, kind, item])[:24],
@@ -3512,6 +3555,29 @@ def validate_output(output, package, document, semantic):
                         if named:
                             binding = {"status": "SUPPORTED", **named}
                             record["context_resolution"] = binding
+                    if (
+                        not binding
+                        and item["relation"] == "hasCondition"
+                        and entities[item["subject"]]["study"] == entities[item["object"]]["study"]
+                    ):
+                        from nasa_fire_ai.ingestion.table_continuity import (
+                            group_rows_printing,
+                            label_variants,
+                        )
+
+                        rows = group_rows_printing(
+                            label_variants(entities[item["subject"]]["label"], document),
+                            entities[item["object"]]["label"],
+                            document,
+                        )
+                        if rows:
+                            # The subject's own printed rows carry this condition.
+                            binding = {
+                                "status": "SUPPORTED",
+                                "basis": "SUBJECT_TABLE_ROWS_PRINT_CONDITION",
+                                "rows": rows,
+                            }
+                            record["context_resolution"] = binding
                     if item["relation"] == "hasGravityCondition" and not binding:
                         from nasa_fire_ai.ingestion.document_context import gravity_binding
 
@@ -3529,7 +3595,8 @@ def validate_output(output, package, document, semantic):
                     ) and not (
                         # The material is named inside the subject's own label.
                         binding
-                        and binding.get("basis") == "SUBJECT_LABEL_NAMES_MATERIAL"
+                        and binding.get("basis")
+                        in {"SUBJECT_LABEL_NAMES_MATERIAL", "SUBJECT_TABLE_ROWS_PRINT_CONDITION"}
                         and applicable(item["subject"], spans, entities, document)
                         and entities[item["object"]].get("validation_status") == "SOURCE_SUPPORTED"
                     ):
@@ -3643,6 +3710,8 @@ def validate_output(output, package, document, semantic):
                     entities.pop(item["key"])
                 else:
                     entities[item["key"]]["validation_status"] = record["status"]
+            if kind == "relations" and any(original is c for c in structural):
+                record["candidate_origin"] = "PRINTED_SOURCE_STRUCTURE"
             records.append(record)
     # A repaired, explicitly scoped group supersedes an unresolved whole-study
     # typing of that exact source heading. Endpoints are never remapped.
