@@ -2881,6 +2881,16 @@ def validate_output(output, package, document, semantic):
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED")
+                    if item["class_id"] == "Intervention" and re.search(
+                        r"\b(?:calorimeters?|heaters?|wires?|plummets?|testers?|chambers?|apparatus"
+                        r"|assembly|camera|hardware|instruments?|tests?|tube|cup|vessel|valve)\b",
+                        item["label"],
+                        re.IGNORECASE,
+                    ):
+                        # An instrument or a test method is not an action applied
+                        # to the experiment ("ignition wire", "Mechanical Impact Test").
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION")
                     if item["class_id"] not in semantic.class_metadata:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("UNREGISTERED_CLASS_NEEDS_SEMANTIC_REVIEW")
@@ -3038,12 +3048,18 @@ def validate_output(output, package, document, semantic):
                     # still be a run label ("Run 3"), so only value+unit counts.
                     from nasa_fire_ai.normalization.units import interpret
 
-                    value_label = re.fullmatch(
-                        r"\s*[~<>≈]?\s*[-−]?\d[\d,]*(?:\.\d+)?\s*(?P<unit>\S+)\s*", item["label"]
+                    value_label = re.match(
+                        r"\s*[~<>≈]?\s*[-−]?\d[\d,]*(?:\.\d+)?\s*(?P<rest>.*)", item["label"]
+                    )
+                    words = value_label["rest"].split() if value_label else []
+                    # "0.062 inches", "98 Joules of energy", "9 degrees F/min":
+                    # the label opens with a value in an interpreted unit.
+                    opens_with_value = any(
+                        interpret(" ".join(words[:k])) for k in range(1, min(3, len(words)) + 1)
                     )
                     if (split_embedded_unit(item["label"], None) or {}).get(
                         "status"
-                    ) == "SPLIT" or (value_label and interpret(value_label["unit"])):
+                    ) == "SPLIT" or opens_with_value:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY")
                     eid = (

@@ -946,3 +946,25 @@ def test_printed_structure_proposes_membership_and_row_conditions_for_validation
     assert "hasCondition" not in structural_records(service, condition_study="cited")
     # Rows with a cited lineage do not give this group its condition.
     assert "hasCondition" not in structural_records(service, legend="Data of Smith")
+
+
+def test_values_and_instruments_are_not_named_conditions_or_interventions(service):
+    text = (
+        "The plummet impacted the Run 3 sample at 98 Joules of energy (72 ft-lbs). "
+        "Heating at 9 degrees F/min used an external heater. A water spray was applied."
+    )
+    p = submitted(service, "# Synthetic study\nII. Results\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "e", "98 Joules of energy (72 ft-lbs)", "ExperimentalCondition", text),
+        entity(p, "r", "9 degrees F/min", "ExperimentalCondition", text),
+        entity(p, "h", "external heater", "Intervention", text),
+        entity(p, "pl", "plummet", "Intervention", text),
+        entity(p, "w", "water spray", "Intervention", text),
+    ]
+    energy, rate, heater, plummet, spray = run(service, p, o, structure(p, service.root))
+    assert "NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY" in energy["reasons"]
+    assert "NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY" in rate["reasons"]
+    assert "APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION" in heater["reasons"]
+    assert "APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION" in plummet["reasons"]
+    assert "APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION" not in spray["reasons"]
