@@ -267,7 +267,9 @@ def local_binding(subject, value, spans, entities):
     """A multi-subject span cannot transfer a result between its subjects."""
     label = entities[subject]["label"]
     for span in spans:
-        for clause in re.split(r";|\n\s*\n|[.!?](?!\d)(?=\s|$)", span["quote"]):
+        for clause in re.split(
+            r";|\n\s*\n|[.!?](?!\d)(?=\s|$)|,?\s+\b(?:whereas|while|but)\b", span["quote"]
+        ):
             if mentions(label, clause) and mentions(value, clause):
                 competing = [
                     e
@@ -2889,6 +2891,18 @@ def recover_group_classes(output, document):
             }
             e = {**e, "class_id": "Sample"}
         entities.append(e)
+    from nasa_fire_ai.ingestion.table_continuity import printed_in_material_column
+
+    for index, e in enumerate(entities):
+        if e["class_id"] == "ExperimentFamily" and printed_in_material_column(e["label"], document):
+            # "TFE-Teflon® (PTFE)" printed in a table's Material column is the
+            # substance tested, not a family of experiments.
+            recovered[e["key"]] = {
+                "proposed_class_id": "ExperimentFamily",
+                "recovered_class_id": "Material",
+                "basis": "PRINTED_MATERIAL_COLUMN_NAMES_A_MATERIAL",
+            }
+            entities[index] = {**e, "class_id": "Material"}
     if not recovered:
         return output, {}
     return {**output, "entities": entities}, recovered
@@ -3165,12 +3179,18 @@ ROLE_RECOVERY = (
         {"AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW"},
         ("measured_observation", "ReportedObservation"),
     ),
+    (
+        {"DOCUMENTARY_ROLE_REPORTS_AN_OBSERVATION"},
+        {"DOCUMENTARY_ROLE_REPORTS_AN_OBSERVATION"},
+        ("measured_observation", "ReportedObservation"),
+    ),
 )
 # Wording that makes a passage an inference rather than a reported result.
 INFERENCE = re.compile(
     r"\b(?:suggest\w*|conclu\w*|likely|probabl\w*|due\s+to|because|therefore|thus|hence"
     r"|recommend\w*|attribut\w*|explain\w*|may|might|could|should|believ\w*|expect\w*"
-    r"|appears?|seems?|candidate|suitable|acceptable|ideal|best)\b",
+    r"|appears?|seems?|candidate|suitable|acceptable|ideal|best|compatib\w*|outperform\w*"
+    r"|superior|better|worse|excellent|promis\w*|great)\b",
     re.IGNORECASE,
 )
 
@@ -3197,6 +3217,7 @@ def recover_statement_roles(records, output, package, document, semantic):
             ):
                 break  # an inference outside the conclusions stays an interpretation
             if record["proposal"]["epistemic"] not in {
+                "documentary_context",
                 "author_reported_conclusion",
                 "derived_quantity",
                 "measured_observation",
@@ -3206,7 +3227,8 @@ def recover_statement_roles(records, output, package, document, semantic):
             if epistemic == "measured_observation" and not (
                 observation_cue(text)
                 and re.search(
-                    r"\b(?:was|were|showed|shown|seen|performed|produced|reacted|passed|failed"
+                    r"\b(?:was|were|shows?|showed|shown|seen|reveals?|revealed|performed|produced"
+                    r"|reacted|passed|failed"
                     r"|decreased|increased|indicated?|demonstrated?|observed)\b",
                     text,
                     re.IGNORECASE,
@@ -3395,6 +3417,16 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED")
+                    if item["class_id"] == "ExperimentalCondition" and re.search(
+                        r"(?:\bmechanical\s+impact|\bimpact\s+test\w*|\bignition\s+temperature"
+                        r"(?:\s*\(\s*AIT\s*\))?|\bheat\s+of\s+combustion|\btests?|\btesting|\btesters?)\s*$",
+                        item["label"],
+                        re.IGNORECASE,
+                    ):
+                        # A test method or a measured property is not a state the
+                        # experiment was held in ("heat of combustion").
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("TEST_OR_PROPERTY_IS_NOT_A_CONDITION")
                     if item["class_id"] == "Intervention" and re.search(
                         r"\b(?:calorimeters?|heaters?|wires?|plummets?|testers?|chambers?|apparatus"
                         r"|assembly|camera|hardware|instruments?|tests?|tube|cup|vessel|valve)\b",
@@ -3743,6 +3775,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         PURPOSE,
                         count_conflict,
                         documentary_pointer,
+                        documented_observation,
                         fragment_context,
                         observation_cue,
                         procedure_without_interpretation,
@@ -3777,6 +3810,13 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         record["reasons"].append("CITED_TABLE_READING_IS_NOT_CURRENT_OBSERVATION")
                         record["cited_context"] = cited_reading
                     # Narrative of what was done next asserts no study result.
+                    if item["epistemic"] == "documentary_context" and (
+                        documented_observation(item["text"]) and reported_outcome(item["text"])
+                    ):
+                        # "The post-test picture ... shows that the material is
+                        # extruded" reports what was observed.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("DOCUMENTARY_ROLE_REPORTS_AN_OBSERVATION")
                     same_cited = (
                         cited_same_anaphor(spans, document)
                         if item["study"] == "current" and item["epistemic"] != "documentary_context"
@@ -4026,7 +4066,6 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                                 }
                     if (
                         item["subjects"]
-                        and item["epistemic"] != "documentary_context"
                         and item["study"] == "current"
                         and not all(
                             applicable(s, spans, entities, document)
@@ -4035,10 +4074,22 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         )
                         and all(
                             s in entities
-                            and entities[s]["class_id"] == "Sample"
+                            # Specimens, or for a documentary statement (a figure
+                            # of the material) the material itself.
+                            and (
+                                entities[s]["class_id"] == "Sample"
+                                or (
+                                    item["epistemic"] == "documentary_context"
+                                    and entities[s]["class_id"] == "Material"
+                                )
+                            )
                             # The passage itself names the specimens or their
-                            # material ("the second batch of Brass-filled PTFE").
-                            and mentions(re.split(r"\s*\(", entities[s]["label"])[0], item["text"])
+                            # material ("the second batch of Brass-filled PTFE");
+                            # a line-break hyphen ("Brass- filled") is not a space.
+                            and mentions(
+                                re.split(r"\s*\(", entities[s]["label"])[0],
+                                re.sub(r"(?<=\w)-\s+(?=\w)", "-", item["text"]),
+                            )
                             for s in item["subjects"]
                         )
                         and (

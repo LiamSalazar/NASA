@@ -334,6 +334,20 @@ def row_group_identity(label, document):
     return None
 
 
+def printed_in_material_column(label, document):
+    """Whether a table prints the label as a row group under a "Material" column."""
+    return any(
+        row["group_label"]
+        and (
+            _key(row["group_label"]) == _key(label)
+            or _key(row["group_label_original"]) == _key(label)
+        )
+        and row["cells"]
+        and re.search(r"\bmaterials?\b", row["cells"][0].get("header") or "", re.IGNORECASE)
+        for row in table_rows(document)
+    )
+
+
 def printed_label_forms(label, document):
     """The label plus every way its row group is printed (with and without marker)."""
     forms = [label]

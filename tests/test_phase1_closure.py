@@ -1304,3 +1304,52 @@ def test_a_result_held_only_for_its_conclusion_role_is_recovered_as_an_observati
     ):
         held = conclusion(text)
         assert "role_recovery" not in held, text
+
+
+def test_a_material_column_name_proposed_as_an_experiment_family_is_a_material(service):
+    p = submitted(service, TEXT)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "fam", "Alpha", "ExperimentFamily", "aAlpha")]
+    family = run(service, p, o, with_tables(service, p))[-1]
+    assert family["class_recovery"]["recovered_class_id"] == "Material"
+    assert family["class_recovery"]["basis"] == "PRINTED_MATERIAL_COLUMN_NAMES_A_MATERIAL"
+
+
+def test_a_test_method_or_measured_property_is_not_a_condition(service):
+    text = "Heat of combustion and high-pressure mechanical impact tests were run in LOX."
+    p = submitted(service, "# Synthetic study\nII. Methods\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "h", "Heat of combustion", "ExperimentalCondition", text),
+        entity(p, "m", "high-pressure mechanical impact", "ExperimentalCondition", text),
+        entity(p, "l", "LOX", "ExperimentalCondition", text),
+    ]
+    heat, impact, lox = run(service, p, o, structure(p, service.root))
+    assert "TEST_OR_PROPERTY_IS_NOT_A_CONDITION" in heat["reasons"]
+    assert "TEST_OR_PROPERTY_IS_NOT_A_CONDITION" in impact["reasons"]
+    assert "TEST_OR_PROPERTY_IS_NOT_A_CONDITION" not in lox["reasons"]
+
+
+def test_a_contrast_clause_does_not_bind_another_subjects_value():
+    from nasa_fire_ai.ingestion.document_extraction import local_binding
+
+    quote = (
+        "Alpha passed up to a pressure of 1,500 psia, whereas Beta began reacting above 500 psia."
+    )
+    entities = {
+        "b": {"id": "b", "label": "Beta", "class_id": "Material"},
+    }
+    spans = [{"quote": quote}]
+    assert not local_binding("b", "1,500 psia", spans, entities)
+    assert local_binding("b", "above 500 psia", spans, entities)
+
+
+def test_a_documentary_figure_statement_that_reports_what_it_shows_is_held():
+    from nasa_fire_ai.ingestion.statement_integrity import documented_observation
+
+    assert documented_observation(
+        "The post-test picture of a sample shows that the material is extruded."
+    )
+    assert documented_observation("A small sliver of the filling can be seen in the layer.")
+    assert not documented_observation("The data shows that Alpha is highly compatible.")
+    assert not documented_observation("The impact results are shown in Figure 3.")

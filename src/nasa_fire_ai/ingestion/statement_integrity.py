@@ -252,6 +252,27 @@ DATA_PROVENANCE = re.compile(
 )
 
 
+DOCUMENTED_OBSERVATION = re.compile(
+    r"\b(?:shows?|showed|reveals?|revealed)\s+that\b"
+    r"|\bcan(?:not)?\s+be\s+seen\b(?!\s+in\s+(?:Table|Figure|Fig\.?)\b)",
+    re.IGNORECASE,
+)
+
+
+def documented_observation(text):
+    """Whether a passage reports what a picture or record shows, not where it is."""
+    text = text or ""
+    return bool(
+        DOCUMENTED_OBSERVATION.search(text)
+        and re.search(
+            r"\b(?:pictures?|photo\w*|images?|micrographs?|figures?|can(?:not)?\s+be\s+seen)\b",
+            text,
+            re.IGNORECASE,
+        )
+        and not POINTER.search(text)
+    )
+
+
 def reported_outcome(text):
     """Whether a passage reports what happened, not only what was done, used or sourced.
 
