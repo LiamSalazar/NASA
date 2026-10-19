@@ -1680,7 +1680,7 @@ def continued_sentence(spans, evidence):
     return None
 
 
-def anaphoric_subject(subject, expression, spans, entities, evidence):
+def anaphoric_subject(subject, expression, spans, entities, evidence, document=None):
     """A pronoun that opens the value's sentence names the one subject of the
     sentence before it, in the same paragraph ("Alpha was tested. It was ...")."""
     entity = entities[subject]
@@ -1702,6 +1702,13 @@ def anaphoric_subject(subject, expression, spans, entities, evidence):
             if e.get("validation_status") == "SOURCE_SUPPORTED"
             and e["class_id"] in {"Material", "Sample", "ExperimentFamily", "ExperimentalRun"}
             and mentions(e["label"], previous)
+            # A test value's antecedent is a tested subject: a material counts
+            # only when this document's own tables show it tested here.
+            and (
+                e["class_id"] != "Material"
+                or document is None
+                or material_tested_here(e["label"], document)
+            )
         ]
         if {e["id"] for e in named} == {entity["id"]}:
             return {
@@ -2268,7 +2275,7 @@ def validate_quantity_subject(
         and not (
             (
                 antecedent := anaphoric_subject(
-                    item["subject"], item["expression"], spans, entities, evidence
+                    item["subject"], item["expression"], spans, entities, evidence, document
                 )
             )
             and record.update(subject_antecedent=antecedent) is None
@@ -2801,6 +2808,41 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
     }
 
 
+def recover_group_classes(output, document):
+    """A printed "<material> (qualifier)" group proposed as a Material is a group of it.
+
+    "Brass-filled PTFE (Batch #1)" printed as a table row group, beside a
+    proposed "Brass-filled PTFE" material, names a batch of that material, not
+    another substance; it is revalidated as a Sample, with its provenance.
+    Returns the output (copied when changed) and {entity key: recovery}.
+    """
+    from nasa_fire_ai.ingestion.table_continuity import label_variants, row_group_identity
+
+    materials = [e["label"] for e in output["entities"] if e["class_id"] == "Material"]
+    recovered = {}
+    entities = []
+    for e in output["entities"]:
+        if (
+            e["class_id"] == "Material"
+            and row_group_identity(e["label"], document)
+            and any(
+                subject_label_names_material(form, m) and normalized(form) != normalized(m)
+                for form in label_variants(e["label"], document)
+                for m in materials
+            )
+        ):
+            recovered[e["key"]] = {
+                "proposed_class_id": "Material",
+                "recovered_class_id": "Sample",
+                "basis": "PRINTED_ROW_GROUP_NAMES_A_GROUP_OF_A_PROPOSED_MATERIAL",
+            }
+            e = {**e, "class_id": "Sample"}
+        entities.append(e)
+    if not recovered:
+        return output, {}
+    return {**output, "entities": entities}, recovered
+
+
 def structure_entity_candidates(output, package, document):
     """Entities the printed source itself names, for the same validator.
 
@@ -3188,6 +3230,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
         "\n".join(e.get("text", "") for e in package["evidence"])
     )
     entities, records, mappings = {}, [], []
+    output, class_recovery = recover_group_classes(output, document)
     structural_entities = structure_entity_candidates(output, package, document)
     if structural_entities:
         output = {**output, "entities": output["entities"] + structural_entities}
@@ -4168,6 +4211,8 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     entities.pop(item["key"])
                 else:
                     entities[item["key"]]["validation_status"] = record["status"]
+            if kind == "entities" and item.get("key") in class_recovery:
+                record["class_recovery"] = class_recovery[item["key"]]
             if any(original is c for c in extra) or (
                 kind == "entities" and any(original is c for c in structural_entities)
             ):

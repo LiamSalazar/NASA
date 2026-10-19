@@ -1144,3 +1144,27 @@ def test_a_columns_state_word_settles_a_setting_versus_result_conflict(service):
     assert records[("Final Pressure", "experimental_configuration")]["status"] == "UNRESOLVED"
     # "initial" makes the reported reading of the same cell the one that is wrong.
     assert records[("Initial Pressure", "reported_quantity")]["status"] != "SOURCE_SUPPORTED"
+
+
+def test_a_printed_group_of_a_material_proposed_as_a_material_is_its_specimen_group(service):
+    p = submitted(service, IMPACT)
+    document = with_tables(service, p, IMPACT_ROWS)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "beta", "Beta", "Material", "The data show that Beta is compatible."),
+        entity(p, "lot", "aBeta (Lot #1)", "Material", "aBeta (Lot #1)"),
+        entity(p, "gamma", "Gamma", "Material", "Gamma was compared."),
+    ]
+    records = {
+        r["proposal"]["key"]: r
+        for r in proposed(run(service, p, o, document))
+        if r["kind"] == "entities"
+    }
+    assert records["lot"]["proposal"]["class_id"] == "Sample"
+    assert (
+        records["lot"]["class_recovery"]["basis"]
+        == "PRINTED_ROW_GROUP_NAMES_A_GROUP_OF_A_PROPOSED_MATERIAL"
+    )
+    # A material that is not a printed group of another stays a material.
+    assert records["gamma"]["proposal"]["class_id"] == "Material"
+    assert "class_recovery" not in records["beta"]
