@@ -109,3 +109,26 @@ def test_correct_quantity_with_only_a_staged_property_is_reported_apart():
         "denominator": 3,
         "correct_quantity_targets_with_staged_property_only": 1,
     }
+
+
+def test_a_correct_hold_is_reported_apart_and_never_counts_as_recall():
+    prepared, review = fixture()
+    review["targets"][1].update(
+        hold_assessment="HOLD_IS_THE_CORRECT_OUTCOME",
+        hold_rationale="The source prints two conflicting counts; both must stay unresolved.",
+    )
+    metrics = review_module.score(prepared, review)
+    assert metrics["semantic_recall"] == {"numerator": 1, "denominator": 3}
+    assert metrics["correctly_held_targets"] == {
+        "count": 1,
+        "target_ids": ["two"],
+        "counts_as_recall": False,
+    }
+    bad = copy.deepcopy(review)
+    bad["targets"][0]["hold_assessment"] = "HOLD_IS_THE_CORRECT_OUTCOME"
+    with pytest.raises(ValueError, match="only to an unresolved target"):
+        review_module.score(prepared, bad)
+    bad = copy.deepcopy(review)
+    del bad["targets"][1]["hold_rationale"]
+    with pytest.raises(ValueError, match="source rationale"):
+        review_module.score(prepared, bad)

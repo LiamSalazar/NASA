@@ -23,6 +23,7 @@ def score(prepared, review):
     )
     seen = set()
     staged_quantities = 0
+    correctly_held = []
     allowed = {"correct", "incorrect", "unresolved", "omitted", "inaccessible"}
     counts = Counter()
     by_kind = {}
@@ -42,6 +43,16 @@ def score(prepared, review):
                 raise ValueError("Unresolved or rejected content cannot count as correct recovery")
             if target["outcome"] == "unresolved" and r["status"] != "UNRESOLVED":
                 raise ValueError("Unresolved accounting requires an unresolved proposal")
+        if "hold_assessment" in target:
+            # A reviewer may record that holding is itself the expected handling
+            # (for example a conflict the source prints); it is never recall.
+            if target["outcome"] != "unresolved" or target["hold_assessment"] != (
+                "HOLD_IS_THE_CORRECT_OUTCOME"
+            ):
+                raise ValueError("A hold assessment applies only to an unresolved target")
+            if not target.get("hold_rationale"):
+                raise ValueError("A correct hold requires its source rationale")
+            correctly_held.append(target["id"])
         counts[target["outcome"]] += 1
         by_kind.setdefault(target["kind"], Counter())[target["outcome"]] += 1
         if target["outcome"] == "correct" and target["kind"] == "quantities":
@@ -80,6 +91,11 @@ def score(prepared, review):
             "numerator": counts["correct"] - staged_quantities,
             "denominator": accessible,
             "correct_quantity_targets_with_staged_property_only": staged_quantities,
+        },
+        "correctly_held_targets": {
+            "count": len(correctly_held),
+            "target_ids": correctly_held,
+            "counts_as_recall": False,
         },
         "evidence_retention": {
             "numerator": counts["correct"] + counts["unresolved"],
