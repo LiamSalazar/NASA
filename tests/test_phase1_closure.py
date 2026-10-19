@@ -779,3 +779,104 @@ def test_recovery_skips_values_already_printed_in_a_table_cell(service):
     assert printed_in_table(document, page, "2/20")
     assert not printed_in_table(document, page, "3/20")
     assert not printed_in_table(document, page + 1, "2/20")
+
+
+IMPACT = (
+    "# Synthetic study\nII. Results\nTABLE 1— Impact data\n"
+    "Material\nImpact Energy (J)\nSystem Pressure (psia)\nReactions/Tests\n"
+    "aBeta (Lot #1)\n98\n10,000\n0/20\na-\nSynthetic standard lab\n"
+    "The data show that Beta is compatible. It was impacted with 98 Joules at 10,000 psia.\n"
+    "Gamma was compared. It was impacted with 98 Joules at 10,000 psia.\n"
+)
+IMPACT_ROWS = [
+    ["Material", "Impact Energy (J)", "System Pressure (psia)", "Reactions/Tests"],
+    ["aBeta (Lot #1)", "98", "10,000", "0/20"],
+]
+
+
+def impact_output(p, subject_label, sentence, epistemic="experimental_configuration"):
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "beta", "Beta", "Material", "The data show that Beta is compatible."),
+        entity(p, "gamma", "Gamma", "Material", "Gamma was compared."),
+    ]
+    o["quantities"] = [
+        {
+            "subject": subject_label,
+            "label": "impact energy",
+            "expression": "98",
+            "unit": "Joules",
+            "epistemic": epistemic,
+            "support": support(p, sentence),
+        }
+    ]
+    return o
+
+
+def test_prose_value_named_by_its_subjects_own_table_column_and_pronoun(service):
+    p = submitted(service, IMPACT)
+    document = with_tables(service, p, IMPACT_ROWS)
+    beta = "The data show that Beta is compatible. It was impacted with 98 Joules at 10,000 psia."
+    record = run(service, p, impact_output(p, "beta", beta), document)[-1]
+    assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
+    assert (
+        record["quantity_name_support"]["basis"] == "SAME_SUBJECT_VALUE_UNDER_DOCUMENT_TABLE_COLUMN"
+    )
+    assert record["subject_antecedent"]["basis"] == "PRONOUN_SUBJECT_OF_PRECEDING_SENTENCE"
+    # The same printed value for a material without such a row has no name.
+    gamma = "Gamma was compared. It was impacted with 98 Joules at 10,000 psia."
+    other = run(service, p, impact_output(p, "gamma", gamma), document)[-1]
+    assert other["status"] != "SOURCE_SUPPORTED"
+    # What was applied is not a measured result.
+    measured = run(service, p, impact_output(p, "beta", beta, "reported_quantity"), document)[-1]
+    assert measured["status"] == "REJECTED"
+    assert "APPLIED_TEST_INPUT_IS_NOT_A_MEASUREMENT" in measured["reasons"]
+
+
+def test_printed_relative_difference_is_kept_as_a_derived_value(service):
+    text = "Run A1 was tested. The A1 heat of combustion was 12% lower than the reference."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "run", "A1", "ExperimentalRun", text)]
+    q = {
+        "subject": "run",
+        "label": "heat of combustion",
+        "expression": "12% lower",
+        "unit": None,
+        "epistemic": "derived_quantity",
+        "support": support(p, text),
+    }
+    o["quantities"] = [q]
+    record = run(service, p, o, structure(p, service.root))[-1]
+    assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
+    assert (record["proposal"]["expression"], record["proposal"]["unit"]) == ("12", "%")
+    assert record["relative_comparison"]["comparative"] == "lower"
+    q["epistemic"] = "reported_quantity"
+    reported = run(service, p, o, structure(p, service.root))[-1]
+    assert "RELATIVE_DIFFERENCE_IS_A_DERIVED_QUANTITY" in reported["reasons"]
+
+
+def test_a_row_group_of_a_material_is_preferred_over_the_material(service):
+    p = submitted(service, IMPACT)
+    document = with_tables(service, p, IMPACT_ROWS)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study"),
+        entity(p, "beta", "Beta", "Material", "The data show that Beta is compatible."),
+        entity(p, "lot", "aBeta (Lot #1)", "Sample", "aBeta (Lot #1)"),
+    ]
+    rows = "\n".join(v for row in IMPACT_ROWS for v in row)
+    o["quantities"] = [
+        {
+            "subject": "root",
+            "label": "Reactions/Tests",
+            "expression": "0/20",
+            "unit": None,
+            "epistemic": "reported_quantity",
+            "support": support(p, rows.replace("aBeta (Lot #1)", "aBeta (Lot #1)")),
+        }
+    ]
+    result = validate_output(copy.deepcopy(o), p, document, service.semantic)
+    record = result["records"][-1]
+    assert record["subject"] == result["entities_by_key"]["lot"]["id"], record["reasons"]
+    assert record["subject_recovery"]["status"] == "RECOVERED"

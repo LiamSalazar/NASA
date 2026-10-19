@@ -1650,6 +1650,81 @@ def quantity_name_value_binding(
     return result
 
 
+PRONOUN_START = re.compile(
+    r"\s*(?:it|they|this\s+(?:material|sample|specimen)|these\s+(?:materials|samples|specimens)|each)\b",
+    re.IGNORECASE,
+)
+
+
+def continued_sentence(spans, evidence):
+    """The sentence a page break cut, joined from the previous page's tail.
+
+    Returns {"quote", "continuation"} or None. The joined text is only a reading
+    aid for names and subjects; value positions always stay on the original page.
+    """
+    from nasa_fire_ai.ingestion.scientific_scope import page_continuation_context
+
+    continuation = page_continuation_context(spans, evidence)
+    if not continuation:
+        return None
+    for span in spans:
+        if span["evidence_id"] == continuation["evidence_id"]:
+            continue
+        head = re.sub(r"^\s*\d+\s*\n", "", span["quote"])
+        head = re.split(r"(?<=[.!?])\s", head, maxsplit=1)[0]
+        tail = continuation["quote"].rstrip()
+        joined = tail[:-1] + head.lstrip() if tail.endswith("-") else tail + " " + head.lstrip()
+        return {"quote": joined, "continuation": continuation}
+    return None
+
+
+def anaphoric_subject(subject, expression, spans, entities, evidence):
+    """A pronoun that opens the value's sentence names the one subject of the
+    sentence before it, in the same paragraph ("Alpha was tested. It was ...")."""
+    entity = entities[subject]
+    for span in spans:
+        text = evidence[span["evidence_id"]]["text"]
+        position = text.find(expression, span["start"], span["end"])
+        if position < 0:
+            continue
+        starts = [m.end() for m in re.finditer(r"[.!?](?=\s)", text[:position])]
+        if not starts:
+            continue
+        sentence = text[starts[-1] : position]
+        previous = text[starts[-2] if len(starts) > 1 else 0 : starts[-1]]
+        if not PRONOUN_START.match(sentence) or re.search(r"\n\s*\n", previous + sentence):
+            continue
+        named = [
+            e
+            for e in entities.values()
+            if e.get("validation_status") == "SOURCE_SUPPORTED"
+            and e["class_id"] in {"Material", "Sample", "ExperimentFamily", "ExperimentalRun"}
+            and mentions(e["label"], previous)
+        ]
+        if {e["id"] for e in named} == {entity["id"]}:
+            return {
+                "basis": "PRONOUN_SUBJECT_OF_PRECEDING_SENTENCE",
+                "evidence_id": span["evidence_id"],
+                "preceding_sentence": previous.strip(),
+            }
+    return None
+
+
+def value_is_applied_input(value_spans, evidence):
+    """Whether each value follows an applied test step in its own clause."""
+    from nasa_fire_ai.ingestion.statement_integrity import APPLIED_STEP, OUTCOME_CUE
+
+    if not value_spans:
+        return False
+    for value in value_spans:
+        text = evidence[value["evidence_id"]]["text"]
+        clause = re.split(r"[.;!?](?=\s)", text[: value["start"]])[-1]
+        steps = list(APPLIED_STEP.finditer(clause))
+        if not steps or OUTCOME_CUE.search(clause[steps[-1].end() :]):
+            return False
+    return True
+
+
 def value_sentences(value_spans, evidence):
     """The original sentence around each bound value, stopping at captions."""
     result = []
@@ -1677,8 +1752,23 @@ NAME_VALUE_LINK = re.compile(
 def staged_name_syntax(label, record, evidence):
     """How the printed text makes the label the name of the value, if it does."""
     basis = record.get("quantity_name_support", {}).get("basis")
-    if basis in {"ORIGINAL_TABLE_COLUMN_HEADER", "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE"}:
+    if basis in {
+        "ORIGINAL_TABLE_COLUMN_HEADER",
+        "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE",
+        "SAME_SUBJECT_VALUE_UNDER_DOCUMENT_TABLE_COLUMN",
+    }:
         return basis
+    if basis == "NAME_BEFORE_PAGE_BREAK_OF_SAME_SENTENCE" and record.get("sentence_continuation"):
+        tail = record["sentence_continuation"]["quote"].rstrip()
+        value = record["quantity_value_spans"][0]
+        text = evidence[value["evidence_id"]]["text"]
+        head = re.sub(r"^\s*\d+\s*\n", "", text[: value["start"]])
+        before = tail[:-1] + head.lstrip() if tail.endswith("-") else tail + " " + head.lstrip()
+        name = r"(?<![\w-])" + r"\s+".join(re.escape(w) for w in label.split()) + r"(?![\w-])"
+        for match in re.finditer(name, before, re.IGNORECASE):
+            if NAME_VALUE_LINK.fullmatch(before[match.end() :]):
+                return "PRINTED_NAME_LINKED_TO_VALUE_ACROSS_PAGE_BREAK"
+        return None
     if basis == "EXPLICIT_SOURCE_TEMPORAL_COORDINATE":
         return None  # a time coordinate of an event, not a property of a subject
     name = r"(?<![\w-])" + r"\s+".join(re.escape(w) for w in label.split()) + r"(?![\w-])"
@@ -1965,6 +2055,23 @@ def validate_quantity_subject(
         # Two set-points are two quantities; one record cannot
         # hold both, and choosing one would invent the binding.
         raise ValueError("QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES")
+    relative = re.fullmatch(
+        r"(?P<value>.*?\d\S*)\s+(?P<word>lower|higher|greater|less|smaller|larger|more|faster|slower)",
+        (item["expression"] or "").strip(),
+        re.IGNORECASE,
+    )
+    if numeric["status"] == "NOT_NUMERIC" and relative:
+        # "12% lower than X" is a printed relative difference: the comparative
+        # word is kept as its qualifier, the value is what the source prints.
+        record["relative_comparison"] = {
+            "original_expression": item["expression"],
+            "comparative": relative["word"],
+            "basis": "PRINTED_RELATIVE_DIFFERENCE",
+        }
+        item["expression"] = relative["value"]
+        numeric = parse_numeric_expression(item["expression"], convention=numeric_convention)
+        if item["epistemic"] != "derived_quantity":
+            raise ValueError("RELATIVE_DIFFERENCE_IS_A_DERIVED_QUANTITY")
     if numeric["status"] == "NOT_NUMERIC":
         # A model may copy the original unit into the expression.
         # Separate it deterministically; the unit must still be
@@ -2116,6 +2223,19 @@ def validate_quantity_subject(
         and not table_binding
         and not local_binding(item["subject"], item["expression"], spans, entities)
         and not (
+            (joined := continued_sentence(spans, evidence))
+            and local_binding(item["subject"], item["expression"], [joined], entities)
+            and record.update(sentence_continuation=joined["continuation"]) is None
+        )
+        and not (
+            (
+                antecedent := anaphoric_subject(
+                    item["subject"], item["expression"], spans, entities, evidence
+                )
+            )
+            and record.update(subject_antecedent=antecedent) is None
+        )
+        and not (
             entities[item["subject"]]["class_id"] == "ExperimentFamily"
             and all(
                 normalized(
@@ -2233,7 +2353,104 @@ def validate_quantity_subject(
                 "basis": "EXPLICIT_SOURCE_TEMPORAL_COORDINATE",
                 "global_alias_activation": "NONE",
             }
-    if not table_binding:
+    column = None
+    joined = continued_sentence(spans, evidence)
+    joined_name = (
+        not table_binding
+        and joined
+        and not any(mentions(label, s["quote"]) for label in labels for s in spans)
+        and any(mentions(label, joined["quote"]) for label in labels)
+    )
+    if joined_name:
+        # The name was printed before the page break of the same sentence.
+        record["sentence_continuation"] = joined["continuation"]
+        record["quantity_name_support"] = {
+            "basis": "NAME_BEFORE_PAGE_BREAK_OF_SAME_SENTENCE",
+            "global_alias_activation": "NONE",
+        }
+        value_in_joined = quantity_name_value_binding(
+            labels, item["expression"], item["unit"], [{**joined, "evidence_id": "", "start": 0}]
+        )
+        record["quantity_value_spans"] = (
+            [
+                {
+                    "evidence_id": s["evidence_id"],
+                    "start": s["start"] + m.start(),
+                    "end": s["start"] + m.end(),
+                    "quote": m.group(),
+                }
+                for s in spans
+                if s["evidence_id"] != joined["continuation"]["evidence_id"]
+                for m in re.finditer(
+                    r"(?<![\w.])"
+                    + re.escape(item["expression"])
+                    + r"\s*[-‑]?\s*"
+                    + re.escape(item["unit"] or "")
+                    + r"(?!\w)",
+                    s["quote"],
+                )
+            ][:1]
+            if value_in_joined
+            else []
+        )
+        column = "JOINED"
+    named_in_support = any(mentions(label, s["quote"]) for label in labels for s in spans)
+    bound_in_support = (
+        named_in_support
+        and not table_binding
+        and quantity_name_value_binding(
+            labels,
+            item["expression"],
+            None if record.get("unit_binding") else item["unit"],
+            spans,
+            adjacent_names,
+            temporal_coordinate,
+        )
+    )
+    if not table_binding and not column and not bound_in_support:
+        from nasa_fire_ai.ingestion.table_continuity import (
+            material_row_labels,
+            subject_column_for_value,
+        )
+
+        column = subject_column_for_value(
+            material_row_labels(subject["label"], document)
+            if subject["class_id"] == "Material"
+            else label_variants(subject["label"], document),
+            labels,
+            item["expression"],
+            item["unit"],
+            document,
+        )
+        if not column and named_in_support:
+            raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
+        if not column:
+            raise ValueError("QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT")
+        # The name comes from this document's own column for the same subject's
+        # value; the prose value itself must still be printed in the support.
+        record["quantity_name_support"] = {
+            "basis": "SAME_SUBJECT_VALUE_UNDER_DOCUMENT_TABLE_COLUMN",
+            "table_rows": column,
+            "global_alias_activation": "NONE",
+        }
+        record["quantity_value_spans"] = [
+            {
+                "evidence_id": s["evidence_id"],
+                "start": s["start"] + m.start(),
+                "end": s["start"] + m.end(),
+                "quote": m.group(),
+            }
+            for s in spans
+            for m in re.finditer(
+                r"(?<![\w.])"
+                + re.escape(item["expression"])
+                + r"\s*[-‑]?\s*"
+                + re.escape(item["unit"] or "")
+                + r"(?!\w)",
+                s["quote"],
+            )
+        ]
+    if not table_binding and not column:
         if not any(mentions(label, s["quote"]) for label in labels for s in spans):
             raise ValueError("QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT")
         record["quantity_value_spans"] = quantity_name_value_binding(
@@ -2363,6 +2580,13 @@ def validate_quantity_subject(
         re.IGNORECASE,
     ):
         raise ValueError("CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT")
+    if (
+        item["epistemic"] == "reported_quantity"
+        and not table_binding
+        and value_is_applied_input(record["quantity_value_spans"], evidence)
+    ):
+        # "It was impacted with 98 Joules": the value is what was applied.
+        raise ValueError("APPLIED_TEST_INPUT_IS_NOT_A_MEASUREMENT")
     derivation = next(
         (
             context
@@ -2458,6 +2682,25 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
             continue
         if not any(r in SUBJECT_HOLDS for r in trial[1]["reasons"]):
             recovered.append((key, trial))
+    if len(recovered) > 1:
+        from nasa_fire_ai.ingestion.table_continuity import _key, material_row_labels
+
+        # A material and one of its own printed row groups (a batch of it) both
+        # fit a row value: the narrower row group is the subject, never both.
+        groups = {
+            key: {_key(v) for v in material_row_labels(entities[key]["label"], document)}
+            for key, _ in recovered
+            if entities[key]["class_id"] == "Material"
+        }
+        recovered = [
+            (key, trial)
+            for key, trial in recovered
+            if not any(
+                _key(entities[other]["label"]) in groups.get(key, set())
+                for other, _ in recovered
+                if other != key
+            )
+        ]
     basis = {
         "proposed_subject": entities[proposed]["id"],
         "proposed_subject_rejection": reason,

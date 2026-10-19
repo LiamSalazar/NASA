@@ -352,6 +352,71 @@ def label_variants(label, document):
     return [label]
 
 
+def subject_column_for_value(group_labels, names, expression, unit, document):
+    """The column header under which this document prints the same value for the subject.
+
+    A prose sentence may restate a value of its own table without the variable's
+    name ("It was impacted with 98 Joules"). The value counts as named only when
+    one of the subject's own rows, with no cited or external lineage, prints the
+    same number in the same unit dimension under a header that names the label.
+    Returns the matching rows' header/caption/page, or None.
+    """
+    from nasa_fire_ai.normalization.units import normalize
+
+    try:
+        wanted = normalize(1, unit or "")[1]
+    except ValueError:
+        return None
+    keys = {_key(v) for v in group_labels if v}
+    authors = reference_authors(document)
+    found = []
+    for row in table_rows(document):
+        if _key(row["group_label"]) not in keys or row_lineage(row, authors):
+            continue
+        for cell in row["cells"]:
+            header = cell["header"] or ""
+            if not any(
+                header_names(n, header) or header_names(n, _unqualified(header)) for n in names
+            ):
+                continue
+            header_unit = re.search(r"\(([^()]*)\)\s*$", header)
+            for number, printed in re.findall(
+                r"(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s*([A-Za-z°%][\w°%/-]*)?",
+                cell["original_value"] or "",
+            ):
+                if not same_expression(number, expression):
+                    continue
+                candidates = [printed] if printed else []
+                if header_unit:
+                    candidates += header_unit.group(1).split("/")
+                for candidate in candidates:
+                    try:
+                        if normalize(1, candidate)[1] == wanted:
+                            found.append(
+                                {
+                                    "page": row["page"],
+                                    "column_header": header,
+                                    "table_caption": row["table_caption"],
+                                    "group_label": row["group_label"],
+                                    "original_cell": cell["original_value"],
+                                }
+                            )
+                            break
+                    except ValueError:
+                        continue
+    return found or None
+
+
+def _unqualified(header):
+    """A header without leading state modifiers ("System Pressure" -> "Pressure")."""
+    from nasa_fire_ai.ingestion.document_extraction import STATE_QUALIFIERS
+
+    words = re.sub(r"\([^()]*\)", "", header or "").split()
+    while len(words) > 1 and words[0].lower() in STATE_QUALIFIERS:
+        words = words[1:]
+    return " ".join(words)
+
+
 def printed_in_table(document, page, text):
     """Whether a detected table on that page prints this exact text in one cell."""
     wanted = _norm(text)
