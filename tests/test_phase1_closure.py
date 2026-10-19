@@ -1076,3 +1076,34 @@ def test_a_reading_of_a_cited_table_is_never_this_studys_observation(service):
     document["detected_tables"][0]["caption"] = "TABLE 6— Synthetic impact data [1]"
     record = proposed(run(service, p, o, document))[-1]
     assert record["status"] != "SOURCE_SUPPORTED", record.get("role_recovery")
+
+
+def test_a_column_the_document_applies_holds_settings_not_results(service):
+    p = submitted(service, IMPACT)
+    document = with_tables(service, p, IMPACT_ROWS)
+    rows = "\n".join(v for row in IMPACT_ROWS for v in row)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "lot", "aBeta (Lot #1)", "Sample", "aBeta (Lot #1)")]
+    o["quantities"] = [
+        {
+            "subject": "lot",
+            "label": label,
+            "expression": value,
+            "unit": unit,
+            "epistemic": "reported_quantity",
+            "support": support(p, rows),
+        }
+        for label, value, unit in [
+            ("System Pressure", "10,000", "psia"),
+            ("Reactions/Tests", "0/20", None),
+        ]
+    ]
+    pressure, reactions = [
+        r for r in proposed(run(service, p, o, document)) if r["kind"] == "quantities"
+    ]
+    # "It was impacted with 98 Joules at 10,000 psia": the pressure is a setting.
+    assert pressure["proposal"]["epistemic"] == "experimental_configuration", pressure["reasons"]
+    assert pressure["role_recovery"]["basis"] == "COLUMN_VALUE_APPLIED_IN_A_TEST_STEP"
+    # A count is never made a setting by a sentence that also counts samples.
+    assert reactions["proposal"]["epistemic"] == "reported_quantity"
+    assert "role_recovery" not in reactions

@@ -721,8 +721,17 @@ def test_exact_source_scope_and_negative_assignments(service):
     wrong["quantities"][0]["subject"] = "a2"
     wrong["relations"][0]["object"] = "ng"
     wrong["statements"][0]["subjects"] = ["a2"]
-    records = validate(service, p, wrong)["records"]
-    assert all(x["status"] != "SOURCE_SUPPORTED" for x in records if x["kind"] != "entities")
+    result = validate(service, p, wrong)
+    records = result["records"]
+    assert all(
+        x["status"] != "SOURCE_SUPPORTED"
+        for x in records
+        if x["kind"] in {"relations", "statements"}
+    )
+    # A2 never receives A1's value: it is revalidated on A1, the only subject it fits.
+    [moved] = [x for x in records if x["kind"] == "quantities"]
+    assert moved["subject"] == result["entities_by_key"]["a1"]["id"]
+    assert moved["subject_recovery"]["proposed_subject"] == result["entities_by_key"]["a2"]["id"]
     wrong["quantities"][0]["subject"] = "a1"
     assert (
         next(x for x in validate(service, p, wrong)["records"] if x["kind"] == "quantities")[

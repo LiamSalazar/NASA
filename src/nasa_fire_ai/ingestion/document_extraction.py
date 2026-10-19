@@ -1712,6 +1712,42 @@ def anaphoric_subject(subject, expression, spans, entities, evidence):
     return None
 
 
+def applied_column_value(table_binding, unit, document, evidence):
+    """An applied test step that prints one of the bound column's values, if any.
+
+    The printed value must carry a unit of the cell's own canonical unit, so a
+    count ("out of 20 samples") never makes a results column a setting.
+    """
+    from nasa_fire_ai.ingestion.statement_integrity import APPLIED_STEP
+    from nasa_fire_ai.ingestion.table_continuity import table_rows
+    from nasa_fire_ai.normalization.units import interpret
+
+    wanted = (interpret(unit) or {}).get("canonical_unit")
+    if not wanted:
+        return None
+    headers = {(r["page"], r["column_header"]) for r in table_binding["rows"]}
+    values = {
+        number
+        for row in table_rows(document)
+        for cell in row["cells"]
+        if (row["page"], cell["header"]) in headers
+        for number in re.findall(r"\d[\d,]*(?:\.\d+)?", cell["original_value"] or "")
+    }
+    if not values:
+        return None
+    for e in evidence.values():
+        for sentence in re.split(r"(?<=[.!?])\s+", e["text"]):
+            step = APPLIED_STEP.search(sentence)
+            if not step:
+                continue
+            for number, printed in re.findall(
+                r"(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s*([A-Za-z°%][\w°%/-]*)", sentence[step.end() :]
+            ):
+                if number in values and (interpret(printed) or {}).get("canonical_unit") == wanted:
+                    return sentence.strip()[:300]
+    return None
+
+
 def value_is_applied_input(value_spans, evidence):
     """Whether each value follows an applied test step in its own clause."""
     from nasa_fire_ai.ingestion.statement_integrity import APPLIED_STEP, OUTCOME_CUE
@@ -2565,6 +2601,20 @@ def validate_quantity_subject(
     if item["unit"] is None and numeric["form"] != "RATIO":
         record["status"] = "UNRESOLVED"
         record["reasons"].append("QUANTITY_UNIT_UNSPECIFIED")
+    if (
+        item["epistemic"] == "reported_quantity"
+        and table_binding
+        and (applied := applied_column_value(table_binding, item["unit"], document, evidence))
+    ):
+        # "It was impacted with 98 Joules at 10,000 psia": the document applies
+        # this column's values, so the cell is a test setting, not a result.
+        record["role_recovery"] = {
+            "proposed_epistemic": "reported_quantity",
+            "recovered_epistemic": "experimental_configuration",
+            "basis": "COLUMN_VALUE_APPLIED_IN_A_TEST_STEP",
+            "applied_text": applied,
+        }
+        item["epistemic"] = "experimental_configuration"
     if item["epistemic"] == "reported_quantity" and re.search(
         r"\b(?:will|would|planned|proposed|set\s+to|initial|maintained|specified|simulat\w*|predict\w*|derived|derivative|(?:linear|quadratic|regression|curve|polynomial)\s+fits?|shall|must|standard\s+deviations?|std\.?\s+dev\.?|variances?)\b",
         # A bound table cell's role is read from its own column
@@ -2676,12 +2726,20 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
             or entity["class_id"] == "Investigation"  # never a silent fallback
             or entity["source_id"] not in source_ids
             or not (quantity_scope_eligible(entity, semantic) or entity["class_id"] == "Material")
+            # A condition is the setting of a test, not the subject of its values.
+            or has_class(entity["class_id"], "ExperimentalCondition", semantic)
         ):
             continue
         try:
             trial = attempt(key)
         except ValueError:
             continue
+        from nasa_fire_ai.ingestion.table_continuity import printed_in_table
+
+        if not trial[1].get("table_row_binding") and any(
+            printed_in_table(document, s["page"], trial[0]["expression"]) for s in trial[2]
+        ):
+            continue  # a table value is bound through its own row, never by proximity
         if not any(r in SUBJECT_HOLDS for r in trial[1]["reasons"]):
             recovered.append((key, trial))
     if len(recovered) > 1:
