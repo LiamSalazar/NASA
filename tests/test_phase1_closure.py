@@ -968,3 +968,12 @@ def test_values_and_instruments_are_not_named_conditions_or_interventions(servic
     assert "APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION" in heater["reasons"]
     assert "APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION" in plummet["reasons"]
     assert "APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION" not in spray["reasons"]
+    named = "Run 3 used 100% PBI knit fabric in 37% O2 at 8.2 psia."
+    p = submitted(service, "# Synthetic study\nII. Results\n" + named + "\n")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "m", "100% PBI knit fabric", "Material", named),
+        entity(p, "a", "37% O2 at 8.2 psia", "ExperimentalCondition", named),
+    ]
+    for record in run(service, p, o, structure(p, service.root)):
+        assert "NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY" not in record["reasons"]

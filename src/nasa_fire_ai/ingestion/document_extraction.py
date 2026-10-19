@@ -3055,7 +3055,11 @@ def validate_output(output, package, document, semantic):
                     # "0.062 inches", "98 Joules of energy", "9 degrees F/min":
                     # the label opens with a value in an interpreted unit.
                     opens_with_value = any(
-                        interpret(" ".join(words[:k])) for k in range(1, min(3, len(words)) + 1)
+                        interpret(" ".join(words[:k]))
+                        # Only the value itself, "of <quantity>" or an equivalent may
+                        # follow; "100% PBI knit fabric" or "37% O2 at 8.2 psia" name things.
+                        and re.fullmatch(r"(?:of\s+\w+)?\s*(?:\([^()]*\))?", " ".join(words[k:]))
+                        for k in range(1, min(3, len(words)) + 1)
                     )
                     if (split_embedded_unit(item["label"], None) or {}).get(
                         "status"
