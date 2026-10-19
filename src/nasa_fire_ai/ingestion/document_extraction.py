@@ -263,6 +263,27 @@ def mentions(label, text):
     )
 
 
+def running_headers(evidence):
+    """Lines a document prints at the top or bottom of most of its pages.
+
+    Only lines of four or more words count, compared without page numbers.
+    """
+    from collections import Counter
+
+    pages = list(evidence.values())
+    counts = Counter()
+    for page in pages:
+        lines = [line.strip() for line in page.get("text", "").splitlines() if line.strip()]
+        edge = {
+            normalized(re.sub(r"\d+", " ", line))
+            for line in lines[:3] + lines[-3:]
+            if len(re.findall(r"[A-Za-z]{2,}", line)) >= 4
+        }
+        counts.update(edge)
+    floor = max(3, int(0.4 * len(pages)))
+    return sorted(line for line, n in counts.items() if n >= floor and line)
+
+
 def local_binding(subject, value, spans, entities):
     """A multi-subject span cannot transfer a result between its subjects."""
     label = entities[subject]["label"]
@@ -3865,6 +3886,25 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE")
                         record["source_fragment_context"] = fragment
+                    header = next(
+                        (
+                            h
+                            for h in running_headers(evidence)
+                            # Printed beside its page number, as the page edge prints it.
+                            if re.search(
+                                rf"{re.escape(h)}\s+\d+\b|\b\d+\s+{re.escape(h)}",
+                                normalized(item["text"]),
+                            )
+                        ),
+                        None,
+                    )
+                    if header:
+                        # "International Conference on Environmental Systems 11
+                        # Heat Delivery System ... was set up": the page's running
+                        # header is not part of the sentence.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER")
+                        record["running_page_header"] = header
                     if item["epistemic"] == "measured_observation" and (
                         PURPOSE.search(item["text"]) or procedure_without_outcome(item["text"])
                     ):
@@ -4129,9 +4169,17 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                             # The passage itself names the specimens or their
                             # material ("the second batch of Brass-filled PTFE");
                             # a line-break hyphen ("Brass- filled") is not a space.
-                            and mentions(
-                                re.split(r"\s*\(", entities[s]["label"])[0],
-                                re.sub(r"(?<=\w)-\s+(?=\w)", "-", item["text"]),
+                            # A set-up step on specimens is the study's own
+                            # procedure whether or not it names them.
+                            and (
+                                (
+                                    item["epistemic"] == "experimental_configuration"
+                                    and entities[s]["class_id"] == "Sample"
+                                )
+                                or mentions(
+                                    re.split(r"\s*\(", entities[s]["label"])[0],
+                                    re.sub(r"(?<=\w)-\s+(?=\w)", "-", item["text"]),
+                                )
                             )
                             for s in item["subjects"]
                         )

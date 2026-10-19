@@ -1383,3 +1383,15 @@ def test_a_tentative_interpretation_must_hedge_or_infer(service):
     assert "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE" in fact["reasons"]
     hedged = tentative("It can only be speculated that the filler of Alpha is Zinc.")
     assert "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE" not in hedged["reasons"]
+
+
+def test_running_page_headers_are_lines_most_pages_print_at_their_edge():
+    from nasa_fire_ai.ingestion.document_extraction import running_headers
+
+    header = "Synthetic Conference on Space Systems"
+    evidence = {
+        str(n): {"text": f"{header}\n{n}\nBody text of page {n}.\nMore text."} for n in range(1, 6)
+    }
+    evidence["6"] = {"text": "Synthetic Conference on Space Systems is cited once here."}
+    assert running_headers(evidence) == ["synthetic conference on space systems"]
+    assert running_headers({"1": {"text": f"{header}\nBody."}}) == []
