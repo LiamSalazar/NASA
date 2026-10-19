@@ -1488,6 +1488,31 @@ def tested_material_entity(entity, document):
     )
 
 
+MEDIUM_BEFORE = re.compile(
+    r"\b(?:pressuri[sz]ed|purged|flushed|cooled|chilled|submerged|immersed"
+    r"|bathed|operated)\b(?:\s+[\w-]+){0,6}?\s+(?:with|in|by)\s+(?:a\s+|an\s+|the\s+)?$",
+    re.IGNORECASE,
+)
+MEDIUM_AFTER = re.compile(
+    r"^(?:\s+or\s+[\w/-]+)?\s+(?:environments?|atmospheres?|modes?|baths?|media|medium)\b",
+    re.IGNORECASE,
+)
+
+
+def test_medium_only(label, spans):
+    """Whether every support passage names the substance only as the test's medium."""
+    pattern = re.compile(rf"(?<![\w-]){re.escape(label)}(?![\w-])", re.IGNORECASE)
+    found = False
+    for span in spans:
+        quote = re.sub(r"\s+", " ", span.get("quote", ""))
+        for match in pattern.finditer(quote):
+            found = True
+            before = re.sub(r"\b\w+\s+or\s+$", "", quote[: match.start()])
+            if not (MEDIUM_BEFORE.search(before) or MEDIUM_AFTER.match(quote[match.end() :])):
+                return False
+    return found
+
+
 def material_tested_here(label, document):
     """Whether this document prints table rows for the material and none is cited."""
     from nasa_fire_ai.ingestion.table_continuity import group_lineage, material_row_labels
@@ -3326,6 +3351,16 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         # to the experiment ("ignition wire", "Mechanical Impact Test").
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION")
+                    if (
+                        item["class_id"] == "Material"
+                        and item.get("study") == "current"
+                        and test_medium_only(item["label"], spans)
+                        and not material_tested_here(item["label"], document)
+                    ):
+                        # "pressurized with GOX", "submerged in LOX", "cooled with
+                        # Nitrogen": the medium of the test, not a material tested.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("TEST_MEDIUM_IS_NOT_A_TESTED_MATERIAL")
                     if item["class_id"] not in semantic.class_metadata:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("UNREGISTERED_CLASS_NEEDS_SEMANTIC_REVIEW")
@@ -3656,12 +3691,16 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         documentary_pointer,
                         fragment_context,
                         observation_cue,
+                        procedure_without_interpretation,
                         procedure_without_outcome,
                         rule_or_caveat,
                         stated_criterion,
                         validity_caveat,
                     )
-                    from nasa_fire_ai.ingestion.study_attribution import cited_table_reference
+                    from nasa_fire_ai.ingestion.study_attribution import (
+                        cited_same_anaphor,
+                        cited_table_reference,
+                    )
                     from nasa_fire_ai.ingestion.table_continuity import table_region_rows
 
                     # Whole printed table rows are table content; their values
@@ -3682,6 +3721,19 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CITED_TABLE_READING_IS_NOT_CURRENT_OBSERVATION")
                         record["cited_context"] = cited_reading
+                    # Narrative of what was done next asserts no study result.
+                    same_cited = (
+                        cited_same_anaphor(spans, document)
+                        if item["study"] == "current"
+                        and item["epistemic"] != "documentary_context"
+                        else None
+                    )
+                    if same_cited:
+                        # "The data is presented in Table 4 [3]. ... The same
+                        # compounds were then tested ...": the cited work, again.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("SAME_ANAPHOR_CONTINUES_CITED_WORK")
+                        record["cited_context"] = same_cited
                     fragment = fragment_context(
                         item["text"], record["statement_location"], evidence
                     )
@@ -3715,6 +3767,12 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         # caveat on the analysis, not an interpretation of it.
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("INTERPRETATION_STATES_A_VALIDITY_CAVEAT")
+                    if item["epistemic"] in {
+                        "tentative_interpretation",
+                        "author_reported_conclusion",
+                    } and procedure_without_interpretation(item["text"]):
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("INTERPRETATION_DESCRIBES_A_PROCEDURE")
                     if item["epistemic"] == "experimental_configuration" and validity_caveat(
                         item["text"]
                     ):

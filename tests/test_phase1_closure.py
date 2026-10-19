@@ -1168,3 +1168,76 @@ def test_a_printed_group_of_a_material_proposed_as_a_material_is_its_specimen_gr
     # A material that is not a printed group of another stays a material.
     assert records["gamma"]["proposal"]["class_id"] == "Material"
     assert "class_recovery" not in records["beta"]
+
+
+def test_a_detection_criterion_typed_as_an_observation_is_held(service):
+    criterion = observation_record(
+        service, "The indication of autogenous ignition was the rapid increase of temperature."
+    )
+    assert criterion["status"] == "UNRESOLVED"
+    assert "OBSERVATION_STATES_A_CRITERION" in criterion["reasons"]
+    seen = observation_record(service, "An indication of reaction was seen in two Alpha samples.")
+    assert "OBSERVATION_STATES_A_CRITERION" not in seen["reasons"]
+
+
+def test_a_procedure_typed_as_an_interpretation_is_held(service):
+    step = observation_record(
+        service,
+        "After the tests were conducted, the samples were analyzed for signs of combustion.",
+        epistemic="tentative_interpretation",
+        class_id="NASAConclusion",
+    )
+    assert step["status"] == "UNRESOLVED"
+    assert "INTERPRETATION_DESCRIBES_A_PROCEDURE" in step["reasons"]
+    reading = observation_record(
+        service,
+        "The samples were analyzed for signs of combustion, which suggests none occurred.",
+        epistemic="tentative_interpretation",
+        class_id="NASAConclusion",
+    )
+    assert "INTERPRETATION_DESCRIBES_A_PROCEDURE" not in reading["reasons"]
+
+
+def same_anaphor_record(service, before, epistemic="experimental_configuration"):
+    same = "The same compounds were then tested in a high-pressure LOX environment."
+    p = submitted(service, "# Synthetic study\nII. Results\n" + before + " " + same + "\n")
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
+    o["statements"] = [
+        {
+            "text": same,
+            "class_id": "Publication"
+            if epistemic == "documentary_context"
+            else "ExperimentalCondition",
+            "epistemic": epistemic,
+            "subjects": ["root"],
+            "study": "current",
+            "support": support(p, same),
+        }
+    ]
+    return run(service, p, o, structure(p, service.root))[-1]
+
+
+def test_a_same_anaphor_after_cited_work_is_not_this_study(service):
+    cited = "The impact data is presented in Table 4 [3]. The compounds were not sensitive."
+    record = same_anaphor_record(service, cited)
+    assert record["status"] == "UNRESOLVED"
+    assert "SAME_ANAPHOR_CONTINUES_CITED_WORK" in record["reasons"]
+    narrative = same_anaphor_record(service, cited, epistemic="documentary_context")
+    assert "SAME_ANAPHOR_CONTINUES_CITED_WORK" not in narrative["reasons"]
+    own = same_anaphor_record(service, "Alpha seals were impacted at 98 J. None reacted.")
+    assert "SAME_ANAPHOR_CONTINUES_CITED_WORK" not in own["reasons"]
+
+
+def test_a_test_medium_is_not_a_tested_material(service):
+    text = "The chamber was pressurized with GOX. Alpha seals were tested at 98 J."
+    p = submitted(service, "# Synthetic study\nII. Methods\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "g", "GOX", "Material", "The chamber was pressurized with GOX."),
+        entity(p, "a", "Alpha", "Material", "Alpha seals were tested at 98 J."),
+    ]
+    gox, alpha = run(service, p, o, structure(p, service.root))
+    assert gox["status"] == "UNRESOLVED"
+    assert "TEST_MEDIUM_IS_NOT_A_TESTED_MATERIAL" in gox["reasons"]
+    assert "TEST_MEDIUM_IS_NOT_A_TESTED_MATERIAL" not in alpha["reasons"]

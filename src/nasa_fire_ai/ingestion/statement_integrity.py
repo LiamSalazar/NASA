@@ -63,7 +63,21 @@ CAPTION_LINE = re.compile(
 )
 CRITERION = re.compile(
     r"\b(?:is|are)\s+said\s+to\b|\bpass/fail\b|\bcriteri(?:on|a)\b"
-    r"|\bif\b[^.;]*\b(?:then|is\s+recorded|are\s+recorded|must|shall)\b",
+    r"|\bif\b[^.;]*\b(?:then|is\s+recorded|are\s+recorded|must|shall)\b"
+    # "The indication of autogenous ignition was the rapid increase of ...":
+    # what counts as the event, not an event seen.
+    r"|^\s*the\s+indications?\s+of\b[^.;]*?\b(?:was|were|is|are)\s+(?:the|a|an)\b",
+    re.IGNORECASE,
+)
+EXAMINATION_STEP = re.compile(
+    r"\b(?:was|were)\s+(?:analy[sz]ed|examined|inspected|checked|evaluated|conducted|performed)"
+    r"\s+(?:for|to|by|using|with|at|in|under)\b",
+    re.IGNORECASE,
+)
+INTERPRETIVE_CUE = re.compile(
+    r"\b(?:suggest\w*|indicat\w*|conclu\w*|appear\w*|likely|probabl\w*|due\s+to|because"
+    r"|therefore|thus|hence|demonstrat\w*|superior|outperform\w*|better|worse|compatib\w*"
+    r"|sensitiv\w*|reactiv\w*|perform\w*|safe\w*|recommend\w*|attribut\w*|explain\w*)\b",
     re.IGNORECASE,
 )
 WORD_NUMBERS = {
@@ -225,6 +239,20 @@ def procedure_without_outcome(text):
     observation only when the passage also reports what happened.
     """
     return bool(APPLIED_STEP.search(text or "")) and not OUTCOME_CUE.search(text or "")
+
+
+def procedure_without_interpretation(text):
+    """Whether a passage only says what was done to or with the specimens.
+
+    "After several series of tests were conducted ..., the samples were
+    analyzed for signs of combustion" is a step of the method; it interprets
+    nothing.
+    """
+    text = text or ""
+    return bool(
+        (APPLIED_STEP.search(text) or EXAMINATION_STEP.search(text))
+        and not INTERPRETIVE_CUE.search(text)
+    )
 
 
 def conflicting_roles(records):

@@ -135,3 +135,56 @@ def cited_table_reference(spans, document):
                         "cited_tables": sorted(cited),
                     }
     return None
+
+
+SAME_ANAPHOR = re.compile(r"^\s*(?:The|These|Those)\s+same\b")
+PRIOR_WORK = re.compile(
+    r"\b(?:previous|prior|earlier)\s+(?:research|work|stud(?:y|ies)|test(?:s|ing)?|investigations?)\b",
+    re.IGNORECASE,
+)
+
+
+def _preceding_sentences(span, document, count):
+    """The `count` sentences before a passage, joined across a page break."""
+    order = list(dict.fromkeys(s["evidence_id"] for s in document.get("segments", [])))
+    text = _evidence_text(document, span["evidence_id"])
+    start = span.get("start")
+    if start is None or start > len(text):
+        return []
+    prefix = re.sub(r"^\s*\d{1,4}\s*\n", "", text[:start])
+    sentences = [s for s in re.split(r"(?<=[.!?])\s+", prefix.strip()) if s]
+    if len(sentences) < count and span["evidence_id"] in order:
+        index = order.index(span["evidence_id"])
+        if index:
+            previous = _evidence_text(document, order[index - 1])
+            previous = re.sub(r"\n\s*\d{1,4}\s*$", "", previous)
+            sentences = [s for s in re.split(r"(?<=[.!?])\s+", previous.strip()) if s] + sentences
+    return sentences[-count:]
+
+
+def cited_same_anaphor(spans, document):
+    """A "The same compounds were then tested ..." sentence continuing cited work.
+
+    "The same" or "These same" points back at what the sentences before it
+    describe; when those sentences cite a reference, a reference author, prior
+    work or a table whose caption cites a reference, the sentence describes that
+    cited work, not the current study.
+    """
+    authors = reference_authors(document)
+    numbers = cited_tables(document)
+    table = re.compile(r"\bTables?\s+(\d+)", re.IGNORECASE)
+    for span in spans:
+        if not SAME_ANAPHOR.match(span.get("quote", "")):
+            continue
+        for sentence in _preceding_sentences(span, document, 3):
+            if (
+                CITATION.search(sentence)
+                or _names(sentence, authors)
+                or PRIOR_WORK.search(sentence)
+                or {m.group(1) for m in table.finditer(sentence)} & numbers
+            ):
+                return {
+                    "basis": "SAME_ANAPHOR_CONTINUES_CITED_WORK",
+                    "quote": sentence.strip(),
+                }
+    return None
