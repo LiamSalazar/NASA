@@ -353,7 +353,9 @@ def role_errors(statement):
         role == "normative_requirement"
         and not normative_instruction(text)
         and not re.search(
-            r"\b(?:required|requires?|mandatory)\b|^(?:Record|Measure|Maintain|Ensure|Use|Avoid|Do not|Keep|Verify)\b",
+            r"\b(?:required|requires?|mandatory)\b|^(?:Record|Measure|Maintain|Ensure|Use|Avoid|Do not|Keep|Verify)\b"
+            # An explicit conditional recording rule: "If X, then Y is recorded as Z".
+            r"|\bif\b[^.;]*\bthen\b[^.;]*\b(?:is|are)\s+(?:recorded|reported|classified|considered)\s+as\b",
             text,
             re.IGNORECASE,
         )
@@ -2990,7 +2992,81 @@ def structure_relation_candidates(output, document):
     return candidates
 
 
-def validate_output(output, package, document, semantic):
+# A statement held only because its proposed role contradicts what the
+# validator itself detects is revalidated once with the detected role.
+ROLE_RECOVERY = (
+    (
+        {
+            "OBSERVATION_STATES_A_CRITERION",
+            "CONFIGURATION_STATEMENT_STATES_A_CRITERION",
+            "CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+        },
+        {"OBSERVATION_STATES_A_CRITERION", "CONFIGURATION_STATEMENT_STATES_A_CRITERION"},
+        ("normative_requirement", "Requirement"),
+    ),
+    (
+        {"DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE"},
+        {"DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE"},
+        ("measured_observation", "ReportedObservation"),
+    ),
+)
+
+
+def recover_statement_roles(records, output, package, document, semantic):
+    """Revalidate role-only holds with the role the validator detected."""
+    for record in records:
+        if record["kind"] != "statements" or record["status"] != "UNRESOLVED":
+            continue
+        reasons = set(record["reasons"])
+        for allowed, required, (epistemic, class_id) in ROLE_RECOVERY:
+            if not reasons or not reasons <= allowed or not reasons & required:
+                continue
+            from nasa_fire_ai.ingestion.statement_integrity import observation_cue
+
+            text = record["proposal"]["text"]
+            if epistemic == "measured_observation" and not (
+                observation_cue(text)
+                and re.search(
+                    r"\b(?:was|were|showed|shown|seen|performed|produced|reacted|passed|failed"
+                    r"|decreased|increased|indicated?|demonstrated?|observed)\b",
+                    text,
+                    re.IGNORECASE,
+                )
+            ):
+                break  # a caption or a pointer reports no observed result
+            item = {**record["proposal"], "epistemic": epistemic, "class_id": class_id}
+            trial = {
+                "entities": output["entities"],
+                "statements": [item],
+                "relations": [],
+                "quantities": [],
+                "concepts": [],
+            }
+            result = validate_output(trial, package, document, semantic, recover_roles=False)
+            match = next(
+                (
+                    r
+                    for r in result["records"]
+                    if r["kind"] == "statements" and not r.get("candidate_origin")
+                ),
+                None,
+            )
+            if match and match["status"] == "SOURCE_SUPPORTED":
+                original = record["proposal"]
+                record.update(
+                    {k: v for k, v in match.items() if k not in {"id"}},
+                    role_recovery={
+                        "proposed_epistemic": original["epistemic"],
+                        "proposed_class_id": original["class_id"],
+                        "held_for": sorted(reasons),
+                        "recovered_epistemic": epistemic,
+                        "method": "FULL_REVALIDATION_WITH_THE_DETECTED_ROLE",
+                    },
+                )
+            break
+
+
+def validate_output(output, package, document, semantic, recover_roles=True):
     """Independent validation recomputed from source text and approved contracts.
 
     SOURCE_SUPPORTED is a bounded lexical/structural validation status, never
@@ -3445,6 +3521,20 @@ def validate_output(output, package, document, semantic):
                     # stay in row-bound cell records, never one prose claim.
                     if table_region_rows(item["text"], document):
                         raise ValueError("TABLE_REGION_IS_NOT_A_STATEMENT")
+                    cited_reading = (
+                        cited_table_reference(spans, document)
+                        if item["epistemic"] == "measured_observation"
+                        and item["study"] == "current"
+                        else None
+                    )
+                    if cited_reading:
+                        # "The data listed in Table 6 indicate ... The reactivity of
+                        # the same material increases ...": whatever subject was
+                        # proposed, data read from a cited table are not this
+                        # study's own observation.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("CITED_TABLE_READING_IS_NOT_CURRENT_OBSERVATION")
+                        record["cited_context"] = cited_reading
                     fragment = fragment_context(
                         item["text"], record["statement_location"], evidence
                     )
@@ -3979,6 +4069,8 @@ def validate_output(output, package, document, semantic):
             ):
                 record["candidate_origin"] = "PRINTED_SOURCE_STRUCTURE"
             records.append(record)
+    if recover_roles:
+        recover_statement_roles(records, output, package, document, semantic)
     # A repaired, explicitly scoped group supersedes an unresolved whole-study
     # typing of that exact source heading. Endpoints are never remapped.
     repaired_groups = {

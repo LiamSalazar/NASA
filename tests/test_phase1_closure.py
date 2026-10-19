@@ -1035,3 +1035,44 @@ def test_printed_specimens_their_study_and_a_dispersion_column_are_validated_can
     # Cited rows: the material is not tested here, so no candidate is proposed.
     cited = [r for r in specimen_records(service, "Data of Smith") if r.get("candidate_origin")]
     assert not [r for r in cited if r["status"] == "SOURCE_SUPPORTED"]
+
+
+def test_a_role_only_hold_is_revalidated_with_the_detected_role(service):
+    rule = (
+        "If the system temperature rises above 400°C prior to ignition, then the AIT is "
+        "recorded as >400°C."
+    )
+    record = observation_record(
+        service, rule, epistemic="experimental_configuration", class_id="ExperimentalCondition"
+    )
+    assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
+    assert record["proposal"]["epistemic"] == "normative_requirement"
+    assert record["role_recovery"]["proposed_epistemic"] == "experimental_configuration"
+    assert record["role_recovery"]["method"] == "FULL_REVALIDATION_WITH_THE_DETECTED_ROLE"
+
+
+def test_a_reading_of_a_cited_table_is_never_this_studys_observation(service):
+    text = (
+        "TABLE 6— Synthetic impact data [1]\nMaterial\nReactions\naGamma\n2/20\n"
+        "The data listed in Table 6 indicate that Gamma reacted. "
+        "The reactivity of the same material increases by 20% as the thickness is halved.\n"
+        "References\n[1] Smith, A. B., “Synthetic paper,” 1999.\n"
+    )
+    p = submitted(service, "# Synthetic study\nII. Results\n" + text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
+    sentence = "The reactivity of the same material increases by 20% as the thickness is halved."
+    o["statements"] = [
+        {
+            "text": sentence,
+            "class_id": "Measurement",
+            "epistemic": "derived_quantity",
+            "subjects": ["root"],
+            "study": "current",
+            "support": support(p, sentence),
+        }
+    ]
+    document = with_tables(service, p, [["Material", "Reactions"], ["aGamma", "2/20"]])
+    document["detected_tables"][0]["caption"] = "TABLE 6— Synthetic impact data [1]"
+    record = proposed(run(service, p, o, document))[-1]
+    assert record["status"] != "SOURCE_SUPPORTED", record.get("role_recovery")
