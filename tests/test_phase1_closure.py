@@ -1363,8 +1363,8 @@ def test_a_recording_rule_proposed_for_a_specimen_is_recovered_at_the_studys_sco
         text,
         [("s", "Alpha samples", "Sample", named, "current")],
         ["s"],
-        "experimental_configuration",
-        "ExperimentalCondition",
+        "measured_observation",
+        "ReportedObservation",
         before=named + " ",
     )
     assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
@@ -1390,7 +1390,17 @@ def test_running_page_headers_are_lines_most_pages_print_at_their_edge():
 
     header = "Synthetic Conference on Space Systems"
     evidence = {
-        str(n): {"text": f"{header}\n{n}\nBody text of page {n}.\nMore text."} for n in range(1, 6)
+        str(n): {"text": f"{header}\n{n}\n{body}"}
+        for n, body in enumerate(
+            (
+                "Alpha seals were cut.",
+                "Beta was dried overnight.",
+                "Gamma rings were weighed.",
+                "Delta burned slowly.",
+                "Epsilon did not ignite.",
+            ),
+            start=1,
+        )
     }
     evidence["6"] = {"text": "Synthetic Conference on Space Systems is cited once here."}
     assert running_headers(evidence) == ["synthetic conference on space systems"]
