@@ -697,6 +697,22 @@ def test_a_validity_caveat_typed_as_an_interpretation_is_held(service):
     assert "INTERPRETATION_STATES_A_VALIDITY_CAVEAT" not in reading["reasons"]
 
 
+def test_a_validity_caveat_typed_as_a_configuration_is_held(service):
+    caveat = "These percentages are only valid for an AIT value below the maximum test temperature."
+    record = observation_record(
+        service, caveat, epistemic="experimental_configuration", class_id="ExperimentalCondition"
+    )
+    assert record["status"] == "UNRESOLVED", record["reasons"]
+    assert "CONFIGURATION_STATES_A_VALIDITY_CAVEAT" in record["reasons"]
+    setup = observation_record(
+        service,
+        "The Alpha chamber was purged with oxygen before pressurization.",
+        epistemic="experimental_configuration",
+        class_id="ExperimentalCondition",
+    )
+    assert "CONFIGURATION_STATES_A_VALIDITY_CAVEAT" not in setup["reasons"]
+
+
 def test_a_table_caption_with_a_dash_is_not_an_experiment_family(service):
     caption = "Table 3—Impact data of synthetic compounds"
     series = "Alpha impact series"

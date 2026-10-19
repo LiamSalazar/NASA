@@ -2922,6 +2922,12 @@ def validate_output(output, package, document, semantic):
                         # caveat on the analysis, not an interpretation of it.
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("INTERPRETATION_STATES_A_VALIDITY_CAVEAT")
+                    if item["epistemic"] == "experimental_configuration" and validity_caveat(
+                        item["text"]
+                    ):
+                        # Nor is it how the test was set up.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("CONFIGURATION_STATES_A_VALIDITY_CAVEAT")
                     conflict = (
                         count_conflict(record["statement_location"], evidence)
                         if item["epistemic"] == "measured_observation"
