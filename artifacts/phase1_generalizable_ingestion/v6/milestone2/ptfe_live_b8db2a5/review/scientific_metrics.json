@@ -1,0 +1,73 @@
+{
+  "basis": "Author adjudication of the sixth live PTFE run (b8db2a5: targeted recovery restricted to prose values and tested materials; 17 model calls, 1,857 s, PARTIAL_MODEL_COVERAGE), as produced. Same 36 frozen targets; a target is correct only when its record is SOURCE_SUPPORTED and judged correct, unresolved when it is UNRESOLVED, omitted otherwise. Earlier judgments reused only for identical proposal ids. Not an independent review; not expert gold.",
+  "target_count": 36,
+  "outcomes": {
+    "correct": 17,
+    "inaccessible": 2,
+    "incorrect": 0,
+    "omitted": 9,
+    "unresolved": 8
+  },
+  "by_kind": {
+    "entities": {
+      "correct": 7,
+      "omitted": 1
+    },
+    "quantities": {
+      "correct": 3,
+      "unresolved": 3,
+      "omitted": 4
+    },
+    "statements": {
+      "correct": 7,
+      "unresolved": 5
+    },
+    "relations": {
+      "omitted": 4
+    },
+    "figures": {
+      "inaccessible": 2
+    }
+  },
+  "semantic_recall": {
+    "numerator": 17,
+    "denominator": 34
+  },
+  "semantic_recall_approved_properties_only": {
+    "numerator": 15,
+    "denominator": 34,
+    "correct_quantity_targets_with_staged_property_only": 2
+  },
+  "evidence_retention": {
+    "numerator": 25,
+    "denominator": 34
+  },
+  "reviewed_proposal_precision": {
+    "numerator": 63,
+    "denominator": 69
+  },
+  "reviewed_proposal_precision_by_kind": {
+    "entities": {
+      "numerator": 21,
+      "denominator": 22,
+      "incorrect_critical": 0
+    },
+    "statements": {
+      "numerator": 38,
+      "denominator": 41,
+      "incorrect_critical": 0
+    },
+    "quantities": {
+      "numerator": 4,
+      "denominator": 6,
+      "incorrect_critical": 0
+    }
+  },
+  "incorrect_critical_assignments_in_sample": 0,
+  "unreviewed_supported_proposals": 0,
+  "unresolved_is_confirmed_science": false,
+  "input_sha256": {
+    "artifacts/phase1_generalizable_ingestion/v6/milestone2/ptfe_live_b8db2a5/prepared.json.gz (decompressed)": "1a67b594ae5154a5cb4f9daf87db45c09ed0a56d57b140fd9e41c7a6a674175c",
+    "artifacts/phase1_generalizable_ingestion/v6/milestone2/ptfe_live_b8db2a5/review/source_review.json": "8ad0c84e7b44ec2119377f1c618405ae073ced8248180e025e24d6c6f72df65a"
+  }
+}

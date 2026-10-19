@@ -24,6 +24,22 @@ Targets 9 (1332 cal/gram), 11 (AIT `>425` °C as a bound), 12 and 13 (1500 / 226
 
 The fifth live run (`29aead3`, 17 calls, 1,208 s, `PARTIAL_MODEL_COVERAGE`, 0 approvals) scores 17/34 = 0.50 with precision 69/77 as produced. It typed Algoflon® E2/F7 and Salox-M® as cited, although their Table 3 rows are MSFC tests, and Kel-F® 81 as current, although it is printed only in cited rows. A material whose printed rows contradict its study label is now held in both directions (`8bc0d04`), and a validity caveat typed as a configuration is held (`2a64310`). At `2a64310` the run scores 17/34 with precision 69/72 = 0.96 and 0 critical. The remaining gap is the model's repeated omission of the same targets in every run (entity 02, values 14–18, statement 19, relations 31–33).
 
+## Milestone 2, part 2: targeted recovery of prose values (`v6/milestone2/`)
+
+- **Why recovery returned empty.** In every earlier run the focused quantity recovery was asked about table cells the deterministic binding already covers, and it was offered no material as a subject.
+- **Recovery fix (`b8db2a5`).** The recovery now asks only for prose values. As subjects it offers the batches and the materials that this document's own tables establish as tested here.
+- **Validator fixes (`0294286`, `17b88c2`).**
+  - A prose value is named by its subject's own table column.
+  - A sentence-opening pronoun binds to the one subject of the preceding sentence.
+  - A value following an applied test step is a configuration.
+  - A printed relative difference ("12% lower") is a derived value.
+  - A page-cut sentence is read joined.
+  - A material's row group wins over the material.
+  - A number with a unit is not an entity name.
+- **Sixth live run (`b8db2a5`).** 19/34 at `17b88c2` with precision 66/69, 0 critical.
+- **All reviewed runs at `17b88c2`.** Recall 0.68, 0.65, 0.53, 0.50 and 0.56, precision 0.96–0.99, 0 critical. The other exposed sources are unchanged and the 29 historical negatives show no critical regression.
+- **Still blocking.** Relations and the specimen entity omitted by the model, batch-scoped prose percentages, and holds that strict recall does not count. The next actions are in `v6/milestone2/CHECKPOINT.md`.
+
 # Phase 1 scientific ingestion — v5 closure on `diego/research` (M1, M2 and the §18 matrix)
 
 **PHASE1_COMPLETE = NO.** This section describes what the code on `diego/research` actually does after the v5 closure work, how to run it, what was measured on the exposed sources, and what still blocks acceptance. Receipts are under `artifacts/phase1_generalizable_ingestion/v5/` (`numeric_expression_grammar/` for the numeric grammar, `phase1_closure/` for tables, scope, lineage, coverage, eligibility and the §18 matrix). The v4 record below this section is unchanged.
