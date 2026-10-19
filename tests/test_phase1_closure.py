@@ -53,6 +53,11 @@ def run(service, package, output, document):
     return validate_output(copy.deepcopy(output), package, document, service.semantic)["records"]
 
 
+def proposed(records):
+    """The records of the test's own proposals, without printed-structure candidates."""
+    return [r for r in records if not r.get("candidate_origin")]
+
+
 def quantity(expression, label="Reactions/Tests", unit=None):
     return {
         "subject": "alpha",
@@ -352,7 +357,7 @@ def test_footnote_marker_printed_with_a_row_group_is_not_part_of_the_entity_name
     for label in ("aAlpha", "Alpha"):
         o = Output().model_dump()
         o["entities"] = [entity(p, "alpha", label, "ExperimentFamily", "aAlpha")]
-        outcomes[label] = run(service, p, o, document)[-1]
+        outcomes[label] = proposed(run(service, p, o, document))[-1]
     glued, clean = outcomes["aAlpha"], outcomes["Alpha"]
     assert glued["status"] == clean["status"] == "SOURCE_SUPPORTED"
     # Both runs name the same group; the marker is kept as an annotation.
@@ -369,11 +374,11 @@ def test_a_letter_without_a_legend_stays_in_the_name_and_a_clean_label_is_absent
     document = with_tables(service, p)
     o = Output().model_dump()
     o["entities"] = [entity(p, "alpha", "aAlpha", "ExperimentFamily", "aAlpha")]
-    kept = run(service, p, o, document)[-1]
+    kept = proposed(run(service, p, o, document))[-1]
     assert kept["status"] == "SOURCE_SUPPORTED" and kept["proposal"]["label"] == "aAlpha"
     assert "label_normalization" not in kept
     o["entities"] = [entity(p, "alpha", "Alpha", "ExperimentFamily", "aAlpha")]
-    absent = run(service, p, o, document)[-1]
+    absent = proposed(run(service, p, o, document))[-1]
     assert absent["status"] == "REJECTED"
     assert absent["reasons"] == ["ENTITY_LABEL_ABSENT_FROM_SUPPORT"]
 
@@ -638,8 +643,9 @@ def test_a_normalized_identity_still_travels_with_its_printed_anchor(service):
     o = Output().model_dump()
     o["entities"] = [entity(p, "alpha", "aAlpha", "ExperimentFamily", "aAlpha")]
     window = {"members": document["segments"]}
-    [known] = grounded_entities(o, p, document, service.semantic, window)
-    assert known["label"] == "Alpha" and known["support"] == o["entities"][0]["support"]
+    known = grounded_entities(o, p, document, service.semantic, window)
+    [alpha] = [e for e in known if e["key"] == "alpha"]
+    assert alpha["label"] == "Alpha" and alpha["support"] == o["entities"][0]["support"]
 
 
 def observation_record(
@@ -827,7 +833,7 @@ def test_prose_value_named_by_its_subjects_own_table_column_and_pronoun(service)
     p = submitted(service, IMPACT)
     document = with_tables(service, p, IMPACT_ROWS)
     beta = "The data show that Beta is compatible. It was impacted with 98 Joules at 10,000 psia."
-    record = run(service, p, impact_output(p, "beta", beta), document)[-1]
+    record = proposed(run(service, p, impact_output(p, "beta", beta), document))[-1]
     assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
     assert (
         record["quantity_name_support"]["basis"] == "SAME_SUBJECT_VALUE_UNDER_DOCUMENT_TABLE_COLUMN"
@@ -835,10 +841,12 @@ def test_prose_value_named_by_its_subjects_own_table_column_and_pronoun(service)
     assert record["subject_antecedent"]["basis"] == "PRONOUN_SUBJECT_OF_PRECEDING_SENTENCE"
     # The same printed value for a material without such a row has no name.
     gamma = "Gamma was compared. It was impacted with 98 Joules at 10,000 psia."
-    other = run(service, p, impact_output(p, "gamma", gamma), document)[-1]
+    other = proposed(run(service, p, impact_output(p, "gamma", gamma), document))[-1]
     assert other["status"] != "SOURCE_SUPPORTED"
     # What was applied is not a measured result.
-    measured = run(service, p, impact_output(p, "beta", beta, "reported_quantity"), document)[-1]
+    measured = proposed(
+        run(service, p, impact_output(p, "beta", beta, "reported_quantity"), document)
+    )[-1]
     assert measured["status"] == "REJECTED"
     assert "APPLIED_TEST_INPUT_IS_NOT_A_MEASUREMENT" in measured["reasons"]
 
@@ -887,7 +895,7 @@ def test_a_row_group_of_a_material_is_preferred_over_the_material(service):
         }
     ]
     result = validate_output(copy.deepcopy(o), p, document, service.semantic)
-    record = result["records"][-1]
+    record = proposed(result["records"])[-1]
     assert record["subject"] == result["entities_by_key"]["lot"]["id"], record["reasons"]
     assert record["subject_recovery"]["status"] == "RECOVERED"
 
@@ -929,10 +937,13 @@ def structural_records(service, legend="Synthetic standard lab", condition_study
         with_tables(service, p, CONDITION_ROWS),
         extraction_semantic(service, p),
     )["records"]
+    lox = next(r["entity_id"] for r in records if r["proposal"].get("key") == "lox")
     return {
         r["proposal"]["relation"]: r
         for r in records
-        if r["kind"] == "relations" and r.get("candidate_origin") == "PRINTED_SOURCE_STRUCTURE"
+        if r["kind"] == "relations"
+        and r.get("candidate_origin") == "PRINTED_SOURCE_STRUCTURE"
+        and (r["proposal"]["relation"] != "hasCondition" or r.get("object") == lox)
     }
 
 
@@ -977,3 +988,50 @@ def test_values_and_instruments_are_not_named_conditions_or_interventions(servic
     ]
     for record in run(service, p, o, structure(p, service.root)):
         assert "NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY" not in record["reasons"]
+
+
+SPECIMENS = (
+    "# Synthetic study\nII. Results\nThe Beta samples discussed in this paper were tested.\n"
+    "TABLE 1— Combustion data\nMaterial\nHeat (cal/g)\nStandard Deviation (cal/g)\n"
+    "aBeta\n1332\n13.81\na-\n{legend}\n"
+    "References\n[1] Smith, A. B., “Synthetic paper,” 1999.\n"
+)
+SPECIMEN_ROWS = [
+    ["Material", "Heat (cal/g)", "Standard Deviation (cal/g)"],
+    ["aBeta", "1332", "13.81"],
+]
+
+
+def specimen_records(service, legend):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    p = submitted(service, SPECIMENS.format(legend=legend))
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study"),
+        entity(p, "beta", "Beta", "Material", "The Beta samples discussed in this paper"),
+    ]
+    return validate_output(
+        copy.deepcopy(o), p, with_tables(service, p, SPECIMEN_ROWS), extraction_semantic(service, p)
+    )["records"]
+
+
+def test_printed_specimens_their_study_and_a_dispersion_column_are_validated_candidates(
+    service,
+):
+    records = [
+        r for r in specimen_records(service, "Synthetic standard lab") if r.get("candidate_origin")
+    ]
+    by = {
+        (r["kind"], r["proposal"].get("label") or r["proposal"].get("relation")): r for r in records
+    }
+    assert by[("entities", "Beta samples")]["status"] == "SOURCE_SUPPORTED"
+    member = by[("relations", "belongsToInvestigation")]
+    assert member["status"] == "SOURCE_SUPPORTED", member["reasons"]
+    assert member["context_resolution"]["basis"] == "SUBJECT_DISCUSSED_IN_THIS_DOCUMENT"
+    spread = by[("quantities", "Standard Deviation")]
+    assert spread["status"] == "SOURCE_SUPPORTED", spread["reasons"]
+    assert spread["proposal"]["epistemic"] == "derived_quantity"
+    # Cited rows: the material is not tested here, so no candidate is proposed.
+    cited = [r for r in specimen_records(service, "Data of Smith") if r.get("candidate_origin")]
+    assert not [r for r in cited if r["status"] == "SOURCE_SUPPORTED"]

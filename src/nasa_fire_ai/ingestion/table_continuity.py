@@ -375,7 +375,7 @@ def subject_column_for_value(group_labels, names, expression, unit, document):
             continue
         for cell in row["cells"]:
             header = cell["header"] or ""
-            if not any(
+            if names is not None and not any(
                 header_names(n, header) or header_names(n, _unqualified(header)) for n in names
             ):
                 continue
@@ -435,6 +435,12 @@ def group_rows_printing(group_labels, text, document):
         for cell in row["cells"][1:]
         if wanted and _norm(cell["original_value"]) == wanted
     ]
+
+
+def subject_columns_printing(group_labels, expression, unit, document):
+    """Header names (unit removed) under which the subject's own rows print this value."""
+    rows = subject_column_for_value(group_labels, None, expression, unit, document) or []
+    return sorted({re.sub(r"\s*\([^()]*\)\s*$", "", r["column_header"]).strip() for r in rows})
 
 
 def printed_in_table(document, page, text):

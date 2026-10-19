@@ -2741,6 +2741,199 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
     }
 
 
+def structure_entity_candidates(output, package, document):
+    """Entities the printed source itself names, for the same validator.
+
+    "<material> samples" printed in the text, for a current material this
+    document's own tables show tested here, is that material's specimen
+    collection; the cells of a "... Condition(s)" column in this study's rows of
+    a group already proposed are its conditions. Candidates are never facts.
+    """
+    from nasa_fire_ai.ingestion.table_continuity import (
+        _key,
+        label_variants,
+        reference_authors,
+        row_lineage,
+        table_rows,
+    )
+
+    known = {(normalized(e["label"]), e["class_id"]) for e in output["entities"]}
+    candidates = []
+
+    def add(label, class_id, evidence_id, start, quote):
+        if (normalized(label), class_id) in known:
+            return
+        known.add((normalized(label), class_id))
+        candidates.append(
+            {
+                "key": "structure-" + identity([label, class_id, evidence_id, start])[:16],
+                "label": label,
+                "class_id": class_id,
+                "study": "current",
+                "support": [{"evidence_id": evidence_id, "quote": quote, "start": start}],
+            }
+        )
+
+    for material in output["entities"]:
+        if (
+            material["class_id"] != "Material"
+            or material["study"] != "current"
+            or not material_tested_here(material["label"], document)
+        ):
+            continue
+        name = r"\s+".join(re.escape(w) for w in material["label"].split())
+        for e in package["evidence"]:
+            m = re.search(rf"(?<![\w-])({name})\s+(samples|specimens)\b", e["text"], re.IGNORECASE)
+            if m:
+                begin = max(
+                    [0] + [x.end() for x in re.finditer(r"[.!?]\s", e["text"][: m.start()])]
+                )
+                end = re.search(r"[.!?](?=\s|$)", e["text"][m.end() :])
+                stop = m.end() + end.end() if end else len(e["text"])
+                sentence = e["text"][begin:stop]
+                lead = len(sentence) - len(sentence.lstrip())
+                add(m.group(), "Sample", e["evidence_id"], begin + lead, sentence.strip())
+                break
+    groups = {
+        _key(v)
+        for g in output["entities"]
+        if g["class_id"] in {"Sample", "ExperimentFamily"} and g["study"] == "current"
+        for v in label_variants(g["label"], document)
+    }
+    authors = reference_authors(document)
+    pages = {e["page"]: e for e in package["evidence"]}
+    for row in table_rows(document):
+        if _key(row["group_label"]) not in groups or row_lineage(row, authors):
+            continue
+        for cell in row["cells"][1:]:
+            text = (cell["original_value"] or "").strip()
+            if not text or not re.search(r"\bconditions?\b", cell["header"] or "", re.IGNORECASE):
+                continue
+            page = pages.get(row["page"])
+            position = page["text"].find(text) if page else -1
+            if position >= 0:
+                add(text, "ExperimentalCondition", page["evidence_id"], position, text)
+    return candidates
+
+
+def structure_quantity_candidates(output, package, document):
+    """Quantities the printed structure itself names, for the same validator.
+
+    A value applied in a test step ("It was impacted with 98 Joules") that one
+    subject's own table rows print under a column is proposed with that column's
+    name for each nearby current subject; a standard-deviation column of a
+    subject's current rows is proposed as a derived dispersion statistic. The
+    validator decides subject, name and role exactly as for model proposals.
+    """
+    from nasa_fire_ai.ingestion.statement_integrity import APPLIED_STEP, OUTCOME_CUE
+    from nasa_fire_ai.ingestion.table_continuity import (
+        _key,
+        label_variants,
+        material_row_labels,
+        reference_authors,
+        row_lineage,
+        subject_columns_printing,
+        table_rows,
+    )
+    from nasa_fire_ai.normalization.units import interpret
+
+    subjects = [
+        e
+        for e in output["entities"]
+        if e["study"] == "current"
+        and (
+            e["class_id"] in {"Sample", "ExperimentFamily"}
+            or (e["class_id"] == "Material" and material_tested_here(e["label"], document))
+        )
+    ]
+
+    def rows_of(e):
+        return (
+            material_row_labels(e["label"], document)
+            if e["class_id"] == "Material"
+            else label_variants(e["label"], document)
+        )
+
+    # Only candidates are deduplicated here; a model proposal of the same value
+    # may be rejected, and validated duplicates are consolidated afterwards.
+    proposed = set()
+    candidates = []
+    value = re.compile(r"(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s*([A-Za-z°%][\w°%/-]*)")
+    for e in package["evidence"]:
+        text = e["text"]
+        starts = [0] + [m.end() for m in re.finditer(r"[.!?](?=\s)", text)]
+        for begin, end in zip(starts, starts[1:] + [len(text)]):
+            sentence = text[begin:end]
+            steps = list(APPLIED_STEP.finditer(sentence))
+            if not steps:
+                continue
+            context = starts[starts.index(begin) - 1] if starts.index(begin) > 0 else begin
+            if re.search(r"\n\s*\n", text[context:begin]):
+                context = begin  # never across a paragraph break
+            previous = text[context:begin]
+            for m in value.finditer(sentence, steps[0].end()):
+                if OUTCOME_CUE.search(sentence[steps[0].end() : m.start()]) or not interpret(m[2]):
+                    continue
+                for subject in subjects:
+                    if not (
+                        mentions(subject["label"], sentence) or mentions(subject["label"], previous)
+                    ):
+                        continue
+                    if (subject["key"], m[1], m[2]) in proposed:
+                        continue
+                    for name in subject_columns_printing(rows_of(subject), m[1], m[2], document):
+                        proposed.add((subject["key"], m[1], m[2]))
+                        candidates.append(
+                            {
+                                "subject": subject["key"],
+                                "label": name,
+                                "expression": m[1],
+                                "unit": m[2],
+                                "epistemic": "experimental_configuration",
+                                "support": [
+                                    {
+                                        "evidence_id": e["evidence_id"],
+                                        "quote": text[context:end].strip(),
+                                        "start": context
+                                        + len(text[context:end])
+                                        - len(text[context:end].lstrip()),
+                                    }
+                                ],
+                            }
+                        )
+    authors = reference_authors(document)
+    pages = {e["page"]: e for e in package["evidence"]}
+    for subject in subjects:
+        keys = {_key(v) for v in rows_of(subject)}
+        for row in table_rows(document):
+            if _key(row["group_label"]) not in keys or row_lineage(row, authors):
+                continue
+            for cell in row["cells"][1:]:
+                header = cell["header"] or ""
+                if not re.search(r"\bstandard\s+deviations?\b", header, re.IGNORECASE):
+                    continue
+                unit = re.search(r"\(([^()]*)\)\s*$", header)
+                number = (cell["original_value"] or "").strip()
+                page = pages.get(row["page"])
+                position = page["text"].find(number) if page and number else -1
+                if position < 0 or (subject["key"], number, unit and unit[1]) in proposed:
+                    continue
+                proposed.add((subject["key"], number, unit and unit[1]))
+                candidates.append(
+                    {
+                        "subject": subject["key"],
+                        "label": re.sub(r"\s*\([^()]*\)\s*$", "", header).strip(),
+                        "expression": number,
+                        "unit": unit[1] if unit else None,
+                        "epistemic": "derived_quantity",
+                        "support": [
+                            {"evidence_id": page["evidence_id"], "quote": number, "start": position}
+                        ],
+                    }
+                )
+    return candidates
+
+
 def structure_relation_candidates(output, document):
     """Relations the printed structure itself proposes, for the same validator.
 
@@ -2761,6 +2954,20 @@ def structure_relation_candidates(output, document):
                 for form in label_variants(group["label"], document)
             ):
                 relation = "madeOf"
+            elif (
+                other["class_id"] == "Investigation"
+                and other["study"] == "current"
+                and group["study"] == "current"
+                and any(
+                    re.search(
+                        re.escape(normalized(group["label"]))
+                        + r"\s+(?:discussed|described|tested|evaluated|studied)\s+in\s+this\s+(?:paper|study|report|work|investigation)\b",
+                        normalized(s["quote"]),
+                    )
+                    for s in group["support"]
+                )
+            ):
+                relation = "belongsToInvestigation"
             elif (
                 other["class_id"] == "ExperimentalCondition"
                 and other["study"] == group["study"]
@@ -2801,6 +3008,9 @@ def validate_output(output, package, document, semantic):
         "\n".join(e.get("text", "") for e in package["evidence"])
     )
     entities, records, mappings = {}, [], []
+    structural_entities = structure_entity_candidates(output, package, document)
+    if structural_entities:
+        output = {**output, "entities": output["entities"] + structural_entities}
     key_signatures = {}
     for item in output["entities"]:
         signature = identity(
@@ -2816,8 +3026,10 @@ def validate_output(output, package, document, semantic):
         key_signatures.setdefault(item["key"], set()).add(signature)
     ambiguous_keys = {k for k, signatures in key_signatures.items() if len(signatures) > 1}
     structural = structure_relation_candidates(output, document)
+    structural_quantities = structure_quantity_candidates(output, package, document)
     for kind in ("entities", "statements", "relations", "quantities", "concepts"):
-        for original in output[kind] + (structural if kind == "relations" else []):
+        extra = {"relations": structural, "quantities": structural_quantities}.get(kind, [])
+        for original in output[kind] + extra:
             item = copy.deepcopy(original)
             record = {
                 "id": "proposal-" + identity([CONTRACT, kind, item])[:24],
@@ -3598,6 +3810,34 @@ def validate_output(output, package, document, semantic):
                                 "rows": rows,
                             }
                             record["context_resolution"] = binding
+                    if (
+                        not binding
+                        and item["relation"] == "belongsToInvestigation"
+                        and entities[item["object"]]["class_id"] == "Investigation"
+                        and entities[item["subject"]]["study"] == "current"
+                        and entities[item["object"]]["study"] == "current"
+                        and normalized(entities[item["object"]]["label"])
+                        == normalized(package.get("title", ""))
+                    ):
+                        deixis = [
+                            sp
+                            for sp in spans
+                            if re.search(
+                                re.escape(normalized(entities[item["subject"]]["label"]))
+                                + r"\s+(?:discussed|described|tested|evaluated|studied)\s+in\s+this\s+(?:paper|study|report|work|investigation)\b",
+                                normalized(sp["quote"]),
+                            )
+                        ]
+                        if deixis:
+                            # "the samples discussed in this paper": this document's own study.
+                            binding = {
+                                "status": "SUPPORTED",
+                                "basis": "SUBJECT_DISCUSSED_IN_THIS_DOCUMENT",
+                                "support": [
+                                    {k: deixis[0][k] for k in ("evidence_id", "quote", "start")}
+                                ],
+                            }
+                            record["context_resolution"] = binding
                     if item["relation"] == "hasGravityCondition" and not binding:
                         from nasa_fire_ai.ingestion.document_context import gravity_binding
 
@@ -3616,7 +3856,11 @@ def validate_output(output, package, document, semantic):
                         # The material is named inside the subject's own label.
                         binding
                         and binding.get("basis")
-                        in {"SUBJECT_LABEL_NAMES_MATERIAL", "SUBJECT_TABLE_ROWS_PRINT_CONDITION"}
+                        in {
+                            "SUBJECT_LABEL_NAMES_MATERIAL",
+                            "SUBJECT_TABLE_ROWS_PRINT_CONDITION",
+                            "SUBJECT_DISCUSSED_IN_THIS_DOCUMENT",
+                        }
                         and applicable(item["subject"], spans, entities, document)
                         and entities[item["object"]].get("validation_status") == "SOURCE_SUPPORTED"
                     ):
@@ -3730,7 +3974,9 @@ def validate_output(output, package, document, semantic):
                     entities.pop(item["key"])
                 else:
                     entities[item["key"]]["validation_status"] = record["status"]
-            if kind == "relations" and any(original is c for c in structural):
+            if any(original is c for c in extra) or (
+                kind == "entities" and any(original is c for c in structural_entities)
+            ):
                 record["candidate_origin"] = "PRINTED_SOURCE_STRUCTURE"
             records.append(record)
     # A repaired, explicitly scoped group supersedes an unresolved whole-study
