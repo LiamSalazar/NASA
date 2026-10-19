@@ -2799,6 +2799,12 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
             raise
         result = None
     source_ids = {s["source_id"] for s in original[2]}
+    passage = " ".join(s.get("quote", "") for s in original[2])
+    # A passage that names its own subject ("Gamma was compared. It was
+    # impacted with 98 Joules") never gives the value to an entity it does not name.
+    names_proposed = proposed in entities and mentions(
+        re.split(r"\s*\(", entities[proposed]["label"])[0], passage
+    )
     recovered = []
     for key, entity in entities.items():
         if (
@@ -2809,6 +2815,7 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
             or not (quantity_scope_eligible(entity, semantic) or entity["class_id"] == "Material")
             # A condition is the setting of a test, not the subject of its values.
             or has_class(entity["class_id"], "ExperimentalCondition", semantic)
+            or (names_proposed and not mentions(re.split(r"\s*\(", entity["label"])[0], passage))
         ):
             continue
         try:
@@ -2992,14 +2999,45 @@ def structure_entity_candidates(output, package, document):
                 lead = len(sentence) - len(sentence.lstrip())
                 add(m.group(), "Sample", e["evidence_id"], begin + lead, sentence.strip())
                 break
+    authors = reference_authors(document)
+    pages = {e["page"]: e for e in package["evidence"]}
+    tested = [
+        m["label"]
+        for m in output["entities"]
+        if m["class_id"] == "Material"
+        and m["study"] == "current"
+        and material_tested_here(m["label"], document)
+    ]
+    for row in table_rows(document):
+        # "Brass-filled PTFE (Batch #1)" printed as a current row group of a
+        # material tested here names a group of its specimens.
+        label = row["group_label"]
+        if not label or row_lineage(row, authors):
+            continue
+        named = [
+            m
+            for m in tested
+            if (q := subject_label_names_material(label, m))
+            and normalized(label) != normalized(m)
+            and "(" in label
+            and q["qualifier"]
+        ]
+        page = pages.get(row["page"])
+        printed = row["group_label_original"] or label
+        position = page["text"].find(printed) if page and named else -1
+        # A group the model already named as a group keeps its own record.
+        if position >= 0 and not any(
+            e["class_id"] in {"Sample", "ExperimentFamily"} and _key(v) == _key(label)
+            for e in output["entities"] + candidates
+            for v in label_variants(e["label"], document)
+        ):
+            add(re.sub(r"\s+", " ", label), "Sample", page["evidence_id"], position, printed)
     groups = {
         _key(v)
-        for g in output["entities"]
+        for g in output["entities"] + candidates
         if g["class_id"] in {"Sample", "ExperimentFamily"} and g["study"] == "current"
         for v in label_variants(g["label"], document)
     }
-    authors = reference_authors(document)
-    pages = {e["page"]: e for e in package["evidence"]}
     for row in table_rows(document):
         if _key(row["group_label"]) not in groups or row_lineage(row, authors):
             continue
@@ -3468,6 +3506,29 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED")
+                    if item["class_id"] == "Sample" and re.fullmatch(
+                        r"(?:the\s+|a\s+|an\s+)?(?:(?:non-?)?(?:reacting|reactive|reacted|burned|burnt"
+                        r"|unburned|circular|round|square|tested|untested|pre-?test|post-?test|typical"
+                        r"|single|individual|other|another|same|first|second|third|last|new|previous)\s+)"
+                        r"{1,2}(?:samples?|specimens?|coupons?)",
+                        item["label"].strip(),
+                    ):
+                        # "reacting sample", "circular sample": a description of
+                        # some specimen, not a specimen or group the source names.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("GENERIC_DESCRIPTION_IS_NOT_A_SPECIMEN_IDENTITY")
+                    from nasa_fire_ai.ingestion.study_attribution import cited_attribution_nearby
+
+                    if (
+                        item.get("study") == "current"
+                        and has_class(item["class_id"], "ExperimentalCondition", semantic)
+                        and spans
+                        and all(cited_attribution_nearby([s], document) for s in spans)
+                    ):
+                        # "Their data indicates ... at ambient pressure": a condition
+                        # of the cited work, not of this study.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("CONDITION_NAMED_ONLY_IN_CITED_WORK")
                     if item["class_id"] == "ExperimentalCondition" and re.search(
                         r"(?:\bmechanical\s+impact|\bimpact\s+test\w*|\bignition\s+temperature"
                         r"(?:\s*\(\s*AIT\s*\))?|\bheat\s+of\s+combustion|\btests?|\btesting|\btesters?)\s*$",
@@ -3912,6 +3973,17 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         # impacted with 98 J" are what was done, not what was observed.
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("OBSERVATION_DESCRIBES_A_PROCEDURE")
+                    if item["epistemic"] == "measured_observation" and re.search(
+                        r"\b(?:calorimeter|instrument|gauge|meter|sensor|transducer|thermocouple"
+                        r"|data\s+system|display)s?\s+(?:displayed|displays|recorded|records"
+                        r"|reported|reports|indicated|indicates|reads|read\s+out)\s+the\b",
+                        item["text"],
+                        re.IGNORECASE,
+                    ):
+                        # "the calorimeter displayed the gross heat content": how
+                        # a result is read, not a result read.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("OBSERVATION_DESCRIBES_A_PROCEDURE")
                     if item["epistemic"] == "measured_observation":
                         # A recording or acceptance rule, a validity caveat and a
                         # pointer to where results are printed are not observations.
@@ -3942,7 +4014,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         r"|appear\w*|seem\w*|indicat\w*|determin\w*|believ\w*|expect\w*|assum\w*"
                         r"|estimat\w*|presum\w*|impl(?:y|ies|ied)|due\s+to|because|therefore|thus"
                         r"|hence|attribut\w*|explain\w*|concern\w*|would|should|if|unless|whether"
-                        r"|thought|predict\w*|caus\w*)\b",
+                        r"|thought|predict\w*|caus\w*|so|approximat\w*)\b",
                         item["text"],
                         re.IGNORECASE,
                     ):

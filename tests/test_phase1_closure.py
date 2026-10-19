@@ -1405,3 +1405,51 @@ def test_running_page_headers_are_lines_most_pages_print_at_their_edge():
     evidence["6"] = {"text": "Synthetic Conference on Space Systems is cited once here."}
     assert running_headers(evidence) == ["synthetic conference on space systems"]
     assert running_headers({"1": {"text": f"{header}\nBody."}}) == []
+
+
+def test_generic_specimen_descriptions_and_instrument_readouts_are_held(service):
+    text = "The reacting sample burned. Alpha (Lot 1) samples passed."
+    p = submitted(service, "# Synthetic study\nII. Results\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "g", "reacting sample", "Sample", "The reacting sample burned."),
+        entity(p, "n", "Alpha (Lot 1) samples", "Sample", "Alpha (Lot 1) samples passed."),
+    ]
+    generic, named = run(service, p, o, structure(p, service.root))
+    assert "GENERIC_DESCRIPTION_IS_NOT_A_SPECIMEN_IDENTITY" in generic["reasons"]
+    assert "GENERIC_DESCRIPTION_IS_NOT_A_SPECIMEN_IDENTITY" not in named["reasons"]
+    readout = observation_record(
+        service, "After the test, the calorimeter displayed the gross heat content of Alpha."
+    )
+    assert "OBSERVATION_DESCRIBES_A_PROCEDURE" in readout["reasons"]
+
+
+def test_an_inference_with_so_is_a_tentative_interpretation(service):
+    record = observation_record(
+        service,
+        "The flame base is constant, so this can be approximated as flame growth rate.",
+        epistemic="tentative_interpretation",
+        class_id="NASAConclusion",
+    )
+    assert "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE" not in record["reasons"]
+
+
+def test_a_printed_batch_row_group_of_a_tested_material_is_a_specimen_candidate(service):
+    from nasa_fire_ai.ingestion.document_extraction import structure_entity_candidates
+
+    rows = [
+        ["Material", "Energy (J)", "Condition", "Reactions/Tests"],
+        ["Alpha (Batch #1)", "10", "Wet", "0/20"],
+        ["", "10", "Dry", "2/20"],
+    ]
+    text = (
+        "# Synthetic study\nII. Results\nTABLE 1— Synthetic impact data\n"
+        + "\n".join(v for row in rows for v in row)
+        + "\n"
+    )
+    p = submitted(service, text)
+    document = with_tables(service, p, rows)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "alpha", "Alpha", "Material", "Alpha (Batch #1)")]
+    labels = {c["label"]: c["class_id"] for c in structure_entity_candidates(o, p, document)}
+    assert labels.get("Alpha (Batch #1)") == "Sample", labels
