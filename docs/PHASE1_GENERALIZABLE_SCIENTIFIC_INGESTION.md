@@ -40,6 +40,15 @@ The fifth live run (`29aead3`, 17 calls, 1,208 s, `PARTIAL_MODEL_COVERAGE`, 0 ap
 - **All reviewed runs at `17b88c2`.** Recall 0.68, 0.65, 0.53, 0.50 and 0.56, precision 0.96–0.99, 0 critical. The other exposed sources are unchanged and the 29 historical negatives show no critical regression.
 - **Still blocking.** Relations and the specimen entity omitted by the model, batch-scoped prose percentages, and holds that strict recall does not count. The next actions are in `v6/milestone2/CHECKPOINT.md`.
 
+## Milestone 3: relations from the printed structure and correct holds (`v6/milestone3/`)
+
+- **Relations from the printed structure (`05e689e`).** The validator now receives relation candidates taken from the printed table structure. A group printed as "<material> (qualifier)" is `madeOf` that material. A group gets `hasCondition` when its own rows, with no cited lineage, print that condition, and only for a condition of the same study.
+- **Correct holds in the scorer (`a798003`).** The scorer lists reviewer-assessed correct holds (`correctly_held_targets`, never recall) apart from strict recall.
+- **Type holds (`aff5039`, `2adc6e8`).** Instruments and test methods typed as interventions are held, as are labels that are only a value.
+- **Seventh live run (`a798003`, 12 calls).** For the first time it gets the p4 specimen entity and batch #1 under LOX/GOX right. Its recall is 18/34 at precision 64/67, 0 critical.
+- **All reviewed runs at `2adc6e8`.** Recall 0.68, 0.71, 0.56, 0.50, 0.62 and 0.53; precision 0.96–0.99; 0 critical; the other exposed sources are unchanged and the 29 historical negatives show no critical regression.
+- **Still blocking.** Every accessible target except 18, 31 and 33 is correct in some run; recall per run is held back by run-to-run variance and by the 1,800 s deadline cutting the recovery stages. The next actions are in `v6/milestone3/CHECKPOINT.md`.
+
 # Phase 1 scientific ingestion — v5 closure on `diego/research` (M1, M2 and the §18 matrix)
 
 **PHASE1_COMPLETE = NO.** This section describes what the code on `diego/research` actually does after the v5 closure work, how to run it, what was measured on the exposed sources, and what still blocks acceptance. Receipts are under `artifacts/phase1_generalizable_ingestion/v5/` (`numeric_expression_grammar/` for the numeric grammar, `phase1_closure/` for tables, scope, lineage, coverage, eligibility and the §18 matrix). The v4 record below this section is unchanged.

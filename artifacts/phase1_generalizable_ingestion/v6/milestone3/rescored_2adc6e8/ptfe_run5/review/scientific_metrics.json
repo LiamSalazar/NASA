@@ -1,0 +1,88 @@
+{
+  "basis": "Re-scored at 05e689e (structure relation candidates) from the review below; targets 32 and 34 re-adjudicated from records, target 25 hold assessed. Earlier basis: Re-scored at 17b88c2 from the review below; only listed targets re-adjudicated. Earlier basis: Author adjudication of the fifth live PTFE run (29aead3, 17 model calls, 1,208 s, PARTIAL_MODEL_COVERAGE), replayed offline at 2a64310. Same 36 frozen targets. Precision covers every non-duplicate SOURCE_SUPPORTED record; a judgment from an earlier v5/v6 review is reused only for an identical proposal id. Not an independent review; not expert gold.",
+  "target_count": 36,
+  "outcomes": {
+    "correct": 17,
+    "inaccessible": 2,
+    "incorrect": 0,
+    "omitted": 10,
+    "unresolved": 7
+  },
+  "by_kind": {
+    "entities": {
+      "correct": 5,
+      "omitted": 1,
+      "unresolved": 2
+    },
+    "quantities": {
+      "correct": 4,
+      "unresolved": 1,
+      "omitted": 5
+    },
+    "statements": {
+      "omitted": 1,
+      "correct": 7,
+      "unresolved": 4
+    },
+    "relations": {
+      "omitted": 3,
+      "correct": 1
+    },
+    "figures": {
+      "inaccessible": 2
+    }
+  },
+  "semantic_recall": {
+    "numerator": 17,
+    "denominator": 34
+  },
+  "semantic_recall_approved_properties_only": {
+    "numerator": 15,
+    "denominator": 34,
+    "correct_quantity_targets_with_staged_property_only": 2
+  },
+  "correctly_held_targets": {
+    "count": 1,
+    "target_ids": [
+      "statements-25"
+    ],
+    "counts_as_recall": false
+  },
+  "evidence_retention": {
+    "numerator": 24,
+    "denominator": 34
+  },
+  "reviewed_proposal_precision": {
+    "numerator": 69,
+    "denominator": 72
+  },
+  "reviewed_proposal_precision_by_kind": {
+    "entities": {
+      "numerator": 13,
+      "denominator": 13,
+      "incorrect_critical": 0
+    },
+    "statements": {
+      "numerator": 32,
+      "denominator": 35,
+      "incorrect_critical": 0
+    },
+    "relations": {
+      "numerator": 4,
+      "denominator": 4,
+      "incorrect_critical": 0
+    },
+    "quantities": {
+      "numerator": 20,
+      "denominator": 20,
+      "incorrect_critical": 0
+    }
+  },
+  "incorrect_critical_assignments_in_sample": 0,
+  "unreviewed_supported_proposals": 0,
+  "unresolved_is_confirmed_science": false,
+  "input_sha256": {
+    "artifacts/phase1_generalizable_ingestion/v6/milestone3/rescored_2adc6e8/ptfe_run5/prepared.json.gz (decompressed)": "4b150794bc941d73fef67b1c8897fc651d1c273b5490b2f6bbe3b2515926b866",
+    "artifacts/phase1_generalizable_ingestion/v6/milestone3/rescored_2adc6e8/ptfe_run5/review/source_review.json": "c4c9d306fe2af70c0d331680672b530914cf35fe421c078cb31ba4bcbe14039f"
+  }
+}
