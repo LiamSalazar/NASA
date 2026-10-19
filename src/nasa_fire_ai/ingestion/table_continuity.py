@@ -352,6 +352,18 @@ def label_variants(label, document):
     return [label]
 
 
+def printed_in_table(document, page, text):
+    """Whether a detected table on that page prints this exact text in one cell."""
+    wanted = _norm(text)
+    return bool(wanted) and any(
+        wanted in _norm(cell)
+        for table in document.get("detected_tables", [])
+        if table.get("physical_pdf_page") == page
+        for row in table.get("cells", [])
+        for cell in row
+    )
+
+
 def material_row_labels(label, document):
     """Row-group labels printed for one named material, including a group that
     only adds a parenthetical to the name ("Kel-F® 81" → "Kel-F®81 (PCTFE)")."""

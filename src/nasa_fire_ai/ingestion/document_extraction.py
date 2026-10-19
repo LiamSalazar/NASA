@@ -236,8 +236,10 @@ def stage_prompt(stage, focus=None):
             "not the value or unit. For synthetic text 'specimen width was 7 mm', label is 'width', "
             "Use a literal contiguous variable phrase, never a synonym or an expanded name. "
             "never '7 mm'. Read the named source_anchors to find the variable and experimental "
-            "subject. A material concept, a gravity category or a planned experiment cannot be "
-            "used as the executed experimental scope. If no variable or subject is justified, "
+            "subject. A gravity category or a planned experiment cannot be used as the executed "
+            "experimental scope; a material key is offered only when this document's own tables "
+            "show it tested here, for values of that tested material. If no variable or subject "
+            "is justified, "
             "omit that candidate. Never invent an expression or attribution."
         )
     elif focus == "statements":
@@ -1474,6 +1476,24 @@ def has_class(class_id, expected, semantic):
     return False
 
 
+def tested_material_entity(entity, document):
+    """A current, source-supported material this document shows tested here."""
+    return (
+        entity["class_id"] == "Material"
+        and entity.get("study") == "current"
+        and entity.get("validation_status") == "SOURCE_SUPPORTED"
+        and material_tested_here(entity["label"], document)
+    )
+
+
+def material_tested_here(label, document):
+    """Whether this document prints table rows for the material and none is cited."""
+    from nasa_fire_ai.ingestion.table_continuity import group_lineage, material_row_labels
+
+    lineage = group_lineage(material_row_labels(label, document), document)
+    return bool(lineage and lineage["status"] == "NOT_CONTRADICTED")
+
+
 def quantity_scope_eligible(entity, semantic):
     if entity["class_id"] in {"Investigation", "ExperimentFamily", "ExperimentalRun", "Sample"}:
         return True
@@ -1999,10 +2019,13 @@ def validate_quantity_subject(
     )
     if table_binding:
         record["table_row_binding"] = table_binding
+    tested_material = (
+        not scope_eligible and not table_binding and tested_material_entity(subject, document)
+    )
     if (
         subject_checks
         and not applicable(item["subject"], spans, entities, document)
-        and scope_eligible
+        and (scope_eligible or tested_material)
         and not alias_review
         and not table_binding
     ):
@@ -2019,6 +2042,14 @@ def validate_quantity_subject(
         # is the material as tested here, never a general property of the material.
         record["scope_context"] = {
             "basis": "CURRENT_STUDY_TABLE_ROW_OF_NAMED_MATERIAL",
+            "experimental_scope": "DOCUMENT_INVESTIGATION",
+            "general_material_property": False,
+        }
+    elif tested_material:
+        # Prose about a material this document's own table rows establish as
+        # tested here (none cited): the material as tested, never in general.
+        record["scope_context"] = {
+            "basis": "MATERIAL_ESTABLISHED_AS_TESTED_IN_THIS_STUDY",
             "experimental_scope": "DOCUMENT_INVESTIGATION",
             "general_material_property": False,
         }
@@ -3971,8 +4002,15 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 for q in a["quantity_inventory"]
                 if q["state"] == "NOT_STRUCTURED"
             ]
+            from nasa_fire_ai.ingestion.table_continuity import printed_in_table
+
+            # Table cells are bound to their rows deterministically; recovery asks
+            # only for the prose values a table does not already hold.
             candidates = [
-                q for q in request["unstructured_quantity_candidates"] if q["source_anchors"]
+                q
+                for q in request["unstructured_quantity_candidates"]
+                if q["source_anchors"]
+                and not printed_in_table(document, q["page"], q["original_expression_with_unit"])
             ]
             for q in candidates:
                 q["source_anchors"] = [
@@ -4093,7 +4131,10 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 ref
                 for ref, key in wire_entities.items()
                 if key in checked_entities
-                and quantity_scope_eligible(checked_entities[key], semantic)
+                and (
+                    quantity_scope_eligible(checked_entities[key], semantic)
+                    or tested_material_entity(checked_entities[key], document)
+                )
             ]
             if eligible_keys:
                 schema["$defs"]["Quantity"]["properties"]["subject"]["enum"] = eligible_keys

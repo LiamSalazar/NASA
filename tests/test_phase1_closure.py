@@ -725,3 +725,57 @@ def test_a_table_caption_with_a_dash_is_not_an_experiment_family(service):
     o["entities"] = [entity(p, "fam", series, "ExperimentFamily", series)]
     record = run(service, p, o, structure(p, service.root))[-1]
     assert "CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY" not in record["reasons"]
+
+
+TESTED = (
+    "# Synthetic study\nII. Results\nTABLE 1— Comparison data\n"
+    "Material\nEnergy (J)\nReactions/Tests\naBeta\n10\n0/20\na-\n{legend}\n"
+    "Beta seals were compared. The Beta heat of combustion was 1332 cal/g.\n"
+    "References\n[1] Smith, A. B., “Synthetic paper,” 1999.\n"
+)
+
+
+def material_quantity_record(service, legend):
+    sentence = "The Beta heat of combustion was 1332 cal/g."
+    p = submitted(service, TESTED.format(legend=legend))
+    rows = [["Material", "Energy (J)", "Reactions/Tests"], ["aBeta", "10", "0/20"]]
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "beta", "Beta", "Material", "Beta seals were compared.")]
+    o["quantities"] = [
+        {
+            "subject": "beta",
+            "label": "heat of combustion",
+            "expression": "1332",
+            "unit": "cal/g",
+            "epistemic": "reported_quantity",
+            "support": support(p, sentence),
+        }
+    ]
+    return run(service, p, o, with_tables(service, p, rows))[-1]
+
+
+def test_prose_value_of_a_material_this_document_tests_is_scoped_to_this_study(service):
+    record = material_quantity_record(service, "Synthetic standard lab")
+    assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
+    assert record["scope_context"] == {
+        "basis": "MATERIAL_ESTABLISHED_AS_TESTED_IN_THIS_STUDY",
+        "experimental_scope": "DOCUMENT_INVESTIGATION",
+        "general_material_property": False,
+    }
+    # Never projected as a general material property.
+    assert record["native_scope_compatible"] is False
+    # A material printed only in cited rows is not established as tested here.
+    cited = material_quantity_record(service, "Data of Smith")
+    assert cited["status"] == "UNRESOLVED"
+    assert "QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE_NOT_MATERIAL_CONCEPT" in cited["reasons"]
+
+
+def test_recovery_skips_values_already_printed_in_a_table_cell(service):
+    from nasa_fire_ai.ingestion.table_continuity import printed_in_table
+
+    p = submitted(service, TEXT)
+    document = with_tables(service, p)
+    page = p["evidence"][0]["page"]
+    assert printed_in_table(document, page, "2/20")
+    assert not printed_in_table(document, page, "3/20")
+    assert not printed_in_table(document, page + 1, "2/20")
