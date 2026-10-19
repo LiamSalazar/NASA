@@ -69,7 +69,6 @@ TABLE = {
     "kj/g": (1000000, "J/kg", "specific_energy"),
     "kj/kg": (1000, "J/kg", "specific_energy"),
     "mj/kg": (1000000, "J/kg", "specific_energy"),
-    "g": (0.001, "kg", "mass"),
     "kg": (1, "kg", "mass"),
 }
 # Affine scales: canonical = value * factor + offset (kelvin).

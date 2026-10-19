@@ -2634,3 +2634,97 @@ def test_value_absent_from_source_is_rejected_even_without_a_subject(service):
     ]
     r = validate(service, p, o)["records"][-1]
     assert r["status"] == "REJECTED"
+
+
+@pytest.mark.parametrize(
+    ("text", "label", "expression", "unit", "supported"),
+    [
+        (
+            "Run A1 was tested. A1 flame spread rate = 1.5 mm/s.",
+            "flame spread rate",
+            "1.5",
+            "mm/s",
+            True,
+        ),
+        (
+            "Run A1 was tested. The A1 total spread of ~6 cm was seen.",
+            "total spread",
+            "~6",
+            "cm",
+            True,
+        ),
+        # The name follows the value: it names an object or a criterion, not this value.
+        (
+            "Run A1 used a 5 s limit rather than the 15 cm burn limit.",
+            "burn limit",
+            "15",
+            "cm",
+            False,
+        ),
+        ("Run A1 was tested. Figure 7: 0.8 mm A1 sample, 8.2 psia.", "sample", "0.8", "mm", False),
+        (
+            "Run A1 used a chamber that could provide operation at 57 kPa.",
+            "chamber",
+            "57",
+            "kPa",
+            False,
+        ),
+        # Values of a change verb are changes, not the named states.
+        (
+            "Run A1 was tested. A1 length and width decrease slowly (~1.2 cm and ~0.4 cm respectively).",
+            "length",
+            "~1.2",
+            "cm",
+            False,
+        ),
+        (
+            "Run A1 was tested. A1 flame width and length are observed (~3.2 cm and ~1.5 cm respectively).",
+            "length",
+            "~1.5",
+            "cm",
+            True,
+        ),
+    ],
+)
+def test_staged_property_requires_printed_name_value_syntax(
+    service, text, label, expression, unit, supported
+):
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "run", "A1", "ExperimentalRun", text)]
+    o["quantities"] = [
+        {
+            "subject": "run",
+            "label": label,
+            "expression": expression,
+            "unit": unit,
+            "epistemic": "reported_quantity",
+            "support": support(p, text),
+        }
+    ]
+    r = validate(service, p, o)["records"][-1]
+    assert r["status"] != "REJECTED", r["reasons"]
+    assert (r["status"] == "SOURCE_SUPPORTED") is supported, r["reasons"]
+    assert r["mapping"]["property_id"] is None
+    if not supported:
+        assert "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED" in r["reasons"]
+        assert r["mapping"]["property_proposal"]["activation"] == "NONE"
+
+
+def test_gravity_level_written_as_value_is_not_a_quantity_name(service):
+    text = "Run A1 was tested. The 1-g experiment ended sooner."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "run", "A1", "ExperimentalRun", text)]
+    o["quantities"] = [
+        {
+            "subject": "run",
+            "label": "1-g",
+            "expression": "1",
+            "unit": "g",
+            "epistemic": "experimental_configuration",
+            "support": support(p, text),
+        }
+    ]
+    r = validate(service, p, o)["records"][-1]
+    assert r["status"] == "REJECTED"

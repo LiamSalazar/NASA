@@ -1647,6 +1647,45 @@ def value_sentences(value_spans, evidence):
     return result
 
 
+NAME_VALUE_LINK = re.compile(
+    r"\s*(?:\([^()]*\)\s*)?(?:=|:|\b(?:was|were|is|are|of|averaged|reached|totall?ed|equall?ed)\b"
+    r"(?:\s+(?:approximately|about|roughly|nearly|around|only))?)\s*[~≈]?\s*$",
+    re.IGNORECASE,
+)
+
+
+def staged_name_syntax(label, record, evidence):
+    """How the printed text makes the label the name of the value, if it does."""
+    basis = record.get("quantity_name_support", {}).get("basis")
+    if basis in {"ORIGINAL_TABLE_COLUMN_HEADER", "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE"}:
+        return basis
+    if basis == "EXPLICIT_SOURCE_TEMPORAL_COORDINATE":
+        return None  # a time coordinate of an event, not a property of a subject
+    name = r"(?<![\w-])" + r"\s+".join(re.escape(w) for w in label.split()) + r"(?![\w-])"
+    for value in record.get("quantity_value_spans", []):
+        text = evidence[value["evidence_id"]]["text"]
+        before = text[max(0, value["start"] - 200) : value["start"]]
+        for match in re.finditer(name, before, re.IGNORECASE):
+            if NAME_VALUE_LINK.fullmatch(before[match.end() :]):
+                return "PRINTED_NAME_LINKED_TO_VALUE"
+        sentence = value_sentences([value], evidence)[0]
+        prefix = sentence[: sentence.find(value["quote"])]
+        named = list(re.finditer(name, prefix, re.IGNORECASE))
+        if not (re.search(r"\brespectively\b", sentence, re.IGNORECASE) and named):
+            continue
+        # "Both length and width decrease (1.2 cm and 0.4 cm respectively)":
+        # the values are the changes, so a bare "length" does not name them.
+        change = (
+            r"\b(?:decreas|increas|drop|grow|grew|shrink|shrank|ris|rose|fall|fell|declin|reduc)\w*"
+        )
+        if re.search(change, prefix[named[-1].end() :], re.IGNORECASE) and not re.search(
+            change, label, re.IGNORECASE
+        ):
+            continue
+        return "ORDERED_PARALLEL_NAMES_RESPECTIVELY"
+    return None
+
+
 # English state modifiers that name when or where the same physical quantity was
 # read ("initial pressure"), never a different quantity ("vapor pressure").
 STATE_QUALIFIERS = frozenset(
@@ -2062,6 +2101,7 @@ def validate_quantity_subject(
         normalized(item["unit"] or ""),
         normalized(item["expression"] + " " + (item["unit"] or "")),
         normalized(item["expression"] + (item["unit"] or "")),
+        normalized(item["expression"] + "-" + (item["unit"] or "")),
     }:
         raise ValueError("QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME")
     status, prop = resolve_source_property(semantic, item["label"], item["unit"])
@@ -2255,6 +2295,14 @@ def validate_quantity_subject(
                 property_proposal=property_proposal(item, subject, spans, semantic),
             )
             record["semantic_property_status"] = "STAGED_PROPOSAL_NOT_APPROVED"
+            # Without an approved contract, the printed syntax alone must make the
+            # label the name of this value; otherwise it may name an object.
+            naming = staged_name_syntax(item["label"], record, evidence)
+            if naming:
+                record["mapping"]["name_value_syntax"] = naming
+            else:
+                record["status"] = "UNRESOLVED"
+                record["reasons"].append("QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED")
         else:
             record["status"] = "UNRESOLVED"
             record["reasons"].append("QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED")
