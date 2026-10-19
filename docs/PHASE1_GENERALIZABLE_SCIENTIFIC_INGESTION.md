@@ -1,3 +1,24 @@
+# Phase 1 scientific ingestion — v6 milestone 4 on `diego/research` (recall from the printed structure)
+
+**PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone4/`.
+
+- **Starting point.** A per-target table across the reviewed PTFE runs showed that the most often missed targets are printed deterministically by the document.
+- **What the pipeline now takes from the print.** These are proposed as printed-structure candidates and validated like model proposals:
+  - the specimen collection;
+  - the conditions printed in its rows;
+  - a value applied in a test step that the subject's own table prints under a column;
+  - a standard-deviation column;
+  - a sample "discussed in this paper".
+- **Recovery rules.**
+  - A statement held only for a role the validator detects otherwise is revalidated with that role.
+  - A setting-versus-result conflict on a cell is settled by its column's state word.
+  - A printed group of a material proposed as a material is revalidated as its specimen group.
+  - Relations now run after the targeted recovery.
+- **New holds.** Recovery never moves a value onto a condition or onto a table cell without row binding, and a reported cell of a column the document applies is a setting.
+- **Two live runs with this pipeline.** 28/34 (0.82) at precision 0.97 and 27/34 (0.79) at precision 0.91, 0 critical.
+- **The six earlier runs replayed.** 24–28/34, precision 0.96–0.99.
+- **What remains.** Precision in every run, stability of the statement targets, and an approved material-component relation for the Salox-M® composition and filler. The §14 holdout comes only after that.
+
 # Phase 1 scientific ingestion — v6 milestone 1 on `diego/research` (quantities and subjects)
 
 **PHASE1_COMPLETE = NO.** This section adds milestone 1 of the consolidated mandate (work packages A and B) on top of the v5 closure below, which is unchanged. Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone1/` (README, CHECKPOINT, replays, reviews, metrics, exposed-source comparison, historical negatives).
