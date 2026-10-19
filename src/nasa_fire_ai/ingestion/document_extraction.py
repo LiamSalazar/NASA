@@ -2993,7 +2993,14 @@ def validate_output(output, package, document, semantic):
                     # "72 ft-lbs (98J)" is a value with its unit, not a named
                     # intervention, material or specimen. A bare number may
                     # still be a run label ("Run 3"), so only value+unit counts.
-                    if (split_embedded_unit(item["label"], None) or {}).get("status") == "SPLIT":
+                    from nasa_fire_ai.normalization.units import interpret
+
+                    value_label = re.fullmatch(
+                        r"\s*[~<>≈]?\s*[-−]?\d[\d,]*(?:\.\d+)?\s*(?P<unit>\S+)\s*", item["label"]
+                    )
+                    if (split_embedded_unit(item["label"], None) or {}).get(
+                        "status"
+                    ) == "SPLIT" or (value_label and interpret(value_label["unit"])):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY")
                     eid = (

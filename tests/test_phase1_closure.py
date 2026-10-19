@@ -313,6 +313,16 @@ def test_a_value_with_its_unit_is_not_a_named_entity(service):
     record = run(service, p, o, structure(p, service.root))[-1]
     assert record["status"] == "UNRESOLVED"
     assert "NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY" in record["reasons"]
+    thickness = "Both were tested at 0.062 inches in thickness."
+    p = submitted(service, "# Synthetic study\nII. Results\n" + thickness + "\n")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "t", "0.062 inches", "ExperimentalCondition", thickness),
+        entity(p, "run", "Run 3", "ExperimentalRun", thickness.replace("Both were", "Run 3 was")),
+    ]
+    held, named = run(service, p, o, structure(p, service.root))[-2:]
+    assert "NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY" in held["reasons"]
+    assert "NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY" not in named["reasons"]
 
 
 def test_an_observation_stating_a_purpose_describes_a_procedure(service):
