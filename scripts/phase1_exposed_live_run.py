@@ -34,6 +34,7 @@ from nasa_fire_ai.config import Settings
 from nasa_fire_ai.evidence import EvidenceRegistry
 from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget
 from nasa_fire_ai.ingestion.extraction_resources import ProviderEnvelope
+from nasa_fire_ai.llm.scientific_provider import redact_provider_text
 from nasa_fire_ai.services.curation import CurationService
 
 CREDENTIAL = re.compile(r"nvapi-[A-Za-z0-9_\-]{8,}")
@@ -46,7 +47,9 @@ def load(path):
 
 
 def write(path, value):
-    text = json.dumps(value, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
+    # Provider messages may name the key owner's account; receipts never keep it.
+    text = redact_provider_text(json.dumps(value, indent=2, ensure_ascii=False, sort_keys=True))
+    text += "\n"
     if CREDENTIAL.search(text):
         raise RuntimeError("Refusing to write a receipt containing a credential")
     if path.suffix == ".gz":

@@ -103,10 +103,13 @@ def main():
             prepared, summary = replay(prepared, CurationService(tmp, registry))
         finally:
             registry.db.close()
+    from nasa_fire_ai.llm.scientific_provider import redact_provider_text
+
     with gzip.open(
         args.output / "prepared.json.gz", "wt", encoding="utf-8", newline="\n"
     ) as handle:
-        json.dump(prepared, handle, ensure_ascii=False, sort_keys=True)
+        # A replayed input may carry provider messages naming the key owner's account.
+        handle.write(redact_provider_text(json.dumps(prepared, ensure_ascii=False, sort_keys=True)))
     receipt = {
         "kind": "PHASE1_FULL_OFFLINE_REPLAY",
         "input": args.prepared.as_posix(),

@@ -4,6 +4,7 @@ Operational capabilities are configurable and observations are recorded separate
 from advertised limits. Scientific validation lives in the ingestion service.
 """
 
+import re
 import socket
 import threading
 import time
@@ -12,6 +13,19 @@ from dataclasses import dataclass
 
 import httpx
 from openai import APIConnectionError, APIError, APIStatusError, APITimeoutError
+
+# A provider error names the caller's account ("Not found for account '<id>'");
+# the identifier is the key owner's, so receipts never keep it.
+ACCOUNT_IDENTIFIER = re.compile(r"""(\baccount\s*['"])([^'"\s]+)(['"])""", re.IGNORECASE)
+
+
+def redact_provider_text(text, key=None):
+    """The provider text with the API key and any account identifier replaced."""
+    if not text:
+        return text
+    if isinstance(key, str) and key:
+        text = text.replace(key, "[REDACTED]")
+    return ACCOUNT_IDENTIFIER.sub(r"\1[REDACTED]\3", text)
 
 
 @dataclass(frozen=True)
@@ -215,18 +229,14 @@ def complete_scientific(
             metadata["http_status"] = code
             retry_after = error.response.headers.get("retry-after")
             body = str(error.body) if error.body else ""
-            key = getattr(client.client, "api_key", None)
-            if isinstance(key, str) and key:
-                body = body.replace(key, "[REDACTED]")
+            body = redact_provider_text(body, getattr(client.client, "api_key", None))
             metadata["provider_message"] = body[:1600] or None
         elif isinstance(error, APIError) and not isinstance(
             error, (APIConnectionError, APITimeoutError)
         ):
             kind, retry_after = "provider_stream_error", None
             body = str(error.body or error.message)
-            key = getattr(client.client, "api_key", None)
-            if isinstance(key, str) and key:
-                body = body.replace(key, "[REDACTED]")
+            body = redact_provider_text(body, getattr(client.client, "api_key", None))
             metadata["provider_message"] = body[:1600]
         else:
             if not isinstance(

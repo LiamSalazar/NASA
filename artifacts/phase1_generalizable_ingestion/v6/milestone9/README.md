@@ -100,3 +100,12 @@ What milestone 8's third commit changed, read from these runs:
 2. The rejected model quantity proposals (`QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT`, `QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION`), from the rejection audit, under the addendum's rules: audit the family before any new rule.
 3. The fallback model is unavailable to the account, so a window whose primary call fails is lost; this needs a configuration decision.
 4. Repeated predetermined B runs to measure variance, then leave-one-source-out, then the §13 gate, then the frozen holdout.
+
+## Redaction (after publication)
+
+The HTTP 404 provider messages of the PTFE and regulator runs named the NVIDIA account that owns the API key. That identifier is replaced by `[REDACTED]` in:
+- `summary.json`, `attempts.json.gz` and `prepared.json.gz` of `ptfe_live_39b57bc/` and `regulator_live_39b57bc/`.
+
+Nothing else changed in these files. The `digest` they store was computed by the run before the redaction, so it no longer matches a recomputation.
+
+The provider adapter, the live-run receipt writer and the offline replay writer now redact any `account '<identifier>'` along with the key (`redact_provider_text`, `tests/test_receipt_redaction.py`).
