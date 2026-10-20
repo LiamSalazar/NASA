@@ -304,16 +304,72 @@ def caption_only_label(label, evidence):
     return bool(captioned) and captioned == total
 
 
+CONTINUING_WORDS = {
+    "the",
+    "a",
+    "an",
+    "of",
+    "and",
+    "or",
+    "to",
+    "with",
+    "in",
+    "at",
+    "by",
+    "for",
+    "from",
+    "as",
+    "than",
+    "on",
+    "into",
+    "under",
+    "between",
+}
+
+
+def line_units(text):
+    """The text with line breaks that end a slide or caption line marked as ``;``.
+
+    A break before a capitalized or bulleted line ends the unit unless the
+    previous line visibly continues (a hyphen, comma or open parenthesis, or a
+    function word such as "with" or "the").
+    """
+    lines = text.split("\n")
+    out = lines[0]
+    for line in lines[1:]:
+        previous = out.rstrip()
+        last = re.findall(r"[A-Za-z]+$", previous)
+        continues = (
+            not previous
+            or previous[-1] in ",;:(-–"
+            or (last and last[0].lower() in CONTINUING_WORDS)
+        )
+        # Only lines of words (a slide bullet, a caption), never table cells.
+        words = (
+            len(re.findall(r"[A-Za-z]{2,}", previous.split(";")[-1])) >= 3
+            and len(re.findall(r"[A-Za-z]{2,}", line)) >= 3
+        )
+        if not continues and words and re.match(r"[ \t]*[•A-Z]", line):
+            out = previous + ";" + line
+        else:
+            out = out + "\n" + line
+    return out
+
+
 def local_binding(subject, value, spans, entities):
     """A multi-subject span cannot transfer a result between its subjects."""
     label = entities[subject]["label"]
     for span in spans:
+        # Lines of a slide or caption list are separate statements: a line break
+        # before a capitalized or bulleted line ends the unit unless the previous
+        # line visibly continues ("... compared with" / "Brass-").
+        units = line_units(span["quote"])
         for clause in re.split(
             r";|\n\s*\n|[.!?](?!\d)(?=\s|$)|,?\s+\b(?:whereas|while|but)\b"
             # "a 7.4 cm ID ... tube duct where the samples were tested": a
             # relative clause names another thing than the value's noun phrase.
             r"|(?:\([^()]*\))?\s+\b(?:where|wherein|in\s+which|into\s+which|on\s+which)\b",
-            span["quote"],
+            units,
         ):
             if mentions(label, clause) and mentions(value, clause):
                 competing = [
@@ -3639,7 +3695,11 @@ def state_settled_roles(records, held):
             h["column_header"] or "" for r in members for h in r["table_row_binding"]["rows"]
         }
         words = {w.lower() for h in headers for w in re.findall(r"[A-Za-z]+", h)}
+        dimensions = {"thickness", "diameter", "length", "width", "mass", "weight"}
         if words & {"initial", "set", "nominal", "starting"} and not words & {"final", "measured"}:
+            keep = "experimental_configuration"
+        elif words & dimensions and not words & {"final", "measured", "loss", "change"}:
+            # A specimen's own dimension is how the test was set up.
             keep = "experimental_configuration"
         elif words & {"final", "measured"} and not words & {
             "initial",

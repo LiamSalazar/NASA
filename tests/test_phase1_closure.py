@@ -1656,3 +1656,21 @@ def test_ranges_and_short_phrases_link_a_name_to_its_value():
     assert NAME_VALUE_LINK.fullmatch(" ranged from ")
     assert NAME_VALUE_LINK.fullmatch(" during this test sequence of ~")
     assert not NAME_VALUE_LINK.fullmatch(" during 3 runs of ")
+
+
+def test_slide_lines_are_separate_units_but_wrapped_prose_and_table_cells_are_not():
+    from nasa_fire_ai.ingestion.document_extraction import line_units, local_binding
+
+    slide = (
+        "100% Alpha knit fabric coupons tested at 48% O2 and 8.2 psia\n"
+        "Custom Beta patches sewn to outer jacket fabric tested at 37% O2 and 8.2 psia"
+    )
+    entities = {"a": {"id": "a", "label": "100% Alpha knit fabric coupons", "class_id": "Sample"}}
+    assert not local_binding("a", "37%", [{"quote": slide}], entities)
+    assert local_binding("a", "48%", [{"quote": slide}], entities)
+    prose = (
+        "the reaction percentage decreased in a LOX environment from 5% in batch 1\nto less than 2%"
+    )
+    assert line_units(prose) == prose
+    cells = "GOX/75°F\n10,000\nLOX/-297°F\n10,000"
+    assert line_units(cells) == cells
