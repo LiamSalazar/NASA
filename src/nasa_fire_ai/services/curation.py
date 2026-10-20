@@ -992,6 +992,33 @@ class CurationService:
                     },
                 }
             )
+        sources = {e["evidence_id"]: e.get("source_id") for e in package["evidence"]}
+        for kind, rows, label in (
+            ("composition", extraction.get("composition_proposals", []), "relation_candidate"),
+            ("ontology_extension", extraction.get("ontology_extension_proposals", []), "term"),
+        ):
+            # Composition the source states, and the vocabulary it would need:
+            # staged for scientific and ontology review, never canonical.
+            for row in rows:
+                evidence_id = (row.get("evidence") or [{}])[0].get("evidence_id")
+                candidate_id = package_id + ":" + row["id"] + ":" + digest(row)[:12]
+                candidate_ids.add(candidate_id)
+                self.registry.stage_semantic_candidate(
+                    {
+                        "candidate_id": candidate_id,
+                        "candidate_type": kind,
+                        "raw_label": row[label],
+                        "source_id": sources.get(evidence_id),
+                        "evidence_id": evidence_id,
+                        "resolution_status": "CANDIDATE_RELATION",
+                        "review_status": "PENDING",
+                        "proposal": {
+                            "contract": extraction["contract"],
+                            "package_id": package_id,
+                            **row,
+                        },
+                    }
+                )
         for row in self.registry.db.execute(
             "SELECT candidate_id FROM semantic_staging WHERE json_extract(payload_json,'$.proposal.package_id')=? AND review_status='PENDING'",
             (package_id,),

@@ -4855,12 +4855,41 @@ def validate_output(output, package, document, semantic, recover_roles=True):
             )
             if len(issue["support_spans"]) < 6:
                 issue["support_spans"].extend(record["support_spans"][:1])
-    return {
+    result = {
         "records": records,
         "semantic_mappings": mappings,
         "review_requirements": list(issues.values()),
         "entities_by_key": entities,
     }
+    if recover_roles:
+        from nasa_fire_ai.ingestion.composition import (
+            composition_assertions,
+            explain,
+            ontology_extension_proposals,
+        )
+
+        # Composition the document states, staged for review beside the
+        # validated records; nothing here enters the graph or the ontology.
+        supported = [
+            {
+                "id": r["entity_id"],
+                "label": r["proposal"]["label"],
+                "class_id": r["proposal"]["class_id"],
+            }
+            for r in records
+            if r["kind"] == "entities"
+            and r["status"] == "SOURCE_SUPPORTED"
+            and not r.get("duplicate_of")
+            and r.get("entity_id")
+        ]
+        assertions = composition_assertions(package["evidence"], supported)
+        for assertion in assertions:
+            assertion["explanation"] = explain(assertion)
+        result["composition_proposals"] = assertions
+        result["ontology_extension_proposals"] = ontology_extension_proposals(
+            assertions, semantic.relations
+        )
+    return result
 
 
 def extraction_semantic(service, package):
