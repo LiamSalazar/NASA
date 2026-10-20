@@ -1751,3 +1751,27 @@ def test_group_material_by_its_name_and_the_specimen_the_document_tested(service
         r for r in records if r["kind"] == "relations" and r["proposal"]["relation"] == "usesSample"
     ]
     assert uses and uses[0]["status"] == "SOURCE_SUPPORTED", [u["reasons"] for u in uses]
+
+
+def test_values_in_a_groups_own_subsection_are_candidates_named_by_their_syntax(service):
+    from nasa_fire_ai.ingestion.document_extraction import group_subsection_quantity_candidates
+
+    text = (
+        "# Synthetic study\nII. Methods\nB. Alpha Drop Testing\n"
+        "The chamber is 299 l in volume with an I.D. of 81.2 cm. "
+        "The igniter was a retractable 2.2 mm OD ceramic rod. "
+        "Installed was a 7.4 cm ID by 30 cm long tube.\nIII. Results\nNothing else.\n"
+    )
+    p = submitted(service, text)
+    document = structure(p, service.root)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "g", "Alpha Drop Testing", "ExperimentFamily", "B. Alpha Drop Testing")
+    ]
+    found = {
+        (c["label"], c["expression"])
+        for c in group_subsection_quantity_candidates(o, document, set())
+    }
+    assert ("volume", "299") in found and ("I.D.", "81.2") in found
+    assert ("OD ceramic rod", "2.2") in found
+    assert not any(e == "7.4" for _, e in found)  # a bare "ID by ..." names no thing

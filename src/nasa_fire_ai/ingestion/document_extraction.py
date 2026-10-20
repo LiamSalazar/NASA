@@ -389,7 +389,7 @@ def local_binding(subject, value, spans, entities):
         # line visibly continues ("... compared with" / "Brass-").
         units = line_units(span["quote"])
         for clause in re.split(
-            r";|\n\s*\n|[.!?](?!\d)(?=\s|$)|,?\s+\b(?:whereas|while|but)\b"
+            r";|\n\s*\n|(?<!\b[A-Z])[.!?](?!\d)(?=\s|$)|,?\s+\b(?:whereas|while|but)\b"
             # "a 7.4 cm ID ... tube duct where the samples were tested": a
             # relative clause names another thing than the value's noun phrase.
             r"|(?:\([^()]*\))?\s+\b(?:where|wherein|in\s+which|into\s+which|on\s+which)\b",
@@ -1846,7 +1846,7 @@ def quantity_name_value_binding(
     labels, expression, unit, spans, adjacent_names=(), temporal_coordinate=False
 ):
     """Locate values in the named variable's clause, including repeated numbers."""
-    separator = r";|[.!?](?!\d)(?=\s|$)|\b(?:and|while|whereas)\b(?=\s+(?:[A-Za-z][\w%-]*\s+){1,6}(?:was|were|is|are|=)\s+)"
+    separator = r";|(?<!\b[A-Z])[.!?](?!\d)(?=\s|$)|\b(?:and|while|whereas)\b(?=\s+(?:[A-Za-z][\w%-]*\s+){1,6}(?:was|were|is|are|=)\s+)"
     from nasa_fire_ai.ingestion.numeric_expressions import (
         same_expression,
         source_numeric_matches,
@@ -2103,11 +2103,15 @@ def staged_name_syntax(label, record, evidence):
                 return "PRINTED_NAME_WITH_PARENTHETICAL_VALUE"
         # "a 10 cm/s primer flow": the value printed as the modifier of its name.
         after = text[value["end"] : value["end"] + 120]
+        # "299 l in volume": the value printed before "in" and its name.
+        if re.match(r"\s*in\s+" + name, after, re.IGNORECASE):
+            return "PRINTED_VALUE_IN_ITS_NAME"
         if (
             re.match(r"\s*" + name, after, re.IGNORECASE)
+            # "a 10 cm/s primer flow", "a retractable 2.2 mm OD ceramic rod".
             and re.search(
-                r"\b(?:an?|the)\s*$",
-                text[max(0, value["start"] - 12) : value["start"]],
+                r"\b(?:an?|the)\s+(?:[a-z][a-z-]+\s+)?$",
+                text[max(0, value["start"] - 30) : value["start"]],
                 re.IGNORECASE,
             )
             # "rather than the 15 cm burn limit": a value set aside is not named.
@@ -3524,7 +3528,137 @@ def structure_quantity_candidates(output, package, document):
                         ],
                     }
                 )
+    candidates.extend(group_subsection_quantity_candidates(output, document, proposed))
     return candidates
+
+
+DIMENSION_NOUN = (
+    r"(?:diameter|I\.?D\.?|O\.?D\.?|length|width|height|thickness|depth|radius|volume|area"
+    r"|velocity|speed|flow(?:\s+rate)?|pressure|temperature|duration|time|rate|mass|weight"
+    r"|concentration)"
+)
+GROUP_VALUE = re.compile(r"(?<![\w.])([~≈]?\d[\d,]*(?:\.\d+)?)\s*([A-Za-z°µμ%][\w°/³²µμ%-]*)")
+
+
+def group_subsection_quantity_candidates(output, document, proposed):
+    """Values the paper prints inside a group's own subsection, named by its syntax.
+
+    "B. NASA Glenn Research Center (GRC) Partial Gravity Testing ... The chamber
+    is 299 l in volume with an I.D. of 81.2 cm": the subsection heading names the
+    group; the printed syntax names each value ("an I.D. of 81.2 cm", "299 l in
+    volume", "a 2.2 mm OD ceramic rod"). Candidates only: the validator decides
+    name, role and scope exactly as for model proposals.
+    """
+    from nasa_fire_ai.normalization.units import interpret
+
+    groups = {
+        normalized(e["label"]): e
+        for e in output["entities"]
+        if e["class_id"] == "ExperimentFamily" and e.get("study") == "current"
+    }
+    if not groups:
+        return []
+    order = {seg["evidence_id"]: i for i, seg in enumerate(document.get("segments", []))}
+    texts = _page_texts(document)
+    headings = sorted(
+        (h for h in document.get("sections", []) if h["evidence_id"] in order),
+        key=lambda h: (order[h["evidence_id"]], h["start"]),
+    )
+    out = []
+    for index, heading in enumerate(headings):
+        title = re.sub(
+            r"^(?:#+\s*|(?:[A-Z]|\d+(?:\.\d+)*|[IVXLCDM]+)[.)]\s+)", "", heading["title"]
+        )
+        group = groups.get(normalized(title))
+        if not group:
+            continue
+        end = headings[index + 1] if index + 1 < len(headings) else None
+        results = bool(
+            re.search(r"\bresults?\b", section_for_span(heading, document), re.IGNORECASE)
+        )
+        for evidence_id, text in texts.items():
+            position = order.get(evidence_id, -1)
+            if position < order[heading["evidence_id"]] or (
+                end and position > order[end["evidence_id"]]
+            ):
+                continue
+            begin = (
+                heading["start"] + len(heading["title"])
+                if evidence_id == heading["evidence_id"]
+                else 0
+            )
+            stop = end["start"] if end and evidence_id == end["evidence_id"] else len(text)
+            region = text[begin:stop]
+            # A single capital before a period is an abbreviation ("I.D."), not an end.
+            starts = [0] + [m.end() for m in re.finditer(r"(?<!\b[A-Z])[.!?](?=\s)", region)]
+            for a, b in zip(starts, starts[1:] + [len(region)]):
+                sentence = region[a:b]
+                for m in GROUP_VALUE.finditer(sentence):
+                    if not interpret(m[2]):
+                        continue
+                    before = sentence[: m.start()]
+                    after = sentence[m.end() :]
+                    name = None
+                    link = re.search(
+                        r"(?:\b(?:an?|the)\s+)?(?P<name>[A-Za-z][\w.-]*(?:\s+[A-Za-z][\w.-]*){0,2})"
+                        r"\s+(?:of|is|was|were)\s*[~≈]?\s*$",
+                        before,
+                    )
+                    if link and re.search(DIMENSION_NOUN + r"$", link["name"], re.IGNORECASE):
+                        # "with an I.D. of 81.2 cm": the name without its lead-in words.
+                        name = re.sub(
+                            r"^(?:(?:with|and|a|an|the|its|their|whose)\s+)+",
+                            "",
+                            link["name"],
+                            flags=re.IGNORECASE,
+                        )
+                    # "a retractable 2.2 mm OD ceramic rod": the dimension and the
+                    # thing it measures; a bare "ID by 30 cm ..." names no thing.
+                    modifier = re.match(
+                        r"\s+(?P<name>(?:[A-Za-z-]+\s+){0,1}?"
+                        + DIMENSION_NOUN
+                        + r"(?:\s+(?!by\b|and\b|of\b|at\b|in\b|to\b|was\b|were\b)[a-z][a-z-]+){0,2})\b",
+                        after,
+                        re.IGNORECASE,
+                    )
+                    if (
+                        not name
+                        and modifier
+                        and not re.fullmatch(r"(?:I\.?D\.?|O\.?D\.?)", modifier["name"].strip())
+                        and re.search(r"\b(?:an?|the)\s+(?:[A-Za-z-]+\s+)?$", before, re.IGNORECASE)
+                    ):
+                        name = modifier["name"]
+                    inside = re.match(
+                        r"\s+in\s+(?P<name>" + DIMENSION_NOUN + r")\b", after, re.IGNORECASE
+                    )
+                    if not name and inside:
+                        name = inside["name"]
+                    if not name:
+                        continue
+                    key = (group["key"], m[1], m[2])
+                    if key in proposed:
+                        continue
+                    proposed.add(key)
+                    lead = len(sentence) - len(sentence.lstrip())
+                    out.append(
+                        {
+                            "subject": group["key"],
+                            "label": re.sub(r"\s+", " ", name).strip(),
+                            "expression": m[1],
+                            "unit": m[2],
+                            "epistemic": "reported_quantity"
+                            if results
+                            else "experimental_configuration",
+                            "support": [
+                                {
+                                    "evidence_id": evidence_id,
+                                    "quote": sentence.strip(),
+                                    "start": begin + a + lead,
+                                }
+                            ],
+                        }
+                    )
+    return out
 
 
 def structure_relation_candidates(output, document):
