@@ -1,3 +1,25 @@
+# Phase 1 scientific ingestion — v6 milestone 7 on `diego/research` (several development investigations)
+
+**PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone7/`.
+
+Live runs with frozen code on the lunar ignition, oxygen regulator and textiles investigations, scored against their frozen v4 targets.
+
+| Source | Frozen code | Milestone-7 code (`031f5ab`) |
+| --- | --- | --- |
+| Lunar ignition | 6/29 | 10/29 |
+| Oxygen regulator | 11/32 | 18/32 |
+| Textiles | 5/29 | 8/29 |
+| PTFE | — | 27–28/34 at 0.98–1.00 precision |
+
+What changed, all checked on every source:
+- the structure reader handles unnumbered major headings, slide titles, section-heading group names and acronym forms;
+- more units, name syntaxes and unit-named pressure settings;
+- three critical attribution errors fixed (relative clauses, printed differences, slide lines);
+- more criteria, definitions, plot keys, fragments, apparatus and section titles held;
+- group materials and the tested specimen recovered as relations.
+
+The development gate is not met, and the registered holdout (NTRS 20170004702) was not acquired.
+
 # Phase 1 scientific ingestion — v6 milestone 6 on `diego/research` (material composition, staged)
 
 **PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone6/`.

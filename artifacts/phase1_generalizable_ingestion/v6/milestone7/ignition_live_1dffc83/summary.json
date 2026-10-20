@@ -1,0 +1,3899 @@
+{
+  "approvals": 0,
+  "attempts": 20,
+  "completed_at": "2026-10-20T04:16:11.505700+00:00",
+  "configuration": {
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "max_model_calls": null,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 3600.0,
+    "vision_model": null
+  },
+  "digest": "5364b713b29570d00a6160193b1379932c9348d8283bbe2b6a8750c6f0cd4354",
+  "git_head": "1dffc83ecd744fc884768a0ff1dadc27e68c5761",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20250002114/downloads/ICES_2025-392-correctedcaptions.pdf",
+  "package_id": "research-1d88231f39dc30cd2148",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 21672,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 0,
+    "configured_fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "deterministic_characters": 43332,
+    "duration_seconds": 1166.230220700003,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "model_characters": 16295,
+    "new_model_calls": 20,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "204a13097b65c6fee1329a9a432006f0442de87d7bcf97be211ad86e5e77b078",
+        "context_token_estimate": 29285,
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 7168,
+        "proposed_items": 14,
+        "reasoning_tokens": 2048,
+        "request_bytes": 39447,
+        "reserved_tokens_per_attempt": 50378,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 20825,
+        "source_anchors": 119,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "GravityCondition",
+              "key": "entity-9892ca2475cceff18c72",
+              "label": "microgravity",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "2 \nInternational Conference on Environmental Systems \n \n \nreduced gravity aircraft has shown that there can be enhanced flammability (flames can exist \nat lower ambient oxygen concentrations compared to terrestrial gravity) at partial gravity \nlevels close to those found on the moon.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-b431ba49dcfad6b1f01dac57",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-a51d4f3679adafe383b7",
+              "label": "NASA Test 1",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "The method for selecting fire safe \nmaterials has been NASA STD 6001 Test 1 (hereafter referred to as Test 1)1.",
+                  "start": 1240
+                }
+              ]
+            },
+            "proposal_id": "proposal-70bb8719594d88645adba1c8",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentFamily",
+              "key": "entity-a0f786353cb3596c66c3",
+              "label": "NASA White Sands Test Facility (WSTF) Upward High-flow Oxygen Index Testing",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "This determines the right-hand side of the LOC curve in figure 1.",
+                  "start": 1271
+                }
+              ]
+            },
+            "proposal_id": "proposal-bef9839ca3b69d6e25668e04",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 19.083522200002335,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7539,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 19.030067699990468
+        },
+        "usage": {
+          "completion_tokens": 2641,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 12529,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 15170
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "07769d7fcd74e692c6a83a82c5ab18e17da90dbd63a1ed6092dea43689c590f5",
+        "context_token_estimate": 30356,
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 9216,
+        "proposed_items": 23,
+        "reasoning_tokens": 2048,
+        "request_bytes": 37494,
+        "reserved_tokens_per_attempt": 50473,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 15741,
+        "source_anchors": 120,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentFamily",
+              "key": "entity-a0f786353cb3596c66c3",
+              "label": "NASA White Sands Test Facility (WSTF) Upward High-flow Oxygen Index Testing",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "This determines the right-hand side of the LOC curve in figure 1.",
+                  "start": 1271
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) \nchamber that could provide continuous operation at 57 kPa.",
+                  "start": 1226
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "Installed \nin the chamber was a 7.4 cm ID by 30 cm long quartz tube duct (Fig \n5) where the 5.2 cm by 14.0 cm samples were tested.",
+                  "start": 1346
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This system was \nbased on the HOI ISO Standard.18 Below the test section was a flow \nconditioning section above an inlet plenum.",
+                  "start": 1477
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The flow was supplied \nby a mass flow system which established the desired oxygen \nconcentration and flow rate.",
+                  "start": 1606
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The sample material was sandwiched \nbetween two, u-shaped, thin stainless-steel plates with the open end \noriented downwards towards the igniter.",
+                  "start": 1718
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The igniter was a retractable \n2.2 mm OD ceramic rod that swung away from the sample after \nignition.",
+                  "start": 1864
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The ceramic rod was heated by 0.29 mm Kanthal-A wire \nwoven through the 4 holes in the ceramic.",
+                  "start": 1966
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The front and the back of \nthe sample were recorded by video cameras.",
+                  "start": 2063
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "After installation in the \nflow duct, and pressure was established in the chamber, the sample \nwas exposed to a 10 cm/s primer flow at the target oxygen \nconcentration.",
+                  "start": 2133
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The igniter was activated until the sample was ignited.",
+                  "start": 2302
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The igniter was retracted, and the flame was allowed to establish for \n1 second before the flow was increased to the test condition at the \nsame oxygen concentration.",
+                  "start": 2359
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The flow increase occurs in \napproximately a second.",
+                  "start": 2526
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "If the flame extinguished in 5 seconds, it was \n \nFigure 4.",
+                  "start": 2579
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "In this upward configuration the unburned sample was directly heated by the energy of \nthe igniter-assisted combustion and the preheating during the primer flow period.",
+                  "start": 208
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "If the sample was flammable, the \ntest was repeated at a lower oxygen concentration until a condition was found where 5 sequential tests extinguished \n(passed).",
+                  "start": 378
+                }
+              ]
+            },
+            "proposal_id": "proposal-80dddf31b42a33eea8d47e8e",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentFamily",
+              "key": "entity-b7370b383b1085bed159",
+              "label": "NASA Glenn Research Center (GRC) Partial Gravity Testing",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The GRC testing was conducted using the centrifuge test facility in the ZGRF 5.2 second drop tower (Fig. 6).3 The \nchamber is 299 l in volume with an I.D.",
+                  "start": 605
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "of 81.2 cm and an internal height if 30.5 cm.",
+                  "start": 760
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "To achieve lunar gravity, the \nchamber was rotated at 20.4 RPM for several minutes before the drop (I.e.",
+                  "start": 806
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "onset of microgravity) to bring the air in \nthe chamber to near solid body rotation.",
+                  "start": 911
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "In this configuration, (during the drop) the gravity vector was radially \noutwards, and the resulting buoyant flow was radially inward To achieve upward spread the long axis of the sample \nis oriented radially and ignited on the outside edge so the resulting buoyant flow is concurrent with the direction of \nflame spread.",
+                  "start": 996
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "Owing to the short radius of rotation, there was a significant gravity gradient.",
+                  "start": 1319
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The flames, however, \n(especially when near the extinction limits) did not spread significantly during the drop, so the g-variation was \nconsidered to have a minimal impact on the results.",
+                  "start": 1400
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The short radius of rotation also caused a significant Coriolis force \nin the tangential direction19.",
+                  "start": 1589
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "Initial tests found that the effect was mitigated by orienting the sample surface parallel to \nthe axis of rotation (long edge down) so the Coriolis flow was impeded by the sample surface.",
+                  "start": 1691
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The igniter was a \nceramic igniter very similar to the one used at WSTF except it withdrew vertically.",
+                  "start": 1880
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "To increase the number of tests \nfor repeatability, two samples were ignited and tested in each drop.",
+                  "start": 1983
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The samples were several cm apart and offset \nvertically (Fig. 6) so they did not interfere with each other.",
+                  "start": 2085
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The ignition region of the sample was exposed to a slow \nflow (~30 cm/s) of gas with an oxygen concentration 5 to 10% higher than the ambient.",
+                  "start": 2194
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "This enabled sample ignition \nin a chamber condition where the sample might be near the flammability limit.",
+                  "start": 2337
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "During the ignition interval, the drop \nrig is hanging at the top of the tower and is spinning to produce a 1/6 g radial acceleration in addition to the 1-g vertical \nforce.",
+                  "start": 2445
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "This resulting buoyant flow primarily directed laterally across the sample is less successful at heating the \nunburned sample than the purely upward flow at WSTF.",
+                  "start": 2619
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The drop tower operations require the system to operate \nautonomously so the entire process was controlled automatically by the drop rig.",
+                  "start": 2782
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The ignition duration and the oxygen \nenhancement were varied based on experience with ignitability of the material being tested.",
+                  "start": 2920
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "After a prescribed \nduration, the igniter is turned off and retracted.",
+                  "start": 3050
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "One second later, the oxygen enhanced flow is turned off and the \npackage is released.",
+                  "start": 3121
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "At this point, the flow is entirely driven by buoyancy.",
+                  "start": 3208
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "Since the bulk of the chamber is already at \nthe target atmosphere, the buoyant flow immediately sweeps in the target conditions.",
+                  "start": 3264
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "Both samples were observed \nwith separate front and edge view cameras.",
+                  "start": 3394
+                }
+              ]
+            },
+            "proposal_id": "proposal-5420e5303176891815db32ed",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "Intervention",
+              "key": "entity-0d943e65720bd83301c9",
+              "label": "ceramic rod igniter",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The igniter was a retractable \n2.2 mm OD ceramic rod that swung away from the sample after \nignition.",
+                  "start": 1864
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The ceramic rod was heated by 0.29 mm Kanthal-A wire \nwoven through the 4 holes in the ceramic.",
+                  "start": 1966
+                },
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The igniter was activated until the sample was ignited.",
+                  "start": 2302
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The igniter was a \nceramic igniter very similar to the one used at WSTF except it withdrew vertically.",
+                  "start": 1880
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "After a prescribed \nduration, the igniter is turned off and retracted.",
+                  "start": 3050
+                }
+              ]
+            },
+            "proposal_id": "proposal-fcc686dc5bd2e8b74b79162c",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 20.72863850000431,
+          "image_count": 0,
+          "max_output_tokens": 9216,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8619,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 20.70246960001532
+        },
+        "usage": {
+          "completion_tokens": 3367,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 12125,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 15492
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "a17f94e4737a98b77bf1f1ff71083d73b2209d50fa589e57bd114d05b3aebc20",
+        "context_token_estimate": 29740,
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": "entities",
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 7168,
+        "proposed_items": 23,
+        "reasoning_tokens": 2048,
+        "request_bytes": 40357,
+        "reserved_tokens_per_attempt": 51288,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 20825,
+        "source_anchors": 119,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 17.621153999993112,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7935,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 17.612688499997603
+        },
+        "usage": {
+          "completion_tokens": 2860,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 12704,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 15564
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "35278dd09d8f2657d4a85a4e274d4f37ee23a4cf695394abee405e42b4565219",
+        "context_token_estimate": 30658,
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": "entities",
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 9216,
+        "proposed_items": 19,
+        "reasoning_tokens": 2048,
+        "request_bytes": 38097,
+        "reserved_tokens_per_attempt": 51076,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 15741,
+        "source_anchors": 120,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 15.290846299991244,
+          "image_count": 0,
+          "max_output_tokens": 9216,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9021,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 15.259688299993286
+        },
+        "usage": {
+          "completion_tokens": 3034,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 12232,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 15266
+        }
+      },
+      {
+        "attempts": 3,
+        "cache_key": "14254e9b66c4c00a7cb23700c6cfd05dcaf3c5750a57e65cc18ff9c6218bd67a",
+        "context_token_estimate": 62354,
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 26,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "RECOVERED_BY_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 190,
+        "reasoning_tokens": 2048,
+        "request_bytes": 52604,
+        "reserved_tokens_per_attempt": 90917,
+        "schema_errors": [
+          {
+            "error": "INVALID_LITERAL_STATEMENT_REFERENCE",
+            "index": 104,
+            "kind": "statements"
+          }
+        ],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25577,
+        "source_anchors": 129,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-8c3c954c610510642d95"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "The concept was that with a strong ignition source in upward spread, the test will \nbe conservative.",
+                  "start": 1665
+                }
+              ],
+              "text": "The concept was that with a strong ignition source in upward spread, the test will \nbe conservative."
+            },
+            "proposal_id": "proposal-69c470d78ed0ed0800825227",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-8c3c954c610510642d95"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "The purpose of the test is not to identify materials that will never burn but rather to identify materials \nthat do not burn easily and will self-extinguish in most situations.",
+                  "start": 1766
+                }
+              ],
+              "text": "The purpose of the test is not to identify materials that will never burn but rather to identify materials \nthat do not burn easily and will self-extinguish in most situations."
+            },
+            "proposal_id": "proposal-5ded3a51db58bea212a63ca5",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-8c3c954c610510642d95"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "Given the test design, for most materials, Test 1 is \nan ignition test, if the material has enough specific heat or low enough heat release, it will pass but it might not pass \nwith a bigger igniter or if the material were \nslightly preheated.",
+                  "start": 1943
+                }
+              ],
+              "text": "Given the test design, for most materials, Test 1 is \nan ignition test, if the material has enough specific heat or low enough heat release, it will pass but it might not pass \nwith a bigger igniter or if the material were \nslightly preheated."
+            },
+            "proposal_id": "proposal-92cfcb994f1a2a326d25d98c",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION;UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "NASA habitability requirements dictate that \nlow gravity spacecraft4 demonstrate continuous \nventilation in all open areas and there will be \nbuoyant air flow on lunar habitats, so in many \ncases it is reasonable that NASA’s material \nN\n \nFigure 1.",
+                  "start": 3054
+                }
+              ],
+              "text": "NASA habitability requirements dictate that \nlow gravity spacecraft4 demonstrate continuous \nventilation in all open areas and there will be \nbuoyant air flow on lunar habitats, so in many \ncases it is reasonable that NASA’s material \nN\n \nFigure 1."
+            },
+            "proposal_id": "proposal-0a1a5606d6ac05c66fe7771d",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-07e53eaea60dd81ef207f392",
+                  "quote": "The existence of a low-speed quenching extinguishment boundary and a higher speed blowoff boundary was \npredicted numerically for solid fuels in stagnation flow5.",
+                  "start": 435
+                }
+              ],
+              "text": "The existence of a low-speed quenching extinguishment boundary and a higher speed blowoff boundary was \npredicted numerically for solid fuels in stagnation flow5."
+            },
+            "proposal_id": "proposal-bf9016e54fca46e38f11e19c",
+            "reasons": [
+              "DERIVED_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-07e53eaea60dd81ef207f392",
+                  "quote": "This paper will discuss solid \nfuel combustion with some overlap with surface smoldering/char combustion as schematically depicted in figure2.",
+                  "start": 973
+                }
+              ],
+              "text": "This paper will discuss solid \nfuel combustion with some overlap with surface smoldering/char combustion as schematically depicted in figure2."
+            },
+            "proposal_id": "proposal-c54c59934c0ed608496fcb90",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-07e53eaea60dd81ef207f392",
+                  "quote": "This work will focus on extinguishment of the gas phase flame over the solid fuel rather than the \nsurface reaction of the charring solid.",
+                  "start": 2183
+                }
+              ],
+              "text": "This work will focus on extinguishment of the gas phase flame over the solid fuel rather than the \nsurface reaction of the charring solid."
+            },
+            "proposal_id": "proposal-7eb0e8d161049d0301eb94ea",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-07e53eaea60dd81ef207f392",
+                  "quote": "If the incoming oxidizer flow is too fast for \nthe flame chemistry, the flame will be blown downstream (blowoff).",
+                  "start": 2904
+                }
+              ],
+              "text": "If the incoming oxidizer flow is too fast for \nthe flame chemistry, the flame will be blown downstream (blowoff)."
+            },
+            "proposal_id": "proposal-d88291b52d3c3c61fa2db703",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-7500ff2165f88836dcfc262d",
+                  "quote": "The \nformulation is similar for a thick solid, but this discussion will focus on thermally thin solids.",
+                  "start": 171
+                }
+              ],
+              "text": "The \nformulation is similar for a thick solid, but this discussion will focus on thermally thin solids."
+            },
+            "proposal_id": "proposal-571a3274a99f3e454ed93327",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-7500ff2165f88836dcfc262d",
+                  "quote": "If the radiative loss from the sample 𝑞ሶ௥௦\nᇱᇱ equals the other forms of heat supply to the fuel, the numerator in equation \n7 will equal zero and the flame will extinguish.",
+                  "start": 3377
+                }
+              ],
+              "text": "If the radiative loss from the sample 𝑞ሶ௥௦\nᇱᇱ equals the other forms of heat supply to the fuel, the numerator in equation \n7 will equal zero and the flame will extinguish."
+            },
+            "proposal_id": "proposal-892289b6bad5de6335a175a3",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-7500ff2165f88836dcfc262d",
+                  "quote": "This external energy input does not have to occur simultaneously with the fire event, as it will increase \nT0 which will increase the spread rate.",
+                  "start": 4122
+                }
+              ],
+              "text": "This external energy input does not have to occur simultaneously with the fire event, as it will increase \nT0 which will increase the spread rate."
+            },
+            "proposal_id": "proposal-f78d03ad72f24f7437766425",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "This will cause the \nradiative \ntransport \nfrom the flame to the \nsolid to be small due \nto the limited view \nfactor.",
+                  "start": 330
+                }
+              ],
+              "text": "This will cause the \nradiative \ntransport \nfrom the flame to the \nsolid to be small due \nto the limited view \nfactor."
+            },
+            "proposal_id": "proposal-c3b8a3c53f4e4f07bca984a7",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "cited",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "This suggests that high temperature materials with a high Tp will have a HTL that is significantly displaced to \nhigher velocities.16",
+                  "start": 694
+                }
+              ],
+              "text": "This suggests that high temperature materials with a high Tp will have a HTL that is significantly displaced to \nhigher velocities.16"
+            },
+            "proposal_id": "proposal-02e23788b8d237dade0154ac",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION;UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-17161e2589ba8650be82"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "Flammability diagram for PMMA13 using a cone calorimeter for the \nignition testing and a radiatively heated flame spread apparatus [12].",
+                  "start": 3508
+                }
+              ],
+              "text": "Flammability diagram for PMMA13 using a cone calorimeter for the \nignition testing and a radiatively heated flame spread apparatus [12]."
+            },
+            "proposal_id": "proposal-7b118cb262e754a013fce174",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-17161e2589ba8650be82"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "At heat \nfluxes below the critical flux, the material will burn and proceeding from the left, the \nspread rate increases with heat flux.",
+                  "start": 3831
+                }
+              ],
+              "text": "At heat \nfluxes below the critical flux, the material will burn and proceeding from the left, the \nspread rate increases with heat flux."
+            },
+            "proposal_id": "proposal-d0310994e948a6341e953ac9",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5.2 cm by 14.0 cm",
+              "label": "5.2 cm by 14.0 cm samples",
+              "subject": "entity-d031f0348652ece04b4d",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "A. NASA White Sands Test Facility (WSTF) Upward High-flow Oxygen Index Testing  \nThe WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) \nchamber that could provide continuous operation at 57 kPa. Installed \nin the chamber was a 7.4 cm ID by 30 cm long quartz tube duct (Fig \n5) where the 5.2 cm by 14.0 cm samples were tested. This system was \nbased on the HOI ISO Standard.18 Below the test section was a flow \nconditioning section above an inlet plenum. The flow was supplied \nby a mass flow system which established the desired oxygen \nconcentration and flow rate. The sample material was sandwiched \nbetween two, u-shaped, thin stainless-steel plates with the open end \noriented downwards towards the igniter. The igniter was a retractable \n2.2 mm OD ceramic rod that swung away from the sample after \nignition. The ceramic rod was heated by 0.29 mm Kanthal-A wire \nwoven through the 4 holes in the ceramic.  The front and the back of \nthe sample were recorded by video cameras. After installation in the \nflow duct, and pressure was established in the chamber, the sample \nwas exposed to a 10 cm/s primer flow at the target oxygen \nconcentration. The igniter was activated until the sample was ignited. \nThe igniter was retracted, and the flame was allowed to establish for \n1 second before the flow was increased to the test condition at the \nsame oxygen concentration. The flow increase occurs in \napproximately a second. If the flame extinguished in 5 seconds, it was \n \nFigure 4. Heat transfer limit and chemical kinetic limit calculated by equations 8 and 9 respectively for \nthin paper and  thin PMMA (from Thomsen et al. 8). \n \nFigure 5. Flow \nDuct \nand \nflow \nconditioner at WSTF. Lower portion is \nthe \nflow \nstraightener, \ntop \nportion \ncontains the sample. ",
+                  "start": 1145
+                }
+              ],
+              "unit": "cm"
+            },
+            "proposal_id": "proposal-aca8507a3be3533c4a555a8e",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 69.29614960000617,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9289,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 69.10419770001317
+        },
+        "usage": {
+          "completion_tokens": 5731,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 16458,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 13008,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 22189
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "915ede06386e1a9f1a4bd6d347615d36daa9f3514639b3d39159c3702d6a726c",
+        "context_token_estimate": 65019,
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 30,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 228,
+        "reasoning_tokens": 2048,
+        "request_bytes": 57900,
+        "reserved_tokens_per_attempt": 96247,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 19798,
+        "source_anchors": 132,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-0ad5cd3de7f8d3591fc4",
+                "entity-b417a333ad166c93e8f9",
+                "entity-5e36c31b6b96bd83f450"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-77a08c9b9b578997fe41bf78",
+                  "quote": "In figures 7, 8 and 9, the \nlunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the \nWSTF testing.",
+                  "start": 148
+                }
+              ],
+              "text": "In figures 7, 8 and 9, the \nlunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the \nWSTF testing."
+            },
+            "proposal_id": "proposal-e62e31fc6a353a71205a5376",
+            "reasons": [
+              "DERIVED_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ExperimentalCondition",
+              "epistemic": "experimental_configuration",
+              "study": "current",
+              "subjects": [
+                "entity-17161e2589ba8650be82",
+                "entity-24db8e62f143bf2135e9",
+                "entity-231c42c7af212bbd3a77"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-77a08c9b9b578997fe41bf78",
+                  "quote": "Table 1 Material Properties used to calculate the limits \nProperty \nPMMA 21,22  \nNomex 23 \nPolycarbonate24,25 \n𝜌 ሾ𝑘𝑔/𝑚ଷሿ \n1190  \n1370 \n1200 \n𝑐௦ ሾ𝐽/𝑘𝑔𝐾ሿ \n1400  \n1255 \n1150 \n𝜀 ሾെሿ \n0.9 \n0.9 \n0.9 \nΔ𝐻௣ ሾ𝐽/𝑘𝑔ሿ \n1350 ൈ10ଷ \n1350 ൈ10ଷ \n1350 ൈ10ଷ \nΔ𝐻௖ ሾ𝐽/𝑘𝑔ሿ \n60.2 ൈ10଺ \n44.1 ൈ10଺ \n33.6 ൈ10଺ \n𝐸௔ሾ𝐽/𝑚𝑜𝑙ሿ \n125000 \n408000 \n200000 \n𝐴଴ሾ𝑐𝑚ଷ/𝑔𝑠ሿ \n1.2 ൈ10ଵସ \n4.3 ൈ10ଵସ \n3.04 ൈ10ଵସ \na [-] \n1 \n1 \n1 \nb [-] \n1 \n1 \n1 \n𝑇௣ ሾ𝐾ሿ \n618 \n750 \n700",
+                  "start": 2143
+                }
+              ],
+              "text": "Table 1 Material Properties used to calculate the limits \nProperty \nPMMA 21,22  \nNomex 23 \nPolycarbonate24,25 \n𝜌 ሾ𝑘𝑔/𝑚ଷሿ \n1190  \n1370 \n1200 \n𝑐௦ ሾ𝐽/𝑘𝑔𝐾ሿ \n1400  \n1255 \n1150 \n𝜀 ሾെሿ \n0.9 \n0.9 \n0.9 \nΔ𝐻௣ ሾ𝐽/𝑘𝑔ሿ \n1350 ൈ10ଷ \n1350 ൈ10ଷ \n1350 ൈ10ଷ \nΔ𝐻௖ ሾ𝐽/𝑘𝑔ሿ \n60.2 ൈ10଺ \n44.1 ൈ10଺ \n33.6 ൈ10଺ \n𝐸௔ሾ𝐽/𝑚𝑜𝑙ሿ \n125000 \n408000 \n200000 \n𝐴଴ሾ𝑐𝑚ଷ/𝑔𝑠ሿ \n1.2 ൈ10ଵସ \n4.3 ൈ10ଵସ \n3.04 ൈ10ଵସ \na [-] \n1 \n1 \n1 \nb [-] \n1 \n1 \n1 \n𝑇௣ ሾ𝐾ሿ \n618 \n750 \n700"
+            },
+            "proposal_id": "proposal-8adfd9e2e079f69f2cca007c",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "OpenQuestion",
+              "epistemic": "open_question",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+                  "quote": "A major limitation to \nthis analysis is identification of the relevant buoyant velocity which is an area worthy of significant research.",
+                  "start": 776
+                }
+              ],
+              "text": "A major limitation to \nthis analysis is identification of the relevant buoyant velocity which is an area worthy of significant research."
+            },
+            "proposal_id": "proposal-74888c1baa10e9c07ba944e4",
+            "reasons": [
+              "OPEN_QUESTION_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "OpenQuestion",
+              "epistemic": "open_question",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-7e102620e031abdc88047395",
+                  "quote": "This mechanism \nmerits additional study as it suggests that high temperature materials may not exhibit enhanced flammability at lunar-",
+                  "start": 731
+                }
+              ],
+              "text": "This mechanism \nmerits additional study as it suggests that high temperature materials may not exhibit enhanced flammability at lunar-"
+            },
+            "proposal_id": "proposal-59b0b8ce8740c0d60ed1ab7b",
+            "reasons": [
+              "OPEN_QUESTION_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-7e102620e031abdc88047395",
+                  "quote": "Other, higher temperature materials \nmay show decreased flammability at lunar conditions than would be predicted from 1-g testing.",
+                  "start": 1418
+                }
+              ],
+              "text": "Other, higher temperature materials \nmay show decreased flammability at lunar conditions than would be predicted from 1-g testing."
+            },
+            "proposal_id": "proposal-563c5a00fa900287eb1bc97f",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION;UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "60, 80, 100, 144",
+              "label": "forced flow speed",
+              "subject": "entity-17161e2589ba8650be82",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                }
+              ],
+              "unit": "cm/s"
+            },
+            "proposal_id": "proposal-346bd12acec2d77ff34572d5",
+            "reasons": [
+              "QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "25 and 40",
+              "label": "forced flow speed",
+              "subject": "entity-17161e2589ba8650be82",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                }
+              ],
+              "unit": "cm/s"
+            },
+            "proposal_id": "proposal-4a113e9c44d65b40241707ed",
+            "reasons": [
+              "QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 55.39249940001173,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8753,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 55.38210919999983
+        },
+        "usage": {
+          "completion_tokens": 6176,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 18742,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 13008,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 24918
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "79993edab5d5ccb444a3650c6068ce328a5cb72b451f52f520d19d4d0e18bbb9",
+        "context_token_estimate": 58377,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 26,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 8,
+        "reasoning_tokens": 2048,
+        "request_bytes": 47334,
+        "reserved_tokens_per_attempt": 82963,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25577,
+        "source_anchors": 129,
+        "source_errors": [
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5.2",
+              "label": "drop tower duration",
+              "subject": "entity-83aca69b64204c72bae1",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "However, lunar gravity testing is largely limited to using a centrifuge in the \nNASA GRC 5.2 second drop tower.",
+                  "start": 354
+                }
+              ],
+              "unit": "second"
+            },
+            "proposal_id": "proposal-1c8a8361165cc20f87933f93",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5.2",
+              "label": "drop tower duration",
+              "subject": "entity-83aca69b64204c72bae1",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+                  "start": 2585
+                }
+              ],
+              "unit": "second"
+            },
+            "proposal_id": "proposal-5fb0378e50c1228aec479889",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5.2",
+              "label": "drop tower duration",
+              "subject": "entity-83aca69b64204c72bae1",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "Since our only repeatable access to lunar gravity \nis in the NASA GRC 5.2 second drop tower, \nusing a centrifuge3, testing has been limited to \nthinner materials that can be tested in 5.2 \nseconds.",
+                  "start": 2585
+                }
+              ],
+              "unit": "seconds"
+            },
+            "proposal_id": "proposal-fe864938c9f68ac808bf8190",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5",
+              "label": "drop tower test time",
+              "subject": "entity-8c3c954c610510642d95",
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "NASA Test 1 has a 15 cm (6 inch) burn criterion, so the test time is much longer than the 5 seconds available in the \ndrop tower.",
+                  "start": 3028
+                }
+              ],
+              "unit": "seconds"
+            },
+            "proposal_id": "proposal-94c131bf86088d6791e4b882",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5.2",
+              "label": "drop tower duration",
+              "subject": "entity-b8651123c467c1568dd8",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This 5.2 second limitation \nrequired the testing to be based on a 5 second extinction limit rather than the 15 cm (6 inch) burn limit in NASA Test",
+                  "start": 712
+                }
+              ],
+              "unit": "second"
+            },
+            "proposal_id": "proposal-aed77eb1b22106b56114765c",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5",
+              "label": "extinction limit duration",
+              "subject": "entity-b8651123c467c1568dd8",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This 5.2 second limitation \nrequired the testing to be based on a 5 second extinction limit rather than the 15 cm (6 inch) burn limit in NASA Test",
+                  "start": 712
+                }
+              ],
+              "unit": "second"
+            },
+            "proposal_id": "proposal-3643f170722c03b69dcfc0c4",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "15",
+              "label": "burn criterion",
+              "subject": "entity-b8651123c467c1568dd8",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This 5.2 second limitation \nrequired the testing to be based on a 5 second extinction limit rather than the 15 cm (6 inch) burn limit in NASA Test",
+                  "start": 712
+                }
+              ],
+              "unit": "cm"
+            },
+            "proposal_id": "proposal-c267501d6ef354c629837c8f",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 12.433199699997203,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7438,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 12.4063967000111
+        },
+        "usage": {
+          "completion_tokens": 2330,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14975,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17305
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "5c11133d71ffa0e7f55026cdee5eb35bf5e8dca0f06e03e92e2f7f3d7e0259d4",
+        "context_token_estimate": 58289,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 26,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 32768,
+        "proposed_items": 7,
+        "reasoning_tokens": 2048,
+        "request_bytes": 47164,
+        "reserved_tokens_per_attempt": 82786,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25577,
+        "source_anchors": 129,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 12.523399199999403,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7374,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 12.494968499988317
+        },
+        "usage": {
+          "completion_tokens": 2291,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14917,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 13008,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17208
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "0be5de44b3615a02d89f52c456ae2d14ce83391f2e04fec6c8cf75a3f3dbe5c7",
+        "context_token_estimate": 57656,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 26,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 45947,
+        "reserved_tokens_per_attempt": 81520,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25577,
+        "source_anchors": 129,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 4.3324709000007715,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 2302,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 4.308489800023381
+        },
+        "usage": {
+          "completion_tokens": 651,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 643,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14510,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 13008,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 15161
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "53519bcbc6b4530981c60965d79743e571378376387f93ae8a617b057ec5ce7b",
+        "context_token_estimate": 58986,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 30,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 7,
+        "reasoning_tokens": 2048,
+        "request_bytes": 48391,
+        "reserved_tokens_per_attempt": 84180,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 19798,
+        "source_anchors": 132,
+        "source_errors": [
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5.2",
+              "label": "width",
+              "subject": "entity-d031f0348652ece04b4d",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "Installed \nin the chamber was a 7.4 cm ID by 30 cm long quartz tube duct (Fig \n5) where the 5.2 cm by 14.0 cm samples were tested.",
+                  "start": 1346
+                }
+              ],
+              "unit": "cm"
+            },
+            "proposal_id": "proposal-2b944a8dbe90190cf6a8d36b",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "14.0",
+              "label": "length",
+              "subject": "entity-d031f0348652ece04b4d",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "Installed \nin the chamber was a 7.4 cm ID by 30 cm long quartz tube duct (Fig \n5) where the 5.2 cm by 14.0 cm samples were tested.",
+                  "start": 1346
+                }
+              ],
+              "unit": "cm"
+            },
+            "proposal_id": "proposal-33c118db416aee4152f791cc",
+            "reasons": [
+              "QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "144",
+              "label": "airflow velocity",
+              "subject": "entity-17161e2589ba8650be82",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                }
+              ],
+              "unit": "cm/s"
+            },
+            "proposal_id": "proposal-b7d076e50221a25df5f05a28",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "40",
+              "label": "airflow velocity",
+              "subject": "entity-17161e2589ba8650be82",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                }
+              ],
+              "unit": "cm/s"
+            },
+            "proposal_id": "proposal-18d75030b5f01a185f2e9347",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 13.12199439998949,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7585,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 13.11265649998677
+        },
+        "usage": {
+          "completion_tokens": 2285,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 15794,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 18079
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "d1447391c22146f351b762a9fd43e476909c03912c9c8a2840f0d8ebb17aa072",
+        "context_token_estimate": 58721,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 30,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 4,
+        "reasoning_tokens": 2048,
+        "request_bytes": 47882,
+        "reserved_tokens_per_attempt": 83650,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 19798,
+        "source_anchors": 132,
+        "source_errors": [
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5.2",
+              "label": "sample dimension",
+              "subject": "entity-d031f0348652ece04b4d",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "Installed \nin the chamber was a 7.4 cm ID by 30 cm long quartz tube duct (Fig \n5) where the 5.2 cm by 14.0 cm samples were tested.",
+                  "start": 1346
+                }
+              ],
+              "unit": "cm"
+            },
+            "proposal_id": "proposal-a5ee5dbfdb84045bf0b2696a",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "14.0",
+              "label": "sample dimension",
+              "subject": "entity-d031f0348652ece04b4d",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "Installed \nin the chamber was a 7.4 cm ID by 30 cm long quartz tube duct (Fig \n5) where the 5.2 cm by 14.0 cm samples were tested.",
+                  "start": 1346
+                }
+              ],
+              "unit": "cm"
+            },
+            "proposal_id": "proposal-64738d7dfd114ba47c210112",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "144",
+              "label": "flow rate",
+              "subject": "entity-17161e2589ba8650be82",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                }
+              ],
+              "unit": "cm/s"
+            },
+            "proposal_id": "proposal-8e2d6bf277e2f6602cb701d1",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "40",
+              "label": "flow rate",
+              "subject": "entity-17161e2589ba8650be82",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                }
+              ],
+              "unit": "cm/s"
+            },
+            "proposal_id": "proposal-abd8fb0d9f0ea21a012a90bc",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 14.584603799972683,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7378,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 14.556916099973023
+        },
+        "usage": {
+          "completion_tokens": 2187,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 15621,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17808
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "e00aab9aba4900d83652280da9cb60cacf6d08a41322bcaa12a83c0048347c39",
+        "context_token_estimate": 37410,
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 26,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 11264,
+        "proposed_items": 14,
+        "reasoning_tokens": 2048,
+        "request_bytes": 48514,
+        "reserved_tokens_per_attempt": 62532,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25577,
+        "source_anchors": 129,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-6283ed4dbded15da3815",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-0aab8a58f61adb039ffc",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+                  "start": 630
+                }
+              ]
+            },
+            "proposal_id": "proposal-c66fd879f5647b61f0d06b50",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-6283ed4dbded15da3815",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-7fc6c086b5c67ea778a7",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+                  "start": 630
+                }
+              ]
+            },
+            "proposal_id": "proposal-487315add77fdbdef7317766",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-63674be690a320671581",
+              "relation": "hasGravityCondition",
+              "subject": "entity-7fc6c086b5c67ea778a7",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+                  "start": 630
+                }
+              ]
+            },
+            "proposal_id": "proposal-24c26001511d41ada055331a",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-0aab8a58f61adb039ffc",
+              "relation": "usesSample",
+              "subject": "entity-d031f0348652ece04b4d",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "Installed \nin the chamber was a 7.4 cm ID by 30 cm long quartz tube duct (Fig \n5) where the 5.2 cm by 14.0 cm samples were tested.",
+                  "start": 1346
+                }
+              ]
+            },
+            "proposal_id": "proposal-cdc50abd937f0b54b7fe4473",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-fa963d8f143cf2e6a152",
+              "relation": "hasCondition",
+              "subject": "entity-0aab8a58f61adb039ffc",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "After installation in the \nflow duct, and pressure was established in the chamber, the sample \nwas exposed to a 10 cm/s primer flow at the target oxygen \nconcentration.",
+                  "start": 2133
+                }
+              ]
+            },
+            "proposal_id": "proposal-87bc1a2d734a945624f75c06",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-9ea993c13c7e751f728b",
+              "relation": "hasCondition",
+              "subject": "entity-837dcdf7e02434c69085",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "6 \nInternational Conference on Environmental Systems \n \n \nthe planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia) for several materials where the higher speed blow-off \nbehavior in 1-g could be compared to the flame extinguishment in lunar-gravity buoyant flow.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-2dde77fde10409d0e7751805",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-63674be690a320671581",
+              "relation": "hasCondition",
+              "subject": "entity-80c7ec60c7d1d2431931",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "6 \nInternational Conference on Environmental Systems \n \n \nthe planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia) for several materials where the higher speed blow-off \nbehavior in 1-g could be compared to the flame extinguishment in lunar-gravity buoyant flow.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-4f38fa09c301205c2abef17c",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a886a7eec5d65891e76d",
+              "relation": "hasMaterial",
+              "subject": "entity-24db8e62f143bf2135e9",
+              "support": [
+                {
+                  "evidence_id": "E-07e53eaea60dd81ef207f392",
+                  "quote": "Many important spacecraft materials (Nomex and Kevlar) are also \ncharring materials.",
+                  "start": 2098
+                }
+              ]
+            },
+            "proposal_id": "proposal-43c7c76936df4ccce6760efa",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a886a7eec5d65891e76d",
+              "relation": "hasMaterial",
+              "subject": "entity-e0790d4ef9285bb84743",
+              "support": [
+                {
+                  "evidence_id": "E-07e53eaea60dd81ef207f392",
+                  "quote": "Many important spacecraft materials (Nomex and Kevlar) are also \ncharring materials.",
+                  "start": 2098
+                }
+              ]
+            },
+            "proposal_id": "proposal-dd27c734c66eaa53658e1bf8",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 20.612786399986362,
+          "image_count": 0,
+          "max_output_tokens": 11264,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7432,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 20.588187399989692
+        },
+        "usage": {
+          "completion_tokens": 2501,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 15146,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17647
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "903b3935c9f1d50222a751c990c2583b0b8b125ac5a435bf2a7b20d8853f8655",
+        "context_token_estimate": 38424,
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 30,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 13312,
+        "proposed_items": 21,
+        "reasoning_tokens": 2048,
+        "request_bytes": 46391,
+        "reserved_tokens_per_attempt": 62513,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 19798,
+        "source_anchors": 132,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-6283ed4dbded15da3815",
+              "relation": "usesSample",
+              "subject": "entity-78b5159f9d09cd6c8df1",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "The lunar-g limit\n \n    \n    \n \nFigure 7: 0.8 mm PMMA Sample, 8.2 psia \nUHOI values with the best fit for the WSTF data \nfor 60 cm/s and above with the GRC lunar gravity \ndata shown as a horizontal line.",
+                  "start": 1541
+                }
+              ]
+            },
+            "proposal_id": "proposal-1aff2fadb7b21b4fa15f5ea0",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-6283ed4dbded15da3815",
+              "relation": "usesSample",
+              "subject": "entity-b11e0ef7874e77b277d3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+                  "start": 1746
+                }
+              ]
+            },
+            "proposal_id": "proposal-5f971ab497a5831a40ce604f",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-07757be80d2212efa659",
+              "relation": "usesSample",
+              "subject": "entity-0ad5cd3de7f8d3591fc4",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for extinction of the gas phase \nflame with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+                  "start": 1916
+                }
+              ]
+            },
+            "proposal_id": "proposal-3bbcb5f6f218db4b0ebcee27",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-71d688e161cf83349261",
+              "relation": "usesSample",
+              "subject": "entity-2d8f531f620cf859d4de",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 10: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for smolder extinction with the \nbest fit for the WSTF data with the GRC lunar \ngravity data shown as a horizontal line.",
+                  "start": 2123
+                }
+              ]
+            },
+            "proposal_id": "proposal-7b2e2b536da5bfbec4947ee5",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-6aeb14a93416ed3d28a0",
+              "relation": "usesSample",
+              "subject": "entity-85268dc2e223f7d22978",
+              "support": [
+                {
+                  "evidence_id": "E-77a08c9b9b578997fe41bf78",
+                  "quote": "Figure 12: Nomex Velcro, 8.2 psi UHOI values \nwith the best fit for the WSTF data with the GRC \nlunar gravity data shown as a horizontal line.",
+                  "start": 1999
+                }
+              ]
+            },
+            "proposal_id": "proposal-de726539cb79c7046c5859bc",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-24ee089bdd3ab05df0c5",
+              "relation": "usesSample",
+              "subject": "entity-b417a333ad166c93e8f9",
+              "support": [
+                {
+                  "evidence_id": "E-77a08c9b9b578997fe41bf78",
+                  "quote": "Figure11: Polycarbonate, 8.2 psia UHOI values \nwith the best fit for the WSTF data with the GRC \nlunar gravity data shown as a horizontal line.",
+                  "start": 1854
+                }
+              ]
+            },
+            "proposal_id": "proposal-a78eff1d638db3c2dd024f5f",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-63674be690a320671581",
+              "relation": "hasGravityCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+                  "start": 270
+                }
+              ]
+            },
+            "proposal_id": "proposal-7e0541b31eff8fa87a037204",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f71504bd27a64742a1c5",
+              "relation": "hasGravityCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+                  "start": 270
+                }
+              ]
+            },
+            "proposal_id": "proposal-57488121ffde50d3aeff5027",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-8c3c954c610510642d95",
+              "relation": "hasCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "Test 1 is an upward flammability \ntest that uses a consistent ignition source (known as the chemical igniter) that is considered to be a very strong ignition \nsource1.",
+                  "start": 1353
+                }
+              ]
+            },
+            "proposal_id": "proposal-fc799da154ce561e83ff2b1e",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7e4b9e461458d184da66",
+              "relation": "hasIntervention",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "One second later, the oxygen enhanced flow is turned off and the \npackage is released.",
+                  "start": 3121
+                }
+              ]
+            },
+            "proposal_id": "proposal-c0f4604e71e3702ed132f0ec",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-fa963d8f143cf2e6a152",
+              "relation": "hasCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "After installation in the \nflow duct, and pressure was established in the chamber, the sample \nwas exposed to a 10 cm/s primer flow at the target oxygen \nconcentration.",
+                  "start": 2133
+                }
+              ]
+            },
+            "proposal_id": "proposal-9708d64ac51d28a24c1ccc81",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-d354844cd85270ac1c94",
+              "relation": "hasCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The ignition region of the sample was exposed to a slow \nflow (~30 cm/s) of gas with an oxygen concentration 5 to 10% higher than the ambient.",
+                  "start": 2194
+                }
+              ]
+            },
+            "proposal_id": "proposal-bf31114b9c9aa61609786763",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-8c3c954c610510642d95",
+              "relation": "hasCondition",
+              "subject": "entity-17161e2589ba8650be82",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-0b1a5dfb3f0f26d8c9cba134",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-8c3c954c610510642d95",
+              "relation": "hasCondition",
+              "subject": "entity-d177312b5e773f2d9654",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-8a68cf0e085b87362dd3e816",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-8c3c954c610510642d95",
+              "relation": "hasCondition",
+              "subject": "entity-07757be80d2212efa659",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-dca0d8abdc125f9ef22a142d",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-8c3c954c610510642d95",
+              "relation": "hasCondition",
+              "subject": "entity-231c42c7af212bbd3a77",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-277a01042b6c5eefbd67b099",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-8c3c954c610510642d95",
+              "relation": "hasCondition",
+              "subject": "entity-5e36c31b6b96bd83f450",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-fb154d541a2df23384c6bfaf",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-e159ae784412b71e33d6",
+              "relation": "madeOf",
+              "subject": "entity-b11e0ef7874e77b277d3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+                  "start": 1746
+                }
+              ]
+            },
+            "proposal_id": "proposal-c6676b46605a2b47c77df07b",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-80c7ec60c7d1d2431931",
+              "relation": "hasCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "6 \nInternational Conference on Environmental Systems \n \n \nthe planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia) for several materials where the higher speed blow-off \nbehavior in 1-g could be compared to the flame extinguishment in lunar-gravity buoyant flow.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-cfb0b85f93fbf73fba0905c7",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-9892ca2475cceff18c72",
+              "relation": "hasGravityCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "onset of microgravity) to bring the air in \nthe chamber to near solid body rotation.",
+                  "start": 911
+                }
+              ]
+            },
+            "proposal_id": "proposal-e9e5b089d8aec6dabc512899",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 15.999323399999412,
+          "image_count": 0,
+          "max_output_tokens": 13312,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7443,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 15.971750199998496
+        },
+        "usage": {
+          "completion_tokens": 2716,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14977,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17693
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "b2fb39d36035f8dc432eceef07fb3417f591bb729a9bef5fe3a9e5e1bcd91be3",
+        "context_token_estimate": 37152,
+        "deterministic": "COMPLETE",
+        "end": 10663,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 18,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 4186,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-4f35f721486ae2c655d039c2",
+            "start": 410
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 18432,
+        "proposed_items": 53,
+        "reasoning_tokens": 2048,
+        "request_bytes": 30975,
+        "reserved_tokens_per_attempt": 54848,
+        "schema_errors": [],
+        "segment_id": "window-e546094b3415ef18ee364074",
+        "source_anchor_characters": 15173,
+        "source_anchors": 69,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "If the flame damaged zone is found to be less than 15.2 cm (6”), the material is determined to be self-\nextinguishing for the test conditions.",
+                  "start": 1522
+                }
+              ],
+              "text": "If the flame damaged zone is found to be less than 15.2 cm (6”), the material is determined to be self-\nextinguishing for the test conditions."
+            },
+            "proposal_id": "proposal-5f1dcd72ef2677c63e2ca42d",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-8c3c954c610510642d95"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "The concept was that with a strong ignition source in upward spread, the test will \nbe conservative.",
+                  "start": 1665
+                }
+              ],
+              "text": "The concept was that with a strong ignition source in upward spread, the test will \nbe conservative."
+            },
+            "proposal_id": "proposal-69c470d78ed0ed0800825227",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [
+                "entity-63674be690a320671581"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "NASA habitability requirements dictate that \nlow gravity spacecraft4 demonstrate continuous \nventilation in all open areas and there will be \nbuoyant air flow on lunar habitats, so in many \ncases it is reasonable that NASA’s material \nN\n \nFigure 1.",
+                  "start": 3054
+                }
+              ],
+              "text": "NASA habitability requirements dictate that \nlow gravity spacecraft4 demonstrate continuous \nventilation in all open areas and there will be \nbuoyant air flow on lunar habitats, so in many \ncases it is reasonable that NASA’s material \nN\n \nFigure 1."
+            },
+            "proposal_id": "proposal-9c9558b90c633dc9b594c0db",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-a886a7eec5d65891e76d"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "Extinction Boundary for opposed flame spread \nover thin cellulosic fuel (Ref.",
+                  "start": 3303
+                }
+              ],
+              "text": "Extinction Boundary for opposed flame spread \nover thin cellulosic fuel (Ref."
+            },
+            "proposal_id": "proposal-fcc6572ee649f9d39488b745",
+            "reasons": [
+              "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-07e53eaea60dd81ef207f392",
+                  "quote": "If the incoming oxidizer flow is too fast for \nthe flame chemistry, the flame will be blown downstream (blowoff).",
+                  "start": 2904
+                }
+              ],
+              "text": "If the incoming oxidizer flow is too fast for \nthe flame chemistry, the flame will be blown downstream (blowoff)."
+            },
+            "proposal_id": "proposal-d88291b52d3c3c61fa2db703",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 20.316587900015293,
+          "image_count": 0,
+          "max_output_tokens": 18432,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9026,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 20.28769729999476
+        },
+        "usage": {
+          "completion_tokens": 3862,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 9215,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 13077
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "5656607b3f46a8d90dd1ecedc39672d18dd8864056c14c6426cccfc45ca72a62",
+        "context_token_estimate": 40600,
+        "deterministic": "COMPLETE",
+        "end": 14828,
+        "evidence_id": "E-07e53eaea60dd81ef207f392",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 18,
+        "members": [
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-d93b7355f39354e694c8562d",
+            "start": 4186
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 20480,
+        "proposed_items": 23,
+        "reasoning_tokens": 2048,
+        "request_bytes": 33757,
+        "reserved_tokens_per_attempt": 59697,
+        "schema_errors": [],
+        "segment_id": "window-f9147a576e8d9f231997cd05",
+        "source_anchor_characters": 15324,
+        "source_anchors": 71,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-7500ff2165f88836dcfc262d",
+                  "quote": "If the radiative loss from the sample 𝑞ሶ௥௦\nᇱᇱ equals the other forms of heat supply to the fuel, the numerator in equation \n7 will equal zero and the flame will extinguish.",
+                  "start": 3377
+                }
+              ],
+              "text": "If the radiative loss from the sample 𝑞ሶ௥௦\nᇱᇱ equals the other forms of heat supply to the fuel, the numerator in equation \n7 will equal zero and the flame will extinguish."
+            },
+            "proposal_id": "proposal-892289b6bad5de6335a175a3",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 4186,
+        "transport": {
+          "duration_seconds": 24.646776500012493,
+          "image_count": 0,
+          "max_output_tokens": 20480,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8109,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 24.618780700024217
+        },
+        "usage": {
+          "completion_tokens": 2864,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 11093,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 13957
+        }
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 424016
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-20T03:56:43.561978+00:00",
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Does the source's microgravity context apply to this submitted campaign? Local terrestrial controls will remain explicit exceptions. Choose documentary if the passage does not establish applicability.",
+    "Original PDF quantities retain unresolved role and experimental scope for scientific review",
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+    "Scientific preparation review dependency: CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFIGURATION_STATEMENT_STATES_A_CRITERION",
+    "Scientific preparation review dependency: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED",
+    "Scientific preparation review dependency: EXECUTION_NOT_DOCUMENTED",
+    "Scientific preparation review dependency: INTERPRETATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY",
+    "Scientific preparation review dependency: OBSERVATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "Scientific preparation review dependency: QUANTITY_UNIT_UNSPECIFIED",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: RELATION_ENTAILMENT_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific preparation review dependency: TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+    "Scientific quantity native representation deferred; original literal retained: proposal-3b197f69a0fedda886a4a07c",
+    "Scientific review required: experimental run lacks original table-row identity: research-1d88231f39dc30cd2148:entity:e38efb09f82c3f013c97",
+    "Select source-supported scope for proposal-bfe3dc34aba16ccada387a0a",
+    "Select source-supported scope for proposal-caae28952c7eb28e7ce2506f",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:0f4083708e1bc27a",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:10e83ebb2231c1e1",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:751d13394a7214ff",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:7d08e23fe76ad89b",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:8833a8bc3f93a96c",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:893a6734eaf10c8b",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:956d3d5bc27da084",
+    "Which identified runs do these documentary context statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these measured observation statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these open question statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}

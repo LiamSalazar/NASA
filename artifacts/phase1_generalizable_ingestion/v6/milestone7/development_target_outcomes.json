@@ -1,0 +1,98 @@
+{
+  "kind": "PHASE1_V6_M7_DEVELOPMENT_TARGET_OUTCOMES",
+  "code": "031f5ab",
+  "basis": "Branch-author adjudication of each frozen v4 target against the active SOURCE_SUPPORTED records of the live run's raw proposals (code 1dffc83) replayed offline at 031f5ab. A target counts only when a record is fully correct (identity, role, subject, value and unit). Exposed development sources; not independent; not expert gold.",
+  "sources": {
+    "lunar_ignition_20250002114": {
+      "accessible": 29,
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "quantities-06",
+        "quantities-10",
+        "statements-22",
+        "statements-23",
+        "statements-24",
+        "statements-25"
+      ],
+      "at_frozen_1dffc83": [
+        "entities-03",
+        "entities-04",
+        "statements-22",
+        "statements-23",
+        "statements-24",
+        "statements-25"
+      ],
+      "recall": "10/29",
+      "recall_at_frozen_1dffc83": "6/29"
+    },
+    "oxygen_regulator_20170003941": {
+      "accessible": 32,
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "entities-05",
+        "entities-06",
+        "quantities-11",
+        "quantities-13",
+        "quantities-14",
+        "statements-17",
+        "statements-20",
+        "statements-23",
+        "statements-24",
+        "statements-25",
+        "statements-28",
+        "relations-29",
+        "relations-31",
+        "relations-32"
+      ],
+      "at_frozen_1dffc83": [
+        "entities-01",
+        "entities-03",
+        "entities-04",
+        "entities-05",
+        "entities-06",
+        "statements-17",
+        "statements-20",
+        "statements-23",
+        "statements-24",
+        "statements-25",
+        "statements-28"
+      ],
+      "recall": "18/32",
+      "recall_at_frozen_1dffc83": "11/32"
+    },
+    "textiles_20260005493": {
+      "accessible": 29,
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "quantities-12",
+        "quantities-13",
+        "statements-20",
+        "statements-25",
+        "statements-26"
+      ],
+      "at_frozen_1dffc83": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "quantities-12",
+        "statements-26"
+      ],
+      "recall": "8/29",
+      "recall_at_frozen_1dffc83": "5/29"
+    }
+  },
+  "textiles_precision_at_4f93445": "19/22 active records correct; 0 critical (3 incorrect: diagram text, diagram labels with footer, merged caption lines typed as an observation)",
+  "critical_attributions_found_and_fixed": [
+    "lunar ignition: a 7.4 cm ID by 30 cm long quartz tube duct's dimensions given to the 5.2 cm by 14.0 cm samples (relative clause 'where the samples were tested')",
+    "lunar ignition: '5 to 10% higher than the ambient' read as an absolute oxygen concentration",
+    "textiles: the custom patches' 37% O2 given to the PBI coupons from the slide line above"
+  ]
+}
