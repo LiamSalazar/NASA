@@ -1550,3 +1550,22 @@ def test_a_documentary_data_source_in_the_introduction_is_scoped_to_the_study(se
     ]
     record = proposed(run(service, p, o, structure(p, service.root)))[-1]
     assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]
+
+
+def test_the_purpose_of_a_step_is_not_a_planned_result(service):
+    record = observation_record(
+        service,
+        "In order to assure that combustion will occur, a mineral oil spike was used.",
+        epistemic="author_reported_conclusion",
+        class_id="NASAConclusion",
+    )
+    assert "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION" not in record["reasons"], record[
+        "reasons"
+    ]
+    planned = observation_record(
+        service,
+        "Certification testing will be performed at the test facility.",
+        epistemic="author_reported_conclusion",
+        class_id="NASAConclusion",
+    )
+    assert planned["status"] == "REJECTED"

@@ -393,7 +393,17 @@ def role_errors(statement):
     if role in {"measured_observation", "author_reported_conclusion"}:
         if normative_instruction(text):
             errors.append("NORMATIVE_IS_NOT_OBSERVATION")
-        if re.search(r"\b(?:will|would|planned|proposed|future\s+work)\b", text, re.IGNORECASE):
+        # "In order to assure that combustion will occur, a spike was used": the
+        # purpose of a step is not a plan or a counterfactual result.
+        unpurposed = re.sub(
+            r"\b(?:in\s+order\s+to|so\s+that|so\s+as\s+to|to\s+(?:assure|ensure|insure)\s+that)\b[^,;.]*",
+            "",
+            text,
+            flags=re.IGNORECASE,
+        )
+        if re.search(
+            r"\b(?:will|would|planned|proposed|future\s+work)\b", unpurposed, re.IGNORECASE
+        ):
             errors.append("PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION")
         if re.search(
             r"\b(?:goals?|objectives?|aims?)\s+(?:is\s+|are\s+)?to\b", text, re.IGNORECASE

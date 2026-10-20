@@ -297,7 +297,13 @@ def procedure_without_interpretation(text):
     """
     text = text or ""
     return bool(
-        (APPLIED_STEP.search(text) or EXAMINATION_STEP.search(text))
+        (
+            APPLIED_STEP.search(text)
+            or EXAMINATION_STEP.search(text)
+            or re.search(
+                r"\b(?:was|were)\s+(?:used|employed|started|added|installed)\b", text, re.IGNORECASE
+            )
+        )
         and not INTERPRETIVE_CUE.search(text)
     )
 
