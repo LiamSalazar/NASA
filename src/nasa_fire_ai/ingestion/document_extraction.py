@@ -2990,6 +2990,17 @@ def validate_quantity_subject(
         }
         item["epistemic"] = "experimental_configuration"
     if item["epistemic"] == "reported_quantity" and re.search(
+        r"\b(?:set[\s-]?points?|nominal|target)\b", item["label"], re.IGNORECASE
+    ):
+        # "maintained its 4.05 psid setpoint": a value the source names a setpoint
+        # is how the test was set, not a result read from it.
+        record["role_recovery"] = {
+            "proposed_epistemic": "reported_quantity",
+            "recovered_epistemic": "experimental_configuration",
+            "basis": "VALUE_NAMED_AS_A_SETTING",
+        }
+        item["epistemic"] = "experimental_configuration"
+    if item["epistemic"] == "reported_quantity" and re.search(
         r"\b(?:will|would|planned|proposed|set\s+to|initial|maintained|specified|simulat\w*|predict\w*|derived|derivative|(?:linear|quadratic|regression|curve|polynomial)\s+fits?|shall|must|standard\s+deviations?|std\.?\s+dev\.?|variances?)\b",
         # A bound table cell's role is read from its own column
         # header and table caption, not from the whole page.
