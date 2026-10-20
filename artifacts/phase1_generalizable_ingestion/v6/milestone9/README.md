@@ -19,12 +19,17 @@ Evaluation A is the milestone 8 replay of saved outputs at the same code, with 0
 
 | Source | Recall, A | Recall, B | Precision, B | Critical |
 | --- | --- | --- | --- | --- |
-| Lunar ignition | 12/29 | **10/29** | about 0.81 (first pass, 95 records) | 0 |
-| Oxygen regulator | 19/32 | **12/32** | about 0.85 (first pass, 40 records) | 0 |
-| Textiles (slides) | 11/29 | **10/29** | about 0.90 (21 records) | 0 |
+| Lunar ignition | 12/29 | **10/29** | 72/95 = 0.758 | 0 |
+| Oxygen regulator | 19/32 | **12/32** | 33/40 = 0.825 | 0 |
+| Textiles (slides) | 11/29 | **10/29** | 19/21 = 0.905 | 0 |
 | PTFE | 27–28/34 (12 runs) | **23/34** | 74/75 = 0.987 (official scorer) | 0 |
 
-Precision on ignition, regulator and textiles comes from a first pass over every active record. It is not yet the final record-by-record review, and every error it found is non-critical: duplicates, fragments and role errors (listed in `development_target_outcomes.json`). B gained no target over A on any source.
+Precision on ignition, regulator and textiles is the record-by-record review in `record_precision_review.json`: every active record was judged against the printed page. Every error is non-critical:
+- ignition, 23 errors: 9 duplicates, 11 fragments or roles, 1 study label (the Test 1 'chemical igniter' typed as current), 2 quantity label or subject errors;
+- regulator, 7 errors;
+- textiles, 2 errors.
+
+B gained no target over A on any source.
 
 ## Cause of each variation (B against A)
 
@@ -37,9 +42,27 @@ Precision on ignition, regulator and textiles comes from a first pass over every
 | Regulator | relations-31 | model: hasMaterial not proposed |
 | Regulator | statements-20, 23, 25 | model: proposed without a subject, or a tentative explanation typed as an observation (correct rejection) |
 | Textiles | entities-02 | model: only "100% PBI knit fabric" was proposed as the Material, not "PBI" |
-| PTFE | statements-19, 21, 26, 27, 28 | model: 50 statement proposals in this run against 224 in run 1's input; these were never proposed or stayed unresolved |
+| PTFE | statements-26, 27, 28 | **provider**: the propositions window covering pp. 9–12 and 18 (10 members, 14,618 characters, about 61.6k context tokens) was lost; details below |
+| PTFE | statements-19, 21 | model: proposed in other windows of earlier runs; not proposed, or unresolved, in this run |
 
-No variation came from the provider (every window ended `COMPLETE`), from retrieval or from postprocessing. All of it comes from the model's proposals, plus one entity-linking failure that follows from a model support span.
+### Provider failures (corrected after the first version of this README)
+
+`attempts.json.gz` records every call. A window counts as lost when none of its attempts returned.
+
+| Run | Window | Attempts | Result |
+| --- | --- | --- | --- |
+| PTFE | propositions `…538ee243`, pp. 9–12 and 18 | primary model hit the 600 s per-request deadline; 4 retries on the fallback model `nvidia/nemotron-3-super-120b-a12b` returned HTTP 404 "function not found for account" | **lost**: no other window covers these members |
+| Regulator | propositions `…57031586`, pp. 1 and 4 | 3 HTTP 500 on the primary model, then 4 × 404 on the fallback | **lost**: only quantities-07, statements-15 and entities-01 lie inside, and entities-01 came from the identity stage. None was correct in A, so this loss does not change recall |
+| Regulator | identity `…dfc90a48` | 2 network errors, then success | recovered |
+| Ignition | identity and propositions `…02c5fb0e` | HTTP 500 and one stream error, then success | recovered |
+| Textiles | none | | |
+
+- No call ended on `length`, and no response was truncated or repaired. The schema errors (ignition 25, the others 0) are per-item rejections inside completed responses.
+- The low statement count on PTFE (50 against 224 in run 1's input) is mostly the lost window. It is not the model proposing less.
+- **The configured fallback model is not available to this NVIDIA account**: every fallback call returns 404. So when the primary model fails 3 times, the window is lost.
+- This is a configuration finding. No code or configuration was changed in this milestone.
+
+Retrieval and postprocessing caused no variation. The rest comes from the model's proposals, plus one entity-linking failure that follows from a model support span.
 
 The candidate inventory moves with the model's entities, because candidates attach to entities the run already has:
 - **Regulator:** identical to A.
@@ -66,13 +89,14 @@ What milestone 8's third commit changed, read from these runs:
 
 ## Reading
 
-- **Run-to-run model variability is larger than the gains of milestone 8.** B is below A on every source, and the losses come from what the model proposed in this one run.
-- **The gate is not met.** §13 needs recall ≥ 0.80, stable across sources, precision ≥ 0.95 and 0 critical errors. Recall is 0.34–0.68 and first-pass precision 0.81–0.99, with 0 critical errors everywhere.
+- **B is below A on every source.** On ignition, regulator and textiles the losses come from what the model proposed in this one run. On PTFE most of the loss is a provider failure that the fallback could not cover.
+- **The gate is not met.** §13 needs recall ≥ 0.80, stable across sources, precision ≥ 0.95 and 0 critical errors. Recall is 0.34–0.68. Precision is 0.76–0.99, and only PTFE reaches 0.95. There are 0 critical errors everywhere.
+- **The largest precision cost on the development sources is duplication:** the same assertion accepted from two windows, or from the model and a candidate.
 - **A single B run per source measures the level, not the spread.** Estimating the spread needs repeated predetermined runs per source.
 
 ## Next
 
-1. Record-by-record precision review of these B runs (ignition and regulator first), so the first-pass figures become judged figures.
-2. Deduplication gaps seen in B: the same assertion accepted twice, from the model and from a candidate, or from two windows.
-3. The rejected model quantity proposals (`QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT`, `QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION`), from the rejection audit, under the addendum's rules: audit the family before any new rule.
+1. Deduplication gaps seen in B: the same assertion accepted twice, from the model and from a candidate, or from two windows.
+2. The rejected model quantity proposals (`QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT`, `QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION`), from the rejection audit, under the addendum's rules: audit the family before any new rule.
+3. The fallback model is unavailable to the account, so a window whose primary call fails is lost; this needs a configuration decision.
 4. Repeated predetermined B runs to measure variance, then leave-one-source-out, then the §13 gate, then the frozen holdout.
