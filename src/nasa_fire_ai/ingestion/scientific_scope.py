@@ -14,7 +14,7 @@ def contains(label, text):
 
 
 STANDARD_SECTION = re.compile(
-    r"^(?:abstract|introduction|background|nomenclature|experimental(?:\s+(?:description|setup|methods|procedure))?|methods?|test\s+(?:configuration|objectives|results|methods?|procedure)|testing|results(?:\s+and\s+discussion)?|discussion|conclusions?|summary(?:\s+and\s+conclusions)?|references|acknowledg\w*)$",
+    r"^(?:abstract|introduction|background|nomenclature|experimental(?:\s+(?:description|setup|methods?|procedures?|approach))?|methods?|test\s+(?:configuration|objectives|results|methods?|procedure)|testing|results(?:\s+and\s+discussion)?|discussion|conclusions?|summary(?:\s+and\s+conclusions)?|references|acknowledg\w*)$",
     re.IGNORECASE,
 )
 ROMAN = re.compile(r"^[IVX]+[.)]\s+", re.IGNORECASE)
@@ -54,11 +54,10 @@ def logical_section(span, document):
         # A major heading printed alone on its line may be followed directly by
         # its first subsection title ("Experimental" then "Test Apparatus").
         first_line = body.split("\n", 1)[0].strip()
-        major = (
-            bool(ROMAN.match(h["title"]))
-            if roman_mode
-            else bool(STANDARD_SECTION.fullmatch(body) or STANDARD_SECTION.fullmatch(first_line))
-        )
+        standard = bool(STANDARD_SECTION.fullmatch(body) or STANDARD_SECTION.fullmatch(first_line))
+        # In a Roman-numbered paper an unnumbered standard heading ("Experimental
+        # Method" between "II." and "III.") is still a major section.
+        major = (bool(ROMAN.match(h["title"])) or standard) if roman_mode else standard
         if re.fullmatch(r"references|acknowledg\w*|abstract|nomenclature", body, re.IGNORECASE):
             major = True
         if major and (order[h["evidence_id"]], h["start"]) <= (

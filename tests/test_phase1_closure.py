@@ -1569,3 +1569,44 @@ def test_the_purpose_of_a_step_is_not_a_planned_result(service):
         class_id="NASAConclusion",
     )
     assert planned["status"] == "REJECTED"
+
+
+def test_an_unnumbered_standard_heading_is_major_in_a_roman_numbered_paper():
+    from nasa_fire_ai.ingestion.scientific_scope import logical_section
+
+    document = {
+        "package_title": "Synthetic study",
+        "segments": [{"evidence_id": "E1", "source_id": "S"}],
+        "sections": [
+            {
+                "title": "II. Flammability Limits",
+                "evidence_id": "E1",
+                "source_id": "S",
+                "start": 0,
+                "end": 10,
+            },
+            {
+                "title": "Experimental Method",
+                "evidence_id": "E1",
+                "source_id": "S",
+                "start": 20,
+                "end": 39,
+            },
+            {
+                "title": "A. Test Facility",
+                "evidence_id": "E1",
+                "source_id": "S",
+                "start": 40,
+                "end": 55,
+            },
+            {
+                "title": "III. Results",
+                "evidence_id": "E1",
+                "source_id": "S",
+                "start": 90,
+                "end": 102,
+            },
+        ],
+    }
+    assert logical_section({"evidence_id": "E1", "start": 60}, document) == "Experimental Method"
+    assert logical_section({"evidence_id": "E1", "start": 5}, document) == "II. Flammability Limits"
