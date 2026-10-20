@@ -1649,10 +1649,12 @@ def test_saved_source_quantity_can_traverse_staged_production_pipeline(service):
         for r in records
         if r["kind"] == "quantities" and r["proposal"]["label"] == "vehicle rotation"
     )
-    assert (
-        quantity["status"] == "UNRESOLVED"
-    )  # No approved rotation quantity/unit mapping invented.
-    assert quantity["reasons"] == ["QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED"]
+    # No approved rotation quantity is invented: the unit's dimension is known,
+    # so the value stands and its property is only a staged proposal.
+    assert quantity["mapping"]["property_id"] is None
+    assert quantity["mapping"]["kind"] == "staged_property_proposal"
+    assert quantity["mapping"]["property_proposal"]["activation"] == "NONE"
+    assert quantity["semantic_property_status"] == "STAGED_PROPOSAL_NOT_APPROVED"
     assert quantity["proposal"]["expression"] == match.group(1)
     assert quantity["proposal"]["unit"] == match.group(2)
     assert quantity["support_spans"][0]["checksum"] == package["inputs"][0]["sha256"]

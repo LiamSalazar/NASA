@@ -34,3 +34,17 @@ def test_source_units_with_dimensions_and_pressure_reference():
     assert interpret("J")["dimension"] == interpret("ft-lbf")["dimension"] == "energy"
     assert "property" not in interpret("J")
     assert interpret("furlong") is None and interpret(None) is None
+
+
+def test_common_laboratory_units_have_explicit_dimensions():
+    from nasa_fire_ai.normalization.units import interpret
+
+    assert interpret("msec")["dimension"] == "time"
+    assert interpret("uL")["dimension"] == "volume"
+    assert interpret("RPM")["dimension"] == "rotational_speed"
+    assert interpret("pph")["dimension"] == "mass_flow"
+    assert interpret("slm")["canonical_unit"] == "m3/s_standard"
+    # A differential pressure never becomes an absolute pressure.
+    assert interpret("psid")["canonical_unit"] == "Pa_differential"
+    # A bare "F" is ambiguous and stays unestablished.
+    assert interpret("F") is None

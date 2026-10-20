@@ -1638,3 +1638,21 @@ def test_value_naming_syntax_and_printed_relative_differences(service):
     assert basis("primer flow", "10 cm/s") == "PRINTED_VALUE_MODIFIES_ITS_NAME"
     assert basis("slow flow", "30 cm/s") == "PRINTED_NAME_WITH_PARENTHETICAL_VALUE"
     assert basis("chamber", "10 cm/s") is None
+
+
+def test_an_acronym_form_of_a_printed_name_is_normalized_to_the_printed_name(service):
+    text = "The regulator tested was the Primary Oxygen Regulator (POR) 2.0, s/n 003 here."
+    p = submitted(service, "# Synthetic study\nII. Testing\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "s", "POR 2.0, s/n 003", "Sample", text)]
+    record = proposed(run(service, p, o, structure(p, service.root)))[-1]
+    assert record["status"] != "REJECTED", record["reasons"]
+    assert record["label_normalization"]["label"] == "Primary Oxygen Regulator (POR) 2.0, s/n 003"
+
+
+def test_ranges_and_short_phrases_link_a_name_to_its_value():
+    from nasa_fire_ai.ingestion.document_extraction import NAME_VALUE_LINK
+
+    assert NAME_VALUE_LINK.fullmatch(" ranged from ")
+    assert NAME_VALUE_LINK.fullmatch(" during this test sequence of ~")
+    assert not NAME_VALUE_LINK.fullmatch(" during 3 runs of ")

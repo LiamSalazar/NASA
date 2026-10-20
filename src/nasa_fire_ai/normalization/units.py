@@ -70,6 +70,34 @@ TABLE = {
     "kj/kg": (1000, "J/kg", "specific_energy"),
     "mj/kg": (1000000, "J/kg", "specific_energy"),
     "kg": (1, "kg", "mass"),
+    "g/s": (0.001, "kg/s", "mass_flow"),
+    "ms": (0.001, "s", "time"),
+    "msec": (0.001, "s", "time"),
+    "sec": (1, "s", "time"),
+    "min": (60, "s", "time"),
+    "h": (3600, "s", "time"),
+    "hr": (3600, "s", "time"),
+    "ul": (1e-9, "m3", "volume"),
+    "µl": (1e-9, "m3", "volume"),
+    "μl": (1e-9, "m3", "volume"),
+    "ml": (1e-6, "m3", "volume"),
+    "l": (0.001, "m3", "volume"),
+    "m3": (1, "m3", "volume"),
+    "m³": (1, "m3", "volume"),
+    "ft3": (0.028316846592, "m3", "volume"),
+    "ft³": (0.028316846592, "m3", "volume"),
+    # A differential pressure is a difference; it never becomes an absolute pressure.
+    "psid": (PSI_PA, "Pa_differential", "differential_pressure"),
+    "rpm": (1 / 60, "rev/s", "rotational_speed"),
+    # Pounds (mass) per hour.
+    "pph": (0.45359237 / 3600, "kg/s", "mass_flow"),
+    "lb/hr": (0.45359237 / 3600, "kg/s", "mass_flow"),
+    # Standard volumetric flow keeps its standard-condition reference in the unit.
+    "slm": (0.001 / 60, "m3/s_standard", "standard_volumetric_flow"),
+    "slpm": (0.001 / 60, "m3/s_standard", "standard_volumetric_flow"),
+    "sccm": (1e-6 / 60, "m3/s_standard", "standard_volumetric_flow"),
+    "mg/ft2": (1e-6 / 0.09290304, "kg/m2", "areal_density"),
+    "mg/ft²": (1e-6 / 0.09290304, "kg/m2", "areal_density"),
 }
 # Affine scales: canonical = value * factor + offset (kelvin).
 AFFINE = {

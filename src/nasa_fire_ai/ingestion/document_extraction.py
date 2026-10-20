@@ -1917,7 +1917,12 @@ def value_sentences(value_spans, evidence):
 
 
 NAME_VALUE_LINK = re.compile(
-    r"\s*(?:\([^()]*\)\s*)?(?:=|:|\b(?:was|were|is|are|of|averaged|reached|totall?ed|equall?ed)\b"
+    r"\s*(?:\([^()]*\)\s*)?"
+    # "impact times during this test sequence of ~360 msec": a short phrase
+    # without numbers between the name and its "of".
+    r"(?:\s*\b(?:during|for|in|at|over)\s+[^,.;:\d()]{1,40}?\s+(?=of\b))?"
+    r"(?:=|:|\b(?:was|were|is|are|of|averaged|reached|totall?ed|equall?ed"
+    r"|ranged\s+(?:from|between)|ranging\s+(?:from|between)|varied\s+(?:from|between))\b"
     r"(?:\s+(?:approximately|about|roughly|nearly|around|only))?)\s*[~≈]?\s*$",
     re.IGNORECASE,
 )
@@ -3920,8 +3925,39 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                             ),
                             None,
                         )
+                        acronym = None
                         if not heading:
+                            # "POR 2.0, s/n 003" for the printed "Primary Oxygen
+                            # Regulator (POR) 2.0, s/n 003": the acronym form of a
+                            # name the support prints with its acronym.
+                            words = item["label"].split()
+                            if words and re.fullmatch(r"[A-Z][A-Z0-9-]{1,9}", words[0]):
+                                rest = r"\s+".join(re.escape(w) for w in words[1:])
+                                pattern = (
+                                    r"(?:[A-Z][\w-]*\s+){1,8}\(\s*"
+                                    + re.escape(words[0])
+                                    + r"\s*\)"
+                                    + (r"\s+" + rest if rest else "")
+                                    + r"(?![\w-])"
+                                )
+                                for s in label_spans:
+                                    m = re.search(pattern, s["quote"])
+                                    if m:
+                                        acronym = re.sub(r"\s+", " ", m.group())
+                                        break
+                        if not heading and not acronym:
                             raise ValueError("ENTITY_LABEL_ABSENT_FROM_SUPPORT")
+                    if (
+                        not any(mentions(f, s["quote"]) for f in forms for s in label_spans)
+                        and acronym
+                    ):
+                        record["label_normalization"] = {
+                            "original_label": item["label"],
+                            "label": acronym,
+                            "basis": "PRINTED_NAME_WITH_ITS_ACRONYM",
+                        }
+                        item["label"] = acronym
+                    elif not any(mentions(f, s["quote"]) for f in forms for s in label_spans):
                         # "A. NASA White Sands Test Facility (WSTF) Upward ... Testing":
                         # the document's own section heading names the group.
                         heading_spans = locate(
