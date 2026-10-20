@@ -2740,8 +2740,60 @@ def validate_quantity_subject(
         )
         if not column and named_in_support:
             raise ValueError("QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND")
+        from nasa_fire_ai.normalization.units import interpret as interpret_unit
+
+        unit_meaning = interpret_unit(item["unit"])
+        if (
+            not column
+            and prop
+            and unit_meaning
+            # "tested at 48% O2 and 8.2 psia": a pressure unit itself names the
+            # one approved property whose name is that dimension.
+            and normalized(prop) == unit_meaning["dimension"]
+            and semantic.properties[prop].canonical_unit == unit_meaning["canonical_unit"]
+        ):
+            values = [
+                {
+                    "evidence_id": s["evidence_id"],
+                    "start": s["start"] + m.start(),
+                    "end": s["start"] + m.end(),
+                    "quote": m.group(),
+                }
+                for s in spans
+                for m in re.finditer(
+                    r"(?<![\w.])"
+                    + re.escape(item["expression"])
+                    + r"\s*[-‑]?\s*"
+                    + re.escape(item["unit"] or "")
+                    + r"(?!\w)",
+                    s["quote"],
+                )
+                # A setting printed without a name of its own ("tested at 48% O2
+                # and 8.2 psia"), never a value the source names otherwise ("A1
+                # special reading was 20 Pa").
+                if re.search(
+                    r"\b(?:at|and|to|from|under|with)\s*[~≈]?\s*$",
+                    s["quote"][max(0, m.start() - 20) : m.start()],
+                    re.IGNORECASE,
+                )
+            ]
+            if values:
+                column = "UNIT"
+                record["quantity_name_support"] = {
+                    "basis": "UNIT_ESTABLISHES_APPROVED_PROPERTY",
+                    "property_id": prop,
+                    "unit": item["unit"],
+                    "global_alias_activation": "NONE",
+                }
+                record["quantity_value_spans"] = values[:1]
         if not column:
             raise ValueError("QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT")
+    if (
+        not table_binding
+        and column
+        and not isinstance(column, str)  # not "JOINED" or "UNIT"
+        and not bound_in_support
+    ):
         # The name comes from this document's own column for the same subject's
         # value; the prose value itself must still be printed in the support.
         record["quantity_name_support"] = {

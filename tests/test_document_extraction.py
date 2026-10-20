@@ -2739,3 +2739,23 @@ def test_gravity_level_written_as_value_is_not_a_quantity_name(service):
     ]
     r = validate(service, p, o)["records"][-1]
     assert r["status"] == "REJECTED"
+
+
+def test_a_pressure_setting_without_a_name_of_its_own_is_named_by_its_unit(service):
+    text = "Run A1 was tested at 48% O2 and 8.2 psia."
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "a1", "A1", "ExperimentalRun", text)]
+    o["quantities"] = [
+        {
+            "subject": "a1",
+            "label": "pressure",
+            "expression": "8.2",
+            "unit": "psia",
+            "epistemic": "experimental_configuration",
+            "support": support(p, text),
+        }
+    ]
+    record = validate(service, p, o)["records"][-1]
+    assert record["quantity_name_support"]["basis"] == "UNIT_ESTABLISHES_APPROVED_PROPERTY"
+    assert record["mapping"]["property_id"] == "Pressure"
