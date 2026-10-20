@@ -1,0 +1,368 @@
+{
+  "kind": "PHASE1_V6_M6_STAGED_COMPOSITION",
+  "code": "6734bd1",
+  "input": "artifacts/phase1_generalizable_ingestion/v5/numeric_expression_grammar/ptfe_live_2b7d1d6/prepared.json.gz (reviewed run 1), replayed offline with 0 model calls; the same seven assertions are produced for all twelve reviewed PTFE runs",
+  "lifecycle_states": [
+    "PROPOSED",
+    "SOURCE_SUPPORTED_PENDING_REVIEW",
+    "VALIDATED",
+    "APPROVED"
+  ],
+  "composition_proposals": [
+    {
+      "activation": "NONE",
+      "component": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "PTFE"
+      },
+      "context": null,
+      "evidence": [
+        {
+          "evidence_id": "E-3c5dda18c88e5f979ff19901",
+          "page": 10,
+          "quote": "In comparison to the Brass-filled PTFE, a similar metal filled PTFE compound named Salox-M® uses Bronze filler in PTFE instead of Brass."
+        },
+        {
+          "evidence_id": "E-3c5dda18c88e5f979ff19901",
+          "page": 10,
+          "quote": "The composition of Salox-M® is 40% Bronze and 60% PTFE."
+        }
+      ],
+      "explanation": [
+        "The source describes Salox-M® as a metal filled PTFE compound.",
+        "Salox-M® contains PTFE as a component.",
+        "The reported share of PTFE in Salox-M® is 60% on a basis the source does not state.",
+        "Status: SOURCE_SUPPORTED_PENDING_REVIEW; relation hasComponent is a staged proposal, not approved vocabulary; source page 10."
+      ],
+      "id": "composition-148f190e9412f878906f",
+      "lifecycle": "SOURCE_SUPPORTED_PENDING_REVIEW",
+      "proportion": {
+        "basis": "UNSPECIFIED_IN_SOURCE",
+        "listed_components_sum": 100.0,
+        "status": "REPORTED",
+        "unit": "%",
+        "value": 60.0
+      },
+      "relation_candidate": "hasComponent",
+      "role": null,
+      "role_host": null,
+      "source_descriptor": "metal filled PTFE compound",
+      "subject": {
+        "class_id": "Material",
+        "entity_id": "research-ec42a926a29616a70757:entity:77a80608b4dccc77e6e6",
+        "label": "Salox-M®"
+      }
+    },
+    {
+      "activation": "NONE",
+      "component": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "Brass"
+      },
+      "context": null,
+      "evidence": [
+        {
+          "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+          "page": 2,
+          "quote": "The scientists and engineers at the Materials Combustion Research Facility, in cooperation with seal suppliers, are currently testing a new formulation of polytetrafluoroethylene (PTFE) with Brass filler."
+        },
+        {
+          "evidence_id": "E-3c5dda18c88e5f979ff19901",
+          "page": 10,
+          "quote": "Although the percentage of Brass in the Brass-filled PTFE is not known, it can be determined from figures 1 and 2 that it is far less than 40%."
+        },
+        {
+          "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+          "page": 2,
+          "quote": "This Brass-filled PTFE is showing great promise as a seal and seat material for high-pressure oxygen systems."
+        }
+      ],
+      "explanation": [
+        "Brass-filled PTFE contains Brass as a component.",
+        "Brass acts as the filler of Brass-filled PTFE, in polytetrafluoroethylene.",
+        "The source states that the share of Brass in Brass-filled PTFE is not known.",
+        "Status: SOURCE_SUPPORTED_PENDING_REVIEW; relation hasComponent is a staged proposal, not approved vocabulary; source page 2, 10."
+      ],
+      "id": "composition-68ea13ec70169b01b7d2",
+      "lifecycle": "SOURCE_SUPPORTED_PENDING_REVIEW",
+      "proportion": {
+        "basis": null,
+        "status": "NOT_KNOWN_PER_SOURCE",
+        "unit": null,
+        "value": null
+      },
+      "relation_candidate": "hasComponent",
+      "role": "filler",
+      "role_host": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "polytetrafluoroethylene"
+      },
+      "source_descriptor": null,
+      "subject": {
+        "class_id": "Material",
+        "entity_id": "research-ec42a926a29616a70757:entity:3146bf392859aee0ce4d",
+        "label": "Brass-filled PTFE"
+      }
+    },
+    {
+      "activation": "NONE",
+      "component": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "Copper"
+      },
+      "context": "Salox-M®",
+      "evidence": [
+        {
+          "evidence_id": "E-3c5dda18c88e5f979ff19901",
+          "page": 10,
+          "quote": "The Bronze component of Salox-M® is made up of 90% Copper, 8% Tin, and 2% Zinc."
+        }
+      ],
+      "explanation": [
+        "Bronze (as used in Salox-M®) contains Copper as a component.",
+        "The reported share of Copper in Bronze (as used in Salox-M®) is 90% on a basis the source does not state.",
+        "Status: SOURCE_SUPPORTED_PENDING_REVIEW; relation hasComponent is a staged proposal, not approved vocabulary; source page 10."
+      ],
+      "id": "composition-6fc52c20305a4e6a6d68",
+      "lifecycle": "SOURCE_SUPPORTED_PENDING_REVIEW",
+      "proportion": {
+        "basis": "UNSPECIFIED_IN_SOURCE",
+        "listed_components_sum": 100.0,
+        "status": "REPORTED",
+        "unit": "%",
+        "value": 90.0
+      },
+      "relation_candidate": "hasComponent",
+      "role": null,
+      "role_host": null,
+      "source_descriptor": null,
+      "subject": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "Bronze"
+      }
+    },
+    {
+      "activation": "NONE",
+      "component": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "Bronze"
+      },
+      "context": null,
+      "evidence": [
+        {
+          "evidence_id": "E-3c5dda18c88e5f979ff19901",
+          "page": 10,
+          "quote": "In comparison to the Brass-filled PTFE, a similar metal filled PTFE compound named Salox-M® uses Bronze filler in PTFE instead of Brass."
+        },
+        {
+          "evidence_id": "E-3c5dda18c88e5f979ff19901",
+          "page": 10,
+          "quote": "The composition of Salox-M® is 40% Bronze and 60% PTFE."
+        }
+      ],
+      "explanation": [
+        "The source describes Salox-M® as a metal filled PTFE compound.",
+        "Salox-M® contains Bronze as a component.",
+        "Bronze acts as the filler of Salox-M®, in PTFE.",
+        "The reported share of Bronze in Salox-M® is 40% on a basis the source does not state.",
+        "Status: SOURCE_SUPPORTED_PENDING_REVIEW; relation hasComponent is a staged proposal, not approved vocabulary; source page 10."
+      ],
+      "id": "composition-814b64b6176e73335049",
+      "lifecycle": "SOURCE_SUPPORTED_PENDING_REVIEW",
+      "proportion": {
+        "basis": "UNSPECIFIED_IN_SOURCE",
+        "listed_components_sum": 100.0,
+        "status": "REPORTED",
+        "unit": "%",
+        "value": 40.0
+      },
+      "relation_candidate": "hasComponent",
+      "role": "filler",
+      "role_host": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "PTFE"
+      },
+      "source_descriptor": "metal filled PTFE compound",
+      "subject": {
+        "class_id": "Material",
+        "entity_id": "research-ec42a926a29616a70757:entity:77a80608b4dccc77e6e6",
+        "label": "Salox-M®"
+      }
+    },
+    {
+      "activation": "NONE",
+      "component": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "PTFE"
+      },
+      "context": null,
+      "evidence": [
+        {
+          "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+          "page": 2,
+          "quote": "This Brass-filled PTFE is showing great promise as a seal and seat material for high-pressure oxygen systems."
+        }
+      ],
+      "explanation": [
+        "Brass-filled PTFE contains PTFE as a component.",
+        "Status: SOURCE_SUPPORTED_PENDING_REVIEW; relation hasComponent is a staged proposal, not approved vocabulary; source page 2."
+      ],
+      "id": "composition-bd009929b902de3c13e0",
+      "lifecycle": "SOURCE_SUPPORTED_PENDING_REVIEW",
+      "proportion": null,
+      "relation_candidate": "hasComponent",
+      "role": null,
+      "role_host": null,
+      "source_descriptor": null,
+      "subject": {
+        "class_id": "Material",
+        "entity_id": "research-ec42a926a29616a70757:entity:3146bf392859aee0ce4d",
+        "label": "Brass-filled PTFE"
+      }
+    },
+    {
+      "activation": "NONE",
+      "component": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "Zinc"
+      },
+      "context": "Salox-M®",
+      "evidence": [
+        {
+          "evidence_id": "E-3c5dda18c88e5f979ff19901",
+          "page": 10,
+          "quote": "The Bronze component of Salox-M® is made up of 90% Copper, 8% Tin, and 2% Zinc."
+        }
+      ],
+      "explanation": [
+        "Bronze (as used in Salox-M®) contains Zinc as a component.",
+        "The reported share of Zinc in Bronze (as used in Salox-M®) is 2% on a basis the source does not state.",
+        "Status: SOURCE_SUPPORTED_PENDING_REVIEW; relation hasComponent is a staged proposal, not approved vocabulary; source page 10."
+      ],
+      "id": "composition-d16b1c7d05c656ecbef8",
+      "lifecycle": "SOURCE_SUPPORTED_PENDING_REVIEW",
+      "proportion": {
+        "basis": "UNSPECIFIED_IN_SOURCE",
+        "listed_components_sum": 100.0,
+        "status": "REPORTED",
+        "unit": "%",
+        "value": 2.0
+      },
+      "relation_candidate": "hasComponent",
+      "role": null,
+      "role_host": null,
+      "source_descriptor": null,
+      "subject": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "Bronze"
+      }
+    },
+    {
+      "activation": "NONE",
+      "component": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "Tin"
+      },
+      "context": "Salox-M®",
+      "evidence": [
+        {
+          "evidence_id": "E-3c5dda18c88e5f979ff19901",
+          "page": 10,
+          "quote": "The Bronze component of Salox-M® is made up of 90% Copper, 8% Tin, and 2% Zinc."
+        }
+      ],
+      "explanation": [
+        "Bronze (as used in Salox-M®) contains Tin as a component.",
+        "The reported share of Tin in Bronze (as used in Salox-M®) is 8% on a basis the source does not state.",
+        "Status: SOURCE_SUPPORTED_PENDING_REVIEW; relation hasComponent is a staged proposal, not approved vocabulary; source page 10."
+      ],
+      "id": "composition-d93da72159477e3a8482",
+      "lifecycle": "SOURCE_SUPPORTED_PENDING_REVIEW",
+      "proportion": {
+        "basis": "UNSPECIFIED_IN_SOURCE",
+        "listed_components_sum": 100.0,
+        "status": "REPORTED",
+        "unit": "%",
+        "value": 8.0
+      },
+      "relation_candidate": "hasComponent",
+      "role": null,
+      "role_host": null,
+      "source_descriptor": null,
+      "subject": {
+        "class_id": "Material",
+        "entity_id": null,
+        "entity_status": "STAGED_ENTITY_PROPOSAL",
+        "label": "Bronze"
+      }
+    }
+  ],
+  "ontology_extension_proposals": [
+    {
+      "activation": "NONE",
+      "approved_relations_examined": [
+        "belongTo",
+        "belongsToExperimentFamily",
+        "belongsToInvestigation",
+        "concerns",
+        "hasCondition",
+        "hasGravityCondition",
+        "hasIntervention",
+        "hasMaterial",
+        "hasMeasurement",
+        "hasObservation",
+        "hasPhenomenon",
+        "hasRun",
+        "madeOf",
+        "observesPhenomenon",
+        "reportedBy",
+        "usesSample"
+      ],
+      "assertion_characteristics": {
+        "context": "The material in which a nested component is described (the bronze of one formulation).",
+        "proportion": "The documented share of the component, with its documented basis (mass, volume, molar) or UNSPECIFIED_IN_SOURCE.",
+        "role": "The component's documented function in this material (e.g. filler); a characteristic of one assertion, not a global property."
+      },
+      "definition": "The subject material contains the object material as a constituent, as the source states.",
+      "domain": "Material",
+      "id": "relation-proposal-hasComponent",
+      "kind": "relation",
+      "range": "Material",
+      "status": "STAGED_FOR_ONTOLOGY_REVIEW",
+      "supporting_assertions": [
+        "composition-148f190e9412f878906f",
+        "composition-68ea13ec70169b01b7d2",
+        "composition-6fc52c20305a4e6a6d68",
+        "composition-814b64b6176e73335049",
+        "composition-bd009929b902de3c13e0",
+        "composition-d16b1c7d05c656ecbef8",
+        "composition-d93da72159477e3a8482"
+      ],
+      "term": "hasComponent",
+      "why_existing_relations_do_not_fit": "madeOf relates a sample, run or experiment family to its material; no approved relation links a material to its constituents."
+    }
+  ],
+  "other_exposed_sources": "LUCI, ignition, regulator and textiles: 0 composition assertions"
+}

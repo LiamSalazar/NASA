@@ -1,3 +1,19 @@
+# Phase 1 scientific ingestion — v6 milestone 6 on `diego/research` (material composition, staged)
+
+**PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone6/`.
+
+- The approved ontology has no material-to-constituent relation. `madeOf` relates samples and runs to their material, and the model can only propose registered relations.
+- A generic reader of composition wording (`ingestion/composition.py`) stages one component assertion per constituent:
+  - a candidate `hasComponent` relation;
+  - the component's documented role as a characteristic of that assertion;
+  - its documented share, with the basis only when stated;
+  - the context of nested components;
+  - the literal evidence.
+- The missing relation is proposed as vocabulary for ontology review, never activated, and preparation stages everything as pending candidates.
+- Explanations are rendered from the structured assertions.
+- On PTFE, the same seven assertions (Salox-M® with 40% Bronze as filler and 60% PTFE; the Bronze of Salox-M® as 90/8/2% Copper/Tin/Zinc; Brass-filled PTFE with Brass as filler, share not known) come out of every reviewed run. The other sources produce none.
+- The evaluator is unchanged, so targets 18 and 33 stay uncredited until the vocabulary and the reviewed representation are approved.
+
 # Phase 1 scientific ingestion — v6 milestone 5 on `diego/research` (precision rules; frozen-code confirmations)
 
 **PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone5/`.
