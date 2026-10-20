@@ -284,6 +284,30 @@ def running_headers(evidence):
     return sorted(line for line, n in counts.items() if n >= floor and line)
 
 
+def acronym_printed_form(label, quotes):
+    """The printed name a label abbreviates with its acronym, if a quote prints it.
+
+    "POR 2.0, s/n 003" abbreviates the printed "Primary Oxygen Regulator (POR)
+    2.0, s/n 003": the label starts with the acronym the text defines.
+    """
+    words = label.split()
+    if not words or not re.fullmatch(r"[A-Z][A-Z0-9-]{1,9}", words[0]):
+        return None
+    rest = r"\s+".join(re.escape(w) for w in words[1:])
+    pattern = (
+        r"(?:[A-Z][\w-]*\s+){1,8}\(\s*"
+        + re.escape(words[0])
+        + r"\s*\)"
+        + (r"\s+" + rest if rest else "")
+        + r"(?![\w-])"
+    )
+    for quote in quotes:
+        m = re.search(pattern, quote)
+        if m:
+            return re.sub(r"\s+", " ", m.group())
+    return None
+
+
 def caption_only_label(label, evidence):
     """Whether every printing of a label is the body of a figure or table caption.
 
@@ -3540,6 +3564,29 @@ def structure_relation_candidates(output, document):
             ):
                 relation = "belongsToInvestigation"
             elif (
+                other["class_id"] == "Investigation"
+                and other["study"] == "current"
+                and group["class_id"] == "Sample"
+                and group["study"] == "current"
+                and any(
+                    re.search(
+                        r"\b(?:tested|evaluated|examined)\s+(?:was|were)\s+(?:the\s+)?"
+                        + re.escape(normalized(name))
+                        + "|"
+                        + re.escape(normalized(name))
+                        + r"\s+(?:was|were)\s+(?:tested|evaluated|examined)\b",
+                        normalized(s["quote"]),
+                    )
+                    for s in group["support"]
+                    for name in (
+                        group["label"],
+                        acronym_printed_form(group["label"], [s["quote"]]) or group["label"],
+                    )
+                )
+            ):
+                # "The regulator tested was the Primary Oxygen Regulator (POR) 2.0".
+                relation = "usesSample"
+            elif (
                 other["class_id"] == "ExperimentalCondition"
                 and other["study"] == group["study"]
                 and group_rows_printing(
@@ -3549,11 +3596,17 @@ def structure_relation_candidates(output, document):
                 relation = "hasCondition"
             if relation and (group["key"], relation, other["key"]) not in proposed:
                 proposed.add((group["key"], relation, other["key"]))
+                # The investigation uses its specimen: usesSample points from it.
+                subject, obj = (
+                    (other["key"], group["key"])
+                    if relation == "usesSample"
+                    else (group["key"], other["key"])
+                )
                 candidates.append(
                     {
-                        "subject": group["key"],
+                        "subject": subject,
                         "relation": relation,
-                        "object": other["key"],
+                        "object": obj,
                         "support": list(group["support"])
                         + ([] if relation == "madeOf" else list(other["support"])),
                     }
@@ -4128,26 +4181,15 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                             ),
                             None,
                         )
-                        acronym = None
-                        if not heading:
-                            # "POR 2.0, s/n 003" for the printed "Primary Oxygen
-                            # Regulator (POR) 2.0, s/n 003": the acronym form of a
-                            # name the support prints with its acronym.
-                            words = item["label"].split()
-                            if words and re.fullmatch(r"[A-Z][A-Z0-9-]{1,9}", words[0]):
-                                rest = r"\s+".join(re.escape(w) for w in words[1:])
-                                pattern = (
-                                    r"(?:[A-Z][\w-]*\s+){1,8}\(\s*"
-                                    + re.escape(words[0])
-                                    + r"\s*\)"
-                                    + (r"\s+" + rest if rest else "")
-                                    + r"(?![\w-])"
-                                )
-                                for s in label_spans:
-                                    m = re.search(pattern, s["quote"])
-                                    if m:
-                                        acronym = re.sub(r"\s+", " ", m.group())
-                                        break
+                        # "POR 2.0, s/n 003" for the printed "Primary Oxygen
+                        # Regulator (POR) 2.0, s/n 003".
+                        acronym = (
+                            None
+                            if heading
+                            else acronym_printed_form(
+                                item["label"], [s["quote"] for s in label_spans]
+                            )
+                        )
                         if not heading and not acronym:
                             raise ValueError("ENTITY_LABEL_ABSENT_FROM_SUPPORT")
                     if (
@@ -4997,6 +5039,45 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                             record["context_resolution"] = binding
                     if (
                         not binding
+                        and item["relation"] == "hasMaterial"
+                        and entities[item["subject"]]["class_id"]
+                        in {"ExperimentFamily", "ExperimentalRun"}
+                        and mentions(
+                            entities[item["object"]]["label"], entities[item["subject"]]["label"]
+                        )
+                    ):
+                        # "First Dodecane Wetted POR Interstage Impact Test Series":
+                        # the group's own printed name says which material it used.
+                        binding = {
+                            "status": "SUPPORTED",
+                            "basis": "GROUP_NAME_NAMES_ITS_MATERIAL",
+                            "material_label": entities[item["object"]]["label"],
+                        }
+                        record["context_resolution"] = binding
+                    if (
+                        not binding
+                        and item["relation"] == "usesSample"
+                        and entities[item["subject"]]["class_id"] == "Investigation"
+                        and normalized(entities[item["subject"]]["label"])
+                        == normalized(document.get("package_title", ""))
+                        and any(
+                            re.search(
+                                r"\b(?:tested|evaluated|examined)\s+(?:was|were)\s+(?:the\s+)?"
+                                + re.escape(normalized(entities[item["object"]]["label"])),
+                                normalized(s["quote"]),
+                            )
+                            for s in spans
+                        )
+                    ):
+                        # "The regulator tested was the Primary Oxygen Regulator (POR)
+                        # 2.0": the paper names the specimen its own investigation used.
+                        binding = {
+                            "status": "SUPPORTED",
+                            "basis": "DOCUMENT_STATES_THE_SPECIMEN_IT_TESTED",
+                        }
+                        record["context_resolution"] = binding
+                    if (
+                        not binding
                         and item["relation"] == "hasCondition"
                         and entities[item["subject"]]["study"] == entities[item["object"]]["study"]
                     ):
@@ -5087,7 +5168,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     text = " ".join(s["quote"] for s in spans)
                     predicates = {
                         "hasMaterial": r"\b(?:made\s+(?:of|from)|burn(?:ing|ed)?|samples?\s+of|material)\b",
-                        "usesSample": r"\b(?:samples?|specimens?)\b",
+                        "usesSample": r"\b(?:samples?|specimens?|tested\s+(?:was|were)|(?:was|were)\s+tested)\b",
                         "hasGravityCondition": r"\b(?:conducted|performed|tested|tests?|experiments?)\b",
                         "belongsToInvestigation": r"\b(?:part\s+of|belongs?\s+to|member\s+of|includes?|comprises?|consists?\s+of|conducted\s+(?:as|within))\b",
                         "belongsToExperimentFamily": r"\b(?:part\s+of|belongs?\s+to|member\s+of|in\s+(?:group|series)|includes?|comprises?|consists?\s+of)\b",

@@ -1710,3 +1710,44 @@ def test_apparatus_and_section_titles_are_not_experiment_groups(service):
     assert "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP" in title["reasons"]
     assert "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP" in tower["reasons"]
     assert "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP" not in group["reasons"]
+
+
+def test_group_material_by_its_name_and_the_specimen_the_document_tested(service):
+    from nasa_fire_ai.ingestion.document_extraction import acronym_printed_form
+
+    assert (
+        acronym_printed_form(
+            "POR 2.0, s/n 003", ["the Primary Oxygen Regulator (POR) 2.0, s/n 003 here"]
+        )
+        == "Primary Oxygen Regulator (POR) 2.0, s/n 003"
+    )
+    assert acronym_printed_form("Beta 2.0", ["the Primary Oxygen Regulator (POR) 2.0"]) is None
+    text = "The regulator tested was the Alpha Unit 7. First Dodecane Wetted Alpha Test Series ran."
+    p = submitted(service, "# Synthetic study\nII. Testing\n" + text + "\n")
+    # The draft-local registry carries the ontology's relations once extraction exists.
+    p["scientific_extraction"] = {"records": []}
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study"),
+        entity(p, "u", "Alpha Unit 7", "Sample", "The regulator tested was the Alpha Unit 7."),
+        entity(p, "g", "First Dodecane Wetted Alpha Test Series", "ExperimentFamily", text),
+        entity(p, "d", "dodecane", "Material", text),
+    ]
+    o["relations"] = [
+        {"subject": "g", "relation": "hasMaterial", "object": "d", "support": support(p, text)},
+    ]
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    records = validate_output(
+        copy.deepcopy(o), p, structure(p, service.root), extraction_semantic(service, p)
+    )["records"]
+    made = [
+        r
+        for r in records
+        if r["kind"] == "relations" and r["proposal"]["relation"] == "hasMaterial"
+    ]
+    assert made[0]["context_resolution"]["basis"] == "GROUP_NAME_NAMES_ITS_MATERIAL"
+    uses = [
+        r for r in records if r["kind"] == "relations" and r["proposal"]["relation"] == "usesSample"
+    ]
+    assert uses and uses[0]["status"] == "SOURCE_SUPPORTED", [u["reasons"] for u in uses]
