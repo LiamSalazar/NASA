@@ -3579,10 +3579,14 @@ def validate_output(output, package, document, semantic, recover_roles=True):
     structural_quantities = structure_quantity_candidates(output, package, document)
     for kind in ("entities", "statements", "relations", "quantities", "concepts"):
         extra = {"relations": structural, "quantities": structural_quantities}.get(kind, [])
+        own_ids = {"proposal-" + identity([CONTRACT, kind, o])[:24] for o in output[kind]}
         for original in output[kind] + extra:
             item = copy.deepcopy(original)
+            proposal_id = "proposal-" + identity([CONTRACT, kind, item])[:24]
+            if any(original is c for c in extra) and proposal_id in own_ids:
+                continue  # the model already proposed exactly this item
             record = {
-                "id": "proposal-" + identity([CONTRACT, kind, item])[:24],
+                "id": proposal_id,
                 "kind": kind,
                 "proposal": item,
                 "status": "SOURCE_SUPPORTED",
