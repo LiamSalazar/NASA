@@ -284,12 +284,36 @@ def running_headers(evidence):
     return sorted(line for line, n in counts.items() if n >= floor and line)
 
 
+def caption_only_label(label, evidence):
+    """Whether every printing of a label is the body of a figure or table caption.
+
+    "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 psia UHOI values" names a
+    plot, not a group of experiments; a group the text itself names is printed
+    outside its captions too.
+    """
+    key = re.escape(normalized(label)[:40])
+    if not key:
+        return False
+    total = captioned = 0
+    for ev in evidence.values():
+        text = normalized(ev.get("text", ""))
+        total += len(re.findall(key, text, re.IGNORECASE))
+        captioned += len(
+            re.findall(r"(?:figure|fig\.?|table)\s*\d+\s*[-–—:.]?\s*" + key, text, re.IGNORECASE)
+        )
+    return bool(captioned) and captioned == total
+
+
 def local_binding(subject, value, spans, entities):
     """A multi-subject span cannot transfer a result between its subjects."""
     label = entities[subject]["label"]
     for span in spans:
         for clause in re.split(
-            r";|\n\s*\n|[.!?](?!\d)(?=\s|$)|,?\s+\b(?:whereas|while|but)\b", span["quote"]
+            r";|\n\s*\n|[.!?](?!\d)(?=\s|$)|,?\s+\b(?:whereas|while|but)\b"
+            # "a 7.4 cm ID ... tube duct where the samples were tested": a
+            # relative clause names another thing than the value's noun phrase.
+            r"|(?:\([^()]*\))?\s+\b(?:where|wherein|in\s+which|into\s+which|on\s+which)\b",
+            span["quote"],
         ):
             if mentions(label, clause) and mentions(value, clause):
                 competing = [
@@ -1928,6 +1952,26 @@ def staged_name_syntax(label, record, evidence):
         for match in re.finditer(name, before, re.IGNORECASE):
             if NAME_VALUE_LINK.fullmatch(before[match.end() :]):
                 return "PRINTED_NAME_LINKED_TO_VALUE"
+            # "a slow flow (~30 cm/s)": the value printed in parentheses after its name.
+            if re.fullmatch(r"\s*\(\s*[~≈]?\s*", before[match.end() :]):
+                return "PRINTED_NAME_WITH_PARENTHETICAL_VALUE"
+        # "a 10 cm/s primer flow": the value printed as the modifier of its name.
+        after = text[value["end"] : value["end"] + 120]
+        if (
+            re.match(r"\s*" + name, after, re.IGNORECASE)
+            and re.search(
+                r"\b(?:an?|the)\s*$",
+                text[max(0, value["start"] - 12) : value["start"]],
+                re.IGNORECASE,
+            )
+            # "rather than the 15 cm burn limit": a value set aside is not named.
+            and not re.search(
+                r"\b(?:rather\s+than|instead\s+of|not|nor)\s+(?:an?|the)\s*$",
+                text[max(0, value["start"] - 30) : value["start"]],
+                re.IGNORECASE,
+            )
+        ):
+            return "PRINTED_VALUE_MODIFIES_ITS_NAME"
         sentence = value_sentences([value], evidence)[0]
         prefix = sentence[: sentence.find(value["quote"])]
         named = list(re.finditer(name, prefix, re.IGNORECASE))
@@ -2704,6 +2748,22 @@ def validate_quantity_subject(
         else:
             record["status"] = "UNRESOLVED"
             record["reasons"].append("QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED")
+    for value in record.get("quantity_value_spans", []):
+        # "an oxygen concentration 5 to 10% higher than the ambient": the value is
+        # a printed difference from another quantity, not the quantity itself.
+        after = evidence[value["evidence_id"]]["text"][value["end"] : value["end"] + 40]
+        if item["epistemic"] != "derived_quantity" and re.match(
+            r"\s*%?\s*(?:higher|lower|greater|less|more|above|below|faster|slower)\s+than\b",
+            after,
+            re.IGNORECASE,
+        ):
+            record["status"] = "UNRESOLVED"
+            record["relative_comparison"] = {
+                "printed_after_value": after.strip()[:40],
+                "basis": "PRINTED_RELATIVE_DIFFERENCE",
+            }
+            record["reasons"].append("RELATIVE_DIFFERENCE_IS_A_DERIVED_QUANTITY")
+            break
     if numeric["status"] == "AMBIGUOUS":
         # Candidate readings are preserved; a reviewer chooses.
         record["status"] = "UNRESOLVED"
@@ -3726,7 +3786,8 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CONDITION_NAMED_ONLY_IN_CITED_WORK")
                     if item["class_id"] == "ExperimentalCondition" and re.search(
-                        r"(?:\bmechanical\s+impact|\bimpact\s+test\w*|\bignition\s+temperature"
+                        r"(?:\bmechanical\s+impact|\bimpact\s+test\w*|\btest\s+\d+|\btest\s+program\w*"
+                        r"|\bstandard|\bstd\b.*|\bignition\s+temperature"
                         r"(?:\s*\(\s*AIT\s*\))?|\bheat\s+of\s+combustion|\btests?|\btesting|\btesters?)\s*$",
                         item["label"],
                         re.IGNORECASE,
@@ -3758,10 +3819,28 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     if item["class_id"] not in semantic.class_metadata:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("UNREGISTERED_CLASS_NEEDS_SEMANTIC_REVIEW")
-                    if item["class_id"] == "ExperimentFamily" and re.match(
-                        r"(?:Figure|Fig\.?|Table)\s*(?:[-–—]\s*\d+|\d+\s*[-–—:.])",
-                        item["label"],
-                        re.IGNORECASE,
+                    if item["class_id"] == "ExperimentFamily" and (
+                        re.match(
+                            r"(?:Figure|Fig\.?|Table)\s*(?:[-–—]\s*\d+|\d+\s*[-–—:.])",
+                            item["label"],
+                            re.IGNORECASE,
+                        )
+                        # The label is the body of a printed caption ("Figure 9:
+                        # Cotton T-Shirt material (Beefy-T), 8.2 psia UHOI values").
+                        or caption_only_label(item["label"], evidence)
+                        # An environment is a condition, not a family of experiments.
+                        or (
+                            re.search(
+                                r"\b(?:environment|atmosphere|gravity|flow)\s*$",
+                                item["label"],
+                                re.IGNORECASE,
+                            )
+                            and not re.search(
+                                r"\b(?:tests?|testing|experiments?|series|campaign|program)\b",
+                                item["label"],
+                                re.IGNORECASE,
+                            )
+                        )
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY")
@@ -3826,7 +3905,38 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     label_spans = contiguous_support(spans, evidence)
                     forms = printed_label_forms(item["label"], document)
                     if not any(mentions(f, s["quote"]) for f in forms for s in label_spans):
-                        raise ValueError("ENTITY_LABEL_ABSENT_FROM_SUPPORT")
+                        heading = next(
+                            (
+                                h
+                                for h in document.get("sections", [])
+                                if normalized(
+                                    re.sub(
+                                        r"^(?:\d+(?:\.\d+)*[.)]?|[A-Z][.)]|[IVXLCDM]+[.)])\s+",
+                                        "",
+                                        h.get("title", ""),
+                                    )
+                                )
+                                == normalized(item["label"])
+                            ),
+                            None,
+                        )
+                        if not heading:
+                            raise ValueError("ENTITY_LABEL_ABSENT_FROM_SUPPORT")
+                        # "A. NASA White Sands Test Facility (WSTF) Upward ... Testing":
+                        # the document's own section heading names the group.
+                        heading_spans = locate(
+                            [
+                                {
+                                    "evidence_id": heading["evidence_id"],
+                                    "quote": heading["title"],
+                                    "start": heading["start"],
+                                }
+                            ],
+                            evidence,
+                        )
+                        spans += heading_spans
+                        label_spans = heading_spans
+                        record["identity_support"] = "PRINTED_SECTION_HEADING"
                     if not any(mentions(item["label"], s["quote"]) for s in spans):
                         marked = [
                             f for f in forms[1:] if any(mentions(f, s["quote"]) for s in spans)

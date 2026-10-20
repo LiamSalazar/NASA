@@ -1610,3 +1610,31 @@ def test_an_unnumbered_standard_heading_is_major_in_a_roman_numbered_paper():
     }
     assert logical_section({"evidence_id": "E1", "start": 60}, document) == "Experimental Method"
     assert logical_section({"evidence_id": "E1", "start": 5}, document) == "II. Flammability Limits"
+
+
+def test_a_relative_clause_does_not_give_a_ducts_size_to_the_samples_in_it():
+    from nasa_fire_ai.ingestion.document_extraction import local_binding
+
+    quote = "Installed was a 7.4 cm ID by 30 cm long quartz tube duct (Fig 5) where the Alpha samples were tested."
+    entities = {"s": {"id": "s", "label": "Alpha samples", "class_id": "Sample"}}
+    assert not local_binding("s", "7.4 cm", [{"quote": quote}], entities)
+
+
+def test_value_naming_syntax_and_printed_relative_differences(service):
+    from nasa_fire_ai.ingestion.document_extraction import staged_name_syntax
+
+    text = "The sample was exposed to a 10 cm/s primer flow and a slow flow (~30 cm/s) of gas."
+    evidence = {"E": {"text": text}}
+
+    def basis(label, quote):
+        start = text.index(quote)
+        record = {
+            "quantity_value_spans": [
+                {"evidence_id": "E", "start": start, "end": start + len(quote), "quote": quote}
+            ]
+        }
+        return staged_name_syntax(label, record, evidence)
+
+    assert basis("primer flow", "10 cm/s") == "PRINTED_VALUE_MODIFIES_ITS_NAME"
+    assert basis("slow flow", "30 cm/s") == "PRINTED_NAME_WITH_PARENTHETICAL_VALUE"
+    assert basis("chamber", "10 cm/s") is None
