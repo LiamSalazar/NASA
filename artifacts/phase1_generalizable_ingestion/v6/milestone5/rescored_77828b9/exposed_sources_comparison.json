@@ -1,0 +1,607 @@
+{
+  "kind": "PHASE1_V6_M5_EXPOSED_SOURCE_REPLAY_COMPARISON",
+  "inputs": "Saved v4 application receipts (raw Nemotron proposals); 0 model calls",
+  "closure_code": "0ade8f1d04950a9b79fdd200e8d0d61c4bc535b3",
+  "code": "77828b9ba1c5c1789bb7f4f471a9996b6918c657",
+  "scientific_acceptance": "STATUS CHANGES ONLY; NEW SOURCE_SUPPORTED RECORDS LISTED FOR REVIEW",
+  "sources": {
+    "luci_application_final": {
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 26,
+          "UNRESOLVED": 1,
+          "REJECTED": 2
+        },
+        "quantities": {
+          "UNRESOLVED": 24,
+          "SOURCE_SUPPORTED": 7,
+          "REJECTED": 4
+        },
+        "statements": {
+          "UNRESOLVED": 156,
+          "SOURCE_SUPPORTED": 69,
+          "REJECTED": 31
+        },
+        "relations": {
+          "SOURCE_SUPPORTED": 4,
+          "UNRESOLVED": 9,
+          "REJECTED": 7
+        }
+      },
+      "v6_m1": {
+        "entities": {
+          "SOURCE_SUPPORTED": 26,
+          "UNRESOLVED": 1,
+          "REJECTED": 2
+        },
+        "quantities": {
+          "SOURCE_SUPPORTED": 16,
+          "UNRESOLVED": 13,
+          "REJECTED": 6
+        },
+        "statements": {
+          "UNRESOLVED": 156,
+          "SOURCE_SUPPORTED": 69,
+          "REJECTED": 31
+        },
+        "relations": {
+          "SOURCE_SUPPORTED": 4,
+          "UNRESOLVED": 9,
+          "REJECTED": 7
+        }
+      },
+      "changed_kinds": [
+        "quantities"
+      ],
+      "supported_quantities_now": [
+        {
+          "id": "proposal-8507a6f64822dfbbd62add31",
+          "kind": "quantities",
+          "label": "Flame base spread rate",
+          "expression": ".92",
+          "unit": "mm/s",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-afd51954224fd89b07b21abc",
+          "kind": "quantities",
+          "label": "Flame tip spread rate",
+          "expression": "1.1",
+          "unit": "mm/s",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-2d8379a10aad5e8f6797599d",
+          "kind": "quantities",
+          "label": "Flame spread rate",
+          "expression": "1.5",
+          "unit": "mm/s",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-3ac20fffbb5589a15537fd2c",
+          "kind": "quantities",
+          "label": "Preheat length shrink rate",
+          "expression": "-0.094",
+          "unit": "mm/s",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-ed07ef1768ac8595a2015bf8",
+          "kind": "quantities",
+          "label": "Total base spread",
+          "expression": "~6",
+          "unit": "cm",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-1065e2c5cad7966b70628903",
+          "kind": "quantities",
+          "label": "O2%",
+          "expression": "20",
+          "unit": "%",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-d481f3ddeb9e57e11c03e412",
+          "kind": "quantities",
+          "label": "O2%",
+          "expression": "14.3",
+          "unit": "%",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-64782f8061fd84c30fe5d705",
+          "kind": "quantities",
+          "label": "O2%",
+          "expression": "15.8",
+          "unit": "%",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-cca4c24126c1b74b2424d49c",
+          "kind": "quantities",
+          "label": "Flame width",
+          "expression": "~3.2",
+          "unit": "cm",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-5cc5444583572fe6417a3809",
+          "kind": "quantities",
+          "label": "Preheat length decrease",
+          "expression": "~0.4",
+          "unit": "cm",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-560e2bce8959097372419e36",
+          "kind": "quantities",
+          "label": "O2%",
+          "expression": "~18",
+          "unit": "%",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-a5d73dffa3ac5100cf12ef8d",
+          "kind": "quantities",
+          "label": "Flame tip grows at a rate",
+          "expression": "~ 3.95",
+          "unit": "mm/s",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-3fe14b231018918253f06a41",
+          "kind": "quantities",
+          "label": "length",
+          "expression": "~1.5",
+          "unit": "cm",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-1e967e9b1c463180df9dc9b0",
+          "kind": "quantities",
+          "label": "O2%",
+          "expression": "20",
+          "unit": "%",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-98f2324bf5f1b03bac0aa8e4",
+          "kind": "quantities",
+          "label": "O2%",
+          "expression": "21",
+          "unit": "%",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-a2f5805916482e584b21d0db",
+          "kind": "quantities",
+          "label": "O2%",
+          "expression": "14.5",
+          "unit": "%",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        }
+      ]
+    },
+    "independent_ptfe_application": {
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 14,
+          "UNRESOLVED": 16
+        },
+        "quantities": {},
+        "statements": {
+          "SOURCE_SUPPORTED": 44,
+          "UNRESOLVED": 173,
+          "REJECTED": 3
+        },
+        "relations": {
+          "UNRESOLVED": 5,
+          "SOURCE_SUPPORTED": 1,
+          "REJECTED": 18
+        }
+      },
+      "v6_m1": {
+        "entities": {
+          "SOURCE_SUPPORTED": 19,
+          "UNRESOLVED": 18
+        },
+        "quantities": {
+          "SOURCE_SUPPORTED": 29,
+          "UNRESOLVED": 3
+        },
+        "statements": {
+          "SOURCE_SUPPORTED": 45,
+          "UNRESOLVED": 172,
+          "REJECTED": 3
+        },
+        "relations": {
+          "UNRESOLVED": 5,
+          "SOURCE_SUPPORTED": 16,
+          "REJECTED": 18
+        }
+      },
+      "changed_kinds": [
+        "entities",
+        "quantities",
+        "relations",
+        "statements"
+      ],
+      "supported_quantities_now": [
+        {
+          "id": "proposal-cb4768163e77f1ddd76dbd67",
+          "kind": "quantities",
+          "label": "Impact Energy",
+          "expression": "98",
+          "unit": "Joules",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-68f9e5b215e8abebcc313b53",
+          "kind": "quantities",
+          "label": "System\nPressure",
+          "expression": "10,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-9d2dc336eae64227ab63a1ec",
+          "kind": "quantities",
+          "label": "heat of combustion",
+          "expression": "1332",
+          "unit": "cal/gram",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-8a25b0f927d2dc1e681706e1",
+          "kind": "quantities",
+          "label": "Standard Deviation",
+          "expression": "13.81",
+          "unit": "cal/gram",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-ee7ce2f00b1478279dbb9dbf",
+          "kind": "quantities",
+          "label": "AIT",
+          "expression": ">425",
+          "unit": "°C",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-9ce4f4c17595e9b270498cc6",
+          "kind": "quantities",
+          "label": "Initial Test Pressure",
+          "expression": "1500",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-15a2af3a80f3a5659a124f6a",
+          "kind": "quantities",
+          "label": "Final Test Pressure",
+          "expression": "2268",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-254ba4325d602b237304fb36",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.06217",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-07e23be119e2715a55988fa7",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "5,000",
+          "unit": "psia",
+          "subject_recovery": "RECOVERED",
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-2d144dd0ae83e4dee1e86aee",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "10,000",
+          "unit": "psia",
+          "subject_recovery": "RECOVERED",
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-ac5a4f901ca83db9ed2df35a",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.0645",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-3fc317194e509c8baaeeb2f6",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.06202",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-e53b3ece2569e74d6a5ab3fb",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.06217",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-8af0b568db7ebf97c90164e3",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "9,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-8338b3c13f47e65f0dd44419",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "8,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-26cc3cb53960b0ab36e38b1e",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "6,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-45cc801f1be4054247e114e2",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "1,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-08f18b4f32fa8943a8ded78a",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "10,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-c5027ffd195b96d21e4c2aad",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.06802",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-aaa63e413e5a6e3a302c98ff",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.06823",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-b0b206c0495248211a063ce9",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "10,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-72aad803b4edc656acd648bd",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.06206",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-4c9ad51e10fb35d5ea6f9144",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "10,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-3b9fc147d77d834e6068e08b",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.06206",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        },
+        {
+          "id": "proposal-ab280a0cf187a411638db6ac",
+          "kind": "quantities",
+          "label": "System Pressure",
+          "expression": "10,000",
+          "unit": "psia",
+          "subject_recovery": null,
+          "mapping": "existing_attribute"
+        },
+        {
+          "id": "proposal-f5b607fb22bd9fbc93736077",
+          "kind": "quantities",
+          "label": "Average Sample Thickness",
+          "expression": "0.06206",
+          "unit": "inches",
+          "subject_recovery": null,
+          "mapping": "staged_property_proposal"
+        }
+      ]
+    },
+    "independent_regulator_application": {
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 9,
+          "UNRESOLVED": 22
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 144,
+          "SOURCE_SUPPORTED": 26,
+          "REJECTED": 4
+        },
+        "relations": {
+          "UNRESOLVED": 3,
+          "REJECTED": 8
+        }
+      },
+      "v6_m1": {
+        "entities": {
+          "SOURCE_SUPPORTED": 9,
+          "UNRESOLVED": 22
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 137,
+          "SOURCE_SUPPORTED": 33,
+          "REJECTED": 4
+        },
+        "relations": {
+          "UNRESOLVED": 3,
+          "REJECTED": 8
+        }
+      },
+      "changed_kinds": [
+        "statements"
+      ],
+      "supported_quantities_now": []
+    },
+    "independent_textiles_application": {
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 10,
+          "UNRESOLVED": 12
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 23,
+          "REJECTED": 15,
+          "SOURCE_SUPPORTED": 2
+        },
+        "relations": {
+          "REJECTED": 6
+        }
+      },
+      "v6_m1": {
+        "entities": {
+          "SOURCE_SUPPORTED": 10,
+          "UNRESOLVED": 12
+        },
+        "quantities": {},
+        "statements": {
+          "UNRESOLVED": 24,
+          "REJECTED": 15,
+          "SOURCE_SUPPORTED": 1
+        },
+        "relations": {
+          "REJECTED": 6
+        }
+      },
+      "changed_kinds": [
+        "statements"
+      ],
+      "supported_quantities_now": []
+    },
+    "independent_ignition_application": {
+      "closure": {
+        "entities": {
+          "SOURCE_SUPPORTED": 38,
+          "UNRESOLVED": 20
+        },
+        "quantities": {
+          "UNRESOLVED": 9,
+          "REJECTED": 21
+        },
+        "statements": {
+          "UNRESOLVED": 255,
+          "SOURCE_SUPPORTED": 3,
+          "REJECTED": 9
+        },
+        "relations": {
+          "REJECTED": 33,
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 4
+        }
+      },
+      "v6_m1": {
+        "entities": {
+          "SOURCE_SUPPORTED": 38,
+          "UNRESOLVED": 20
+        },
+        "quantities": {
+          "UNRESOLVED": 12,
+          "REJECTED": 18
+        },
+        "statements": {
+          "UNRESOLVED": 255,
+          "SOURCE_SUPPORTED": 3,
+          "REJECTED": 9
+        },
+        "relations": {
+          "REJECTED": 36,
+          "SOURCE_SUPPORTED": 2,
+          "UNRESOLVED": 1
+        }
+      },
+      "changed_kinds": [
+        "quantities",
+        "relations"
+      ],
+      "supported_quantities_now": []
+    }
+  },
+  "note": "Status changes against the c314286 replays: LUCI none; textiles 1 statement held (a title-slide statement carrying the running page header); regulator 9 set-up statements on the one tested unit now scoped to the study and 2 held (a header-only fragment and an explanation without hedging); ignition 3 materials named in figure captions retyped from Sample to Material and their self-madeOf relations rejected; v4 PTFE package (same document as the reviewed runs) gains the printed batch groups, their relations and their own table cells. All new SOURCE_SUPPORTED records outside PTFE were read by the branch author; none is critical."
+}

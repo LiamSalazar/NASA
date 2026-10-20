@@ -1,0 +1,3271 @@
+{
+  "approvals": 0,
+  "attempts": 14,
+  "completed_at": "2026-10-19T07:52:57.980410+00:00",
+  "configuration": {
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "max_model_calls": null,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 3600.0,
+    "vision_model": null
+  },
+  "digest": "e445545d32350bdd28abbab321d468b7fea2818b1e9a8614be5ca36ea5513978",
+  "git_head": "fe4f1bb0515f032701e71de02a2a1328711ab7ac",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20090043050/downloads/20090043050.pdf",
+  "package_id": "research-ec42a926a29616a70757",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 14759,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 0,
+    "configured_fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "deterministic_characters": 29500,
+    "duration_seconds": 1563.2672927000094,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "model_characters": 15368,
+    "new_model_calls": 14,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "4b9a1675fc3ed43ce81d2f9b7bfab3cb8bf4ca656a81b66fcc485ee6182792bf",
+        "context_token_estimate": 24869,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 8192,
+        "proposed_items": 25,
+        "reasoning_tokens": 2048,
+        "request_bytes": 28567,
+        "reserved_tokens_per_attempt": 40522,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 13539,
+        "source_anchors": 88,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 58.51188820000971,
+          "image_count": 0,
+          "max_output_tokens": 8192,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7318,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 58.481754499982344
+        },
+        "usage": {
+          "completion_tokens": 3276,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 8720,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 8672,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 11996
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "666f411c9d306e64e0e4836fa34607bb71d6820f1d23d645eb1fc19199dd314a",
+        "context_token_estimate": 27446,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 7168,
+        "proposed_items": 23,
+        "reasoning_tokens": 2048,
+        "request_bytes": 35770,
+        "reserved_tokens_per_attempt": 46701,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 14454,
+        "source_anchors": 75,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentFamily",
+              "key": "entity-2c38b9e5956723d904d2",
+              "label": "Table 5—High Pressure LOX Mechanical Impact Data of Fluorinated Compounds [4]",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "The results of the mechanical impact tests under these \nconditions, as determined by data from the Kennedy Space Center, can be seen in Table 5.",
+                  "start": 1425
+                },
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "14   \nTeflon® and Kel-F® 81 both passed the material acceptability test up to a pressure of 1,500 psia, \nwhereas Fluorel® began reacting at pressures above 500 psia; therefore, failing the test.",
+                  "start": 0
+                },
+                {
+                  "evidence_id": "E-89c792e84b33563bf7b01cea",
+                  "quote": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-89e5539d17e6169dd92cf6c8",
+            "reasons": [
+              "CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY",
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 44.89440329998615,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7383,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 44.86980039998889
+        },
+        "usage": {
+          "completion_tokens": 3366,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14477,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 13008,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17843
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "d4cd476650cecf8db8ce783ea21457d785709ac8f47b19d51d8647abbc2fe716",
+        "context_token_estimate": 12451,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 6144,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 7828,
+        "reserved_tokens_per_attempt": 17735,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 670,
+        "source_anchors": 10,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 25.917153999995207,
+          "image_count": 0,
+          "max_output_tokens": 6144,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9379,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 25.913782299991
+        },
+        "usage": {
+          "completion_tokens": 2054,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 2683,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 4737
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "83196cefc5a9bf96723658f72e2f2edee81339838431fc454388717a4e9ca806",
+        "context_token_estimate": 47583,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 21,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 23552,
+        "proposed_items": 88,
+        "reasoning_tokens": 2048,
+        "request_bytes": 41544,
+        "reserved_tokens_per_attempt": 70591,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 21920,
+        "source_anchors": 95,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "2   \nVery few systems can be built which contain no polymeric materials; therefore, \nmaterials which have good impact resistance, low heat of combustion, high auto-ignition \ntemperature and that maintain good mechanical properties are essential.",
+                  "start": 0
+                }
+              ],
+              "text": "2   \nVery few systems can be built which contain no polymeric materials; therefore, \nmaterials which have good impact resistance, low heat of combustion, high auto-ignition \ntemperature and that maintain good mechanical properties are essential."
+            },
+            "proposal_id": "proposal-a34f320d23ca8b970d305e43",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-3146bf392859aee0ce4d",
+                "entity-a83ab527f3b32724eb0e",
+                "entity-f3fe4bee87e39df4f30a",
+                "entity-905d14fe14195c1a03fb",
+                "entity-74a3ba42d83b4d61cefb",
+                "entity-f10d94b63e32c6a28d52",
+                "entity-0b0e2df08a35b838f031"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ],
+              "text": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®."
+            },
+            "proposal_id": "proposal-bb31c682bcfed26413347865",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "STATEMENT_MULTI_RUN_SCOPE_REQUIRES_REVIEW",
+              "STATEMENT_MULTI_RUN_SCOPE_REQUIRES_REVIEW",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-3146bf392859aee0ce4d",
+                "entity-a83ab527f3b32724eb0e",
+                "entity-f3fe4bee87e39df4f30a",
+                "entity-905d14fe14195c1a03fb",
+                "entity-74a3ba42d83b4d61cefb",
+                "entity-f10d94b63e32c6a28d52"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "text": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC"
+            },
+            "proposal_id": "proposal-3b4669dcf51d5b4dc8533c46",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "derived_quantity",
+              "expression": "12% lower",
+              "label": "caloric content per gram of material for Brass-filled PTFE",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "7\nfilled PTFE was 12% lower than the caloric content of the non-Brass-filled PTFE determined by\nChou and Giedorowicz.",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-ed8790d27733b6c31ae51555",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "13.81",
+              "label": "Standard Deviation",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-a0a9dd0f84e49ef7741d2fb3",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "no reactions out of 20 samples",
+              "label": "reactions out of samples",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.  The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.  Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.  Figure 1, below, is a pretest picture of the Brass-\nfilled PTFE, which is blue in color and came pre-cut into a circular sample from the distributor.  \nAlthough the name indicates that the material is Brass-filled, the small slivers cannot be seen on \nthe surface in the picture.  A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.  A post-test picture of a reacting sample was not taken due to complete combustion \nof the sample in a LOX environment.  The post-test picture of a non-reactive sample shows that \nthe material is extruded in an outward radial direction when it is struck by the pin.  Part of the \nsample was trapped under the pin, generating a thin compressed layer.  A small sliver of the \nBrass filling can be seen in the center of the compressed layer.\nThe mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.  The data shows \nthat Brass-filled PTFE is highly compatible with both LOX and GOX systems.  It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.  In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.  Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.  Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.  A second batch of the Brass-filled PTFE ",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-e6b0bec63b6687d173b709b2",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "80",
+              "label": "additional samples tested",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.  The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.  Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.  Figure 1, below, is a pretest picture of the Brass-\nfilled PTFE, which is blue in color and came pre-cut into a circular sample from the distributor.  \nAlthough the name indicates that the material is Brass-filled, the small slivers cannot be seen on \nthe surface in the picture.  A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.  A post-test picture of a reacting sample was not taken due to complete combustion \nof the sample in a LOX environment.  The post-test picture of a non-reactive sample shows that \nthe material is extruded in an outward radial direction when it is struck by the pin.  Part of the \nsample was trapped under the pin, generating a thin compressed layer.  A small sliver of the \nBrass filling can be seen in the center of the compressed layer.\nThe mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.  The data shows \nthat Brass-filled PTFE is highly compatible with both LOX and GOX systems.  It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.  In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.  Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.  Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.  A second batch of the Brass-filled PTFE ",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-a989eff6de9edde8eb412923",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "no reactions out of the 80 impacts",
+              "label": "reactions out of additional impacts",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.  The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.  Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.  Figure 1, below, is a pretest picture of the Brass-\nfilled PTFE, which is blue in color and came pre-cut into a circular sample from the distributor.  \nAlthough the name indicates that the material is Brass-filled, the small slivers cannot be seen on \nthe surface in the picture.  A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.  A post-test picture of a reacting sample was not taken due to complete combustion \nof the sample in a LOX environment.  The post-test picture of a non-reactive sample shows that \nthe material is extruded in an outward radial direction when it is struck by the pin.  Part of the \nsample was trapped under the pin, generating a thin compressed layer.  A small sliver of the \nBrass filling can be seen in the center of the compressed layer.\nThe mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.  The data shows \nthat Brass-filled PTFE is highly compatible with both LOX and GOX systems.  It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.  In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.  Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.  Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.  A second batch of the Brass-filled PTFE ",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-6a0cbaa1ef2dca5cc65718ad",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "Four",
+              "label": "LOX samples reacted",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.  The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.  Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.  Figure 1, below, is a pretest picture of the Brass-\nfilled PTFE, which is blue in color and came pre-cut into a circular sample from the distributor.  \nAlthough the name indicates that the material is Brass-filled, the small slivers cannot be seen on \nthe surface in the picture.  A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.  A post-test picture of a reacting sample was not taken due to complete combustion \nof the sample in a LOX environment.  The post-test picture of a non-reactive sample shows that \nthe material is extruded in an outward radial direction when it is struck by the pin.  Part of the \nsample was trapped under the pin, generating a thin compressed layer.  A small sliver of the \nBrass filling can be seen in the center of the compressed layer.\nThe mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.  The data shows \nthat Brass-filled PTFE is highly compatible with both LOX and GOX systems.  It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.  In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.  Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.  Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.  A second batch of the Brass-filled PTFE ",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-80f23de327c11ff5a5e23b65",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "1483",
+              "label": "heat of combustion",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "The reported values for the heat of combustion of TFE-Teflon® (PTFE) \nin the Safe Use of Oxygen and Oxygen Systems vary substantially between the different test \nfacilities with an average of 1483 (cal/gram) and standard deviation of 208 (cal/gram) [2].",
+                  "start": 119
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-937661f264be5664b904bdbd",
+            "reasons": [
+              "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "208",
+              "label": "standard deviation",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "The reported values for the heat of combustion of TFE-Teflon® (PTFE) \nin the Safe Use of Oxygen and Oxygen Systems vary substantially between the different test \nfacilities with an average of 1483 (cal/gram) and standard deviation of 208 (cal/gram) [2].",
+                  "start": 119
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-ac76a11418705aa950667f7e",
+            "reasons": [
+              "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "roughly 700",
+              "label": "temperature rise",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "Due \nto this limitation, the only comparison that can be made between the Brass-filled PTFE and \nTeflon® is that they both auto ignite above 425ºC and both materials experience a pressure rise \nof roughly 700 psi, which can be seen in Tables 3 and 4.",
+                  "start": 1155
+                }
+              ],
+              "unit": "psi"
+            },
+            "proposal_id": "proposal-4a1288e9110a51da092a2b19",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "9",
+              "label": "temperature increase rate",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "The external heater was started and allowed to increase the \ntemperature of the sample at a rate of 9 degrees F/min.",
+                  "start": 1396
+                }
+              ],
+              "unit": "degrees F/min"
+            },
+            "proposal_id": "proposal-a05ed7efa88ddb3b25850798",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "425",
+              "label": "maximum test temperature",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "If the system temperature rises above 425°C \nprior to ignition of the sample, then the AIT is recorded as >425°C.",
+                  "start": 1606
+                }
+              ],
+              "unit": "°C"
+            },
+            "proposal_id": "proposal-6f6d5a072013332394be5230",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 61.968584200018086,
+          "image_count": 0,
+          "max_output_tokens": 23552,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9506,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 61.80756860002293
+        },
+        "usage": {
+          "completion_tokens": 5716,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 12311,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 8672,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 18027
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "80c73c8b3625db3d54629e569c410a269a42f70d0a187840683404a852c3c74c",
+        "context_token_estimate": 61537,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "fallbacks": [
+          {
+            "from": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+            "reason": "deadline",
+            "task_and_evidence_preserved": true,
+            "to": "nvidia/nemotron-3-super-120b-a12b"
+          }
+        ],
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 27,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 72,
+        "reasoning_tokens": 2048,
+        "request_bytes": 50928,
+        "reserved_tokens_per_attempt": 89282,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 23618,
+        "source_anchors": 89,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-24f0f48997b8931670c8"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.",
+                  "start": 132
+                }
+              ],
+              "text": "The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard."
+            },
+            "proposal_id": "proposal-303a35b92eaf78170151f972",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-24f0f48997b8931670c8"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.",
+                  "start": 279
+                }
+              ],
+              "text": "Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure."
+            },
+            "proposal_id": "proposal-d34f3a7e101fa5bb9de3272c",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-27bf6c95a1bcb71e7e64",
+                "entity-3146bf392859aee0ce4d",
+                "entity-74b13c8c4d833cd41cc1",
+                "entity-eb162b287f5f924ddc0a",
+                "entity-ebff29039c4bf21da4c6"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ],
+              "text": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20"
+            },
+            "proposal_id": "proposal-78c90497655367bdc4ae43eb",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-70d22f23e9652114591d",
+                "entity-77a80608b4dccc77e6e6",
+                "entity-8a6ec8727345ddba85bb"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ],
+              "text": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J."
+            },
+            "proposal_id": "proposal-b91ebf8fc71d8bef674d3086",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-a83ab527f3b32724eb0e",
+                "entity-41e015d86f040b5bc4d1",
+                "entity-fdff5580441ad8b0b622"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "The data presented in Table 6 are high-pressure GOX impact results determined by the \ntesters at White Sands Test Facility (WSTF) and MSFC.",
+                  "start": 833
+                }
+              ],
+              "text": "The data presented in Table 6 are high-pressure GOX impact results determined by the \ntesters at White Sands Test Facility (WSTF) and MSFC."
+            },
+            "proposal_id": "proposal-5e844afc2ba67a07982f4284",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-fdff5580441ad8b0b622"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "The data presented in Table 6 depicts Fluorel® \nas having no reactions at varying pressures and sample thicknesses.",
+                  "start": 1729
+                }
+              ],
+              "text": "The data presented in Table 6 depicts Fluorel® \nas having no reactions at varying pressures and sample thicknesses."
+            },
+            "proposal_id": "proposal-7895e92d6ae2a23dc56c9dcf",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "OpenQuestion",
+              "epistemic": "open_question",
+              "study": "current",
+              "subjects": [
+                "entity-fdff5580441ad8b0b622"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "However, it is not known \nhow the material would behave at double the maximum pressure presented in the table.",
+                  "start": 1846
+                }
+              ],
+              "text": "However, it is not known \nhow the material would behave at double the maximum pressure presented in the table."
+            },
+            "proposal_id": "proposal-3c497f8556801fcf4f3aaf7a",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 90.6284834999824,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7958,
+          "requested_model": "nvidia/nemotron-3-super-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "nvidia/nemotron-3-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 90.58696700001019
+        },
+        "usage": {
+          "completion_tokens": 4687,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 19350,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 24037
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "9ff3e7d6ef060fad05681737f23bd4dc30399f83cf56b0c233d621380cb05344",
+        "context_token_estimate": 22187,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 21,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 7168,
+        "proposed_items": 10,
+        "reasoning_tokens": 2048,
+        "request_bytes": 23499,
+        "reserved_tokens_per_attempt": 36183,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 10646,
+        "source_anchors": 30,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 69.39827969999169,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7766,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 69.37450599999283
+        },
+        "usage": {
+          "completion_tokens": 2376,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 7684,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 10060
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "bcc5ac9dda034fac57d6316405bcc9dd3e32b156d82889c95c2dd5fdf1b75881",
+        "context_token_estimate": 44567,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 21,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 23552,
+        "proposed_items": 2,
+        "reasoning_tokens": 2048,
+        "request_bytes": 38202,
+        "reserved_tokens_per_attempt": 64558,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 21920,
+        "source_anchors": 95,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 29.315140499995323,
+          "image_count": 0,
+          "max_output_tokens": 23552,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7557,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 29.285613799991552
+        },
+        "usage": {
+          "completion_tokens": 2120,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 11303,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 13423
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "5a001ea385d6e77e4fa4b6a494af00198a49b4d2afb49f8ded3e52f683fcc0ef",
+        "context_token_estimate": 44394,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 21,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 23552,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 37870,
+        "reserved_tokens_per_attempt": 64212,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 21920,
+        "source_anchors": 95,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 8.502621399995405,
+          "image_count": 0,
+          "max_output_tokens": 23552,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 3570,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 8.478587499994319
+        },
+        "usage": {
+          "completion_tokens": 972,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 964,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 11191,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 8672,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 12163
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "b8a1465b7a631a408ee4198f51524bb75485535f605c29d9f0ec269315002dac",
+        "context_token_estimate": 59640,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 27,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 19,
+        "reasoning_tokens": 2048,
+        "request_bytes": 49783,
+        "reserved_tokens_per_attempt": 85488,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 23618,
+        "source_anchors": 89,
+        "source_errors": [
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "40",
+              "label": "Bronze percentage",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The composition of Salox-M® is 40% \nBronze and 60% PTFE.",
+                  "start": 788
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-c50078417f5dced54e0c6a5a",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "60",
+              "label": "PTFE percentage",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The composition of Salox-M® is 40% \nBronze and 60% PTFE.",
+                  "start": 788
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-eac6d4e31b74a81a7305ba8c",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "90",
+              "label": "Copper percentage",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The Bronze component of Salox-M® is made up of 90% Copper, 8% \nTin, and 2% Zinc.",
+                  "start": 846
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-320e59c955f1b9151f974a38",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "8",
+              "label": "Tin percentage",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The Bronze component of Salox-M® is made up of 90% Copper, 8% \nTin, and 2% Zinc.",
+                  "start": 846
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-679f3ecd9029a48cb217ea8f",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "2",
+              "label": "Zinc percentage",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The Bronze component of Salox-M® is made up of 90% Copper, 8% \nTin, and 2% Zinc.",
+                  "start": 846
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-41017703d2f8896be4bd3227",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "less than 40",
+              "label": "Brass percentage",
+              "subject": "entity-15b94e41786847580db6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "Although the percentage of Brass in the Brass-filled PTFE is not known, it \ncan be determined from figures 1 and 2 that it is far less than 40%.",
+                  "start": 928
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-b264635389fdb5e643550a90",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "50",
+              "label": "pressure reduction",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "In fact, reducing the \npressure by 50% alone did not show the Salox-M® to be acceptable in an oxygen enriched \nenvironment.",
+                  "start": 1673
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-f487988e131ed6cac12b87ad",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "50",
+              "label": "impact energy reduction",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The impact energy was reduced by 50% in order to meet the pass/fail acceptance \ncriteria.",
+                  "start": 1798
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-c6c5aa1682ced38a7a8e15e2",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "98",
+              "label": "impact energy",
+              "subject": "entity-15b94e41786847580db6",
+              "support": [
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "By comparison of the Brass-filled PTFE in Table 3 to TFE-Teflon® (PTFE) in \nTable 5, it can be seen that their performance in high pressure LOX systems is very similar at 98 \nJ and 0.062 inches in thickness.",
+                  "start": 489
+                }
+              ],
+              "unit": "J"
+            },
+            "proposal_id": "proposal-df9183123126213ea6cd966d",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 34.95548969999072,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7828,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 34.93078619998414
+        },
+        "usage": {
+          "completion_tokens": 2699,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 19114,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 21813
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "852d52320d0ece23d03c0b7cb7006750da50450d536b99a02030dc5120993e11",
+        "context_token_estimate": 59000,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 27,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 32768,
+        "proposed_items": 9,
+        "reasoning_tokens": 2048,
+        "request_bytes": 48552,
+        "reserved_tokens_per_attempt": 84208,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 23618,
+        "source_anchors": 89,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 104.85736280001584,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7365,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 104.83197850000579
+        },
+        "usage": {
+          "completion_tokens": 2354,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 18688,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 21042
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "cd122a01b23e0a6d56bc7fb057cf95d35e9feb232b08e5f4b2d08d5194272c5c",
+        "context_token_estimate": 32139,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 21,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 10240,
+        "proposed_items": 21,
+        "reasoning_tokens": 2048,
+        "request_bytes": 40090,
+        "reserved_tokens_per_attempt": 53014,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 21920,
+        "source_anchors": 95,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-24f0f48997b8931670c8",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-2e1060482485a6afccc4081d",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f3fe4bee87e39df4f30a",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-fe8f829d1d19fc0be8566b1b",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-905d14fe14195c1a03fb",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-fff3f07431dfacbcd9245fb2",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-5152292f630bf30f8857",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-e11a909d9b316749cdb46050",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-fdff5580441ad8b0b622",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-1fd145739be0d295a6148b46",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-0b0e2df08a35b838f031",
+              "relation": "concerns",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-9cfd72ac8f5c5cbf100cb9e8",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-d4b0c10056cfea7b4a11",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-3df3718143d8a6097de5cce9",
+                  "quote": "The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter to determine the heat of combustion.",
+                  "start": 1057
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "5\nProcedure \nHeat of combustion—The measurement of the heat of combustion was calculated internally \nby the software programmed on the Parr 6200, which was verified by comparison to a benzoic \nacid standard supplied by Sigma Aldrich.",
+                  "start": 0
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "5\nProcedure \nHeat of combustion—The measurement of the heat of combustion was calculated internally \nby the software programmed on the Parr 6200, which was verified by comparison to a benzoic \nacid standard supplied by Sigma Aldrich.  The heat of combustion sample was placed inside a \nmetallic combustion cup, and an ignition wire was positioned above the sample as to touch the \ntop of the sample but not come in contact with any metal other than the terminal leads.  In order \nto assure that combustion will occur, a mineral oil spike was used, and for which the calculations \ncorrected.  The combustion chamber was sealed and pressurized with GOX, lowered into the \nwater bath, and the ignition wire leads were attached to the top of the combustion chamber.  \nAfter the test was over, the calorimeter displayed the gross heat content of the sample in calories \nper gram weight of sample. \nAutogeneous Ignition Test—The samples for AIT were prepared per the standard and placed \ninto a small glass test tube.  The test tube was placed into the sample holder and a thermocouple \nwas positioned inside the test tube near the sample.  The chamber was purged several times with \nGOX to insure a 100% oxygen environment prior to pressurizing the chamber to the test \npressure.  Once the test pressure was reached, the system was monitored in order to assure that \nthe chamber was properly sealed.  The external heater was started and allowed to increase the \ntemperature of the sample at a rate of 9 degrees F/min.  The indication of autogenous ignition \nwas the rapid increase of temperature and pressure.  If the system temperature rises above 425°C \nprior to ignition of the sample, then the AIT is recorded as >425°C.\nMechanical Impact Test—For ambient-pressure mechanical impact testing, samples were \npositioned in the test chamber, which was cryogenically cooled with Nitrogen, and submerged in \nLOX.  The samples were impacted with 98 Joules of energy (72 ft-lbs) while reactions were ",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-97deefad337bf8a9004bc8b4",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-c2548ede5c74f19e5f6d",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "Autogeneous Ignition Test—The samples for AIT were prepared per the standard and placed \ninto a small glass test tube.",
+                  "start": 893
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "The test tube was placed into the sample holder and a thermocouple \nwas positioned inside the test tube near the sample.",
+                  "start": 1013
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "The chamber was purged several times with \nGOX to insure a 100% oxygen environment prior to pressurizing the chamber to the test \npressure.",
+                  "start": 1135
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "Once the test pressure was reached, the system was monitored in order to assure that \nthe chamber was properly sealed.",
+                  "start": 1276
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "The external heater was started and allowed to increase the \ntemperature of the sample at a rate of 9 degrees F/min.",
+                  "start": 1396
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "The indication of autogenous ignition \nwas the rapid increase of temperature and pressure.",
+                  "start": 1514
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "If the system temperature rises above 425°C \nprior to ignition of the sample, then the AIT is recorded as >425°C.",
+                  "start": 1606
+                }
+              ]
+            },
+            "proposal_id": "proposal-bbce65ac21d939a1f6837edf",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-b75d00ef8e4a856ad1a0",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "Mechanical Impact Test—For ambient-pressure mechanical impact testing, samples were \npositioned in the test chamber, which was cryogenically cooled with Nitrogen, and submerged in \nLOX.",
+                  "start": 1720
+                },
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "The samples were impacted with 98 Joules of energy (72 ft-lbs) while reactions were",
+                  "start": 1907
+                }
+              ]
+            },
+            "proposal_id": "proposal-783ded12f9a0cee661d3dc67",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-75191a560afb10fbe3be",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "The high-pressure \nmechanical impact test can be operated in a LOX or GOX mode, depending on the parameters of \nthe test.",
+                  "start": 76
+                },
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "In order to achieve 100% oxygen inside the test chamber, several lower pressure oxygen\npurges were required prior to the chamber being pressurized to the full test pressure.",
+                  "start": 199
+                },
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "Once the \nchamber was brought up to the required test pressure, the plummet was allowed to impact the \nsample at 98 Joules of energy (72 ft-lbs).",
+                  "start": 374
+                }
+              ]
+            },
+            "proposal_id": "proposal-119359ddd0e7d1019fcb2199",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-2a30f9bb0eba9d63c653",
+              "relation": "hasIntervention",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "In order \nto assure that combustion will occur, a mineral oil spike was used, and for which the calculations \ncorrected.",
+                  "start": 470
+                }
+              ]
+            },
+            "proposal_id": "proposal-8894fbb8d8591f70c3d5c869",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-24f0f48997b8931670c8",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-f3d8bf6e1f8ada000594b725",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-f3fe4bee87e39df4f30a",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-e91e990c8c94367863fee8aa",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-905d14fe14195c1a03fb",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-663fcc4422d0a6874c93acbc",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-5152292f630bf30f8857",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-30c8343889db63e35253e1f8",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-fdff5580441ad8b0b622",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-610f510b3fe0fd15a20faecd",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-0b0e2df08a35b838f031",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-c1d91756d7e9fcb4c5fe7e4e",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 177.6759189000004,
+          "image_count": 0,
+          "max_output_tokens": 10240,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7449,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 177.6512584000011
+        },
+        "usage": {
+          "completion_tokens": 2785,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 11729,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 8672,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 14514
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "a9fdd12946c290e2bd383d64df03b5ea1d2d409553758bbf55c1bad9d6c164ac",
+        "context_token_estimate": 37894,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 27,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 11264,
+        "proposed_items": 24,
+        "reasoning_tokens": 2048,
+        "request_bytes": 49468,
+        "reserved_tokens_per_attempt": 63500,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 23618,
+        "source_anchors": 89,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-07a6f8dd13bf47c4",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.",
+                  "start": 1559
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.",
+                  "start": 1725
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.",
+                  "start": 1865
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.",
+                  "start": 1933
+                }
+              ]
+            },
+            "proposal_id": "proposal-2c5fec91719cfb2fa53a6c48",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.",
+                  "start": 1559
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.",
+                  "start": 1725
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.",
+                  "start": 1865
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.",
+                  "start": 1933
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.",
+                  "start": 2009
+                }
+              ]
+            },
+            "proposal_id": "proposal-f580147bab0652360c4b734e",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-27bf6c95a1bcb71e7e64",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.",
+                  "start": 2009
+                }
+              ]
+            },
+            "proposal_id": "proposal-b0450935f7e751f71af5ae9a",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The mechanical impact results for Salox-M® impacted with 98, \n55, and 40 Joules at 10,000 psia in LOX are shown in Table 3.",
+                  "start": 1321
+                },
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The sensitivity of Salox-M® in a high-pressure LOX environment has been shown to be \nfar higher than that of the Brass-filled PTFE, which can be attributed to the high percentage of",
+                  "start": 1889
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "11\nBronze filler as well as the difference in the chemical composition of the Bronze as opposed to \nBrass.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-38d736860668462224ab115c",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-07a6f8dd13bf47c4",
+              "relation": "hasCondition",
+              "subject": "entity-70d22f23e9652114591d",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "The F7 required the pressure to be dropped to 5,000 psia in \norder for the material to pass.",
+                  "start": 898
+                }
+              ]
+            },
+            "proposal_id": "proposal-009599124ff9f56f3299a59b",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-70d22f23e9652114591d",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                }
+              ]
+            },
+            "proposal_id": "proposal-66c80ec5d807f0582f77c6c9",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-07a6f8dd13bf47c4",
+              "relation": "hasCondition",
+              "subject": "entity-8a6ec8727345ddba85bb",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "As stated previously, two types of Algoflon® were tested, using both a \nLOX and GOX environment.",
+                  "start": 612
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                }
+              ]
+            },
+            "proposal_id": "proposal-04e5d21c65adaf487964db53",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-8a6ec8727345ddba85bb",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "As stated previously, two types of Algoflon® were tested, using both a \nLOX and GOX environment.",
+                  "start": 612
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "It was shown that the pre-sintered E2 Algoflon® produced no \nreactions under the same conditions as the Brass-filled PTFE, whereas the F7 type did not \nperform well in a LOX environment.",
+                  "start": 710
+                }
+              ]
+            },
+            "proposal_id": "proposal-2f29355c5f4a7cc146556029",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-2a30f9bb0eba9d63c653",
+              "relation": "hasIntervention",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "In order \nto assure that combustion will occur, a mineral oil spike was used, and for which the calculations \ncorrected.",
+                  "start": 470
+                }
+              ]
+            },
+            "proposal_id": "proposal-8894fbb8d8591f70c3d5c869",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-24f0f48997b8931670c8",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-f3d8bf6e1f8ada000594b725",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-a83ab527f3b32724eb0e",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.",
+                  "start": 279
+                },
+                {
+                  "evidence_id": "E-7db5b232aeffb8802373b8de",
+                  "quote": "By comparison of the Brass-filled PTFE in Table 3 to TFE-Teflon® (PTFE) in \nTable 5, it can be seen that their performance in high pressure LOX systems is very similar at 98 \nJ and 0.062 inches in thickness.",
+                  "start": 489
+                }
+              ]
+            },
+            "proposal_id": "proposal-7a1df69a7460c0b1c4f5c4f7",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-3146bf392859aee0ce4d",
+              "relation": "madeOf",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "In comparison to the Brass-filled PTFE, a similar metal filled PTFE compound named \nSalox-M® uses Bronze filler in PTFE instead of Brass.",
+                  "start": 649
+                },
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The composition of Salox-M® is 40% \nBronze and 60% PTFE.",
+                  "start": 788
+                },
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The Bronze component of Salox-M® is made up of 90% Copper, 8% \nTin, and 2% Zinc.",
+                  "start": 846
+                },
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "Although the percentage of Brass in the Brass-filled PTFE is not known, it \ncan be determined from figures 1 and 2 that it is far less than 40%.",
+                  "start": 928
+                },
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "Since the exact chemical \nmake up of the Brass component or its relative percentage in Brass-filled PTFE is not known, it \ncan only be speculated that the main component of the Brass is Zinc as opposed to the larger \namount of Tin in the Bronze.",
+                  "start": 1074
+                },
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "11\nBronze filler as well as the difference in the chemical composition of the Bronze as opposed to \nBrass.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-5dca0b64d0c4291216f736b0",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-3146bf392859aee0ce4d",
+              "relation": "usesSample",
+              "subject": "structure-198a4db33f69f143",
+              "support": [
+                {
+                  "evidence_id": "E-3df3718143d8a6097de5cce9",
+                  "quote": "The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter to determine the heat of combustion.",
+                  "start": 1057
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "The mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.",
+                  "start": 1304
+                },
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-aed673812eeceb4eb664cf23",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-27bf6c95a1bcb71e7e64",
+              "relation": "usesSample",
+              "subject": "structure-198a4db33f69f143",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-77ef5c86eea6d40c87a0130a",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-74b13c8c4d833cd41cc1",
+              "relation": "usesSample",
+              "subject": "structure-198a4db33f69f143",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-d2209a16f178a82f316b1b81",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-ebff29039c4bf21da4c6",
+              "relation": "usesSample",
+              "subject": "structure-198a4db33f69f143",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-764c04e6de6431a4d092ac28",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-eb162b287f5f924ddc0a",
+              "relation": "usesSample",
+              "subject": "structure-198a4db33f69f143",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-bc1670e7c9f98b9250be25dd",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 23.613195300014922,
+          "image_count": 0,
+          "max_output_tokens": 11264,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7523,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 23.58519450001768
+        },
+        "usage": {
+          "completion_tokens": 2915,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 18764,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 21679
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "db8e03e23c1999498b98aab18771079b4a0947d81de10aa214096b0aadd9860b",
+        "context_token_estimate": 21059,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 21,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 8192,
+        "proposed_items": 14,
+        "reasoning_tokens": 2048,
+        "request_bytes": 22027,
+        "reserved_tokens_per_attempt": 32903,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 10646,
+        "source_anchors": 30,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-d4b0c10056cfea7b4a11",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "The heat of combustion data for Brass-filled PTFE presented in Table 2 \nwas determined by the MCRF at MSFC.",
+                  "start": 1854
+                }
+              ]
+            },
+            "proposal_id": "proposal-ec37aafca8f0365c6aa066c3",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-75191a560afb10fbe3be",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.  The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.  Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.  Figure 1, below, is a pretest picture of the Brass-\nfilled PTFE, which is blue in color and came pre-cut into a circular sample from the distributor.  \nAlthough the name indicates that the material is Brass-filled, the small slivers cannot be seen on \nthe surface in the picture.  A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.  A post-test picture of a reacting sample was not taken due to complete combustion \nof the sample in a LOX environment.  The post-test picture of a non-reactive sample shows that \nthe material is extruded in an outward radial direction when it is struck by the pin.  Part of the \nsample was trapped under the pin, generating a thin compressed layer.  A small sliver of the \nBrass filling can be seen in the center of the compressed layer.\nThe mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.  The data shows \nthat Brass-filled PTFE is highly compatible with both LOX and GOX systems.  It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.  In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.  Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.  Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.  A second batch of the Brass-filled PTFE ",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-eddaa5c752fe92550a7eca90",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.  The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.  Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.  Figure 1, below, is a pretest picture of the Brass-\nfilled PTFE, which is blue in color and came pre-cut into a circular sample from the distributor.  \nAlthough the name indicates that the material is Brass-filled, the small slivers cannot be seen on \nthe surface in the picture.  A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.  A post-test picture of a reacting sample was not taken due to complete combustion \nof the sample in a LOX environment.  The post-test picture of a non-reactive sample shows that \nthe material is extruded in an outward radial direction when it is struck by the pin.  Part of the \nsample was trapped under the pin, generating a thin compressed layer.  A small sliver of the \nBrass filling can be seen in the center of the compressed layer.\nThe mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.  The data shows \nthat Brass-filled PTFE is highly compatible with both LOX and GOX systems.  It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.  In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.  Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.  Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.  A second batch of the Brass-filled PTFE ",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-e4d16313912ffb808de32c6f",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-07a6f8dd13bf47c4",
+              "relation": "hasCondition",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "9\nAnother test used to assess the viability of a material in a liquid or gaseous oxygen\nenvironment is the Mechanical Impact Test.  The data presented by Chou and Giedorowicz is \nonly an indication of whether or not the material passed the test according to the ASTM \nstandard.  Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.  Figure 1, below, is a pretest picture of the Brass-\nfilled PTFE, which is blue in color and came pre-cut into a circular sample from the distributor.  \nAlthough the name indicates that the material is Brass-filled, the small slivers cannot be seen on \nthe surface in the picture.  A post-test picture of a Brass-filled PTFE sample was taken in order \nto show how the material behaves upon a non-reacting, high energy contact, which can be seen \nin Figure 2.  A post-test picture of a reacting sample was not taken due to complete combustion \nof the sample in a LOX environment.  The post-test picture of a non-reactive sample shows that \nthe material is extruded in an outward radial direction when it is struck by the pin.  Part of the \nsample was trapped under the pin, generating a thin compressed layer.  A small sliver of the \nBrass filling can be seen in the center of the compressed layer.\nThe mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.  The data shows \nthat Brass-filled PTFE is highly compatible with both LOX and GOX systems.  It was impacted \nwith 98 Joules at 10,000 psia in both LOX and GOX according the NASA-STD-6001 and passed \nin both environments with no reactions out of 20 samples.  In order to assure the accuracy of the \ndata, an additional 80 samples of the same batch of Brass-filled PTFE were tested in LOX and \nGOX.  Each was impacted with 98 Joules at 10,000 psia in LOX and in GOX.  Neither the LOX \nnor GOX tests showed any reactions out of the 80 impacts.  Four of the additional 80 LOX \nsamples reacted with no remaining sample in the cup.  A second batch of the Brass-filled PTFE ",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-9506298e39695896e7e3bb87",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-75191a560afb10fbe3be",
+              "relation": "hasCondition",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The mechanical impact results for Salox-M® impacted with 98, \n55, and 40 Joules at 10,000 psia in LOX are shown in Table 3.",
+                  "start": 1321
+                }
+              ]
+            },
+            "proposal_id": "proposal-ea54b5bfd3d366bb8592d863",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The mechanical impact results for Salox-M® impacted with 98, \n55, and 40 Joules at 10,000 psia in LOX are shown in Table 3.",
+                  "start": 1321
+                }
+              ]
+            },
+            "proposal_id": "proposal-9b3c3688d384bd7354e44931",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-b75d00ef8e4a856ad1a0",
+              "relation": "hasCondition",
+              "subject": "entity-a83ab527f3b32724eb0e",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.",
+                  "start": 279
+                }
+              ]
+            },
+            "proposal_id": "proposal-5d962e221a386bd14208dedc",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-a83ab527f3b32724eb0e",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.",
+                  "start": 279
+                }
+              ]
+            },
+            "proposal_id": "proposal-69e96a832d5dd698551fc05a",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-07a6f8dd13bf47c4",
+              "relation": "hasCondition",
+              "subject": "entity-70d22f23e9652114591d",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J. Bryan at the John F. Kennedy Space Center, \nexamined the oxygen compatibility of several different lubricants, polymers, and metals at \nvarying energy levels of mechanical impact.  The ambient-pressure mechanical impact data for \nsome of their Fluorinated polymeric materials, in a LOX environment, was obtained from the \nresearch conducted by the Army Ballistic Missiles Agency (ABMA).  The mechanical impact\ndata is presented in Table 4 [3].  The results show that the compounds were not sensitive to \nmechanical shock at ambient pressure.  The same Fluorinated compounds were then tested in a \nhigh-pressure LOX environment.  The results of the mechanical impact tests under these \nconditions, as determined by data from the Kennedy Space Center, can be seen in Table 5.  ",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-e250059c87913be9ebe173f8",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-70d22f23e9652114591d",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J. Bryan at the John F. Kennedy Space Center, \nexamined the oxygen compatibility of several different lubricants, polymers, and metals at \nvarying energy levels of mechanical impact.  The ambient-pressure mechanical impact data for \nsome of their Fluorinated polymeric materials, in a LOX environment, was obtained from the \nresearch conducted by the Army Ballistic Missiles Agency (ABMA).  The mechanical impact\ndata is presented in Table 4 [3].  The results show that the compounds were not sensitive to \nmechanical shock at ambient pressure.  The same Fluorinated compounds were then tested in a \nhigh-pressure LOX environment.  The results of the mechanical impact tests under these \nconditions, as determined by data from the Kennedy Space Center, can be seen in Table 5.  ",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-ba9ffabfdd0dce9fed364d9b",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-07a6f8dd13bf47c4",
+              "relation": "hasCondition",
+              "subject": "entity-8a6ec8727345ddba85bb",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J. Bryan at the John F. Kennedy Space Center, \nexamined the oxygen compatibility of several different lubricants, polymers, and metals at \nvarying energy levels of mechanical impact.  The ambient-pressure mechanical impact data for \nsome of their Fluorinated polymeric materials, in a LOX environment, was obtained from the \nresearch conducted by the Army Ballistic Missiles Agency (ABMA).  The mechanical impact\ndata is presented in Table 4 [3].  The results show that the compounds were not sensitive to \nmechanical shock at ambient pressure.  The same Fluorinated compounds were then tested in a \nhigh-pressure LOX environment.  The results of the mechanical impact tests under these \nconditions, as determined by data from the Kennedy Space Center, can be seen in Table 5.  ",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-10243bf0bbd271c9e7a86fcc",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "relation": "hasCondition",
+              "subject": "entity-8a6ec8727345ddba85bb",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J. Bryan at the John F. Kennedy Space Center, \nexamined the oxygen compatibility of several different lubricants, polymers, and metals at \nvarying energy levels of mechanical impact.  The ambient-pressure mechanical impact data for \nsome of their Fluorinated polymeric materials, in a LOX environment, was obtained from the \nresearch conducted by the Army Ballistic Missiles Agency (ABMA).  The mechanical impact\ndata is presented in Table 4 [3].  The results show that the compounds were not sensitive to \nmechanical shock at ambient pressure.  The same Fluorinated compounds were then tested in a \nhigh-pressure LOX environment.  The results of the mechanical impact tests under these \nconditions, as determined by data from the Kennedy Space Center, can be seen in Table 5.  ",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-87f16eb236a4c2eafbf01bb0",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 48.37985310002114,
+          "image_count": 0,
+          "max_output_tokens": 8192,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7276,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 48.371546800015494
+        },
+        "usage": {
+          "completion_tokens": 2503,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 7090,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 9593
+        }
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 290209
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "c9de8948bdf14643e96f5666eba566827eb7842cbe6c085c6e411fe29cd8237a",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-19T07:26:53.465940+00:00",
+  "uncommitted_src_changes": true,
+  "validation_errors": [
+    "Original PDF quantities retain unresolved role and experimental scope for scientific review",
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY",
+    "Scientific preparation review dependency: CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+    "Scientific preparation review dependency: CITED_STUDY_CONTRADICTED_BY_CURRENT_TABLE_ROWS",
+    "Scientific preparation review dependency: CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFIGURATION_STATEMENT_STATES_A_CRITERION",
+    "Scientific preparation review dependency: CONFIGURATION_STATES_A_VALIDITY_CAVEAT",
+    "Scientific preparation review dependency: CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: INTERPRETATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY",
+    "Scientific preparation review dependency: QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: RELATION_ENTAILMENT_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_MULTI_RUN_SCOPE_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific quantity native representation deferred; original literal retained: proposal-123cba2d3aff8bff6a8a99fa",
+    "Scientific quantity native representation deferred; original literal retained: proposal-2adb1094f9f83e4a55441341",
+    "Scientific quantity native representation deferred; original literal retained: proposal-68f9e5b215e8abebcc313b53",
+    "Scientific quantity native representation deferred; original literal retained: proposal-84477725f03835dd6bd7b05f",
+    "Scientific quantity native representation deferred; original literal retained: proposal-cb625851ff1368def714e05a",
+    "Scientific quantity native representation deferred; original literal retained: proposal-d3064ac7c2a86786dcdd514f",
+    "Scientific quantity native representation deferred; original literal retained: proposal-ddfd495d5005732c868ab00d",
+    "Scientific quantity native representation deferred; original literal retained: proposal-f45ec96476217a95f2a9431a",
+    "Scientific review required: relationship investigation needs original experimental applicability for research-ec42a926a29616a70757:entity:6d6f7ce70329bb717430",
+    "Scientific review required: relationship material needs original experimental applicability for research-ec42a926a29616a70757:entity:15b94e41786847580db6",
+    "Select source-supported scope for proposal-1259198b85287e0193ea36c4",
+    "Select source-supported scope for proposal-618ad0537e43ee282ef40caa",
+    "Select source-supported scope for proposal-6b9cc239dd5e5597b51e6cf1",
+    "Select source-supported scope for proposal-70d03aa641f12ff728300c7d",
+    "Select source-supported scope for research-ec42a926a29616a70757:c9de8948bdf14643:statement:4bc799d6dfe970df",
+    "Which identified runs do these author reported conclusion statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these documentary context statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}

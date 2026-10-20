@@ -1,3 +1,29 @@
+# Phase 1 scientific ingestion — v6 milestone 5 on `diego/research` (precision rules; frozen-code confirmations)
+
+**PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone5/`.
+
+What changed:
+- The errors that recurred in the reviewed runs are now held:
+  - test media typed as materials;
+  - cited work continued by "the same …";
+  - procedures, criteria and data sources typed as interpretations or conclusions;
+  - generic specimen descriptions;
+  - conditions named only in cited work;
+  - instrument readouts typed as observations;
+  - statements that carry a running page header.
+- A value binds to a subject only within its own contrast clause. This fixed a critical attribution.
+- The printed structure now proposes, for the same validator:
+  - the batch groups;
+  - their relations;
+  - a tested material's own table cells.
+- Statements held only for their role or scope are revalidated with the role their wording states.
+
+Results:
+- **Twelve reviewed PTFE runs at `77828b9`:** recall 25–28/34, precision 0.978–1.000, 0 critical.
+- **The two live runs made with frozen code** did not reach the bar: 24/34 at 0.934 and 18/34 at 0.900.
+
+Consecutive PTFE runs are a stability check, not the closure criterion. Closure still requires stable recovery on several development investigations, then a prospective independent evaluation on an unexposed NASA lineage with frozen code.
+
 # Phase 1 scientific ingestion — v6 milestone 4 on `diego/research` (recall from the printed structure)
 
 **PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone4/`.

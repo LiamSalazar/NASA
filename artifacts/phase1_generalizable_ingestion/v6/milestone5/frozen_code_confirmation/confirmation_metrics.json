@@ -1,0 +1,46 @@
+{
+  "kind": "PHASE1_V6_M5_FROZEN_CODE_CONFIRMATION_RUNS",
+  "note": "Live runs 12 and 13, each replayed and reviewed at the same frozen code that produced it. scripts/score_scientific_review.py refuses these packages because that code validated a printed-structure candidate identical to a model proposal twice under one id (fixed in 77828b9); the counts below are over unique proposal ids of active SOURCE_SUPPORTED records.",
+  "runs": {
+    "run12_at_134b543": {
+      "recall": "24/34",
+      "precision": "85/91",
+      "critical": 0,
+      "missed_targets": [
+        "entities-07",
+        "entities-08",
+        "quantities-14",
+        "quantities-17",
+        "quantities-18",
+        "statements-24",
+        "statements-25",
+        "relations-32",
+        "relations-33",
+        "relations-34"
+      ]
+    },
+    "run13_at_160a931": {
+      "recall": "18/34",
+      "precision": "90/100",
+      "critical": 0,
+      "missed_targets": [
+        "quantities-09",
+        "quantities-11",
+        "quantities-12",
+        "quantities-13",
+        "quantities-14",
+        "quantities-15",
+        "quantities-16",
+        "quantities-17",
+        "quantities-18",
+        "statements-19",
+        "statements-20",
+        "statements-21",
+        "statements-22",
+        "statements-24",
+        "statements-25",
+        "relations-33"
+      ]
+    }
+  }
+}
