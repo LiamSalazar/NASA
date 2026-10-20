@@ -263,6 +263,27 @@ def mentions(label, text):
     )
 
 
+SETTING_CUE = (
+    r"(?<![\w-])(?:at|in|under|within|during|into|to\s+achieve|exposed\s+to|subjected\s+to)"
+    r"\s+(?:(?:the|an?)\s+)?(?:[a-z-]+\s+)?"
+)
+
+
+def setting_mention(label, text):
+    """Whether the text prints the label as the setting of what it describes.
+
+    A condition is a setting when a prepositional phrase introduces it ("exposed
+    to a 10 cm/s primer flow", "to achieve lunar gravity", "at 1-g"); a bare
+    mention ("in addition to the 1-g vertical force") attributes nothing.
+    """
+    return bool(
+        re.search(
+            SETTING_CUE + re.escape(normalized(label)) + r"(?![\w-])",
+            normalized(text),
+        )
+    )
+
+
 def running_headers(evidence):
     """Lines a document prints at the top or bottom of most of its pages.
 
@@ -593,6 +614,27 @@ def role_errors(statement):
     ):
         errors.append("SOURCE_OBJECTIVE_IS_NOT_ESTABLISHED_CONFIGURATION")
     return errors
+
+
+def under_group_heading(span, entities, document):
+    """Whether the nearest heading before the span names a proposed group."""
+    order = {s["evidence_id"]: i for i, s in enumerate(document["segments"])}
+    if span["evidence_id"] not in order:
+        return False
+    preceding = [
+        h
+        for h in document["sections"]
+        if h["evidence_id"] in order
+        and (order[h["evidence_id"]], h["start"]) <= (order[span["evidence_id"]], span["start"])
+    ]
+    if not preceding:
+        return False
+    heading = max(preceding, key=lambda h: (order[h["evidence_id"]], h["start"]))
+    title = re.sub(r"^(?:#+\s*|(?:[A-Z]|\d+(?:\.\d+)*|[IVXLCDM]+)[.)]\s+)", "", heading["title"])
+    return any(
+        e["class_id"] == "ExperimentFamily" and normalized(e["label"]) == normalized(title)
+        for e in entities.values()
+    )
 
 
 def group_section_support(subject, spans, entities, document):
@@ -2473,12 +2515,25 @@ def validate_quantity_subject(
     tested_material = (
         not scope_eligible and not table_binding and tested_material_entity(subject, document)
     )
+    # A value in the paper's own method section, outside every group's
+    # subsection, configures the investigation itself ("tests at the planned
+    # habitat pressure of 56.5 kPa").
+    method_scope = (
+        subject.get("class_id") == "Investigation"
+        and item.get("epistemic") == "experimental_configuration"
+        and document_statement_scope(item["subject"], spans, entities, document)
+        and all(METHOD_SECTION.search(section_for_span(s, document)) for s in spans)
+        # Under a group's own heading the group, not the investigation, is the
+        # narrowest documented subject.
+        and not any(under_group_heading(s, entities, document) for s in spans)
+    )
     if (
         subject_checks
         and not applicable(item["subject"], spans, entities, document)
         and (scope_eligible or tested_material)
         and not alias_review
         and not table_binding
+        and not method_scope
     ):
         raise ValueError("QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE")
     if (
@@ -2559,10 +2614,16 @@ def validate_quantity_subject(
             "support": section_proof,
         }
         spans += locate(section_proof, evidence)
+    if method_scope and not section_proof and not figure_proof:
+        record["scope_context"] = {
+            "basis": "ORIGINAL_METHOD_SECTION_AT_DOCUMENT_INVESTIGATION_SCOPE",
+            "support": subject.get("support", []),
+        }
     if (
         subject_checks
         and not section_proof
         and not figure_proof
+        and not method_scope
         and not alias_review
         and not table_binding
         and not local_binding(item["subject"], item["expression"], spans, entities)
@@ -3324,6 +3385,49 @@ def structure_entity_candidates(output, package, document):
                 lead = len(sentence) - len(sentence.lstrip())
                 add(m.group(), "Sample", e["evidence_id"], begin + lead, sentence.strip())
                 break
+    # "Custom fire-resistant patches sewn to outer jacket fabric tested at 37%
+    # O2 and 8.2 psia": a thing the source itself prints as tested at settings
+    # is a specimen of this study when no proposed subject names it. The name
+    # is its printed line, with the line before it when the line continues it.
+    subjects = [
+        e["label"]
+        for e in output["entities"]
+        if e["class_id"] in {"Sample", "ExperimentFamily", "Material"}
+    ]
+    for e in package["evidence"]:
+        text = e["text"]
+        for m in re.finditer(
+            r"(?<![\w-])(?:(?:was|were|are|is)\s+)?tested\s+at\s+(?=[~≈]?\d)",
+            text,
+            re.IGNORECASE,
+        ):
+            before = text[: m.start()]
+            cut = max([0] + [x.end() for x in re.finditer(r"[.;:!?•]|\n\s*\n", before)])
+            lines = [ln.strip() for ln in before[cut:].split("\n") if ln.strip()]
+            if not lines:
+                continue
+            name = lines[-1]
+            if len(lines) > 1 and re.match(r"(?:[a-z]|\d)", name):
+                name = lines[-2] + " " + name
+            name = re.sub(r"^\W+", "", name)
+            words = name.split()
+            if (
+                len(words) < 2
+                or len(name) > 120
+                or re.match(
+                    r"(?:the|an?|each|all|these|those|this|both|some|several|most|many"
+                    r"|every|our|their|its|it|they|which|that|and|or)\b",
+                    name,
+                    re.IGNORECASE,
+                )
+                or not re.match(r"[A-Za-z0-9]", name)
+                or any(mentions(s, name) or mentions(name, s) for s in subjects)
+            ):
+                continue
+            start = before.rfind(lines[-1] if len(words) == len(lines[-1].split()) else lines[-2])
+            quote = text[start : m.end() + 60]
+            add(name, "Sample", e["evidence_id"], start, quote.strip())
+            subjects.append(name)
     authors = reference_authors(document)
     pages = {e["page"]: e for e in package["evidence"]}
     tested = [
@@ -3539,6 +3643,39 @@ def structure_quantity_candidates(output, package, document):
                         ],
                     }
                 )
+    # "100% PBI knit fabric coupons tested at 48% O2 and 8.2 psia": the settings
+    # a subject is printed as tested at are its configuration, named by an
+    # approved property the printed unit or species establishes.
+    texts = _page_texts(document)
+    for subject in subjects:
+        for evidence_id, start, clause in tested_at_clauses(subject["label"], texts):
+            for m in value.finditer(clause):
+                meaning = interpret(m[2]) or {}
+                if re.match(r"\s*(?:O2|O₂|oxygen)\b", clause[m.end() :]):
+                    label = "O2"
+                elif meaning.get("dimension") in {"pressure", "temperature"}:
+                    label = meaning["dimension"]
+                else:
+                    continue
+                if (subject["key"], m[1], m[2]) in proposed:
+                    continue
+                proposed.add((subject["key"], m[1], m[2]))
+                candidates.append(
+                    {
+                        "subject": subject["key"],
+                        "label": label,
+                        "expression": m[1],
+                        "unit": m[2],
+                        "epistemic": "experimental_configuration",
+                        "support": [
+                            {
+                                "evidence_id": evidence_id,
+                                "quote": texts[evidence_id][start : start + 240].strip(),
+                                "start": start,
+                            }
+                        ],
+                    }
+                )
     candidates.extend(group_subsection_quantity_candidates(output, document, proposed))
     return candidates
 
@@ -3551,42 +3688,61 @@ DIMENSION_NOUN = (
 GROUP_VALUE = re.compile(r"(?<![\w.])([~≈]?\d[\d,]*(?:\.\d+)?)\s*([A-Za-z°µμ%][\w°/³²µμ%-]*)")
 
 
-def group_subsection_quantity_candidates(output, document, proposed):
-    """Values the paper prints inside a group's own subsection, named by its syntax.
+METHOD_SECTION = re.compile(
+    r"\b(?:experimental|methods?|methodology|procedures?|apparatus|set-?up|configuration"
+    r"|facilit(?:y|ies)|test\s+(?:description|hardware|article|cell|rig))\b",
+    re.IGNORECASE,
+)
 
-    "B. NASA Glenn Research Center (GRC) Partial Gravity Testing ... The chamber
-    is 299 l in volume with an I.D. of 81.2 cm": the subsection heading names the
-    group; the printed syntax names each value ("an I.D. of 81.2 cm", "299 l in
-    volume", "a 2.2 mm OD ceramic rod"). Candidates only: the validator decides
-    name, role and scope exactly as for model proposals.
+
+def heading_regions(output, document):
+    """The text under each printed heading, with the subject the heading names.
+
+    A heading that names a group proposed as this study's own ExperimentFamily
+    owns its subsection ("B. NASA Glenn Research Center (GRC) Partial Gravity
+    Testing"). A heading in the paper's own method or test-configuration section
+    that names no group describes the investigation itself ("Experimental
+    Method", "V. Test Configuration"), when the document proposes exactly one
+    current investigation. Yields (subject, in_results, evidence_id, begin,
+    stop) per page text; a sentence outside every region has no subject here.
     """
-    from nasa_fire_ai.normalization.units import interpret
-
     groups = {
         normalized(e["label"]): e
         for e in output["entities"]
         if e["class_id"] == "ExperimentFamily" and e.get("study") == "current"
     }
-    if not groups:
-        return []
+    investigations = [
+        e
+        for e in output["entities"]
+        if e["class_id"] == "Investigation" and e.get("study") == "current"
+    ]
+    investigation = investigations[0] if len(investigations) == 1 else None
     order = {seg["evidence_id"]: i for i, seg in enumerate(document.get("segments", []))}
     texts = _page_texts(document)
     headings = sorted(
         (h for h in document.get("sections", []) if h["evidence_id"] in order),
         key=lambda h: (order[h["evidence_id"]], h["start"]),
     )
-    out = []
     for index, heading in enumerate(headings):
         title = re.sub(
             r"^(?:#+\s*|(?:[A-Z]|\d+(?:\.\d+)*|[IVXLCDM]+)[.)]\s+)", "", heading["title"]
         )
-        group = groups.get(normalized(title))
-        if not group:
-            continue
+        section = section_for_span(heading, document)
+        subject = groups.get(normalized(title))
+        if not subject:
+            # The method section's own text, outside any group's subsection,
+            # configures the one investigation; results and prior work do not.
+            if (
+                not investigation
+                or not (METHOD_SECTION.search(title) or METHOD_SECTION.search(section))
+                or NON_RESEARCH_SECTION.search(title)
+                or NON_RESEARCH_SECTION.search(section)
+                or re.search(r"\b(?:results?|discussion|conclusions?)\b", section, re.IGNORECASE)
+            ):
+                continue
+            subject = investigation
         end = headings[index + 1] if index + 1 < len(headings) else None
-        results = bool(
-            re.search(r"\bresults?\b", section_for_span(heading, document), re.IGNORECASE)
-        )
+        results = bool(re.search(r"\bresults?\b", section, re.IGNORECASE))
         for evidence_id, text in texts.items():
             position = order.get(evidence_id, -1)
             if position < order[heading["evidence_id"]] or (
@@ -3599,76 +3755,99 @@ def group_subsection_quantity_candidates(output, document, proposed):
                 else 0
             )
             stop = end["start"] if end and evidence_id == end["evidence_id"] else len(text)
-            region = text[begin:stop]
-            # A single capital before a period is an abbreviation ("I.D."), not an end.
-            starts = [0] + [m.end() for m in re.finditer(r"(?<!\b[A-Z])[.!?](?=\s)", region)]
-            for a, b in zip(starts, starts[1:] + [len(region)]):
-                sentence = region[a:b]
-                for m in GROUP_VALUE.finditer(sentence):
-                    if not interpret(m[2]):
-                        continue
-                    before = sentence[: m.start()]
-                    after = sentence[m.end() :]
-                    name = None
-                    link = re.search(
-                        r"(?:\b(?:an?|the)\s+)?(?P<name>[A-Za-z][\w.-]*(?:\s+[A-Za-z][\w.-]*){0,2})"
-                        r"\s+(?:of|is|was|were)\s*[~≈]?\s*$",
-                        before,
+            if stop > begin:
+                yield subject, results, evidence_id, begin, stop
+
+
+def group_subsection_quantity_candidates(output, document, proposed):
+    """Values the paper prints inside a group's own subsection, named by its syntax.
+
+    "B. NASA Glenn Research Center (GRC) Partial Gravity Testing ... The chamber
+    is 299 l in volume with an I.D. of 81.2 cm": the subsection heading names the
+    group; the printed syntax names each value ("an I.D. of 81.2 cm", "299 l in
+    volume", "a 2.2 mm OD ceramic rod"). The method section's own text names the
+    investigation's configuration the same way ("tests at the planned habitat
+    pressure of 56.5 kPa"). Candidates only: the validator decides name, role
+    and scope exactly as for model proposals.
+    """
+    from nasa_fire_ai.normalization.units import interpret
+
+    texts = _page_texts(document)
+    out = []
+    for group, results, evidence_id, begin, stop in heading_regions(output, document):
+        text = texts[evidence_id]
+        region = text[begin:stop]
+        # A single capital before a period is an abbreviation ("I.D."), not an end.
+        starts = [0] + [m.end() for m in re.finditer(r"(?<!\b[A-Z])[.!?](?=\s)", region)]
+        for a, b in zip(starts, starts[1:] + [len(region)]):
+            sentence = region[a:b]
+            for m in GROUP_VALUE.finditer(sentence):
+                if not interpret(m[2]):
+                    continue
+                before = sentence[: m.start()]
+                after = sentence[m.end() :]
+                name = None
+                link = re.search(
+                    r"(?:\b(?:an?|the)\s+)?(?P<name>[A-Za-z][\w.-]*(?:\s+[A-Za-z][\w.-]*){0,2})"
+                    r"\s+(?:of|is|was|were)\s*[~≈]?\s*$",
+                    before,
+                )
+                if link and re.search(DIMENSION_NOUN + r"$", link["name"], re.IGNORECASE):
+                    # "with an I.D. of 81.2 cm": the name without its lead-in words.
+                    name = re.sub(
+                        r"^(?:(?:with|and|a|an|the|its|their|whose)\s+)+",
+                        "",
+                        link["name"],
+                        flags=re.IGNORECASE,
                     )
-                    if link and re.search(DIMENSION_NOUN + r"$", link["name"], re.IGNORECASE):
-                        # "with an I.D. of 81.2 cm": the name without its lead-in words.
-                        name = re.sub(
-                            r"^(?:(?:with|and|a|an|the|its|their|whose)\s+)+",
-                            "",
-                            link["name"],
-                            flags=re.IGNORECASE,
-                        )
-                    # "a retractable 2.2 mm OD ceramic rod": the dimension and the
-                    # thing it measures; a bare "ID by 30 cm ..." names no thing.
-                    modifier = re.match(
-                        r"\s+(?P<name>(?:[A-Za-z-]+\s+){0,1}?"
-                        + DIMENSION_NOUN
-                        + r"(?:\s+(?!by\b|and\b|of\b|at\b|in\b|to\b|was\b|were\b)[a-z][a-z-]+){0,2})\b",
-                        after,
-                        re.IGNORECASE,
-                    )
-                    if (
-                        not name
-                        and modifier
-                        and not re.fullmatch(r"(?:I\.?D\.?|O\.?D\.?)", modifier["name"].strip())
-                        and re.search(r"\b(?:an?|the)\s+(?:[A-Za-z-]+\s+)?$", before, re.IGNORECASE)
-                    ):
-                        name = modifier["name"]
-                    inside = re.match(
-                        r"\s+in\s+(?P<name>" + DIMENSION_NOUN + r")\b", after, re.IGNORECASE
-                    )
-                    if not name and inside:
-                        name = inside["name"]
-                    if not name:
-                        continue
-                    key = (group["key"], m[1], m[2])
-                    if key in proposed:
-                        continue
-                    proposed.add(key)
-                    lead = len(sentence) - len(sentence.lstrip())
-                    out.append(
-                        {
-                            "subject": group["key"],
-                            "label": re.sub(r"\s+", " ", name).strip(),
-                            "expression": m[1],
-                            "unit": m[2],
-                            "epistemic": "reported_quantity"
-                            if results
-                            else "experimental_configuration",
-                            "support": [
-                                {
-                                    "evidence_id": evidence_id,
-                                    "quote": sentence.strip(),
-                                    "start": begin + a + lead,
-                                }
-                            ],
-                        }
-                    )
+                # "a retractable 2.2 mm OD ceramic rod": the dimension and the
+                # thing it measures; a bare "ID by 30 cm ..." names no thing.
+                modifier = re.match(
+                    r"\s+(?P<name>(?:[A-Za-z-]+\s+){0,1}?"
+                    + DIMENSION_NOUN
+                    + r"(?:\s+(?!by\b|and\b|of\b|at\b|in\b|to\b|was\b|were\b|on\b|the\b|an?\b"
+                    + r"|for\b|with\b|from\b|that\b|which\b|is\b|are\b|per\b|or\b|under\b"
+                    + r"|during\b|over\b|than\b|as\b|before\b|after\b)[a-z][a-z-]+){0,2})\b",
+                    after,
+                    re.IGNORECASE,
+                )
+                if (
+                    not name
+                    and modifier
+                    and not re.fullmatch(r"(?:I\.?D\.?|O\.?D\.?)", modifier["name"].strip())
+                    and re.search(r"\b(?:an?|the)\s+(?:[A-Za-z-]+\s+)?$", before, re.IGNORECASE)
+                ):
+                    name = modifier["name"]
+                inside = re.match(
+                    r"\s+in\s+(?P<name>" + DIMENSION_NOUN + r")\b", after, re.IGNORECASE
+                )
+                if not name and inside:
+                    name = inside["name"]
+                if not name:
+                    continue
+                key = (group["key"], m[1], m[2])
+                if key in proposed:
+                    continue
+                proposed.add(key)
+                lead = len(sentence) - len(sentence.lstrip())
+                out.append(
+                    {
+                        "subject": group["key"],
+                        "label": re.sub(r"\s+", " ", name).strip(),
+                        "expression": m[1],
+                        "unit": m[2],
+                        "epistemic": "reported_quantity"
+                        if results
+                        else "experimental_configuration",
+                        "support": [
+                            {
+                                "evidence_id": evidence_id,
+                                "quote": sentence.strip(),
+                                "start": begin + a + lead,
+                            }
+                        ],
+                    }
+                )
     return out
 
 
@@ -3756,7 +3935,104 @@ def structure_relation_candidates(output, document):
                         + ([] if relation == "madeOf" else list(other["support"])),
                     }
                 )
+    conditions = [
+        e
+        for e in output["entities"]
+        if e["class_id"].endswith("Condition") and e.get("study") == "current"
+    ]
+    texts = _page_texts(document)
+    names = {
+        g["key"]: [g["label"]] + re.findall(r"\(([A-Z][A-Z0-9-]{1,9})\)", g["label"])
+        for g in groups
+        if g["study"] == "current"
+    }
+
+    def add_condition(group, condition, printed=()):
+        key = (group["key"], "hasCondition", condition["key"])
+        if key in proposed:
+            return
+        proposed.add(key)
+        candidates.append(
+            {
+                "subject": group["key"],
+                "relation": "hasCondition",
+                "object": condition["key"],
+                "support": list(group["support"]) + list(printed) + list(condition["support"]),
+            }
+        )
+
+    # A condition this study prints as a setting inside a group's own
+    # subsection ("B. GRC Partial Gravity Testing ... To achieve lunar gravity,
+    # the chamber was rotated") is a condition of that group, unless its
+    # sentence names another group ("very similar to the one used at WSTF").
+    for group, results, evidence_id, begin, stop in heading_regions(output, document):
+        if group["class_id"] != "ExperimentFamily":
+            continue
+        region = texts[evidence_id][begin:stop]
+        cuts = [0] + [m.end() for m in re.finditer(r"[.!?](?=\s)", region)]
+        sentences = [
+            (head, region[head:tail]) for head, tail in zip(cuts, cuts[1:] + [len(region)])
+        ]
+        for condition in conditions:
+            # Its name printed as a setting there ("To achieve lunar gravity,
+            # the chamber was rotated").
+            printed = [
+                (head, sentence)
+                for head, sentence in sentences
+                if setting_mention(condition["label"], sentence)
+            ]
+            for head, sentence in printed:
+                if any(
+                    mentions(name, sentence)
+                    for other, forms in names.items()
+                    if other != group["key"]
+                    for name in forms
+                ):
+                    continue
+                lead = len(sentence) - len(sentence.lstrip())
+                add_condition(
+                    group,
+                    condition,
+                    [
+                        {
+                            "evidence_id": evidence_id,
+                            "quote": sentence.strip(),
+                            "start": begin + head + lead,
+                        }
+                    ],
+                )
+                break
+    # "Custom fire-resistant patches sewn to outer jacket fabric tested at 37%
+    # O2 and 8.2 psia": the settings a thing is printed as tested at are its
+    # conditions when the document proposes them as conditions.
+    for group in groups:
+        if group["study"] != "current":
+            continue
+        for _evidence_id, _start, clause in tested_at_clauses(group["label"], texts):
+            for condition in conditions:
+                if mentions(condition["label"], clause):
+                    add_condition(group, condition)
     return candidates
+
+
+def tested_at_clauses(label, texts):
+    """Where the text prints "<label> tested at <settings>", and those settings.
+
+    Yields (evidence_id, start of the label, the settings clause) for each
+    printing; the clause ends at the sentence, bullet or blank line.
+    """
+    name = r"\s+".join(re.escape(w) for w in label.split())
+    for evidence_id, text in texts.items():
+        for m in re.finditer(
+            r"(?<![\w-])" + name + r"\s+(?:(?:was|were|are|is)\s+)?tested\s+at\s+(?=[~≈]?\d)",
+            text,
+            re.IGNORECASE,
+        ):
+            tail = text[m.end() : m.end() + 160]
+            # A slide's next item starts a capitalized word on its own line; a
+            # wrapped clause continues with a unit, a species or a lowercase word.
+            cut = re.search(r"[.;!?](?=\s|$)|\n\s*\n|•|\n(?=\s*[A-Z][a-z])", tail)
+            yield evidence_id, m.start(), tail[: cut.start()] if cut else tail
 
 
 # A statement held only because its proposed role contradicts what the
@@ -5246,6 +5522,61 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                             record["context_resolution"] = binding
                     if (
                         not binding
+                        and item["relation"] == "hasCondition"
+                        and entities[item["object"]].get("validation_status") == "SOURCE_SUPPORTED"
+                    ):
+                        # The condition is printed under the heading that names the
+                        # subject group, or in the clause that says the subject was
+                        # "tested at" it.
+                        printed = [
+                            s
+                            for s in spans
+                            if setting_mention(entities[item["object"]]["label"], s["quote"])
+                        ]
+                        proof = group_section_support(
+                            item["subject"],
+                            entities[item["object"]].get("spans", []),
+                            entities,
+                            document,
+                        ) or next(
+                            (
+                                found
+                                for s in printed
+                                if (
+                                    found := group_section_support(
+                                        item["subject"], [s], entities, document
+                                    )
+                                )
+                            ),
+                            [],
+                        )
+                        clause = next(
+                            (
+                                c
+                                for _e, _s, c in tested_at_clauses(
+                                    entities[item["subject"]]["label"],
+                                    {e: v["text"] for e, v in evidence.items()},
+                                )
+                                if mentions(entities[item["object"]]["label"], c)
+                            ),
+                            None,
+                        )
+                        if proof:
+                            binding = {
+                                "status": "SUPPORTED",
+                                "basis": "SUBJECT_SUBSECTION_PRINTS_CONDITION",
+                                "support": proof,
+                            }
+                        elif clause:
+                            binding = {
+                                "status": "SUPPORTED",
+                                "basis": "SUBJECT_PRINTED_TESTED_AT_CONDITION",
+                                "clause": clause.strip(),
+                            }
+                        if binding:
+                            record["context_resolution"] = binding
+                    if (
+                        not binding
                         and item["relation"] == "belongsToInvestigation"
                         and entities[item["object"]]["class_id"] == "Investigation"
                         and entities[item["subject"]]["study"] == "current"
@@ -5293,9 +5624,24 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         in {
                             "SUBJECT_LABEL_NAMES_MATERIAL",
                             "SUBJECT_TABLE_ROWS_PRINT_CONDITION",
+                            "SUBJECT_SUBSECTION_PRINTS_CONDITION",
+                            "SUBJECT_PRINTED_TESTED_AT_CONDITION",
                             "SUBJECT_DISCUSSED_IN_THIS_DOCUMENT",
                         }
-                        and applicable(item["subject"], spans, entities, document)
+                        and (
+                            applicable(item["subject"], spans, entities, document)
+                            # The heading or the "tested at" clause itself prints the
+                            # subject; its own anchor need not lie in these spans.
+                            or (
+                                binding.get("basis")
+                                in {
+                                    "SUBJECT_SUBSECTION_PRINTS_CONDITION",
+                                    "SUBJECT_PRINTED_TESTED_AT_CONDITION",
+                                }
+                                and entities[item["subject"]].get("validation_status")
+                                == "SOURCE_SUPPORTED"
+                            )
+                        )
                         and entities[item["object"]].get("validation_status") == "SOURCE_SUPPORTED"
                     ):
                         raise ValueError("RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE")

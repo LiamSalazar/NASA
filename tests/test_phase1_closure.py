@@ -1775,3 +1775,248 @@ def test_values_in_a_groups_own_subsection_are_candidates_named_by_their_syntax(
     assert ("volume", "299") in found and ("I.D.", "81.2") in found
     assert ("OD ceramic rod", "2.2") in found
     assert not any(e == "7.4" for _, e in found)  # a bare "ID by ..." names no thing
+
+
+def test_conditions_printed_in_a_groups_own_subsection_are_its_candidates(service):
+    from nasa_fire_ai.ingestion.document_extraction import structure_relation_candidates
+
+    text = (
+        "# Synthetic study\nII. Methods\nA. Alpha Flow Testing\n"
+        "The Alpha chamber ran at a steady primer flow.\n"
+        "B. Beta Drop Testing\n"
+        "To achieve lunar gravity, the chamber was rotated before the drop. "
+        "The igniter was very similar to the one used at Alpha Flow Testing in normal gravity. "
+        "The rig spins to add a radial acceleration to the normal gravity vertical force.\n"
+        "III. Results\nNothing else.\n"
+    )
+    p = submitted(service, text)
+    document = structure(p, service.root)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "a", "Alpha Flow Testing", "ExperimentFamily", "A. Alpha Flow Testing"),
+        entity(p, "b", "Beta Drop Testing", "ExperimentFamily", "B. Beta Drop Testing"),
+        entity(p, "lg", "lunar gravity", "GravityCondition", "To achieve lunar gravity"),
+        entity(p, "ng", "normal gravity", "GravityCondition", "in normal gravity"),
+        entity(p, "pf", "primer flow", "ExperimentalCondition", "a steady primer flow"),
+    ]
+    found = {
+        (c["subject"], c["relation"], c["object"])
+        for c in structure_relation_candidates(o, document)
+    }
+    assert ("b", "hasCondition", "lg") in found and ("a", "hasCondition", "pf") in found
+    # The sentence naming another group attributes nothing to this one, and a
+    # bare mention that is not a setting ("to the normal gravity vertical force")
+    # attributes nothing either.
+    assert ("b", "hasCondition", "ng") not in found
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    records = validate_output(copy.deepcopy(o), p, document, extraction_semantic(service, p))[
+        "records"
+    ]
+    held = [
+        r
+        for r in records
+        if r["kind"] == "relations"
+        and r["proposal"]["object"] == "pf"
+        and r["proposal"]["subject"] == "a"
+    ]
+    assert held and held[0]["status"] == "SOURCE_SUPPORTED", [h["reasons"] for h in held]
+    assert held[0]["context_resolution"]["basis"] == "SUBJECT_SUBSECTION_PRINTS_CONDITION"
+
+
+def test_method_section_values_outside_group_subsections_configure_the_investigation(service):
+    from nasa_fire_ai.ingestion.document_extraction import group_subsection_quantity_candidates
+
+    text = (
+        "# Synthetic study\nII. Experimental Method\n"
+        "Tests were run at the planned habitat pressure of 56.5 kPa for several materials.\n"
+        "A. Alpha Drop Testing\nThe chamber is 299 l in volume.\n"
+        "III. Results\nThe burn length was 12 cm.\n"
+    )
+    p = submitted(service, text)
+    document = structure(p, service.root)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "inv", "Synthetic study", "Investigation", "Synthetic study"),
+        entity(p, "g", "Alpha Drop Testing", "ExperimentFamily", "A. Alpha Drop Testing"),
+    ]
+    found = {
+        (c["subject"], c["label"], c["expression"], c["epistemic"])
+        for c in group_subsection_quantity_candidates(o, document, set())
+    }
+    assert ("inv", "planned habitat pressure", "56.5", "experimental_configuration") in found
+    assert ("g", "volume", "299", "experimental_configuration") in found
+    # A results value names no subject by structure; the group keeps its own.
+    assert not any(e == "12" for _, _, e, _ in found)
+    assert not any(s == "inv" and e == "299" for s, _, e, _ in found)
+
+
+def test_a_thing_printed_as_tested_at_settings_is_a_specimen_with_its_configuration(service):
+    from nasa_fire_ai.ingestion.document_extraction import (
+        structure_entity_candidates,
+        structure_quantity_candidates,
+        structure_relation_candidates,
+    )
+
+    text = (
+        "# Synthetic study\nCOTS Solutions\n• Developed fire-resistant textile solutions:\n"
+        "100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\n"
+        "Custom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n"
+        "Next item on the slide\n"
+    )
+    p = submitted(service, text)
+    document = structure(p, service.root)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "c", "100% PBI knit fabric coupons", "Sample", "100% PBI knit fabric coupons"),
+        entity(p, "o2", "37% O2", "AtmosphereCondition", "37% \nO2"),
+    ]
+    entities = structure_entity_candidates(o, p, document)
+    patches = [e for e in entities if e["label"].startswith("Custom fire-resistant patches")]
+    assert patches and patches[0]["class_id"] == "Sample"
+    assert patches[0]["label"] == "Custom fire-resistant patches sewn to outer jacket fabric"
+    assert not any(e["label"].startswith("100% PBI") for e in entities)  # already proposed
+    o["entities"] += entities
+    values = {
+        (c["label"], c["expression"], c["unit"])
+        for c in structure_quantity_candidates(o, p, document)
+        if c["subject"] == patches[0]["key"]
+    }
+    assert values == {("O2", "37", "%"), ("pressure", "8.2", "psia")}
+    relations = {
+        (c["subject"], c["relation"], c["object"])
+        for c in structure_relation_candidates(o, document)
+    }
+    assert (patches[0]["key"], "hasCondition", "o2") in relations
+    assert ("c", "hasCondition", "o2") not in relations  # the coupons' clause ends at 8.2 psia
+
+
+def _tested_at_reading(service, text):
+    """What the production readers make of a "tested at" line, by printed name."""
+    import re
+
+    from nasa_fire_ai.ingestion.document_extraction import (
+        structure_entity_candidates,
+        structure_quantity_candidates,
+        structure_relation_candidates,
+    )
+
+    p = submitted(service, text)
+    document = structure(p, service.root)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "o2", "37% O2", "AtmosphereCondition", re.search(r"37%\s*O2", text).group(0))
+    ]
+    samples = [e for e in structure_entity_candidates(o, p, document) if e["class_id"] == "Sample"]
+    o["entities"] += samples
+    keys = {e["key"]: e["label"] for e in samples}
+    values = {
+        (keys[c["subject"]], c["label"], c["expression"], c["unit"])
+        for c in structure_quantity_candidates(o, p, document)
+        if c["subject"] in keys
+    }
+    relations = {
+        (keys[c["subject"]], c["relation"], c["object"])
+        for c in structure_relation_candidates(o, document)
+        if c["subject"] in keys
+    }
+    return {e["label"] for e in samples}, values, relations
+
+
+def test_rewrapping_a_tested_at_line_preserves_the_specimen_and_its_settings(service):
+    # Metamorphic: the same slide text wrapped at different widths reads the same.
+    wrappings = [
+        "Custom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n",
+        "Custom fire-resistant patches sewn to outer \njacket fabric tested at 37% O2 and \n8.2 psia\n",
+        "Custom fire-resistant patches sewn to outer jacket fabric tested at 37% O2 and 8.2 psia\n",
+    ]
+    readings = [
+        _tested_at_reading(service, "# Synthetic study\nCOTS Solutions\n" + w + "Next item\n")
+        for w in wrappings
+    ]
+    assert all(reading == readings[0] for reading in readings), readings
+    labels, values, relations = readings[0]
+    name = "Custom fire-resistant patches sewn to outer jacket fabric"
+    assert labels == {name}
+    assert values == {(name, "O2", "37", "%"), (name, "pressure", "8.2", "psia")}
+    assert relations == {(name, "hasCondition", "o2")}
+
+
+def test_a_different_specimen_or_setting_on_the_line_changes_the_reading(service):
+    # Negative: a changed specimen name or qualifier is a different reading.
+    labels, values, relations = _tested_at_reading(
+        service,
+        "# Synthetic study\nCOTS Solutions\nNomex felt liners tested at 37% O2 and 10.2 psia\n",
+    )
+    assert labels == {"Nomex felt liners"}
+    assert values == {
+        ("Nomex felt liners", "O2", "37", "%"),
+        ("Nomex felt liners", "pressure", "10.2", "psia"),
+    }
+    assert relations == {("Nomex felt liners", "hasCondition", "o2")}
+
+
+def _subsection_conditions(service, text, conditions):
+    from nasa_fire_ai.ingestion.document_extraction import structure_relation_candidates
+
+    p = submitted(service, text)
+    document = structure(p, service.root)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "a", "Alpha Flow Testing", "ExperimentFamily", "A. Alpha Flow Testing"),
+        entity(p, "b", "Beta Drop Testing", "ExperimentFamily", "B. Beta Drop Testing"),
+        entity(p, "c", "Gamma Drop Testing", "ExperimentFamily", "C. Gamma Drop Testing"),
+    ] + [entity(p, key, label, "GravityCondition", quote) for key, label, quote in conditions]
+    return {
+        (x["subject"], x["relation"], x["object"])
+        for x in structure_relation_candidates(o, document)
+        if x["relation"] == "hasCondition"
+    }
+
+
+def test_a_subsection_condition_follows_its_heading_and_its_wording(service):
+    head = (
+        "# Synthetic study\nThe study compares lunar gravity with microgravity.\n"
+        "II. Methods\nA. Alpha Flow Testing\nThe Alpha chamber ran in normal gravity.\n"
+    )
+    tail = "III. Results\nNothing else.\n"
+    conditions = [
+        ("lg", "lunar gravity", "lunar gravity"),
+        ("mg", "microgravity", "microgravity"),
+        ("ng", "normal gravity", "normal gravity"),
+    ]
+    # Metamorphic: rewrapping the subsection's lines changes nothing.
+    for lines in (
+        "To achieve lunar gravity, the chamber was rotated before the drop.\n",
+        "To achieve lunar \ngravity, the chamber was \nrotated before the drop.\n",
+    ):
+        found = _subsection_conditions(
+            service,
+            head
+            + "B. Beta Drop Testing\n"
+            + lines
+            + "C. Gamma Drop Testing\nNothing here.\n"
+            + tail,
+            conditions,
+        )
+        assert found == {("b", "hasCondition", "lg"), ("a", "hasCondition", "ng")}, found
+    # Negative: the same sentence under another heading belongs to that group.
+    found = _subsection_conditions(
+        service,
+        head
+        + "B. Beta Drop Testing\nNothing here.\nC. Gamma Drop Testing\n"
+        + "To achieve lunar gravity, the chamber was rotated before the drop.\n"
+        + tail,
+        conditions,
+    )
+    assert found == {("c", "hasCondition", "lg"), ("a", "hasCondition", "ng")}, found
+    # Negative: a changed gravity condition is a different condition.
+    found = _subsection_conditions(
+        service,
+        head
+        + "B. Beta Drop Testing\nTo achieve microgravity, the package was released.\n"
+        + "C. Gamma Drop Testing\nNothing here.\n"
+        + tail,
+        conditions,
+    )
+    assert found == {("b", "hasCondition", "mg"), ("a", "hasCondition", "ng")}, found
