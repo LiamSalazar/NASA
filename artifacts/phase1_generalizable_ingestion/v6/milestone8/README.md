@@ -60,3 +60,18 @@ Quality at `d7c4732`: `ruff format --check`, `ruff check`; `pytest` with the sam
 3. **Record-by-record precision review** on ignition and regulator (the new records above included).
 4. **Fresh live runs (evaluation B)** on all four sources with frozen code, all predetermined runs reported, variability causes logged per run.
 5. Leave-one-source-out check, then the §13 gate, then the frozen holdout.
+
+## Addendum (third commit): the model gets the subsection scope and the relation signatures
+
+Built from the rejection audit above (rules C2 and C3), not from new readers. It is not measurable by replay: every number in this README is unchanged by it except the table guard below. Its effect must be read on fresh live runs (evaluation B) with frozen code on the four development sources, as the next milestone's `rejection_audit` and `accepted_record_diff`.
+
+| Mechanism | Class (§2) | What it changes for a new document |
+| --- | --- | --- |
+| Every source anchor in a model request carries `heading`, the printed heading it sits under, and `group`, the known entity key when that heading names a current ExperimentFamily; the relationship and proposition instructions say that what is printed under a group's own heading belongs to that group, the narrowest explicit subject. | reusable document-structure mechanism (request context, no extraction rule) | A condition or configuration printed in any group's subsection is proposed with that group as subject instead of the whole investigation (the `RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE` family). |
+| `relation_signatures`: the endpoint classes each approved relation admits, taken from the same table the validator enforces (`RELATION_ENDPOINTS`). | general ontology contract stated to the model | Relations with an endpoint of the wrong class are not proposed (the `RELATION_ENDPOINT_CLASS_CONTRADICTION` family, 16 on the ignition paper). |
+| One request directed at a group's subsection, with the group as the only allowed subject, when that subsection prints a current condition, material, sample or intervention and no accepted relation links the group yet. Ordinary recovery (split on truncation) applies; the budget ceilings apply. | directed, general use of the spare budget (rule C3) | A group the ordinary pass left unlinked gets one more look at its own subsection; a group already linked costs nothing. |
+| A configuration value printed in a method section is not attributed to the investigation when the document's own tables print the same value under a column named by its unit or variable (`table_column_prints_value`): the rows are the narrower printed subjects. | reusable document-structure mechanism (validator, precision) | Removes the duplicate method-level record where per-row values already carry it. |
+
+Replay at this commit versus `d7c4732`: PTFE runs 1, 4, 5, 6 no longer accept "energy 72 ft-lbs" at investigation scope (the Test 13A rows print "72 ft-lbs (98J)"); "rate 9 °F/min" stays, since no table prints it; the three development sources are unchanged (the ignition tables do not print 56.5 kPa per row). Tests: request context (heading, group, signatures) and the directed request are checked with the controlled stage adapter; the table guard with a synthetic table and a column of another variable.
+
+Live-run caveat: the request now carries more fields, so every stage's cache key changes and the next live run makes fresh calls for every window; replays of saved outputs are unaffected.

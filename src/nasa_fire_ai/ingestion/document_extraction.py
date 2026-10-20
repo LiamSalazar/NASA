@@ -202,6 +202,8 @@ configurations, author conclusions, tentative interpretations, hypotheses, open
 questions, normative requirements, guidance, derived results or documentary context.
 Do not classify titles, author lists, future plans or methods as observations.
 Use justified known_entities subject keys; subjects=[] preserves an unresolved scope.
+An anchor's group key, when present, names the group whose printed heading it sits
+under: the narrowest subject for configurations and conditions printed there.
 For quantities copy the source quantity label, original numeric expression WITHOUT
 its unit, original adjacent unit, known subject key, epistemic and supporting IDs.
 The label must be a literal original variable phrase, never a rewritten synonym.
@@ -222,6 +224,13 @@ source IDs, ontology class names or invented IDs. Recover explicit memberships,
 materials, samples, conditions and interventions across methods/results sections.
 Require explicit source applicability, not co-occurrence. Local exceptions override
 shared conditions. Do not merge cited/current or comparison groups.
+A source anchor may carry heading, the printed heading it sits under, and group,
+the known entity key that heading names. Conditions, materials, samples and
+interventions printed under a group's own heading belong to that group, the
+narrowest explicit subject, unless the sentence attributes them to another group;
+do not attach them to the whole investigation instead.
+relation_signatures lists the endpoint classes each relation admits; never propose
+an endpoint of another class.
 DO NOT output entities, identity, statements, schema or other root keys.""",
 }
 
@@ -616,11 +625,37 @@ def role_errors(statement):
     return errors
 
 
-def under_group_heading(span, entities, document):
-    """Whether the nearest heading before the span names a proposed group."""
+EXPERIMENT_CLASSES = frozenset({"ExperimentalRun", "ExperimentFamily", "Investigation", "Sample"})
+
+# The endpoint classes each approved relation admits. The validator rejects a
+# contradiction; the model request states the same table so the model does not
+# propose one.
+RELATION_ENDPOINTS = {
+    "hasMaterial": (EXPERIMENT_CLASSES, frozenset({"Material"})),
+    "usesSample": (EXPERIMENT_CLASSES, frozenset({"Sample"})),
+    "hasGravityCondition": (EXPERIMENT_CLASSES, frozenset({"GravityCondition"})),
+    "hasCondition": (EXPERIMENT_CLASSES, frozenset({"ExperimentalCondition"})),
+    "hasIntervention": (EXPERIMENT_CLASSES, frozenset({"Intervention"})),
+    "hasPhenomenon": (EXPERIMENT_CLASSES, frozenset({"CombustionPhenomenon"})),
+    "belongsToInvestigation": (EXPERIMENT_CLASSES, frozenset({"Investigation"})),
+    "belongsToExperimentFamily": (EXPERIMENT_CLASSES, frozenset({"ExperimentFamily"})),
+    "madeOf": (
+        frozenset({"Sample", "ExperimentFamily", "ExperimentalRun"}),
+        frozenset({"Material"}),
+    ),
+}
+
+
+def heading_title(printed):
+    """A printed heading without its numbering ("B. GRC Testing" -> "GRC Testing")."""
+    return re.sub(r"^(?:#+\s*|(?:[A-Z]|\d+(?:\.\d+)*|[IVXLCDM]+)[.)]\s+)", "", printed)
+
+
+def printed_heading_before(span, document):
+    """The nearest printed heading at or before the span, in document order."""
     order = {s["evidence_id"]: i for i, s in enumerate(document["segments"])}
     if span["evidence_id"] not in order:
-        return False
+        return None
     preceding = [
         h
         for h in document["sections"]
@@ -628,13 +663,57 @@ def under_group_heading(span, entities, document):
         and (order[h["evidence_id"]], h["start"]) <= (order[span["evidence_id"]], span["start"])
     ]
     if not preceding:
+        return None
+    return max(preceding, key=lambda h: (order[h["evidence_id"]], h["start"]))
+
+
+def under_group_heading(span, entities, document):
+    """Whether the nearest heading before the span names a proposed group."""
+    heading = printed_heading_before(span, document)
+    if not heading:
         return False
-    heading = max(preceding, key=lambda h: (order[h["evidence_id"]], h["start"]))
-    title = re.sub(r"^(?:#+\s*|(?:[A-Z]|\d+(?:\.\d+)*|[IVXLCDM]+)[.)]\s+)", "", heading["title"])
+    title = heading_title(heading["title"])
     return any(
         e["class_id"] == "ExperimentFamily" and normalized(e["label"]) == normalized(title)
         for e in entities.values()
     )
+
+
+def table_column_prints_value(document, expression, unit=None, label=None):
+    """Whether a detected table prints this value under a column named by its unit or variable.
+
+    A method-section value that the document's own tables also print per row
+    ("Impact energy (ft-lbs)" with 72 in every row) is attributed by those rows,
+    the narrowest printed subjects, not to the whole investigation.
+    """
+    wanted = normalized(expression or "")
+    unit_name, label_name = normalized(unit or ""), normalized(label or "")
+    if not wanted or not (unit_name or label_name):
+        return False
+    for table in document.get("detected_tables", []):
+        header = table.get("header") or []
+        rows = table.get("cells") or []
+        if rows and rows[0] == header:
+            rows = rows[1:]
+        for column, printed in enumerate(header):
+            name = normalized(printed or "")
+            if not name or not (
+                (unit_name and unit_name in name) or (label_name and label_name in name)
+            ):
+                continue
+            # The cell prints the value, alone or with its unit and a conversion
+            # ("72 ft-lbs (98J)"), never as a prefix of a longer number.
+            printed_value = re.compile(
+                re.escape(wanted)
+                + (r"(?:\s*" + re.escape(unit_name) + ")?" if unit_name else "")
+                + r"(?![\d.])"
+            )
+            if any(
+                column < len(row) and printed_value.match(normalized(row[column] or ""))
+                for row in rows
+            ):
+                return True
+    return False
 
 
 def group_section_support(subject, spans, entities, document):
@@ -2524,8 +2603,12 @@ def validate_quantity_subject(
         and document_statement_scope(item["subject"], spans, entities, document)
         and all(METHOD_SECTION.search(section_for_span(s, document)) for s in spans)
         # Under a group's own heading the group, not the investigation, is the
-        # narrowest documented subject.
+        # narrowest documented subject; so are the rows of a table that prints
+        # the same value under a column named by its unit or variable.
         and not any(under_group_heading(s, entities, document) for s in spans)
+        and not table_column_prints_value(
+            document, item.get("expression"), item.get("unit"), item.get("label")
+        )
     )
     if (
         subject_checks
@@ -4015,6 +4098,64 @@ def structure_relation_candidates(output, document):
     return candidates
 
 
+def unlinked_group_subsections(output, package, document, semantic):
+    """Groups whose subsection prints linkable entities that no accepted relation uses.
+
+    Yields (group key, segments of its subsection) for each current, supported
+    ExperimentFamily with a printed heading region holding the support of a
+    current condition, material, sample or intervention, while no accepted
+    relation has the group as subject.
+    """
+    checked = validate_output(output, package, document, semantic)
+    supported = {
+        r["proposal"]["key"]
+        for r in checked["records"]
+        if r["kind"] == "entities"
+        and r["status"] == "SOURCE_SUPPORTED"
+        and r["proposal"]["class_id"] == "ExperimentFamily"
+        and r["proposal"].get("study") == "current"
+    }
+    linked = {
+        r["proposal"]["subject"]
+        for r in checked["records"]
+        if r["kind"] == "relations"
+        and r["status"] == "SOURCE_SUPPORTED"
+        and r["proposal"]["relation"] in RELATION_ENDPOINTS
+    }
+    evidence = {e["evidence_id"]: e for e in package["evidence"]}
+    linkable = [
+        s
+        for e in output["entities"]
+        if e.get("study") == "current"
+        and any(
+            has_class(e["class_id"], base, semantic)
+            for base in ("ExperimentalCondition", "Material", "Sample", "Intervention")
+        )
+        for s in locate(e["support"], evidence)
+    ]
+    regions = {}
+    for group, _results, evidence_id, begin, stop in heading_regions(output, document):
+        if group["class_id"] != "ExperimentFamily" or group["key"] not in supported:
+            continue
+        if group["key"] in linked:
+            continue
+        if any(s["evidence_id"] == evidence_id and begin <= s["start"] < stop for s in linkable):
+            regions.setdefault(group["key"], []).append((evidence_id, begin, stop))
+    for key, parts in regions.items():
+        members = [
+            segment
+            for segment in document["segments"]
+            if any(
+                segment["evidence_id"] == evidence_id
+                and segment["start"] < stop
+                and segment["end"] > begin
+                for evidence_id, begin, stop in parts
+            )
+        ]
+        if members:
+            yield key, members
+
+
 def tested_at_clauses(label, texts):
     """Where the text prints "<label> tested at <settings>", and those settings.
 
@@ -5409,18 +5550,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         and entities[item["subject"]]["study"] != entities[item["object"]]["study"]
                     ):
                         raise ValueError("CURRENT_CITED_ATTRIBUTION_CONTRADICTION")
-                    experiment = {"ExperimentalRun", "ExperimentFamily", "Investigation", "Sample"}
-                    endpoint_types = {
-                        "hasMaterial": (experiment, {"Material"}),
-                        "usesSample": (experiment, {"Sample"}),
-                        "hasGravityCondition": (experiment, {"GravityCondition"}),
-                        "hasCondition": (experiment, {"ExperimentalCondition"}),
-                        "hasIntervention": (experiment, {"Intervention"}),
-                        "hasPhenomenon": (experiment, {"CombustionPhenomenon"}),
-                        "belongsToInvestigation": (experiment, {"Investigation"}),
-                        "belongsToExperimentFamily": (experiment, {"ExperimentFamily"}),
-                        "madeOf": ({"Sample", "ExperimentFamily", "ExperimentalRun"}, {"Material"}),
-                    }
+                    endpoint_types = RELATION_ENDPOINTS
                     if item["relation"] in endpoint_types and not all(
                         any(
                             has_class(entities[item[endpoint]]["class_id"], cls, semantic)
@@ -6257,7 +6387,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
 
     provider_blocked = [False]
 
-    def process_stage(window, stage, focus=None):
+    def process_stage(window, stage, focus=None, subject=None):
         nonlocal calls, tokens, cached, started_provider
         prompt = stage_prompt(stage, focus)
         segment = window["members"][0]
@@ -6282,6 +6412,24 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         wire_anchors = {f"A{i + 1}": a for i, a in enumerate(ordered)}
         anchor_refs = {a["id"]: ref for ref, a in wire_anchors.items()}
         wire_entities = {f"K{i + 1}": e["key"] for i, e in enumerate(known)}
+        known_groups = {
+            normalized(e["label"]): ref
+            for ref, e in zip(wire_entities, known, strict=True)
+            if e["class_id"] == "ExperimentFamily" and e.get("study") == "current"
+        }
+
+        def anchor_scope(anchor):
+            # The printed heading an anchor sits under, and the known group that
+            # heading names: the narrowest explicit subject for what is printed there.
+            heading = printed_heading_before(anchor, document)
+            if not heading:
+                return {}
+            scope = {"heading": heading["title"]}
+            group = known_groups.get(normalized(heading_title(heading["title"])))
+            if group:
+                scope["group"] = group
+            return scope
+
         request = {
             "stage": stage,
             "focus": focus,
@@ -6310,6 +6458,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         and a["start"] < m["end"]
                         for m in window["members"]
                     ),
+                    **anchor_scope(a),
                 }
                 for ref, a in wire_anchors.items()
             ],
@@ -6595,6 +6744,23 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             schema["$defs"]["Relation"]["properties"]["relation"]["enum"] = sorted(
                 semantic.relations
             )
+            request["relation_signatures"] = {
+                relation: {
+                    "subject_classes": sorted(subjects),
+                    "object_classes": sorted(objects),
+                }
+                for relation, (subjects, objects) in RELATION_ENDPOINTS.items()
+                if relation in semantic.relations
+            }
+            if subject is not None:
+                ref = next(ref for ref, key in wire_entities.items() if key == subject)
+                schema["$defs"]["Relation"]["properties"]["subject"]["enum"] = [ref]
+                request["task"] = (
+                    "Resolve the relations of known entity " + ref + ", a group, from the "
+                    "anchors under its printed heading (group=" + ref + "): the conditions, "
+                    "materials, samples and interventions printed there. Return only relations "
+                    "whose subject is " + ref + "."
+                )
         structured_format = {
             "type": "json_schema",
             "json_schema": {"name": "scientific_" + stage, "schema": schema, "strict": True},
@@ -7139,7 +7305,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 ):
                     process_task(window, "identity", "entities")
 
-    def recover_stage(window, stage, focus=None):
+    def recover_stage(window, stage, focus=None, subject=None):
         """One recovery request, retried once on the window's halves.
 
         A recovery request can exceed the provider context, or be cut short,
@@ -7147,7 +7313,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         on each half; a half that still does not fit stays a reported gap. An
         empty answer that the model finished is not chased into smaller pieces.
         """
-        result = process_stage(window, stage, focus)
+        result = process_stage(window, stage, focus, subject)
         if (
             result["model"] in {"NEEDS_CONTEXT_SPLIT", "PARTIAL_SOURCE", "PARTIAL_SCHEMA"}
             or result.get("recovery") == "SPLIT_TRUNCATED_TASK"
@@ -7159,7 +7325,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             children = split_window(window)
             if children:
                 recovery_windows.extend(children)
-                halves = [process_stage(child, stage, focus) for child in children]
+                halves = [process_stage(child, stage, focus, subject) for child in children]
                 if all(h["model"] in {"COMPLETE", "COMPLETE_WITH_REJECTIONS"} for h in halves):
                     result["model"] = "RECOVERED_BY_SPLIT"
         return result
@@ -7213,6 +7379,18 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 "DISABLED",
             }:
                 deferred.append((window, "relationships", result))
+        if model_enabled:
+            # A group whose own subsection prints conditions, materials, samples
+            # or interventions, but which no accepted relation links yet, gets
+            # one request directed at that subsection with the group as subject.
+            for group_key, members in unlinked_group_subsections(
+                output, package, document, semantic
+            ):
+                window = {
+                    "id": "group-" + identity([group_key, *(m["id"] for m in members)])[:24],
+                    "members": members,
+                }
+                recover_stage(window, "relationships", subject=group_key)
     if recovery_only:
         from nasa_fire_ai.ingestion.scientific_coverage import statement_candidates
 

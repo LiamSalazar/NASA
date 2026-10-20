@@ -2020,3 +2020,179 @@ def test_a_subsection_condition_follows_its_heading_and_its_wording(service):
         conditions,
     )
     assert found == {("b", "hasCondition", "mg"), ("a", "hasCondition", "ng")}, found
+
+
+def _requests(client):
+    import json
+
+    return [
+        (
+            kwargs["messages"][0]["content"],
+            json.loads(kwargs["messages"][1]["content"]),
+        )
+        for _args, kwargs in client.client.with_options.return_value.chat.completions.create.call_args_list
+    ]
+
+
+# Alpha's condition is mentioned without a setting phrase, so no printed-structure
+# candidate links it: only the model can, from the anchor's group scope.
+GROUPED_TEXT = (
+    "# Synthetic study\nII. Methods\nA. Alpha Flow Testing\n"
+    "The Alpha chamber used a steady primer flow.\n"
+    "B. Beta Drop Testing\n"
+    "To achieve lunar gravity, the chamber was rotated before the drop.\n"
+    "III. Results\nNothing else.\n"
+)
+
+
+def _grouped_fixture(service, p, with_primer_flow):
+    o = Output().model_dump()
+    # The controlled adapter maps a support to the whole original anchor it
+    # contains, so every support here is the printed sentence under a heading.
+    alpha = "The Alpha chamber used a steady primer flow."
+    beta = "To achieve lunar gravity, the chamber was rotated before the drop."
+    o["entities"] = [
+        entity(p, "a", "Alpha Flow Testing", "ExperimentFamily", alpha),
+        entity(p, "b", "Beta Drop Testing", "ExperimentFamily", beta),
+        entity(p, "lg", "lunar gravity", "ExperimentalCondition", beta),
+    ]
+    if with_primer_flow:
+        o["entities"].append(entity(p, "pf", "primer flow", "ExperimentalCondition", alpha))
+    o["relations"] = [
+        {"subject": "b", "relation": "hasCondition", "object": "lg", "support": support(p, beta)}
+    ]
+    return o
+
+
+def test_model_requests_carry_each_anchors_heading_and_group_and_relation_signatures(service):
+    from test_document_extraction import client_for
+
+    from nasa_fire_ai.config import Settings
+    from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget
+
+    p = submitted(service, GROUPED_TEXT)
+    client = client_for(_grouped_fixture(service, p, with_primer_flow=False))
+    service.prepare_scientific(
+        p["id"],
+        Settings(root=service.root),
+        model_enabled=True,
+        budget=ExtractionBudget(max_model_calls=24),
+        client=client,
+    )
+    relationships = [
+        (prompt, payload)
+        for prompt, payload in _requests(client)
+        if payload["stage"] == "relationships"
+    ]
+    assert relationships
+    prompt, payload = relationships[0]
+    assert "relation_signatures" in prompt and "narrowest explicit subject" in prompt
+    beta = next(e["key"] for e in payload["known_entities"] if e["label"] == "Beta Drop Testing")
+    under_beta = [a for a in payload["source_anchors"] if "To achieve lunar gravity" in a["quote"]]
+    assert under_beta and all(
+        a["heading"] == "B. Beta Drop Testing" and a["group"] == beta for a in under_beta
+    )
+    alpha_anchor = next(a for a in payload["source_anchors"] if "steady primer flow" in a["quote"])
+    assert alpha_anchor["heading"] == "A. Alpha Flow Testing" and alpha_anchor["group"] != beta
+    assert payload["relation_signatures"]["hasCondition"] == {
+        "subject_classes": ["ExperimentFamily", "ExperimentalRun", "Investigation", "Sample"],
+        "object_classes": ["ExperimentalCondition"],
+    }
+    # The fixture linked every group that prints a condition: no directed request.
+    assert not any(
+        "task" in payload and "group=" in payload["task"] for _, payload in relationships
+    )
+
+
+def test_a_group_left_unlinked_gets_one_request_directed_at_its_subsection(service):
+    from test_document_extraction import client_for
+
+    from nasa_fire_ai.config import Settings
+    from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget
+
+    p = submitted(service, GROUPED_TEXT)
+    client = client_for(_grouped_fixture(service, p, with_primer_flow=True))
+    prepared = service.prepare_scientific(
+        p["id"],
+        Settings(root=service.root),
+        model_enabled=True,
+        budget=ExtractionBudget(max_model_calls=24),
+        client=client,
+    )
+    directed = [
+        payload
+        for _prompt, payload in _requests(client)
+        if payload["stage"] == "relationships" and "group=" in payload.get("task", "")
+    ]
+    # One directed request; the controlled adapter answers it with Beta's relation,
+    # outside the directed subject enum, so ordinary recovery retries the halves.
+    assert directed, [p.get("task") for _, p in _requests(client)]
+    payload = directed[0]
+    alpha = next(e["key"] for e in payload["known_entities"] if e["label"] == "Alpha Flow Testing")
+    assert payload["task"].startswith("Resolve the relations of known entity " + alpha)
+    assert payload["schema"]["$defs"]["Relation"]["properties"]["subject"]["enum"] == [alpha]
+    in_task = [a for a in payload["source_anchors"] if a["in_task"]]
+    assert any(a.get("group") == alpha and "steady primer flow" in a["quote"] for a in in_task)
+    records = prepared["package"]["scientific_extraction"]["records"]
+    assert any(
+        r["kind"] == "relations" and r["status"] == "SOURCE_SUPPORTED" for r in records
+    )  # Beta's relation from the ordinary pass is kept
+
+
+def test_a_method_value_the_tables_print_per_row_stays_with_the_rows(service):
+    from nasa_fire_ai.ingestion.document_extraction import extraction_semantic
+
+    text = (
+        "# Synthetic study\nII. Experimental Method\n"
+        "Samples were struck with an impact energy of 72 ft-lbs in every test.\n"
+        "III. Results\nNothing.\n"
+    )
+    p = submitted(service, text)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "inv", "Synthetic study", "Investigation", "Synthetic study")]
+    o["quantities"] = [
+        {
+            "subject": "inv",
+            "label": "impact energy",
+            "expression": "72",
+            "unit": "ft-lbs",
+            "epistemic": "experimental_configuration",
+            "support": support(p, "an impact energy of 72 ft-lbs"),
+        }
+    ]
+
+    def quantity(document):
+        records = validate_output(copy.deepcopy(o), p, document, extraction_semantic(service, p))[
+            "records"
+        ]
+        return next(r for r in records if r["kind"] == "quantities")
+
+    plain = quantity(structure(p, service.root))
+    assert plain["status"] == "SOURCE_SUPPORTED", plain["reasons"]
+    assert (
+        plain["scope_context"]["basis"] == "ORIGINAL_METHOD_SECTION_AT_DOCUMENT_INVESTIGATION_SCOPE"
+    )
+    with_rows = structure(p, service.root)
+    with_rows["detected_tables"].append(
+        {
+            "physical_pdf_page": 1,
+            "header": ["Material", "Impact energy (ft-lbs)", "Reactions/Tests"],
+            "cells": [
+                ["Material", "Impact energy (ft-lbs)", "Reactions/Tests"],
+                ["Alpha", "72", "0/20"],
+                ["Beta", "72", "1/20"],
+            ],
+        }
+    )
+    held = quantity(with_rows)
+    assert held["status"] != "SOURCE_SUPPORTED"  # the rows are the narrower printed subjects
+    # A column of another variable does not hold it.
+    other = structure(p, service.root)
+    other["detected_tables"].append(
+        {
+            "physical_pdf_page": 1,
+            "header": ["Material", "Thickness (mm)"],
+            "cells": [["Material", "Thickness (mm)"], ["Alpha", "72"]],
+        }
+    )
+    assert quantity(other)["status"] == "SOURCE_SUPPORTED"
