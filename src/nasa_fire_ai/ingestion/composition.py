@@ -290,7 +290,8 @@ def composition_assertions(evidence, entities):
             continue
         for page in evidence:
             for sentence in _sentences(page.get("text", "")):
-                if _key(e["label"]) in _key(sentence):
+                # A sentence of the text, not a title block or a table run.
+                if _key(e["label"]) in _key(sentence) and len(_norm(sentence)) <= 300:
                     add(
                         e["label"],
                         m["component"],
