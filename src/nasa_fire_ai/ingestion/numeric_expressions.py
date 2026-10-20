@@ -89,19 +89,21 @@ QUALIFIER = rf"(?:(?:{INEQUALITY})\s*(?:(?:{APPROXIMATE})\s*)?|(?:{APPROXIMATE})
 
 # Unit literals are recognition syntax only: they are never converted here and
 # never establish a property. SI prefix/base composition follows the existing
-# coverage inventory syntax; the word forms are common original spellings.
+# coverage inventory syntax; the word forms are common original spellings. The
+# lowercase litre and the cubic or square foot are the forms the unit inventory
+# (normalization.units) already interprets.
 _PREFIX = r"(?:da|[yzafpnumµμcdhkMGTPEZY])?"
-_BASE = r"(?:mol|kat|Hz|Pa|Wb|lm|lx|Bq|Gy|Sv|cd|m|g|s|A|K|N|J|W|C|V|F|Ω|S|T|H|L)"
+_BASE = r"(?:mol|kat|Hz|Pa|Wb|lm|lx|Bq|Gy|Sv|cd|m|g|s|A|K|N|J|W|C|V|F|Ω|S|T|H|L|l)"
 _ATOM = rf"{_PREFIX}{_BASE}(?:\^?{SIGN}?\d+|[²³])?"
 UNIT_LITERAL = (
     r"(?:%|‰|°\s?[CF]|ppm|ppb|psi[ag]?|atm|torr|Torr|bar|mbar|mmHg|inHg|RPM|rpm|"
-    r"ft[-·‑]?lbf?s?|in[-·‑]lbf?s?|lbf|lbs?|ft/s|in/s|ft|"
+    r"ft[-·‑]?lbf?s?|in[-·‑]lbf?s?|lbf|lbs?|ft/s|in/s|ft(?:\^?[23]|[²³])|ft|"
     r"(?i:seconds?|secs?|minutes?|mins?|hours?|hrs?|days?|percent|microns?|"
     r"lit(?:er|re)s?|joules?|watts?|kelvins?|pascals?|degC|degF)|"
     rf"{_ATOM}(?:[/*·]{_ATOM})*)(?![\w°])"
 )
 # One-letter or word-like literals that are a different word as often as a unit.
-AMBIGUOUS_UNIT_LITERALS = {"g", "G", "a", "A", "in", "S", "T", "H", "C", "F", "L", "N", "V"}
+AMBIGUOUS_UNIT_LITERALS = {"g", "G", "a", "A", "in", "S", "T", "H", "C", "F", "L", "N", "V", "l"}
 
 # Superscript digits are excluded: after a number they may be a flattened exponent.
 FOOTNOTE_MARKERS = r"[*†‡§¶]+|[ᵃᵇᶜᵈᵉᶠ]+"

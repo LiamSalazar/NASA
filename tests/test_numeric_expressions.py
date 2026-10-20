@@ -303,6 +303,41 @@ def test_unit_split_refuses_ambiguous_or_contradicted_units():
     assert mismatch["status"] == "UNIT_MISMATCH"
 
 
+@pytest.mark.parametrize(
+    "expression,unit,value",
+    [
+        ("299 l", "l", "299"),
+        ("299l", "l", "299"),
+        ("2 ml", "ml", "2"),
+        ("50 ft3", "ft3", "50"),
+        ("50 ft^3", "ft^3", "50"),
+        ("12 ft²", "ft²", "12"),
+    ],
+)
+def test_volume_and_area_units_the_unit_inventory_interprets_are_separated(expression, unit, value):
+    # The grammar recognizes the litre and the cubic or square foot that
+    # normalization.units interprets; spacing does not change the reading.
+    split = split_embedded_unit(expression, unit)
+    assert (split["status"], split["expression"], split["unit"]) == ("SPLIT", value, unit)
+
+
+def test_a_compound_volume_keeps_its_author_equivalent():
+    split = split_embedded_unit("1.4 m3 (50 ft3)", "m3")
+    assert (split["expression"], split["unit"]) == ("1.4", "m3")
+    assert split["author_equivalent"]["original"] == "(50 ft3)"
+
+
+def test_the_lowercase_litre_needs_a_declared_unit_and_keeps_its_case():
+    # "l" is a letter as often as a unit: it is never split without a declared
+    # unit, and case is significant against a declared "L".
+    assert split_embedded_unit("299 l", None) is None
+    assert split_embedded_unit("299 l", "L")["status"] == "UNIT_MISMATCH"
+    # Longer literals that begin with the letter are not read as litres.
+    assert split_embedded_unit("5 lbs", "lbs")["unit"] == "lbs"
+    assert split_embedded_unit("3 lm", "lm")["unit"] == "lm"
+    assert split_embedded_unit("12 ft", "ft")["unit"] == "ft"
+
+
 # --- Locating expressions in source text ---------------------------------------------
 
 
