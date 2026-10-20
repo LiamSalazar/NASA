@@ -1,0 +1,493 @@
+{
+  "kind": "PHASE1_V6_M9_REJECTION_AUDIT",
+  "code": "1850be3",
+  "evaluation": "B (fresh live runs)",
+  "sources": {
+    "ignition": {
+      "active_records": 95,
+      "by_kind_origin_status": [
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 5
+        },
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 30
+        },
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 17
+        },
+        {
+          "kind": "quantities",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 88
+        },
+        {
+          "kind": "quantities",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 3
+        },
+        {
+          "kind": "quantities",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 8
+        },
+        {
+          "kind": "quantities",
+          "origin": "printed_structure_candidate",
+          "status": "SOURCE_SUPPORTED",
+          "count": 5
+        },
+        {
+          "kind": "relations",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 1
+        },
+        {
+          "kind": "relations",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 4
+        },
+        {
+          "kind": "relations",
+          "origin": "printed_structure_candidate",
+          "status": "REJECTED",
+          "count": 2
+        },
+        {
+          "kind": "relations",
+          "origin": "printed_structure_candidate",
+          "status": "SOURCE_SUPPORTED",
+          "count": 1
+        },
+        {
+          "kind": "relations",
+          "origin": "printed_structure_candidate",
+          "status": "UNRESOLVED",
+          "count": 1
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 33
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 55
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 275
+        }
+      ],
+      "top_first_reasons": [
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+          "count": 118
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+          "count": 72
+        },
+        {
+          "kind": "quantities",
+          "reason": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+          "count": 41
+        },
+        {
+          "kind": "quantities",
+          "reason": "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION",
+          "count": 26
+        },
+        {
+          "kind": "statements",
+          "reason": "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+          "count": 21
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+          "count": 20
+        },
+        {
+          "kind": "quantities",
+          "reason": "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION",
+          "count": 16
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+          "count": 15
+        },
+        {
+          "kind": "statements",
+          "reason": "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION",
+          "count": 14
+        },
+        {
+          "kind": "statements",
+          "reason": "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+          "count": 13
+        },
+        {
+          "kind": "entities",
+          "reason": "CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+          "count": 10
+        },
+        {
+          "kind": "quantities",
+          "reason": "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+          "count": 8
+        },
+        {
+          "kind": "entities",
+          "reason": "CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY",
+          "count": 7
+        },
+        {
+          "kind": "statements",
+          "reason": "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE",
+          "count": 6
+        },
+        {
+          "kind": "entities",
+          "reason": "ENTITY_LABEL_ABSENT_FROM_SUPPORT",
+          "count": 5
+        }
+      ]
+    },
+    "regulator": {
+      "active_records": 40,
+      "by_kind_origin_status": [
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 4
+        },
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 11
+        },
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 3
+        },
+        {
+          "kind": "quantities",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 12
+        },
+        {
+          "kind": "quantities",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 3
+        },
+        {
+          "kind": "quantities",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 15
+        },
+        {
+          "kind": "quantities",
+          "origin": "printed_structure_candidate",
+          "status": "SOURCE_SUPPORTED",
+          "count": 1
+        },
+        {
+          "kind": "relations",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 6
+        },
+        {
+          "kind": "relations",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 1
+        },
+        {
+          "kind": "relations",
+          "origin": "printed_structure_candidate",
+          "status": "SOURCE_SUPPORTED",
+          "count": 1
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 10
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 24
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 70
+        }
+      ],
+      "top_first_reasons": [
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+          "count": 27
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+          "count": 14
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+          "count": 12
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+          "count": 8
+        },
+        {
+          "kind": "statements",
+          "reason": "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+          "count": 7
+        },
+        {
+          "kind": "quantities",
+          "reason": "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW",
+          "count": 7
+        },
+        {
+          "kind": "relations",
+          "reason": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+          "count": 6
+        },
+        {
+          "kind": "quantities",
+          "reason": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+          "count": 6
+        },
+        {
+          "kind": "quantities",
+          "reason": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+          "count": 5
+        },
+        {
+          "kind": "quantities",
+          "reason": "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT",
+          "count": 5
+        },
+        {
+          "kind": "entities",
+          "reason": "ENTITY_LABEL_ABSENT_FROM_SUPPORT",
+          "count": 4
+        },
+        {
+          "kind": "statements",
+          "reason": "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION",
+          "count": 4
+        },
+        {
+          "kind": "entities",
+          "reason": "CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+          "count": 3
+        },
+        {
+          "kind": "statements",
+          "reason": "CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+          "count": 2
+        },
+        {
+          "kind": "statements",
+          "reason": "UNCERTAINTY_CANNOT_BECOME_CONFIRMED",
+          "count": 2
+        }
+      ]
+    },
+    "textiles": {
+      "active_records": 21,
+      "by_kind_origin_status": [
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 1
+        },
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 6
+        },
+        {
+          "kind": "entities",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 4
+        },
+        {
+          "kind": "quantities",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 12
+        },
+        {
+          "kind": "quantities",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 1
+        },
+        {
+          "kind": "quantities",
+          "origin": "printed_structure_candidate",
+          "status": "SOURCE_SUPPORTED",
+          "count": 4
+        },
+        {
+          "kind": "relations",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 1
+        },
+        {
+          "kind": "relations",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 1
+        },
+        {
+          "kind": "relations",
+          "origin": "printed_structure_candidate",
+          "status": "REJECTED",
+          "count": 4
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "REJECTED",
+          "count": 8
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "SOURCE_SUPPORTED",
+          "count": 10
+        },
+        {
+          "kind": "statements",
+          "origin": "model_proposal",
+          "status": "UNRESOLVED",
+          "count": 28
+        }
+      ],
+      "top_first_reasons": [
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+          "count": 10
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+          "count": 8
+        },
+        {
+          "kind": "quantities",
+          "reason": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+          "count": 7
+        },
+        {
+          "kind": "entities",
+          "reason": "CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+          "count": 4
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+          "count": 4
+        },
+        {
+          "kind": "statements",
+          "reason": "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+          "count": 4
+        },
+        {
+          "kind": "relations",
+          "reason": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+          "count": 4
+        },
+        {
+          "kind": "statements",
+          "reason": "GUIDANCE_NOT_EXPLICIT_IN_SOURCE",
+          "count": 3
+        },
+        {
+          "kind": "quantities",
+          "reason": "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT",
+          "count": 3
+        },
+        {
+          "kind": "statements",
+          "reason": "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+          "count": 2
+        },
+        {
+          "kind": "statements",
+          "reason": "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE",
+          "count": 2
+        },
+        {
+          "kind": "entities",
+          "reason": "ENTITY_LABEL_ABSENT_FROM_SUPPORT",
+          "count": 1
+        },
+        {
+          "kind": "statements",
+          "reason": "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT;MULTIPLE_BULLETS_REQUIRE_SEPARATE_EPISTEMIC_REVIEW",
+          "count": 1
+        },
+        {
+          "kind": "statements",
+          "reason": "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION",
+          "count": 1
+        },
+        {
+          "kind": "statements",
+          "reason": "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT",
+          "count": 1
+        }
+      ]
+    }
+  }
+}

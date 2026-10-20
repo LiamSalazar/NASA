@@ -1,0 +1,1898 @@
+{
+  "approvals": 0,
+  "attempts": 15,
+  "completed_at": "2026-10-20T17:52:40.166407+00:00",
+  "configuration": {
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "max_model_calls": null,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 3600.0,
+    "vision_model": null
+  },
+  "digest": "0d6bc913968ed4280abfd16d34def38e9e3ac0881b7dc274a5199bc2f921f726",
+  "git_head": "39b57bc40513ce6d0f24c7e82e8ff13074014bae",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20090043050/downloads/20090043050.pdf",
+  "package_id": "research-ec42a926a29616a70757",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 14759,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 0,
+    "configured_fallback_models": [
+      "nvidia/nemotron-3-super-120b-a12b"
+    ],
+    "deterministic_characters": 29500,
+    "duration_seconds": 1094.0955434999778,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "model_characters": 750,
+    "new_model_calls": 15,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "f2b90387c8619314da2c7202e59271ae18438d32db6baa877540ea312a92a42b",
+        "context_token_estimate": 26027,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 8192,
+        "proposed_items": 16,
+        "reasoning_tokens": 2048,
+        "request_bytes": 30884,
+        "reserved_tokens_per_attempt": 42839,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 13539,
+        "source_anchors": 88,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 34.553392800007714,
+          "image_count": 0,
+          "max_output_tokens": 8192,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7433,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 34.51516900002025
+        },
+        "usage": {
+          "completion_tokens": 2995,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 9138,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 12133
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "5c5f2b4c598c1905113482882959dd60a65f30eae012a8c18c8bde95aac00d54",
+        "context_token_estimate": 28747,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 7168,
+        "proposed_items": 20,
+        "reasoning_tokens": 2048,
+        "request_bytes": 38371,
+        "reserved_tokens_per_attempt": 49302,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 14454,
+        "source_anchors": 75,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 41.518825100007234,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7747,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 41.509274400013965
+        },
+        "usage": {
+          "completion_tokens": 3097,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14951,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 18048
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "dfb0715bb10b7dc2b75d5fa550a1637394abae2e7cbdb39c25350cbf7bcc5c9a",
+        "context_token_estimate": 12861,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 6144,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 8648,
+        "reserved_tokens_per_attempt": 18555,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 670,
+        "source_anchors": 10,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 23.629532299994025,
+          "image_count": 0,
+          "max_output_tokens": 6144,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9596,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 23.606021499988856
+        },
+        "usage": {
+          "completion_tokens": 2054,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 2923,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 4977
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "7004f1e1928dc0ac1dc24a2349eae54aeee65bec723f2acb4e7836a6e9115727",
+        "context_token_estimate": 49238,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 10,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 23552,
+        "proposed_items": 49,
+        "reasoning_tokens": 2048,
+        "request_bytes": 44835,
+        "reserved_tokens_per_attempt": 73900,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 23537,
+        "source_anchors": 98,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-a08e72f564264a6d322a",
+                "entity-41e015d86f040b5bc4d1",
+                "entity-020c8f2265c4ef288593",
+                "entity-f10d94b63e32c6a28d52"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®.",
+                  "start": 1372
+                }
+              ],
+              "text": "Previous research conducted by Chou and Giedorowicz examined several fluorinated \npolymeric materials that are of interest in the further characterization of Brass-filled PTFE \nincluding: TFE-Teflon® (PTFE), Kel-F® 81 (PCTFE), Viton® A, Viton® A-500, and Fluorel®."
+            },
+            "proposal_id": "proposal-e110fb814078b9360c0c64f7",
+            "reasons": [
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-a08e72f564264a6d322a",
+                "entity-41e015d86f040b5bc4d1",
+                "entity-020c8f2265c4ef288593",
+                "entity-f10d94b63e32c6a28d52",
+                "entity-3146bf392859aee0ce4d"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "text": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC"
+            },
+            "proposal_id": "proposal-34427b985bc13426cb909ce5",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "derived_quantity",
+              "expression": "12% lower",
+              "label": "caloric content per gram of material for Brass-filled PTFE",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "7\nfilled PTFE was 12% lower than the caloric content of the non-Brass-filled PTFE determined by\nChou and Giedorowicz.",
+                  "start": 0
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-ed8790d27733b6c31ae51555",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "13.81",
+              "label": "Standard Deviation",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "unit": "cal/gram"
+            },
+            "proposal_id": "proposal-a0a9dd0f84e49ef7741d2fb3",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "9",
+              "label": "temperature increase rate",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "The external heater was started and allowed to increase the \ntemperature of the sample at a rate of 9 degrees F/min.",
+                  "start": 1396
+                }
+              ],
+              "unit": "degrees F/min"
+            },
+            "proposal_id": "proposal-a05ed7efa88ddb3b25850798",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "425",
+              "label": "AIT recording threshold",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-e662ddc659fd07d444d0f55a",
+                  "quote": "If the system temperature rises above 425°C \nprior to ignition of the sample, then the AIT is recorded as >425°C.",
+                  "start": 1606
+                }
+              ],
+              "unit": "°C"
+            },
+            "proposal_id": "proposal-4ad75af6d5e788de1189e5e9",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "425",
+              "label": "AIT recording threshold",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "As defined in the ASTM and\nNASA-STD-6001A standards for AIT testing, a sample that ignites above a temperature of 425 \nºC is recorded as having an AIT temperature >425 ºC and the actual value is not specified.",
+                  "start": 944
+                }
+              ],
+              "unit": "ºC"
+            },
+            "proposal_id": "proposal-d312c89ef3d24d9d6d0a3eae",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 30.424559599981876,
+          "image_count": 0,
+          "max_output_tokens": 23552,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8698,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 30.413037199992687
+        },
+        "usage": {
+          "completion_tokens": 4059,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 13423,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17482
+        }
+      },
+      {
+        "attempts": 5,
+        "cache_key": "1e191f62dc038ca92b8199ca0afe1686e4decda9c606e62d10468b7a8964914b",
+        "context_token_estimate": 60241,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "error_type": "request_rejected",
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "fallbacks": [
+          {
+            "from": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+            "reason": "deadline",
+            "task_and_evidence_preserved": true,
+            "to": "nvidia/nemotron-3-super-120b-a12b"
+          }
+        ],
+        "focus": null,
+        "known_entities_selected": 19,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "FAILED",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 51108,
+        "reserved_tokens_per_attempt": 86690,
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22484,
+        "source_anchors": 83,
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 0.1442535000096541,
+          "finish_reason": null,
+          "http_status": 404,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "provider_message": "{'status': 404, 'title': 'Not Found', 'detail': \"Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account '5LguFhEUYxQ4ZyVLTGbBT4oD_-g6dA4s21Id102cmQk'\"}",
+          "reasoning_budget": 2048,
+          "reasoning_characters": 0,
+          "requested_model": "nvidia/nemotron-3-super-120b-a12b",
+          "served_models": [],
+          "stream": true,
+          "thinking_enabled": true,
+          "usage": null
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "04940ba71a4562fef844f7339b3d52e0773a0a0db4e4a17524c1b2d6bf83ca2a",
+        "context_token_estimate": 22858,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 13,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 7168,
+        "proposed_items": 10,
+        "reasoning_tokens": 2048,
+        "request_bytes": 24797,
+        "reserved_tokens_per_attempt": 37524,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 11679,
+        "source_anchors": 27,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 28.187527899979614,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8045,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 28.176502199989045
+        },
+        "usage": {
+          "completion_tokens": 2376,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 8552,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 10928
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "26298bd5cfd9add4bb7fc8490a43b3b31931e20d649f28acf40bc5094dbd3ede",
+        "context_token_estimate": 46619,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 10,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 23552,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 42344,
+        "reserved_tokens_per_attempt": 68662,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 23537,
+        "source_anchors": 98,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 7.371053999988362,
+          "image_count": 0,
+          "max_output_tokens": 23552,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 3021,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 7.357912200008286
+        },
+        "usage": {
+          "completion_tokens": 821,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 813,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 12702,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 13523
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "eed89f2b2d8cf2ed9acbabcc8bb50cf297a34747d32ef963c024a2f7698ab3f4",
+        "context_token_estimate": 59624,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 19,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 6,
+        "reasoning_tokens": 2048,
+        "request_bytes": 49814,
+        "reserved_tokens_per_attempt": 85457,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22484,
+        "source_anchors": 83,
+        "source_errors": [
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "40",
+              "label": "Bronze percentage",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The composition of Salox-M® is 40% \nBronze and 60% PTFE.",
+                  "start": 788
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-c50078417f5dced54e0c6a5a",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "less than 40",
+              "label": "Brass percentage",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "Although the percentage of Brass in the Brass-filled PTFE is not known, it \ncan be determined from figures 1 and 2 that it is far less than 40%.",
+                  "start": 928
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-9f05053dfd31b08e76b79340",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 20.73741760000121,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7799,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 20.7260941999848
+        },
+        "usage": {
+          "completion_tokens": 2254,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 18547,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 20801
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "aa1a27b330bf57586a28367001cffbfc895f551419c8ba8bb13d1c61c4f271b7",
+        "context_token_estimate": 32517,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 10,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 8192,
+        "proposed_items": 8,
+        "reasoning_tokens": 2048,
+        "request_bytes": 44613,
+        "reserved_tokens_per_attempt": 55818,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 23537,
+        "source_anchors": 98,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-3146bf392859aee0ce4d",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-3df3718143d8a6097de5cce9",
+                  "quote": "The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter to determine the heat of combustion.",
+                  "start": 1057
+                },
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This Brass-filled PTFE is showing great promise as a seal and seat material for high-\npressure oxygen systems.",
+                  "start": 456
+                },
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-a0d695aec056a8738f6786f7",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a08e72f564264a6d322a",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-791e618fab3f8222e37da728",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-41e015d86f040b5bc4d1",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-a04f9a085af6533e9030c65c",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-020c8f2265c4ef288593",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-def432d9e5ded6c4f7ee9604",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f10d94b63e32c6a28d52",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-62331f2038689f5ee9b59332",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7a44b90efde1ff69f710",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-257de717b12016530eb7450f",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 52.63017809999292,
+          "image_count": 0,
+          "max_output_tokens": 8192,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7915,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 52.62116129999049
+        },
+        "usage": {
+          "completion_tokens": 2308,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 13159,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 15467
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "c2bf5d6065f664f29451de3e58f14be9b9c6e0daa533c4d2389428f33524de32",
+        "context_token_estimate": 37738,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 19,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 10240,
+        "proposed_items": 27,
+        "reasoning_tokens": 2048,
+        "request_bytes": 50834,
+        "reserved_tokens_per_attempt": 64213,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22484,
+        "source_anchors": 83,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-b355302ec3a7ab0ee5e7",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-0a3ed28d3150b2405709bef6",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-e509e9f12fa7a27278fd",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-a633ed6a44d24e794736ec91",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-d0a0dea82b5b30d061f0",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-40a9cf11f472e4e3b673fe11",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a16959c8d89655729431",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-7350f282da56f17dc38f",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-7ae3891290da064e94bb849a",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a08e72f564264a6d322a",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-791e618fab3f8222e37da728",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-a83ab527f3b32724eb0e",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                },
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "Their data indicates that only TFE-Teflon® (PTFE) passed the mechanical impact test \nin a LOX environment at ambient pressure.",
+                  "start": 279
+                }
+              ]
+            },
+            "proposal_id": "proposal-1c9f68c288a2058144ca6507",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-41e015d86f040b5bc4d1",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-a04f9a085af6533e9030c65c",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-020c8f2265c4ef288593",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-def432d9e5ded6c4f7ee9604",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f10d94b63e32c6a28d52",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-62331f2038689f5ee9b59332",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7a44b90efde1ff69f710",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-257de717b12016530eb7450f",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-77a80608b4dccc77e6e6",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "In comparison to the Brass-filled PTFE, a similar metal filled PTFE compound named \nSalox-M® uses Bronze filler in PTFE instead of Brass.",
+                  "start": 649
+                }
+              ]
+            },
+            "proposal_id": "proposal-9ea2e1a69c28917e6c4500f1",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-70d22f23e9652114591d",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "Algoflon® F7 is a PTFE virgin granular resin.",
+                  "start": 435
+                }
+              ]
+            },
+            "proposal_id": "proposal-12df179bda3f43345e120cfa",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-8a6ec8727345ddba85bb",
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "Algoflon® E2 is a PTFE virgin granular resin \nwhich has been pre-sintered.",
+                  "start": 250
+                }
+              ]
+            },
+            "proposal_id": "proposal-5e610709b679f70bbea5982e",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 27.35450439999113,
+          "image_count": 0,
+          "max_output_tokens": 10240,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 6468,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 27.3414877000032
+        },
+        "usage": {
+          "completion_tokens": 2908,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 18594,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 21502
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "1f190bf35448dc671c3a82304a3b0d8c063a4fd1365f109a6ff961998df48c22",
+        "context_token_estimate": 21493,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 13,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 7168,
+        "proposed_items": 4,
+        "reasoning_tokens": 2048,
+        "request_bytes": 24572,
+        "reserved_tokens_per_attempt": 34795,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 11679,
+        "source_anchors": 27,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-c6751667d4b731d17fc8",
+              "relation": "hasCondition",
+              "subject": "structure-198a4db33f69f143",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-f09a082244792f891a99e3e8",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-5b92783424483be4e14e",
+              "relation": "hasCondition",
+              "subject": "structure-198a4db33f69f143",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-406e9c143e3e3b53e29ffa3d",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 26.1513518000138,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7096,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 26.13162810000358
+        },
+        "usage": {
+          "completion_tokens": 2188,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 8287,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 10475
+        }
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 584233
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "c9de8948bdf14643e96f5666eba566827eb7842cbe6c085c6e411fe29cd8237a",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-20T17:34:24.278071+00:00",
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Original PDF quantities retain unresolved role and experimental scope for scientific review",
+    "Scientific preparation review dependency: APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION",
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+    "Scientific preparation review dependency: CITED_TABLE_READING_IS_NOT_CURRENT_OBSERVATION",
+    "Scientific preparation review dependency: CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFIGURATION_STATEMENT_STATES_A_CRITERION",
+    "Scientific preparation review dependency: CONFIGURATION_STATES_A_VALIDITY_CAVEAT",
+    "Scientific preparation review dependency: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+    "Scientific preparation review dependency: CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED",
+    "Scientific preparation review dependency: ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED",
+    "Scientific preparation review dependency: EXECUTION_NOT_DOCUMENTED",
+    "Scientific preparation review dependency: INTERPRETATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY",
+    "Scientific preparation review dependency: QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE_NOT_MATERIAL_CONCEPT",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: RELATION_ENTAILMENT_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific preparation review dependency: TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS",
+    "Scientific preparation review dependency: TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+    "Scientific quantity native representation deferred; original literal retained: proposal-07e23be119e2715a55988fa7",
+    "Scientific quantity native representation deferred; original literal retained: proposal-26cc3cb53960b0ab36e38b1e",
+    "Scientific quantity native representation deferred; original literal retained: proposal-2d144dd0ae83e4dee1e86aee",
+    "Scientific quantity native representation deferred; original literal retained: proposal-45cc801f1be4054247e114e2",
+    "Scientific quantity native representation deferred; original literal retained: proposal-4cfa3c0066afbf948d2f08ac",
+    "Scientific quantity native representation deferred; original literal retained: proposal-68f9e5b215e8abebcc313b53",
+    "Scientific quantity native representation deferred; original literal retained: proposal-6a4477626f0d6bd57394b319",
+    "Scientific quantity native representation deferred; original literal retained: proposal-8338b3c13f47e65f0dd44419",
+    "Scientific quantity native representation deferred; original literal retained: proposal-8af0b568db7ebf97c90164e3",
+    "Scientific quantity native representation deferred; original literal retained: proposal-900d33bcdce2fae433d0c0a7",
+    "Scientific quantity native representation deferred; original literal retained: proposal-b6f21017db0a9580092cd80f",
+    "Scientific quantity native representation deferred; original literal retained: proposal-d2e3c567c8673f6fcb14829f",
+    "Scientific quantity native representation deferred; original literal retained: proposal-db2173248e5e614a666d96fb",
+    "Scientific quantity native representation deferred; original literal retained: proposal-eb8242f9cd7938ec9c61965c",
+    "Scientific quantity native representation deferred; original literal retained: proposal-ee7eb38bb5a53b4bb6d85016",
+    "Scientific review required: experimental run lacks original table-row identity: research-ec42a926a29616a70757:entity:299e0c671c04a7820faa",
+    "Scientific review required: experimental run lacks original table-row identity: research-ec42a926a29616a70757:entity:39b67d7fb973bb8c5b8e",
+    "Scientific review required: experimental run lacks original table-row identity: research-ec42a926a29616a70757:entity:478092898c5299d27138",
+    "Scientific review required: experimental run lacks original table-row identity: research-ec42a926a29616a70757:entity:eec61bd2a119bb338140",
+    "Scientific review required: relationship investigation needs original experimental applicability for research-ec42a926a29616a70757:entity:6d6f7ce70329bb717430",
+    "Select source-supported scope for research-ec42a926a29616a70757:c9de8948bdf14643:statement:4bc799d6dfe970df",
+    "Which identified runs do these author reported conclusion statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}
