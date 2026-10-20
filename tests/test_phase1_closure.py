@@ -1531,3 +1531,22 @@ def test_a_name_this_studys_rows_print_under_material_is_a_material_candidate(se
     }
     assert labels.get("Omega E2") == ("Material", "current"), labels
     assert "Phase 3" not in labels
+
+
+def test_a_documentary_data_source_in_the_introduction_is_scoped_to_the_study(service):
+    text = "The data used to compare Alpha to other polymers was obtained from other ASTM papers."
+    p = submitted(service, "# Synthetic study\nI. Introduction\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "root", "Synthetic study", "Investigation", "# Synthetic study")]
+    o["statements"] = [
+        {
+            "text": text,
+            "class_id": "Publication",
+            "epistemic": "documentary_context",
+            "subjects": ["root"],
+            "study": "current",
+            "support": support(p, text),
+        }
+    ]
+    record = proposed(run(service, p, o, structure(p, service.root)))[-1]
+    assert record["status"] == "SOURCE_SUPPORTED", record["reasons"]

@@ -609,7 +609,12 @@ def original_research_passage(spans, document):
     )
 
 
-def document_statement_scope(subject, spans, entities, document):
+def document_statement_scope(subject, spans, entities, document, cited_named=False):
+    """The paper's own investigation scopes a passage of its own research text.
+
+    A passage naming cited work is that work's, except a documentary passage
+    (``cited_named``): saying where data came from names its sources.
+    """
     entity = entities.get(subject, {})
     return (
         entity.get("class_id") == "Investigation"
@@ -617,9 +622,25 @@ def document_statement_scope(subject, spans, entities, document):
         and entity.get("validation_status") == "SOURCE_SUPPORTED"
         and normalized(entity.get("label", "")) == normalized(document.get("package_title", ""))
         and all(s["source_id"] == entity["source_id"] for s in spans)
-        and original_research_passage(spans, document)
+        and (
+            original_research_passage(spans, document)
+            # A documentary passage of the paper's own body (where its data come
+            # from) needs no results section, only not the reference list.
+            or (
+                cited_named
+                and not any(
+                    re.search(
+                        r"\b(?:references|bibliography|acknowledg\w*)\b",
+                        section_for_span(s, document),
+                        re.IGNORECASE,
+                    )
+                    for s in spans
+                )
+            )
+        )
         and not any(
-            e.get("study") == "cited"
+            not cited_named
+            and e.get("study") == "cited"
             and cited_mention_outside_current_names(
                 e["label"], " ".join(s["quote"] for s in spans), entities
             )
@@ -4049,6 +4070,7 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         "end": exact["end"],
                     }
                     from nasa_fire_ai.ingestion.statement_integrity import (
+                        DATA_PROVENANCE,
                         PURPOSE,
                         count_conflict,
                         documentary_pointer,
@@ -4444,7 +4466,19 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         item["subjects"] = [root]
                     if not item["subjects"] or not all(
                         applicable(s, spans, entities, document)
-                        or document_statement_scope(s, spans, entities, document)
+                        or document_statement_scope(
+                            s,
+                            spans,
+                            entities,
+                            document,
+                            # Only a passage that says where data come from or
+                            # where they are printed names its sources by design.
+                            cited_named=item["epistemic"] == "documentary_context"
+                            and bool(
+                                DATA_PROVENANCE.search(item["text"])
+                                or documentary_pointer(item["text"])
+                            ),
+                        )
                         for s in item["subjects"]
                     ):
                         record["status"] = "UNRESOLVED"
