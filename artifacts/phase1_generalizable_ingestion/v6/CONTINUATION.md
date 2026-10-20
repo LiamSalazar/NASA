@@ -1,10 +1,13 @@
 # Continuing Phase 1 v6 on another machine
 
-**State: `PHASE1_COMPLETE=NO`.** Branch `diego/research` (never `main`, no PR, no release zip until Phase 1 closes). Latest milestone receipts: `milestone7/`. Code after milestone 7:
+**State: `PHASE1_COMPLETE=NO`.** Branch `diego/research` (never `main`, no PR, no release zip until Phase 1 closes). Latest milestone receipts: `milestone8/`. Code after milestone 7:
 - `e112fac`: values in a group's own subsection, named by their syntax.
 - `6277466`: setpoint, nominal and target values read as settings.
+- `d7c4732` (milestone 8): a group's subsection settings, method-section values and "tested at" lines as candidates, with metamorphic and negative tests.
 
-Quality at `6277466`: `ruff format --check`, `ruff check`, `pytest` (717 tests) pass.
+Quality at `d7c4732`: `ruff format --check`, `ruff check` and `pytest` pass on a machine with the local files below (724 tests). Without them, `tests/test_curation_attribution.py` does not collect and 36 of the remaining 696 tests fail; the failing set is identical before and after this milestone.
+
+Liam's generalization addendum (2026-10-20) governs every further change: classify each rule (general scientific/dimensional, document-structure, source-grounded semantic; never an exception for a known investigation), check it on the other development sources, add metamorphic and negative tests, keep replayed (A) and fresh (B) results apart, and report what the model proposed versus what printed-structure candidates added (`milestone8/rejection_audit_d7c4732.json`).
 
 ## Not in GitHub: copy or regenerate
 

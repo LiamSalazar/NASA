@@ -1,0 +1,1076 @@
+{
+ "kind": "PHASE1_V6_M8_REJECTION_AUDIT",
+ "code": "d7c4732",
+ "evaluation": "A (offline revalidation of saved live outputs at 1dffc83; 0 model calls)",
+ "sources": {
+  "ignition": {
+   "by_kind_origin_status": [
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 2
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 36
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 22
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 93
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 6
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 29
+    },
+    {
+     "kind": "quantities",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "count": 5
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 31
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 4
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "REJECTED",
+     "count": 2
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "count": 4
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "UNRESOLVED",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 30
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 76
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 247
+    }
+   ],
+   "by_first_reason": [
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 36
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+     "count": 10
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CAPTION_IS_NOT_ESTABLISHED_EXPERIMENT_IDENTITY",
+     "count": 5
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP",
+     "count": 3
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "TEST_OR_PROPERTY_IS_NOT_A_CONDITION",
+     "count": 3
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "ENTITY_LABEL_ABSENT_FROM_SUPPORT",
+     "count": 2
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED",
+     "count": 1
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+     "count": 37
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION",
+     "count": 30
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+     "count": 24
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION",
+     "count": 15
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 6
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_EXPRESSION_ABSENT",
+     "count": 6
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+     "count": 4
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND",
+     "count": 3
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES",
+     "count": 2
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "RELATIVE_DIFFERENCE_IS_A_DERIVED_QUANTITY",
+     "count": 1
+    },
+    {
+     "kind": "quantities",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 5
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "RELATION_ENDPOINT_CLASS_CONTRADICTION",
+     "count": 16
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+     "count": 15
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "LOCAL_SUBJECT_BINDING_UNRESOLVED",
+     "count": 3
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "RELATION_ENTAILMENT_REQUIRES_REVIEW",
+     "count": 1
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 4
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "REJECTED",
+     "reason": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+     "count": 2
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "UNRESOLVED",
+     "reason": "LOCAL_SUBJECT_BINDING_UNRESOLVED",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+     "count": 116
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 76
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+     "count": 31
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+     "count": 24
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+     "count": 17
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+     "count": 16
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+     "count": 14
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+     "count": 13
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION",
+     "count": 12
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+     "count": 6
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "OPEN_QUESTION_NOT_EXPLICIT_IN_SOURCE",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "DERIVED_IS_NOT_OBSERVATION",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "OBSERVATION_STATES_A_CRITERION",
+     "count": 3
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE",
+     "count": 3
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION;UNCERTAINTY_CANNOT_BECOME_CONFIRMED",
+     "count": 3
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+     "count": 3
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "UNKNOWN_STATEMENT_ENDPOINT",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "INTERPRETATION_DESCRIBES_A_PROCEDURE",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "TABLE_REGION_IS_NOT_A_STATEMENT",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "OBSERVATION_IS_A_DOCUMENTARY_POINTER",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "OBSERVATION_DESCRIBES_A_PROCEDURE",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+     "count": 1
+    }
+   ]
+  },
+  "regulator": {
+   "by_kind_origin_status": [
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 6
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 13
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 2
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 21
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 4
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 46
+    },
+    {
+     "kind": "quantities",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "count": 1
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 14
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 2
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 30
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 55
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 105
+    }
+   ],
+   "by_first_reason": [
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 13
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "ENTITY_LABEL_ABSENT_FROM_SUPPORT",
+     "count": 6
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+     "count": 2
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+     "count": 34
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+     "count": 8
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT",
+     "count": 8
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+     "count": 6
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 4
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_EXPRESSION_ABSENT",
+     "count": 4
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW",
+     "count": 4
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION",
+     "count": 2
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES",
+     "count": 1
+    },
+    {
+     "kind": "quantities",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 1
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+     "count": 14
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 2
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 55
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+     "count": 27
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+     "count": 17
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+     "count": 16
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+     "count": 12
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+     "count": 12
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+     "count": 9
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION",
+     "count": 5
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE",
+     "count": 3
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "UNCERTAINTY_CANNOT_BECOME_CONFIRMED",
+     "count": 3
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+     "count": 2
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+     "count": 2
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+     "count": 2
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "DERIVED_IS_NOT_OBSERVATION",
+     "count": 2
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "INTERPRETATION_DESCRIBES_A_PROCEDURE",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "OBSERVATION_IS_A_DOCUMENTARY_POINTER",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "MODEL_RESULT_IS_NOT_DIRECT_OBSERVATION;DERIVED_IS_NOT_OBSERVATION",
+     "count": 1
+    }
+   ]
+  },
+  "textiles": {
+   "by_kind_origin_status": [
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 7
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 9
+    },
+    {
+     "kind": "entities",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "count": 1
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 3
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 3
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 6
+    },
+    {
+     "kind": "quantities",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "count": 4
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 6
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 1
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "REJECTED",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "count": 6
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "count": 13
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "count": 16
+    }
+   ],
+   "by_first_reason": [
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 7
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP",
+     "count": 5
+    },
+    {
+     "kind": "entities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+     "count": 4
+    },
+    {
+     "kind": "entities",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 1
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+     "count": 4
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 3
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME",
+     "count": 2
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+     "count": 2
+    },
+    {
+     "kind": "quantities",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT",
+     "count": 1
+    },
+    {
+     "kind": "quantities",
+     "origin": "printed_structure_candidate",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 4
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+     "count": 5
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 1
+    },
+    {
+     "kind": "relations",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "RELATION_ENDPOINT_CLASS_CONTRADICTION",
+     "count": 1
+    },
+    {
+     "kind": "relations",
+     "origin": "printed_structure_candidate",
+     "status": "REJECTED",
+     "reason": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "SOURCE_SUPPORTED",
+     "reason": "-",
+     "count": 13
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+     "count": 8
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+     "count": 4
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+     "count": 2
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE",
+     "count": 2
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT;MULTIPLE_BULLETS_REQUIRE_SEPARATE_EPISTEMIC_REVIEW",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "UNRESOLVED",
+     "reason": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "GUIDANCE_NOT_EXPLICIT_IN_SOURCE",
+     "count": 1
+    },
+    {
+     "kind": "statements",
+     "origin": "model_proposal",
+     "status": "REJECTED",
+     "reason": "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT",
+     "count": 1
+    }
+   ]
+  }
+ }
+}

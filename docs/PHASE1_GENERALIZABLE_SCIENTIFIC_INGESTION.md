@@ -1,3 +1,23 @@
+# Phase 1 scientific ingestion — v6 milestone 8 on `diego/research` (candidates from document structure, under the generalization addendum)
+
+**PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone8/`. Code `d7c4732`.
+
+Three document-structure mechanisms, each classified per Liam's generalization addendum (§2) and checked on the four development sources by offline revalidation of the saved live outputs (evaluation A; no fresh inference in this milestone):
+- a condition printed as a setting ("exposed to …", "to achieve …", "at …") inside a group's own subsection is that group's condition, unless the sentence names another group;
+- a configuration value printed in a method section outside every group's subsection configures the document's investigation;
+- "<thing> tested at <settings>" proposes the thing as a specimen with its settings.
+
+| Source | Accepted records `2f343b8` → `d7c4732` | Frozen targets provisionally reached (author's adjudication pending) |
+| --- | --- | --- |
+| Lunar ignition | 105 → 109, none removed | q-05, rel-26, rel-27 |
+| Oxygen regulator | 74 → 75, none removed | q-08 |
+| Textiles | 23 → 27, none removed | ent-04, q-14, q-15 |
+| PTFE, 12 reviewed runs | +2 model-proposed method values in runs 1, 4, 5, 6; none removed | no target change |
+
+Metamorphic (rewrapped lines) and negative (other specimen, other group, other gravity condition, incidental mention) tests exercise the production readers. The rejection audit (`rejection_audit_d7c4732.json`) separates what the model proposed from what printed-structure candidates added; the next mechanism must start from that audit, giving the model each entity's class and subsection scope, rather than from new readers.
+
+The development gate is still not met, and the registered holdout (NTRS 20170004702) was not acquired.
+
 # Phase 1 scientific ingestion — v6 milestone 7 on `diego/research` (several development investigations)
 
 **PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone7/`.
