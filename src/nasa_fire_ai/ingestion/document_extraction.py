@@ -663,21 +663,79 @@ def document_conclusion_scope(subject, spans, entities, document):
     )
 
 
+def page_title(span, document):
+    """The first line of a page's own text, after its running header and page number.
+
+    A slide deck prints no section headings the structure reader recognizes; each
+    slide's title is the section of its page.
+    """
+    text = "".join(
+        s.get("text", "")
+        for s in document.get("segments", [])
+        if s["evidence_id"] == span["evidence_id"]
+    )
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    for line in lines[:4]:
+        if re.fullmatch(r"\d{1,4}", line) or line in {"•", "-"}:
+            continue
+        if len(re.findall(r"[A-Za-z]{2,}", line)) >= 4 and any(
+            normalized(re.sub(r"\d+", " ", line)) == h
+            for h in running_headers({e: {"text": t} for e, t in _page_texts(document).items()})
+        ):
+            continue
+        return line
+    return ""
+
+
+def slide_deck(document):
+    """Whether most pages open with a short title line, as presentation slides do."""
+    pages = list(_page_texts(document))
+    if len(pages) < 4:
+        return False
+    titled = 0
+    for evidence_id in pages:
+        title = page_title({"evidence_id": evidence_id}, document)
+        words = re.findall(r"[A-Za-z]{2,}", title)
+        if title and 1 <= len(words) <= 6 and not title.rstrip().endswith("."):
+            titled += 1
+    return titled >= 0.6 * len(pages)
+
+
+def _page_texts(document):
+    texts = {}
+    for s in document.get("segments", []):
+        texts[s["evidence_id"]] = texts.get(s["evidence_id"], "") + s.get("text", "")
+    return texts
+
+
+RESEARCH_SECTION = re.compile(
+    r"\b(?:results?|discussion|conclusions?|methods?|methodology|experimental|tests?|testing"
+    r"|verification|disassembly|inspection|analysis)\b",
+    re.IGNORECASE,
+)
+NON_RESEARCH_SECTION = re.compile(
+    r"\b(?:prior|historical|literature|background|introduction|references)\b", re.IGNORECASE
+)
+
+
 def original_research_passage(spans, document):
     """Documentary author attribution, never inheritance by every member run."""
-    if not spans or not all(
-        re.search(
-            r"\b(?:results?|discussion|conclusions?|methods?|experimental|tests?|testing|verification|disassembly|inspection|analysis)\b",
-            section_for_span(s, document),
-            re.IGNORECASE,
+
+    def research(span):
+        section = section_for_span(span, document)
+        if RESEARCH_SECTION.search(section) and not NON_RESEARCH_SECTION.search(section):
+            return True
+        # A slide titled "Testing Methodology" in a deck whose structure has no
+        # recognized research section of its own.
+        title = page_title(span, document)
+        return bool(
+            slide_deck(document)
+            and title
+            and RESEARCH_SECTION.search(title)
+            and not NON_RESEARCH_SECTION.search(title)
         )
-        and not re.search(
-            r"\b(?:prior|historical|literature|background|introduction|references)\b",
-            section_for_span(s, document),
-            re.IGNORECASE,
-        )
-        for s in spans
-    ):
+
+    if not spans or not all(research(s) for s in spans):
         return False
     text = " ".join(s["quote"] for s in spans)
     from nasa_fire_ai.ingestion.study_attribution import cited_attribution_nearby
@@ -787,8 +845,11 @@ def subject_label_names_material(subject_label, material_label):
     }
 
 
-def document_investigation(spans, entities, document):
+def document_investigation(spans, entities, document, own_body=False):
     """The one current document investigation whose research section holds spans.
+
+    ``own_body`` accepts any section of the paper's body but its reference
+    list, for what the paper itself states as guidance or a requirement.
 
     Returns its entity key, or None when there is no such investigation, more
     than one, or the passage is not the paper's own research text.
@@ -803,7 +864,7 @@ def document_investigation(spans, entities, document):
     ]
     if len({entities[k]["id"] for k in roots}) != 1:
         return None
-    if not document_statement_scope(roots[0], spans, entities, document):
+    if not document_statement_scope(roots[0], spans, entities, document, cited_named=own_body):
         return None
     return roots[0]
 
@@ -3827,6 +3888,36 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED")
+                    if item["class_id"] in {"ExperimentFamily", "ExperimentalCondition"} and (
+                        (
+                            re.search(
+                                r"\b(?:facility|facilities|tower|centrifuge|tunnel|laboratory|lab"
+                                r"|test\s+cell|chamber|apparatus|tester|rig)\b(?:\s*\([^()]*\))*\s*$",
+                                item["label"],
+                                re.IGNORECASE,
+                            )
+                            and not re.search(
+                                r"\b(?:tests?|testing|experiments?|series|runs?)\b",
+                                item["label"],
+                                re.IGNORECASE,
+                            )
+                        )
+                        or (
+                            item["class_id"] == "ExperimentFamily"
+                            and re.search(
+                                r"\b(?:overview|methodology|solutions?|strategy|assessment|background"
+                                r"|introduction|summary|conclusions?|status|objectives?|approach|plan)\s*$",
+                                item["label"],
+                                re.IGNORECASE,
+                            )
+                        )
+                    ):
+                        # "NASA GRC 5.2 second drop tower", "Testing Methodology": an
+                        # apparatus or a document's own section title, not a group.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append(
+                            "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP"
+                        )
                     if item["class_id"] == "Sample" and re.fullmatch(
                         r"(?:the\s+|a\s+|an\s+)?(?:(?:non-?)?(?:reacting|reactive|reacted|burned|burnt"
                         r"|unburned|circular|round|square|tested|untested|pre-?test|post-?test|typical"
@@ -4354,10 +4445,20 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         (
                             h
                             for h in running_headers(evidence)
-                            # Printed beside its page number, as the page edge prints it.
+                            # Printed beside its page number, as the page edge prints it,
+                            # or opening or closing the passage as the page edge does.
                             if re.search(
                                 rf"{re.escape(h)}\s+\d+\b|\b\d+\s+{re.escape(h)}",
                                 normalized(item["text"]),
+                            )
+                            or (
+                                len(h.split()) >= 5
+                                and (
+                                    normalized(re.sub(r"\d+", " ", item["text"])).startswith(h)
+                                    or normalized(re.sub(r"\d+", " ", item["text"]))
+                                    .rstrip(" ,.")
+                                    .endswith(h.rstrip(" ,."))
+                                )
                             )
                         ),
                         None,
@@ -4369,6 +4470,13 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER")
                         record["running_page_header"] = header
+                    if re.match(r"\s*[a-z)\]]", item["text"]) or re.search(
+                        r"[\w.+-]+@[\w-]+\.[\w.]+", item["text"]
+                    ):
+                        # "onset of microgravity) to bring the air ...": a passage that
+                        # starts inside a sentence; an e-mail line is a contact block.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE")
                     if item["epistemic"] == "measured_observation" and (
                         PURPOSE.search(item["text"]) or procedure_without_outcome(item["text"])
                     ):
@@ -4517,7 +4625,15 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                                     and not cited_table_reference(spans, document)
                                 )
                             )
-                            and (root := document_investigation(spans, entities, document))
+                            and (
+                                root := document_investigation(
+                                    spans,
+                                    entities,
+                                    document,
+                                    own_body=item["epistemic"]
+                                    in {"guidance", "normative_requirement"},
+                                )
+                            )
                         ):
                             # The paper's own research section, with one current
                             # investigation, scopes the statement to that study;
@@ -4632,28 +4748,40 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                         )
                         and all(
                             s in entities
-                            # Specimens, or for a documentary statement (a figure
-                            # of the material) the material itself.
                             and (
-                                entities[s]["class_id"] == "Sample"
-                                or (
-                                    item["epistemic"] == "documentary_context"
-                                    and entities[s]["class_id"] == "Material"
-                                )
-                            )
-                            # The passage itself names the specimens or their
-                            # material ("the second batch of Brass-filled PTFE");
-                            # a line-break hyphen ("Brass- filled") is not a space.
-                            # A set-up step on specimens is the study's own
-                            # procedure whether or not it names them.
-                            and (
+                                # A proposed group the validator itself holds (a
+                                # slide title proposed as a group) gives the
+                                # passage no scope of its own; the study's does.
                                 (
-                                    item["epistemic"] == "experimental_configuration"
-                                    and entities[s]["class_id"] == "Sample"
+                                    entities[s].get("validation_status") != "SOURCE_SUPPORTED"
+                                    and entities[s]["class_id"]
+                                    in {"ExperimentFamily", "ExperimentalRun"}
                                 )
-                                or mentions(
-                                    re.split(r"\s*\(", entities[s]["label"])[0],
-                                    re.sub(r"(?<=\w)-\s+(?=\w)", "-", item["text"]),
+                                or (
+                                    # Specimens, or for a documentary statement (a
+                                    # figure of the material) the material itself.
+                                    (
+                                        entities[s]["class_id"] == "Sample"
+                                        or (
+                                            item["epistemic"] == "documentary_context"
+                                            and entities[s]["class_id"] == "Material"
+                                        )
+                                    )
+                                    # The passage itself names the specimens or their
+                                    # material ("the second batch of Brass-filled
+                                    # PTFE"); a line-break hyphen is not a space. A
+                                    # set-up step on specimens is the study's own
+                                    # procedure whether or not it names them.
+                                    and (
+                                        (
+                                            item["epistemic"] == "experimental_configuration"
+                                            and entities[s]["class_id"] == "Sample"
+                                        )
+                                        or mentions(
+                                            re.split(r"\s*\(", entities[s]["label"])[0],
+                                            re.sub(r"(?<=\w)-\s+(?=\w)", "-", item["text"]),
+                                        )
+                                    )
                                 )
                             )
                             for s in item["subjects"]
@@ -4666,7 +4794,14 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                                 and not cited_table_reference(spans, document)
                             )
                         )
-                        and (root := document_investigation(spans, entities, document))
+                        and (
+                            root := document_investigation(
+                                spans,
+                                entities,
+                                document,
+                                own_body=item["epistemic"] in {"guidance", "normative_requirement"},
+                            )
+                        )
                     ):
                         # Specimens whose own group passage is not established are
                         # treated like named materials: the paper's own research
@@ -4689,11 +4824,15 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                             document,
                             # Only a passage that says where data come from or
                             # where they are printed names its sources by design.
-                            cited_named=item["epistemic"] == "documentary_context"
-                            and bool(
-                                DATA_PROVENANCE.search(item["text"])
-                                or documentary_pointer(item["text"])
-                            ),
+                            cited_named=(
+                                item["epistemic"] == "documentary_context"
+                                and bool(
+                                    DATA_PROVENANCE.search(item["text"])
+                                    or documentary_pointer(item["text"])
+                                )
+                            )
+                            # What the paper itself recommends or requires is its own.
+                            or item["epistemic"] in {"guidance", "normative_requirement"},
                         )
                         for s in item["subjects"]
                     ):

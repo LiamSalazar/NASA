@@ -1674,3 +1674,39 @@ def test_slide_lines_are_separate_units_but_wrapped_prose_and_table_cells_are_no
     assert line_units(prose) == prose
     cells = "GOX/75°F\n10,000\nLOX/-297°F\n10,000"
     assert line_units(cells) == cells
+
+
+def test_criteria_definitions_plot_keys_fragments_and_contact_blocks_are_held(service):
+    from nasa_fire_ai.ingestion.statement_integrity import documentary_pointer, stated_criterion
+
+    assert stated_criterion(
+        "If it extinguished before the end of the drop, it was identified as non-flammable."
+    )
+    assert stated_criterion(
+        "The limit (black circle) is the highest concentration where 5 passes were observed."
+    )
+    assert documentary_pointer("The closed symbols at ~25 cm/s are the centrifuge data.")
+    assert not stated_criterion("The flame extinguished before the end of the drop.")
+    fragment = observation_record(
+        service, "onset of rotation) to bring the air to near solid body rotation."
+    )
+    assert "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE" in fragment["reasons"]
+    contact = observation_record(
+        service, "Walker NASA JSC Project Manager mary.walker@nasa.gov reported this."
+    )
+    assert "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE" in contact["reasons"]
+
+
+def test_apparatus_and_section_titles_are_not_experiment_groups(service):
+    text = "Testing Methodology. The NASA GRC 5.2 second drop tower was used. Alpha Impact Test Series ran."
+    p = submitted(service, "# Synthetic study\nII. Methods\n" + text + "\n")
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "t", "Testing Methodology", "ExperimentFamily", text),
+        entity(p, "d", "NASA GRC 5.2 second drop tower", "ExperimentalCondition", text),
+        entity(p, "g", "Alpha Impact Test Series", "ExperimentFamily", text),
+    ]
+    title, tower, group = run(service, p, o, structure(p, service.root))
+    assert "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP" in title["reasons"]
+    assert "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP" in tower["reasons"]
+    assert "APPARATUS_OR_SECTION_TITLE_IS_NOT_EXPERIMENT_GROUP" not in group["reasons"]

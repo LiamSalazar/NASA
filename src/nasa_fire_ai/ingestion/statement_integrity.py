@@ -29,7 +29,12 @@ OBSERVATION_CUE = re.compile(
 PURPOSE = re.compile(r"\b(?:in\s+order\s+to|so\s+as\s+to)\b", re.IGNORECASE)
 POINTER = re.compile(
     r"\b(?:are|is|were|was)\s+(?:shown|presented|listed|given|summarized|tabulated|plotted"
-    r"|depicted)\s+in\s+(?:Table|Figure|Fig\.?|Appendix)\b",
+    r"|depicted)\s+in\s+(?:Table|Figure|Fig\.?|Appendix)\b"
+    # "The closed symbols at ~25 cm/s are the centrifuge data": what a plot's
+    # marks stand for, not a result.
+    r"|^\s*the\s+(?:[\w-]+\s+){0,3}(?:symbols?|circles?|squares?|triangles?|markers?|lines?|curves?"
+    r"|bars?|points?)\b[^.;]*\b(?:are|is|represents?|denotes?|indicates?|shows?)\s+(?:the\s+)?"
+    r"(?:[\w-]+\s+){0,4}(?:data|results?|values?|tests?|limits?|fit)\b",
     re.IGNORECASE,
 )
 RULE_OR_CAVEAT = re.compile(
@@ -64,6 +69,13 @@ CAPTION_LINE = re.compile(
 CRITERION = re.compile(
     r"\b(?:is|are)\s+said\s+to\b|\bpass/fail\b|\bcriteri(?:on|a)\b"
     r"|\bif\b[^.;]*\b(?:then|is\s+recorded|are\s+recorded|must|shall)\b"
+    # "If it extinguished before the end of the drop, it was identified as
+    # non-flammable": how an outcome is classified, not an outcome seen.
+    r"|\bif\b[^.;]*,\s*(?:it|they|the\s+\w+)\s+(?:was|were|is|are)\s+(?:deemed|identified|considered"
+    r"|classified|declared|judged|counted|called|rated)\b"
+    # "The limit (black circle) is the highest concentration where ...": a definition.
+    r"|^\s*the\s+[\w-]+(?:\s+\([^()]*\))?\s+(?:is|was)\s+(?:defined\s+as\s+)?the\s+(?:highest|lowest"
+    r"|maximum|minimum)\b[^.;]*\b(?:where|at\s+which|for\s+which)\b"
     # "The indication of autogenous ignition was the rapid increase of ...":
     # what counts as the event, not an event seen.
     r"|^\s*the\s+indications?\s+of\b[^.;]*?\b(?:was|were|is|are)\s+(?:the|a|an)\b",
