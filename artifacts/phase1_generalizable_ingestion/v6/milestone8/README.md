@@ -75,3 +75,27 @@ Built from the rejection audit above (rules C2 and C3), not from new readers. It
 Replay at this commit versus `d7c4732`: PTFE runs 1, 4, 5, 6 no longer accept "energy 72 ft-lbs" at investigation scope (the Test 13A rows print "72 ft-lbs (98J)"); "rate 9 °F/min" stays, since no table prints it; the three development sources are unchanged (the ignition tables do not print 56.5 kPa per row). Tests: request context (heading, group, signatures) and the directed request are checked with the controlled stage adapter; the table guard with a synthetic table and a column of another variable.
 
 Live-run caveat: the request now carries more fields, so every stage's cache key changes and the next live run makes fresh calls for every window; replays of saved outputs are unaffected.
+
+## Adjudication at `1850be3` (branch author's review, on the development machine)
+
+Quality at `1850be3` (the three commits applied on `2f343b8`), with the local index files present: `ruff format --check` and `ruff check` clean, `pytest` 726 passed. Every reviewed input was replayed at `1850be3` and at the `d7c4732` code; `review_tools/diff_all.py` between the two shows only the table guard: PTFE runs 1, 4, 5 and 6 drop "energy 72 ft-lbs" at investigation scope, nothing else changes. The 29 historical negatives: 0 critical regressions, 1 known non-critical record still supported (`rescored_1850be3/historical_negatives_receipt.json`, `exposed_sources_comparison.json`). All numbers are evaluation A.
+
+Each provisional target was checked against the printed page, not only the span overlap from `match_targets.py` (`development_target_outcomes.json`):
+
+| Source | Target | Verdict | Record and source text |
+| --- | --- | --- | --- |
+| Ignition | q-05 | correct | "lunar habitat pressure" 56.5 kPa, experimental configuration of the investigation (p6 "the planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia)"). |
+| Ignition | rel-26 | **not reached** | The record WSTF group hasCondition "10 cm/s primer flow" is correct (p6 "the sample was exposed to a 10 cm/s primer flow"), but the target is the group's chamber pressure/configuration ("continuous operation at 57 kPa"), which no record carries. |
+| Ignition | rel-27 | correct | GRC group hasCondition "lunar gravity" (p7 "To achieve lunar gravity, the chamber was rotated at 20.4 RPM"). The extra record GRC hasCondition "slow flow (~30 cm/s)" is also correct. |
+| Regulator | q-08 | correct | "supply pressure" 3750 psia, configuration (p6 "... to the 3750 psia supply pressure"), not the ~200 psia nominal value. |
+| Textiles | ent-04 | correct | Sample "Custom fire-resistant patches sewn to outer jacket fabric", distinct from the PBI coupons. |
+| Textiles | q-14 | correct | 37 % O2 of the patch specimen (p6 "tested at 37% O2 and 8.2 psia"). **Precision:** the model's "oxygen concentration 37 %" is the same assertion and is not marked `duplicate_of`; it counts once. |
+| Textiles | q-15 | correct | 8.2 psia of the patch specimen, specimen scope kept. |
+
+Recall on frozen targets (evaluation A): ignition 10/29 → **12/29**, regulator 18/32 → **19/32**, textiles 8/29 → **11/29**. That is 6 of the 7 provisional targets; rel-26 stays omitted.
+
+PTFE runs 1, 4, 5, 6:
+- **"rate 9 degrees F/min"** (model proposal, investigation scope): **correct**. On p5 the AIT method reads "increase the temperature of the sample at a rate of 9 degrees F/min", so this is a configuration of the current investigation's AIT procedure. It is judged the same way as the p5 method configurations already judged correct in `review_tools/judgments_ptfe.json` (the mineral oil spike, the in-house apparatus). Non-critical label note: "rate" stands for the heating rate.
+- **"energy 72 ft-lbs"** (investigation scope): removed by the table guard. The removal is right for precision: the per-row Table 3 values carry it, and the impact energy is not uniform across the investigation's rows, which also print 55, 50, 40 and 36 ft-lbs.
+
+Open points: the textiles "tested at" mechanism remains flagged under rule 2 (it lifts only its motivating source). The duplicate 37 % record is a deduplication gap, not a source error. The §13 gate is not met, and the holdout has not been acquired.

@@ -1,0 +1,156 @@
+{
+  "kind": "PHASE1_V6_M8_DEVELOPMENT_TARGET_OUTCOMES",
+  "code": "1850be3",
+  "evaluation": "A (replays of the milestone 7 live outputs at 1850be3; 0 model calls)",
+  "basis": "Branch-author adjudication of each frozen v4 target against the active SOURCE_SUPPORTED records of the live run's raw proposals (code 1dffc83) replayed offline at 1850be3. A target counts only when a record is fully correct (identity, role, subject, value and unit). Exposed development sources; not independent; not expert gold.",
+  "sources": {
+    "lunar_ignition_20250002114": {
+      "accessible": 29,
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "quantities-05",
+        "quantities-06",
+        "quantities-10",
+        "relations-27",
+        "statements-22",
+        "statements-23",
+        "statements-24",
+        "statements-25"
+      ],
+      "recall": "12/29",
+      "at_031f5ab": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "quantities-06",
+        "quantities-10",
+        "statements-22",
+        "statements-23",
+        "statements-24",
+        "statements-25"
+      ],
+      "recall_at_031f5ab": "10/29"
+    },
+    "oxygen_regulator_20170003941": {
+      "accessible": 32,
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "entities-05",
+        "entities-06",
+        "quantities-08",
+        "quantities-11",
+        "quantities-13",
+        "quantities-14",
+        "relations-29",
+        "relations-31",
+        "relations-32",
+        "statements-17",
+        "statements-20",
+        "statements-23",
+        "statements-24",
+        "statements-25",
+        "statements-28"
+      ],
+      "recall": "19/32",
+      "at_031f5ab": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "entities-05",
+        "entities-06",
+        "quantities-11",
+        "quantities-13",
+        "quantities-14",
+        "statements-17",
+        "statements-20",
+        "statements-23",
+        "statements-24",
+        "statements-25",
+        "statements-28",
+        "relations-29",
+        "relations-31",
+        "relations-32"
+      ],
+      "recall_at_031f5ab": "18/32"
+    },
+    "textiles_20260005493": {
+      "accessible": 29,
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "quantities-12",
+        "quantities-13",
+        "quantities-14",
+        "quantities-15",
+        "statements-20",
+        "statements-25",
+        "statements-26"
+      ],
+      "recall": "11/29",
+      "at_031f5ab": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "quantities-12",
+        "quantities-13",
+        "statements-20",
+        "statements-25",
+        "statements-26"
+      ],
+      "recall_at_031f5ab": "8/29"
+    }
+  },
+  "milestone8_adjudication": {
+    "lunar_ignition_20250002114": {
+      "quantities-05": {
+        "verdict": "correct",
+        "record": "bd4d70cf",
+        "note": "p6 'the planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia)': experimental_configuration of the current investigation, 56.5 kPa; a test-program pressure, not a measured habitat condition."
+      },
+      "relations-26": {
+        "verdict": "not_reached",
+        "record": "cb0ace99",
+        "note": "The record WSTF group hasCondition '10 cm/s primer flow' is printed in the WSTF subsection (p6 'the sample was exposed to a 10 cm/s primer flow') and is a correct record, but the target asks for the group's documented chamber pressure/configuration ('continuous operation at 57 kPa'), which no active record carries. The span overlap from match_targets.py is not a match."
+      },
+      "relations-27": {
+        "verdict": "correct",
+        "record": "97cb5274",
+        "note": "p7 GRC subsection 'To achieve lunar gravity, the chamber was rotated at 20.4 RPM': GRC Partial Gravity Testing hasCondition 'lunar gravity'. The second record, hasCondition 'slow flow (~30 cm/s)' (72028f80, p7 'exposed to a slow flow (~30 cm/s)'), is also correct and is not a target."
+      }
+    },
+    "oxygen_regulator_20170003941": {
+      "quantities-08": {
+        "verdict": "correct",
+        "record": "cf05c4a0",
+        "note": "p6 'pressurized from the ~200 psia nominal operating pressure to the 3750 psia supply pressure': supply pressure 3750 psia, experimental_configuration of the current investigation; not the ~200 psia nominal interstage value."
+      }
+    },
+    "textiles_20260005493": {
+      "entities-04": {
+        "verdict": "correct",
+        "record": "b0720da0",
+        "note": "p6 'Custom fire-resistant patches sewn to outer jacket fabric' as a current Sample, distinct from '100% PBI knit fabric coupons' (4901feb0)."
+      },
+      "quantities-14": {
+        "verdict": "correct",
+        "record": "f92f0814",
+        "note": "p6 '... tested at 37% O2 and 8.2 psia': 37 % O2 configuration of the patch specimen. Precision note: the model record 11b3ef52 'oxygen concentration 37 %' is the same assertion and is not marked duplicate_of; count it once (duplicate, not a second correct record)."
+      },
+      "quantities-15": {
+        "verdict": "correct",
+        "record": "c605ba0e",
+        "note": "p6 same line: 8.2 psia pressure configuration of the patch specimen, specimen scope kept (the 8.2 psia of the PBI coupons is 4651e716)."
+      }
+    }
+  }
+}
