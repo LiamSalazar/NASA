@@ -3053,6 +3053,30 @@ def structure_entity_candidates(output, package, document):
             for v in label_variants(e["label"], document)
         ):
             add(re.sub(r"\s+", " ", label), "Sample", page["evidence_id"], position, printed)
+        elif (
+            not named
+            and page
+            and row["cells"]
+            and re.search(r"\bmaterials?\b", row["cells"][0].get("header") or "", re.IGNORECASE)
+            and not any(
+                _key(v) == _key(label) and e.get("study") == "current"
+                for e in output["entities"] + candidates
+                for v in label_variants(e["label"], document)
+            )
+            and not re.match(
+                r"(?:phase|step|stage|part|section|table|figure|test|option)\b",
+                label,
+                re.IGNORECASE,
+            )
+            # A data row: its own cells print measured or set values.
+            and any(re.search(r"\d", c.get("original_value") or "") for c in row["cells"][1:])
+            and (position := page["text"].find(printed)) >= 0
+        ):
+            # A name this study's own rows print in a Material column is a
+            # material tested here ("aAlgoflon® E2" under "Material"), even when
+            # the model proposed it as cited work.
+            known.discard((normalized(re.sub(r"\s+", " ", label)), "Material"))
+            add(re.sub(r"\s+", " ", label), "Material", page["evidence_id"], position, printed)
     groups = {
         _key(v)
         for g in output["entities"] + candidates

@@ -134,7 +134,7 @@ def test_whole_table_rows_are_not_a_prose_statement(service):
             "support": support(p, TABLE_TEXT),
         }
     ]
-    record = run(service, p, o, with_tables(service, p))[-1]
+    record = proposed(run(service, p, o, with_tables(service, p)))[-1]
     assert record["status"] == "REJECTED"
     assert record["reasons"] == ["TABLE_REGION_IS_NOT_A_STATEMENT"]
 
@@ -169,7 +169,7 @@ def lineage_entity(service, legend, label, study, row_label="aBeta"):
     rows = [["Material", "Energy (J)", "Reactions/Tests"], [row_label, "10", "0/20"]]
     o = Output().model_dump()
     o["entities"] = [entity(p, "beta", label, "Material", "Beta seals were compared.", study=study)]
-    return run(service, p, o, with_tables(service, p, rows))[-1]
+    return proposed(run(service, p, o, with_tables(service, p, rows)))[-1]
 
 
 def test_material_printed_only_in_this_studys_rows_is_not_only_cited(service):
@@ -1507,3 +1507,27 @@ def test_numeric_cells_of_a_tested_materials_own_rows_are_quantity_candidates(se
         "Initial Test Pressure": "experimental_configuration",
         "Sample Thickness": "experimental_configuration",
     }, roles
+
+
+def test_a_name_this_studys_rows_print_under_material_is_a_material_candidate(service):
+    from nasa_fire_ai.ingestion.document_extraction import structure_entity_candidates
+
+    rows = [
+        ["Material", "Energy (J)", "Reactions/Tests"],
+        ["Omega E2", "98", "0/20"],
+        ["Phase 3", "", ""],
+    ]
+    text = (
+        "# Synthetic study\nII. Results\nTABLE 3— Synthetic impact data\n"
+        + "\n".join(v for row in rows for v in row)
+        + "\n"
+    )
+    p = submitted(service, text)
+    document = with_tables(service, p, rows)
+    o = Output().model_dump()
+    o["entities"] = [entity(p, "c", "Omega E2", "Material", "Omega E2", study="cited")]
+    labels = {
+        c["label"]: (c["class_id"], c["study"]) for c in structure_entity_candidates(o, p, document)
+    }
+    assert labels.get("Omega E2") == ("Material", "current"), labels
+    assert "Phase 3" not in labels
