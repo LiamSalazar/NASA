@@ -1,0 +1,5213 @@
+{
+  "approvals": 0,
+  "attempts": 9,
+  "completed_at": "2026-10-21T06:27:27.512996+00:00",
+  "configuration": {
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "fallback_models": [
+      "nvidia/nemotron-3.5-lightning-30b-a3b"
+    ],
+    "max_model_calls": null,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 3600.0,
+    "vision_model": null
+  },
+  "digest": "c4cb3722ff093d784bb2f33cab37fe40da07c5617f88febe90bd7c427f567f09",
+  "git_head": "8e3f4e7e366b3fe527be585ecf47861282125d2e",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20170003941/downloads/20170003941.pdf",
+  "package_id": "research-195aa7ae31aca023746e",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 35817,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 2,
+    "configured_fallback_models": [
+      "nvidia/nemotron-3.5-lightning-30b-a3b"
+    ],
+    "deterministic_characters": 35799,
+    "duration_seconds": 712.1468377000128,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "model_characters": 0,
+    "new_model_calls": 9,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "1a05ce7ca3fb7bc69730af97462d4dfa885fadfdd2d10e51fa332cc7427aee68",
+        "context_token_estimate": 49259,
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 10240,
+        "proposed_items": 17,
+        "reasoning_tokens": 2048,
+        "request_bytes": 73251,
+        "reserved_tokens_per_attempt": 87254,
+        "schema_errors": [],
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 32906,
+        "source_anchors": 191,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "ExperimentalRun",
+              "key": "entity-10763752d585730f7835",
+              "label": ".013in dia orifice dodecane ignition demonstration",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+                  "quote": "The .013in dia orifice was \ninjected with 20uL of dodecane and then installed on the end of the impact fitting.",
+                  "start": 607
+                },
+                {
+                  "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+                  "quote": "Upon impact, a small, brief flame was generated from the impact demonstrating that the \nadiabatic compression conditions were adequate to ignite the dodecane contaminant.",
+                  "start": 893
+                }
+              ]
+            },
+            "proposal_id": "proposal-8485a1f4f793993ca8103540",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "Intervention",
+              "key": "entity-dc9a1c3137772660d78a",
+              "label": "20uL injected at the insterstage port",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-e1edc905993958cf454e5d91",
+                  "quote": "For the dodecane runs, \n20uL was injected at the insterstage port using a syringe with the regulator manipulated to work the contaminant onto \nthe surfaces seeking to achieve ~100 mg/ft2 film coating.",
+                  "start": 729
+                }
+              ]
+            },
+            "proposal_id": "proposal-8011ae2f289267976ce06a6a",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "Intervention",
+              "key": "entity-7248db801d17dc1f87bf",
+              "label": "rapid pressurization events / pneumatic impacts",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-219f8c7405b474246050095f",
+                  "quote": "A special fitting was made to connect to this port and enable connection to the WSTF Test Cell 107 impact valve for \nthe purposes of performing rapid pressurization events.",
+                  "start": 269
+                },
+                {
+                  "evidence_id": "E-219f8c7405b474246050095f",
+                  "quote": "Then, using a “Little Richard Valve” in Test Cell 107 \nwith the prescribed muscle pressure1, pneumatic impacts were performed on the interstage pressure transducer port.",
+                  "start": 688
+                }
+              ]
+            },
+            "proposal_id": "proposal-eb9f3c5e00d067a99eded294",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 42.043519099999685,
+          "image_count": 0,
+          "max_output_tokens": 10240,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7408,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 42.02701670001261
+        },
+        "usage": {
+          "completion_tokens": 2925,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 21941,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 21680,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 24866
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "bf9f1e9f83b224b8d9cab0ce6ead67c175c46c1e60551be0b5320a46e59692ea",
+        "context_token_estimate": 76158,
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": null,
+        "known_entities_selected": 10,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "RECOVERED_BY_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 80243,
+        "reserved_tokens_per_attempt": 118524,
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "02012879c865cc7f657cd90acf3972a46895eff032e521059448ac93367b02eb",
+        "context_token_estimate": 77175,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": "quantities",
+        "known_entities_selected": 10,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 84737,
+        "reserved_tokens_per_attempt": 120558,
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 1,
+        "cache_key": "a84c88b0202451ee64d3714c59cdb608dbe54623871e39643c948e88fb279602",
+        "context_token_estimate": 49876,
+        "deterministic": "COMPLETE",
+        "end": 17654,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 9,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 1600,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-0cdf661274a234abc319721e",
+            "start": 834
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 24576,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 46651,
+        "reserved_tokens_per_attempt": 74153,
+        "schema_errors": [],
+        "segment_id": "window-54e5accf02bfbf0b57031586",
+        "source_anchor_characters": 21305,
+        "source_anchors": 92,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 4.443823999987217,
+          "image_count": 0,
+          "max_output_tokens": 24576,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 1966,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 4.432536299980711
+        },
+        "usage": {
+          "completion_tokens": 446,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 438,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 13461,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 13907
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "070584d7fecbc848a99d80d783f4d808ff55fbd9ff12b65eed734c4f7d2fc939",
+        "context_token_estimate": 59655,
+        "deterministic": "COMPLETE",
+        "end": 19352,
+        "evidence_id": "E-43fc9b67edc788450536e480",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 5,
+        "members": [
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-74e4e09f02fa283e6b052e98",
+            "start": 1600
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 3,
+        "reasoning_tokens": 2048,
+        "request_bytes": 49970,
+        "reserved_tokens_per_attempt": 85518,
+        "schema_errors": [],
+        "segment_id": "window-08fa283411b4f1337f5504a8",
+        "source_anchor_characters": 22079,
+        "source_anchors": 114,
+        "source_errors": [
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "> 100",
+              "label": "dodecane level",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-29c4595667327c46d9cbbcc4",
+                  "quote": "The POR design was “wetted” with 60 \nimpacts of dry oxygen, followed by two sets of 5 impacts of oxygen with a lightweight hydrocarbon contaminant, \ndodecane at levels > 100 mg/ft2.",
+                  "start": 1130
+                }
+              ],
+              "unit": "mg"
+            },
+            "proposal_id": "proposal-99d04bbfeccf035dabe34821",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 1600,
+        "transport": {
+          "duration_seconds": 48.67340699999477,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 6950,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 48.64834020001581
+        },
+        "usage": {
+          "completion_tokens": 2193,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 15693,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 13008,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17886
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "f66637ff64c6ff7ffb6707bb9f35d4f61ebb9085b98bb88e80ee868e2d90bcd7",
+        "context_token_estimate": 76902,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": "quantities",
+        "known_entities_selected": 10,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 84213,
+        "reserved_tokens_per_attempt": 120013,
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "a84c88b0202451ee64d3714c59cdb608dbe54623871e39643c948e88fb279602",
+        "deterministic": "COMPLETE",
+        "end": 17654,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": "quantities",
+        "known_entities_selected": 9,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 1600,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-0cdf661274a234abc319721e",
+            "start": 834
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "replayed_failure": true,
+        "segment_id": "window-54e5accf02bfbf0b57031586",
+        "source_anchor_characters": 21305,
+        "source_anchors": 92,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 1,
+        "cache_key": "9a748b677360968bd543d475c8e394b8b7208579fab5f2de1e7d122b414e3952",
+        "context_token_estimate": 59384,
+        "deterministic": "COMPLETE",
+        "end": 19352,
+        "evidence_id": "E-43fc9b67edc788450536e480",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 5,
+        "members": [
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-74e4e09f02fa283e6b052e98",
+            "start": 1600
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 32768,
+        "proposed_items": 1,
+        "reasoning_tokens": 2048,
+        "request_bytes": 49449,
+        "reserved_tokens_per_attempt": 84976,
+        "schema_errors": [],
+        "segment_id": "window-08fa283411b4f1337f5504a8",
+        "source_anchor_characters": 22079,
+        "source_anchors": 114,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 1600,
+        "transport": {
+          "duration_seconds": 60.98610129998997,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 6987,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 60.97479310000199
+        },
+        "usage": {
+          "completion_tokens": 2088,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 15512,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 13008,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 17600
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "c2dfc22723e5f381ace634c36e5eb58bc2b84405d014df4a12739f404c8f4af7",
+        "context_token_estimate": 76809,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": "quantities",
+        "known_entities_selected": 10,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 84034,
+        "reserved_tokens_per_attempt": 119827,
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "a84c88b0202451ee64d3714c59cdb608dbe54623871e39643c948e88fb279602",
+        "deterministic": "COMPLETE",
+        "end": 17654,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": "quantities",
+        "known_entities_selected": 9,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 1600,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-0cdf661274a234abc319721e",
+            "start": 834
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "replayed_failure": true,
+        "segment_id": "window-54e5accf02bfbf0b57031586",
+        "source_anchor_characters": 21305,
+        "source_anchors": 92,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 1,
+        "cache_key": "0ca40a5f97671525392d3b655b63a0e3545bbd7a769b639f0078acf7b0ed31ee",
+        "context_token_estimate": 59292,
+        "deterministic": "COMPLETE",
+        "end": 19352,
+        "evidence_id": "E-43fc9b67edc788450536e480",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 5,
+        "members": [
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-74e4e09f02fa283e6b052e98",
+            "start": 1600
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 49273,
+        "reserved_tokens_per_attempt": 84793,
+        "schema_errors": [],
+        "segment_id": "window-08fa283411b4f1337f5504a8",
+        "source_anchor_characters": 22079,
+        "source_anchors": 114,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 1600,
+        "transport": {
+          "duration_seconds": 7.471941299998434,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 3491,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 7.463794899987988
+        },
+        "usage": {
+          "completion_tokens": 984,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 976,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 15449,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 13008,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 16433
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "0bc39bc36ff5140f706748b33e5d8abd95ba32d6dcb04fc64f71156b8bfdd863",
+        "context_token_estimate": 52269,
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 10,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 10240,
+        "proposed_items": 5,
+        "reasoning_tokens": 2048,
+        "request_bytes": 80021,
+        "reserved_tokens_per_attempt": 93274,
+        "schema_errors": [],
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-cca8a9984db7157f3923",
+              "relation": "hasMaterial",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-e1edc905993958cf454e5d91",
+                  "quote": "For the dodecane runs, \n20uL was injected at the insterstage port using a syringe with the regulator manipulated to work the contaminant onto \nthe surfaces seeking to achieve ~100 mg/ft2 film coating.",
+                  "start": 729
+                }
+              ]
+            },
+            "proposal_id": "proposal-c976ed49f4c4194428cf1808",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-cca8a9984db7157f3923",
+              "relation": "hasMaterial",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-43fc9b67edc788450536e480",
+                  "quote": "As \na result, pure dodecane was used instead so that the materials properties would be known and the composition could \nbe repeatable and known.",
+                  "start": 1937
+                }
+              ]
+            },
+            "proposal_id": "proposal-d3cb3138b9f2650c23fb0f29",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-de0ae98b138b07935126",
+              "relation": "usesSample",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-ae97ea040925de308074bd3e",
+                  "quote": "The regulator tested was the Primary Oxygen Regulator (POR) 2.0, s/n 003 (Figure 3) produced by Cobham \nMission Systems.",
+                  "start": 622
+                }
+              ]
+            },
+            "proposal_id": "proposal-4306e7c4e6a0a938a604709b",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7e5890f3d3ea8eb2ac57",
+              "relation": "belongsToInvestigation",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-ae97ea040925de308074bd3e",
+                  "quote": "The regulator tested was the Primary Oxygen Regulator (POR) 2.0, s/n 003 (Figure 3) produced by Cobham \nMission Systems.",
+                  "start": 622
+                }
+              ]
+            },
+            "proposal_id": "proposal-9aa574d72d1610cba94026bc",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-1da7632ae9489c13d9e8",
+              "relation": "hasCondition",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-ae97ea040925de308074bd3e",
+                  "quote": "The nominal operating \npressure for this region is ~200 psia but for the case where the 1st stage regulator fails open at the MEOP for the \ntankage, the interstage region will be pressurized from the ~200 psia nominal operating pressure to the 3750 psia \nsupply pressure on the order of 150 msec.",
+                  "start": 997
+                }
+              ]
+            },
+            "proposal_id": "proposal-da42ae64deb44be1870e967f",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 65.31516560001182,
+          "image_count": 0,
+          "max_output_tokens": 10240,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7692,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 65.30345370000578
+        },
+        "usage": {
+          "completion_tokens": 2211,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 23655,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 21680,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 25866
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "e36a2ab552551faecf18147e3bad8ed94088dfaabc2af908466b8a4c115ea8b9",
+        "context_token_estimate": 53403,
+        "deterministic": "COMPLETE",
+        "end": 17654,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 9,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 1600,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-0cdf661274a234abc319721e",
+            "start": 834
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 24576,
+        "proposed_items": 234,
+        "reasoning_tokens": 2048,
+        "request_bytes": 51126,
+        "reserved_tokens_per_attempt": 81207,
+        "schema_errors": [],
+        "segment_id": "window-54e5accf02bfbf0b57031586",
+        "source_anchor_characters": 21305,
+        "source_anchors": 92,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "In that assessment, the regulator was found to be well designed \nwith respect to oxygen compatibility.",
+                  "start": 2401
+                }
+              ],
+              "text": "In that assessment, the regulator was found to be well designed \nwith respect to oxygen compatibility."
+            },
+            "proposal_id": "proposal-028ba945412b0d8d81e582f9",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "However, \ndeclaring that a system will be maintained clean does not guarantee it to be so as this would be a procedural control \nto a hazard and the best option for control of such a hazard is a hardware design solution that can tolerate it.",
+                  "start": 3540
+                }
+              ],
+              "text": "However, \ndeclaring that a system will be maintained clean does not guarantee it to be so as this would be a procedural control \nto a hazard and the best option for control of such a hazard is a hardware design solution that can tolerate it."
+            },
+            "proposal_id": "proposal-221af1a659c82b2b2566c80a",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "The \nShuttle/ISS EMU Program utilized procedural controls to ensure that the primary and secondary oxygen loops \nremained clean, however in the year 2000, contamination was detected during a regulator refurbishment that yielded \nan evidence of fleet wide contamination.",
+                  "start": 3783
+                }
+              ],
+              "text": "The \nShuttle/ISS EMU Program utilized procedural controls to ensure that the primary and secondary oxygen loops \nremained clean, however in the year 2000, contamination was detected during a regulator refurbishment that yielded \nan evidence of fleet wide contamination."
+            },
+            "proposal_id": "proposal-23bc1a36bcc09dcf032f2256",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "At that time, the failure analysis (3) concluded that there were at least three \ndifferent mechanisms that contributed to the contamination of the Secondary Oxygen Pack (SOP) regulators despite \nthe apparent procedural controls:",
+                  "start": 4054
+                }
+              ],
+              "text": "At that time, the failure analysis (3) concluded that there were at least three \ndifferent mechanisms that contributed to the contamination of the Secondary Oxygen Pack (SOP) regulators despite \nthe apparent procedural controls:"
+            },
+            "proposal_id": "proposal-1c1ae1e201b68afea64238ab",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "a non O2 compatible dead-weight tester.",
+                  "start": 4395
+                }
+              ],
+              "text": "a non O2 compatible dead-weight tester."
+            },
+            "proposal_id": "proposal-49784bdbf6fed545f51cfb50",
+            "reasons": [
+              "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+              "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "The original dead-weight testers used for this function which \nutilized O2 compatible fluorinated oils such as Fomblin were replaced by the calibrating organization with \none that included Sebacate.",
+                  "start": 4436
+                }
+              ],
+              "text": "The original dead-weight testers used for this function which \nutilized O2 compatible fluorinated oils such as Fomblin were replaced by the calibrating organization with \none that included Sebacate."
+            },
+            "proposal_id": "proposal-843af7d600cee50cd246802d",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "On one occasion, there was a report of a contamination event of the rig by \nobservation of the pouring of the redish fluid from flexhoses used to connect the tester to the rig.",
+                  "start": 4636
+                }
+              ],
+              "text": "On one occasion, there was a report of a contamination event of the rig by \nobservation of the pouring of the redish fluid from flexhoses used to connect the tester to the rig."
+            },
+            "proposal_id": "proposal-a221aba52ed2d079ffbe3d8c",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "Sebacate \nwas later found in multiple regulators when analyzed as they were being refurbished.",
+                  "start": 4814
+                }
+              ],
+              "text": "Sebacate \nwas later found in multiple regulators when analyzed as they were being refurbished."
+            },
+            "proposal_id": "proposal-5c5e9a10fafc22e8b8d82789",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "OEM due to rupture of diaphragms on the Aminco high-pressure compressors.",
+                  "start": 5016
+                }
+              ],
+              "text": "OEM due to rupture of diaphragms on the Aminco high-pressure compressors."
+            },
+            "proposal_id": "proposal-f1d9a8db529fff4ddbc9c27f",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "These compressors utilize \nFomblin oil as a hydraulic fluid that is compressed by either a pneumatic piston or electric drive which then",
+                  "start": 5091
+                }
+              ],
+              "text": "These compressors utilize \nFomblin oil as a hydraulic fluid that is compressed by either a pneumatic piston or electric drive which then"
+            },
+            "proposal_id": "proposal-122252fe9af22d72b445ff06",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "International Conference on Environmental Systems \n \n \n3\nacts across a metal diaphragm to compress the isolated gas which was either GN2 or O2.",
+                  "start": 2
+                }
+              ],
+              "text": "International Conference on Environmental Systems \n \n \n3\nacts across a metal diaphragm to compress the isolated gas which was either GN2 or O2."
+            },
+            "proposal_id": "proposal-db216d2215089ebc48be612f",
+            "reasons": [
+              "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "These \ncompressors had been around for 30years at that time and were known to have issues with contamination of \nthe working fluid via breach of the metallic diaphragm.",
+                  "start": 147
+                }
+              ],
+              "text": "These \ncompressors had been around for 30years at that time and were known to have issues with contamination of \nthe working fluid via breach of the metallic diaphragm."
+            },
+            "proposal_id": "proposal-2d208c60e1783879fd949b8d",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "WSTF had made a number of design \nimprovements to these units such as the addition of triple diaphragms, cycle counters to monitor the \npressure cycles on the diaphragms and mandate replacement, and in some cases the addition of an oil \ndetector in the outlet.",
+                  "start": 317
+                }
+              ],
+              "text": "WSTF had made a number of design \nimprovements to these units such as the addition of triple diaphragms, cycle counters to monitor the \npressure cycles on the diaphragms and mandate replacement, and in some cases the addition of an oil \ndetector in the outlet."
+            },
+            "proposal_id": "proposal-8a84a0449b9feddd9ab0f1b6",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "These updates had not been incorporated in the setup used at the OEM at the time of \nthe failure and the single diaphragm was found to have ruptured.",
+                  "start": 579
+                }
+              ],
+              "text": "These updates had not been incorporated in the setup used at the OEM at the time of \nthe failure and the single diaphragm was found to have ruptured."
+            },
+            "proposal_id": "proposal-2c18303adaa7a2c80efa1310",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "From that point, the contamination was \nstill just Fomblin which is a fluorinated oil considered oxygen compatible.",
+                  "start": 730
+                }
+              ],
+              "text": "From that point, the contamination was \nstill just Fomblin which is a fluorinated oil considered oxygen compatible."
+            },
+            "proposal_id": "proposal-f5ae3c880ae77fcb177b72a2",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "However, the rest of the system \nbetween the pressure intensifier and the SOP was cleaned, most likely with Freon 113 leaving a back-\nground contamination permissible per the associated cleanliness specification.",
+                  "start": 847
+                }
+              ],
+              "text": "However, the rest of the system \nbetween the pressure intensifier and the SOP was cleaned, most likely with Freon 113 leaving a back-\nground contamination permissible per the associated cleanliness specification."
+            },
+            "proposal_id": "proposal-dfbf93de6b5e18dc9dbaecfc",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "For example, for JPR \n5322.1 (4), a cleanliness level of 100A is permitted to have up to 1 mg/ft2 of NVR when tested at the end of \nthe cleaning cycle.",
+                  "start": 1061
+                }
+              ],
+              "text": "For example, for JPR \n5322.1 (4), a cleanliness level of 100A is permitted to have up to 1 mg/ft2 of NVR when tested at the end of \nthe cleaning cycle."
+            },
+            "proposal_id": "proposal-7b03eb90f2dc5e3160878f73",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "tentative_interpretation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "It was then theorized that as the Fomblin oil moved along through the system, it picked \nup back-ground hydrocarbon contamination such that when it reach the SOP regulator, hydrocarbon \ncontaminants were transported into the regulator.",
+                  "start": 1214
+                }
+              ],
+              "text": "It was then theorized that as the Fomblin oil moved along through the system, it picked \nup back-ground hydrocarbon contamination such that when it reach the SOP regulator, hydrocarbon \ncontaminants were transported into the regulator."
+            },
+            "proposal_id": "proposal-7e40a8cb5db6e54f1f2a0a1e",
+            "reasons": [
+              "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "the 1st stage regulator seat.",
+                  "start": 1562
+                }
+              ],
+              "text": "the 1st stage regulator seat."
+            },
+            "proposal_id": "proposal-a437ccb822e3ff749e468ce6",
+            "reasons": [
+              "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+              "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "In that scenario, the 1st stage regulator drops the inlet gas pressure from ~6000 \npsia down to ~200 psia.",
+                  "start": 1593
+                }
+              ],
+              "text": "In that scenario, the 1st stage regulator drops the inlet gas pressure from ~6000 \npsia down to ~200 psia."
+            },
+            "proposal_id": "proposal-f54b659ca11aef097c2a6012",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "tentative_interpretation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "During this expansion, the gas is cooled to temperatures below -50F which would \nallow very small amounts of contaminants in the gas phase within the supply gas to condense on or near the \nregulator seat.",
+                  "start": 1701
+                }
+              ],
+              "text": "During this expansion, the gas is cooled to temperatures below -50F which would \nallow very small amounts of contaminants in the gas phase within the supply gas to condense on or near the \nregulator seat."
+            },
+            "proposal_id": "proposal-ce5a357e8da496ad06d90afa",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "These gas phase contaminants are permitted by the military specification for Aviators \nBreathing Oxygen (ABO) (5), which is then called out and adjusted by various other specifications such as \nShuttle Fluids Procurement Specification (6) then leading to accepted contamination levels of 55 ppm total \nhydrocarbons reported as methane.",
+                  "start": 1907
+                }
+              ],
+              "text": "These gas phase contaminants are permitted by the military specification for Aviators \nBreathing Oxygen (ABO) (5), which is then called out and adjusted by various other specifications such as \nShuttle Fluids Procurement Specification (6) then leading to accepted contamination levels of 55 ppm total \nhydrocarbons reported as methane."
+            },
+            "proposal_id": "proposal-46f0e8d1cc60ac5b58a96756",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "tentative_interpretation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "In this mechanism, the acceptable NVR limit of <2 mg/ft2 is exceeded \nby the flowing a lot of gas (hundreds of pounds at PDA) and condensing a small amount of contaminant on \nthe very small regulator seat area.",
+                  "start": 2244
+                }
+              ],
+              "text": "In this mechanism, the acceptable NVR limit of <2 mg/ft2 is exceeded \nby the flowing a lot of gas (hundreds of pounds at PDA) and condensing a small amount of contaminant on \nthe very small regulator seat area."
+            },
+            "proposal_id": "proposal-a352c879a5cd8fc703acc83f",
+            "reasons": [
+              "TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "By the end of the investigation, the SOP regulator still had the low acceptable limit but the procedural controls were \nfurther strengthened by the implementation of cryogenic cold-traps positioned in front of the SOP regulator whether \nit was being tested at the OEM or field processing organization.",
+                  "start": 2460
+                }
+              ],
+              "text": "By the end of the investigation, the SOP regulator still had the low acceptable limit but the procedural controls were \nfurther strengthened by the implementation of cryogenic cold-traps positioned in front of the SOP regulator whether \nit was being tested at the OEM or field processing organization."
+            },
+            "proposal_id": "proposal-282e3953c6166f7708ffe0e4",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "These cold-traps would then protect the test article \n(SOP) from contamination from all of the above mechanisms but only to the established filtering efficiency for the \ncold-traps which was empirically determined to be ~50%.",
+                  "start": 2763
+                }
+              ],
+              "text": "These cold-traps would then protect the test article \n(SOP) from contamination from all of the above mechanisms but only to the established filtering efficiency for the \ncold-traps which was empirically determined to be ~50%."
+            },
+            "proposal_id": "proposal-a0f2f6f941d976aa87d848cf",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "As a result, the program tracks logistical spreadsheets that \ntotal the mass of gas flowed through each regulator as a limited life item.",
+                  "start": 2990
+                }
+              ],
+              "text": "As a result, the program tracks logistical spreadsheets that \ntotal the mass of gas flowed through each regulator as a limited life item."
+            },
+            "proposal_id": "proposal-8a0f31a0813cb3508d202ffe",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "Once this life is exceeded, the regulator \nwould then be cleaned and refurbished.",
+                  "start": 3129
+                }
+              ],
+              "text": "Once this life is exceeded, the regulator \nwould then be cleaned and refurbished."
+            },
+            "proposal_id": "proposal-9d4d7a55e5a77451ad3175b7",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "In the end, the procedural controls that were employed were defeated in three different ways over time without the \nknowledge of the operators or OEM until the contamination was fleet wide.",
+                  "start": 3216
+                }
+              ],
+              "text": "In the end, the procedural controls that were employed were defeated in three different ways over time without the \nknowledge of the operators or OEM until the contamination was fleet wide."
+            },
+            "proposal_id": "proposal-fd840a6f579842d716a2835b",
+            "reasons": [
+              "INTERPRETATION_DESCRIBES_A_PROCEDURE",
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "As the agency moves toward exploration \nbeyond LEO, the ability to access or refurbish hardware that may become contaminated is reduced and impacts to an \nintolerant system are increased.",
+                  "start": 3407
+                }
+              ],
+              "text": "As the agency moves toward exploration \nbeyond LEO, the ability to access or refurbish hardware that may become contaminated is reduced and impacts to an \nintolerant system are increased."
+            },
+            "proposal_id": "proposal-7708006b49e43b52d57c151c",
+            "reasons": [
+              "UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "Hence, a high fidelity Primary Oxygen Regulator Thermal \nKindling Chain Analysis (7) (8) was performed using Thermal Desktop with the imported regulator detail geometry.",
+                  "start": 4759
+                }
+              ],
+              "text": "Hence, a high fidelity Primary Oxygen Regulator Thermal \nKindling Chain Analysis (7) (8) was performed using Thermal Desktop with the imported regulator detail geometry."
+            },
+            "proposal_id": "proposal-e3a19a862913afb681714630",
+            "reasons": [
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-758d27b90b3261b72e3f9676",
+                  "quote": "Reported dodecane AITs were determined by ambient combustion testing, a \nmethod in which the liquid chemical is heated in one atmospheric air until its vapor spontaneously ignites.",
+                  "start": 1608
+                }
+              ],
+              "text": "Reported dodecane AITs were determined by ambient combustion testing, a \nmethod in which the liquid chemical is heated in one atmospheric air until its vapor spontaneously ignites."
+            },
+            "proposal_id": "proposal-c7646465927ed6441a00226a",
+            "reasons": [
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "tentative_interpretation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-758d27b90b3261b72e3f9676",
+                  "quote": "A partial \ntest at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was \ndamaged during the testing and additional testing will be required to confirm this result.",
+                  "start": 1790
+                }
+              ],
+              "text": "A partial \ntest at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was \ndamaged during the testing and additional testing will be required to confirm this result."
+            },
+            "proposal_id": "proposal-3b3a1a7d978131cf2e7755a3",
+            "reasons": [
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-43fc9b67edc788450536e480",
+                  "quote": "During the contamination investigation that was conducted by the Shuttle/ISS EMU Program, the lower pressure \nprimary oxygen regulator was tested at WSTF to demonstrate its contamination tolerance in the event of another future \ncontamination event.",
+                  "start": 862
+                }
+              ],
+              "text": "During the contamination investigation that was conducted by the Shuttle/ISS EMU Program, the lower pressure \nprimary oxygen regulator was tested at WSTF to demonstrate its contamination tolerance in the event of another future \ncontamination event."
+            },
+            "proposal_id": "proposal-77f259b84fac6f78f921bcbc",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-43fc9b67edc788450536e480",
+                  "quote": "For that test series, Mobil DTE24 was selected as a good medium weight oil to use.",
+                  "start": 1113
+                }
+              ],
+              "text": "For that test series, Mobil DTE24 was selected as a good medium weight oil to use."
+            },
+            "proposal_id": "proposal-8c0275c9c4882156a92a7754",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-43fc9b67edc788450536e480",
+                  "quote": "However, \nas the regulators were disassembled, sampled, cleaned, and refurbished as part of the contamination recovery effort, \nspectra were generated that indicated a wide range of carbon chains spanning from C10-C34.",
+                  "start": 1197
+                }
+              ],
+              "text": "However, \nas the regulators were disassembled, sampled, cleaned, and refurbished as part of the contamination recovery effort, \nspectra were generated that indicated a wide range of carbon chains spanning from C10-C34."
+            },
+            "proposal_id": "proposal-80b828b59fb76b0cbb5eb464",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "~4000",
+              "label": "~4000 steps",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "The first bench-top prototype unit \nreferred to as the Primary Variable Regulator (PVR) (1), demonstrated the following improvements over the regulators \nused for the Apollo EMUs and Shuttle/ISS EMUs: \n \nMultiple set-point capability of ~4000 steps over a pressure range of 0-8.4 psid \no \nThe Apollo EMU was a single set-point at 3.75 psid and the Shuttle/ISS EMU utilized a dual set-\npoint regulator that offered ~.9 and 4.3 psid set-points.",
+                  "start": 381
+                }
+              ],
+              "unit": "steps"
+            },
+            "proposal_id": "proposal-ef30c842a59f6b3d97cf102d",
+            "reasons": [
+              "QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "3.75",
+              "label": "3.75 psid",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "The first bench-top prototype unit \nreferred to as the Primary Variable Regulator (PVR) (1), demonstrated the following improvements over the regulators \nused for the Apollo EMUs and Shuttle/ISS EMUs: \n \nMultiple set-point capability of ~4000 steps over a pressure range of 0-8.4 psid \no \nThe Apollo EMU was a single set-point at 3.75 psid and the Shuttle/ISS EMU utilized a dual set-\npoint regulator that offered ~.9 and 4.3 psid set-points.",
+                  "start": 381
+                }
+              ],
+              "unit": "psid"
+            },
+            "proposal_id": "proposal-67853cc3b65db2b125405433",
+            "reasons": [
+              "QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "~.9 and 4.3",
+              "label": "~.9 and 4.3 psid set-points",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "The first bench-top prototype unit \nreferred to as the Primary Variable Regulator (PVR) (1), demonstrated the following improvements over the regulators \nused for the Apollo EMUs and Shuttle/ISS EMUs: \n \nMultiple set-point capability of ~4000 steps over a pressure range of 0-8.4 psid \no \nThe Apollo EMU was a single set-point at 3.75 psid and the Shuttle/ISS EMU utilized a dual set-\npoint regulator that offered ~.9 and 4.3 psid set-points.",
+                  "start": 381
+                }
+              ],
+              "unit": "psid"
+            },
+            "proposal_id": "proposal-dca7041d6422386e06800a31",
+            "reasons": [
+              "QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "~200",
+              "label": "~200 psia to supply pressure in the tanks",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "One regulator failure mode, however, presented a case worth further \ninvestigation, especially with respect to the goal levied on the regulator from the onset of the design: \n \n“The POR shall not ignite or indicate signs of combustion when operated with up to 100 mg/ft2 of medium weight \nhydrocarbon oil coating the wetted parts/passages.” \n \nThat regulator failure involved the failure of the first stage regulator to full-open, which would then pressurize the \ninterstage volume from ~200 psia to supply pressure in the tanks.",
+                  "start": 2505
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-a5f301f21386ba4a3026f285",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "2",
+              "label": "NVR that remains below 2 mg/ft2",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "Given this, one may ask why this is being considered as it is normally defined that for a given \nregulator to remain safe, it must have an Non-Volatile Residue (NVR) that remains below 2 mg/ft2 such that the \nassumptions made in the OCA with respect to the kindling chain ignition mechanism remain applicable.",
+                  "start": 3229
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-2bab88d2dc461524ee300af8",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "100",
+              "label": "up to 100 mg/ft2 of medium weight hydrocarbon oil",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "One regulator failure mode, however, presented a case worth further \ninvestigation, especially with respect to the goal levied on the regulator from the onset of the design: \n \n“The POR shall not ignite or indicate signs of combustion when operated with up to 100 mg/ft2 of medium weight \nhydrocarbon oil coating the wetted parts/passages.” \n \nThat regulator failure involved the failure of the first stage regulator to full-open, which would then pressurize the \ninterstage volume from ~200 psia to supply pressure in the tanks.",
+                  "start": 2505
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-16ae8ac2fb776afe38f9f01c",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "~200",
+              "label": "~200 psia",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "In that scenario, the 1st stage regulator drops the inlet gas pressure from ~6000 \npsia down to ~200 psia.",
+                  "start": 1593
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-47590030c565f2195f87a571",
+            "reasons": [
+              "QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "-50",
+              "label": "temperatures below -50F",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "During this expansion, the gas is cooled to temperatures below -50F which would \nallow very small amounts of contaminants in the gas phase within the supply gas to condense on or near the \nregulator seat.",
+                  "start": 1701
+                }
+              ],
+              "unit": "F"
+            },
+            "proposal_id": "proposal-444e3c60b9033c200d95cd9a",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "2",
+              "label": "acceptable NVR limit of <2 mg/ft2",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "In this mechanism, the acceptable NVR limit of <2 mg/ft2 is exceeded \nby the flowing a lot of gas (hundreds of pounds at PDA) and condensing a small amount of contaminant on \nthe very small regulator seat area.",
+                  "start": 2244
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-1665c8f100a4964fce647fd7",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "~50",
+              "label": "~50%",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "These cold-traps would then protect the test article \n(SOP) from contamination from all of the above mechanisms but only to the established filtering efficiency for the \ncold-traps which was empirically determined to be ~50%.",
+                  "start": 2763
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-b7bc4035258d1cc9e78d0246",
+            "reasons": [
+              "QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "3750",
+              "label": "3750 psia oxygen",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "The first was a straightforward transient simulation of the POR failure mode in which the first \nstage fails open and 3750 psia oxygen flows into the POR interstage.",
+                  "start": 5072
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-a195902d2ed4137315a1bb3d",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "derived_quantity",
+              "expression": "3",
+              "label": "multiply the result up to 3 times",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-758d27b90b3261b72e3f9676",
+                  "quote": "Convection between the O2 and the regulator body was computed by Thermal Desktop; a factor was then used to \nmultiply the result up to 3 times to provide conservatism.",
+                  "start": 675
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-0de01b15d84a3a9cf8e38b10",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "399-401",
+              "label": "dodecane AIT is 399-401F",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-758d27b90b3261b72e3f9676",
+                  "quote": "Additional assumptions and key findings include: \n \nOxygen supply boundary conditions of 3750 psia and 275 F \n \nInitial regulator temperature = 70-150F \n \nMaximum gas temperature =  580-674F depending on convection factor \n \nMaximum film oil temperature = 170-200F depending on convection factor \n \nWhile the predicted dodecane film temperatures remained relatively low, the results of this transient simulation \nsuggest dodecane combustion is possible given the listed dodecane AIT is 399-401F, 180 to 270 less than predicted \nmaximum insterstage gas temperatures.",
+                  "start": 1037
+                }
+              ],
+              "unit": "F"
+            },
+            "proposal_id": "proposal-9bebe31223326c01f4d99f47",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "160",
+              "label": "dodecane 160F flashpoint",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-758d27b90b3261b72e3f9676",
+                  "quote": "Finally, these analysis \npredictions should viewed with respect to the dodecane 160F flashpoint, the temperature the material forms a \ncombustible vapor.",
+                  "start": 2006
+                }
+              ],
+              "unit": "F"
+            },
+            "proposal_id": "proposal-5548d13a1d6fb46d04d90f81",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 63.50607949998812,
+          "image_count": 0,
+          "max_output_tokens": 24576,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8935,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 63.496072799985996
+        },
+        "usage": {
+          "completion_tokens": 6986,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14540,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 21526
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "7257d24a28eca683e4167615fa59b70be09915d8176b03fe2f2afd783d9f01b1",
+        "context_token_estimate": 61731,
+        "deterministic": "COMPLETE",
+        "end": 19352,
+        "evidence_id": "E-43fc9b67edc788450536e480",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 5,
+        "members": [
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-74e4e09f02fa283e6b052e98",
+            "start": 1600
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 116,
+        "reasoning_tokens": 2048,
+        "request_bytes": 51428,
+        "reserved_tokens_per_attempt": 89671,
+        "schema_errors": [],
+        "segment_id": "window-08fa283411b4f1337f5504a8",
+        "source_anchor_characters": 22079,
+        "source_anchors": 114,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-c53b5f9827711bd9301e72a0",
+                  "quote": "International Conference on Environmental Systems \n \n \n10\n \nFigure 9 - POR Interstage Pressure Measurements During the Sixty O2 Wetting Dry Impact Tests to 3750 psia \nNitrogen functional testing performed after the dry impact testing showed nominal POR performance (Figure 10), \nthus indicating no damage to the POR internal components.",
+                  "start": 2
+                }
+              ],
+              "text": "International Conference on Environmental Systems \n \n \n10\n \nFigure 9 - POR Interstage Pressure Measurements During the Sixty O2 Wetting Dry Impact Tests to 3750 psia \nNitrogen functional testing performed after the dry impact testing showed nominal POR performance (Figure 10), \nthus indicating no damage to the POR internal components."
+            },
+            "proposal_id": "proposal-663cf7029c8e076c1dd9554e",
+            "reasons": [
+              "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+              "INFERRED_INTERPRETATION_IS_NOT_DIRECT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+                  "quote": "The elevated temperatures of ~185F during the first two test runs  \nappeared to have softened the seal resulting in a leak.",
+                  "start": 875
+                }
+              ],
+              "text": "The elevated temperatures of ~185F during the first two test runs  \nappeared to have softened the seal resulting in a leak."
+            },
+            "proposal_id": "proposal-4462b7eaa50641c71d8ddb99",
+            "reasons": [
+              "UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-f64c1220437e812d8c350a15",
+                  "quote": "POR body temperatures \nin this series were generally lower than in the first wet impact series as shown in Figure 15 but still >20℉ warmer \nthan the current PLSS 2.5 Thermal Desktop Model indicates the POR will see during a full EVA in a Lunar Crater",
+                  "start": 894
+                }
+              ],
+              "text": "POR body temperatures \nin this series were generally lower than in the first wet impact series as shown in Figure 15 but still >20℉ warmer \nthan the current PLSS 2.5 Thermal Desktop Model indicates the POR will see during a full EVA in a Lunar Crater"
+            },
+            "proposal_id": "proposal-4ba5f14a20152ff64124eeb8",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-302383b4371513e5f96ed35e",
+                  "quote": "The impact was then \nfed into the interstage pressure transducer port raising the interstage pressure rapidly from ~200 psia to ~3750 psia \nand simulating the failure of the 1st regulator seat.",
+                  "start": 911
+                }
+              ],
+              "text": "The impact was then \nfed into the interstage pressure transducer port raising the interstage pressure rapidly from ~200 psia to ~3750 psia \nand simulating the failure of the 1st regulator seat."
+            },
+            "proposal_id": "proposal-571541f36b5f5bb43d2e1eac",
+            "reasons": [
+              "DERIVED_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "150",
+              "label": "pressurization duration",
+              "subject": "entity-1da7632ae9489c13d9e8",
+              "support": [
+                {
+                  "evidence_id": "E-ae97ea040925de308074bd3e",
+                  "quote": "The nominal operating \npressure for this region is ~200 psia but for the case where the 1st stage regulator fails open at the MEOP for the \ntankage, the interstage region will be pressurized from the ~200 psia nominal operating pressure to the 3750 psia \nsupply pressure on the order of 150 msec.",
+                  "start": 997
+                }
+              ],
+              "unit": "msec"
+            },
+            "proposal_id": "proposal-85a7f84afb0ba60c392409fe",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "~ 1",
+              "label": "demand",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-219f8c7405b474246050095f",
+                  "quote": "This configuration efficiently allowed for the planned rapid compression testing and pre/post-test nominal POR \noperations functional testing in which proper 1st and 2nd stage pressure regulation is maintained while a small demand \nup to ~ 1pph is placed on the regulator.",
+                  "start": 860
+                }
+              ],
+              "unit": "pph"
+            },
+            "proposal_id": "proposal-bbbb6d83e88ddc75441ea315",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "20uL",
+              "label": "dodecane injected",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-e1edc905993958cf454e5d91",
+                  "quote": "For the dodecane runs, \n20uL was injected at the insterstage port using a syringe with the regulator manipulated to work the contaminant onto \nthe surfaces seeking to achieve ~100 mg/ft2 film coating.",
+                  "start": 729
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-8c85c6b0bc15d333d791e296",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "~100",
+              "label": "target film coating",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-e1edc905993958cf454e5d91",
+                  "quote": "For the dodecane runs, \n20uL was injected at the insterstage port using a syringe with the regulator manipulated to work the contaminant onto \nthe surfaces seeking to achieve ~100 mg/ft2 film coating.",
+                  "start": 729
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-60502abaed0bb95937f0e9c8",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "60",
+              "label": "dry pneumatic impact tests",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-cc5b2562dd1734f000235c82",
+                  "quote": "The initial testing prior to moving onto contaminated challenge testing was to perform 60 dry pneumatic impact tests.",
+                  "start": 122
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-bac41a602b4128a3a2f1e3d5",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "~700",
+              "label": "interstage pressure rise",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-cc5b2562dd1734f000235c82",
+                  "quote": "Through leakage from the impact valve resulted in the gradual \nasymptotic rise of the interstage pressure to as high as ~700 psia prior to initiation of a given impact dependent on the \ndwell time between impacts.",
+                  "start": 639
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-aa5df0329dc68578c9951374",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "1",
+              "label": "demand",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-c53b5f9827711bd9301e72a0",
+                  "quote": "This functional test validated real-time testing \nobservations of the POR, which maintained its 4.05 psid setpoint with approximately 1 pph demand.",
+                  "start": 340
+                }
+              ],
+              "unit": "pph"
+            },
+            "proposal_id": "proposal-83096a971f9b84f71c50cca6",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "0.013in",
+              "label": "orifice diameter",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-c53b5f9827711bd9301e72a0",
+                  "quote": "Figure 10 - Post Dry-Impact Functional Check \n \nThe test system was then re-configured for the wet impact testing by removing the 0.013in dia orifice and configuring \nthe “Little Richard” impact valve muscle pressure to reduce the impact times.",
+                  "start": 590
+                }
+              ],
+              "unit": "dia"
+            },
+            "proposal_id": "proposal-a900ee6bbbda171d741a002a",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "5",
+              "label": "wet impacts",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+                  "quote": "Five impacts were then executed with the dodecane load in the POR interstage port.",
+                  "start": 356
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-7e96749c9c53b30b3508deb3",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "~185F",
+              "label": "POR body temperatures",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+                  "quote": "The elevated temperatures of ~185F during the first two test runs  \nappeared to have softened the seal resulting in a leak.",
+                  "start": 875
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-63e7e6c043c95f5fd2f0e80e",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "20",
+              "label": "dodecane injected",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-f64c1220437e812d8c350a15",
+                  "quote": "Figure 13 - Post Dodecane Impact Test Series #1 Functional Regulator Check \n \nA final series of 5 wet impacts was executed after the test cell was adjusted to further reduce impact times and another \n20 µL of dodecane was injected via syringe into the interstage pressure transducer port.",
+                  "start": 481
+                }
+              ],
+              "unit": "µL"
+            },
+            "proposal_id": "proposal-6ba2889a2109a055f3981b81",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "derived_quantity",
+              "expression": "3",
+              "label": "pressurization rates",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-29c4595667327c46d9cbbcc4",
+                  "quote": "The impacts with the kindling chain contaminant were performed at the MEOP for \nthe regulator, with elevated regulator body temperatures, and at pressurization rates up to 3 times faster than could be",
+                  "start": 1313
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-a3e56315c0df322537388c62",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": ">100",
+              "label": "contaminant levels",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-29c4595667327c46d9cbbcc4",
+                  "quote": "The POR design was “wetted” with 60 \nimpacts of dry oxygen, followed by two sets of 5 impacts of oxygen with a lightweight hydrocarbon contaminant, \ndodecane at levels > 100 mg/ft2.",
+                  "start": 1130
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-42bc42128261215b00c88dcc",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "< 1",
+              "label": "required cleanliness level",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-76a659916cbede6e557fac99",
+                  "quote": "The contaminant levels used (>100 \nmg/ft2) were far in excess of the required cleanliness level of < 1 mg/ft2 specified and maintained in Level 100A per \nJPR 5322.1 and the < 2 mg/ft2 typically assumed for Oxygen Compatibility Assessments (OCA).",
+                  "start": 147
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-7ff337f6da5aafe57c480cdb",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "< 2",
+              "label": "typically assumed cleanliness level",
+              "subject": "entity-de0ae98b138b07935126",
+              "support": [
+                {
+                  "evidence_id": "E-76a659916cbede6e557fac99",
+                  "quote": "The contaminant levels used (>100 \nmg/ft2) were far in excess of the required cleanliness level of < 1 mg/ft2 specified and maintained in Level 100A per \nJPR 5322.1 and the < 2 mg/ft2 typically assumed for Oxygen Compatibility Assessments (OCA).",
+                  "start": 147
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-7e9d87f20b768f1672fca4a4",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 1600,
+        "transport": {
+          "duration_seconds": 45.99454980000155,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8042,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 45.98257979998016
+        },
+        "usage": {
+          "completion_tokens": 6100,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 16013,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 22113
+        }
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 179645
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-21T06:15:32.630757+00:00",
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+    "Scientific preparation review dependency: CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED",
+    "Scientific preparation review dependency: EXECUTION_NOT_DOCUMENTED",
+    "Scientific preparation review dependency: MODEL_OR_ANALYSIS_SECTION_OBSERVATION_ROLE_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: OBSERVATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: OBSERVATION_IS_A_DOCUMENTARY_POINTER",
+    "Scientific preparation review dependency: OBSERVATION_STATES_A_RULE_OR_CAVEAT",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "Scientific preparation review dependency: QUANTITY_UNIT_UNSPECIFIED",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific preparation review dependency: TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+    "Scientific preparation review dependency: TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW",
+    "Scientific review required: experimental run lacks original table-row identity: research-195aa7ae31aca023746e:entity:911f40e71b2a65a6cdf6",
+    "Scientific review required: experimental run lacks original table-row identity: research-195aa7ae31aca023746e:entity:b1e69834a99c491f6ed9",
+    "Scientific review required: experimental run lacks original table-row identity: research-195aa7ae31aca023746e:entity:e4e10f1134b633e79b41",
+    "Scientific review required: quantity needs an identified original table cell: proposal-26f0390d1674c643614ccae7",
+    "Select source-supported scope for research-195aa7ae31aca023746e:c45b7435c9d5f29f:statement:4c19e77458508c28",
+    "Select source-supported scope for research-195aa7ae31aca023746e:c45b7435c9d5f29f:statement:ee19f9a98031b978",
+    "Which identified runs do these author reported conclusion statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these measured observation statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}

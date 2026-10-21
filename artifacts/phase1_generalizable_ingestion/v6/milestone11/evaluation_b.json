@@ -1,0 +1,302 @@
+{
+  "kind": "PHASE1_V6_M11_EVALUATION_B",
+  "code": "8e3f4e7",
+  "evaluation": "B (fresh live runs, frozen code; round 1 one at a time, round 2 two at a time; all runs reported)",
+  "basis": "Branch-author adjudication of frozen v4 targets; record-by-record precision (judgments carried for identical records); PTFE by the official scorer.",
+  "runs": {
+    "textiles_r1": {
+      "correct": [
+        "entities-01",
+        "entities-03",
+        "quantities-12",
+        "quantities-13",
+        "statements-20",
+        "statements-25",
+        "statements-26"
+      ],
+      "accessible": 29,
+      "precision": {
+        "active": 23,
+        "critical": {},
+        "incorrect_noncritical": {
+          "e126d7f3": "author-name fragment 'Mary L.' typed publication",
+          "3047b24d": "statement carrying slide labels and the running footer"
+        }
+      },
+      "causes_vs_m10": {
+        "entities-04/quantities-14/quantities-15/relations-29": "model generation plus candidate inventory: the model did not propose the patch specimen, and the 'tested at' reader skipped it because the model's Material 'outer jacket fabric' is contained in the specimen's printed name (the reader treats any contained subject as naming it)",
+        "entities-02": "model: proposed PBI only as the cited Apollo/Skylab fiber, not the current material"
+      },
+      "calls": 4,
+      "seconds": 172,
+      "provider": "0 failed attempts"
+    },
+    "regulator_r1": {
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "quantities-08",
+        "relations-29",
+        "statements-17",
+        "statements-23",
+        "statements-24",
+        "statements-25",
+        "statements-28"
+      ],
+      "accessible": 32,
+      "precision": {
+        "active": 73,
+        "critical": {},
+        "incorrect_noncritical": {
+          "2ae56092": "conclusion carrying the heading 'Conclusion'",
+          "192b5d90": "running page header",
+          "558af33a": "transient simulation typed experimental condition",
+          "3e94b2af": "model sensitivity study typed experimental condition",
+          "215ca73b": "motivation/goal sentence typed requirement",
+          "fafb9a39": "analysis approach typed experimental condition",
+          "69945542": "analysis method typed measurement",
+          "9bda7220": "fragment introducing a list",
+          "df8d7134": "fragment (objectives header)",
+          "b97a8d03": "fragment 'Operating Pressure (MEOP)'",
+          "b2eafdaf": "hardware configuration typed reported observation",
+          "4c037388": "configuration typed reported observation",
+          "635823df": "Thermal Desktop model result typed measurement",
+          "614ccae7": "value given to a compound pressurization condition entity (own printed magnitude, odd subject)",
+          "c3cd838f": "value given to a compound pressurization condition entity (own printed magnitude, odd subject)",
+          "a8c6ace0": "WD-40 typed cited (this study's own selection)"
+        }
+      },
+      "causes_vs_m10": {
+        "entities-04/05/06 and dependents (quantities-11/13/14, relations-31/32)": "model generation: the three test series were proposed as ExperimentalRun with figure-caption labels and held (ENTITY_TYPE_SOURCE_ROLE_UNRESOLVED)",
+        "statements-23/25": "model: proposed with a subject this time"
+      },
+      "calls": 9,
+      "seconds": 712,
+      "provider": "0 failed attempts"
+    },
+    "ignition_r1": {
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "quantities-05",
+        "quantities-06",
+        "quantities-10",
+        "quantities-11",
+        "quantities-12",
+        "relations-27",
+        "statements-23",
+        "statements-24",
+        "statements-25"
+      ],
+      "accessible": 29,
+      "precision": {
+        "active": 112,
+        "critical": {},
+        "incorrect_noncritical": {
+          "b865991c": "duplicate PMMA (study unknown)",
+          "0be56fde": "duplicate microgravity (study unknown)",
+          "7a9c904c": "ExperimentFamily duplicating the WSTF group from the introduction",
+          "c60ac6cf": "Test 1 'chemical igniter' typed current",
+          "e257404a": "Sample named by its dimensions",
+          "ef33d1bd": "'cotton t-shirt material' duplicating the Beefy-T material",
+          "e61ec841": "'oxygen augmentation during ignition' duplicating 'oxygen enhanced flow'",
+          "c0747f32": "generic phenomenon 'Flame Spread' from the theory section typed a current entity",
+          "cd2b4fed": "generic phenomenon 'Quenching' from the theory section typed a current entity",
+          "120684c7": "analysis heading typed ExperimentFamily",
+          "6fae3157": "fragment joined with a figure caption",
+          "f1d45bf2": "camera setup typed observation",
+          "3ef172e0": "sentence joined with a figure reference",
+          "8dbdffee": "sentence cut at 'I.D.'",
+          "eaa5f042": "sentence joined with a figure caption",
+          "ec1f6fbd": "caption mixed with body text",
+          "c0e42fda": "fit line description typed measurement",
+          "3c8aae95": "derived worst-case delta typed observation",
+          "7f7a527a": "analysis method typed conclusion",
+          "f039f355": "Takahashi's mechanism (cited) typed current conclusion",
+          "515e8ee7": "duplicate conclusion of a9a4aa60",
+          "070d8288": "running page header",
+          "035713bf": "hasCondition on the analysis heading",
+          "990ac362": "condition entity as subject of its own magnitude (odd subject)",
+          "3fbfea0c": "95% confidence level typed experimental configuration",
+          "3fafe295": "duplicate 'duct ID 7.4 cm' from another span",
+          "874b7cbe": "label 'OD ceramic rod' (fragment)"
+        }
+      },
+      "causes_vs_m10": {
+        "statements-25": "model: proposed with its tentative role this time",
+        "statements-22": "model: not proposed with a subject",
+        "quantities-15": "model: the slow flow value not proposed as a group configuration (the relation to the flow condition was)"
+      },
+      "calls": 23,
+      "seconds": 3078,
+      "provider": "4 HTTP 500 and 3 deadlines (600, 600, 308 s); the fallback answered 3 windows; 0 windows lost"
+    },
+    "textiles_r2": {
+      "correct": [
+        "entities-01",
+        "entities-03",
+        "entities-04",
+        "quantities-12",
+        "quantities-13",
+        "quantities-14",
+        "quantities-15",
+        "statements-20",
+        "statements-25",
+        "statements-26"
+      ],
+      "accessible": 29,
+      "precision": {
+        "active": 24,
+        "critical": {},
+        "incorrect_noncritical": {
+          "3047b24d": "statement carrying slide labels and the running footer",
+          "4b4f7f7f": "slide bullet describing a developed solution typed as publication",
+          "9c41ee17": "'tested at' configuration bullet typed as reported observation",
+          "e126d7f3": "author-name fragment 'Mary L.' typed publication",
+          "52746226": "fragment '• NASA-STD-6001, Test 1' typed publication",
+          "b02bc439": "slide heading 'Fire-resistant textile development:' typed conclusion"
+        },
+        "carried_from_earlier_judgments": 22
+      },
+      "causes_vs_r1": {
+        "relations-29": "model: no condition entities proposed this time",
+        "entities-04/quantities-14/15": "model proposed the patch specimen, so the candidates followed"
+      },
+      "calls": 4,
+      "seconds": 138,
+      "provider": "0 failed attempts; ran in parallel with regulator r2"
+    },
+    "regulator_r2": {
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "entities-05",
+        "entities-06",
+        "quantities-08",
+        "quantities-11",
+        "quantities-13",
+        "quantities-14",
+        "relations-29",
+        "statements-17",
+        "statements-24",
+        "statements-28"
+      ],
+      "accessible": 32,
+      "precision": {
+        "active": 55,
+        "critical": {},
+        "incorrect_noncritical": {
+          "2ae56092": "conclusion carrying the heading 'Conclusion'",
+          "192b5d90": "running page header",
+          "b347d85b": "motivation/goal sentence typed requirement",
+          "132dd61b": "analysis prediction (~900F) typed as measurement",
+          "ff9a36bc": "transient simulation typed experimental condition",
+          "8272721e": "model sensitivity study typed experimental condition",
+          "0cd50d75": "analysis approach typed experimental condition",
+          "9bda7220": "fragment introducing a list",
+          "df8d7134": "fragment (objectives header)",
+          "5415edc7": "Mobil DTE24 (earlier contamination investigation) typed current",
+          "7d321619": "WD-40, considered and not used, typed current",
+          "a257d9db": "Thermal Desktop boundary condition typed experimental condition",
+          "50c4b8c8": "model initial temperature typed experimental condition",
+          "a430077a": "the second wet series typed intervention",
+          "14efddf2": "analysis approach typed experimental condition",
+          "c1198be8": "procedure step typed reported observation",
+          "dccc45cf": "model boundary pressure typed experimental configuration of a modeled condition"
+        },
+        "carried_from_earlier_judgments": 44
+      },
+      "causes_vs_r1": {
+        "entities-04/05/06 and dependents": "model generation: the series were proposed as ExperimentFamily with heading labels this time",
+        "relations-31/32": "model: hasMaterial not proposed"
+      },
+      "calls": 8,
+      "seconds": 437,
+      "provider": "0 failed attempts; ran in parallel with textiles r2"
+    },
+    "ignition_r2": {
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "quantities-05",
+        "quantities-06",
+        "quantities-10",
+        "quantities-11",
+        "quantities-12",
+        "relations-27",
+        "statements-22",
+        "statements-23",
+        "statements-24"
+      ],
+      "accessible": 29,
+      "precision": {
+        "active": 111,
+        "critical": {},
+        "incorrect_noncritical": {
+          "b865991c": "duplicate PMMA (study unknown)",
+          "0be56fde": "duplicate microgravity (study unknown)",
+          "c60ac6cf": "Test 1 'chemical igniter' typed current",
+          "120684c7": "analysis heading typed ExperimentFamily",
+          "9d0e5336": "'cotton t-shirt material' duplicating the Beefy-T material",
+          "e257404a": "Sample named by its dimensions",
+          "6fae3157": "fragment joined with a figure caption",
+          "f1d45bf2": "camera setup typed observation",
+          "546da103": "Takahashi's mechanism (cited) typed current conclusion",
+          "070d8288": "running page header",
+          "8dbdffee": "sentence cut at 'I.D.'",
+          "eaa5f042": "sentence joined with a figure caption",
+          "ec1f6fbd": "caption mixed with body text",
+          "c0e42fda": "fit line description typed measurement",
+          "65b99cbd": "derived worst-case delta typed observation",
+          "d7859bf1": "duplicate conclusion of a9a4aa60",
+          "5e2d7b46": "30 cm duct length typed reported_quantity",
+          "874b7cbe": "label 'OD ceramic rod' (fragment)",
+          "0fb28e3e": "the standard 'NASA Test 1' typed a current ExperimentFamily",
+          "d5e5b642": "Test 1's 15 cm burn criterion, set aside by this program, typed a current condition",
+          "ba90cfc4": "P213 Tape duplicated with its parenthetical description",
+          "864cd5c5": "Nomex (the cited fabric) typed current",
+          "8ebde2c4": "observed gravity gradient typed experimental condition",
+          "3accb9d4": "plot description and its uncertainty typed experimental condition",
+          "38f06e9f": "analysis method typed measurement"
+        },
+        "carried_from_earlier_judgments": 94
+      },
+      "causes_vs_r1": {
+        "statements-22": "model: proposed with a subject this time",
+        "statements-25": "model: not proposed with its tentative role",
+        "statements-20": "model: typed as an experimental condition"
+      },
+      "calls": 19,
+      "seconds": 1890,
+      "provider": "0 failed attempts; ran in parallel with PTFE r2"
+    },
+    "ptfe_r1": {
+      "official_scorer": "ptfe_live_8e3f4e7_r1/review/metrics.json",
+      "recall": "25/34",
+      "precision": "105/106",
+      "critical": 0,
+      "provider": "chained 600 s deadlines on the primary and fallback models during a Remote Control disconnection (PC awake); window pp. 9-12/18 lost; counted, cause provider"
+    },
+    "ptfe_r2": {
+      "official_scorer": "ptfe_live_8e3f4e7_r2/review/metrics.json",
+      "recall": "28/34",
+      "precision": "114/115",
+      "critical": 0,
+      "provider": "one HTTP 500, recovered; ran in parallel with ignition r2"
+    },
+    "ptfe_r1b": {
+      "official_scorer": "ptfe_live_8e3f4e7_r1b/review/metrics.json",
+      "recall": "27/34",
+      "precision": "118/121",
+      "critical": 0,
+      "provider": "extra run, detached from the session; one 600 s deadline, answered by the fallback; 0 windows lost; does not replace r1"
+    }
+  }
+}

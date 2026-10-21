@@ -1,0 +1,1289 @@
+{
+  "approvals": 0,
+  "attempts": 10,
+  "completed_at": "2026-10-21T08:52:35.910863+00:00",
+  "configuration": {
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "fallback_models": [
+      "nvidia/nemotron-3.5-lightning-30b-a3b"
+    ],
+    "max_model_calls": null,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 3600.0,
+    "vision_model": null
+  },
+  "digest": "4e38379e055ee8273628cf2e61d04f767099d966771d2d2644a6bbb12c0eef36",
+  "git_head": "8e3f4e7e366b3fe527be585ecf47861282125d2e",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20090043050/downloads/20090043050.pdf",
+  "package_id": "research-ec42a926a29616a70757",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 14759,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 0,
+    "configured_fallback_models": [
+      "nvidia/nemotron-3.5-lightning-30b-a3b"
+    ],
+    "deterministic_characters": 29500,
+    "duration_seconds": 5423.448209599999,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "model_characters": 0,
+    "new_model_calls": 10,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "68b866796110e5770a9bebc1da5c01e3f9dff8265bcaba4eaa2b9aa47ea8b3cf",
+        "context_token_estimate": 26027,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 8192,
+        "proposed_items": 9,
+        "reasoning_tokens": 2048,
+        "request_bytes": 30884,
+        "reserved_tokens_per_attempt": 42839,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 13539,
+        "source_anchors": 88,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 68.539287600026,
+          "image_count": 0,
+          "max_output_tokens": 8192,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7592,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 68.52474230001098
+        },
+        "usage": {
+          "completion_tokens": 2481,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 9138,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 11619
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "afd09044d9cb9d8efeb9aed4bad28ee1ba4349f1d1c28e891995d2f44df501b8",
+        "context_token_estimate": 28747,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 7168,
+        "proposed_items": 59,
+        "reasoning_tokens": 2048,
+        "request_bytes": 38371,
+        "reserved_tokens_per_attempt": 49302,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 14454,
+        "source_anchors": 75,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-7b95e00bcfe7893573a8",
+              "label": "7,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-89c792e84b33563bf7b01cea",
+                  "quote": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-a334043eb6878f70431f0f71",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-c43c41fca0b7e1ec4574",
+              "label": "8,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-89c792e84b33563bf7b01cea",
+                  "quote": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-72b9fb26d6b94d6d75177688",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-956c0b399fc97da06fe9",
+              "label": "2,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-89c792e84b33563bf7b01cea",
+                  "quote": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20",
+                  "start": 0
+                },
+                {
+                  "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+                  "quote": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-bb4fd4b1c9f3c98f3e8c1bf1",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-5184204412a826e9cce7",
+              "label": "1,000 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                },
+                {
+                  "evidence_id": "E-89c792e84b33563bf7b01cea",
+                  "quote": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20",
+                  "start": 0
+                },
+                {
+                  "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+                  "quote": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-c1436f847fd17ce8fc1e3e34",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-068408d024733729632c",
+              "label": "250 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+                  "quote": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-0c9a8f36f9925f4815850b4f",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-0d51f5f648bf85109e1e",
+              "label": "14.5 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-41335ada533b5784210a7fb3",
+                  "quote": "15\nTABLE 4— Ambient Pressure Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact \nEnergy \n(ft-\nlbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.00197\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naKel-F®81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naViton® A\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/200\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.0645\n0/100\na-\nDetermined by ABMA\nTABLE 5—High Pressure LOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact\nEnergy\n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions/ \nTests\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.125\n3/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.125\n4/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n6/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-210ffa72800499e312236584",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-b1507703e0daa1b19102",
+              "label": "100 psia",
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-41335ada533b5784210a7fb3",
+                  "quote": "15\nTABLE 4— Ambient Pressure Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact \nEnergy \n(ft-\nlbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.00197\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naKel-F®81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naViton® A\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/200\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.0645\n0/100\na-\nDetermined by ABMA\nTABLE 5—High Pressure LOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact\nEnergy\n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions/ \nTests\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.125\n3/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.125\n4/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n6/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-fc083035d3de3d422df2a8a0",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-c5a911bf0f418e3ca4c8",
+              "label": "9,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-1193bad4b7c5ca7701e1974f",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-c5055d4da0085ccfc7bc",
+              "label": "8,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-649a4a1876ed7d2ca47b3946",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-52022c4b53ecd5492c41",
+              "label": "6,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-c9d930a43f35f36c39e36bdd",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          },
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "PressureCondition",
+              "key": "entity-3527281398f188e6e608",
+              "label": "1,000 psia",
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-40a41287a6bada7699b91786",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 91.72400810002,
+          "image_count": 0,
+          "max_output_tokens": 7168,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8167,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 91.70912420001696
+        },
+        "usage": {
+          "completion_tokens": 5305,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 14951,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 20256
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "21cd1580622beda272d3c2bd692c79d18c65afb0467cfad390765621d9a71d2d",
+        "context_token_estimate": 12861,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 6144,
+        "proposed_items": 1,
+        "reasoning_tokens": 2048,
+        "request_bytes": 8648,
+        "reserved_tokens_per_attempt": 18555,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 670,
+        "source_anchors": 10,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 17.924477799999295,
+          "image_count": 0,
+          "max_output_tokens": 6144,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 9514,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 17.913994600006845
+        },
+        "usage": {
+          "completion_tokens": 2111,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 2923,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 5034
+        }
+      },
+      {
+        "attempts": 6,
+        "cache_key": "bbd33a40e3870b125dca40e9b4234dd6a06fe092b534d424a6377ee856cc46a7",
+        "context_token_estimate": 60754,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "error_type": "deadline",
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "fallbacks": [
+          {
+            "from": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+            "reason": "deadline",
+            "task_and_evidence_preserved": true,
+            "to": "nvidia/nemotron-3.5-lightning-30b-a3b"
+          }
+        ],
+        "focus": null,
+        "known_entities_selected": 16,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "FAILED",
+        "output_tokens": 32768,
+        "proposed_items": 220,
+        "reasoning_tokens": 2048,
+        "request_bytes": 49388,
+        "reserved_tokens_per_attempt": 87717,
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 26727,
+        "source_anchors": 102,
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 600.0014651000092,
+          "finish_reason": null,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7936,
+          "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "response_headers": {},
+          "served_models": [
+            "nvidia/nemotron-3.5-lightning-30b-a3b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "usage": null
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "9a57d933e3af74a085682ac53ae775de7f954cac19ecf766af9a2a0e19146308",
+        "context_token_estimate": 62578,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "error_type": "deadline",
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "fallbacks": [
+          {
+            "from": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+            "reason": "deadline",
+            "task_and_evidence_preserved": true,
+            "to": "nvidia/nemotron-3.5-lightning-30b-a3b"
+          }
+        ],
+        "focus": null,
+        "known_entities_selected": 31,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "FAILED",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 52834,
+        "reserved_tokens_per_attempt": 91364,
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22502,
+        "source_anchors": 85,
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 379.68762690000585,
+          "finish_reason": null,
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 8381,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "usage": null
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "df04fb33fffd4bd7102d9ad4d33017c221ac79042595935239929351fa2d99ae",
+        "context_token_estimate": 24898,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "focus": null,
+        "known_entities_selected": 21,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "DEFERRED_BUDGET",
+        "output_tokens": 7168,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 28800,
+        "reserved_tokens_per_attempt": 41605,
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 14015,
+        "source_anchors": 32,
+        "stage": "propositions",
+        "start": 350
+      },
+      {
+        "attempts": 0,
+        "cache_key": "1792352097b8abfafe66b4b0fdc4febab826b9b2669727394c1c938792d3fe1e",
+        "context_token_estimate": 48644,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "focus": "quantities",
+        "known_entities_selected": 16,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "DEFERRED_BUDGET",
+        "output_tokens": 23552,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 46389,
+        "reserved_tokens_per_attempt": 72713,
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 26727,
+        "source_anchors": 102,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "a7ac9cc7c03f9c3ec91de6b37837a8966c931b5d09b9065323aadba4c01e98db",
+        "context_token_estimate": 60237,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "focus": "quantities",
+        "known_entities_selected": 31,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "DEFERRED_BUDGET",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 50990,
+        "reserved_tokens_per_attempt": 86682,
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22502,
+        "source_anchors": 85,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "966b1aaabf1cf78bd95d0682a81649042ffa16f978a2420166255b409ee0b71d",
+        "context_token_estimate": 36899,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "focus": null,
+        "known_entities_selected": 16,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "DEFERRED_BUDGET",
+        "output_tokens": 10240,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 49197,
+        "reserved_tokens_per_attempt": 62534,
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 26727,
+        "source_anchors": 102,
+        "stage": "relationships",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "fd71b9f76645a790de766522e917b0c9ed0b67eeaef39bf9c2df9fe3e59b3b39",
+        "context_token_estimate": 40779,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "focus": null,
+        "known_entities_selected": 31,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "DEFERRED_BUDGET",
+        "output_tokens": 12288,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 52651,
+        "reserved_tokens_per_attempt": 68246,
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22502,
+        "source_anchors": 85,
+        "stage": "relationships",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "83cb95ba3180b360c694f44d9d4bb7668c0cf301b9677da4c4efded6201b33b8",
+        "context_token_estimate": 24589,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "focus": null,
+        "known_entities_selected": 21,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "DEFERRED_BUDGET",
+        "output_tokens": 8192,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 28604,
+        "reserved_tokens_per_attempt": 39963,
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 14015,
+        "source_anchors": 32,
+        "stage": "relationships",
+        "start": 350
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 533794
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "c9de8948bdf14643e96f5666eba566827eb7842cbe6c085c6e411fe29cd8237a",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-21T07:22:09.679327+00:00",
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Original PDF quantities retain unresolved role and experimental scope for scientific review",
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+    "Scientific preparation review dependency: CITED_STUDY_APPLICABILITY_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CITED_TABLE_READING_IS_NOT_CURRENT_OBSERVATION",
+    "Scientific preparation review dependency: CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFIGURATION_STATEMENT_STATES_A_CRITERION",
+    "Scientific preparation review dependency: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+    "Scientific preparation review dependency: CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: CURRENT_STUDY_LINEAGE_NOT_ESTABLISHED",
+    "Scientific preparation review dependency: DERIVED_CONTEXT_IS_NOT_DIRECT_OBSERVATION",
+    "Scientific preparation review dependency: INTERPRETATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: INTERPRETATION_STATES_A_VALIDITY_CAVEAT",
+    "Scientific preparation review dependency: NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY",
+    "Scientific preparation review dependency: OBSERVATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: OBSERVATION_STATES_A_CRITERION",
+    "Scientific preparation review dependency: OBSERVATION_STATES_A_RULE_OR_CAVEAT",
+    "Scientific preparation review dependency: ONTOLOGY_EXTENSION_REVIEW",
+    "Scientific preparation review dependency: QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE_NOT_MATERIAL_CONCEPT",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific preparation review dependency: TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS",
+    "Scientific quantity native representation deferred; original literal retained: proposal-0637ccfdbaf36fc4d7d2b22a",
+    "Scientific quantity native representation deferred; original literal retained: proposal-07e23be119e2715a55988fa7",
+    "Scientific quantity native representation deferred; original literal retained: proposal-086567a5b5e8cfcf43ad97d0",
+    "Scientific quantity native representation deferred; original literal retained: proposal-13c50475c50598b69df64e9c",
+    "Scientific quantity native representation deferred; original literal retained: proposal-140de4b4156ce714e15cbb85",
+    "Scientific quantity native representation deferred; original literal retained: proposal-26cc3cb53960b0ab36e38b1e",
+    "Scientific quantity native representation deferred; original literal retained: proposal-2a9d48aad02d8049b138f3e5",
+    "Scientific quantity native representation deferred; original literal retained: proposal-2d144dd0ae83e4dee1e86aee",
+    "Scientific quantity native representation deferred; original literal retained: proposal-4063c4f63b809dcd23ae9758",
+    "Scientific quantity native representation deferred; original literal retained: proposal-45cc801f1be4054247e114e2",
+    "Scientific quantity native representation deferred; original literal retained: proposal-4a4fed40bc8287997a9651b0",
+    "Scientific quantity native representation deferred; original literal retained: proposal-4eb065f995078311052a3eab",
+    "Scientific quantity native representation deferred; original literal retained: proposal-63b5cc7985f31ab95147af4e",
+    "Scientific quantity native representation deferred; original literal retained: proposal-68f9e5b215e8abebcc313b53",
+    "Scientific quantity native representation deferred; original literal retained: proposal-6a4477626f0d6bd57394b319",
+    "Scientific quantity native representation deferred; original literal retained: proposal-6a7f2d5c93dd14ffa0bcdb7a",
+    "Scientific quantity native representation deferred; original literal retained: proposal-6dcbfc24cb023bd53d32d32a",
+    "Scientific quantity native representation deferred; original literal retained: proposal-8338b3c13f47e65f0dd44419",
+    "Scientific quantity native representation deferred; original literal retained: proposal-88f743a5370db05c9c2d5715",
+    "Scientific quantity native representation deferred; original literal retained: proposal-8af0b568db7ebf97c90164e3",
+    "Scientific quantity native representation deferred; original literal retained: proposal-a1cad313378bb2714ae19f4d",
+    "Scientific quantity native representation deferred; original literal retained: proposal-af8fb0d68b02ac05eca151fd",
+    "Scientific quantity native representation deferred; original literal retained: proposal-b6f21017db0a9580092cd80f",
+    "Scientific quantity native representation deferred; original literal retained: proposal-d2e3c567c8673f6fcb14829f",
+    "Scientific quantity native representation deferred; original literal retained: proposal-f6120dc049e16f5b5065abe3",
+    "Scientific quantity native representation deferred; original literal retained: proposal-f6d29f25f180a530979060e2",
+    "Scientific quantity native representation deferred; original literal retained: proposal-fe3b92e72d8e9ac9d682e4e3",
+    "Scientific review required: relationship investigation needs original experimental applicability for research-ec42a926a29616a70757:entity:6d6f7ce70329bb717430",
+    "Select source-supported scope for research-ec42a926a29616a70757:c9de8948bdf14643:statement:4bc799d6dfe970df",
+    "Which identified runs do these author reported conclusion statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}
