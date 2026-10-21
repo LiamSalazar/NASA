@@ -66,3 +66,14 @@ Ignition targets quantities-11 (GRC chamber volume 299 l) and quantities-12 (GRC
 | B, milestone 9 | 10/29 | **12/29** |
 
 quantities-09 (igniter OD 2.2 mm) stays not counted, because its record is labelled "OD ceramic rod".
+
+### (d) An explicit setting cue next to the value makes it a configuration
+
+| | |
+| --- | --- |
+| Class (addendum §2) | semantic with printed evidence |
+| Motivated by | regulator: "maintained its 4.05 psid setpoint with approximately 1 pph demand", "maintained the ~4.05 psid set-point at the ~1 pph demand" (`CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT`) |
+| Change | A prose value the model typed `reported_quantity` is re-typed `experimental_configuration` (`role_recovery.basis = EXPLICIT_SETTING_CUE_IN_VALUE_SENTENCE`, with the printed cue) instead of being rejected. Two conditions: a held-setting cue ("maintained", "set point") is printed within 90 characters before or 60 after the value, and the value's sentence carries no requirement, plan or derivation cue ("specified", "required", "will", "shall", "simulating", "predicted", "derived", "fit", "standard deviation"). Table cells keep their header-based rule. |
+| Tests | `tests/test_quantity_setting_role.py`. Metamorphic: three wordings and positions of the cue. Negative: a requirement ("required … specified and maintained"), a plan ("will be maintained"), a simulation, a cue far from the value, an "initial" column, a measured value with no cue. |
+| Effect (replay) | 0 accepted records added or removed on all 26 inputs. On the regulator (A and B), the two ~1 pph demand values move from rejected to held (`TEST_ARTICLE_ALIAS…`, the test-article subject), ready for (c). PTFE, ignition and textiles do not change. A first version also matched "initial" anywhere on a table page and re-typed measured AIT values on PTFE (held, never accepted). It was narrowed before commit, and those cases became the negative tests. |
+| Contract kept | A value the sentence itself says "was set to" stays rejected when the model calls it a measurement (`test_epistemic_upgrades_rejected`), so the model's role error stays visible. Whether that contract should become a role repair too is **a decision for Diego/Liam**. It is not changed here. |

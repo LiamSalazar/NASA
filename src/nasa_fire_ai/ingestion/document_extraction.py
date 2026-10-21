@@ -3263,23 +3263,40 @@ def validate_quantity_subject(
             "basis": "VALUE_NAMED_AS_A_SETTING",
         }
         item["epistemic"] = "experimental_configuration"
+    # A bound table cell's role is read from its own column header and table
+    # caption, not from the whole page; a prose value's role from its own
+    # sentence, not from a neighbouring column ("Initial Pressure") on the page.
+    role_text = " ".join(
+        [
+            (h["column_header"] or "") + " " + (h["table_caption"] or "")
+            for h in table_binding["rows"]
+        ]
+        if table_binding
+        else value_sentences(record["quantity_value_spans"], evidence)
+    )
     if item["epistemic"] == "reported_quantity" and re.search(
         r"\b(?:will|would|planned|proposed|set\s+to|initial|maintained|specified|simulat\w*|predict\w*|derived|derivative|(?:linear|quadratic|regression|curve|polynomial)\s+fits?|shall|must|standard\s+deviations?|std\.?\s+dev\.?|variances?)\b",
-        # A bound table cell's role is read from its own column
-        # header and table caption, not from the whole page.
-        " ".join(
-            [
-                (h["column_header"] or "") + " " + (h["table_caption"] or "")
-                for h in table_binding["rows"]
-            ]
-            if table_binding
-            # A prose value's role is read from its own sentence, not from a
-            # neighbouring table column ("Initial Pressure") on the same page.
-            else value_sentences(record["quantity_value_spans"], evidence)
-        ),
+        role_text,
         re.IGNORECASE,
     ):
-        raise ValueError("CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT")
+        # The cue must be printed next to the value itself, never elsewhere on a
+        # table page ("Initial Test Pressure" beside a measured AIT).
+        near = " ".join(
+            evidence[v["evidence_id"]]["text"][max(0, v["start"] - 90) : v["end"] + 60]
+            for v in record["quantity_value_spans"]
+        )
+        setting = re.search(SETTING_ROLE_CUE, near, re.IGNORECASE)
+        if table_binding or not setting or re.search(NOT_A_SETTING_CUE, role_text, re.IGNORECASE):
+            raise ValueError("CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT")
+        # "the POR maintained the ~4.05 psid set-point at the ~1 pph demand": the
+        # sentence prints how the test was set, so the value is a configuration.
+        record["role_recovery"] = {
+            "proposed_epistemic": "reported_quantity",
+            "recovered_epistemic": "experimental_configuration",
+            "basis": "EXPLICIT_SETTING_CUE_IN_VALUE_SENTENCE",
+            "printed_cue": setting.group(),
+        }
+        item["epistemic"] = "experimental_configuration"
     if (
         item["epistemic"] == "reported_quantity"
         and not table_binding
@@ -3304,6 +3321,17 @@ def validate_quantity_subject(
             "support": locate([derivation], evidence),
         }
 
+
+# A printed cue that the value is how a test was set ...
+# "was set to 20 Pa" on the value itself stays a rejected role error
+# (test_epistemic_upgrades_rejected): only a held setting is read here.
+SETTING_ROLE_CUE = r"\b(?:maintained|set[\s-]?points?)\b"
+# ... unless the same sentence makes it a requirement, a plan or a derived value.
+NOT_A_SETTING_CUE = (
+    r"\b(?:will|would|planned|proposed|specified|required|requirements?|shall|must|"
+    r"simulat\w*|predict\w*|derived|derivative|fits?|standard\s+deviations?|"
+    r"std\.?\s+dev\.?|variances?)\b"
+)
 
 SUBJECT_REJECTIONS = frozenset(
     {"QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE", "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED"}
