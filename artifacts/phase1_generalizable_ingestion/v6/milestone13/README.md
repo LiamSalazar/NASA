@@ -1,4 +1,4 @@
-# Milestone 13 (work in progress, pushed before a scheduled shutdown)
+# Milestone 13
 
 Evaluation A only (offline replay of saved inputs, 0 model calls). No evaluation B was run on this code.
 
@@ -14,7 +14,7 @@ Evaluation A only (offline replay of saved inputs, 0 model calls). No evaluation
   - 29 historical negatives: 0 critical regressions, 1 known non-critical.
 - Tests: `tests/test_background_sections.py` (6, metamorphic and negative).
 
-## Correction 3: one statement per printed sentence across windows (WIP commit)
+## Correction 3: one statement per printed sentence across windows
 
 - Classification: document structure.
 - Rule: statements with the same normalized text, status, epistemic role, study, reasons and support positions are one statement. The owner keeps the union of the scopes, each validated on its own. Before this change, the scope was part of the key, so the same sentence proposed from two windows with different subjects stayed duplicated.
@@ -23,12 +23,15 @@ Evaluation A only (offline replay of saved inputs, 0 model calls). No evaluation
   - two windows give one statement with both scopes;
   - order metamorphic;
   - a different role stays separate.
-- PENDING: the 46-input replay and the 29 negatives have not been run with this change.
+- Replay of the 46 inputs at `4b18bf5` (against the correction 2 replay):
+  - 15 duplicate statements folded into their twins (ignition 6, regulator 3, PTFE 6), and 0 other changes;
+  - 0 target classes changed in the miss diagnosis;
+  - PTFE official scorer (judgments `judg_ptfe_B`): recall unchanged in all 13 PTFE replays (27–28/34; B_ptfe 23/34); precision only loses the duplicates (for example run11 132/133 → 129/130); 0 critical;
+  - 29 historical negatives: 0 critical regressions, 1 known non-critical (`replay_4b18bf5/historical_negatives_receipt.json`).
 
 ## Pending
 
-- Replay plus negatives for correction 3.
 - Correction 1 (`printed_name` in the model request plus a subject by group subsection) is not started. It changes the request schema and therefore the cache keys.
-- Target-by-target miss diagnosis (`target_miss_diagnosis.md`/`.json`) is not produced yet.
+- Target-by-target miss diagnosis: done in `target_miss_diagnosis.md`/`.json` (69 of 113 misses are proposals rejected by a rule; the main code is `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT`).
 - Evaluation B of milestone 13 (one round, sources two at a time, detached runs).
-- No live run was in progress at shutdown.
+- No live run was in progress at the shutdown of 2026-10-21 19:19 UTC; none was lost.
