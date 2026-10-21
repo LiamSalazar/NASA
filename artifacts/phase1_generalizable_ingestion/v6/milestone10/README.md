@@ -88,3 +88,18 @@ quantities-09 (igniter OD 2.2 mm) stays not counted, because its record is label
 | Tests | `tests/test_quantity_subsection_group.py`. Metamorphic: the same sentence under each of two headings goes to that heading's group. Negative: a sentence under group A that names group B; a value in the method section outside every subsection. |
 | Effect (replay) | **Ignition A:** +1 correct configuration record (WSTF duct length 30 cm; not a frozen target), and the 7.4 cm duct ID is kept under the label "quartz tube duct ID". No other input changes. The regulator's ~1 pph demand values stay held: their sentences are not under a group heading. **PTFE:** unchanged (27–28/34, precision ≥ 0.981, 0 critical). The 29 historical negatives: 0 critical regressions. |
 | Flag | **Suspicious under rule 2**: it lifts only ignition, and it did not lift its motivating source. |
+
+## Result at `80682e7` (all four mechanisms; evaluation A, 0 model calls)
+
+Recall on frozen targets. The milestone 9 B runs are replayed at this code. Ignition includes the quantities-11 and quantities-12 correction above.
+
+| Source | A (milestone 7 outputs) | B (milestone 9 outputs) | Change from the mechanisms |
+| --- | --- | --- | --- |
+| Lunar ignition | 14/29 | 12/29 | no target change; +3 correct non-target configuration records in A (WSTF chamber volume, duct ID, duct length); duplicates merged in A and B |
+| Oxygen regulator | 19/32 | 12/32 | none; the two ~1 pph demand values go from rejected to held |
+| Textiles | 11/29 | 10/29 | no target change; the duplicate 37 % merged in A |
+| PTFE (official scorer) | 27–28/34 over 12 runs, precision 0.981–1.000 | 23/34, 74/75 | none |
+
+Critical errors: 0 on every input. The 29 historical negatives: 0 critical regressions, 1 known non-critical record still supported (`rescored_80682e7/`).
+
+**Reading.** The four mechanisms are safe and general, but they do not move recall on frozen targets. They mostly turn rejections into correct non-target records or holds, and they remove duplicates. The recall gap is still what the model does not propose, plus the provider failures of milestone 9. Two mechanisms, (b) and (c), add records only on ignition and are flagged under rule 2.
