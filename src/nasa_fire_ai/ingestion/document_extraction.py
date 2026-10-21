@@ -131,6 +131,11 @@ class Quantity(Strict):
     unit: str | None = None
     epistemic: Literal["reported_quantity", "derived_quantity", "experimental_configuration"]
     support: list[Span] = Field(min_length=1)
+    printed_name: str | None = Field(
+        default=None,
+        description="The words printed in the value's own clause that name it, copied exactly "
+        "(for 'the chamber was rotated at 20 RPM', 'rotated'); null when the label is printed.",
+    )
 
 
 class Concept(Strict):
@@ -203,13 +208,17 @@ questions, normative requirements, guidance, derived results or documentary cont
 Do not classify titles, author lists, future plans or methods as observations.
 Use justified known_entities subject keys; subjects=[] preserves an unresolved scope.
 An anchor's group key, when present, names the group whose printed heading it sits
-under: the narrowest subject for configurations and conditions printed there.
+under: the narrowest subject for configurations and conditions printed there,
+and the subject of a quantity printed there unless its sentence names another.
 For quantities copy the source quantity label, original numeric expression WITHOUT
 its unit, original adjacent unit, known subject key, epistemic and supporting IDs.
 The label must be a literal original variable phrase, never a rewritten synonym.
 For 'tip grows at a rate of 7 mm/s', use the original label 'rate'; do not invent
 'tip spread velocity'. Preserve this literal quantity for semantic review if needed.
-The fields are subject, label, expression, unit, epistemic, support.
+The fields are subject, label, expression, unit, epistemic, support and printed_name.
+When the label's words are not printed with the value, printed_name copies the
+words of the value's own clause that name it ('rotated' in 'was rotated at 20 RPM');
+otherwise printed_name is null.
 Preserve ~, inequalities and ranges. Never convert or calculate a number.
 Use reported_quantity, derived_quantity or experimental_configuration accurately.
 Fits, gradients, derivatives and inferred rates are derived; setpoints are configuration.
@@ -238,7 +247,7 @@ DO NOT output entities, identity, statements, schema or other root keys.""",
 def stage_prompt(stage, focus=None):
     if focus == "quantities":
         task = (
-            'Extract missing original quantities. Return {"quantities":[{"quantity_ref":"Q1","subject":"K1","label":"exact source quantity name","epistemic":"reported_quantity"}]}. '
+            'Extract missing original quantities. Return {"quantities":[{"quantity_ref":"Q1","subject":"K1","label":"exact source quantity name","epistemic":"reported_quantity","printed_name":null}]}. '
             "Only use supplied Q identifiers and known subject keys. The service expands the ORIGINAL "
             "value/unit/support, so do not output them. Preserve fits/derivatives as derived_quantity "
             "and setpoints as experimental_configuration. The label identifies the named variable, "
@@ -1801,7 +1810,8 @@ def parse_stage_output(content, stage, anchors, finish_reason, quantities=None):
                 )
             if kind == "quantities" and isinstance(item, dict) and "quantity_ref" in item:
                 if (
-                    set(item) != {"quantity_ref", "subject", "label", "epistemic"}
+                    set(item) - {"printed_name"}
+                    != {"quantity_ref", "subject", "label", "epistemic"}
                     or not isinstance(item["quantity_ref"], str)
                     or item["quantity_ref"] not in (quantities or {})
                 ):
@@ -2165,6 +2175,32 @@ def printed_value_name(label, expression, unit, spans, epistemic=None):
                     "global_alias_activation": "NONE",
                 }
     return None
+
+
+def model_printed_name(item, spans):
+    """The model's printed_name, when the support prints it in the value's own clause.
+
+    The words must be copied exactly, hold a word that is not the value, its unit or
+    a joining word, and share a clause with the value; the label stays the model's.
+    """
+    name = " ".join((item.get("printed_name") or "").split())
+    if not name or not item.get("expression") or len(name.split()) > 6:
+        return None
+    words = [w for w in re.findall(r"[A-Za-z][\w-]*", name) if w.lower() not in NAME_STOP_WORDS]
+    if (
+        not words
+        or any(w.lower() == (item.get("unit") or "").lower() for w in words)
+        or re.search(r"\d", name)
+    ):
+        return None
+    values = quantity_name_value_binding([name], item["expression"], item.get("unit"), spans)
+    if not values:
+        return None
+    return {
+        "basis": "MODEL_PRINTED_NAME_IN_VALUE_CLAUSE",
+        "printed_name": name,
+        "global_alias_activation": "NONE",
+    }
 
 
 def quantity_name_value_binding(
@@ -3055,6 +3091,10 @@ def validate_quantity_subject(
             # The label is the model's; the name it is checked against is printed.
             labels.append(printed["printed_name"])
             record["quantity_name_support"] = printed
+        elif proposed := model_printed_name(item, spans):
+            # The model names the printed words; they must name this value in its clause.
+            labels.append(proposed["printed_name"])
+            record["quantity_name_support"] = proposed
         if normalized(item["label"]) == "time" and item["unit"] in {
             "s",
             "second",
@@ -3317,6 +3357,14 @@ def validate_quantity_subject(
             # Without an approved contract, the printed syntax alone must make the
             # label the name of this value; otherwise it may name an object.
             naming = staged_name_syntax(item["label"], record, evidence)
+            if not naming and record.get("quantity_name_support", {}).get("basis") == (
+                "MODEL_PRINTED_NAME_IN_VALUE_CLAUSE"
+            ):
+                # The printed words the model named, not its label, must make the
+                # syntax that names this value.
+                naming = staged_name_syntax(
+                    record["quantity_name_support"]["printed_name"], record, evidence
+                )
             if naming:
                 record["mapping"]["name_value_syntax"] = naming
             else:
@@ -6954,9 +7002,12 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     "type": "string",
                     **({"enum": list(wire_quantities)} if wire_quantities else {}),
                 },
-                **{k: definition["properties"][k] for k in ("subject", "label", "epistemic")},
+                **{
+                    k: definition["properties"][k]
+                    for k in ("subject", "label", "epistemic", "printed_name")
+                },
             }
-            definition["required"] = list(definition["properties"])
+            definition["required"] = [k for k in definition["properties"] if k != "printed_name"]
         if focus == "statements":
             from nasa_fire_ai.ingestion.scientific_coverage import statement_candidates
 
@@ -6988,8 +7039,9 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             request["task"] = (
                 "Recover the listed missing ORIGINAL quantity candidates. Return only quantities. "
                 "Each item has quantity_ref (Q identifier), subject (known entity key), label "
-                "(exact source quantity name), and epistemic (reported_quantity, derived_quantity "
-                "or experimental_configuration). The service preserves the original value/unit/support "
+                "(exact source quantity name), epistemic (reported_quantity, derived_quantity "
+                "or experimental_configuration) and printed_name (the words of the value's own "
+                "clause that name it when the label is not printed there, else null). The service preserves the original value/unit/support "
                 "by exact Q lookup; do not write or modify them. Use only justified scientific scope."
                 " A described specimen dimension is experimental_configuration unless its measurement "
                 "is explicitly reported. A value from a fit or derivative is derived_quantity. "
