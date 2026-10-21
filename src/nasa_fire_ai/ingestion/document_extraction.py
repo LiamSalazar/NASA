@@ -2694,6 +2694,26 @@ def validate_quantity_subject(
     subject = entities.get(item["subject"])
     if not subject:
         raise ValueError("UNKNOWN_QUANTITY_ENDPOINT")
+    if (
+        subject_checks
+        and (
+            subject["class_id"] in CONDITION_CLASSES
+            or has_class(subject["class_id"], "ExperimentalCondition", semantic)
+            or has_class(subject["class_id"], "Intervention", semantic)
+        )
+    ) and not (
+        # A condition carries only its own printed magnitude: the same name
+        # ("vehicle rotation of 2 RPM") or the value printed in its label
+        # ("10 cm/s primer flow").
+        normalized(item["label"]) == normalized(subject["label"])
+        or mentions(item["expression"] + " " + (item["unit"] or ""), subject["label"])
+        or mentions(item["expression"] + (item["unit"] or ""), subject["label"])
+    ):
+        # A condition or intervention is how a test was set, never what another
+        # value describes ("~200 psia" is not a property of "3750 psia supply
+        # pressure"). Only the association fails: the value is kept and other
+        # subjects are tried.
+        raise ValueError("QUANTITY_SUBJECT_IS_A_CONDITION")
     scope_eligible = quantity_scope_eligible(subject, semantic)
     record["native_scope_compatible"] = scope_eligible
     from nasa_fire_ai.ingestion.scientific_scope import (
@@ -3357,8 +3377,24 @@ NOT_A_SETTING_CUE = (
 
 TEST_ARTICLE_ALIAS_HOLD = "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW"
 
+# The ontology's condition classes (fire_safety.ttl) and interventions: how a test
+# was set, never the subject of another value.
+CONDITION_CLASSES = frozenset(
+    {
+        "ExperimentalCondition",
+        "AtmosphereCondition",
+        "FlowCondition",
+        "GravityCondition",
+        "PressureCondition",
+        "Intervention",
+    }
+)
 SUBJECT_REJECTIONS = frozenset(
-    {"QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE", "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED"}
+    {
+        "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+        "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+        "QUANTITY_SUBJECT_IS_A_CONDITION",
+    }
 )
 SUBJECT_HOLDS = frozenset(
     {
