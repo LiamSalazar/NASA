@@ -77,3 +77,14 @@ quantities-09 (igniter OD 2.2 mm) stays not counted, because its record is label
 | Tests | `tests/test_quantity_setting_role.py`. Metamorphic: three wordings and positions of the cue. Negative: a requirement ("required … specified and maintained"), a plan ("will be maintained"), a simulation, a cue far from the value, an "initial" column, a measured value with no cue. |
 | Effect (replay) | 0 accepted records added or removed on all 26 inputs. On the regulator (A and B), the two ~1 pph demand values move from rejected to held (`TEST_ARTICLE_ALIAS…`, the test-article subject), ready for (c). PTFE, ignition and textiles do not change. A first version also matched "initial" anywhere on a table page and re-typed measured AIT values on PTFE (held, never accepted). It was narrowed before commit, and those cases became the negative tests. |
 | Contract kept | A value the sentence itself says "was set to" stays rejected when the model calls it a measurement (`test_epistemic_upgrades_rejected`), so the model's role error stays visible. Whether that contract should become a role repair too is **a decision for Diego/Liam**. It is not changed here. |
+
+### (c) A value inside one group's own subsection is revalidated with that group
+
+| | |
+| --- | --- |
+| Class (addendum §2) | document structure |
+| Motivated by | regulator: settings of a test series that the model gave to the test article (`TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW`, 7 in B) |
+| Change | When the proposed subject fails or is held (test-article alias hold, subject rejection, scope hold), and every support span lies under one printed heading that names exactly one current `ExperimentFamily`, that group is revalidated with the full validator. It is adopted only if the validator certifies the group's own subsection (`EXACT_ORIGINAL_GROUP_SUBSECTION`, which already refuses a span naming another group). The proposed subject is kept as `subject_recovery.proposed_subject`. |
+| Tests | `tests/test_quantity_subsection_group.py`. Metamorphic: the same sentence under each of two headings goes to that heading's group. Negative: a sentence under group A that names group B; a value in the method section outside every subsection. |
+| Effect (replay) | **Ignition A:** +1 correct configuration record (WSTF duct length 30 cm; not a frozen target), and the 7.4 cm duct ID is kept under the label "quartz tube duct ID". No other input changes. The regulator's ~1 pph demand values stay held: their sentences are not under a group heading. **PTFE:** unchanged (27–28/34, precision ≥ 0.981, 0 critical). The 29 historical negatives: 0 critical regressions. |
+| Flag | **Suspicious under rule 2**: it lifts only ignition, and it did not lift its motivating source. |

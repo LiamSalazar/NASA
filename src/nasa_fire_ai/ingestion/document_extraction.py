@@ -679,6 +679,28 @@ def under_group_heading(span, entities, document):
     )
 
 
+def subsection_group(spans, entities, document):
+    """The one current group whose own printed subsection holds every span, if any."""
+    keys = set()
+    for span in spans:
+        heading = printed_heading_before(span, document)
+        if not heading:
+            return None
+        title = normalized(heading_title(heading["title"]))
+        found = [
+            key
+            for key, e in entities.items()
+            if e["class_id"] == "ExperimentFamily"
+            and e.get("validation_status") == "SOURCE_SUPPORTED"
+            and e.get("source_id") == span.get("source_id")
+            and normalized(e["label"]) == title
+        ]
+        if len(found) != 1:
+            return None
+        keys.add(found[0])
+    return keys.pop() if len(keys) == 1 else None
+
+
 def table_column_prints_value(document, expression, unit=None, label=None):
     """Whether a detected table prints this value under a column named by its unit or variable.
 
@@ -3184,7 +3206,7 @@ def validate_quantity_subject(
         record["scope_context"] = alias_review
         record["native_value_compatible"] = False
         record["native_representation"] = "DEFERRED_SOURCE_TEST_ARTICLE_ALIAS_SCOPE"
-        record["reasons"].append("TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW")
+        record["reasons"].append(TEST_ARTICLE_ALIAS_HOLD)
     from nasa_fire_ai.normalization.units import interpret
 
     unit_meaning = interpret(item["unit"])
@@ -3333,6 +3355,8 @@ NOT_A_SETTING_CUE = (
     r"std\.?\s+dev\.?|variances?)\b"
 )
 
+TEST_ARTICLE_ALIAS_HOLD = "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW"
+
 SUBJECT_REJECTIONS = frozenset(
     {"QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE", "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED"}
 )
@@ -3385,7 +3409,8 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
     try:
         result = attempt(proposed)
         reason = next((r for r in result[1]["reasons"] if r in SUBJECT_HOLDS), None)
-        if not reason:
+        alias = TEST_ARTICLE_ALIAS_HOLD in result[1]["reasons"]
+        if not reason and not alias:
             adopt(result)
             return
     except ValueError as error:
@@ -3393,6 +3418,34 @@ def validate_quantity(item, record, spans, entities, document, semantic, evidenc
         if reason not in SUBJECT_REJECTIONS or proposed not in entities:
             raise
         result = None
+    # A value printed inside one group's own subsection belongs to that group when
+    # the model gave it a broader or held subject (the test article, the whole
+    # investigation): the group is revalidated in full, never assumed.
+    group = subsection_group(original[2], entities, document)
+    if group and group != proposed:
+        try:
+            trial = attempt(group)
+        except ValueError:
+            trial = None
+        if (
+            trial
+            and not any(r in SUBJECT_HOLDS for r in trial[1]["reasons"])
+            and TEST_ARTICLE_ALIAS_HOLD not in trial[1]["reasons"]
+            and trial[1].get("scope_context", {}).get("basis") == "EXACT_ORIGINAL_GROUP_SUBSECTION"
+        ):
+            adopt(trial)
+            record["subject_recovery"] = {
+                "proposed_subject": entities[proposed]["id"] if proposed in entities else proposed,
+                "proposed_subject_rejection": reason
+                or (TEST_ARTICLE_ALIAS_HOLD if result is not None else None),
+                "method": "VALUE_INSIDE_GROUP_OWN_SUBSECTION_REVALIDATED",
+                "recovered_subject": entities[group]["id"],
+                "status": "RECOVERED",
+            }
+            return
+    if result is not None and not reason:
+        adopt(result)  # the test-article hold stays a hold
+        return
     source_ids = {s["source_id"] for s in original[2]}
     passage = " ".join(s.get("quote", "") for s in original[2])
     # A passage that names its own subject ("Gamma was compared. It was
