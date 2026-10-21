@@ -355,12 +355,14 @@ def consolidate_validated_variants(records, entities, evidence, document):
                 tuple(sorted(record["reasons"])),
             )
         if key is None and kind == "quantities" and record.get("quantity_value_spans"):
-            # The same printed value, subject, name, unit and role proposed twice.
+            # The same printed value, subject, unit and role proposed twice is one
+            # quantity, whatever each proposal called it ("O2" and "oxygen
+            # concentration" for one printed "37% O2"): one printed value names
+            # one quantity.
             key = (
                 kind,
                 record["status"],
                 record.get("subject"),
-                norm(item["label"]),
                 item["expression"],
                 item["unit"],
                 item["epistemic"],

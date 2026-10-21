@@ -1963,6 +1963,118 @@ def source_dimension_adjectives(label, unit):
     }.get(stem, [])
 
 
+# Nouns that name a quantity of the unit's own dimension. They may complete a
+# printed name ("a 1.4 m3 chamber" -> "chamber volume"), never replace one.
+DIMENSION_NOUNS = {
+    "length": {
+        "length",
+        "width",
+        "height",
+        "diameter",
+        "thickness",
+        "depth",
+        "radius",
+        "id",
+        "od",
+    },
+    "volume": {"volume", "capacity"},
+    "pressure": {"pressure"},
+    "differential_pressure": {"pressure", "differential"},
+    "fraction": {"concentration", "fraction", "content", "percentage", "level"},
+    "temperature": {"temperature"},
+    "time": {"time", "duration", "period"},
+    "velocity": {"velocity", "speed"},
+    "rotational_speed": {"speed", "rate", "rotation"},
+    "mass_flow": {"flow", "rate"},
+    "standard_volumetric_flow": {"flow", "rate"},
+    "energy": {"energy"},
+}
+NAME_STOP_WORDS = {
+    "by",
+    "and",
+    "or",
+    "with",
+    "where",
+    "which",
+    "that",
+    "at",
+    "for",
+    "of",
+    "in",
+    "to",
+    "was",
+    "were",
+    "is",
+    "are",
+    "from",
+    "on",
+    "under",
+    "as",
+    "the",
+    "a",
+    "an",
+}
+
+
+def printed_value_name(label, expression, unit, spans, epistemic=None):
+    """The words printed right after a value that name it, separate from the label.
+
+    "a WSTF 1.4 m3 (50 ft3) chamber" prints "chamber" after the value, so a label
+    "chamber volume" is named by the source: "chamber" is printed and "volume" is
+    the unit's own dimension. Every other label word must be printed in the same
+    sentence. A value one of a printed pair ("5.2 cm by 14.0 cm samples") is never
+    named this way, since the source does not say which dimension it is.
+    """
+    from nasa_fire_ai.normalization.units import interpret
+
+    meaning = interpret(unit) if unit else None
+    if not meaning or not expression:
+        return None
+    if meaning["dimension"] == "fraction" and epistemic != "experimental_configuration":
+        # "40% Bronze", "made up of 90% Copper": a percentage before a constituent
+        # is a composition, and the printed words alone do not say whose.
+        return None
+    nouns = DIMENSION_NOUNS.get(meaning["dimension"], set())
+    words = normalized(label).split()
+    value = r"(?<![\w.])" + re.escape(expression) + r"\s*[-‑]?\s*" + re.escape(unit) + r"(?![\w])"
+    for span in spans:
+        quote = span["quote"]
+        for match in re.finditer(value, quote):
+            if re.search(
+                r"\bby\s*$", quote[max(0, match.start() - 12) : match.start()], re.IGNORECASE
+            ):
+                continue
+            rest = quote[match.end() :]
+            # An author-stated equivalent between value and name: "1.4 m3 (50 ft3) chamber".
+            rest = re.sub(r"^\s*\([^()]{1,30}\)", "", rest)
+            if re.match(r"\s*by\b", rest, re.IGNORECASE):
+                continue
+            # "The chamber is 299 l in volume": the name follows "in".
+            rest = re.sub(r"^\s*in\s+(?=[A-Za-z])", " ", rest, flags=re.IGNORECASE)
+            head = []
+            for token in re.findall(r"[A-Za-z][\w-]*|\S", rest[:80]):
+                lowered = token.lower()
+                if not re.match(r"[a-z]", lowered) or lowered in NAME_STOP_WORDS or len(head) == 4:
+                    break
+                head.append(lowered)
+            printed = [w for w in words if w in head]
+            if not printed:
+                continue
+            sentence_start = max(quote.rfind(". ", 0, match.start()) + 1, 0)
+            sentence_end = quote.find(". ", match.end())
+            sentence = quote[sentence_start : sentence_end if sentence_end >= 0 else len(quote)]
+            completed = [w for w in words if w not in printed]
+            if all(w in nouns or mentions(w, sentence) for w in completed):
+                return {
+                    "basis": "PRINTED_NAME_AFTER_VALUE",
+                    "printed_name": " ".join(printed),
+                    "printed_after_value": " ".join(head),
+                    "label_words_from_unit_dimension": [w for w in completed if w in nouns],
+                    "global_alias_activation": "NONE",
+                }
+    return None
+
+
 def quantity_name_value_binding(
     labels, expression, unit, spans, adjacent_names=(), temporal_coordinate=False
 ):
@@ -2197,6 +2309,7 @@ def staged_name_syntax(label, record, evidence):
         "ORIGINAL_TABLE_COLUMN_HEADER",
         "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE",
         "SAME_SUBJECT_VALUE_UNDER_DOCUMENT_TABLE_COLUMN",
+        "PRINTED_NAME_AFTER_VALUE",
     }:
         return basis
     if basis == "NAME_BEFORE_PAGE_BREAK_OF_SAME_SENTENCE" and record.get("sentence_continuation"):
@@ -2824,6 +2937,12 @@ def validate_quantity_subject(
                 "original_wordforms": adjacent_names,
                 "global_alias_activation": "NONE",
             }
+        elif printed := printed_value_name(
+            item["label"], item["expression"], item["unit"], spans, item.get("epistemic")
+        ):
+            # The label is the model's; the name it is checked against is printed.
+            labels.append(printed["printed_name"])
+            record["quantity_name_support"] = printed
         if normalized(item["label"]) == "time" and item["unit"] in {
             "s",
             "second",
