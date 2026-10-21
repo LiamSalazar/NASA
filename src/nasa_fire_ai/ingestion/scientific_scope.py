@@ -301,13 +301,14 @@ def consolidate_validated_variants(records, entities, evidence, document):
                 if span["start"] <= located["start"] and located["end"] <= span["end"]:
                     positions.append((span["evidence_id"], located["start"], located["end"]))
             if positions:
+                # The same printed sentence, role and study proposed from two
+                # windows is one statement; its validated scopes are joined below.
                 key = (
                     kind,
                     record["status"],
                     norm(body),
                     item["epistemic"],
                     item["study"],
-                    tuple(sorted(record.get("scope", []))),
                     tuple(sorted(set(positions))),
                     tuple(sorted(record["reasons"])),
                 )
@@ -392,6 +393,9 @@ def consolidate_validated_variants(records, entities, evidence, document):
             primary[key] = record
             continue
         owner = primary[key]
+        if kind == "statements" and record.get("scope"):
+            # Each scope was validated on its own; one statement carries both.
+            owner["scope"] = sorted(set(owner.get("scope", [])) | set(record["scope"]))
         record["duplicate_of"] = owner["id"]
         record["active_proposal"] = False
         owner.setdefault("validated_variant_ids", []).append(record["id"])
