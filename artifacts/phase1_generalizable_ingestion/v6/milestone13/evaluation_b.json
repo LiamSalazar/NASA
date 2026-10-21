@@ -1,0 +1,257 @@
+{
+ "kind": "PHASE1_V6_M13_EVALUATION_B",
+ "code": "b4be17d",
+ "evaluation": "B (fresh live runs, frozen code b4be17d, detached from the session; one round, sources in pairs: textiles with regulator, then ignition with PTFE; 600 s per call, 3,600 s per run)",
+ "basis": "Branch-author adjudication of frozen v4 targets; record-by-record precision (judgments carried for identical records of milestones 10 to 12, new records judged one by one); PTFE by the official scorer with judgments",
+ "runs": {
+  "textiles_r1": {
+   "recall": "7/29",
+   "correct": [
+    "entities-01",
+    "entities-03",
+    "quantities-12",
+    "quantities-13",
+    "statements-20",
+    "statements-25",
+    "statements-26"
+   ],
+   "precision": "17/22",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "52746226": "fragment '• NASA-STD-6001, Test 1' typed publication",
+    "3047b24d": "statement carrying slide labels and the running footer",
+    "b02bc439": "slide heading 'Fire-resistant textile development:' typed conclusion",
+    "e126d7f3": "author-name fragment 'Mary L.' typed publication",
+    "f05182b8": "specimen configuration typed Material"
+   },
+   "carried_judgments": 20,
+   "timing": {
+    "extract_seconds": 331,
+    "provider_seconds": 285,
+    "local_seconds": 46,
+    "post_extraction_seconds": 1390,
+    "calls": 5,
+    "failed_attempts": {
+     "deadline": 1
+    },
+    "served": "120b 3, 30b fallback 1",
+    "input_tokens": 31390,
+    "output_tokens": 11052
+   },
+   "call_seconds": {
+    "p50": 17,
+    "p90": 221,
+    "max": 221,
+    "over_240": 0
+   }
+  },
+  "regulator_r1": {
+   "recall": "10/32",
+   "correct": [
+    "entities-01",
+    "entities-02",
+    "entities-03",
+    "entities-04",
+    "entities-05",
+    "quantities-08",
+    "statements-17",
+    "statements-28",
+    "relations-29",
+    "relations-30"
+   ],
+   "precision": "16/30",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "5415edc7": "Mobil DTE24 (earlier contamination investigation) typed current",
+    "7d321619": "WD-40, considered and not used, typed current",
+    "e5e047ae": "model assumptions and results typed as NASA conclusion",
+    "2ae56092": "conclusion carrying the heading 'Conclusion'",
+    "192b5d90": "running page header",
+    "215ca73b": "motivation/goal sentence typed requirement",
+    "3e1e47b9": "test-article configuration typed reported observation",
+    "64910904": "duplicate of 0014febc (same sentence, another window)",
+    "c76f7b3a": "background oil of the calibration equipment typed a material of the study",
+    "8d13e77f": "background contaminant found in other regulators; the test used dodecane",
+    "3b206ab3": "regulator analyzed in a cited report typed a current sample",
+    "7962c21a": "count of runs typed as a named experiment family",
+    "3a000fa7": "fragment typed reported observation",
+    "b1ecef41": "relation from the regulator to itself"
+   },
+   "carried_judgments": 18,
+   "timing": {
+    "extract_seconds": 1912,
+    "provider_seconds": 223,
+    "local_seconds": 1689,
+    "post_extraction_seconds": 105,
+    "calls": 11,
+    "failed_attempts": {
+     "network": 4
+    },
+    "served": "120b 6, 30b fallback 1 (the window holding the impact times)",
+    "input_tokens": 120183,
+    "output_tokens": 23383
+   },
+   "call_seconds": {
+    "p50": 12,
+    "p90": 69,
+    "max": 88,
+    "over_240": 0
+   }
+  },
+  "ignition_r1": {
+   "recall": "15/29",
+   "correct": [
+    "entities-01",
+    "entities-02",
+    "entities-03",
+    "entities-04",
+    "quantities-05",
+    "quantities-06",
+    "quantities-09",
+    "quantities-10",
+    "quantities-11",
+    "quantities-12",
+    "quantities-15",
+    "relations-27",
+    "statements-22",
+    "statements-23",
+    "statements-24"
+   ],
+   "precision": "86/115",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "da15e7c0": "'1-g testing' duplicating the WSTF group",
+    "f9947abd": "'lunar-g testing' duplicating the GRC group",
+    "f7d4d4ae": "ExperimentFamily duplicating the WSTF group",
+    "a4708738": "P213 Tape duplicated with its parenthetical description",
+    "39aadeb7": "'cotton t-shirt material' duplicating the Beefy-T material",
+    "e257404a": "Sample named by its dimensions",
+    "2d1bc11a": "Nomex (the cited fabric) typed current",
+    "65b003d6": "Kevlar (background mention) typed current",
+    "24f45a81": "generic 'cellulosic materials' from the theory section typed current",
+    "7a9c904c": "ExperimentFamily duplicating the WSTF group from the introduction",
+    "491881c5": "test criterion phrase typed ExperimentFamily",
+    "6fae3157": "fragment joined with a figure caption",
+    "f1d45bf2": "camera setup typed observation",
+    "8b843801": "method rationale typed conclusion",
+    "3ef172e0": "sentence joined with a figure reference",
+    "8dbdffee": "sentence cut at 'I.D.'",
+    "30899fcf": "plot axis description typed experimental condition",
+    "3accb9d4": "plot description and its uncertainty typed experimental condition",
+    "3ec1bddb": "fit line description typed measurement",
+    "783d4ea4": "cited estimate (ref. 20) typed current conclusion",
+    "5113e4b0": "derived worst-case delta typed observation",
+    "d7859bf1": "duplicate conclusion of a9a4aa60",
+    "be87a733": "running page header",
+    "78b1162f": "condition entity as subject of its own magnitude (odd subject)",
+    "874b7cbe": "label 'OD ceramic rod' (fragment)",
+    "fbd73802": "burn criterion of the standard test, which this testing did not use",
+    "30f9954f": "documentary sentence about plots typed experimental configuration",
+    "d61f98f0": "analysis reference-property assumption typed experimental configuration",
+    "54c7d23c": "support does not print the flow sentence"
+   },
+   "carried_judgments": 105,
+   "timing": {
+    "extract_seconds": 1683,
+    "provider_seconds": 500,
+    "local_seconds": 1183,
+    "post_extraction_seconds": 77,
+    "calls": 16,
+    "failed_attempts": {},
+    "served": "120b 16",
+    "input_tokens": 248020,
+    "output_tokens": 54953
+   },
+   "call_seconds": {
+    "p50": 22,
+    "p90": 55,
+    "max": 123,
+    "over_240": 0
+   }
+  },
+  "ptfe_r1": {
+   "official_scorer": "ptfe_live_b4be17d_r1/review/metrics.json",
+   "recall": "28/34",
+   "precision": "137/139",
+   "critical": 0,
+   "new_judgments": "ptfe_live_b4be17d_r1/review/new_judgments.json",
+   "timing": {
+    "extract_seconds": 2475,
+    "provider_seconds": 1192,
+    "local_seconds": 1283,
+    "post_extraction_seconds": 128,
+    "calls": 20,
+    "failed_attempts": {
+     "transient_server": 2
+    },
+    "served": "120b 18",
+    "input_tokens": 235545,
+    "output_tokens": 154792
+   },
+   "call_seconds": {
+    "p50": 27,
+    "p90": 245,
+    "max": 279,
+    "over_240": 2
+   }
+  }
+ },
+ "experiment_outside_evaluation_b": {
+  "textiles_lightning30b_primary": {
+   "recall": "5/29",
+   "correct": [
+    "entities-01",
+    "entities-04",
+    "quantities-14",
+    "quantities-15",
+    "statements-20"
+   ],
+   "precision": "10/19",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "3047b24d": "statement carrying slide labels and the running footer",
+    "e126d7f3": "author-name fragment 'Mary L.' typed publication",
+    "becb344c": "sample label runs two bullets and the test conditions together",
+    "12520c17": "sample label carries the test conditions",
+    "e80ca5ef": "generic product category typed a material",
+    "2d79227d": "test facility typed experimental condition",
+    "223d6f67": "procedure step typed reported observation",
+    "99d77ac3": "normative pass criterion typed reported observation",
+    "75cb3c09": "normative pass criterion typed reported observation"
+   },
+   "carried_judgments": 9,
+   "timing": {
+    "extract_seconds": 112,
+    "provider_seconds": 83,
+    "local_seconds": 29,
+    "post_extraction_seconds": 8,
+    "calls": 4,
+    "failed_attempts": {},
+    "served": "30b 4",
+    "input_tokens": 31938,
+    "output_tokens": 11184
+   },
+   "call_seconds": {
+    "p50": 24,
+    "p90": 32,
+    "max": 32,
+    "over_240": 0
+   }
+  }
+ },
+ "milestone12_for_comparison": {
+  "textiles_r1": "10/29",
+  "regulator_r1": "14/32",
+  "ignition_r1": "11/29",
+  "textiles_r2": "10/29",
+  "regulator_r2": "17/32",
+  "ignition_r2": "14/29"
+ },
+ "variation_causes": {
+  "textiles": "the model typed the custom patches a Material instead of a Sample, so their two values had no valid subject (entities-04, quantities-14/15 lost); one 221 s deadline answered by the fallback",
+  "regulator": "one propositions window failed three times with an immediate network error on the 120b model and was answered by the 30b fallback, which proposed none of the impact times (quantities-11/13/14)",
+  "ignition": "no failed attempt; new correct values for the WSTF chamber pressure, the igniter diameter and the GRC slow flow",
+  "ptfe": "two HTTP 500 answered on retry",
+  "local_time": "local seconds of this round are inflated: the code is b4be17d, before the per-document computation (ae420ab), and the session profiled and replayed on the same machine while ignition, PTFE and regulator ran; textiles spent 1,390 s after the extraction for a reason not established (service.validate takes 4-12 s on the same package)"
+ }
+}

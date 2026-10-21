@@ -42,7 +42,66 @@ Evaluation A only (offline replay of saved inputs, 0 model calls). No evaluation
 - Cache keys: the request schema changes, so every model cache key changes. Saved outputs replay unchanged, but no earlier live response is reused.
 - Tests: `tests/test_model_printed_name.py` (7 tests). The baseline without printed_name is still rejected. The negatives are a word from another clause, an unprinted word, the unit, the value and a joining word.
 
+## Evaluation B at b4be17d (one round, sources in pairs)
+
+Detached from the session: textiles with regulator, then ignition with PTFE, at 600 s per call and 3,600 s per run. Strict recall is against frozen v4 targets. Precision is record by record (`evaluation_b.json`, `adjudication.json`). PTFE uses the official scorer.
+
+| source | recall m13 r1 | m12 r1 / r2 | precision | critical | calls | failed attempts |
+|---|---|---|---|---|---|---|
+| textiles | 7/29 | 10/29 / 10/29 | 17/22 | 0 | 5 | 1 deadline |
+| regulator | 10/32 | 14/32 / 17/32 | 16/30 | 0 | 11 | 4 network |
+| ignition | 15/29 | 11/29 / 14/29 | 86/115 | 0 | 16 | 0 |
+| PTFE (official) | 28/34 | 27/34 / 28/34 | 137/139 | 0 | 20 | 2 HTTP 500 |
+
+Causes of variation:
+- **Textiles (model):** the custom patches were typed Material, not Sample, so their two values had no subject.
+- **Regulator (provider):** the window with the impact times failed three times on the 120b model and was answered by the 30b fallback, which proposed none of them.
+- **Ignition:** gained the WSTF chamber pressure, the igniter diameter and the GRC slow flow.
+- **PTFE:** meets the gate in this run (0.82 recall, 0.986 precision, 0 critical).
+
+The gate (recall >= 0.80 stable across several sources) is not met. The miss diagnosis (`target_miss_diagnosis.md`) still applies: most misses are proposals rejected by a rule.
+
+Latency per call (s), p50 / p90 / max, calls over 240 s:
+- textiles: 17 / 221 / 221, 0
+- regulator: 12 / 69 / 88, 0
+- ignition: 22 / 55 / 123, 0
+- PTFE: 27 / 245 / 279, 2
+
+Only PTFE has calls over 240 s.
+
+Local time this round is inflated, so it is not a clean measurement:
+- The code is b4be17d, which predates the per-document computation below.
+- The session profiled and replayed on the same machine while the runs went on.
+- Textiles spent 1,390 s after its extraction, for a reason not established (`service.validate` takes 4–12 s on the same package). The run summary now records `post_extraction_seconds` to locate it.
+
+Experiment outside evaluation B: textiles with `nvidia/nemotron-3.5-lightning-30b-a3b` as primary model.
+- Result: 5/29 recall, 10/19 precision, 0 critical.
+- Time: 112 s of extraction (4 calls, p90 32 s), against 331 s for the 120b.
+- Conclusion: faster, but with lower recall and precision.
+
+## Engineering after evaluation B (no change to criteria, scorer, ontology or targets)
+
+These commits change no criterion, so the 46-input replay must stay identical:
+- `ae420ab` computes a document's page titles, running headers, slide-deck reading and major sections once per document, and caches text normalization.
+  - Profile (regulator r1 replay): before, `validate_output` took 508 of 538 s, with `running_headers` called 8,336 times (305 s); after, the replay took 16 s.
+  - Replay of the 46 inputs: 4 min 18 s instead of about 40 min.
+- `ae642ed` records each call's start and a per-run `timing` summary in `summary.json`. It covers provider seconds (overlapping calls counted once), local, setup and post-extraction seconds, failures by cause, p50/p90/max, calls over 240 s, tokens and the per-call detail.
+- `3e746b1` adds window prefetch (`SCIENCE_WINDOW_CONCURRENCY`, default 3).
+  - At the start of each stage, each window's first request is computed exactly as the sequential loop computes it, and up to three are sent ahead.
+  - The loop is unchanged and merges in window order. It uses an answer only when its request is byte-for-byte identical, and otherwise calls itself.
+  - SQLite and the merges stay on the main thread.
+  - A rate limit stops sending ahead; the ordinary Retry-After backoff then applies.
+  - Receipts count sent, used, discarded and cancelled requests.
+- `09bef51`, `36a3fe6` add the Anthropic transport, selected only by `SCIENCE_PROVIDER=anthropic`. NVIDIA stays the default.
+
+Proof:
+- Replay of the 46 inputs after each commit gives a whole package identical to b4be17d, 46 of 46.
+- `tests/test_window_prefetch.py`: concurrency 1 against 3 sends the same requests and yields the same records with overlapping calls; a 429 stops sending ahead.
+- `tests/test_run_timing.py`: overlapping calls count once.
+- `tests/test_anthropic_provider.py`: stand-in client, no live call.
+
 ## Pending
-- Target-by-target miss diagnosis: done in `target_miss_diagnosis.md`/`.json` (69 of 104 missed target-run pairs (66%) are proposals rejected by a rule; the main code is `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT`).
-- Evaluation B of milestone 13 (one round, sources two at a time, detached runs).
+
+- Live pilot with the Anthropic transport (textiles with `claude-sonnet-5-5`, at concurrency 1 and 3, then `claude-opus-5-5`), outside evaluation B. Changing the primary model waits for Liam.
+- Next batch from the miss diagnosis: rejected proposals, led by `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT` (printed_name, now in the request) and `STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE`.
 - No live run was in progress at the shutdown of 2026-10-21 19:19 UTC; none was lost.
