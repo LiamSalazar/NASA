@@ -132,6 +132,7 @@ def test_one_call_returns_the_nvidia_shaped_response():
     assert response.finish_reason == "stop"
     assert response.usage["total_tokens"] == 1040 and response.usage["prompt_tokens"] == 1000
     assert response.metadata["served_models"] == ["claude-sonnet-5-5"]
+    assert response.metadata["started_at"]
     assert seen[-1] == '{"statements": []}'
     (request,) = c.client.requests
     # Adaptive thinking is on by default: no thinking, temperature or sampling sent.

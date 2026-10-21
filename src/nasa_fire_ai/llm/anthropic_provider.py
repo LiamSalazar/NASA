@@ -10,6 +10,7 @@ import json
 import re
 import threading
 import time
+from datetime import UTC, datetime
 
 import anthropic
 
@@ -132,6 +133,7 @@ def complete_scientific_anthropic(
     request_tokens = max(max_tokens, MIN_MAX_TOKENS)
     fmt = output_format(response_format)
     metadata = {
+        "started_at": datetime.now(UTC).isoformat(),
         "provider": "anthropic",
         "requested_model": model,
         "stream": True,
