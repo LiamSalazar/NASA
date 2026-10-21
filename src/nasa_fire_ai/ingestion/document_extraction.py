@@ -3648,9 +3648,32 @@ def recover_group_classes(output, document):
                 else "SAMPLE_NAMED_EXACTLY_AS_A_PROPOSED_MATERIAL",
             }
             entities[index] = {**e, "class_id": "Material"}
+    # "Sixty O2 Wetting Dry Impact Tests", "First ... Impact Test Series": a printed
+    # name of several tests is a group of runs, whatever class the model proposed;
+    # it is revalidated as an ExperimentFamily under its printed name.
+    printed = " ".join(s.get("text", "") for s in document.get("segments", []))
+    for index, e in enumerate(entities):
+        if (
+            e["key"] not in recovered
+            and e["class_id"] == "ExperimentalRun"
+            and SERIES_NAME.search(e["label"])
+            and mentions(e["label"], printed)
+        ):
+            recovered[e["key"]] = {
+                "proposed_class_id": "ExperimentalRun",
+                "recovered_class_id": "ExperimentFamily",
+                "basis": "PRINTED_NAME_OF_SEVERAL_TESTS_IS_A_GROUP",
+            }
+            entities[index] = {**e, "class_id": "ExperimentFamily"}
     if not recovered:
         return output, {}
     return {**output, "entities": entities}, recovered
+
+
+# The printed plural of a test unit names a series, never one run ("Run 3", "Test A").
+SERIES_NAME = re.compile(
+    r"\b(?:tests|test\s+series|impact\s+series|series|runs|trials|experiments)\b", re.IGNORECASE
+)
 
 
 def structure_entity_candidates(output, package, document):
