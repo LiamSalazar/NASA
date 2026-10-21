@@ -32,6 +32,6 @@ Evaluation A only (offline replay of saved inputs, 0 model calls). No evaluation
 ## Pending
 
 - Correction 1 (`printed_name` in the model request plus a subject by group subsection) is not started. It changes the request schema and therefore the cache keys.
-- Target-by-target miss diagnosis: done in `target_miss_diagnosis.md`/`.json` (69 of 113 misses are proposals rejected by a rule; the main code is `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT`).
+- Target-by-target miss diagnosis: done in `target_miss_diagnosis.md`/`.json` (69 of 104 missed target-run pairs (66%) are proposals rejected by a rule; the main code is `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT`).
 - Evaluation B of milestone 13 (one round, sources two at a time, detached runs).
 - No live run was in progress at the shutdown of 2026-10-21 19:19 UTC; none was lost.
