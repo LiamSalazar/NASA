@@ -3710,11 +3710,14 @@ def structure_entity_candidates(output, package, document):
     # O2 and 8.2 psia": a thing the source itself prints as tested at settings
     # is a specimen of this study when no proposed subject names it. The name
     # is its printed line, with the line before it when the line continues it.
+    # A proposed specimen or group named by part of the line is the same thing;
+    # so is a material that heads the line ("Alpha seals" are Alpha's). A material
+    # printed later in the line ("... sewn to outer jacket fabric") is only a
+    # constituent and never hides the specimen the line names.
     subjects = [
-        e["label"]
-        for e in output["entities"]
-        if e["class_id"] in {"Sample", "ExperimentFamily", "Material"}
+        e["label"] for e in output["entities"] if e["class_id"] in {"Sample", "ExperimentFamily"}
     ]
+    materials = [e["label"] for e in output["entities"] if e["class_id"] == "Material"]
     for e in package["evidence"]:
         text = e["text"]
         for m in re.finditer(
@@ -3743,6 +3746,15 @@ def structure_entity_candidates(output, package, document):
                 )
                 or not re.match(r"[A-Za-z0-9]", name)
                 or any(mentions(s, name) or mentions(name, s) for s in subjects)
+                or any(
+                    mentions(form, m)
+                    or re.match(re.escape(normalized(m)) + r"(?![\w-])", normalized(form))
+                    # The printed line itself, before a continued line is joined:
+                    # "100% PBI knit fabric coupons" under a bullet "Fire-resistant
+                    # patches" is headed by the material, so it names no new specimen.
+                    for form in (name, re.sub(r"^\W+", "", lines[-1]))
+                    for m in materials
+                )
             ):
                 continue
             start = before.rfind(lines[-1] if len(words) == len(lines[-1].split()) else lines[-2])
