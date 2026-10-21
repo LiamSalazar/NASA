@@ -268,7 +268,11 @@ def page_continuation_context(spans, evidence):
 def consolidate_validated_variants(records, entities, evidence, document):
     """One active exact assertion; original inference variants remain auditable."""
     primary = {}
-    for record in sorted(records, key=lambda r: r["id"]):
+    # A proposal with a known study owns its duplicates before one whose study
+    # is unknown.
+    for record in sorted(
+        records, key=lambda r: ((r.get("proposal") or {}).get("study") == "unknown", r["id"])
+    ):
         if record["status"] == "REJECTED":
             continue
         item = record["proposal"]
@@ -373,14 +377,14 @@ def consolidate_validated_variants(records, entities, evidence, document):
             )
         if key is None and kind == "entities" and record.get("entity_id"):
             # Two proposals that resolve to the same entity, class and study are one
-            # entity ("Polycarbonate" and "polycarbonate"). Proposals that differ in
-            # study or class stay separate for review.
+            # entity ("Polycarbonate" and "polycarbonate"); an unknown study does not
+            # make another entity of a current one. A cited proposal stays separate.
             key = (
                 kind,
                 record["status"],
                 record["entity_id"],
                 item.get("class_id"),
-                item.get("study"),
+                "current" if item.get("study") in {"current", "unknown"} else item.get("study"),
             )
         if key is None:
             continue
