@@ -371,6 +371,17 @@ def consolidate_validated_variants(records, entities, evidence, document):
                 ),
                 tuple(sorted(record["reasons"])),
             )
+        if key is None and kind == "entities" and record.get("entity_id"):
+            # Two proposals that resolve to the same entity, class and study are one
+            # entity ("Polycarbonate" and "polycarbonate"). Proposals that differ in
+            # study or class stay separate for review.
+            key = (
+                kind,
+                record["status"],
+                record["entity_id"],
+                item.get("class_id"),
+                item.get("study"),
+            )
         if key is None:
             continue
         if key not in primary:

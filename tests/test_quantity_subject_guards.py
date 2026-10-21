@@ -118,3 +118,22 @@ def test_an_absolute_value_with_a_comparison_elsewhere_is_not_a_difference(servi
     )
     (record,) = records
     assert "RELATIVE_DIFFERENCE_IS_A_DERIVED_QUANTITY" not in record["reasons"]
+
+
+def test_one_entity_proposed_twice_is_one_entity_but_a_different_study_is_kept(service):
+    text = "Polycarbonate was tested. The polycarbonate samples burned."
+    p = submitted(service, "II. Methods\n" + text)
+    o = Output().model_dump()
+    o["entities"] = [
+        entity(p, "a", "Polycarbonate", "Material", "Polycarbonate was tested."),
+        entity(p, "b", "polycarbonate", "Material", "The polycarbonate samples burned."),
+    ]
+    records = [r for r in validate(service, p, o)["records"] if r["kind"] == "entities"]
+    supported = [r for r in records if r["status"] == "SOURCE_SUPPORTED"]
+    assert len({r["entity_id"] for r in supported}) == 1
+    assert sum(not r.get("duplicate_of") for r in supported) == 1
+    # Negative: the same name with another study stays a separate proposal.
+    o["entities"][1]["study"] = "cited"
+    records = [r for r in validate(service, p, o)["records"] if r["kind"] == "entities"]
+    supported = [r for r in records if r["status"] == "SOURCE_SUPPORTED"]
+    assert sum(not r.get("duplicate_of") for r in supported) == len(supported)
