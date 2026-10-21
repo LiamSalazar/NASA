@@ -80,3 +80,41 @@ def test_a_condition_may_carry_its_own_printed_magnitude(service):
     )
     (record,) = records
     assert "QUANTITY_SUBJECT_IS_A_CONDITION" not in record["reasons"]
+
+
+@pytest.mark.parametrize(
+    "sentence,expression",
+    [
+        (
+            (
+                "Alpha test series was repeated until extinguishments occurred 1% lower in "
+                "oxygen concentration than a case where it did not."
+            ),
+            "1",
+        ),
+        ("Alpha test series burned at 2% higher in oxygen concentration than Beta.", "2"),
+        ("Alpha test series extinguished at a value 3% lower in oxygen concentration.", "3"),
+    ],
+)
+def test_a_printed_difference_is_never_an_absolute_value(service, sentence, expression):
+    records, _ = quantities(
+        service,
+        sentence,
+        [("alpha", "Alpha test series", "ExperimentFamily", "Alpha test series")],
+        [("alpha", "oxygen concentration", expression, "%", "reported_quantity", sentence)],
+    )
+    (record,) = records
+    assert record["status"] != "SOURCE_SUPPORTED"
+    assert "RELATIVE_DIFFERENCE_IS_A_DERIVED_QUANTITY" in record["reasons"]
+
+
+def test_an_absolute_value_with_a_comparison_elsewhere_is_not_a_difference(service):
+    sentence = "Alpha test series was run at 21% oxygen concentration, lower than Beta."
+    records, _ = quantities(
+        service,
+        sentence,
+        [("alpha", "Alpha test series", "ExperimentFamily", "Alpha test series")],
+        [("alpha", "oxygen concentration", "21", "%", "experimental_configuration", sentence)],
+    )
+    (record,) = records
+    assert "RELATIVE_DIFFERENCE_IS_A_DERIVED_QUANTITY" not in record["reasons"]

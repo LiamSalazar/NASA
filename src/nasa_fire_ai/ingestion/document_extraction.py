@@ -3256,11 +3256,13 @@ def validate_quantity_subject(
             record["status"] = "UNRESOLVED"
             record["reasons"].append("QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED")
     for value in record.get("quantity_value_spans", []):
-        # "an oxygen concentration 5 to 10% higher than the ambient": the value is
-        # a printed difference from another quantity, not the quantity itself.
-        after = evidence[value["evidence_id"]]["text"][value["end"] : value["end"] + 40]
+        # "an oxygen concentration 5 to 10% higher than the ambient", "1% lower in
+        # oxygen concentration than a case where ...": the value is a printed
+        # difference from another quantity, not the quantity itself.
+        after = evidence[value["evidence_id"]]["text"][value["end"] : value["end"] + 80]
         if item["epistemic"] != "derived_quantity" and re.match(
-            r"\s*%?\s*(?:higher|lower|greater|less|more|above|below|faster|slower)\s+than\b",
+            r"\s*%?\s*(?:higher|lower|greater|less|more|above|below|faster|slower)\s+"
+            r"(?:than\b|in\s+[A-Za-z])",
             after,
             re.IGNORECASE,
         ):
