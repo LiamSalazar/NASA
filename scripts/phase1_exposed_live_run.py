@@ -24,6 +24,7 @@ import re
 import shutil
 import subprocess
 import sys
+from collections import Counter
 from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
@@ -44,6 +45,74 @@ def load(path):
     opener = gzip.open if path.suffix == ".gz" else open
     with opener(path, "rt", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def timing_summary(attempts, started, completed):
+    """Where a run's time went: provider calls, local work between them, failed attempts.
+
+    Provider seconds are the union of call intervals when calls record their start,
+    so calls that overlap count once; local seconds are the rest of the wall clock.
+    """
+    from datetime import datetime
+
+    wall = (datetime.fromisoformat(completed) - datetime.fromisoformat(started)).total_seconds()
+    calls, intervals, causes = [], [], Counter()
+    for attempt in attempts:
+        outcome = attempt.get("outcome") or {}
+        transport = outcome.get("transport") or {}
+        duration = transport.get("duration_seconds") or 0
+        first = transport.get("time_to_first_token_seconds")
+        usage = outcome.get("usage") or {}
+        if outcome.get("error_type"):
+            causes[outcome["error_type"]] += 1
+        calls.append(
+            {
+                "stage": attempt.get("stage"),
+                "model": attempt.get("requested_model"),
+                "seconds": round(duration, 1),
+                "first_token_seconds": None if first is None else round(first, 1),
+                "generation_seconds": None if first is None else round(duration - first, 1),
+                "input_tokens": usage.get("prompt_tokens"),
+                "output_tokens": usage.get("completion_tokens"),
+                "error": outcome.get("error_type"),
+            }
+        )
+        if transport.get("started_at"):
+            begin = datetime.fromisoformat(transport["started_at"]).timestamp()
+            intervals.append((begin, begin + duration))
+    busy = 0.0
+    if intervals and len(intervals) == len(calls):
+        end = None
+        for begin, finish in sorted(intervals):
+            if end is None or begin > end:
+                busy += finish - begin
+                end = finish
+            elif finish > end:
+                busy += finish - end
+                end = finish
+    else:
+        busy = sum(c["seconds"] for c in calls)
+    seconds = sorted(c["seconds"] for c in calls)
+
+    def quantile(q):
+        return seconds[min(len(seconds) - 1, int(q * len(seconds)))] if seconds else None
+
+    return {
+        "wall_seconds": round(wall, 1),
+        "provider_seconds": round(busy, 1),
+        "provider_call_seconds_total": round(sum(seconds), 1),
+        "local_seconds": round(max(0.0, wall - busy), 1),
+        "calls": len(calls),
+        "failed_attempts": sum(causes.values()),
+        "failure_causes": dict(causes),
+        "call_seconds_p50": quantile(0.5),
+        "call_seconds_p90": quantile(0.9),
+        "call_seconds_max": seconds[-1] if seconds else None,
+        "calls_over_240_seconds": sum(s > 240 for s in seconds),
+        "input_tokens": sum(c["input_tokens"] or 0 for c in calls),
+        "output_tokens": sum(c["output_tokens"] or 0 for c in calls),
+        "per_call": calls,
+    }
 
 
 def write(path, value):
@@ -67,6 +136,7 @@ def git(*args):
 
 
 def main():
+    launched = datetime.now(UTC).isoformat()
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--pdf", type=Path, required=True)
     parser.add_argument("--provenance-from", type=Path, required=True)
@@ -184,6 +254,14 @@ def main():
             "sqlite_integrity": registry.db.execute("PRAGMA integrity_check").fetchone()[0],
             "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
         }
+        summary["timing"] = timing_summary(attempts, started, completed)
+        # Workspace setup before the extraction, and validation after it.
+        summary["timing"]["setup_seconds"] = round(
+            (datetime.fromisoformat(started) - datetime.fromisoformat(launched)).total_seconds(), 1
+        )
+        summary["timing"]["post_extraction_seconds"] = round(
+            (datetime.now(UTC) - datetime.fromisoformat(completed)).total_seconds(), 1
+        )
         write(out / "submission.json", submission)
         write(out / "attempts.json.gz", {"attempts": attempts})
         write(out / "prepared.json.gz", prepared)

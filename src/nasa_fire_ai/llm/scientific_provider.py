@@ -10,6 +10,7 @@ import threading
 import time
 from contextlib import contextmanager
 from dataclasses import dataclass
+from datetime import UTC, datetime
 
 import httpx
 from openai import APIConnectionError, APIError, APIStatusError, APITimeoutError
@@ -133,6 +134,7 @@ def complete_scientific(
     served_models = set()
     expired = threading.Event()
     metadata = {
+        "started_at": datetime.now(UTC).isoformat(),
         "requested_model": model,
         "stream": stream,
         "max_output_tokens": max_tokens,
