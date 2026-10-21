@@ -2,11 +2,12 @@
 
 import re
 
-from nasa_fire_ai.ingestion.source_spans import normalized_with_offsets, recover_span
+from nasa_fire_ai.ingestion.document_memo import document_memo
+from nasa_fire_ai.ingestion.source_spans import normalized_text, recover_span
 
 
 def norm(text):
-    return normalized_with_offsets(text)[0].lower().strip()
+    return normalized_text(text).lower().strip()
 
 
 def contains(label, text):
@@ -22,14 +23,34 @@ ROMAN = re.compile(r"^[IVX]+[.)]\s+", re.IGNORECASE)
 
 def logical_section(span, document):
     """A prominent title or numbered list does not override its parent section."""
+    order, sources, majors = document_memo(
+        document, "major_sections", lambda: major_sections(document)
+    )
+    if span["evidence_id"] not in sources:
+        return "UNSPECIFIED"
+    candidates = [
+        h
+        for h in majors[sources[span["evidence_id"]]]
+        if (order[h["evidence_id"]], h["start"]) <= (order[span["evidence_id"]], span["start"])
+    ]
+    if candidates:
+        return max(candidates, key=lambda h: (order[h["evidence_id"]], h["start"]))["title"]
+    return "UNSPECIFIED"
+
+
+def major_sections(document):
+    """Page order, each page's source, and each source's major section headings."""
     order = {
         key: i
         for i, key in enumerate(dict.fromkeys(s["evidence_id"] for s in document["segments"]))
     }
-    segments = [s for s in document["segments"] if s["evidence_id"] == span["evidence_id"]]
-    if not segments:
-        return "UNSPECIFIED"
-    sid = segments[0]["source_id"]
+    sources = {}
+    for s in document["segments"]:
+        sources.setdefault(s["evidence_id"], s["source_id"])
+    return order, sources, {sid: source_majors(sid, document) for sid in set(sources.values())}
+
+
+def source_majors(sid, document):
     headings = [h for h in document["sections"] if h.get("source_id") == sid]
     roman_mode = any(
         re.match(
@@ -39,7 +60,7 @@ def logical_section(span, document):
         )
         for h in headings
     )
-    candidates = []
+    majors = []
     for h in headings:
         # Strip only an outline number ("3", "2.1.") or a punctuated letter/roman
         # numeral ("A.", "IV)"); an unpunctuated first word ("Results") is the title.
@@ -60,14 +81,9 @@ def logical_section(span, document):
         major = (bool(ROMAN.match(h["title"])) or standard) if roman_mode else standard
         if re.fullmatch(r"references|acknowledg\w*|abstract|nomenclature", body, re.IGNORECASE):
             major = True
-        if major and (order[h["evidence_id"]], h["start"]) <= (
-            order[span["evidence_id"]],
-            span["start"],
-        ):
-            candidates.append(h)
-    if candidates:
-        return max(candidates, key=lambda h: (order[h["evidence_id"]], h["start"]))["title"]
-    return "UNSPECIFIED"
+        if major:
+            majors.append(h)
+    return majors
 
 
 def figure_group_support(subject, spans, entities, document):

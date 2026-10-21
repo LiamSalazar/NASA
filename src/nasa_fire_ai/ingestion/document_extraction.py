@@ -18,6 +18,7 @@ from typing import Literal
 from openai import OpenAIError
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
+from nasa_fire_ai.ingestion.document_memo import document_memo
 from nasa_fire_ai.ingestion.document_structure import (
     context_for,
     identity,
@@ -38,7 +39,10 @@ from nasa_fire_ai.ingestion.scientific_proposals import (
     deterministic_propositions,
     normative_instruction,
 )
-from nasa_fire_ai.ingestion.source_spans import normalized_with_offsets, recover_span
+from nasa_fire_ai.ingestion.source_spans import (
+    normalized_text,
+    recover_span,
+)
 from nasa_fire_ai.llm.interfaces import NvidiaStructuredClient
 from nasa_fire_ai.llm.scientific_provider import ScientificTransportError, complete_scientific
 
@@ -272,7 +276,7 @@ def stage_prompt(stage, focus=None):
 
 
 def normalized(text):
-    return normalized_with_offsets(text)[0].lower().strip()
+    return normalized_text(text).lower().strip()
 
 
 def mentions(label, text):
@@ -915,18 +919,25 @@ def page_title(span, document):
     A slide deck prints no section headings the structure reader recognizes; each
     slide's title is the section of its page.
     """
-    text = "".join(
-        s.get("text", "")
-        for s in document.get("segments", [])
-        if s["evidence_id"] == span["evidence_id"]
+    titles = document_memo(document, "page_titles", dict)
+    if span["evidence_id"] not in titles:
+        titles[span["evidence_id"]] = first_page_line(span["evidence_id"], document)
+    return titles[span["evidence_id"]]
+
+
+def first_page_line(evidence_id, document):
+    text = _page_texts(document).get(evidence_id, "")
+    headers = document_memo(
+        document,
+        "running_headers",
+        lambda: running_headers({e: {"text": t} for e, t in _page_texts(document).items()}),
     )
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     for line in lines[:4]:
         if re.fullmatch(r"\d{1,4}", line) or line in {"•", "-"}:
             continue
         if len(re.findall(r"[A-Za-z]{2,}", line)) >= 4 and any(
-            normalized(re.sub(r"\d+", " ", line)) == h
-            for h in running_headers({e: {"text": t} for e, t in _page_texts(document).items()})
+            normalized(re.sub(r"\d+", " ", line)) == h for h in headers
         ):
             continue
         return line
@@ -935,6 +946,10 @@ def page_title(span, document):
 
 def slide_deck(document):
     """Whether most pages open with a short title line, as presentation slides do."""
+    return document_memo(document, "slide_deck", lambda: titled_pages(document))
+
+
+def titled_pages(document):
     pages = list(_page_texts(document))
     if len(pages) < 4:
         return False
@@ -948,6 +963,10 @@ def slide_deck(document):
 
 
 def _page_texts(document):
+    return document_memo(document, "page_texts", lambda: joined_page_texts(document))
+
+
+def joined_page_texts(document):
     texts = {}
     for s in document.get("segments", []):
         texts[s["evidence_id"]] = texts.get(s["evidence_id"], "") + s.get("text", "")

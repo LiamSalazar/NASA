@@ -2,6 +2,13 @@
 
 import re
 import unicodedata
+from functools import lru_cache
+
+
+@lru_cache(maxsize=1 << 15)
+def normalized_text(text):
+    """The whitespace- and NFC-normalized text alone, cached: it is pure."""
+    return normalized_with_offsets(text)[0]
 
 
 def normalized_with_offsets(text):
