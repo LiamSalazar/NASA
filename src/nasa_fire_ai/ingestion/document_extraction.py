@@ -6,9 +6,11 @@ subject applicability are computed independently. Nothing grants approval.
 
 import copy
 import json
+import os
 import re
 import time
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
@@ -6824,8 +6826,51 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         )
 
     provider_blocked = [False]
+    # Windows of one stage are independent requests: up to this many are sent
+    # ahead of their turn, and each answer is still merged in window order.
+    concurrency = max(1, int(os.getenv("SCIENCE_WINDOW_CONCURRENCY", "3")))
+    prefetched, prefetch_counts = {}, {"concurrency": concurrency, "sent": 0, "used": 0}
+    pool = ThreadPoolExecutor(concurrency) if concurrency > 1 else None
 
-    def process_stage(window, stage, focus=None, subject=None):
+    def rate_limited(ahead):
+        # A rate limit stops sending ahead: the windows not yet sent wait for
+        # their turn, where the ordinary Retry-After backoff applies.
+        error = None if ahead.cancelled() else ahead.exception()
+        if isinstance(error, ScientificTransportError) and error.kind == "rate_limit":
+            prefetch_counts["rate_limited"] = True
+
+    def prefetch(stage_windows, stage):
+        if pool is None or not (model_enabled and client) or recovery_only:
+            return
+        for window in stage_windows:
+            if prefetch_counts.get("rate_limited"):
+                return
+            planned = process_stage(window, stage, probe=True)
+            if planned is None or identity(planned["call"]) in prefetched:
+                continue
+            remaining = (
+                float("inf")
+                if budget.timeout_seconds is None
+                else budget.timeout_seconds - (time.monotonic() - started)
+            )
+            prefetched[identity(planned["call"])] = pool.submit(
+                complete_scientific,
+                client,
+                **planned["call"],
+                timeout=min(planned["timeout"], remaining),
+                stream=budget.stream and getattr(client, "supports_streaming", False) is True,
+            )
+            prefetched[identity(planned["call"])].add_done_callback(rate_limited)
+            prefetch_counts["sent"] += 1
+
+    def settle_prefetch():
+        """Unused requests are cancelled if not yet sent, and counted."""
+        for ahead in prefetched.values():
+            ahead.cancel()
+        prefetch_counts["discarded"] = prefetch_counts.get("discarded", 0) + len(prefetched)
+        prefetched.clear()
+
+    def process_stage(window, stage, focus=None, subject=None, probe=False):
         nonlocal calls, tokens, cached, started_provider
         prompt = stage_prompt(stage, focus)
         segment = window["members"][0]
@@ -7232,6 +7277,31 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         )
         replay = service.registry.get_phase3_cache(key, "scientific_document_segment")
         partial = service.registry.get_phase3_cache(key, "scientific_document_failure")
+        if probe:
+            # What the window's first attempt would send, read without changing
+            # anything; a cached or previously failed window is not prefetched.
+            if not (model_enabled and client) or replay or partial:
+                return None
+            payload = json.dumps(request, ensure_ascii=False, separators=(",", ":"))
+            reserve = (
+                len((prompt + payload + json.dumps(format_mode)).encode())
+                + capacity
+                + len(images) * 4096
+            )
+            if (reserve - capacity) // 2 + capacity + 512 > envelope.context_tokens:
+                return None
+            return {
+                "call": {
+                    "model": task_model,
+                    "system": prompt,
+                    "payload": payload,
+                    "max_tokens": capacity,
+                    "response_format": format_mode,
+                    "reasoning_budget": reasoning,
+                    "images": images,
+                },
+                "timeout": timeout_for(capacity, budget, envelope),
+            }
         if model_enabled and partial and partial.get("output"):
             merge_output(output, partial["output"])
         outcome = {
@@ -7379,20 +7449,47 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         if budget.timeout_seconds is None
                         else budget.timeout_seconds - (time.monotonic() - started)
                     )
-                    response = complete_scientific(
-                        client,
-                        model=model_options[model_index],
-                        system=prompt,
-                        payload=payload,
-                        max_tokens=capacity,
-                        timeout=min(timeout_for(capacity, budget, envelope), remaining),
-                        stream=budget.stream
-                        and getattr(client, "supports_streaming", False) is True,
-                        response_format=format_mode,
-                        reasoning_budget=reasoning,
-                        on_progress=checkpoint_stream,
-                        images=images,
-                    )
+                    call = {
+                        "model": model_options[model_index],
+                        "system": prompt,
+                        "payload": payload,
+                        "max_tokens": capacity,
+                        "response_format": format_mode,
+                        "reasoning_budget": reasoning,
+                        "images": images,
+                    }
+                    ahead = prefetched.pop(identity(call), None)
+                    if prefetch_counts.get("rate_limited"):
+                        for other in prefetched.values():
+                            other.cancel()
+                    if ahead is not None and ahead.cancelled():
+                        ahead = None
+                        prefetch_counts["cancelled"] = prefetch_counts.get("cancelled", 0) + 1
+                    if ahead is not None:
+                        # The identical request was sent ahead of its turn; its
+                        # answer is used exactly as a live one would be.
+                        outcome["prefetch"] = "USED"
+                        prefetch_counts["used"] += 1
+                        try:
+                            response = ahead.result()
+                        except ScientificTransportError as error:
+                            checkpoint_stream(
+                                error.content, {**error.metadata, "error_type": error.kind}
+                            )
+                            raise
+                        checkpoint_stream(
+                            response.content,
+                            {**response.metadata, "finish_reason": response.finish_reason},
+                        )
+                    else:
+                        response = complete_scientific(
+                            client,
+                            **call,
+                            timeout=min(timeout_for(capacity, budget, envelope), remaining),
+                            stream=budget.stream
+                            and getattr(client, "supports_streaming", False) is True,
+                            on_progress=checkpoint_stream,
+                        )
                     raw, finish, usage = response.content, response.finish_reason, response.usage
                     outcome.update(finish_reason=finish, usage=usage, transport=response.metadata)
                     if usage:
@@ -7678,6 +7775,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
     for stage in [stage for stage in STAGES if stage != "relationships"]:
         if recovery_only and stage != "identity":
             continue
+        prefetch(windows, stage)
         for window in windows:
             if recovery_only and stage == "identity" and window["id"] in prior_identity_windows:
                 outcomes.append(
@@ -7704,6 +7802,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 "DISABLED",
             }:
                 deferred.append((window, stage, result))
+        settle_prefetch()
         if stage == "identity" and model_enabled:
             checked_identities = validate_output(output, package, document, semantic)
             sample_pages = {
@@ -7812,6 +7911,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 break
             result["coverage_recovery"] = "VERIFIED_SOURCE_QUANTITY_PROGRESS"
     if not recovery_only:
+        prefetch(windows, "relationships")
         for window in windows:
             result = process_stage(window, "relationships")
             if result["model"] not in {
@@ -7821,6 +7921,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 "DISABLED",
             }:
                 deferred.append((window, "relationships", result))
+        settle_prefetch()
         if model_enabled:
             # A group whose own subsection prints conditions, materials, samples
             # or interventions, but which no accepted relation links yet, gets
@@ -7856,6 +7957,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             recover_stage(window, "relationships")
     for window, stage, result in deferred:
         process_task(window, stage, result=result)
+    if pool is not None:
+        pool.shutdown(wait=False, cancel_futures=True)
     resolve_explicit_scopes(output, document)
     # Resolving a retained unresolved scope can make two proposals identical.
     # Canonicalize again rather than accumulating duplicates on every replay.
@@ -7905,6 +8008,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             "model": settings.scientific_model if model_enabled else None,
             "configured_fallback_models": list(settings.science_fallback_models),
             "new_model_calls": calls,
+            **({"window_prefetch": prefetch_counts} if prefetch_counts["sent"] else {}),
             "restored_proposals_after_source_validation": restored_count,
             "recovered_cached_proposals_after_source_validation": recovered_cached_proposals,
             "targeted_recovery_mode": recovery_only,
