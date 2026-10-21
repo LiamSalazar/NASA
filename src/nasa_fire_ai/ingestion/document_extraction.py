@@ -667,6 +667,76 @@ def printed_heading_before(span, document):
     return max(preceding, key=lambda h: (order[h["evidence_id"]], h["start"]))
 
 
+# Section roles a scientific paper uses for what is not its own experiment.
+BACKGROUND_SECTION_ROLE = re.compile(
+    r"\b(?:introduction|background|theory|theoretical|analysis|analyses|analytical|"
+    r"model(?:s|ing|ling)?|literature|previous\s+work|prior\s+work|references)\b",
+    re.IGNORECASE,
+)
+# A printed equation's number closes its own line ("... (Eq. 7)"); a reference
+# inside a sentence ("radiative loss (Eq. 8) resulting from") does not.
+PRINTED_EQUATION = re.compile(
+    r"\(\s*Eq(?:uation)?s?\.?\s*\d+\s*\)[ \t]*$", re.IGNORECASE | re.MULTILINE
+)
+
+
+def background_or_analysis_span(span, document):
+    """Whether the span's own printed section is background, theory or analysis.
+
+    The nearest printed section (a slide's title in a deck) is such when its
+    title names that role, or when it prints numbered equations ("(Eq. 7)"):
+    what it describes is not this study's own experiment, whatever it is called.
+    """
+    heading = printed_heading_before(span, document)
+    if not heading:
+        return False
+    # Only a paper's numbered major sections run across pages; in a slide deck
+    # a heading governs its own page ("Background" on slide 2 is not slide 6's).
+    paged = not any(
+        re.match(r"^[IVX]+[.)]\s", h["title"].strip()) for h in document.get("sections", [])
+    )
+    if paged and heading["evidence_id"] != span["evidence_id"]:
+        return False
+
+    def key(h):
+        return (h["evidence_id"], h["start"])
+
+    if BACKGROUND_SECTION_ROLE.search(heading_title(heading["title"])):
+        return True
+    # In a paper, a subsection of a background or analysis section is one too.
+    major = section_for_span(span, document)
+    if not paged and major and BACKGROUND_SECTION_ROLE.search(major):
+        return True
+    return key(heading) in equation_headings(document)
+
+
+# The headings under which a numbered equation is printed, per document object;
+# kept outside the document so that nothing is added to what it serializes.
+_EQUATION_HEADINGS = {}
+
+
+def equation_headings(document):
+    cached = _EQUATION_HEADINGS.get(id(document))
+    if cached and cached[0] is document:
+        return cached[1]
+    found = set()
+    for segment in document.get("segments", []):
+        for match in PRINTED_EQUATION.finditer(segment.get("text", "")):
+            at = printed_heading_before(
+                {
+                    "evidence_id": segment["evidence_id"],
+                    "start": segment.get("start", 0) + match.start(),
+                },
+                document,
+            )
+            if at:
+                found.add((at["evidence_id"], at["start"]))
+    if len(_EQUATION_HEADINGS) > 64:
+        _EQUATION_HEADINGS.clear()
+    _EQUATION_HEADINGS[id(document)] = (document, found)
+    return found
+
+
 def under_group_heading(span, entities, document):
     """Whether the nearest heading before the span names a proposed group."""
     heading = printed_heading_before(span, document)
@@ -5239,6 +5309,16 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                     }:
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("CURRENT_OR_CITED_STUDY_UNRESOLVED")
+                    if (
+                        item["class_id"] not in {"Investigation", "Material"}
+                        and item["study"] != "cited"
+                        and spans
+                        and all(background_or_analysis_span(s, document) for s in spans)
+                    ):
+                        # Named only in background, theory or analysis: a concept the
+                        # paper discusses, not an entity of its own experiment.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("SUPPORT_ONLY_IN_BACKGROUND_OR_ANALYSIS_SECTION")
                     if item["study"] in {"current", "cited"} and item["class_id"] in {
                         "Material",
                         "Sample",
@@ -5578,6 +5658,15 @@ def validate_output(output, package, document, semantic, recover_roles=True):
                             item["subjects"] = []
                             record["status"] = "UNRESOLVED"
                             record["reasons"].append("STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE")
+                    if (
+                        item["epistemic"] in {"measured_observation", "experimental_configuration"}
+                        and spans
+                        and all(background_or_analysis_span(s, document) for s in spans)
+                    ):
+                        # An observation or setup printed only in background, theory or
+                        # analysis is not this study's own experiment.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("SUPPORT_ONLY_IN_BACKGROUND_OR_ANALYSIS_SECTION")
                     if (
                         item["epistemic"] == "derived_quantity"
                         and not derivation
