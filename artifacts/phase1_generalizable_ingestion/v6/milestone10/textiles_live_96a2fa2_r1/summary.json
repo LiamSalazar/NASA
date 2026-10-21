@@ -1,0 +1,1116 @@
+{
+  "approvals": 0,
+  "attempts": 6,
+  "completed_at": "2026-10-21T04:48:40.496777+00:00",
+  "configuration": {
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "fallback_models": [
+      "nvidia/nemotron-3.5-lightning-30b-a3b"
+    ],
+    "max_model_calls": null,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 3600.0,
+    "vision_model": null
+  },
+  "digest": "6fb05af4c8cf293070a0373d6e73f61162b2172147c7fc54fafbf429ee8b88a7",
+  "git_head": "96a2fa2ea5293cbef41b9687ff46e48de1a97cc8",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20260005493/downloads/301-ICES_2026-FR-Textiles_Final.pdf",
+  "package_id": "research-1dc5caf209d4305aa72a",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 6802,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 0,
+    "configured_fallback_models": [
+      "nvidia/nemotron-3.5-lightning-30b-a3b"
+    ],
+    "deterministic_characters": 6793,
+    "duration_seconds": 544.6592867999861,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "model_characters": 6793,
+    "new_model_calls": 6,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "28cfd58c73df32c23d4ef92d23ea65a19dfbda2d83f2b501404fd63f336660c0",
+        "context_token_estimate": 20475,
+        "deterministic": "COMPLETE",
+        "end": 6793,
+        "evidence_id": "E-9eccab003a28d4537146f46f",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 655,
+            "evidence_id": "E-9eccab003a28d4537146f46f",
+            "id": "segment-f5b8c4bc82c6eddf9ac3439a",
+            "start": 0
+          },
+          {
+            "end": 47,
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "id": "segment-8e74c8adbe6545126a27255a",
+            "start": 0
+          },
+          {
+            "end": 1059,
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "id": "segment-22246c0036139255bb8ce471",
+            "start": 47
+          },
+          {
+            "end": 650,
+            "evidence_id": "E-a7c86b01125408b0bc61990c",
+            "id": "segment-5d9bb72e3e6e189179dd0e91",
+            "start": 0
+          },
+          {
+            "end": 545,
+            "evidence_id": "E-e7864f0e4561ac19fe023324",
+            "id": "segment-3a48fb8bbac698f5810bb9ef",
+            "start": 0
+          },
+          {
+            "end": 670,
+            "evidence_id": "E-f60f771bcd75cde2422d3120",
+            "id": "segment-6f20dbdd1c0c2557b3a454f6",
+            "start": 0
+          },
+          {
+            "end": 747,
+            "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+            "id": "segment-a8a53b33f50d48d9477579f5",
+            "start": 0
+          },
+          {
+            "end": 364,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-f970246dbeaef664b268be9d",
+            "start": 0
+          },
+          {
+            "end": 463,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-669f1fc6cc77423f23a326dd",
+            "start": 364
+          },
+          {
+            "end": 541,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-997952cc8077b7fae4067227",
+            "start": 463
+          },
+          {
+            "end": 661,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-cbec51b5a6c7f2b599dd0d00",
+            "start": 541
+          },
+          {
+            "end": 791,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-106d0f994581f052e9873fb7",
+            "start": 661
+          },
+          {
+            "end": 1050,
+            "evidence_id": "E-45bf95f619ffa782389d0f3c",
+            "id": "segment-a8a07fe6ed7bb27a71a4714b",
+            "start": 0
+          },
+          {
+            "end": 47,
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "id": "segment-ec293d0a18a07b1728acc71a",
+            "start": 0
+          },
+          {
+            "end": 378,
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "id": "segment-44206f55b730f253e1675e20",
+            "start": 47
+          },
+          {
+            "end": 248,
+            "evidence_id": "E-12131a8fc9bc13e02ba7dc65",
+            "id": "segment-c7824efb3e0d2a98729601d8",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 6144,
+        "proposed_items": 6,
+        "reasoning_tokens": 2048,
+        "request_bytes": 23875,
+        "reserved_tokens_per_attempt": 33782,
+        "schema_errors": [],
+        "segment_id": "window-7e61c9a57ac63283d12f69b2",
+        "source_anchor_characters": 6643,
+        "source_anchors": 64,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 14.370468499982962,
+          "image_count": 0,
+          "max_output_tokens": 6144,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7958,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 14.355812299996614
+        },
+        "usage": {
+          "completion_tokens": 2347,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 7263,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 9610
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "fe6df433d6f0d91ecc203a9784bde24c5af01bba9bd0cf0d5ade2f3f73be1c9c",
+        "context_token_estimate": 30315,
+        "deterministic": "COMPLETE",
+        "end": 6793,
+        "evidence_id": "E-9eccab003a28d4537146f46f",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 6,
+        "members": [
+          {
+            "end": 655,
+            "evidence_id": "E-9eccab003a28d4537146f46f",
+            "id": "segment-f5b8c4bc82c6eddf9ac3439a",
+            "start": 0
+          },
+          {
+            "end": 47,
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "id": "segment-8e74c8adbe6545126a27255a",
+            "start": 0
+          },
+          {
+            "end": 1059,
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "id": "segment-22246c0036139255bb8ce471",
+            "start": 47
+          },
+          {
+            "end": 650,
+            "evidence_id": "E-a7c86b01125408b0bc61990c",
+            "id": "segment-5d9bb72e3e6e189179dd0e91",
+            "start": 0
+          },
+          {
+            "end": 545,
+            "evidence_id": "E-e7864f0e4561ac19fe023324",
+            "id": "segment-3a48fb8bbac698f5810bb9ef",
+            "start": 0
+          },
+          {
+            "end": 670,
+            "evidence_id": "E-f60f771bcd75cde2422d3120",
+            "id": "segment-6f20dbdd1c0c2557b3a454f6",
+            "start": 0
+          },
+          {
+            "end": 747,
+            "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+            "id": "segment-a8a53b33f50d48d9477579f5",
+            "start": 0
+          },
+          {
+            "end": 364,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-f970246dbeaef664b268be9d",
+            "start": 0
+          },
+          {
+            "end": 463,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-669f1fc6cc77423f23a326dd",
+            "start": 364
+          },
+          {
+            "end": 541,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-997952cc8077b7fae4067227",
+            "start": 463
+          },
+          {
+            "end": 661,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-cbec51b5a6c7f2b599dd0d00",
+            "start": 541
+          },
+          {
+            "end": 791,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-106d0f994581f052e9873fb7",
+            "start": 661
+          },
+          {
+            "end": 1050,
+            "evidence_id": "E-45bf95f619ffa782389d0f3c",
+            "id": "segment-a8a07fe6ed7bb27a71a4714b",
+            "start": 0
+          },
+          {
+            "end": 47,
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "id": "segment-ec293d0a18a07b1728acc71a",
+            "start": 0
+          },
+          {
+            "end": 378,
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "id": "segment-44206f55b730f253e1675e20",
+            "start": 47
+          },
+          {
+            "end": 248,
+            "evidence_id": "E-12131a8fc9bc13e02ba7dc65",
+            "id": "segment-c7824efb3e0d2a98729601d8",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 13312,
+        "proposed_items": 40,
+        "reasoning_tokens": 2048,
+        "request_bytes": 27489,
+        "reserved_tokens_per_attempt": 46294,
+        "schema_errors": [],
+        "segment_id": "window-7e61c9a57ac63283d12f69b2",
+        "source_anchor_characters": 7794,
+        "source_anchors": 66,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [
+                "entity-d077339f98f1a591cbc1"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-f60f771bcd75cde2422d3120",
+                  "quote": "•\nFire-resistant textiles must be available to fabricate the end-item softgoods",
+                  "start": 49
+                }
+              ],
+              "text": "•\nFire-resistant textiles must be available to fabricate the end-item softgoods"
+            },
+            "proposal_id": "proposal-adf1f2f5e216682c7ad20240",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Guidance",
+              "epistemic": "guidance",
+              "study": "current",
+              "subjects": [
+                "entity-d077339f98f1a591cbc1"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-45bf95f619ffa782389d0f3c",
+                  "quote": "•If no COTS solution can meet NASA-STD-6001B Test 1 and it is not possible to do incremental improvement over COTS solutions, \na custom major development effort is required with an industrial partner to design and develop a suitable solution that can \nmeet NASA’s specific needs\nPhase 2\nIncremental Improvement over COTS Solutions",
+                  "start": 116
+                }
+              ],
+              "text": "•If no COTS solution can meet NASA-STD-6001B Test 1 and it is not possible to do incremental improvement over COTS solutions, \na custom major development effort is required with an industrial partner to design and develop a suitable solution that can \nmeet NASA’s specific needs\nPhase 2\nIncremental Improvement over COTS Solutions"
+            },
+            "proposal_id": "proposal-442ea5f1f6d20d61328dbb2d",
+            "reasons": [
+              "GUIDANCE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Guidance",
+              "epistemic": "guidance",
+              "study": "current",
+              "subjects": [
+                "entity-d077339f98f1a591cbc1"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-45bf95f619ffa782389d0f3c",
+                  "quote": "•Evaluate and confirm whether COTS materials are available that can be certified for use at 37% O2/8.2 psia for each textile type",
+                  "start": 771
+                }
+              ],
+              "text": "•Evaluate and confirm whether COTS materials are available that can be certified for use at 37% O2/8.2 psia for each textile type"
+            },
+            "proposal_id": "proposal-0eafb744d263649de329ee02",
+            "reasons": [
+              "GUIDANCE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Guidance",
+              "epistemic": "guidance",
+              "study": "current",
+              "subjects": [
+                "entity-d077339f98f1a591cbc1"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-45bf95f619ffa782389d0f3c",
+                  "quote": "•Certification testing will be performed at White Sands Test Facility (WSTF)\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 901
+                }
+              ],
+              "text": "•Certification testing will be performed at White Sands Test Facility (WSTF)\n55th International Conference on Environmental Systems\nJuly 12-16, 2026"
+            },
+            "proposal_id": "proposal-eeda160b0cde11c12c3a1614",
+            "reasons": [
+              "GUIDANCE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-d077339f98f1a591cbc1"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+                  "quote": "• Goal to systematically mature \nmaterials that enable safer and \nmore sustainable human \nexploration missions\n9",
+                  "start": 265
+                }
+              ],
+              "text": "• Goal to systematically mature \nmaterials that enable safer and \nmore sustainable human \nexploration missions\n9"
+            },
+            "proposal_id": "proposal-67819f581e235d5404cdba9a",
+            "reasons": [
+              "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "48",
+              "label": "OxygenConcentration",
+              "subject": "entity-012268e893b1e369a749",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-298f5da8c5ad0cd79bc6ea37",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "8.2",
+              "label": "Pressure",
+              "subject": "entity-012268e893b1e369a749",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-e4a45d067a6ae1df3ac0051c",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "37",
+              "label": "OxygenConcentration",
+              "subject": "entity-2b5e893bc99c8905d065",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-3801929a52277365d9a9826f",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "8.2",
+              "label": "Pressure",
+              "subject": "entity-2b5e893bc99c8905d065",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-c97b0ffae6197884ede78ac1",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "37",
+              "label": "OxygenConcentration",
+              "subject": "entity-abbcfc2276716978b7ba",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-ae0e7da6da0fdb5b69325058",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "8.2",
+              "label": "Pressure",
+              "subject": "entity-abbcfc2276716978b7ba",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-cc1e4e7910e350b4b69444a4",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "48",
+              "label": "OxygenConcentration",
+              "subject": "entity-e58d3c9e7618b322169c",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-130aa8f0e68f28627cd91041",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "8.2",
+              "label": "Pressure",
+              "subject": "entity-e58d3c9e7618b322169c",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-ef2275488d8857bf5fe4c4d6",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "34±2",
+              "label": "OxygenConcentration",
+              "subject": "entity-d077339f98f1a591cbc1",
+              "support": [
+                {
+                  "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+                  "quote": "• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)",
+                  "start": 196
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-eea93c310e09b3555b773dc9",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "8.2",
+              "label": "Pressure",
+              "subject": "entity-d077339f98f1a591cbc1",
+              "support": [
+                {
+                  "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+                  "quote": "• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)",
+                  "start": 196
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-d6dadff7e09439de33b83a66",
+            "reasons": [
+              "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "37",
+              "label": "OxygenConcentration",
+              "subject": "entity-d077339f98f1a591cbc1",
+              "support": [
+                {
+                  "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+                  "quote": "• The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)",
+                  "start": 196
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-5e9932a20ca185d98e923f8e",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "< 6",
+              "label": "Burn length",
+              "subject": "entity-d077339f98f1a591cbc1",
+              "support": [
+                {
+                  "evidence_id": "E-a7c86b01125408b0bc61990c",
+                  "quote": "• Burn length < 6”",
+                  "start": 235
+                }
+              ],
+              "unit": "\""
+            },
+            "proposal_id": "proposal-39eb207d82111075341e198a",
+            "reasons": [
+              "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 15.537492800009204,
+          "image_count": 0,
+          "max_output_tokens": 13312,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7599,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 15.504625500005204
+        },
+        "usage": {
+          "completion_tokens": 3544,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 8291,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 11835
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "2afb06fdd5ed50ffd17928f9744b79442e7fdf7f1d026e799cf70e43a59c89ff",
+        "context_token_estimate": 27785,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 6793,
+        "evidence_id": "E-9eccab003a28d4537146f46f",
+        "fallbacks": [
+          {
+            "from": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+            "reason": "deadline",
+            "task_and_evidence_preserved": true,
+            "to": "nvidia/nemotron-3.5-lightning-30b-a3b"
+          }
+        ],
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 6,
+        "members": [
+          {
+            "end": 655,
+            "evidence_id": "E-9eccab003a28d4537146f46f",
+            "id": "segment-f5b8c4bc82c6eddf9ac3439a",
+            "start": 0
+          },
+          {
+            "end": 47,
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "id": "segment-8e74c8adbe6545126a27255a",
+            "start": 0
+          },
+          {
+            "end": 1059,
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "id": "segment-22246c0036139255bb8ce471",
+            "start": 47
+          },
+          {
+            "end": 650,
+            "evidence_id": "E-a7c86b01125408b0bc61990c",
+            "id": "segment-5d9bb72e3e6e189179dd0e91",
+            "start": 0
+          },
+          {
+            "end": 545,
+            "evidence_id": "E-e7864f0e4561ac19fe023324",
+            "id": "segment-3a48fb8bbac698f5810bb9ef",
+            "start": 0
+          },
+          {
+            "end": 670,
+            "evidence_id": "E-f60f771bcd75cde2422d3120",
+            "id": "segment-6f20dbdd1c0c2557b3a454f6",
+            "start": 0
+          },
+          {
+            "end": 747,
+            "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+            "id": "segment-a8a53b33f50d48d9477579f5",
+            "start": 0
+          },
+          {
+            "end": 364,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-f970246dbeaef664b268be9d",
+            "start": 0
+          },
+          {
+            "end": 463,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-669f1fc6cc77423f23a326dd",
+            "start": 364
+          },
+          {
+            "end": 541,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-997952cc8077b7fae4067227",
+            "start": 463
+          },
+          {
+            "end": 661,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-cbec51b5a6c7f2b599dd0d00",
+            "start": 541
+          },
+          {
+            "end": 791,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-106d0f994581f052e9873fb7",
+            "start": 661
+          },
+          {
+            "end": 1050,
+            "evidence_id": "E-45bf95f619ffa782389d0f3c",
+            "id": "segment-a8a07fe6ed7bb27a71a4714b",
+            "start": 0
+          },
+          {
+            "end": 47,
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "id": "segment-ec293d0a18a07b1728acc71a",
+            "start": 0
+          },
+          {
+            "end": 378,
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "id": "segment-44206f55b730f253e1675e20",
+            "start": 47
+          },
+          {
+            "end": 248,
+            "evidence_id": "E-12131a8fc9bc13e02ba7dc65",
+            "id": "segment-c7824efb3e0d2a98729601d8",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 13312,
+        "proposed_items": 1,
+        "reasoning_tokens": 2048,
+        "request_bytes": 25165,
+        "reserved_tokens_per_attempt": 41234,
+        "schema_errors": [],
+        "segment_id": "window-7e61c9a57ac63283d12f69b2",
+        "source_anchor_characters": 7794,
+        "source_anchors": 66,
+        "source_errors": [
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "100",
+              "label": "100% PBI knit fabric",
+              "subject": "entity-e58d3c9e7618b322169c",
+              "support": [
+                {
+                  "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+                  "quote": "• Fire-resistant patches \n100% PBI knit fabric coupons \ntested at 48% O2 and 8.2 psia\nCustom fire-resistant patches sewn \nto outer jacket fabric tested at 37% \nO2 and 8.2 psia\n55th International Conference on Environmental Systems\nJuly 12-16, 2026",
+                  "start": 499
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-79d2c241c96e410c2d751397",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 24.681422499998007,
+          "image_count": 0,
+          "max_output_tokens": 13312,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7943,
+          "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "response_headers": {},
+          "served_models": [
+            "nvidia/nemotron-3.5-lightning-30b-a3b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 24.66167659999337
+        },
+        "usage": {
+          "completion_tokens": 2107,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 7661,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 9768
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "c2cb217c29547053128226c5fb0de4762d909a5e490967b0f733c8430714340d",
+        "context_token_estimate": 21846,
+        "deterministic": "COMPLETE",
+        "end": 6793,
+        "evidence_id": "E-9eccab003a28d4537146f46f",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 6,
+        "members": [
+          {
+            "end": 655,
+            "evidence_id": "E-9eccab003a28d4537146f46f",
+            "id": "segment-f5b8c4bc82c6eddf9ac3439a",
+            "start": 0
+          },
+          {
+            "end": 47,
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "id": "segment-8e74c8adbe6545126a27255a",
+            "start": 0
+          },
+          {
+            "end": 1059,
+            "evidence_id": "E-5d9b3cc1f335cadd624e5fd7",
+            "id": "segment-22246c0036139255bb8ce471",
+            "start": 47
+          },
+          {
+            "end": 650,
+            "evidence_id": "E-a7c86b01125408b0bc61990c",
+            "id": "segment-5d9bb72e3e6e189179dd0e91",
+            "start": 0
+          },
+          {
+            "end": 545,
+            "evidence_id": "E-e7864f0e4561ac19fe023324",
+            "id": "segment-3a48fb8bbac698f5810bb9ef",
+            "start": 0
+          },
+          {
+            "end": 670,
+            "evidence_id": "E-f60f771bcd75cde2422d3120",
+            "id": "segment-6f20dbdd1c0c2557b3a454f6",
+            "start": 0
+          },
+          {
+            "end": 747,
+            "evidence_id": "E-9b2c2a63d8846e1a374e8361",
+            "id": "segment-a8a53b33f50d48d9477579f5",
+            "start": 0
+          },
+          {
+            "end": 364,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-f970246dbeaef664b268be9d",
+            "start": 0
+          },
+          {
+            "end": 463,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-669f1fc6cc77423f23a326dd",
+            "start": 364
+          },
+          {
+            "end": 541,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-997952cc8077b7fae4067227",
+            "start": 463
+          },
+          {
+            "end": 661,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-cbec51b5a6c7f2b599dd0d00",
+            "start": 541
+          },
+          {
+            "end": 791,
+            "evidence_id": "E-19ec34000c827178fbbabbe9",
+            "id": "segment-106d0f994581f052e9873fb7",
+            "start": 661
+          },
+          {
+            "end": 1050,
+            "evidence_id": "E-45bf95f619ffa782389d0f3c",
+            "id": "segment-a8a07fe6ed7bb27a71a4714b",
+            "start": 0
+          },
+          {
+            "end": 47,
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "id": "segment-ec293d0a18a07b1728acc71a",
+            "start": 0
+          },
+          {
+            "end": 378,
+            "evidence_id": "E-82f1e5d59d87a63d81326ec3",
+            "id": "segment-44206f55b730f253e1675e20",
+            "start": 47
+          },
+          {
+            "end": 248,
+            "evidence_id": "E-12131a8fc9bc13e02ba7dc65",
+            "id": "segment-c7824efb3e0d2a98729601d8",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 6144,
+        "proposed_items": 3,
+        "reasoning_tokens": 2048,
+        "request_bytes": 27418,
+        "reserved_tokens_per_attempt": 36525,
+        "schema_errors": [],
+        "segment_id": "window-7e61c9a57ac63283d12f69b2",
+        "source_anchor_characters": 7794,
+        "source_anchors": 66,
+        "source_errors": [],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 15.286229499994079,
+          "image_count": 0,
+          "max_output_tokens": 6144,
+          "reasoning_budget": 2048,
+          "reasoning_characters": 7402,
+          "requested_model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "response_headers": {},
+          "served_models": [
+            "private/nvidia/nemotron-3.5-super-120b-a12b"
+          ],
+          "stream": true,
+          "thinking_enabled": true,
+          "time_to_first_token_seconds": 15.27599699998973
+        },
+        "usage": {
+          "completion_tokens": 2144,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 2047,
+            "rejected_prediction_tokens": null,
+            "text_tokens": null
+          },
+          "prompt_tokens": 8047,
+          "prompt_tokens_details": {
+            "audio_tokens": null,
+            "cache_write_tokens": null,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          },
+          "total_tokens": 10191
+        }
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 118987
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "9a810110b927990112f955a6f9c7babbc05230b0ec7edf1e911fb1901e6693b6",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-21T04:39:35.246798+00:00",
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific review required: quantity needs an identified original table cell: proposal-5cb16512e11bcb0f78884c8c",
+    "Scientific review required: quantity needs an identified original table cell: proposal-849ae20af5f747aff4d45752",
+    "Scientific review required: quantity needs an identified original table cell: proposal-9186ab21edcffae2d0da3a6f",
+    "Scientific review required: quantity needs an identified original table cell: proposal-d947499dc0940da6d203378f",
+    "Select source-supported scope for proposal-1b49bbe47003520a4b4f7f7f",
+    "Select source-supported scope for research-1dc5caf209d4305aa72a:9a810110b9279901:statement:7de5fe8db45fbf62",
+    "Which identified runs do these author reported conclusion statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these documentary context statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}

@@ -103,3 +103,28 @@ Recall on frozen targets. The milestone 9 B runs are replayed at this code. Igni
 Critical errors: 0 on every input. The 29 historical negatives: 0 critical regressions, 1 known non-critical record still supported (`rescored_80682e7/`).
 
 **Reading.** The four mechanisms are safe and general, but they do not move recall on frozen targets. They mostly turn rejections into correct non-target records or holds, and they remove duplicates. The recall gap is still what the model does not propose, plus the provider failures of milestone 9. Two mechanisms, (b) and (c), add records only on ignition and are flagged under rule 2.
+
+## Evaluation B, round 1 (fresh live runs at frozen code `96a2fa2`)
+
+One run per source, one source at a time, 3,600 s budget, 0 approvals. All four runs are reported (`evaluation_b_round1.json`). Recall is on frozen targets. Precision is record by record (PTFE by the official scorer).
+
+| Run | Calls / time | Recall | Precision | Critical | Provider |
+| --- | --- | --- | --- | --- | --- |
+| `textiles_live_96a2fa2_r1/` | 6 / 545 s | 11/29 | 21/24 = 0.875 | 0 | primary deadline after 425 s on one window, answered by the fallback |
+| `regulator_live_96a2fa2_r1/` | 10 / 442 s | 16/32 | 44/59 = 0.746 | 1 | one HTTP 500, recovered by the primary |
+| `ignition_live_96a2fa2_r1/` | 21 / 2,023 s | 14/29 | 84/117 = 0.718 | 1 | none |
+| `ptfe_live_96a2fa2_r1/` | 16 / 1,738 s | 28/34 | 116/117 = 0.991 | 0 | three HTTP 500 and one 600 s deadline, both windows answered by the fallback |
+
+No window was lost: the new fallback answered every window the primary did not.
+
+Causes against milestone 9 B (`evaluation_b_round1.json` gives per-target causes):
+- **Textiles** +1 (relations-29): model generation. The model proposed each specimen's "37% O2 and 8.2 psia" condition itself.
+- **Regulator** +4: entity linking. The second wet series entity was accepted this time, so its 46–49 msec and both hasMaterial relations follow.
+- **Ignition** +2 (quantities-15, statements-22): model generation.
+- **PTFE** +5: provider. The window lost in milestone 9 was answered here.
+
+Two critical errors, both through paths older than milestone 10 and closed in milestone 11 (`../milestone11/`):
+- **Regulator:** "nominal operating pressure ~200 psia" given to the condition entity "3750 psia supply pressure".
+- **Ignition:** "1% lower in oxygen concentration than" accepted as an absolute "oxygen concentration 1 %".
+
+Round 2 of this milestone was not run. After round 1, Diego chose to close the two critical paths first and to restart evaluation B on milestone 11's frozen code.

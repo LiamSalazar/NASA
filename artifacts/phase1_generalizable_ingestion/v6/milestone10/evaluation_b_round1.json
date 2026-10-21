@@ -1,0 +1,170 @@
+{
+  "kind": "PHASE1_V6_M10_EVALUATION_B_ROUND1",
+  "code": "96a2fa2",
+  "evaluation": "B (fresh live runs, frozen code, one source at a time, all reported)",
+  "basis": "Branch-author adjudication of each frozen v4 target against the run's active records; record-by-record precision; PTFE by the official scorer.",
+  "runs": {
+    "textiles_r1": {
+      "correct": [
+        "entities-01",
+        "entities-03",
+        "entities-04",
+        "quantities-12",
+        "quantities-13",
+        "quantities-14",
+        "quantities-15",
+        "statements-20",
+        "statements-25",
+        "statements-26",
+        "relations-29"
+      ],
+      "accessible": 29,
+      "precision": {
+        "active": 24,
+        "incorrect_noncritical": {
+          "3047b24d": "statement carrying slide labels and the running footer",
+          "4b4f7f7f": "slide bullet describing a developed solution typed as publication",
+          "9c41ee17": "'tested at' configuration bullet typed as reported observation"
+        },
+        "critical": 0
+      },
+      "causes_vs_m9": {
+        "relations-29": "model: proposed the condition entities '37% O2 and 8.2 psia' / '48% O2 and 8.2 psia' and each specimen's hasCondition (model generation)",
+        "entities-02": "model: still only '100% PBI knit fabric' as Material"
+      },
+      "calls": 6,
+      "seconds": 545,
+      "provider": "primary deadline after 425 s on the focused quantities window; answered by the fallback nemotron-3.5-lightning; 0 windows lost"
+    },
+    "regulator_r1": {
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "entities-05",
+        "entities-06",
+        "quantities-08",
+        "quantities-11",
+        "quantities-13",
+        "quantities-14",
+        "relations-29",
+        "relations-31",
+        "relations-32",
+        "statements-17",
+        "statements-24",
+        "statements-28"
+      ],
+      "accessible": 32,
+      "precision": {
+        "active": 59,
+        "critical": {
+          "de5e236a": "'nominal operating pressure ~200 psia' given to the condition entity '3750 psia supply pressure' (p6 prints ~200 psia as the interstage nominal pressure); pre-existing path: a condition entity accepted as quantity subject, no milestone 10 mechanism involved"
+        },
+        "incorrect_noncritical": {
+          "a8c6ace0": "WD-40 typed cited (this study's own selection)",
+          "e5e047ae": "model assumptions and results typed as NASA conclusion",
+          "2ae56092": "conclusion sentence carrying the heading 'Conclusion'",
+          "192b5d90": "running page header",
+          "132dd61b": "analysis prediction (~900F) typed as measurement",
+          "ff9a36bc": "transient simulation described as experimental condition",
+          "9714481e": "analysis approach typed as measurement",
+          "be89904a": "analysis assumption typed as NASA conclusion",
+          "6bcdabb9": "analysis method typed as measurement",
+          "9785788b": "analysis description typed as NASA conclusion",
+          "df8d7134": "fragment (objectives header)",
+          "81c09dd5": "fragment 'Operating Pressure (MEOP)'",
+          "60d2d0d1": "3750 psia dry-impact configuration typed reported_quantity",
+          "8b1c28b6": "MEOP 3750 psia with the condition entity itself as subject"
+        }
+      },
+      "causes_vs_m9": {
+        "entities-06/quantities-14/relations-32": "entity linking: the second wet series entity was accepted this time (in m9 its support span lacked its label), so its 46-49 msec and hasMaterial follow (model generation)",
+        "relations-31": "model: proposed hasMaterial this time",
+        "statements-20/23/25": "model: still proposed without subject or with a confirmed role"
+      },
+      "calls": 10,
+      "seconds": 442,
+      "provider": "one HTTP 500 on a propositions window, recovered on retry by the primary model; 0 windows lost; fallback not used"
+    },
+    "ignition_r1": {
+      "correct": [
+        "entities-01",
+        "entities-02",
+        "entities-03",
+        "entities-04",
+        "quantities-05",
+        "quantities-06",
+        "quantities-10",
+        "quantities-11",
+        "quantities-12",
+        "quantities-15",
+        "relations-27",
+        "statements-22",
+        "statements-23",
+        "statements-24"
+      ],
+      "accessible": 29,
+      "precision": {
+        "active": 117,
+        "critical": {
+          "948df815": "'oxygen concentration 1 %' for GRC from 'occurred 1% lower in oxygen concentration than': a printed difference read as a concentration; pre-existing relative-difference guard misses 'lower in <noun> than'; no milestone 10 mechanism involved"
+        },
+        "incorrect_noncritical": {
+          "9ec26fb9": "duplicate 1-g (study unknown)",
+          "b865991c": "duplicate PMMA (study unknown)",
+          "0be56fde": "duplicate microgravity",
+          "07652979": "duplicate Polycarbonate",
+          "2ca84467": "duplicate Nomex Velcro",
+          "4566a35a": "duplicate Cotton T-Shirt material (Beefy-T)",
+          "bf8f5e66": "'primer flow' typed Intervention, duplicating the flow condition",
+          "120684c7": "analysis section 'Compensation Factor Determination' typed ExperimentFamily",
+          "c60ac6cf": "Test 1 'chemical igniter' typed current",
+          "f7d4d4ae": "ExperimentFamily duplicating the WSTF group",
+          "e257404a": "Sample named by its dimensions",
+          "6fae3157": "fragment joined with a figure caption",
+          "f1d45bf2": "camera setup typed observation",
+          "8b843801": "method rationale typed conclusion",
+          "86f036c5": "duplicate of 8b843801",
+          "3ef172e0": "sentence joined with a figure reference",
+          "8dbdffee": "sentence cut at 'I.D.'",
+          "ec1f6fbd": "caption mixed with body text",
+          "070d8288": "running page header",
+          "2df2ba4b": "duplicate conclusion of a9a4aa60",
+          "c0e42fda": "fit line description typed measurement",
+          "7f7a527a": "analysis method typed conclusion",
+          "3a701e53": "plot axis description typed experimental condition",
+          "40309c95": "figure pointer typed observation",
+          "3279f4c4": "plot legend typed observation",
+          "65b99cbd": "derived worst-case delta typed reported observation",
+          "546da103": "Takahashi's mechanism (cited) typed current conclusion",
+          "423cfb5b": "hasCondition on the analysis heading 'Compensation Factor Determination'",
+          "990ac362": "condition entity as quantity subject",
+          "5e2d7b46": "30 cm duct length typed reported_quantity",
+          "3fbfea0c": "95% confidence level typed experimental configuration",
+          "874b7cbe": "label 'OD ceramic rod' (fragment)"
+        }
+      },
+      "causes_vs_m9": {
+        "quantities-15": "model: proposed the GRC slow flow (~30 cm/s) as a configuration of the group (model generation; patch 3 heading/group context)",
+        "statements-22": "model: proposed with a subject this time",
+        "statements-25": "model: still typed as a confirmed conclusion"
+      },
+      "calls": 21,
+      "seconds": 2023,
+      "provider": "0 failed attempts; fallback not used"
+    },
+    "ptfe_r1": {
+      "official_scorer": "ptfe_live_96a2fa2_r1/review/metrics.json",
+      "recall": "28/34",
+      "precision": "116/117",
+      "critical": 0,
+      "calls": 16,
+      "seconds": 1738,
+      "provider": "three HTTP 500 on one propositions window and a 600 s deadline on the focused quantities window; both answered by the fallback nemotron-3.5-lightning; 0 windows lost",
+      "causes_vs_m9": {
+        "statements-26/27/28": "provider: the window over pp. 9-12 and 18 was answered this time (fallback), so these statements were proposed and accepted"
+      }
+    }
+  }
+}
