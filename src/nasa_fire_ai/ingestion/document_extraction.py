@@ -6735,10 +6735,19 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
     for segment in document["segments"]:
         merge_output(output, literal_candidates(segment, semantic))
     calls, tokens, cached, outcomes = 0, 0, 0, []
-    if model_enabled and client is None and settings.nvidia_api_key:
-        client = NvidiaStructuredClient(
-            settings.nvidia_api_key, settings.nvidia_base_url, settings.scientific_model
-        )
+    if model_enabled and client is None and settings.science_api_key:
+        if settings.science_provider == "anthropic":
+            from nasa_fire_ai.llm.anthropic_provider import AnthropicScientificClient
+
+            client = AnthropicScientificClient(
+                settings.anthropic_api_key,
+                settings.scientific_model,
+                effort=settings.anthropic_science_effort,
+            )
+        else:
+            client = NvidiaStructuredClient(
+                settings.nvidia_api_key, settings.nvidia_base_url, settings.scientific_model
+            )
     for original in document["segments"]:
         if not re.search(r"references|acknowledg", original["section"], re.IGNORECASE):
             merge_output(output, deterministic(original, semantic))
@@ -6910,7 +6919,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         if original_tables:
             request["original_tables"] = original_tables
         images, image_receipts = [], []
-        if stage == "propositions" and original_tables and settings.nvidia_science_vision_model:
+        if stage == "propositions" and original_tables and settings.science_vision_model:
             from nasa_fire_ai.ingestion.scientific_media import table_page_images
 
             images, image_receipts = table_page_images(
@@ -6929,8 +6938,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 "roles. If image-only attribution cannot be independently established, omit the "
                 "scientific assignment and retain the original table for scientist review."
             )
-        task_model = settings.nvidia_science_vision_model if images else settings.scientific_model
-        fallback_models = () if images else settings.nvidia_science_fallback_models
+        task_model = settings.science_vision_model if images else settings.scientific_model
+        fallback_models = () if images else settings.science_fallback_models
         schema = request["schema"]
         wire_quantities = {}
         if focus == "quantities":
@@ -7875,7 +7884,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 "adaptive": True,
             },
             "model": settings.scientific_model if model_enabled else None,
-            "configured_fallback_models": list(settings.nvidia_science_fallback_models),
+            "configured_fallback_models": list(settings.science_fallback_models),
             "new_model_calls": calls,
             "restored_proposals_after_source_validation": restored_count,
             "recovered_cached_proposals_after_source_validation": recovered_cached_proposals,

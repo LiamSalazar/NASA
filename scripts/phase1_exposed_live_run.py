@@ -37,7 +37,7 @@ from nasa_fire_ai.ingestion.extraction_resources import ProviderEnvelope
 from nasa_fire_ai.llm.scientific_provider import redact_provider_text
 from nasa_fire_ai.services.curation import CurationService
 
-CREDENTIAL = re.compile(r"nvapi-[A-Za-z0-9_\-]{8,}")
+CREDENTIAL = re.compile(r"(?:nvapi|sk-ant)-[A-Za-z0-9_\-]{8,}")
 
 
 def load(path):
@@ -93,8 +93,11 @@ def main():
             shutil.copytree(ROOT / name, workspace / name)
 
     settings = Settings(root=workspace)
-    if not settings.nvidia_api_key:
-        raise RuntimeError("NVIDIA_API_KEY is not configured")
+    if not settings.science_api_key:
+        raise RuntimeError(
+            ("ANTHROPIC" if settings.science_provider == "anthropic" else "NVIDIA")
+            + "_API_KEY is not configured"
+        )
     registry = EvidenceRegistry(workspace / "data/index/evidence.sqlite")
     service = CurationService(workspace, registry)
     started = datetime.now(UTC).isoformat()
@@ -157,9 +160,12 @@ def main():
             "official_url": (reference.get("source_provenance") or {}).get("source_url"),
             "configuration": {
                 "model": settings.scientific_model,
-                "fallback_models": list(settings.nvidia_science_fallback_models),
-                "vision_model": settings.nvidia_science_vision_model,
-                "endpoint": settings.nvidia_base_url or "https://integrate.api.nvidia.com/v1",
+                "provider": settings.science_provider,
+                "fallback_models": list(settings.science_fallback_models),
+                "vision_model": settings.science_vision_model,
+                "endpoint": "https://api.anthropic.com"
+                if settings.science_provider == "anthropic"
+                else settings.nvidia_base_url or "https://integrate.api.nvidia.com/v1",
                 "provider_envelope": asdict(ProviderEnvelope()),
                 "timeout_seconds": args.timeout_seconds,
                 "max_model_calls": args.max_model_calls,

@@ -112,6 +112,22 @@ def complete_scientific(
     SDK retries are disabled: the caller owns observable, checkpointed recovery.
     Never persist headers containing credentials, cookies or account identifiers.
     """
+    if getattr(client, "provider_identity", None) == "Anthropic":
+        from nasa_fire_ai.llm.anthropic_provider import complete_scientific_anthropic
+
+        return complete_scientific_anthropic(
+            client,
+            model=model,
+            system=system,
+            payload=payload,
+            max_tokens=max_tokens,
+            timeout=timeout,
+            stream=stream,
+            response_format=response_format,
+            reasoning_budget=reasoning_budget,
+            on_progress=on_progress,
+            images=images,
+        )
     started, first = time.monotonic(), None
     content, reasoning, finish, usage = [], 0, None, None
     served_models = set()

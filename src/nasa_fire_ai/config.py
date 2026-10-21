@@ -37,6 +37,16 @@ class Settings:
         "NVIDIA_PHASE3_MODEL", os.getenv("NVIDIA_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b")
     )
     nvidia_embedding_model: str = os.getenv("NVIDIA_EMBEDDING_MODEL", "nvidia/nemotron-3-embed-1b")
+    # Scientific stages only; NVIDIA is the default provider.
+    science_provider: str = os.getenv("SCIENCE_PROVIDER", "nvidia").lower()
+    anthropic_api_key: str | None = os.getenv("ANTHROPIC_API_KEY")
+    anthropic_science_model: str = os.getenv("ANTHROPIC_SCIENCE_MODEL", "claude-sonnet-5-5")
+    anthropic_science_fallback_models: tuple[str, ...] = tuple(
+        m.strip()
+        for m in os.getenv("ANTHROPIC_SCIENCE_FALLBACK_MODELS", "").split(",")
+        if m.strip()
+    )
+    anthropic_science_effort: str = os.getenv("ANTHROPIC_SCIENCE_EFFORT", "high")
     embedding_preprocessing_version: str = "phase2-v1"
     # Optional advisory routing only. It never grants semantic classifiers any
     # authority to publish claims, alter DIRECT matching, or mutate the KG.
@@ -44,7 +54,28 @@ class Settings:
 
     @property
     def scientific_model(self) -> str:
+        if self.science_provider == "anthropic":
+            return self.anthropic_science_model
         return self.nvidia_extraction_model or self.nvidia_phase3_model
+
+    @property
+    def science_fallback_models(self) -> tuple[str, ...]:
+        if self.science_provider == "anthropic":
+            return self.anthropic_science_fallback_models
+        return self.nvidia_science_fallback_models
+
+    @property
+    def science_vision_model(self) -> str | None:
+        # Claude models read images themselves.
+        if self.science_provider == "anthropic":
+            return self.anthropic_science_model
+        return self.nvidia_science_vision_model
+
+    @property
+    def science_api_key(self) -> str | None:
+        if self.science_provider == "anthropic":
+            return self.anthropic_api_key
+        return self.nvidia_api_key
 
     @property
     def registry_path(self) -> Path:

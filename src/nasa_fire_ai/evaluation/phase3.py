@@ -55,7 +55,8 @@ def score_intents(expected: dict[str, Any], actual: dict[str, Any]) -> dict[str,
 def write_artifact(path: Path, payload: dict[str, Any]) -> None:
     """Persist only sanitized benchmark data; reject credential-shaped content."""
     rendered = json.dumps(payload, indent=2, sort_keys=True)
-    if "nvapi-" in rendered.lower() or "authorization" in rendered.lower():
+    lowered = rendered.lower()
+    if "nvapi-" in lowered or "sk-ant-" in lowered or "authorization" in lowered:
         raise ValueError("benchmark artifacts may not contain credentials or authorization headers")
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(rendered + "\n")
