@@ -1050,6 +1050,41 @@ class CurationService:
         semantic = self.property_registry(package)
         entity_keys = extraction["entities_by_key"]
         existing = {e["id"] for e in package["entities"]}
+        # Supported knowledge that needs vocabulary the approved ontology lacks is
+        # kept for Phase 2 review beside its staged extension proposal; it is never
+        # projected or exported as established knowledge.
+        proposed = package.setdefault("proposed_extension_items", [])
+        kept = {p["id"] for p in proposed}
+        for record in records:
+            if (
+                record.get("proposal_state") != "PROPOSED_ONTOLOGY_EXTENSION"
+                or record["id"] in kept
+            ):
+                continue
+            item = record["proposal"]
+            kind = {"entities": "class", "statements": "information_class"}.get(
+                record["kind"], "relation"
+            )
+            term = item["relation"] if kind == "relation" else item["class_id"]
+            proposed.append(
+                {
+                    "id": record["id"],
+                    "kind": record["kind"],
+                    "label": item.get("label") or item.get("text"),
+                    "term": term,
+                    "extension_proposal_id": f"{kind}-proposal-{term}",
+                    **(
+                        {"subject": record.get("subject"), "object": record.get("object")}
+                        if record["kind"] == "relations"
+                        else {}
+                    ),
+                    "evidence_ids": sorted({s["evidence_id"] for s in record["support_spans"]}),
+                    "support_spans": record["support_spans"],
+                    "proposal_state": "PROPOSED_ONTOLOGY_EXTENSION",
+                    "included": False,
+                }
+            )
+            kept.add(record["id"])
         for record in records:
             if record["kind"] != "entities":
                 continue

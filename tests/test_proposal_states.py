@@ -96,3 +96,71 @@ def test_reviewed_and_published_states_come_only_from_curation(curator):
     package["purpose"] += " Revised."
     curator.save(package, "test-scientist")
     assert curator.proposal_states(pid)["r-supported"] == "SOURCE_SUPPORTED"
+
+
+def test_supported_knowledge_needing_new_vocabulary_stays_in_the_package_unpublished(curator):
+    package = compatible(curator)["package"]
+    span = {
+        "evidence_id": package["evidence"][0]["evidence_id"],
+        "start": 0,
+        "end": 3,
+        "quote": "Run",
+    }
+
+    def record(rid, kind, state, status, **proposal):
+        return {
+            "id": rid,
+            "kind": kind,
+            "status": status,
+            "proposal_state": state,
+            "reasons": [],
+            "support_spans": [span],
+            "entity_id": rid,
+            "proposal": proposal,
+        }
+
+    package["scientific_extraction"] = {
+        "entities_by_key": {},
+        "records": [
+            record(
+                "e-new",
+                "entities",
+                "PROPOSED_ONTOLOGY_EXTENSION",
+                "UNRESOLVED",
+                label="Beta coil",
+                class_id="IgniterCoil",
+                study="current",
+            ),
+            record(
+                "s-new",
+                "statements",
+                "PROPOSED_ONTOLOGY_EXTENSION",
+                "UNRESOLVED",
+                text="Run",
+                class_id="ProcedureNote",
+                epistemic="documentary_context",
+                subjects=[],
+                study="current",
+            ),
+            record(
+                "e-known",
+                "entities",
+                "SOURCE_SUPPORTED",
+                "SOURCE_SUPPORTED",
+                label="A9",
+                class_id="ExperimentalRun",
+                study="current",
+            ),
+        ],
+    }
+    curator.attach_scientific_proposals(package)
+    curator.attach_scientific_proposals(package)  # idempotent
+    items = {p["id"]: p for p in package["proposed_extension_items"]}
+    assert set(items) == {"e-new", "s-new"}
+    assert items["e-new"]["extension_proposal_id"] == "class-proposal-IgniterCoil"
+    assert items["s-new"]["extension_proposal_id"] == "information_class-proposal-ProcedureNote"
+    assert not any(p["included"] for p in items.values())
+    # Never projected as established knowledge; the registered entity still is.
+    ids = {e["id"] for e in package["entities"]}
+    assert "e-known" in ids and "e-new" not in ids
+    assert not any(s.get("id") == "s-new" for s in package["statements"])
