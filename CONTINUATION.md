@@ -14,8 +14,9 @@ Updated at the end of every work package. A new session reads `CLAUDE.md`, then 
 - **Done:** package 5 (`milestone13/package5/README.md`), two live Sonnet rounds at `07709c0`, 4.23 USD.
   - Pooled recall 0.51 and 0.57, precision 0.925 and 0.938, 0 critical.
   - The gate is still not met: only PTFE reaches recall ≥ 0.80.
+- **Done after package 5** (no runs): the heading outline letter (`65acb94`); the Anthropic size hardening (`effcb21`); the spending brake with requests sent ahead (`824af5f`, `4ba8a23`, `10692ba`, `package4/fixes.md`): concurrency 3 now decides as concurrency 1 under a brake that fits the run. pytest 954.
+- **Handoff for a new agent:** `HANDOFF_CODEX.md` summarizes everything since 2026-10-18.
 - **Next:** wait for the coordinator and Diego. Candidates:
-  - the heading outline-letter label (ignition round 1);
   - Liam's decisions (`package4/liam/`);
   - the role-dependent subject menu.
   No live runs without Diego's written authorization, and do not start package 6.
