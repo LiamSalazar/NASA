@@ -6116,13 +6116,18 @@ def validated_output(output, package, document, semantic, recover_roles=True):
                         and all(
                             s in entities
                             and (
-                                # A proposed group the validator itself holds (a
-                                # slide title proposed as a group) gives the
-                                # passage no scope of its own; the study's does.
+                                # A proposed group the validator holds (a slide
+                                # title proposed as a group), or a supported group
+                                # this passage is not shown to belong to, gives the
+                                # passage no scope of its own; the study's does,
+                                # and the group stays a proposed subject only. A
+                                # supported individual run is never rescoped.
                                 (
-                                    entities[s].get("validation_status") != "SOURCE_SUPPORTED"
-                                    and entities[s]["class_id"]
-                                    in {"ExperimentFamily", "ExperimentalRun"}
+                                    entities[s]["class_id"] == "ExperimentFamily"
+                                    or (
+                                        entities[s].get("validation_status") != "SOURCE_SUPPORTED"
+                                        and entities[s]["class_id"] == "ExperimentalRun"
+                                    )
                                 )
                                 or (
                                     # Specimens, or for a documentary statement (a

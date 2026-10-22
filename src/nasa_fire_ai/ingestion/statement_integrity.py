@@ -49,12 +49,18 @@ VALIDITY_CAVEAT = re.compile(
 )
 APPLIED_STEP = re.compile(
     r"\b(?:was|were)\s+(?:impacted|struck|tested|exposed|subjected|heated|pressurized|loaded"
-    r"|placed|positioned|submerged|immersed|purged|sealed|prepared|cooled|dropped|mounted)\b",
+    r"|placed|positioned|submerged|immersed|purged|sealed|prepared|cooled|dropped|mounted"
+    # Set-up steps, and a step that was planned ("was to perform 60 tests").
+    r"|set\s*up|switched|configured|installed|connected|injected|adjusted|performed"
+    r"|to\s+(?:perform|conduct|run|test))\b",
     re.IGNORECASE,
 )
 OUTCOME_CUE = re.compile(
     r"\b(?:react\w*|pass(?:ed|es)?|fail\w*|ignit\w*|burn\w*|flam\w*|extinguish\w*|observ\w*"
-    r"|shown|show(?:s|ed|ing)?|result\w*|detect\w*|seen|found|produc\w*|perform\w*|exhibit\w*"
+    r"|shown|show(?:s|ed|ing)?|result\w*|detect\w*|seen|found|produc\w*|exhibit\w*"
+    # "performed nominally" judges an outcome; "were performed manually" is a step.
+    r"|perform\w*\s+(?:well|poorly|nominally|normally|satisfactorily|adequately|as\s+expected"
+    r"|better|worse)"
     r"|increas\w*|decreas\w*|rose|fell|remain\w*|became|occur\w*|spread\w*|grew|shrank|reduc\w*"
     r"|no\s+(?:reaction|ignition|flash|change)s?|zero)\b",
     re.IGNORECASE,

@@ -45,3 +45,46 @@ Records keep their ids across replays. Fixed and lost come from the adjudication
 The count rule from package 3.4 ("Sixty test runs" is not a group name) was withdrawn. Its only occurrence is the subject of a correct statement (regulator statements-17), and holding it lost that target.
 
 While checking this, an asymmetry showed up: when a proposed group subject is held, the statement falls back to the investigation scope. When the group is SOURCE_SUPPORTED but does not apply to the passage, the statement is held instead. With the group held, 8 regulator statements became supported (statements-22 and -24 among them), while statements-17 was lost and statements-28 went to a role conflict. This is recorded as package 3.2b, to be designed and measured on its own.
+
+## After 3.2b and the procedure-step fix (re-measured, same set, 0 model calls)
+
+### Changes
+
+- **3.2b.** A statement whose proposed group subject is SOURCE_SUPPORTED but not shown to apply to the passage is scoped to the study, as a held group already was. The group stays a proposed subject only and is never distributed to members.
+  - A supported individual run is never rescoped. This keeps the existing contract `test_literal_article_identity_does_not_invent_execution_or_override_cited_scope` unchanged.
+  - Classification: document structure. Motivating source: regulator.
+- **Procedure steps (general language).** Set-up steps ("was set up", "were performed", "injected", "adjusted") and a planned step ("was to perform 60 tests") are procedures, not observations, unless the passage prints an outcome. "Performed nominally" still counts as an outcome. This holds 3 regulator procedure sentences that 3.2b would otherwise have accepted.
+
+### Results
+
+| check | result |
+|---|---|
+| inputs replayed | 50/50 |
+| historical negatives | 29: 0 critical regressions, 1 known non-critical |
+| PTFE round B, official scorer | 28/34, 134/136, 0 critical |
+| PTFE m12 r1 / r2 | 27/34 (96/104) and 28/34 (127/128), 0 critical |
+| PTFE m12 r2, new record | "Two additional batches ... zero reactions" at study scope, judged correct |
+| textiles | 8/29, 19/23 (0.826) |
+| regulator | 10 → **11/32**, 16/30 (0.533) → **21/30 (0.700)** |
+| ignition | 16/29, 86/114 (0.754) |
+| critical errors | 0 |
+| pytest | 878 passed |
+
+Regulator details:
+- Targets 22 and 24 recovered. Target 28 goes to a genuine role conflict: its observation reading now also has valid scope, so both readings are held.
+- 6 newly supported observations, all judged correct.
+
+Ignition: the study-scope fallback adds 2 condition statements:
+- "This required a test program ..." is judged incorrect;
+- "The igniter was a ceramic igniter ..." is judged correct.
+
+### Recall after block 3 and 3.2b
+
+| source | recall |
+|---|---|
+| PTFE | 28/34 (0.82) |
+| ignition | 16/29 (0.55) |
+| regulator | 11/32 (0.34) |
+| textiles | 8/29 (0.28) |
+
+The §13 gate is not met.
