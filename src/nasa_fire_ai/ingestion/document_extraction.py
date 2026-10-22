@@ -6538,7 +6538,15 @@ def validated_output(output, package, document, semantic, recover_roles=True):
         }
         result["ontology_extension_proposals"] = ontology_extension_proposals(
             assertions, semantic.relations
-        ) + vocabulary_extension_proposals(records, entity_classes)
+        ) + vocabulary_extension_proposals(
+            records,
+            entity_classes,
+            {
+                "class": set(semantic.class_metadata),
+                "information_class": set(semantic.information_classes),
+                "relation": set(semantic.relations),
+            },
+        )
     return result
 
 

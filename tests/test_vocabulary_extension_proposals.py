@@ -41,6 +41,7 @@ def test_an_unknown_class_with_valid_evidence_is_a_staged_class_proposal(service
         proposal["activation"] == "NONE" and proposal["definition"] == "NOT_ESTABLISHED_BY_SOURCE"
     )
     assert proposal["evidence"] and proposal["supporting_records"] == [record["id"]]
+    assert proposal["structural_validation"]["well_formed"]
 
 
 def relation_result(service, relation):

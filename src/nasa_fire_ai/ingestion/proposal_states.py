@@ -49,7 +49,52 @@ def proposal_state(record):
     return "STRUCTURALLY_WELL_FORMED"
 
 
-def vocabulary_extension_proposals(records, entity_classes):
+IDENTIFIER = r"[A-Za-z][A-Za-z0-9]*"
+
+
+def structural_validation(proposal, approved):
+    """Whether a staged vocabulary proposal is well formed, checked apart from the baseline.
+
+    ``approved`` maps each kind to the approved terms of that kind. Placement in the
+    hierarchy is a scientific decision, so a class without an established parent is
+    well formed but marked as needing placement.
+    """
+    import re
+
+    errors = []
+    term = proposal.get("term") or ""
+    if not re.fullmatch(IDENTIFIER, term):
+        errors.append("TERM_IS_NOT_AN_IDENTIFIER")
+    known = {t.lower(): t for t in approved.get(proposal.get("kind"), ())}
+    if term.lower() in known:
+        errors.append(
+            "TERM_ALREADY_APPROVED"
+            if known[term.lower()] == term
+            else "TERM_DIFFERS_FROM_AN_APPROVED_TERM_ONLY_BY_CASE"
+        )
+    evidence = proposal.get("evidence") or []
+    if not evidence or not all(e.get("evidence_id") and e.get("quote") for e in evidence):
+        errors.append("EVIDENCE_ANCHORS_MISSING")
+    if proposal.get("kind") == "relation" and not (
+        proposal.get("domain") and proposal.get("range")
+    ):
+        errors.append("RELATION_DOMAIN_OR_RANGE_UNKNOWN")
+    if proposal.get("activation") != "NONE":
+        errors.append("EXTENSION_ACTIVATED_OUTSIDE_REVIEW")
+    if proposal.get("definition") not in {None, "NOT_ESTABLISHED_BY_SOURCE"} and not proposal.get(
+        "definition_evidence"
+    ):
+        errors.append("DEFINITION_WITHOUT_SOURCE_EVIDENCE")
+    return {
+        "well_formed": not errors,
+        "errors": errors,
+        "placement": "PARENT_NOT_ESTABLISHED_REQUIRES_REVIEW"
+        if proposal.get("kind") != "relation" and not proposal.get("parent")
+        else "PARENT_PROPOSED",
+    }
+
+
+def vocabulary_extension_proposals(records, entity_classes, approved=None):
     """One staged proposal per missing term, with the evidence of every record that uses it.
 
     The proposal names the term, its documentary instances and, for a relation, the
@@ -101,4 +146,5 @@ def vocabulary_extension_proposals(records, entity_classes):
         for key in ("instances", "domain", "range"):
             if key in proposal:
                 proposal[key].sort()
+        proposal["structural_validation"] = structural_validation(proposal, approved or {})
     return [proposals[k] for k in sorted(proposals)]

@@ -2143,10 +2143,15 @@ class CurationService:
         self.authorize(principal)
         base = self.get(package_id)
         extension = next(
-            e
-            for e in base["package"]["extensions"]
-            if e.get("id", e.get("property", {}).get("property_id")) == property_id
+            (
+                e
+                for e in base["package"]["extensions"]
+                if e.get("id", e.get("property", {}).get("property_id")) == property_id
+            ),
+            None,
         )
+        if extension is None:
+            raise ValueError("No staged extension with this id in the package: " + property_id)
         extension["approved"] = True
         extension["approver"] = principal
         return self.save(base["package"], principal)
@@ -2501,6 +2506,34 @@ class CurationService:
             raise PermissionError(
                 "Public publication is disabled; use an isolated development configuration"
             )
+
+    def proposal_states(self, package_id):
+        """Each record's proposal state, with the two states only curation can reach.
+
+        A record supported by the source, or staged as a proposed extension, is
+        scientifically reviewed once the exact current version is approved, and
+        authorized published once that version is the active one. Nothing is written
+        into the record, so the approved digest stays unchanged.
+        """
+        current = self.get(package_id)
+        records = (current["package"].get("scientific_extraction") or {}).get("records", [])
+        approved = self.registry.db.execute(
+            "SELECT 1 FROM research_approvals WHERE digest=?", (current["digest"],)
+        ).fetchone()
+        active = self.registry.db.execute(
+            "SELECT digest FROM research_active WHERE package_id=?", (package_id,)
+        ).fetchone()
+        published = bool(active and active[0] == current["digest"])
+        states = {}
+        for record in records:
+            state = record.get("proposal_state", record["status"])
+            if state in {"SOURCE_SUPPORTED", "PROPOSED_ONTOLOGY_EXTENSION"}:
+                if published:
+                    state = "AUTHORIZED_PUBLISHED"
+                elif approved:
+                    state = "SCIENTIFICALLY_REVIEWED"
+            states[record["id"]] = state
+        return states
 
     def approve(self, package_id, exact_digest, principal):
         self.authorize(principal)
