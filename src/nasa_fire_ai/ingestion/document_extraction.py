@@ -2490,6 +2490,15 @@ def shared_stem(a, b):
     return size >= 5
 
 
+def setting_verb_of_unit_dimension(verb, unit):
+    """Whether a setting verb is a form of a noun of the unit's own dimension."""
+    from nasa_fire_ai.normalization.units import interpret
+
+    meaning = interpret(unit) if unit else None
+    nouns = DIMENSION_NOUNS.get(meaning["dimension"], set()) if meaning else set()
+    return any(shared_stem(noun, verb.lower()) for noun in nouns)
+
+
 def printed_setting_name(label, expression, unit, spans, epistemic):
     """The verb that sets a configuration value names it, when the label only spells it out.
 
@@ -3492,6 +3501,16 @@ def validate_quantity_subject(
                 "basis": "EXPLICIT_SOURCE_TEMPORAL_COORDINATE",
                 "global_alias_activation": "NONE",
             }
+    elif (
+        setting := printed_setting_name(
+            item["label"], item["expression"], item["unit"], spans, item.get("epistemic")
+        )
+    ) and setting_verb_of_unit_dimension(setting["printed_name"], item["unit"]):
+        # "The chamber was rotated at 20.4 RPM" labelled "rotated": the label is
+        # printed and is the verb that sets the value. A label that is the verb
+        # cannot vouch for itself, so the verb must be a form of a noun of the
+        # unit's own dimension ("rotation" for a rotational speed).
+        record["quantity_name_support"] = setting
     column = None
     joined = continued_sentence(spans, evidence)
     joined_name = (

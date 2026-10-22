@@ -113,3 +113,77 @@ def test_without_the_printed_verb_or_dimension_the_name_stays_unprinted(
     service, text, label, expression, unit, epistemic
 ):
     assert not named_by_verb(quantity(service, text, label, expression, unit, epistemic))
+
+
+@pytest.mark.parametrize(
+    "text,label,expression,unit",
+    [
+        (
+            "The Alpha drum chamber was rotated at 20.4 RPM before the drop.",
+            "rotated",
+            "20.4",
+            "RPM",
+        ),
+    ],
+)
+def test_a_label_that_is_the_printed_setting_verb_is_named_by_it(
+    service, text, label, expression, unit
+):
+    # The label is printed, and it is the verb that sets the value: the same rule
+    # names it as for a label that only spells the verb out.
+    record = quantity(service, text, label, expression, unit)
+    assert named_by_verb(record), record["reasons"]
+    assert "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED" not in record["reasons"]
+
+
+def test_the_printed_verb_and_its_spelled_out_label_name_the_value_alike(service):
+    # Metamorphic: "rotated" and "chamber rotation rate" for the same printed clause.
+    text = "The Alpha drum chamber was rotated at 20.4 RPM before the drop."
+    printed = quantity(service, text, "rotated", "20.4", "RPM")
+    spelled = quantity(service, text, "chamber rotation rate", "20.4", "RPM")
+    assert named_by_verb(printed) and named_by_verb(spelled)
+    assert printed["status"] == spelled["status"]
+
+
+@pytest.mark.parametrize(
+    "text,label,expression,unit,epistemic",
+    [
+        # A printed word that is not the setting verb ("cleaned ... at") names nothing.
+        (
+            "The Alpha drum chamber was cleaned at 20.4 RPM before the drop.",
+            "cleaned",
+            "20.4",
+            "RPM",
+            "experimental_configuration",
+        ),
+        # A label that is the verb cannot vouch for itself: "injected" is no form of
+        # a volume noun, so only a spelled-out label ("injection volume") is named.
+        (
+            "For the Alpha drum runs, 20 uL was injected at the port.",
+            "injected",
+            "20",
+            "uL",
+            "experimental_configuration",
+        ),
+        # A reported measurement is not set by a verb.
+        (
+            "The Alpha drum chamber was rotated at 20.4 RPM before the drop.",
+            "rotated",
+            "20.4",
+            "RPM",
+            "reported_quantity",
+        ),
+        # A condition states a criterion, not a setting.
+        (
+            "If the Alpha drum chamber was rotated at 20.4 RPM the run failed.",
+            "rotated",
+            "20.4",
+            "RPM",
+            "experimental_configuration",
+        ),
+    ],
+)
+def test_a_printed_label_that_is_not_the_setting_verb_is_not_named_by_it(
+    service, text, label, expression, unit, epistemic
+):
+    assert not named_by_verb(quantity(service, text, label, expression, unit, epistemic))

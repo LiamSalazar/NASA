@@ -30,3 +30,20 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
   - textiles precision 20/22 → 21/22 (r1) and 20/27 → 22/27 (r2);
   - other sources unchanged; 0 critical.
 - **Mark: single-source, suspect.** Textiles is the only slide deck in the development set, so no other source can confirm the rule. Ignition's title-block records (070d8288, 93638799) are a different mechanism: an author block, not a footer. They are not addressed.
+
+## Fix 3: a label that is the value's own setting verb is named by it
+
+- **Classification:** semantic with evidence. It closes a gap in 3.1: `printed_setting_name` ran only when the model's label was not printed.
+- **Motivating source:** ignition quantities-14 ("the chamber was rotated at 20.4 RPM"). Sonnet labels the value "rotated", which is printed, so the setting-verb rule never ran and the staged-name syntax then held the value.
+- **Rule:**
+  - When the label is printed and `printed_setting_name` finds it is the verb that sets the value, the verb is the value's name (`PRINTED_SETTING_VERB_NAMES_VALUE`).
+  - A label that is the verb cannot vouch for itself. The verb must therefore be a form of a noun of the unit's own dimension, from the existing `DIMENSION_NOUNS` ("rotation" for a rotational speed): `setting_verb_of_unit_dimension`. No verb list.
+- **Tests:** `tests/test_setting_verb_name.py` (+7).
+  - Positive: "rotated" at 20.4 RPM.
+  - Metamorphic: the printed verb and its spelled-out label give the same outcome.
+  - Negative: "cleaned" at the same value; "injected" for a volume, which is no form of a volume noun; a reported measurement; a conditional clause.
+- **Replay effect (against fix 2):** one record changes on each ignition Sonnet package, `rotated = 20.4 RPM` on the GRC group, UNRESOLVED → SOURCE_SUPPORTED. It is correct: the GRC chamber's rotation before the drop. 0 records change on the other 10 packages.
+- **Result:**
+  - ignition recall 13 → 14/29 (r1) and 12 → 13/29 (r2); precision 71/85 → 72/86 and 63/76 → 64/77;
+  - other sources unchanged; 0 critical.
+- **Mark: single-source, suspect.** No other source has a value labelled by its own setting verb. Regulator's "20uL was injected" is not named, because "injected" is no form of a volume noun, and it stays held by its subject anyway.
