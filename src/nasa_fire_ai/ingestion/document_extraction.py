@@ -155,7 +155,7 @@ class Quantity(Strict):
     printed_name: str | None = Field(
         default=None,
         description="The words printed in the value's own clause that name it, copied exactly "
-        "(for 'the chamber was rotated at 20 RPM', 'rotated'); null when the label is printed.",
+        "(for 'the holder was tilted at 15 degrees', 'tilted'); null when the label is printed.",
     )
 
 
@@ -238,7 +238,7 @@ For 'tip grows at a rate of 7 mm/s', use the original label 'rate'; do not inven
 'tip spread velocity'. Preserve this literal quantity for semantic review if needed.
 The fields are subject, label, expression, unit, epistemic, support and printed_name.
 When the label's words are not printed with the value, printed_name copies the
-words of the value's own clause that name it ('rotated' in 'was rotated at 20 RPM');
+words of the value's own clause that name it ('tilted' in 'was tilted at 15 degrees');
 otherwise printed_name is null.
 Preserve ~, inequalities and ranges. Never convert or calculate a number.
 Use reported_quantity, derived_quantity or experimental_configuration accurately.

@@ -105,6 +105,7 @@ A cut session resumes at the first package not done.
   - The per-source threshold is met only by PTFE, so no live run is proposed.
 - On ignition the 500,000-token brake binds: two network failures keep their reservation (correct, they may be billed) and one window was deferred in `a6d967b` r2. → 6
 - The regulator wet series are sometimes merged into one group by the model (`a6d967b` r2). → 6
+- B8: the request example "the chamber was rotated at 20 RPM" (from `18b73d9`) nearly copied the frozen ignition quote. It is replaced by an invented example and guarded by `tests/test_prompt_has_no_source_phrases.py`. Ignition runs since 2026-10-21 carry this caveat for Liam (`package4/README.md`).
 
 ## Pending verifications (only when Diego asks)
 

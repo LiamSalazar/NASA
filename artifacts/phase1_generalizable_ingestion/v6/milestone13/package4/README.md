@@ -118,6 +118,12 @@ The per-source tables with every interval are in the JSON files.
 - The live rounds are separate inferences and must not be compared as gains or losses of the rules.
 - Ignition's live recall is below its replay because of the brake (round 3) and the model's own omissions.
 
+**Caveat for Liam (B8, found 2026-10-22).** From `18b73d9` (2026-10-21) to its fix, the request sent to the model carried the example "the chamber was rotated at 20 RPM" in the `printed_name` field description and in the propositions instruction. That nearly copies the frozen ignition quote "the chamber was rotated at 20.4 RPM" (quantities-14).
+- Every ignition run since 2026-10-21 carries this caveat: package 4 and the pilot.
+- quantities-14 itself was never recovered live from it: it was held in every package 4 run, and was recovered only by fix 3 in replay.
+- The example is now invented ("the holder was tilted at 15 degrees").
+- `tests/test_prompt_has_no_source_phrases.py` fails if the system prompt, the stage instructions or any schema description shares a three-word phrase (at least two of them content words) with a frozen v4 target quote.
+
 **Gate (§13):** not met. Only PTFE reaches recall ≥ 0.80 (0.82 in both rounds on `a6d967b`); 0 critical errors in every run.
 
 ## Reproduce
