@@ -17,15 +17,16 @@ A cut session resumes at the first package not done.
 - No live runs unless truly necessary and authorized.
 - The free full replay (46 saved inputs, 29 historical negatives) runs only at measurement point A, at the end of block 3, not per rule.
 
-## Where Phase 1 stands (2026-10-22, HEAD `c780d00`)
+## Where Phase 1 stands (2026-10-22, code `a6d967b`)
 
 - §13 gate: recall ≥ 0.80 stable across several sources, precision ≥ 0.95 and 0 critical errors. It is **not met**.
-- Latest live recall:
-  - PTFE 28/34 (0.82);
-  - ignition 14–15/29;
-  - regulator 10/32 (NVIDIA only);
-  - textiles 9/29.
-- Precision: 0.70–0.99. Critical errors: 0 in every run.
+- Latest live recall (package 4, Sonnet at `a6d967b`, two rounds):
+  - PTFE 28/34 and 28/34 (0.82);
+  - ignition 13/29 and 12/29;
+  - regulator 9/32 and 8/32;
+  - textiles 10/29 and 10/29.
+- Precision: 0.74–0.99 (pooled 0.92 and 0.89). Critical errors: 0 in every run.
+- 2.1b: the model never used the new-term sentinels in 12 live runs (`package4/README.md`).
 - Development model: `claude-sonnet-5-5` (pilot, `pilot_anthropic/README.md`). NVIDIA stays the default provider; changing the primary model waits for Liam.
 - Holdout NTRS 20170004702 stays unacquired.
 - Round B miss causes (104 target-run pairs, `target_miss_diagnosis.md`):
@@ -57,8 +58,8 @@ A cut session resumes at the first package not done.
 | 3.5 | Targeted recovery from tables and narrative for source-backed content the model omits (§9, addendum §8) | implemented-verified (already present); no new code | Checked in the round B attempts: the targeted recovery call (`focus=quantities`, milestones 7–8) already runs and offers the missed narrative values. Textiles was offered 15 candidates, among them 100%, 70%, 37% and 8.2 psia; regulator 16–38 (~100 mg); ignition 14–32. The model omitted most of them, or answered with generic labels ("pressure", "levels", "drop") that validation correctly rejects as unprinted names. The limit is the subject: the missed values describe historical missions (Apollo, Skylab cabin O2) or an assessment target (37% O2 at 8.2 psia), and no eligible experimental subject is offered for them. Offering one would weaken the applicability contract, which is immutable, so it is not done. These targets can only come from a staged class for that context (2.1b) in the live round. No deterministic rule was added. | measured with 2.1b in package 4 |
 | A | Measurement point A: 46-input replay, 29 negatives, PTFE ≥ 27/34, 0 critical (free) | implemented-verified | `point_a.md`: 50 inputs replayed with 0 model calls. 29 negatives: 0 critical regressions. PTFE 28/34, 134/136. Round B against its adjudication: textiles 7→8/29 (precision 0.773→0.826), regulator 10/32 (0.533→0.630), ignition 15→16/29 (0.748→0.759). 0 critical. The §13 gate is not met: recall ≥ 0.80 only on PTFE | 3.2b, then package 4 (needs authorization) |
 | 3.2b | Statement scope when the proposed group subject is SOURCE_SUPPORTED but not applicable to the passage: fall back to the investigation scope, as a held group already does (asymmetry found at point A) | implemented-verified | `point_a.md` second section. Groups only; a supported run is never rescoped (existing contract kept). Plus procedure steps: set-up and planned steps are not observations without an outcome. Regulator 10→11/32, precision 0.533→0.700; other sources unchanged or better; 29 negatives 0 critical; PTFE 28/34. Tests: `test_group_scope_fallback.py` (2), `test_procedure_steps.py` (7); pytest 878 | — |
-| 4 | One Sonnet round on the four sources, only if 2.1 or 3.5 change the model request; the cost is announced first (addendum §5) | pending | — | needs authorization |
-| 5 | Main Phase 1 report updated with milestones 9–13, pilot and orchestration; metrics with denominators and intervals per investigation and category (addendum §8, §11) | implemented-verified (evaluation A figures; update after package 4) | New top section of `docs/PHASE1_GENERALIZABLE_SCIENTIFIC_INGESTION.md`. The nine §11 metrics with 95 % Wilson intervals come from committed receipts only: `point_a/phase1_metrics.json`, built by `milestone13/tools/phase1_metrics.py` from `point_a/ptfe_r1_metrics.json`, `point_a/targets_three_sources.json`, `adjudication.json` and `target_miss_diagnosis.json`. Pooled recall 63/124 = 0.51 [0.42, 0.59], precision 260/303 = 0.86 [0.81, 0.89], evidence retention 0.70, omissions 0.08, 0 critical. By category: entities 0.86, relations 0.50, statements 0.46, quantities 0.39. Run-to-run variation is up to 7 targets on one source | rerun the tool after package 4 |
+| 4 | One Sonnet round on the four sources, only if 2.1 or 3.5 change the model request; the cost is announced first (addendum §5) | implemented-verified | `package4/README.md`. Three rounds, each reported apart, 6.12 USD in total. Round 1 at `dc6f342` exposed a defect: the 2.1b schema referenced `ProposedTerm` without defining it, so Anthropic refused every identity request (HTTP 400), and the refusals' reservations deferred windows under the token brake. Fixed in `a6d967b` (`referenced_definitions`, `focused_schema`, a refused request frees its reservation; `tests/test_request_schema_references.py`, 7; pytest 891). Recall at `dc6f342` / `a6d967b` r1 / r2: PTFE 25, 28, 28/34; ignition 10, 13, 12/29; regulator 9, 9, 8/32; textiles 10, 10, 10/29. Pooled precision 0.90, 0.92, 0.89. 0 critical. 0 new-term proposals from 2.1b in all 12 runs | Liam/Diego: the gate stays unmet; the sentinel is never chosen, so the misses 2.1b targeted remain |
+| 5 | Main Phase 1 report updated with milestones 9–13, pilot and orchestration; metrics with denominators and intervals per investigation and category (addendum §8, §11) | implemented-verified (evaluation A figures; evaluation B per round in `package4/`) | New top section of `docs/PHASE1_GENERALIZABLE_SCIENTIFIC_INGESTION.md`. The nine §11 metrics with 95 % Wilson intervals come from committed receipts only: `point_a/phase1_metrics.json`, built by `milestone13/tools/phase1_metrics.py` from `point_a/ptfe_r1_metrics.json`, `point_a/targets_three_sources.json`, `adjudication.json` and `target_miss_diagnosis.json`. Pooled recall 63/124 = 0.51 [0.42, 0.59], precision 260/303 = 0.86 [0.81, 0.89], evidence retention 0.70, omissions 0.08, 0 critical. By category: entities 0.86, relations 0.50, statements 0.46, quantities 0.39. Run-to-run variation is up to 7 targets on one source. After package 4: `phase1_metrics.py --round` gives the nine metrics per live round (`package4/phase1_metrics_*.json`); the point A output is unchanged | the main report section on package 4 is updated |
 | 6 | Stability, leave-one-source-out, heterogeneous independent evaluation, freeze, holdout, deliverables A–J (§12, §18, §19) | pending | — | later |
 
 ## Already done in milestone 13 (evidence)
@@ -82,8 +83,9 @@ A cut session resumes at the first package not done.
 
 - `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT` is the leading rejection; the model almost never fills `printed_name`. → 3.1
 - Strategy phases and author claims typed as executed groups, interventions or documentary context (Sonnet textiles). → 3.4
-- Regulator has never run on Sonnet. → 4
-- Not measured live: the validation reuse (`24f09e3`) and the prefetch gain on long sources. → 4
+- The 2.1b sentinels are offered in a valid schema and never chosen (12 live runs). The misses it targeted (historical and assessment values, subjects without an eligible class) remain. → decision for 2.1b
+- On ignition the 500,000-token brake binds: two network failures keep their reservation (correct, they may be billed) and one window was deferred in `a6d967b` r2. → 6
+- The regulator wet series are sometimes merged into one group by the model (`a6d967b` r2). → 6
 
 ## Pending verifications (only when Diego asks)
 

@@ -1,0 +1,3125 @@
+{
+  "approvals": 0,
+  "attempts": 15,
+  "completed_at": "2026-10-22T15:48:10.495534+00:00",
+  "configuration": {
+    "endpoint": "https://api.anthropic.com",
+    "fallback_models": [],
+    "max_model_calls": null,
+    "max_total_tokens": 500000,
+    "model": "claude-sonnet-5-5",
+    "provider": "anthropic",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 3600.0,
+    "vision_model": "claude-sonnet-5-5"
+  },
+  "digest": "db9ccbfb5f1e9e9c9d9641decfa25210fa015392f74d21877d0268cac7cd75a5",
+  "git_head": "a6d967b2de704c2199931416b50a421d7c74b4cb",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20250002114/downloads/ICES_2025-392-correctedcaptions.pdf",
+  "package_id": "research-1d88231f39dc30cd2148",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": 500000,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 21672,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 1,
+    "configured_fallback_models": [],
+    "deterministic_characters": 43332,
+    "duration_seconds": 247.4749734999932,
+    "model": "claude-sonnet-5-5",
+    "model_characters": 0,
+    "new_model_calls": 15,
+    "outcomes": [
+      {
+        "attempts": 2,
+        "cache_key": "da53a916e2c411ec704ca6094f1bbecad45139ebe0b1753d4aa52d33933590b9",
+        "context_token_estimate": 32311,
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 7168,
+        "prefetch": "USED",
+        "proposed_items": 7,
+        "reasoning_tokens": 2048,
+        "request_bytes": 44999,
+        "reserved_tokens_per_attempt": 56431,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 20825,
+        "source_anchors": 119,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "Material",
+              "key": "entity-154187ad1a62e737d004",
+              "label": "PMMA",
+              "proposed_class": null,
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "Flammability diagram for PMMA13 using a cone calorimeter for the \nignition testing and a radiatively heated flame spread apparatus [12].",
+                  "start": 3508
+                }
+              ]
+            },
+            "proposal_id": "proposal-e8b1640ba0cd4d1046a7af33",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 37.102378999989014,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 7168,
+          "started_at": "2026-10-22T15:44:48.544352+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 33.26413739999407
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1790,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 432,
+          "input_tokens": 19536,
+          "prompt_tokens": 21326,
+          "total_tokens": 21758
+        }
+      },
+      {
+        "attempts": 2,
+        "cache_key": "4c9d4b293f8ae55e58d5912af5de4c06b3dcb8d089cb4ccad24d60db55e8191c",
+        "context_token_estimate": 34618,
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 9216,
+        "prefetch": "USED",
+        "proposed_items": 17,
+        "reasoning_tokens": 2048,
+        "request_bytes": 45516,
+        "reserved_tokens_per_attempt": 58996,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 15741,
+        "source_anchors": 120,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 8.686664200009545,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 9216,
+          "started_at": "2026-10-22T15:45:28.467025+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 4.058750800002599
+        },
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1790,
+          "completion_tokens": 956,
+          "input_tokens": 19675,
+          "prompt_tokens": 21465,
+          "total_tokens": 22421
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "05d0ae71590fd8c3af840aac5b2c4b71a328c93c4b4ec2776b062e0aacfe32a7",
+        "context_token_estimate": 32613,
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": "entities",
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 7168,
+        "proposed_items": 8,
+        "reasoning_tokens": 2048,
+        "request_bytes": 45602,
+        "reserved_tokens_per_attempt": 57034,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 20825,
+        "source_anchors": 119,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "Material",
+              "key": "entity-154187ad1a62e737d004",
+              "label": "PMMA",
+              "proposed_class": null,
+              "study": "cited",
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "Flammability diagram for PMMA13 using a cone calorimeter for the \nignition testing and a radiatively heated flame spread apparatus [12].",
+                  "start": 3508
+                }
+              ]
+            },
+            "proposal_id": "proposal-e8b1640ba0cd4d1046a7af33",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 4.677652599988505,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 7168,
+          "started_at": "2026-10-22T15:45:39.329978+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 4.506248899997445
+        },
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1790,
+          "completion_tokens": 468,
+          "input_tokens": 19706,
+          "prompt_tokens": 21496,
+          "total_tokens": 21964
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "d91fd80e7261117e0d91c2e912aaadf03d5578d9d897012bf088019ab3630e54",
+        "context_token_estimate": 34919,
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": "entities",
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 9216,
+        "proposed_items": 17,
+        "reasoning_tokens": 2048,
+        "request_bytes": 46119,
+        "reserved_tokens_per_attempt": 59599,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 15741,
+        "source_anchors": 120,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "FlowCondition",
+              "key": "entity-51011a3e6eb844851ddc",
+              "label": "forced flow",
+              "proposed_class": null,
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "The results are plotted with oxygen concentration versus force flow \nspeed in figures 7-12.",
+                  "start": 423
+                }
+              ]
+            },
+            "proposal_id": "proposal-f479a1efdbc802275321281b",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 7.155384300000151,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 9216,
+          "started_at": "2026-10-22T15:45:44.880631+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.6607394000020577
+        },
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1790,
+          "completion_tokens": 967,
+          "input_tokens": 19845,
+          "prompt_tokens": 21635,
+          "total_tokens": 22602
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "9847637cb999c390836befabda08bb2c23e7bd821fb80ff20e5c878739d6543b",
+        "context_token_estimate": 63384,
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 14,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "prefetch": "USED",
+        "proposed_items": 49,
+        "reasoning_tokens": 2048,
+        "request_bytes": 54059,
+        "reserved_tokens_per_attempt": 92976,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25556,
+        "source_anchors": 129,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "unknown",
+              "subjects": [
+                "entity-63674be690a320671581"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "However, lunar gravity testing is largely limited to using a centrifuge in the \nNASA GRC 5.2 second drop tower.",
+                  "start": 354
+                }
+              ],
+              "text": "However, lunar gravity testing is largely limited to using a centrifuge in the \nNASA GRC 5.2 second drop tower."
+            },
+            "proposal_id": "proposal-b0bc668c18ddbf994fc48fc9",
+            "reasons": [
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "unknown",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "If the flame damaged zone is found to be less than 15.2 cm (6”), the material is determined to be self-\nextinguishing for the test conditions.",
+                  "start": 1522
+                }
+              ],
+              "text": "If the flame damaged zone is found to be less than 15.2 cm (6”), the material is determined to be self-\nextinguishing for the test conditions."
+            },
+            "proposal_id": "proposal-b72253cc959a92cc7422b626",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "unknown",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "Given the test design, for most materials, Test 1 is \nan ignition test, if the material has enough specific heat or low enough heat release, it will pass but it might not pass \nwith a bigger igniter or if the material were \nslightly preheated.",
+                  "start": 1943
+                }
+              ],
+              "text": "Given the test design, for most materials, Test 1 is \nan ignition test, if the material has enough specific heat or low enough heat release, it will pass but it might not pass \nwith a bigger igniter or if the material were \nslightly preheated."
+            },
+            "proposal_id": "proposal-bef63e9a6001afaa0725659e",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION;UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "unknown",
+              "subjects": [
+                "entity-beebc5adcb974408986e"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-07e53eaea60dd81ef207f392",
+                  "quote": "If the incoming oxidizer flow is too fast for \nthe flame chemistry, the flame will be blown downstream (blowoff).",
+                  "start": 2904
+                }
+              ],
+              "text": "If the incoming oxidizer flow is too fast for \nthe flame chemistry, the flame will be blown downstream (blowoff)."
+            },
+            "proposal_id": "proposal-1f5a07ebe31e208bff420844",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-7500ff2165f88836dcfc262d",
+                  "quote": "If the radiative loss from the sample 𝑞ሶ௥௦\nᇱᇱ equals the other forms of heat supply to the fuel, the numerator in equation \n7 will equal zero and the flame will extinguish.",
+                  "start": 3377
+                }
+              ],
+              "text": "If the radiative loss from the sample 𝑞ሶ௥௦\nᇱᇱ equals the other forms of heat supply to the fuel, the numerator in equation \n7 will equal zero and the flame will extinguish."
+            },
+            "proposal_id": "proposal-892289b6bad5de6335a175a3",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "cited",
+              "subjects": [
+                "entity-e21888bf8772da8be27c"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "Takahashi and co-workers assembled a similar analysis16 for \nopposed spread for a variety of polymers over forced flow in normal gravity to low-gravity conditions.",
+                  "start": 1950
+                }
+              ],
+              "text": "Takahashi and co-workers assembled a similar analysis16 for \nopposed spread for a variety of polymers over forced flow in normal gravity to low-gravity conditions."
+            },
+            "proposal_id": "proposal-87e743c26b8035055166d836",
+            "reasons": [
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Publication",
+              "epistemic": "documentary_context",
+              "study": "current",
+              "subjects": [
+                "entity-b9bfa4fc796c07dc8d37"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "Consequently a 5 second extinction criterion test program was developed to determine the change in the \nextinction limit in 1-g and lunar-g and apply this offset to NASA Test 1 flammability limits for lunar material \ncertification.",
+                  "start": 3159
+                }
+              ],
+              "text": "Consequently a 5 second extinction criterion test program was developed to determine the change in the \nextinction limit in 1-g and lunar-g and apply this offset to NASA Test 1 flammability limits for lunar material \ncertification."
+            },
+            "proposal_id": "proposal-451d1767e41426f139b1c6e7",
+            "reasons": [
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "At heat \nfluxes below the critical flux, the material will burn and proceeding from the left, the \nspread rate increases with heat flux.",
+                  "start": 3831
+                }
+              ],
+              "text": "At heat \nfluxes below the critical flux, the material will burn and proceeding from the left, the \nspread rate increases with heat flux."
+            },
+            "proposal_id": "proposal-1399fc1c28104f1568f857f2",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 17.385479299991857,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 32768,
+          "started_at": "2026-10-22T15:45:54.432317+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 4.027494099995238
+        },
+        "usage": {
+          "cache_creation_input_tokens": 2765,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 1980,
+          "input_tokens": 23288,
+          "prompt_tokens": 26053,
+          "total_tokens": 28033
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "26549af889cc9adb417359f7bf874b3eb4d60c5a75916ef6d6eb6b8d4cea42a7",
+        "context_token_estimate": 71148,
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "focus": null,
+        "known_entities_selected": 24,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 57186,
+        "reserved_tokens_per_attempt": 108505,
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 19684,
+        "source_anchors": 131,
+        "stage": "propositions",
+        "start": 1145
+      },
+      {
+        "attempts": 1,
+        "cache_key": "940271c871e83ff0ab748867c29d44707b026d4379f22460ea60ff1f1a1d2ca7",
+        "context_token_estimate": 60813,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 14,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 32768,
+        "proposed_items": 1,
+        "reasoning_tokens": 2048,
+        "request_bytes": 51959,
+        "reserved_tokens_per_attempt": 87834,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25556,
+        "source_anchors": 129,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 5.221718000000692,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 32768,
+          "started_at": "2026-10-22T15:46:16.885421+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 5.056074200008879
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1410,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 292,
+          "input_tokens": 22370,
+          "prompt_tokens": 23780,
+          "total_tokens": 24072
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "f22ee603c8cf158c3638651dd1beaae4cfa7d413e94a7ff6c3ecfbd60fd80966",
+        "context_token_estimate": 60720,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 14,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 51781,
+        "reserved_tokens_per_attempt": 87649,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25556,
+        "source_anchors": 129,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 2.7749751999945147,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 32768,
+          "started_at": "2026-10-22T15:46:25.365750+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.760107499998412
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1403,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 55,
+          "input_tokens": 22286,
+          "prompt_tokens": 23689,
+          "total_tokens": 23744
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "0a96746368eaa281aba69e05f70d5e21912f936e3d3e67e6431f7a3c9089af64",
+        "context_token_estimate": 70099,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "focus": "quantities",
+        "known_entities_selected": 24,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 58059,
+        "reserved_tokens_per_attempt": 106406,
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 19684,
+        "source_anchors": 131,
+        "stage": "propositions",
+        "start": 1145
+      },
+      {
+        "attempts": 1,
+        "cache_key": "1a6f93bdc27b3bd3774a804d02f5e57f81452c1f66c7202fc2c32d826e2d526f",
+        "context_token_estimate": 46191,
+        "deterministic": "COMPLETE",
+        "end": 9401,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 20,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 176,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-56075a4066a19a3abba5a3e7",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 20480,
+        "proposed_items": 22,
+        "reasoning_tokens": 2048,
+        "request_bytes": 39034,
+        "reserved_tokens_per_attempt": 70878,
+        "schema_errors": [],
+        "segment_id": "window-c5f1cdeb752a3c4fcbbe4a01",
+        "source_anchor_characters": 12115,
+        "source_anchors": 81,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 17.229978599993046,
+          "effort": "high",
+          "image_count": 2,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 20480,
+          "started_at": "2026-10-22T15:46:31.393104+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 12.291466599999694
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1474,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 2306,
+          "input_tokens": 22509,
+          "prompt_tokens": 23983,
+          "total_tokens": 26289
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "5796b2241b0a233ce31fdc79667ca6844ffab32cc9c28dbdb86b06c681f3b6da",
+        "context_token_estimate": 42951,
+        "deterministic": "COMPLETE",
+        "end": 8215,
+        "evidence_id": "E-77a08c9b9b578997fe41bf78",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 18,
+        "members": [
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-066a2e6c5efc719a90383a73",
+            "start": 176
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 19456,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 34657,
+        "reserved_tokens_per_attempt": 65423,
+        "schema_errors": [],
+        "segment_id": "window-8d3ec845a28384ff9cba3ffd",
+        "source_anchor_characters": 13685,
+        "source_anchors": 67,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 176,
+        "transport": {
+          "duration_seconds": 4.36019770000712,
+          "effort": "high",
+          "image_count": 2,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 19456,
+          "started_at": "2026-10-22T15:46:51.418687+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 4.323446700000204
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1420,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 87,
+          "input_tokens": 20096,
+          "prompt_tokens": 21516,
+          "total_tokens": 21603
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "9e366fd8548791737101c0342842740857ba1615f21847a66bd6e340ec8b8c4a",
+        "context_token_estimate": 68333,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "focus": "quantities",
+        "known_entities_selected": 24,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 54667,
+        "reserved_tokens_per_attempt": 102874,
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 19684,
+        "source_anchors": 131,
+        "stage": "propositions",
+        "start": 1145
+      },
+      {
+        "attempts": 1,
+        "cache_key": "a9e0cff6bff2b6dc6996b7d97bf6b11d119e77d3adb04e239ec6cedd1205a421",
+        "context_token_estimate": 44435,
+        "deterministic": "COMPLETE",
+        "end": 9401,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 20,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 176,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-56075a4066a19a3abba5a3e7",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 20480,
+        "proposed_items": 2,
+        "reasoning_tokens": 2048,
+        "request_bytes": 35656,
+        "reserved_tokens_per_attempt": 67367,
+        "schema_errors": [],
+        "segment_id": "window-c5f1cdeb752a3c4fcbbe4a01",
+        "source_anchor_characters": 12115,
+        "source_anchors": 81,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 5.222314799990272,
+          "effort": "high",
+          "image_count": 2,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 20480,
+          "started_at": "2026-10-22T15:46:58.049271+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 4.779208599997219
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1334,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 116,
+          "input_tokens": 20928,
+          "prompt_tokens": 22262,
+          "total_tokens": 22378
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "5796b2241b0a233ce31fdc79667ca6844ffab32cc9c28dbdb86b06c681f3b6da",
+        "deterministic": "COMPLETE",
+        "end": 8215,
+        "evidence_id": "E-77a08c9b9b578997fe41bf78",
+        "focus": "quantities",
+        "known_entities_selected": 18,
+        "members": [
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-066a2e6c5efc719a90383a73",
+            "start": 176
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "replayed_failure": true,
+        "segment_id": "window-8d3ec845a28384ff9cba3ffd",
+        "source_anchor_characters": 13685,
+        "source_anchors": 67,
+        "stage": "propositions",
+        "start": 176
+      },
+      {
+        "attempts": 1,
+        "cache_key": "17f9760f8ebf56b48080172fc0a442e61bacadf7cfb1f78781c18ff8fbefe45b",
+        "context_token_estimate": 38709,
+        "deterministic": "COMPLETE",
+        "end": 21305,
+        "evidence_id": "E-42e3fea27934c8951f93eab2",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 14,
+        "members": [
+          {
+            "end": 2661,
+            "evidence_id": "E-42e3fea27934c8951f93eab2",
+            "id": "segment-f75090b6da45feb78134dde2",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-7eeb627c13771c379337ce5d",
+            "start": 0
+          },
+          {
+            "end": 3816,
+            "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+            "id": "segment-fec6674ca206125e9a08053c",
+            "start": 1145
+          },
+          {
+            "end": 410,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-c162201388501b7417dd3724",
+            "start": 0
+          },
+          {
+            "end": 5038,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-f817df88963f3701f7ac21b0",
+            "start": 410
+          },
+          {
+            "end": 5114,
+            "evidence_id": "E-07e53eaea60dd81ef207f392",
+            "id": "segment-b8c89b1ae95122be1702b631",
+            "start": 5038
+          },
+          {
+            "end": 3322,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-d32a240096e38a5ea8ee3d82",
+            "start": 0
+          },
+          {
+            "end": 4600,
+            "evidence_id": "E-7500ff2165f88836dcfc262d",
+            "id": "segment-72947880d2df3e0e28d7359a",
+            "start": 3322
+          },
+          {
+            "end": 829,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-1c2d99b6eadb299228c280db",
+            "start": 0
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-fbd9e26865d54ad478174f15",
+            "start": 829
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-129ac4d6a061d7397737e779",
+            "id": "segment-dea9e62c057e11a00ae85428",
+            "start": 2887
+          },
+          {
+            "end": 860,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-c72efe8f278f0a2d86b52fc6",
+            "start": 0
+          },
+          {
+            "end": 1145,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-7d62c68363428d8138aedd50",
+            "start": 860
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 9216,
+        "prefetch": "USED",
+        "proposed_items": 4,
+        "reasoning_tokens": 2048,
+        "request_bytes": 54383,
+        "reserved_tokens_per_attempt": 67178,
+        "schema_errors": [],
+        "segment_id": "window-abd66891995dac10f703959f",
+        "source_anchor_characters": 25556,
+        "source_anchors": 129,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-6283ed4dbded15da3815",
+              "proposed_relation": null,
+              "relation": "belongsToInvestigation",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+                  "start": 270
+                }
+              ]
+            },
+            "proposal_id": "proposal-53c1dbf159b5607a6ef70a00",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f71504bd27a64742a1c5",
+              "proposed_relation": null,
+              "relation": "hasGravityCondition",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+                  "start": 270
+                },
+                {
+                  "evidence_id": "E-9652ac7040cf6cdbcbe4d064",
+                  "quote": "This relationship is compared to the results from material flammability \ntests in a highspeed blow-off facility at the NASA White Sands Test Facility (WSTF) (1-g) and \nthe Glenn Research Center (GRC) Zero Gravity Facility partial gravity centrifuge.",
+                  "start": 630
+                }
+              ]
+            },
+            "proposal_id": "proposal-892ed146e627a90f73c652c4",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f71504bd27a64742a1c5",
+              "proposed_relation": null,
+              "relation": "hasGravityCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "The goal was to measure the change in the extinction limit between 1-g testing and lunar-g testing in the centrifuge.",
+                  "start": 2908
+                }
+              ]
+            },
+            "proposal_id": "proposal-0e398d28086111cc2f78a984",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-63674be690a320671581",
+              "proposed_relation": null,
+              "relation": "hasGravityCondition",
+              "subject": "entity-6283ed4dbded15da3815",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "This required a test \nprogram that included work at the NASA White Sands Test Facility (WSTF) for the 1-g buoyant flow testing and the \nNASA Glenn Research Center (GRC) Zero-Gravity Research Facility (ZGRF) for a quiescent lunar gravity \nenvironment.",
+                  "start": 270
+                },
+                {
+                  "evidence_id": "E-129ac4d6a061d7397737e779",
+                  "quote": "The goal was to measure the change in the extinction limit between 1-g testing and lunar-g testing in the centrifuge.",
+                  "start": 2908
+                }
+              ]
+            },
+            "proposal_id": "proposal-b2ddc1c09b4f3b01f9bdf5cb",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 8.955863499999396,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 9216,
+          "started_at": "2026-10-22T15:47:06.724547+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 7.91093969999929
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1687,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 1150,
+          "input_tokens": 23502,
+          "prompt_tokens": 25189,
+          "total_tokens": 26339
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "2bc77667f2f711c26c88cb1b4e3d35a2e877a525cc6775558db8fbd4da96dab2",
+        "context_token_estimate": 42634,
+        "deterministic": "COMPLETE",
+        "end": 17440,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 24,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-06622c916cbff10fd447c203",
+            "start": 0
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 12288,
+        "prefetch": "USED",
+        "proposed_items": 21,
+        "reasoning_tokens": 2048,
+        "request_bytes": 55950,
+        "reserved_tokens_per_attempt": 71957,
+        "schema_errors": [],
+        "segment_id": "window-6574c9398481a96202c5fb0e",
+        "source_anchor_characters": 19684,
+        "source_anchors": 131,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-17161e2589ba8650be82",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-4cfa1f22a9cc55004c398b0f",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-e159ae784412b71e33d6",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-976bcfeb09050350242f8fb7",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f1302fd85cbe5bdac6fa",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-96a3072c190f0c53251fc212",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-24ee089bdd3ab05df0c5",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-1ca878c83e2e6ff913116b9d",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-6aeb14a93416ed3d28a0",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-1872eca284674b0677dec3ee",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-17161e2589ba8650be82",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-ccb22e2b02289665c9702e04",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-e159ae784412b71e33d6",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-94eeedf2d96e218b4e9d729c",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-f1302fd85cbe5bdac6fa",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-287e4d3a8cb7ac586ca40b85",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-24ee089bdd3ab05df0c5",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-b84ac689aebf5a9586358a94",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-6aeb14a93416ed3d28a0",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Five materials were tested in both facilities.",
+                  "start": 376
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Three of the materials typically fail NASA test 1 (are \nflammable) in air (PMMA, P213 Tape (fiberglass with an acrylic (PMMA) adhesive), and cotton t-shirt material) and \ntwo materials pass Test 1 in air  (polycarbonate and Nomex Velcro).",
+                  "start": 668
+                }
+              ]
+            },
+            "proposal_id": "proposal-0317a5585c3097d27f23c554",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-78b5159f9d09cd6c8df1",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "The lunar-g limit\n \n    \n    \n \nFigure 7: 0.8 mm PMMA Sample, 8.2 psia \nUHOI values with the best fit for the WSTF data \nfor 60 cm/s and above with the GRC lunar gravity \ndata shown as a horizontal line.",
+                  "start": 1541
+                }
+              ]
+            },
+            "proposal_id": "proposal-ba40a3341b627ae143c98cd9",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-78b5159f9d09cd6c8df1",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "The lunar-g limit\n \n    \n    \n \nFigure 7: 0.8 mm PMMA Sample, 8.2 psia \nUHOI values with the best fit for the WSTF data \nfor 60 cm/s and above with the GRC lunar gravity \ndata shown as a horizontal line.",
+                  "start": 1541
+                }
+              ]
+            },
+            "proposal_id": "proposal-e5a8dbce0ab9a61977364180",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-b11e0ef7874e77b277d3",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+                  "start": 1746
+                }
+              ]
+            },
+            "proposal_id": "proposal-f122d17a1fe6d642729f85dd",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-b11e0ef7874e77b277d3",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 8: P-213 Tape sample, 8.2 psia UHOI \nvalues with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+                  "start": 1746
+                }
+              ]
+            },
+            "proposal_id": "proposal-cfebc376f2939838e5187e97",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-07757be80d2212efa659",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for extinction of the gas phase \nflame with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+                  "start": 1916
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 10: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for smolder extinction with the \nbest fit for the WSTF data with the GRC lunar \ngravity data shown as a horizontal line.",
+                  "start": 2123
+                }
+              ]
+            },
+            "proposal_id": "proposal-b651c6d06459d54231022829",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-07757be80d2212efa659",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 9: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for extinction of the gas phase \nflame with the best fit for the WSTF data with the \nGRC lunar gravity data shown as a horizontal line.",
+                  "start": 1916
+                },
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "Figure 10: Cotton T-Shirt material (Beefy-T), 8.2 \npsia UHOI values for smolder extinction with the \nbest fit for the WSTF data with the GRC lunar \ngravity data shown as a horizontal line.",
+                  "start": 2123
+                }
+              ]
+            },
+            "proposal_id": "proposal-65d2ae7498fdd06ce9910a54",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 16.60661460000847,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 12288,
+          "started_at": "2026-10-22T15:47:06.834022+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 13.473519899998792
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1807,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 2124,
+          "input_tokens": 24282,
+          "prompt_tokens": 26089,
+          "total_tokens": 28213
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "b34d9909053affd7e8bd24dd1f23bf05b0a39510f9dc00a52f36c674725c7aed",
+        "context_token_estimate": 48431,
+        "deterministic": "COMPLETE",
+        "end": 9401,
+        "evidence_id": "E-9789e7f460fa978a04ae491e",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 20,
+        "members": [
+          {
+            "end": 2924,
+            "evidence_id": "E-9789e7f460fa978a04ae491e",
+            "id": "segment-67441cd9e6a2c1db4869a661",
+            "start": 1145
+          },
+          {
+            "end": 542,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-368d11587e3fc115a142bc63",
+            "start": 0
+          },
+          {
+            "end": 3847,
+            "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+            "id": "segment-36947c91bf1e56f3555916d8",
+            "start": 542
+          },
+          {
+            "end": 347,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-565466f0813bd9a4db921b57",
+            "start": 0
+          },
+          {
+            "end": 2454,
+            "evidence_id": "E-8b1fc477e425ca4010535f3e",
+            "id": "segment-97ebb7fffcd84fd8b84f69a0",
+            "start": 347
+          },
+          {
+            "end": 176,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-56075a4066a19a3abba5a3e7",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 20480,
+        "proposed_items": 76,
+        "reasoning_tokens": 2048,
+        "request_bytes": 40459,
+        "reserved_tokens_per_attempt": 75359,
+        "schema_errors": [],
+        "segment_id": "window-c5f1cdeb752a3c4fcbbe4a01",
+        "source_anchor_characters": 12115,
+        "source_anchors": 81,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-b7370b383b1085bed159"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "This enabled sample ignition \nin a chamber condition where the sample might be near the flammability limit.",
+                  "start": 2337
+                }
+              ],
+              "text": "This enabled sample ignition \nin a chamber condition where the sample might be near the flammability limit."
+            },
+            "proposal_id": "proposal-51343e42bc0982c7a8d398dc",
+            "reasons": [
+              "UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "5.2 by 14.0",
+              "label": "samples",
+              "printed_name": null,
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "Installed \nin the chamber was a 7.4 cm ID by 30 cm long quartz tube duct (Fig \n5) where the 5.2 cm by 14.0 cm samples were tested.",
+                  "start": 1346
+                }
+              ],
+              "unit": "cm"
+            },
+            "proposal_id": "proposal-61145ad01f59e9adfdee26d8",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "approximately a second",
+              "label": "flow increase",
+              "printed_name": null,
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-9789e7f460fa978a04ae491e",
+                  "quote": "The flow increase occurs in \napproximately a second.",
+                  "start": 2526
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-11bcab820599d499c6bc70aa",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "81.2",
+              "label": "I.D.",
+              "printed_name": null,
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "The GRC testing was conducted using the centrifuge test facility in the ZGRF 5.2 second drop tower (Fig. 6).3 The \nchamber is 299 l in volume with an I.D.",
+                  "start": 605
+                },
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "of 81.2 cm and an internal height if 30.5 cm.",
+                  "start": 760
+                }
+              ],
+              "unit": "cm"
+            },
+            "proposal_id": "proposal-9460e28f022b40820a438e41",
+            "reasons": [
+              "QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "20.4",
+              "label": "RPM",
+              "printed_name": "rotated",
+              "subject": "entity-b7370b383b1085bed159",
+              "support": [
+                {
+                  "evidence_id": "E-1b325f81dc61d9bccb8826c3",
+                  "quote": "To achieve lunar gravity, the \nchamber was rotated at 20.4 RPM for several minutes before the drop (I.e.",
+                  "start": 806
+                }
+              ],
+              "unit": "RPM"
+            },
+            "proposal_id": "proposal-613ff2aae46184571689f9d5",
+            "reasons": [
+              "QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "60, 80, 100, 144",
+              "label": "flow rates",
+              "printed_name": null,
+              "subject": "entity-a0f786353cb3596c66c3",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                }
+              ],
+              "unit": "cm/s"
+            },
+            "proposal_id": "proposal-52ffb009edfc46dadfc5c8d2",
+            "reasons": [
+              "QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "25 and 40",
+              "label": "flow rates",
+              "printed_name": "additional testing",
+              "subject": "entity-17161e2589ba8650be82",
+              "support": [
+                {
+                  "evidence_id": "E-8b1fc477e425ca4010535f3e",
+                  "quote": "All materials were tested in the WSTF facility for at least 4 flow rates (60, 80, 100, 144 cm/s) \nwith PMMA having additional testing at 25 and 40 cm/s.",
+                  "start": 515
+                }
+              ],
+              "unit": "cm/s"
+            },
+            "proposal_id": "proposal-cdea5e4d07e84ba8a418567b",
+            "reasons": [
+              "QUANTITY_EXPRESSION_LISTS_SEPARATE_VALUES"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 1145,
+        "transport": {
+          "duration_seconds": 32.09257829999842,
+          "effort": "high",
+          "image_count": 2,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 20480,
+          "started_at": "2026-10-22T15:47:26.801570+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 16.19761170000129
+        },
+        "usage": {
+          "cache_creation_input_tokens": 2837,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 4843,
+          "input_tokens": 23072,
+          "prompt_tokens": 25909,
+          "total_tokens": 30752
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "320f2241e50687b62924f7df19ce0e6cc9d3e8407b78a2ea4e98228482540430",
+        "context_token_estimate": 45738,
+        "deterministic": "COMPLETE",
+        "end": 8215,
+        "evidence_id": "E-77a08c9b9b578997fe41bf78",
+        "focus": null,
+        "known_entities_selected": 18,
+        "members": [
+          {
+            "end": 2563,
+            "evidence_id": "E-77a08c9b9b578997fe41bf78",
+            "id": "segment-066a2e6c5efc719a90383a73",
+            "start": 176
+          },
+          {
+            "end": 61,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-4e12c8e5cb1fe59405740f99",
+            "start": 0
+          },
+          {
+            "end": 3794,
+            "evidence_id": "E-4fdc6ac7fa9f1d5a2704d575",
+            "id": "segment-ea73185985b326084b4e10cf",
+            "start": 61
+          },
+          {
+            "end": 866,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-60f2769b498a7abbd73072c4",
+            "start": 0
+          },
+          {
+            "end": 1206,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-a123793da9d122c14f4d15fb",
+            "start": 866
+          },
+          {
+            "end": 1858,
+            "evidence_id": "E-7e102620e031abdc88047395",
+            "id": "segment-8b9f7eb367de5f8e1bd3b570",
+            "start": 1206
+          }
+        ],
+        "model": "DEFERRED_BUDGET",
+        "output_tokens": 19456,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 37146,
+        "reserved_tokens_per_attempt": 70996,
+        "segment_id": "window-8d3ec845a28384ff9cba3ffd",
+        "source_anchor_characters": 13685,
+        "source_anchors": 67,
+        "stage": "propositions",
+        "start": 176
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 435595,
+    "window_prefetch": {
+      "concurrency": 3,
+      "discarded": 0,
+      "sent": 5,
+      "used": 5
+    }
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "a7beb30e4beb5f5b993253161df7d2b9a286a1525bf97ab0d6bf94250a390474",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-22T15:44:00.858749+00:00",
+  "timing": {
+    "cache_creation_input_tokens": 17927,
+    "cache_read_input_tokens": 5370,
+    "call_seconds_max": 38.2,
+    "call_seconds_p50": 9.0,
+    "call_seconds_p90": 38.1,
+    "calls": 15,
+    "calls_over_240_seconds": 0,
+    "estimated_cost_usd": 0.766,
+    "failed_attempts": 2,
+    "failure_causes": {
+      "network": 2
+    },
+    "input_tokens": 304392,
+    "local_seconds": 52.8,
+    "output_tokens": 15776,
+    "per_call": [
+      {
+        "cache_creation_input_tokens": null,
+        "cache_read_input_tokens": null,
+        "error": "network",
+        "estimated_cost_usd": 0.0,
+        "first_token_seconds": null,
+        "generation_seconds": null,
+        "input_tokens": null,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": null,
+        "seconds": 38.2,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 1790,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0479,
+        "first_token_seconds": 33.3,
+        "generation_seconds": 3.8,
+        "input_tokens": 21326,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 432,
+        "seconds": 37.1,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": null,
+        "cache_read_input_tokens": null,
+        "error": "network",
+        "estimated_cost_usd": 0.0,
+        "first_token_seconds": null,
+        "generation_seconds": null,
+        "input_tokens": null,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": null,
+        "seconds": 38.1,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1790,
+        "error": null,
+        "estimated_cost_usd": 0.0493,
+        "first_token_seconds": 4.1,
+        "generation_seconds": 4.6,
+        "input_tokens": 21465,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 956,
+        "seconds": 8.7,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1790,
+        "error": null,
+        "estimated_cost_usd": 0.0445,
+        "first_token_seconds": 4.5,
+        "generation_seconds": 0.2,
+        "input_tokens": 21496,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 468,
+        "seconds": 4.7,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1790,
+        "error": null,
+        "estimated_cost_usd": 0.0497,
+        "first_token_seconds": 2.7,
+        "generation_seconds": 4.5,
+        "input_tokens": 21635,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 967,
+        "seconds": 7.2,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 2765,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0733,
+        "first_token_seconds": 4.0,
+        "generation_seconds": 13.4,
+        "input_tokens": 26053,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 1980,
+        "seconds": 17.4,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1410,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0512,
+        "first_token_seconds": 5.1,
+        "generation_seconds": 0.2,
+        "input_tokens": 23780,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 292,
+        "seconds": 5.2,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1403,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0486,
+        "first_token_seconds": 2.8,
+        "generation_seconds": 0.0,
+        "input_tokens": 23689,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 55,
+        "seconds": 2.8,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1474,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0718,
+        "first_token_seconds": 12.3,
+        "generation_seconds": 4.9,
+        "input_tokens": 23983,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 2306,
+        "seconds": 17.2,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1420,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0446,
+        "first_token_seconds": 4.3,
+        "generation_seconds": 0.0,
+        "input_tokens": 21516,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 87,
+        "seconds": 4.4,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1334,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0464,
+        "first_token_seconds": 4.8,
+        "generation_seconds": 0.4,
+        "input_tokens": 22262,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 116,
+        "seconds": 5.2,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1687,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0627,
+        "first_token_seconds": 7.9,
+        "generation_seconds": 1.0,
+        "input_tokens": 25189,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 1150,
+        "seconds": 9.0,
+        "stage": "relationships"
+      },
+      {
+        "cache_creation_input_tokens": 1807,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0743,
+        "first_token_seconds": 13.5,
+        "generation_seconds": 3.1,
+        "input_tokens": 26089,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 2124,
+        "seconds": 16.6,
+        "stage": "relationships"
+      },
+      {
+        "cache_creation_input_tokens": 2837,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.1017,
+        "first_token_seconds": 16.2,
+        "generation_seconds": 15.9,
+        "input_tokens": 25909,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 4843,
+        "seconds": 32.1,
+        "stage": "propositions"
+      }
+    ],
+    "post_extraction_seconds": 11.7,
+    "provider_call_seconds_total": 243.9,
+    "provider_seconds": 196.8,
+    "repeated_identical_requests": 2,
+    "setup_seconds": 0.2,
+    "wall_seconds": 249.6
+  },
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Does the source's microgravity context apply to this submitted campaign? Local terrestrial controls will remain explicit exceptions. Choose documentary if the passage does not establish applicability.",
+    "Original PDF quantities retain unresolved role and experimental scope for scientific review",
+    "Scientific preparation review dependency: APPARATUS_OR_METHOD_IS_NOT_AN_INTERVENTION",
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+    "Scientific preparation review dependency: CONDITION_SUBTYPE_REQUIRES_SOURCE_OR_APPROVED_ALIAS",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFIGURATION_STATEMENT_STATES_A_CRITERION",
+    "Scientific preparation review dependency: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: NUMERIC_VALUE_IS_NOT_A_NAMED_ENTITY",
+    "Scientific preparation review dependency: OBSERVATION_STATES_A_CRITERION",
+    "Scientific preparation review dependency: QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: RELATION_ENTAILMENT_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: RELATIVE_DIFFERENCE_IS_A_DERIVED_QUANTITY",
+    "Scientific preparation review dependency: STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific preparation review dependency: SUPPORT_ONLY_IN_BACKGROUND_OR_ANALYSIS_SECTION",
+    "Scientific quantity native representation deferred; original literal retained: proposal-8afd6880cad841215f76352c",
+    "Scientific quantity native representation deferred; original literal retained: proposal-953e319437f97feea29ec590",
+    "Scientific review required: select source-supported narrative scope with evidence and an applicability explanation for proposal-5dc421e5980978643cb206b5",
+    "Select source-supported scope for proposal-a4233d807d6c1c64b602db5c",
+    "Select source-supported scope for proposal-e846d5e52d4fdd89ab493069",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:0f4083708e1bc27a",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:751d13394a7214ff",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:7d08e23fe76ad89b",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:8833a8bc3f93a96c",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:893a6734eaf10c8b",
+    "Select source-supported scope for research-1d88231f39dc30cd2148:a7beb30e4beb5f5b:statement:de3b2a594b286164",
+    "Which identified runs do these documentary context statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these measured observation statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these open question statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}

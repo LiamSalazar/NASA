@@ -1,0 +1,149 @@
+{
+ "ignition": {
+  "recall": "10/29",
+  "correct": [
+   "entities-01",
+   "entities-02",
+   "entities-03",
+   "entities-04",
+   "quantities-05",
+   "quantities-10",
+   "quantities-11",
+   "quantities-12",
+   "statements-24",
+   "relations-27"
+  ],
+  "precision": "32/42",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "0d189b7f": "standard test method typed an experiment family of this study",
+   "b8c93a8e": "condition label carries its value",
+   "3ff48f57": "flow condition given itself as the subject of its value",
+   "0be56fde": "Duplicate microgravity (study unknown) beside the cited Microgravity condition; same judgment as this id in the pilot.",
+   "6fae3157": "Fragment joined with a figure caption; same judgment as this id earlier.",
+   "d597d4b1": "Test-procedure rule ('if the sample was flammable, the test was repeated ...') typed a measured observation.",
+   "f1d45bf2": "Camera setup typed observation; same judgment as this id earlier.",
+   "8b843801": "Method rationale typed conclusion; same judgment as this id earlier.",
+   "070d8288": "Running page header and author block joined to the abstract sentence; same judgment as this id earlier.",
+   "874b7cbe": "Label 'OD ceramic rod' (fragment); same judgment as this id earlier."
+  },
+  "timing": {
+   "wall_seconds": 113.3,
+   "provider_seconds": 72.5,
+   "local_seconds": 40.8,
+   "calls": 13,
+   "failed_attempts": 4,
+   "failure_causes": {
+    "request_rejected": 4
+   },
+   "input_tokens": 198357,
+   "output_tokens": 8204,
+   "estimated_cost_usd": 0.4769,
+   "repeated_identical_requests": 4,
+   "tokens_consumed_or_reserved": 435825
+  }
+ },
+ "regulator": {
+  "recall": "9/32",
+  "correct": [
+   "entities-01",
+   "entities-02",
+   "entities-03",
+   "entities-04",
+   "quantities-08",
+   "statements-22",
+   "statements-24",
+   "statements-28",
+   "relations-29"
+  ],
+  "precision": "32/33",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "2ae56092": "Conclusion carrying the heading 'Conclusion'; same judgment as this id earlier."
+  },
+  "timing": {
+   "wall_seconds": 108.7,
+   "provider_seconds": 84.8,
+   "local_seconds": 23.9,
+   "calls": 9,
+   "failed_attempts": 2,
+   "failure_causes": {
+    "request_rejected": 2
+   },
+   "input_tokens": 176930,
+   "output_tokens": 12269,
+   "estimated_cost_usd": 0.4786,
+   "repeated_identical_requests": 2,
+   "tokens_consumed_or_reserved": 369305
+  }
+ },
+ "textiles": {
+  "recall": "10/29",
+  "correct": [
+   "entities-01",
+   "entities-03",
+   "entities-04",
+   "quantities-12",
+   "quantities-13",
+   "quantities-14",
+   "quantities-15",
+   "statements-20",
+   "statements-25",
+   "relations-28"
+  ],
+  "precision": "17/24",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "a481d7e5": "planned strategy phase typed an executed experiment family",
+   "4d91b47d": "planned strategy phase typed intervention",
+   "83ffb420": "planned strategy phase typed intervention",
+   "afbfa18e": "current implementation claim typed documentary context",
+   "5fb6d176": "stated goal typed documentary context",
+   "2f8bd3b1": "Statement carrying the running footer and the next slide's labels.",
+   "435a7bf8": "Current implementation claim typed documentary context (as in the pilot)."
+  },
+  "timing": {
+   "wall_seconds": 61.6,
+   "provider_seconds": 45.8,
+   "local_seconds": 15.9,
+   "calls": 7,
+   "failed_attempts": 2,
+   "failure_causes": {
+    "request_rejected": 2
+   },
+   "input_tokens": 69946,
+   "output_tokens": 4644,
+   "estimated_cost_usd": 0.1865,
+   "repeated_identical_requests": 2,
+   "tokens_consumed_or_reserved": 147898
+  }
+ },
+ "ptfe": {
+  "recall": "25/34",
+  "precision": "90/92",
+  "critical": 0,
+  "outcomes": {
+   "correct": 25,
+   "inaccessible": 2,
+   "incorrect": 0,
+   "omitted": 7,
+   "unresolved": 2
+  },
+  "scorer": "scripts/score_scientific_review.py",
+  "timing": {
+   "wall_seconds": 164.9,
+   "provider_seconds": 96.7,
+   "local_seconds": 68.2,
+   "calls": 17,
+   "failed_attempts": 6,
+   "failure_causes": {
+    "request_rejected": 6
+   },
+   "input_tokens": 200419,
+   "output_tokens": 11461,
+   "estimated_cost_usd": 0.5157,
+   "repeated_identical_requests": 6,
+   "tokens_consumed_or_reserved": 477662
+  }
+ }
+}

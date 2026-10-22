@@ -1,0 +1,155 @@
+{
+ "ignition": {
+  "recall": "12/29",
+  "correct": [
+   "entities-01",
+   "entities-02",
+   "entities-03",
+   "entities-04",
+   "quantities-05",
+   "quantities-09",
+   "quantities-10",
+   "quantities-11",
+   "quantities-12",
+   "quantities-15",
+   "statements-24",
+   "relations-27"
+  ],
+  "precision": "63/76",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "b8c93a8e": "condition label carries its value",
+   "6718c9aa": "duplicate name of the cited low-gravity tests",
+   "6c067340": "method description typed measured observation",
+   "0be56fde": "Duplicate microgravity (study unknown) beside the cited Microgravity condition; same judgment as this id in the pilot.",
+   "6fae3157": "Fragment joined with a figure caption; same judgment as this id earlier.",
+   "f1d45bf2": "Camera setup typed observation; same judgment as this id earlier.",
+   "8b843801": "Method rationale typed conclusion; same judgment as this id earlier.",
+   "070d8288": "Running page header and author block joined to the abstract sentence; same judgment as this id earlier.",
+   "b602db5c": "Stated goal typed documentary context (as in textiles).",
+   "8dbdffee": "Sentence cut at 'I.D.'; same judgment as this id earlier.",
+   "42f6d4fb": "Executed test coverage ('Five materials were tested in both facilities') typed documentary context.",
+   "3cb206b5": "Caption mixed with body text (same sentence as ec1f6fbd).",
+   "c2b600dd": "Flow condition given itself as the subject of its value ('10 cm/s primer flow')."
+  },
+  "timing": {
+   "wall_seconds": 249.6,
+   "provider_seconds": 196.8,
+   "local_seconds": 52.8,
+   "calls": 15,
+   "failed_attempts": 2,
+   "failure_causes": {
+    "network": 2
+   },
+   "input_tokens": 304392,
+   "output_tokens": 15776,
+   "estimated_cost_usd": 0.766,
+   "repeated_identical_requests": 2,
+   "tokens_consumed_or_reserved": 435595
+  }
+ },
+ "regulator": {
+  "recall": "8/32",
+  "correct": [
+   "entities-01",
+   "entities-02",
+   "entities-03",
+   "entities-04",
+   "quantities-08",
+   "statements-24",
+   "statements-28",
+   "relations-29"
+  ],
+  "precision": "29/36",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "1c10959b": "In this run one group merges the first and second dodecane wet series (supports from Figures 11 and 14); the printed series are distinct.",
+   "9ef67f31": "WD-40 was initially chosen and then replaced by pure dodecane; typed a current material of the study (mention only).",
+   "2ae56092": "Conclusion carrying the heading 'Conclusion'; same judgment as this id earlier.",
+   "215ca73b": "Motivation/goal sentence typed requirement; same judgment as this id earlier.",
+   "bf0f0601": "Subject is one group that merges the first and second wet series, so the 137-148 msec times lose their series.",
+   "6ce046ba": "137-148 msec attached to one group merging both wet series; the first-series scope is lost.",
+   "fded5398": "46-49 msec attached to one group merging both wet series; the second-series scope is lost."
+  },
+  "timing": {
+   "wall_seconds": 114.8,
+   "provider_seconds": 96.3,
+   "local_seconds": 18.5,
+   "calls": 7,
+   "failed_attempts": 0,
+   "failure_causes": {},
+   "input_tokens": 179554,
+   "output_tokens": 12066,
+   "estimated_cost_usd": 0.4822,
+   "repeated_identical_requests": 0,
+   "tokens_consumed_or_reserved": 191620
+  }
+ },
+ "textiles": {
+  "recall": "10/29",
+  "correct": [
+   "entities-01",
+   "entities-03",
+   "entities-04",
+   "quantities-12",
+   "quantities-13",
+   "quantities-14",
+   "quantities-15",
+   "statements-20",
+   "statements-25",
+   "relations-28"
+  ],
+  "precision": "20/27",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "2f8bd3b1": "Statement carrying the running footer and the next slide's labels.",
+   "435a7bf8": "Current implementation claim typed documentary context (as in the pilot).",
+   "afbfa18e": "current implementation claim typed documentary context",
+   "5fb6d176": "stated goal typed documentary context",
+   "52746226": "Fragment '• NASA-STD-6001, Test 1' typed publication (as earlier).",
+   "4b4f7f7f": "Slide bullet describing a developed solution typed as publication (as in the pilot).",
+   "71823c4e": "Planned certification sentence joined to the running footer, typed documentary context."
+  },
+  "timing": {
+   "wall_seconds": 51.9,
+   "provider_seconds": 42.8,
+   "local_seconds": 9.1,
+   "calls": 5,
+   "failed_attempts": 0,
+   "failure_causes": {},
+   "input_tokens": 71976,
+   "output_tokens": 4700,
+   "estimated_cost_usd": 0.1875,
+   "repeated_identical_requests": 0,
+   "tokens_consumed_or_reserved": 76676
+  }
+ },
+ "ptfe": {
+  "recall": "28/34",
+  "precision": "117/119",
+  "critical": 0,
+  "outcomes": {
+   "correct": 28,
+   "inaccessible": 2,
+   "incorrect": 0,
+   "omitted": 1,
+   "unresolved": 5
+  },
+  "scorer": "scripts/score_scientific_review.py",
+  "timing": {
+   "wall_seconds": 360.1,
+   "provider_seconds": 295.2,
+   "local_seconds": 64.9,
+   "calls": 14,
+   "failed_attempts": 1,
+   "failure_causes": {
+    "network": 1
+   },
+   "input_tokens": 263200,
+   "output_tokens": 21134,
+   "estimated_cost_usd": 0.7382,
+   "repeated_identical_requests": 1,
+   "tokens_consumed_or_reserved": 356191
+  }
+ }
+}

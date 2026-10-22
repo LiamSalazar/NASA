@@ -1,0 +1,3348 @@
+{
+  "approvals": 0,
+  "attempts": 7,
+  "completed_at": "2026-10-22T15:36:04.072466+00:00",
+  "configuration": {
+    "endpoint": "https://api.anthropic.com",
+    "fallback_models": [],
+    "max_model_calls": null,
+    "max_total_tokens": 500000,
+    "model": "claude-sonnet-5-5",
+    "provider": "anthropic",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "timeout_seconds": 3600.0,
+    "vision_model": "claude-sonnet-5-5"
+  },
+  "digest": "771ce7561cce9b361196ef4881c29e01ae3a844b568b0f5258d3764b51dd87fc",
+  "git_head": "a6d967b2de704c2199931416b50a421d7c74b4cb",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20170003941/downloads/20170003941.pdf",
+  "package_id": "research-195aa7ae31aca023746e",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": 500000,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 35817,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 1,
+    "configured_fallback_models": [],
+    "deterministic_characters": 35799,
+    "duration_seconds": 85.2155655999959,
+    "model": "claude-sonnet-5-5",
+    "model_characters": 0,
+    "new_model_calls": 7,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "5f30aa3656fad166851efc09cffcb15f64061e63254c99939a45f77be6a565ed",
+        "context_token_estimate": 49893,
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 10240,
+        "prefetch": "USED",
+        "proposed_items": 6,
+        "reasoning_tokens": 2048,
+        "request_bytes": 74018,
+        "reserved_tokens_per_attempt": 88522,
+        "schema_errors": [],
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 32906,
+        "source_anchors": 191,
+        "source_errors": [
+          {
+            "kind": "entities",
+            "proposal": {
+              "class_id": "Intervention",
+              "key": "entity-a6aa32500aa6ec9b09f6",
+              "label": "Conair Heat Delivery System",
+              "proposed_class": null,
+              "study": "current",
+              "support": [
+                {
+                  "evidence_id": "E-c53b5f9827711bd9301e72a0",
+                  "quote": "In addition, the “Conair",
+                  "start": 965
+                },
+                {
+                  "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+                  "quote": "International Conference on Environmental Systems \n \n \n11\nHeat Delivery System” (CHDS) was set up to elevate POR body temperatures for the test series.",
+                  "start": 2
+                }
+              ]
+            },
+            "proposal_id": "proposal-a9460639fc11e2fd668c2d79",
+            "reasons": [
+              "ENTITY_LABEL_ABSENT_FROM_SUPPORT"
+            ]
+          }
+        ],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 4.650710600006278,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 10240,
+          "started_at": "2026-10-22T15:34:45.902586+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 3.344163000001572
+        },
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1790,
+          "completion_tokens": 375,
+          "input_tokens": 30874,
+          "prompt_tokens": 32664,
+          "total_tokens": 33039
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "9efda6202d72d1b78cc19912843f27d686b52fc3e6846fd13b735a052186bc47",
+        "context_token_estimate": 76321,
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": null,
+        "known_entities_selected": 5,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "RECOVERED_BY_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 80013,
+        "reserved_tokens_per_attempt": 118850,
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "2555e81a16c927645bdb275a5021d805063e93d66aa24fce1bcd09ff79fe98db",
+        "context_token_estimate": 77438,
+        "coverage_recovery": "VERIFIED_SOURCE_QUANTITY_PROGRESS",
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": "quantities",
+        "known_entities_selected": 5,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 84964,
+        "reserved_tokens_per_attempt": 121084,
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 1,
+        "cache_key": "a8cd4c4d4bc1c3a9869c79dab4f14e35fac3f1da5165582001d4ceaf2e0cf162",
+        "context_token_estimate": 49877,
+        "deterministic": "COMPLETE",
+        "end": 17654,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 4,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 1600,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-0cdf661274a234abc319721e",
+            "start": 834
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 24576,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 46358,
+        "reserved_tokens_per_attempt": 74154,
+        "schema_errors": [],
+        "segment_id": "window-54e5accf02bfbf0b57031586",
+        "source_anchor_characters": 21009,
+        "source_anchors": 91,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 2.1789198000042234,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 24576,
+          "started_at": "2026-10-22T15:34:53.194155+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.15531300001021
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1526,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 93,
+          "input_tokens": 18785,
+          "prompt_tokens": 20311,
+          "total_tokens": 20404
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "7966022f036f15da8e8c382133cbde61c7089997acb047870601e24c0ef8ff93",
+        "context_token_estimate": 59976,
+        "deterministic": "COMPLETE",
+        "end": 19352,
+        "evidence_id": "E-43fc9b67edc788450536e480",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 4,
+        "members": [
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-74e4e09f02fa283e6b052e98",
+            "start": 1600
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 32768,
+        "proposed_items": 2,
+        "reasoning_tokens": 2048,
+        "request_bytes": 50306,
+        "reserved_tokens_per_attempt": 86160,
+        "schema_errors": [],
+        "segment_id": "window-08fa283411b4f1337f5504a8",
+        "source_anchor_characters": 22079,
+        "source_anchors": 114,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 1600,
+        "transport": {
+          "duration_seconds": 7.2674843999993755,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 32768,
+          "started_at": "2026-10-22T15:34:55.632116+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 6.974589899997227
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1392,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 705,
+          "input_tokens": 21582,
+          "prompt_tokens": 22974,
+          "total_tokens": 23679
+        }
+      },
+      {
+        "attempts": 0,
+        "cache_key": "4f1bf056940dcd9ea146bf09aa2f188ac8d9af43b7424e0a6476c8c9731a4230",
+        "context_token_estimate": 77253,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": "quantities",
+        "known_entities_selected": 5,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "NEEDS_CONTEXT_SPLIT",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 84609,
+        "reserved_tokens_per_attempt": 120715,
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 0,
+        "cache_key": "a8cd4c4d4bc1c3a9869c79dab4f14e35fac3f1da5165582001d4ceaf2e0cf162",
+        "deterministic": "COMPLETE",
+        "end": 17654,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "focus": "quantities",
+        "known_entities_selected": 4,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 1600,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-0cdf661274a234abc319721e",
+            "start": 834
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "replayed_failure": true,
+        "segment_id": "window-54e5accf02bfbf0b57031586",
+        "source_anchor_characters": 21009,
+        "source_anchors": 91,
+        "stage": "propositions",
+        "start": 0
+      },
+      {
+        "attempts": 1,
+        "cache_key": "9f69bafe77e404b0962ed503febcfef06a8481e9b354f7175bac68ade3cb96d2",
+        "context_token_estimate": 59792,
+        "deterministic": "COMPLETE",
+        "end": 19352,
+        "evidence_id": "E-43fc9b67edc788450536e480",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 4,
+        "members": [
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-74e4e09f02fa283e6b052e98",
+            "start": 1600
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 32768,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 49953,
+        "reserved_tokens_per_attempt": 85793,
+        "schema_errors": [],
+        "segment_id": "window-08fa283411b4f1337f5504a8",
+        "source_anchor_characters": 22079,
+        "source_anchors": 114,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 1600,
+        "transport": {
+          "duration_seconds": 1.9723242999898503,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 32768,
+          "started_at": "2026-10-22T15:35:04.973870+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 1.8616055000020424
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1378,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 78,
+          "input_tokens": 21417,
+          "prompt_tokens": 22795,
+          "total_tokens": 22873
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "db14c823039f053a0256fe30650c1a475ff8d0c64733bb199c90b8fdd755240b",
+        "context_token_estimate": 51611,
+        "deterministic": "COMPLETE",
+        "end": 35406,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 5,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-b3cd8953f1cdb2f223221091",
+            "start": 834
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 9216,
+        "prefetch": "USED",
+        "proposed_items": 5,
+        "reasoning_tokens": 2048,
+        "request_bytes": 80305,
+        "reserved_tokens_per_attempt": 92982,
+        "schema_errors": [],
+        "segment_id": "window-52a158291e6eafb3dfc90a48",
+        "source_anchor_characters": 36746,
+        "source_anchors": 196,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7e5890f3d3ea8eb2ac57",
+              "proposed_relation": null,
+              "relation": "belongsToInvestigation",
+              "subject": "entity-72e6c5f0e0c1c4c8bee6",
+              "support": [
+                {
+                  "evidence_id": "E-cc5b2562dd1734f000235c82",
+                  "quote": "The initial testing prior to moving onto contaminated challenge testing was to perform 60 dry pneumatic impact tests.",
+                  "start": 122
+                }
+              ]
+            },
+            "proposal_id": "proposal-3ca8801c5ee06511c0a1914b",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-7e5890f3d3ea8eb2ac57",
+              "proposed_relation": null,
+              "relation": "belongsToInvestigation",
+              "subject": "entity-007e183d79d3032a2920",
+              "support": [
+                {
+                  "evidence_id": "E-ae97ea040925de308074bd3e",
+                  "quote": "The regulator tested was the Primary Oxygen Regulator (POR) 2.0, s/n 003 (Figure 3) produced by Cobham \nMission Systems.",
+                  "start": 622
+                }
+              ]
+            },
+            "proposal_id": "proposal-594d90331b550b42482befc8",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-007e183d79d3032a2920",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-ae97ea040925de308074bd3e",
+                  "quote": "The regulator tested was the Primary Oxygen Regulator (POR) 2.0, s/n 003 (Figure 3) produced by Cobham \nMission Systems.",
+                  "start": 622
+                }
+              ]
+            },
+            "proposal_id": "proposal-2cc8f6b002b4691c56fda6c8",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-cca8a9984db7157f3923",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-7e5890f3d3ea8eb2ac57",
+              "support": [
+                {
+                  "evidence_id": "E-43fc9b67edc788450536e480",
+                  "quote": "As \na result, pure dodecane was used instead so that the materials properties would be known and the composition could \nbe repeatable and known.",
+                  "start": 1937
+                },
+                {
+                  "evidence_id": "E-e1edc905993958cf454e5d91",
+                  "quote": "For the dodecane runs, \n20uL was injected at the insterstage port using a syringe with the regulator manipulated to work the contaminant onto \nthe surfaces seeking to achieve ~100 mg/ft2 film coating.",
+                  "start": 729
+                }
+              ]
+            },
+            "proposal_id": "proposal-cfd1314e089991ce168331cf",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 3.7603108000039356,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 9216,
+          "started_at": "2026-10-22T15:35:07.104049+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.617808099996182
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1579,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 233,
+          "input_tokens": 33401,
+          "prompt_tokens": 34980,
+          "total_tokens": 35213
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "ddf347040c9090921884de9149c2a03ef1f9e3d04534b6f5dd1109473e09c202",
+        "context_token_estimate": 50355,
+        "deterministic": "COMPLETE",
+        "end": 17654,
+        "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 4,
+        "members": [
+          {
+            "end": 2243,
+            "evidence_id": "E-368990c83a1aeafe0dcd20c6",
+            "id": "segment-f1e672cfc5a0e126181d916d",
+            "start": 0
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-61eaae826a7e9a2c8352629a",
+            "start": 0
+          },
+          {
+            "end": 4284,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f88ef30af915fe1957367106",
+            "start": 59
+          },
+          {
+            "end": 4910,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-f564a362af88fe51cde42f39",
+            "start": 4284
+          },
+          {
+            "end": 5229,
+            "evidence_id": "E-a2b8c108323aea8a6704c608",
+            "id": "segment-6f22429ece6014bd1f5852ea",
+            "start": 4910
+          },
+          {
+            "end": 1453,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-9830e62fbe2bc3caa52bb56d",
+            "start": 0
+          },
+          {
+            "end": 3969,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-055f55e91c245fc1ff19fb66",
+            "start": 1453
+          },
+          {
+            "end": 5401,
+            "evidence_id": "E-3c07f004b386b12899af1ccb",
+            "id": "segment-1ba7cff49968891994ed374d",
+            "start": 3969
+          },
+          {
+            "end": 2887,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-7e158e9b3db63994ba01acc1",
+            "start": 0
+          },
+          {
+            "end": 3096,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-db8506438ac551d67d6a95e3",
+            "start": 2887
+          },
+          {
+            "end": 3181,
+            "evidence_id": "E-758d27b90b3261b72e3f9676",
+            "id": "segment-d36b862223c2c4d487c41f11",
+            "start": 3096
+          },
+          {
+            "end": 834,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-5db225181e0455393ed81c68",
+            "start": 0
+          },
+          {
+            "end": 1600,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-0cdf661274a234abc319721e",
+            "start": 834
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 24576,
+        "proposed_items": 53,
+        "reasoning_tokens": 2048,
+        "request_bytes": 44477,
+        "reserved_tokens_per_attempt": 75110,
+        "schema_errors": [],
+        "segment_id": "window-54e5accf02bfbf0b57031586",
+        "source_anchor_characters": 21009,
+        "source_anchors": 91,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "cited",
+              "subjects": [
+                "entity-7e5890f3d3ea8eb2ac57"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "In that assessment, the regulator was found to be well designed \nwith respect to oxygen compatibility.",
+                  "start": 2401
+                }
+              ],
+              "text": "In that assessment, the regulator was found to be well designed \nwith respect to oxygen compatibility."
+            },
+            "proposal_id": "proposal-028ba945412b0d8d81e582f9",
+            "reasons": [
+              "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+              "CURRENT_OR_CITED_STUDY_UNRESOLVED",
+              "CURRENT_CITED_ATTRIBUTION_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "unknown",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "Given this, one may ask why this is being considered as it is normally defined that for a given \nregulator to remain safe, it must have an Non-Volatile Residue (NVR) that remains below 2 mg/ft2 such that the \nassumptions made in the OCA with respect to the kindling chain ignition mechanism remain applicable.",
+                  "start": 3229
+                }
+              ],
+              "text": "Given this, one may ask why this is being considered as it is normally defined that for a given \nregulator to remain safe, it must have an Non-Volatile Residue (NVR) that remains below 2 mg/ft2 such that the \nassumptions made in the OCA with respect to the kindling chain ignition mechanism remain applicable."
+            },
+            "proposal_id": "proposal-39918d50970abb8ab80c7ad3",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Guidance",
+              "epistemic": "guidance",
+              "study": "unknown",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-a2b8c108323aea8a6704c608",
+                  "quote": "However, \ndeclaring that a system will be maintained clean does not guarantee it to be so as this would be a procedural control \nto a hazard and the best option for control of such a hazard is a hardware design solution that can tolerate it.",
+                  "start": 3540
+                }
+              ],
+              "text": "However, \ndeclaring that a system will be maintained clean does not guarantee it to be so as this would be a procedural control \nto a hazard and the best option for control of such a hazard is a hardware design solution that can tolerate it."
+            },
+            "proposal_id": "proposal-7369c0cf1facd2760cac2703",
+            "reasons": [
+              "GUIDANCE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "cited",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "During this expansion, the gas is cooled to temperatures below -50F which would \nallow very small amounts of contaminants in the gas phase within the supply gas to condense on or near the \nregulator seat.",
+                  "start": 1701
+                }
+              ],
+              "text": "During this expansion, the gas is cooled to temperatures below -50F which would \nallow very small amounts of contaminants in the gas phase within the supply gas to condense on or near the \nregulator seat."
+            },
+            "proposal_id": "proposal-a7da91a2944e17cbb1cd265e",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-3c07f004b386b12899af1ccb",
+                  "quote": "These cold-traps would then protect the test article \n(SOP) from contamination from all of the above mechanisms but only to the established filtering efficiency for the \ncold-traps which was empirically determined to be ~50%.",
+                  "start": 2763
+                }
+              ],
+              "text": "These cold-traps would then protect the test article \n(SOP) from contamination from all of the above mechanisms but only to the established filtering efficiency for the \ncold-traps which was empirically determined to be ~50%."
+            },
+            "proposal_id": "proposal-070c43d77ececc4d5cc6751d",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-cca8a9984db7157f3923"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-758d27b90b3261b72e3f9676",
+                  "quote": "A partial \ntest at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was \ndamaged during the testing and additional testing will be required to confirm this result.",
+                  "start": 1790
+                }
+              ],
+              "text": "A partial \ntest at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was \ndamaged during the testing and additional testing will be required to confirm this result."
+            },
+            "proposal_id": "proposal-e1d6410d54919a247ce7cf73",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION;UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 23.907091799992486,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 24576,
+          "started_at": "2026-10-22T15:35:11.868388+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 13.50502269998833
+        },
+        "usage": {
+          "cache_creation_input_tokens": 2681,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 3946,
+          "input_tokens": 17913,
+          "prompt_tokens": 20594,
+          "total_tokens": 24540
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "5ab03184dedec6fe1e559e8c8c34c398eb438b742f76b97fe31e12f9aa7d051d",
+        "context_token_estimate": 62103,
+        "deterministic": "COMPLETE",
+        "end": 19352,
+        "evidence_id": "E-43fc9b67edc788450536e480",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 4,
+        "members": [
+          {
+            "end": 2087,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-74e4e09f02fa283e6b052e98",
+            "start": 1600
+          },
+          {
+            "end": 2172,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-4adb3dcf2de099aa78417c99",
+            "start": 2087
+          },
+          {
+            "end": 2308,
+            "evidence_id": "E-43fc9b67edc788450536e480",
+            "id": "segment-c12641d3fbca18de17f2b8bb",
+            "start": 2172
+          },
+          {
+            "end": 59,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-fcaa8b0098a170ab0087508f",
+            "start": 0
+          },
+          {
+            "end": 142,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-c0e45442723ae6d18b2a06c6",
+            "start": 59
+          },
+          {
+            "end": 478,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-93538e2162f33e7e3261f66c",
+            "start": 142
+          },
+          {
+            "end": 1297,
+            "evidence_id": "E-ae97ea040925de308074bd3e",
+            "id": "segment-7775ff34ecc46763e4081e37",
+            "start": 478
+          },
+          {
+            "end": 1375,
+            "evidence_id": "E-219f8c7405b474246050095f",
+            "id": "segment-252a3de21b2e1a7a68b87f2e",
+            "start": 0
+          },
+          {
+            "end": 1004,
+            "evidence_id": "E-e1edc905993958cf454e5d91",
+            "id": "segment-c5c7695bb765f760565456a1",
+            "start": 0
+          },
+          {
+            "end": 101,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-a88dbee9ee2d7cc52dc256cf",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-cc5b2562dd1734f000235c82",
+            "id": "segment-68f6e1d8986bb1518fa76aa7",
+            "start": 101
+          },
+          {
+            "end": 991,
+            "evidence_id": "E-c53b5f9827711bd9301e72a0",
+            "id": "segment-acb487924d947e0b4e5a0d2b",
+            "start": 0
+          },
+          {
+            "end": 1365,
+            "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+            "id": "segment-3cc8fa6de16be11a97d2e230",
+            "start": 0
+          },
+          {
+            "end": 1146,
+            "evidence_id": "E-f64c1220437e812d8c350a15",
+            "id": "segment-b891c970acee949db7d55c16",
+            "start": 0
+          },
+          {
+            "end": 446,
+            "evidence_id": "E-cd1658f414503ed55cd8d46c",
+            "id": "segment-a96b2012e8710a6aabf7d0d2",
+            "start": 0
+          },
+          {
+            "end": 1067,
+            "evidence_id": "E-0e43ce1045d371bc3c15eea1",
+            "id": "segment-9d160951b5118385378d8ba0",
+            "start": 0
+          },
+          {
+            "end": 60,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-e11ca1a83fb67d6d325d641e",
+            "start": 0
+          },
+          {
+            "end": 1162,
+            "evidence_id": "E-d87a3f01374002d789c31344",
+            "id": "segment-791f86e8478344f8d24e36ae",
+            "start": 60
+          },
+          {
+            "end": 1945,
+            "evidence_id": "E-302383b4371513e5f96ed35e",
+            "id": "segment-b955fc952aadc3797218d699",
+            "start": 0
+          },
+          {
+            "end": 222,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-32f3110ea57befda652a4b9a",
+            "start": 0
+          },
+          {
+            "end": 287,
+            "evidence_id": "E-bd2e486dd7e168b7c03bc7d0",
+            "id": "segment-c8e99b92a02d8ad217a67ce4",
+            "start": 222
+          },
+          {
+            "end": 1040,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-6167593871a052d91e8c325a",
+            "start": 0
+          },
+          {
+            "end": 1515,
+            "evidence_id": "E-29c4595667327c46d9cbbcc4",
+            "id": "segment-d01da5d1a7682e6465eac5ec",
+            "start": 1040
+          },
+          {
+            "end": 998,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5715296adb8cd5c219bb408b",
+            "start": 0
+          },
+          {
+            "end": 1555,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-beecb570029dcbb9b37c68c4",
+            "start": 1391
+          },
+          {
+            "end": 1681,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-57fc1df84658860c4c2e3d8f",
+            "start": 1555
+          },
+          {
+            "end": 1912,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-fe53f19d9b426b4d2373b3dc",
+            "start": 1681
+          },
+          {
+            "end": 2025,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-0cc8a63d3003b7429ac798c6",
+            "start": 1912
+          },
+          {
+            "end": 2128,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-c5a8b89ae8fd2027a4ea93c6",
+            "start": 2025
+          },
+          {
+            "end": 2259,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-4c3cd86f2cdd3a87e6b89b7f",
+            "start": 2128
+          },
+          {
+            "end": 2358,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-52f1362d003b5d69e5933780",
+            "start": 2259
+          },
+          {
+            "end": 2540,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-65c9a0ffa916fd41c8284eb0",
+            "start": 2358
+          },
+          {
+            "end": 2691,
+            "evidence_id": "E-76a659916cbede6e557fac99",
+            "id": "segment-5e0041b570122fc024021862",
+            "start": 2540
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "proposed_items": 88,
+        "reasoning_tokens": 2048,
+        "request_bytes": 51584,
+        "reserved_tokens_per_attempt": 90415,
+        "schema_errors": [],
+        "segment_id": "window-08fa283411b4f1337f5504a8",
+        "source_anchor_characters": 22079,
+        "source_anchors": 114,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-72e6c5f0e0c1c4c8bee6",
+                "entity-007e183d79d3032a2920"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-c53b5f9827711bd9301e72a0",
+                  "quote": "International Conference on Environmental Systems \n \n \n10\n \nFigure 9 - POR Interstage Pressure Measurements During the Sixty O2 Wetting Dry Impact Tests to 3750 psia \nNitrogen functional testing performed after the dry impact testing showed nominal POR performance (Figure 10), \nthus indicating no damage to the POR internal components.",
+                  "start": 2
+                }
+              ],
+              "text": "Nitrogen functional testing performed after the dry impact testing showed nominal POR performance (Figure 10), \nthus indicating no damage to the POR internal components."
+            },
+            "proposal_id": "proposal-8c38dbf0877697dd8ff200c4",
+            "reasons": [
+              "INFERRED_INTERPRETATION_IS_NOT_DIRECT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-007e183d79d3032a2920"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-f64c1220437e812d8c350a15",
+                  "quote": "POR body temperatures \nin this series were generally lower than in the first wet impact series as shown in Figure 15 but still >20℉ warmer \nthan the current PLSS 2.5 Thermal Desktop Model indicates the POR will see during a full EVA in a Lunar Crater",
+                  "start": 894
+                }
+              ],
+              "text": "POR body temperatures \nin this series were generally lower than in the first wet impact series as shown in Figure 15 but still >20℉ warmer \nthan the current PLSS 2.5 Thermal Desktop Model indicates the POR will see during a full EVA in a Lunar Crater"
+            },
+            "proposal_id": "proposal-0e484ba4e34c8babdc87ddc3",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-007e183d79d3032a2920"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-d87a3f01374002d789c31344",
+                  "quote": "Figure 19 depicts the \nsapphire ball from the 1st stage regulator which was found to have what appears to be a carbon witness mark from the \n1st stage seat.",
+                  "start": 840
+                }
+              ],
+              "text": "Figure 19 depicts the \nsapphire ball from the 1st stage regulator which was found to have what appears to be a carbon witness mark from the \n1st stage seat."
+            },
+            "proposal_id": "proposal-2f3f52929f8990e0761fdea2",
+            "reasons": [
+              "UNCERTAINTY_CANNOT_BECOME_CONFIRMED"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "NASAConclusion",
+              "epistemic": "author_reported_conclusion",
+              "study": "current",
+              "subjects": [
+                "entity-007e183d79d3032a2920"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-76a659916cbede6e557fac99",
+                  "quote": "Should a systemic or specific \ncontamination event such as that discussed regarding the EMU SOP Regulator recur with with this regulator/system \nduring an exploration mission 200,000+ miles away from the cleanrooms/labs on earth, the demonstrated POR \nperformance indicates that if the event is known about at all, it will not be expected to be as a result of a regulator \nmalfunction.",
+                  "start": 607
+                }
+              ],
+              "text": "Should a systemic or specific \ncontamination event such as that discussed regarding the EMU SOP Regulator recur with with this regulator/system \nduring an exploration mission 200,000+ miles away from the cleanrooms/labs on earth, the demonstrated POR \nperformance indicates that if the event is known about at all, it will not be expected to be as a result of a regulator \nmalfunction."
+            },
+            "proposal_id": "proposal-5de0138375af30e54778511f",
+            "reasons": [
+              "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "3750",
+              "label": "supply pressure",
+              "printed_name": null,
+              "subject": "entity-007e183d79d3032a2920",
+              "support": [
+                {
+                  "evidence_id": "E-ae97ea040925de308074bd3e",
+                  "quote": "The nominal operating \npressure for this region is ~200 psia but for the case where the 1st stage regulator fails open at the MEOP for the \ntankage, the interstage region will be pressurized from the ~200 psia nominal operating pressure to the 3750 psia \nsupply pressure on the order of 150 msec.",
+                  "start": 997
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-88b83780bf93290bf921599f",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": "Five",
+              "label": "impacts",
+              "printed_name": "executed",
+              "subject": "entity-007e183d79d3032a2920",
+              "support": [
+                {
+                  "evidence_id": "E-8bcf5398eab9cb8a9cb08baa",
+                  "quote": "Five impacts were then executed with the dodecane load in the POR interstage port.",
+                  "start": 356
+                }
+              ],
+              "unit": null
+            },
+            "proposal_id": "proposal-4a58e151d8d358832b004939",
+            "reasons": [
+              "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "~200 to ~3750",
+              "label": "interstage pressure",
+              "printed_name": "raising",
+              "subject": "entity-007e183d79d3032a2920",
+              "support": [
+                {
+                  "evidence_id": "E-302383b4371513e5f96ed35e",
+                  "quote": "The impact was then \nfed into the interstage pressure transducer port raising the interstage pressure rapidly from ~200 psia to ~3750 psia \nand simulating the failure of the 1st regulator seat.",
+                  "start": 911
+                }
+              ],
+              "unit": "psia"
+            },
+            "proposal_id": "proposal-9c13c756a9dafd80253cc0bd",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "experimental_configuration",
+              "expression": ">100",
+              "label": "dodecane levels",
+              "printed_name": null,
+              "subject": "entity-007e183d79d3032a2920",
+              "support": [
+                {
+                  "evidence_id": "E-29c4595667327c46d9cbbcc4",
+                  "quote": "The POR design was “wetted” with 60 \nimpacts of dry oxygen, followed by two sets of 5 impacts of oxygen with a lightweight hydrocarbon contaminant, \ndodecane at levels > 100 mg/ft2.",
+                  "start": 1130
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-61ed3ff800b4d2c66ecee892",
+            "reasons": [
+              "QUANTITY_EXPRESSION_ABSENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "< 1",
+              "label": "cleanliness level",
+              "printed_name": null,
+              "subject": "entity-007e183d79d3032a2920",
+              "support": [
+                {
+                  "evidence_id": "E-76a659916cbede6e557fac99",
+                  "quote": "The contaminant levels used (>100 \nmg/ft2) were far in excess of the required cleanliness level of < 1 mg/ft2 specified and maintained in Level 100A per \nJPR 5322.1 and the < 2 mg/ft2 typically assumed for Oxygen Compatibility Assessments (OCA).",
+                  "start": 147
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-eb6a7c9f61007bdc4190e87d",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "reported_quantity",
+              "expression": "< 2",
+              "label": "typically assumed",
+              "printed_name": null,
+              "subject": "entity-007e183d79d3032a2920",
+              "support": [
+                {
+                  "evidence_id": "E-76a659916cbede6e557fac99",
+                  "quote": "The contaminant levels used (>100 \nmg/ft2) were far in excess of the required cleanliness level of < 1 mg/ft2 specified and maintained in Level 100A per \nJPR 5322.1 and the < 2 mg/ft2 typically assumed for Oxygen Compatibility Assessments (OCA).",
+                  "start": 147
+                }
+              ],
+              "unit": "mg/ft2"
+            },
+            "proposal_id": "proposal-065f18945078ec48e105cb8d",
+            "reasons": [
+              "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 1600,
+        "transport": {
+          "duration_seconds": 20.942729900009,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 64000,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 32768,
+          "started_at": "2026-10-22T15:35:38.187665+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.4008871000114596
+        },
+        "usage": {
+          "cache_creation_input_tokens": 2687,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 4316,
+          "input_tokens": 22132,
+          "prompt_tokens": 24819,
+          "total_tokens": 29135
+        }
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 188883,
+    "window_prefetch": {
+      "concurrency": 3,
+      "discarded": 0,
+      "sent": 2,
+      "used": 2
+    }
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "c45b7435c9d5f29fcf644b6b570d16b31c6c6f61f93ae2bed79157d0fff19966",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-22T15:34:37.153410+00:00",
+  "timing": {
+    "cache_creation_input_tokens": 11243,
+    "cache_read_input_tokens": 1790,
+    "call_seconds_max": 23.9,
+    "call_seconds_p50": 4.7,
+    "call_seconds_p90": 23.9,
+    "calls": 7,
+    "calls_over_240_seconds": 0,
+    "estimated_cost_usd": 0.4582,
+    "failed_attempts": 0,
+    "failure_causes": {},
+    "input_tokens": 179137,
+    "local_seconds": 22.2,
+    "output_tokens": 9746,
+    "per_call": [
+      {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1790,
+        "error": null,
+        "estimated_cost_usd": 0.0659,
+        "first_token_seconds": 3.3,
+        "generation_seconds": 1.3,
+        "input_tokens": 32664,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 375,
+        "seconds": 4.7,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 1526,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0423,
+        "first_token_seconds": 2.2,
+        "generation_seconds": 0.0,
+        "input_tokens": 20311,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 93,
+        "seconds": 2.2,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1392,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0537,
+        "first_token_seconds": 7.0,
+        "generation_seconds": 0.3,
+        "input_tokens": 22974,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 705,
+        "seconds": 7.3,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1378,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0471,
+        "first_token_seconds": 1.9,
+        "generation_seconds": 0.1,
+        "input_tokens": 22795,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 78,
+        "seconds": 2.0,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1579,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0731,
+        "first_token_seconds": 2.6,
+        "generation_seconds": 1.1,
+        "input_tokens": 34980,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 233,
+        "seconds": 3.8,
+        "stage": "relationships"
+      },
+      {
+        "cache_creation_input_tokens": 2681,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.082,
+        "first_token_seconds": 13.5,
+        "generation_seconds": 10.4,
+        "input_tokens": 20594,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 3946,
+        "seconds": 23.9,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 2687,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0941,
+        "first_token_seconds": 2.4,
+        "generation_seconds": 18.5,
+        "input_tokens": 24819,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 4316,
+        "seconds": 20.9,
+        "stage": "propositions"
+      }
+    ],
+    "post_extraction_seconds": 8.6,
+    "provider_call_seconds_total": 64.8,
+    "provider_seconds": 64.7,
+    "repeated_identical_requests": 0,
+    "setup_seconds": 0.3,
+    "wall_seconds": 86.9
+  },
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+    "Scientific preparation review dependency: CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: INTERPRETATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: OBSERVATION_IS_A_DOCUMENTARY_POINTER",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "Scientific preparation review dependency: QUANTITY_UNIT_UNSPECIFIED",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific preparation review dependency: SUPPORT_ONLY_IN_BACKGROUND_OR_ANALYSIS_SECTION",
+    "Scientific preparation review dependency: TENTATIVE_INTERPRETATION_STATES_NO_INFERENCE",
+    "Scientific preparation review dependency: TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW",
+    "Select source-supported scope for proposal-1cdc8ad139037dfa0bc16f4e",
+    "Select source-supported scope for research-195aa7ae31aca023746e:c45b7435c9d5f29f:statement:4c19e77458508c28",
+    "Select source-supported scope for research-195aa7ae31aca023746e:c45b7435c9d5f29f:statement:ee19f9a98031b978",
+    "Which identified runs do these author reported conclusion statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these documentary context statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these measured observation statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}

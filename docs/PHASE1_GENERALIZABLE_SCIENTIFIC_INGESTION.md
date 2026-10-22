@@ -3,7 +3,7 @@
 **PHASE1_COMPLETE = NO.**
 - The §13 gate is not met: recall ≥ 0.80 is reached only on PTFE.
 - The registered holdout (NTRS 20170004702) has not been acquired.
-- Code at point A: `377e013`, plus 2.1b (`c0acb35`), which changes only the model request.
+- Code at point A: `377e013`, plus 2.1b (`c0acb35`), which changes only the model request. Package 4 live rounds: `dc6f342` and `a6d967b` (schema fix).
 
 **Canonical record:** `artifacts/phase1_generalizable_ingestion/v6/milestone13/phase1_plan.md`.
 **Receipts:**
@@ -93,8 +93,32 @@ Round B, on later code (`b4be17d`), gave regulator 10/32 and textiles 7/29. Acro
   - 21 % were accepted but graded wrong;
   - 12 % were never proposed.
 - The narrative values the model omits are already offered by the targeted recovery call. They lack an eligible experimental subject (historical missions, assessment targets), and only a staged class can supply one (2.1b).
-- None of this can be measured without a live round. Package 4 (one Sonnet round, about $3–4 USD) waits for Diego's authorization.
 - The §13 gate, then leave-one-source-out and the frozen holdout (§19) remain.
+
+## Package 4: live Sonnet rounds (evaluation B)
+
+Fresh live inference with `claude-sonnet-5-5` on the four sources (`milestone13/package4/README.md`). Each round is reported apart, none is selected, and none is comparable to the point A replay as a gain or loss of rules.
+
+- **Round 1 at `dc6f342` exposed a defect.** The 2.1b schema referenced `ProposedTerm` without defining it, so Anthropic refused every identity request. The refusals' token reservations then deferred windows unsent. Fixed in `a6d967b`.
+
+| source | `dc6f342` r1 | `a6d967b` r1 | `a6d967b` r2 |
+|---|---|---|---|
+| PTFE (official scorer) | 25/34, 90/92 | 28/34, 100/101 | 28/34, 117/119 |
+| ignition | 10/29, 32/42 | 13/29, 71/85 | 12/29, 63/76 |
+| regulator | 9/32, 32/33 | 9/32, 31/34 | 8/32, 29/36 |
+| textiles | 10/29, 17/24 | 10/29, 20/22 | 10/29, 20/27 |
+| pooled recall | 0.435 [0.35, 0.52] | 0.48 [0.40, 0.57] | 0.47 [0.38, 0.56] |
+| pooled precision | 0.90 [0.84, 0.93] | 0.92 [0.88, 0.95] | 0.89 [0.84, 0.92] |
+| critical | 0 | 0 | 0 |
+| cost | 1.66 USD | 2.28 USD | 2.17 USD |
+
+- **2.1b:** in 12 live runs the model never used the new-term sentinels, so nothing was staged through it.
+- **The gate is still not met.** Only PTFE reaches recall ≥ 0.80.
+- **Remaining variation on the same code** comes from the model and the network:
+  - an ignition window deferred under the token brake after two network failures;
+  - regulator's wet series merged into one group;
+  - more textiles slide bullets typed as documentary context.
+- The nine metrics per round, with every interval, are in `package4/phase1_metrics_*.json` (`phase1_metrics.py --round`).
 
 # Phase 1 scientific ingestion — v6 milestone 8 on `diego/research` (candidates from document structure, under the generalization addendum)
 
