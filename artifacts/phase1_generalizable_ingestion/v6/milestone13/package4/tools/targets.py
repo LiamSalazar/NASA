@@ -6,7 +6,7 @@ import collections, gzip, json, os, sys
 sys.stdout.reconfigure(encoding="utf-8")
 source, rnd = sys.argv[1:3]
 C = os.environ.get("PKG_COMMIT", "dc6f342")
-B = f"../nasa-live/pkg4-{C}"
+B = os.environ.get("PKG_DIR", f"../nasa-live/pkg4-{C}")
 A = "artifacts/phase1_generalizable_ingestion"
 pkg = json.load(gzip.open(f"{B}/r{rnd}/{source}_sonnet_{C}_r{rnd}/prepared.json.gz", "rt", encoding="utf-8"))["package"]
 carry = json.load(open(f"{B}/review/{source}_r{rnd}_carry.json", encoding="utf-8"))

@@ -21,7 +21,13 @@ A cut session resumes at the first package not done.
 ## Where Phase 1 stands (2026-10-22, code `a6d967b`)
 
 - §13 gate: recall ≥ 0.80 stable across several sources, precision ≥ 0.95 and 0 critical errors. It is **not met**.
-- Latest live recall (package 4, Sonnet at `a6d967b`, two rounds):
+- Latest live recall (package 5, Sonnet at `07709c0`, two rounds, `package5/README.md`):
+  - PTFE 28/34 and 28/34;
+  - ignition 9/29 and 16/29;
+  - regulator 15/32 and 15/32;
+  - textiles 11/29 and 12/29;
+  - pooled 0.51 and 0.57; precision 0.925 and 0.938; 0 critical; 4.23 USD.
+- Previous (package 4, Sonnet at `a6d967b`, two rounds):
   - PTFE 28/34 and 28/34 (0.82);
   - ignition 13/29 and 12/29;
   - regulator 9/32 and 8/32;

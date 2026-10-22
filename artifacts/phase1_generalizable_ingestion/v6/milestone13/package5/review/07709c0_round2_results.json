@@ -1,0 +1,151 @@
+{
+ "ignition": {
+  "recall": "16/29",
+  "correct": [
+   "entities-01",
+   "entities-02",
+   "entities-03",
+   "entities-04",
+   "quantities-05",
+   "quantities-09",
+   "quantities-10",
+   "quantities-11",
+   "quantities-12",
+   "quantities-14",
+   "quantities-15",
+   "statements-20",
+   "statements-23",
+   "statements-24",
+   "statements-25",
+   "relations-27"
+  ],
+  "precision": "84/95",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "30899fcf": "plot axis description typed experimental condition",
+   "3cb206b5": "Caption mixed with body text (same sentence as ec1f6fbd).",
+   "85338e94": "'Figures 11 and 12 present ...' typed Publication (judged incorrect at point A).",
+   "0be56fde": "Duplicate microgravity (study unknown) beside the cited Microgravity condition; same judgment as this id in the pilot.",
+   "79876176": "A flow condition with its values in the label ('slow flow (~30 cm/s) of gas ...') typed an intervention.",
+   "6fae3157": "Fragment joined with a figure caption; same judgment as this id earlier.",
+   "f1d45bf2": "Camera setup typed observation; same judgment as this id earlier.",
+   "8dbdffee": "Sentence cut at 'I.D.'; same judgment as this id earlier.",
+   "5113e4b0": "Derived worst-case delta typed observation; same judgment as this id earlier.",
+   "fc2c9fbe": "Duplicate of the conclusion a9a4aa60 active in the same run (same sentence without the heading).",
+   "c2b600dd": "Flow condition given itself as the subject of its value ('10 cm/s primer flow')."
+  },
+  "timing": {
+   "wall_seconds": 149.8,
+   "provider_seconds": 122.9,
+   "local_seconds": 26.9,
+   "calls": 12,
+   "failed_attempts": 0,
+   "failure_causes": {},
+   "input_tokens": 323268,
+   "output_tokens": 22361,
+   "estimated_cost_usd": 0.8615,
+   "repeated_identical_requests": 0,
+   "tokens_consumed_or_reserved": 345629
+  }
+ },
+ "regulator": {
+  "recall": "15/32",
+  "correct": [
+   "entities-01",
+   "entities-02",
+   "entities-03",
+   "entities-04",
+   "entities-05",
+   "entities-06",
+   "quantities-08",
+   "quantities-11",
+   "quantities-13",
+   "quantities-14",
+   "statements-17",
+   "statements-20",
+   "statements-24",
+   "statements-28",
+   "relations-29"
+  ],
+  "precision": "29/31",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "e5e047ae": "model assumptions and results typed as NASA conclusion",
+   "2ae56092": "Conclusion carrying the heading 'Conclusion'; same judgment as this id earlier."
+  },
+  "timing": {
+   "wall_seconds": 70.0,
+   "provider_seconds": 63.3,
+   "local_seconds": 6.7,
+   "calls": 5,
+   "failed_attempts": 0,
+   "failure_causes": {},
+   "input_tokens": 177607,
+   "output_tokens": 8291,
+   "estimated_cost_usd": 0.439,
+   "repeated_identical_requests": 0,
+   "tokens_consumed_or_reserved": 185898
+  }
+ },
+ "textiles": {
+  "recall": "12/29",
+  "correct": [
+   "entities-01",
+   "entities-03",
+   "entities-04",
+   "quantities-12",
+   "quantities-13",
+   "quantities-14",
+   "quantities-15",
+   "statements-20",
+   "statements-22",
+   "statements-25",
+   "statements-26",
+   "relations-28"
+  ],
+  "precision": "20/21",
+  "critical": 0,
+  "incorrect_noncritical": {
+   "4b4f7f7f": "Slide bullet describing a developed solution typed as publication (as in the pilot)."
+  },
+  "timing": {
+   "wall_seconds": 47.2,
+   "provider_seconds": 41.0,
+   "local_seconds": 6.2,
+   "calls": 4,
+   "failed_attempts": 0,
+   "failure_causes": {},
+   "input_tokens": 57982,
+   "output_tokens": 5493,
+   "estimated_cost_usd": 0.1707,
+   "repeated_identical_requests": 0,
+   "tokens_consumed_or_reserved": 63475
+  }
+ },
+ "ptfe": {
+  "recall": "28/34",
+  "precision": "109/111",
+  "critical": 0,
+  "outcomes": {
+   "correct": 28,
+   "inaccessible": 2,
+   "incorrect": 0,
+   "omitted": 1,
+   "unresolved": 5
+  },
+  "scorer": "scripts/score_scientific_review.py",
+  "timing": {
+   "wall_seconds": 119.3,
+   "provider_seconds": 89.5,
+   "local_seconds": 29.8,
+   "calls": 11,
+   "failed_attempts": 0,
+   "failure_causes": {},
+   "input_tokens": 239273,
+   "output_tokens": 17973,
+   "estimated_cost_usd": 0.6575,
+   "repeated_identical_requests": 0,
+   "tokens_consumed_or_reserved": 257246
+  }
+ }
+}

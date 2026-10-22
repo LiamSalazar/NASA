@@ -11,14 +11,18 @@ Updated at the end of every work package. A new session reads `CLAUDE.md`, then 
   - the feasibility table (`package4/feasibility/`);
   - the proposal for Liam (`package4/liam/`).
 - **Prepared, not run:** the new propositions request (`fff5289`): the role card is on, and the admissible-subject menu is off because it failed the PTFE prejudgment.
-- **Next:** two Sonnet rounds on the four sources (about 4.5 USD, 6 USD cap). They are waiting on two things:
-  - the coordinator's Anthropic envelope change (Diego decided the request size at 17:18 UTC);
-  - Diego's written authorization to run.
-  Replay before the rounds; report every run, live apart from replay. Do not start package 6.
+- **Done:** package 5 (`milestone13/package5/README.md`), two live Sonnet rounds at `07709c0`, 4.23 USD.
+  - Pooled recall 0.51 and 0.57, precision 0.925 and 0.938, 0 critical.
+  - The gate is still not met: only PTFE reaches recall ≥ 0.80.
+- **Next:** wait for the coordinator and Diego. Candidates:
+  - the heading outline-letter label (ignition round 1);
+  - Liam's decisions (`package4/liam/`);
+  - the role-dependent subject menu.
+  No live runs without Diego's written authorization, and do not start package 6.
 - **Open point for Liam:** 2.1b stays as it is (staging only); the model never chooses the sentinel.
 - **Open worktrees:** `../nasa-p21` (idle). Run the full pytest in the main checkout: the worktree lacks ignored local data (`artifacts/phase3c_*`, sqlite), and 36 tests fail there for that reason only.
 - **Runs in progress:** none. Live run workspaces are in `../nasa-live/pkg4-dc6f342` and `../nasa-live/pkg4-a6d967b` (not in the repo).
-- **Spend:** Anthropic pilot $3.68 plus package 4 $6.12 = $9.80 of the monthly $100; next monthly credit on 2026-11-02.
+- **Spend:** Anthropic pilot $3.68 + package 4 $6.12 + package 5 $4.23 = $14.03 of the monthly $100; next monthly credit on 2026-11-02.
 - **Waiting on:**
   - Liam: Sonnet as the primary model.
   - Diego: any further live round needs his authorization.

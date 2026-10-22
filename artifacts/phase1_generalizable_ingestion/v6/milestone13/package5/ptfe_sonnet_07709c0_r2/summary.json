@@ -1,0 +1,1986 @@
+{
+  "approvals": 0,
+  "attempts": 11,
+  "completed_at": "2026-10-22T18:20:50.317880+00:00",
+  "configuration": {
+    "anthropic_min_max_tokens": 32768,
+    "endpoint": "https://api.anthropic.com",
+    "fallback_models": [],
+    "max_model_calls": null,
+    "max_total_tokens": 500000,
+    "model": "claude-sonnet-5-5",
+    "provider": "anthropic",
+    "provider_envelope": {
+      "context_tokens": 65536,
+      "output_tokens": 32768,
+      "reasoning_tokens": 2048,
+      "request_timeout_seconds": 600.0,
+      "throughput_tokens_per_second": 35.0
+    },
+    "request_context_tokens": 96000,
+    "timeout_seconds": 3600.0,
+    "vision_model": "claude-sonnet-5-5"
+  },
+  "digest": "ac3b7af34c1b16b6b7bb07b675b030d6084e14c1c9d62f884ee18774766b34fa",
+  "git_head": "07709c057a32d4ec9b816d331b829ff2e6473f01",
+  "kind": "PHASE1_EXPOSED_SOURCE_LIVE_RUN",
+  "membership": "EXPOSED_DEVELOPMENT_REGRESSION_ONLY",
+  "official_url": "https://ntrs.nasa.gov/api/citations/20090043050/downloads/20090043050.pdf",
+  "package_id": "research-ec42a926a29616a70757",
+  "processing": {
+    "budget": {
+      "call_timeout_seconds": null,
+      "max_model_calls": null,
+      "max_output_tokens": null,
+      "max_total_tokens": 500000,
+      "reasoning_tokens": null,
+      "recovery_only": false,
+      "recovery_rounds": 2,
+      "retries": 2,
+      "segment_chars": 14759,
+      "stream": true,
+      "timeout_seconds": 3600.0
+    },
+    "cached_segments": 0,
+    "configured_fallback_models": [],
+    "deterministic_characters": 29500,
+    "duration_seconds": 116.77131119999103,
+    "model": "claude-sonnet-5-5",
+    "model_characters": 15368,
+    "new_model_calls": 11,
+    "outcomes": [
+      {
+        "attempts": 1,
+        "cache_key": "ad4f950bb25b430b0de58e86b5755076577cd6606517ce949f03d72541e7cca3",
+        "context_token_estimate": 26661,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 8192,
+        "prefetch": "USED",
+        "proposed_items": 12,
+        "reasoning_tokens": 2048,
+        "request_bytes": 31651,
+        "reserved_tokens_per_attempt": 44107,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 13539,
+        "source_anchors": 88,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 5.243267700003344,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 8192,
+          "started_at": "2026-10-22T18:18:54.049636+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.373946599996998
+        },
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1790,
+          "completion_tokens": 673,
+          "input_tokens": 13451,
+          "prompt_tokens": 15241,
+          "total_tokens": 15914
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "ac38b217ec31fc6715d33790e0b1e8c0e2a699539fde235473ff1cb9a1763b23",
+        "context_token_estimate": 29381,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 7168,
+        "prefetch": "USED",
+        "proposed_items": 12,
+        "reasoning_tokens": 2048,
+        "request_bytes": 39138,
+        "reserved_tokens_per_attempt": 50570,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 14454,
+        "source_anchors": 75,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 5.538036700003431,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 7168,
+          "started_at": "2026-10-22T18:18:54.094359+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.6084196000010706
+        },
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1790,
+          "completion_tokens": 664,
+          "input_tokens": 19411,
+          "prompt_tokens": 21201,
+          "total_tokens": 21865
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "43354ec44d9b4e3f901c3f74812ef2f4a0c7d888e9b8aabb168700956b0b43c1",
+        "context_token_estimate": 13495,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 0,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 6144,
+        "prefetch": "USED",
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 9415,
+        "reserved_tokens_per_attempt": 19823,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 670,
+        "source_anchors": 10,
+        "source_errors": [],
+        "stage": "identity",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 2.316276099998504,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 6144,
+          "started_at": "2026-10-22T18:18:54.105143+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.314183199996478
+        },
+        "usage": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1790,
+          "completion_tokens": 10,
+          "input_tokens": 4163,
+          "prompt_tokens": 5953,
+          "total_tokens": 5963
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "c46db1ff06cc81e38e9204208b7d11249cd364a98084d934d6e9cf449d5e2b6b",
+        "context_token_estimate": 51940,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 11,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 23552,
+        "prefetch": "USED",
+        "proposed_items": 63,
+        "reasoning_tokens": 2048,
+        "request_bytes": 43845,
+        "reserved_tokens_per_attempt": 79304,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 21929,
+        "source_anchors": 95,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [
+                "entity-a16959c8d89655729431"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "The pass/fail criterion for a material, in both ambient and \nhigh-pressure mechanical impact, is determined by the number of reactions recorded in a series \nof tests.",
+                  "start": 891
+                }
+              ],
+              "text": "The pass/fail criterion for a material, in both ambient and \nhigh-pressure mechanical impact, is determined by the number of reactions recorded in a series \nof tests."
+            },
+            "proposal_id": "proposal-97ad886852bd09311a74c4c2",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "current",
+              "subjects": [
+                "entity-a16959c8d89655729431"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-c7cced937631a3202586213b",
+                  "quote": "A sample is said to have passed the mechanical impact test at the given pressure and \ntemperature if no reactions are recorded out of 20 samples.",
+                  "start": 1059
+                }
+              ],
+              "text": "A sample is said to have passed the mechanical impact test at the given pressure and \ntemperature if no reactions are recorded out of 20 samples."
+            },
+            "proposal_id": "proposal-f0fc72b5c792b238cadaac31",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "Requirement",
+              "epistemic": "normative_requirement",
+              "study": "unknown",
+              "subjects": [],
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "As defined in the ASTM and\nNASA-STD-6001A standards for AIT testing, a sample that ignites above a temperature of 425 \nºC is recorded as having an AIT temperature >425 ºC and the actual value is not specified.",
+                  "start": 944
+                }
+              ],
+              "text": "As defined in the ASTM and\nNASA-STD-6001A standards for AIT testing, a sample that ignites above a temperature of 425 \nºC is recorded as having an AIT temperature >425 ºC and the actual value is not specified."
+            },
+            "proposal_id": "proposal-74c6ca7bdda3d62fa8710360",
+            "reasons": [
+              "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-3146bf392859aee0ce4d"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC",
+                  "start": 335
+                }
+              ],
+              "text": "TABLE 1— Heat of combustion results for Fluorinated compounds\nMaterial\nheat of combustion (cal/gram)\nStandard Deviation (cal/gram)\naTFE-Teflon® (PTFE)\n1517\n24.33\naKel-F® 81 (PCTFE)\n2556\n17.09\naViton® A\n3992\n18.01\naViton® A-500\n3934\n11.06\naFluorel®\n3992\n16.74\nbBrass-filled PTFE\n1332\n13.81\na-\nASTM D328 Chou and Giedorowicz\nb-\nNASA-STD-6001\nTABLE 2—AIT Data of Fluorinated Compounds\nMaterial\nAIT  (°C)\nInitial Test Pressure \n(psia)\nFinal Test   Pressure \n(psia)\naTFE-Teflon® (PTFE)\n>425\n1500\n2200\naKel-F® 81 (PCTFE)\n404.3\n1500\n2200\naViton® A\n239\n1500\n2000\naViton® A-500\n239\n1500\n2000\naFluorel®\n296\n1500\n2100\nbBrass-filled PTFE\n>425\n1500\n2268\nbTFE-Teflon® (PTFE)\n>425\n1500\n2396\na-\nASTM-AIT Chou and Giedorowicz\nb-\nNASA-STD-6001 MSFC"
+            },
+            "proposal_id": "proposal-8a24341653de49c563e669fe",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "quantities",
+            "proposal": {
+              "epistemic": "derived_quantity",
+              "expression": "5",
+              "label": "AIT",
+              "printed_name": "higher",
+              "subject": "entity-3146bf392859aee0ce4d",
+              "support": [
+                {
+                  "evidence_id": "E-c74df4a8aec87bacb518676c",
+                  "quote": "The AIT for Brass-filled PTFE is",
+                  "start": 2028
+                },
+                {
+                  "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+                  "quote": "8   \nonly 5% higher than for Kel-F® 81 (PCTFE) based on the maximum temperature threshold in \nthe standard.",
+                  "start": 0
+                }
+              ],
+              "unit": "%"
+            },
+            "proposal_id": "proposal-fde050e291abb0c5b35102ee",
+            "reasons": [
+              "QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 34.28005469999334,
+          "effort": "high",
+          "image_count": 1,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 23552,
+          "started_at": "2026-10-22T18:19:02.674610+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 22.126978500004043
+        },
+        "usage": {
+          "cache_creation_input_tokens": 3281,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 5085,
+          "input_tokens": 20691,
+          "prompt_tokens": 23972,
+          "total_tokens": 29057
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "25c860f83760591385e6e7b349aded5bbeab121b990cd0f685d2a90099479af8",
+        "context_token_estimate": 74388,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 18,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 32768,
+        "prefetch": "USED",
+        "proposed_items": 95,
+        "reasoning_tokens": 2048,
+        "request_bytes": 53823,
+        "reserved_tokens_per_attempt": 114985,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22502,
+        "source_anchors": 85,
+        "source_errors": [
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-89524de3caf204733016",
+                "entity-b23fd4dd9cafc1751ab7",
+                "entity-ba7956367ddf6b344a45",
+                "entity-b54e443f560c5c34e8e2",
+                "structure-07a6f8dd13bf47c4",
+                "structure-dba56e2284965305"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ],
+              "text": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20"
+            },
+            "proposal_id": "proposal-fd9b24796dd156db6df95a45",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "current",
+              "subjects": [
+                "entity-77a80608b4dccc77e6e6",
+                "entity-70d22f23e9652114591d",
+                "entity-8a6ec8727345ddba85bb",
+                "structure-07a6f8dd13bf47c4",
+                "structure-dba56e2284965305"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ],
+              "text": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J."
+            },
+            "proposal_id": "proposal-a8e7aeb7f48ad3c8487d3a64",
+            "reasons": [
+              "CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-a83ab527f3b32724eb0e",
+                "entity-41e015d86f040b5bc4d1",
+                "entity-020c8f2265c4ef288593",
+                "entity-f10d94b63e32c6a28d52",
+                "structure-dba56e2284965305"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-41335ada533b5784210a7fb3",
+                  "quote": "15\nTABLE 4— Ambient Pressure Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact \nEnergy \n(ft-\nlbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.00197\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naKel-F®81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naViton® A\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/200\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.0645\n0/100\na-\nDetermined by ABMA\nTABLE 5—High Pressure LOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact\nEnergy\n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions/ \nTests\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.125\n3/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.125\n4/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n6/20",
+                  "start": 0
+                }
+              ],
+              "text": "15\nTABLE 4— Ambient Pressure Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact \nEnergy \n(ft-\nlbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.00197\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naKel-F®81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/100\naViton® A\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.062\n0/100\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.125\n0/200\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\nAmbient\n0.0645\n0/100\na-\nDetermined by ABMA\nTABLE 5—High Pressure LOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact\nEnergy\n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions/ \nTests\naFluorel®\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n2/20\n72 ft-lbs (98J)\nLOX/-297°F\n14.5\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n100\n0.125\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n500\n0.125\n3/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.125\n4/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n6/20"
+            },
+            "proposal_id": "proposal-2f98b45b29f28fd22bd2d3ba",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-a83ab527f3b32724eb0e",
+                "entity-41e015d86f040b5bc4d1",
+                "structure-dba56e2284965305"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-89c792e84b33563bf7b01cea",
+                  "quote": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20",
+                  "start": 0
+                }
+              ],
+              "text": "16   \naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/42\naKel-F® 81 \n(PCTFE)\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,500\n0.125\n0/20\nb\n72 ft-lbs (98J)\nLOX/-297°F\n2,000\n0.06256\n8/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS\nTABLE 6—High Pressure GOX Mechanical Impact Data of Fluorinated Compounds [4]\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage \nSample \nThickness \n(inches)\nReactions / \nTests\naTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/260°F\n60\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/177°F\n3,250\n0.06256\n5/20\n20.3 ft-lbs (27.5 J)\nGOX/177°F\n3,250\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n5,000\n0.06256\n4/20\nbTFE-Teflon®\n(PTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n7,000\n0.06256\n2/5\n72 ft-lbs (98J)\nGOX/Ambient\n8,000\n0.06256\n1/1\naKel-F ® 8 1 \n(PCTFE)\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.06256\n0/20\n50 ft-lbs (68J)\nGOX/Ambient\n1,500\n0.06256\n2/20\n43 ft-lbs (59J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n40 ft-lbs (54J)\nGOX/Ambient\n2,000\n0.06256\n0/20\n45 ft-lbs (61J)\nGOX/Ambient\n3,000\n0.06256\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n5,000\n0.06256\n1/6\n40 ft-lbs (54J)\nGOX/Ambient\n5,000\n0.06256\n0/20"
+            },
+            "proposal_id": "proposal-5e292eb328b2eed6f6939c7a",
+            "reasons": [
+              "CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          },
+          {
+            "kind": "statements",
+            "proposal": {
+              "class_id": "ReportedObservation",
+              "epistemic": "measured_observation",
+              "study": "cited",
+              "subjects": [
+                "entity-41e015d86f040b5bc4d1",
+                "entity-020c8f2265c4ef288593",
+                "entity-f10d94b63e32c6a28d52"
+              ],
+              "support": [
+                {
+                  "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+                  "quote": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS",
+                  "start": 0
+                }
+              ],
+              "text": "17\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.125\n2/20\n65 ft-lbs (88J)\nGOX/Ambient\n1,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.125\n0/20\n65 ft-lbs (88J)\nGOX/Ambient\n2,000\n0.125\n0/20\n55 ft-lbs (75J)\nGOX/Ambient\n3,000\n0.125\n1/20\n50 ft-lbs (68J)\nGOX/Ambient\n3,000\n0.125\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n500\n0.125\n4/10\naViton® A\n72 ft-lbs (98J)\nGOX/Ambient\n1,000\n0.076\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.076\n1/9\n72 ft-lbs (98J)\nGOX/Ambient\n1,500\n0.06256\n1/20\n72 ft-lbs (98J)\nGOX/Ambient\n2,000\n0.06256\n1/17\n30 ft-lbs (41J)\nGOX/Ambient\n5,000\n0.06256\n0/20\naFluorel®\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.06256\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.06256\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.06256\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nGOX/Ambient\n250\n0.125\n0/20\n51 ft-lbs (68J)\nGOX/Ambient\n500\n0.125\n0/20\n30 ft-lbs (41 J)\nGOX/Ambient\n1,500\n0.125\n0/20\n25 ft-lbs (34J)\nGOX/Ambient\n5,000\n0.125\n0/20\na-\nMSFC and WSTF mechanical impact test results\nb-\nObtained from MAPTIS"
+            },
+            "proposal_id": "proposal-d067803f4d4aedc9a05e73a8",
+            "reasons": [
+              "TABLE_REGION_IS_NOT_A_STATEMENT"
+            ]
+          }
+        ],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 61.924471199992695,
+          "effort": "high",
+          "image_count": 5,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 32768,
+          "started_at": "2026-10-22T18:19:03.233268+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 43.376996499995585
+        },
+        "usage": {
+          "cache_creation_input_tokens": 3371,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 9160,
+          "input_tokens": 38485,
+          "prompt_tokens": 41856,
+          "total_tokens": 51016
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "ff54d32d9610fe5eba772b29b3994e58ce449cdbd41fdb2ed60002f1adbf866b",
+        "context_token_estimate": 22935,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 13,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 7168,
+        "prefetch": "USED",
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 22659,
+        "reserved_tokens_per_attempt": 37678,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 9489,
+        "source_anchors": 27,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 5.308698399996501,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 7168,
+          "started_at": "2026-10-22T18:19:03.347778+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 5.307721199991647
+        },
+        "usage": {
+          "cache_creation_input_tokens": 3317,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 24,
+          "input_tokens": 9741,
+          "prompt_tokens": 13058,
+          "total_tokens": 13082
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "544d3a15af65fc09894a2b6978b51b04dd6e03e3b62623476ddf51d692502d7e",
+        "context_token_estimate": 48143,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 11,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "EMPTY_WITH_SOURCE_CANDIDATES",
+        "output_tokens": 23552,
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "recovery": "TARGET_SOURCE_CANDIDATES",
+        "request_bytes": 41003,
+        "reserved_tokens_per_attempt": 71710,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 21929,
+        "source_anchors": 95,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 5.176273400007631,
+          "effort": "high",
+          "image_count": 1,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 23552,
+          "started_at": "2026-10-22T18:20:11.084152+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 5.131173800007673
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1362,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 87,
+          "input_tokens": 19404,
+          "prompt_tokens": 20766,
+          "total_tokens": 20853
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "36be92f664f7606b8be906510b7d5642057f0573b4025c06dd4e6e26239102bc",
+        "context_token_estimate": 71432,
+        "coverage_recovery": "NO_VERIFIED_QUANTITY_PROGRESS_RETAIN_GAPS",
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": "quantities",
+        "known_entities_selected": 18,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 32768,
+        "proposed_items": 5,
+        "reasoning_tokens": 2048,
+        "request_bytes": 52649,
+        "reserved_tokens_per_attempt": 109073,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22502,
+        "source_anchors": 85,
+        "source_errors": [],
+        "stage": "propositions",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 9.519988700005342,
+          "effort": "high",
+          "image_count": 5,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 32768,
+          "started_at": "2026-10-22T18:20:16.912395+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 7.789472800010117
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1473,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 781,
+          "input_tokens": 37953,
+          "prompt_tokens": 39426,
+          "total_tokens": 40207
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "9b081d0e42a2d9b258b20b1273d1b7449a812d2ab6143cf5b51a6fdacc09aacf",
+        "context_token_estimate": 33192,
+        "deterministic": "COMPLETE",
+        "end": 13782,
+        "evidence_id": "E-12420d47b8affc1483755bb9",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 11,
+        "members": [
+          {
+            "end": 1895,
+            "evidence_id": "E-12420d47b8affc1483755bb9",
+            "id": "segment-2863a041f3af7dc5ec325cf5",
+            "start": 0
+          },
+          {
+            "end": 1400,
+            "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+            "id": "segment-bfe1c9183925d6726ebdca90",
+            "start": 0
+          },
+          {
+            "end": 1735,
+            "evidence_id": "E-856619bc9b1ca2a2ef9b5031",
+            "id": "segment-f4a3bb69d675bdb15dc7d01e",
+            "start": 0
+          },
+          {
+            "end": 895,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-38711cbbb4f76ff9f2507826",
+            "start": 0
+          },
+          {
+            "end": 1617,
+            "evidence_id": "E-3df3718143d8a6097de5cce9",
+            "id": "segment-e3b951e918e86f735d02fa63",
+            "start": 895
+          },
+          {
+            "end": 1992,
+            "evidence_id": "E-e662ddc659fd07d444d0f55a",
+            "id": "segment-89e2557bc39b96060fcd95af",
+            "start": 0
+          },
+          {
+            "end": 1349,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-629b8bb7411b6c526da8d156",
+            "start": 0
+          },
+          {
+            "end": 2015,
+            "evidence_id": "E-c7cced937631a3202586213b",
+            "id": "segment-5aa73f8f8c42f7098bd8be18",
+            "start": 1349
+          },
+          {
+            "end": 2062,
+            "evidence_id": "E-c74df4a8aec87bacb518676c",
+            "id": "segment-2504caba8656c35e9643e2ef",
+            "start": 0
+          },
+          {
+            "end": 1066,
+            "evidence_id": "E-68c4ee3a1e771cc7a3f844b6",
+            "id": "segment-1dad77136938feecb86b170a",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 9216,
+        "prefetch": "USED",
+        "proposed_items": 5,
+        "reasoning_tokens": 2048,
+        "request_bytes": 43392,
+        "reserved_tokens_per_attempt": 56145,
+        "schema_errors": [],
+        "segment_id": "window-dd3de0c416ae3d769f7df99b",
+        "source_anchor_characters": 21929,
+        "source_anchors": 95,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-fce4a6e3397fb4a97f5c",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-3df3718143d8a6097de5cce9",
+                  "quote": "The Brass-filled PTFE samples discussed in this paper \nwere evaluated using a Parr 6200 oxygen bomb calorimeter to determine the heat of combustion.",
+                  "start": 1057
+                }
+              ]
+            },
+            "proposal_id": "proposal-9a33a0e10e5cb902357db4fa",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-3146bf392859aee0ce4d",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "The scientists and \nengineers at the Materials Combustion Research Facility, in cooperation with seal suppliers, \nare currently testing a new formulation of polytetrafluoroethylene (PTFE) with Brass filler.",
+                  "start": 247
+                },
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "This paper will compare the data obtained for Brass-filled PTFE with other fluorinated \npolymers, such as TFE-Teflon® (PTFE) , Kel-F® 81, Viton® A, Viton® A-500, Fluorel®, \nand Algoflon®.",
+                  "start": 711
+                }
+              ]
+            },
+            "proposal_id": "proposal-5d3ec9f308f6755b466faf25",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-77a80608b4dccc77e6e6",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-46e0e7c66015e5ce8ce7befc",
+                  "quote": "A similar metal filled fluorinated polymer, Salox-M®, was tested in \ncomparison to Brass-filled PTFE to demonstrate the importance of the metal chosen and \nrelative percentage of filler.",
+                  "start": 900
+                }
+              ]
+            },
+            "proposal_id": "proposal-f55f166918a3e8d6b16df3a0",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 3.9142534999991767,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 9216,
+          "started_at": "2026-10-22T18:20:28.899857+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 2.9863136999920243
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1651,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 227,
+          "input_tokens": 18034,
+          "prompt_tokens": 19685,
+          "total_tokens": 19912
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "891508ed5c358a3770f5f384772f396434b78b47966b6eef200e899c9fc0d5ea",
+        "context_token_estimate": 38438,
+        "deterministic": "COMPLETE",
+        "end": 14618,
+        "evidence_id": "E-6bf1df5933d78592dccc7298",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 18,
+        "members": [
+          {
+            "end": 2135,
+            "evidence_id": "E-6bf1df5933d78592dccc7298",
+            "id": "segment-bb907463f7ca4f4c4d9dbdfc",
+            "start": 0
+          },
+          {
+            "end": 2072,
+            "evidence_id": "E-3c5dda18c88e5f979ff19901",
+            "id": "segment-7194b8b82f2d1334606133d4",
+            "start": 0
+          },
+          {
+            "end": 1041,
+            "evidence_id": "E-0893f504fcae06fdbd60b10e",
+            "id": "segment-ade1fc7e7e2bda9a667a6fbc",
+            "start": 0
+          },
+          {
+            "end": 823,
+            "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+            "id": "segment-bd0ca39d636e608848885c57",
+            "start": 0
+          },
+          {
+            "end": 1572,
+            "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+            "id": "segment-6470632af325d800c016fd04",
+            "start": 0
+          },
+          {
+            "end": 1957,
+            "evidence_id": "E-7db5b232aeffb8802373b8de",
+            "id": "segment-0c73836ad1c1b343308348bc",
+            "start": 0
+          },
+          {
+            "end": 1327,
+            "evidence_id": "E-41335ada533b5784210a7fb3",
+            "id": "segment-73f437c55ba5aad0068b5d96",
+            "start": 0
+          },
+          {
+            "end": 1378,
+            "evidence_id": "E-89c792e84b33563bf7b01cea",
+            "id": "segment-5e5fdd122efadd8bf7ca5516",
+            "start": 0
+          },
+          {
+            "end": 1000,
+            "evidence_id": "E-fd8fa80aee738684e3a6e7c6",
+            "id": "segment-299cd9f1ef4a01ef7ac633d5",
+            "start": 0
+          },
+          {
+            "end": 1313,
+            "evidence_id": "E-1684eeeb0c82467e4df2a5b1",
+            "id": "segment-13aa65685875449c7ee98965",
+            "start": 0
+          }
+        ],
+        "model": "COMPLETE_WITH_REJECTIONS",
+        "output_tokens": 10240,
+        "prefetch": "USED",
+        "proposed_items": 25,
+        "reasoning_tokens": 2048,
+        "request_bytes": 51737,
+        "reserved_tokens_per_attempt": 65612,
+        "schema_errors": [],
+        "segment_id": "window-79ba8dbd61478934538ee243",
+        "source_anchor_characters": 22502,
+        "source_anchors": 85,
+        "source_errors": [
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-07a6f8dd13bf47c4",
+              "proposed_relation": null,
+              "relation": "hasCondition",
+              "subject": "entity-70d22f23e9652114591d",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-77382844e36f5575c6a19812",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "proposed_relation": null,
+              "relation": "hasCondition",
+              "subject": "entity-70d22f23e9652114591d",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-4d559e1f81bb2b0403588d77",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-07a6f8dd13bf47c4",
+              "proposed_relation": null,
+              "relation": "hasCondition",
+              "subject": "entity-8a6ec8727345ddba85bb",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-5f88555fd51ae2607a36fee6",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "proposed_relation": null,
+              "relation": "hasCondition",
+              "subject": "entity-8a6ec8727345ddba85bb",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-6f27207ef76688ba7d6f7545",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "structure-dba56e2284965305",
+              "proposed_relation": null,
+              "relation": "hasCondition",
+              "subject": "entity-77a80608b4dccc77e6e6",
+              "support": [
+                {
+                  "evidence_id": "E-cb4baba58e9db4bba888ffdc",
+                  "quote": "13\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naSalox-M® \n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06217\n2/2\n55 ft-lbs (75J)\nLOX/-297°F\n10,000\n0.06256\n2/4\n40 ft-lbs (54J)\nLOX/-297°F\n10,000\n0.06256\n2/25\n50 ft-lbs (68J)\nLOX/-297°F\n5,000\n0.06256\n2/18\n36 ft-lbs (39J)\nLOX/-297°F\n5,000\n0.06256\n0/20\naAlgoflon® F7\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06217\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06256\n2/8\n72 ft-lbs (98J)\nLOX/-297°F\n9,000\n0.06256\n2/3\n72 ft-lbs (98J)\nLOX/-297°F\n8,000\n0.06256\n2/11\n72 ft-lbs (98J)\nLOX/-297°F\n6,000\n0.06256\n2/4\n72 ft-lbs (98J)\nLOX/-297°F\n5,000\n0.06256\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n1,000\n0.06256\n0/20\naAlgoflon® E2\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.0645\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06202\n0/20\na-\nNASA-STD 6001 MSFC\nPrevious research conducted in 1983 by C.J.",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-7c43ae96986d2515b5d21a60",
+            "reasons": [
+              "RELATION_ENDPOINT_CLASS_CONTRADICTION"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-3146bf392859aee0ce4d",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-6bf1df5933d78592dccc7298",
+                  "quote": "The mechanical impact data for the Brass-filled PTFE, and several other PTFE materials \ntested at MSFC, in both LOX and GOX environments, can be seen in Table 3.",
+                  "start": 1304
+                }
+              ]
+            },
+            "proposal_id": "proposal-464e83c3aeef17b31b7ac180",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-77a80608b4dccc77e6e6",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-3c5dda18c88e5f979ff19901",
+                  "quote": "The mechanical impact results for Salox-M® impacted with 98, \n55, and 40 Joules at 10,000 psia in LOX are shown in Table 3.",
+                  "start": 1321
+                }
+              ]
+            },
+            "proposal_id": "proposal-72b2534b50da87ef1fbf69fa",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-70d22f23e9652114591d",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "Two types of Algoflon®, another PTFE based material, were tested at the same conditions in \norder to compare them to the Brass-filled PTFE.",
+                  "start": 109
+                }
+              ]
+            },
+            "proposal_id": "proposal-7ae046a2f5f62d0a21699a21",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-8a6ec8727345ddba85bb",
+              "proposed_relation": null,
+              "relation": "hasMaterial",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-0893f504fcae06fdbd60b10e",
+                  "quote": "Two types of Algoflon®, another PTFE based material, were tested at the same conditions in \norder to compare them to the Brass-filled PTFE.",
+                  "start": 109
+                }
+              ]
+            },
+            "proposal_id": "proposal-13a87c613201636de40c5464",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-89524de3caf204733016",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-c8c775d71efe78019da6c820",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-b23fd4dd9cafc1751ab7",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-44de4f3b62b4b51026c18b14",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-ba7956367ddf6b344a45",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-239a1c34aedaf37e1d6cd168",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          },
+          {
+            "kind": "relations",
+            "proposal": {
+              "object": "entity-b54e443f560c5c34e8e2",
+              "proposed_relation": null,
+              "relation": "usesSample",
+              "subject": "entity-a16959c8d89655729431",
+              "support": [
+                {
+                  "evidence_id": "E-9a9fedeb47a8b87e2a7fdf72",
+                  "quote": "12   \nFigure – 2 Mechanical impact 10,000 psi GOX post test photo of the Brass-filled PTFE\nTABLE 3—High Pressure Mechanical Impact Data of Fluorinated Compounds\nMaterial\nImpact Energy \n(ft-lbs/J)\nTest Conditions\nSystem \nPressure (psia)\nAverage Sample \nThickness (inches)\nReactions/ \nTests\naBrass-filled PTFE\n(Batch #1)\n72 ft-lbs (98J)\nLOX/-297°F\n10,000 \n0.06802\n0/20\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06823\n4/80\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06824\n0/80\naBrass-filled PTFE\n(Batch #2)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n1/60\naBrass-filled PTFE\n(Batch #3)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20\n72 ft-lbs (98J)\nLOX/-297°F\n10,000\n0.06206\n0/20\naBrass-filled PTFE\n(Batch #4)\n72 ft-lbs (98J)\nGOX/75°F\n10,000\n0.06206\n0/20",
+                  "start": 0
+                }
+              ]
+            },
+            "proposal_id": "proposal-242c4ae5d4b52f86a3de72d4",
+            "reasons": [
+              "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE"
+            ]
+          }
+        ],
+        "stage": "relationships",
+        "start": 0,
+        "transport": {
+          "duration_seconds": 6.654126199995517,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 10240,
+          "started_at": "2026-10-22T18:20:28.964777+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 1.6778268000052776
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1735,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 1058,
+          "input_tokens": 24758,
+          "prompt_tokens": 26493,
+          "total_tokens": 27551
+        }
+      },
+      {
+        "attempts": 1,
+        "cache_key": "4d735ed7358437c62f4238aeace9bee6adad88b55e99aa0c91cdbd444925d2dd",
+        "context_token_estimate": 20945,
+        "deterministic": "COMPLETE",
+        "end": 1100,
+        "evidence_id": "E-660b8d7839309b6caf911188",
+        "finish_reason": "stop",
+        "focus": null,
+        "known_entities_selected": 13,
+        "members": [
+          {
+            "end": 1100,
+            "evidence_id": "E-660b8d7839309b6caf911188",
+            "id": "segment-31686abe80b9fdd4f9a1da10",
+            "start": 350
+          }
+        ],
+        "model": "COMPLETE",
+        "output_tokens": 7168,
+        "prefetch": "USED",
+        "proposed_items": 0,
+        "reasoning_tokens": 2048,
+        "request_bytes": 22966,
+        "reserved_tokens_per_attempt": 33699,
+        "schema_errors": [],
+        "segment_id": "window-dc0889a6ae931349c37d60cf",
+        "source_anchor_characters": 9489,
+        "source_anchors": 27,
+        "source_errors": [],
+        "stage": "relationships",
+        "start": 350,
+        "transport": {
+          "duration_seconds": 4.253912699990906,
+          "effort": "high",
+          "image_count": 0,
+          "max_output_tokens": 32768,
+          "provider": "anthropic",
+          "refusal_fallback": true,
+          "request_id": null,
+          "requested_model": "claude-sonnet-5-5",
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "stage_output_capacity": 7168,
+          "started_at": "2026-10-22T18:20:29.002679+00:00",
+          "stop_details": null,
+          "stop_reason": "end_turn",
+          "stream": true,
+          "structured_output": true,
+          "time_to_first_token_seconds": 4.144690299988724
+        },
+        "usage": {
+          "cache_creation_input_tokens": 1675,
+          "cache_read_input_tokens": 0,
+          "completion_tokens": 204,
+          "input_tokens": 9947,
+          "prompt_tokens": 11622,
+          "total_tokens": 11826
+        }
+      }
+    ],
+    "recovered_cached_proposals_after_source_validation": 0,
+    "resource_policy": {
+      "adaptive": true,
+      "provider_envelope": {
+        "context_tokens": 65536,
+        "output_tokens": 32768,
+        "reasoning_tokens": 2048,
+        "request_timeout_seconds": 600.0,
+        "throughput_tokens_per_second": 35.0
+      },
+      "request_context_tokens": 96000,
+      "scientific_item_ceiling": null
+    },
+    "restored_proposals_after_source_validation": 0,
+    "scientific_completeness": "SOURCE_ADJUDICATION_REQUIRED",
+    "status": "PARTIAL_MODEL_COVERAGE",
+    "targeted_recovery_mode": false,
+    "tokens_consumed_or_reserved": 257246,
+    "window_prefetch": {
+      "concurrency": 3,
+      "discarded": 0,
+      "sent": 9,
+      "used": 9
+    }
+  },
+  "publications": 0,
+  "scientific_acceptance": "NOT_ESTABLISHED_BY_RUN",
+  "source_integrity_errors": [],
+  "source_sha256": "c9de8948bdf14643e96f5666eba566827eb7842cbe6c085c6e411fe29cd8237a",
+  "sqlite_integrity": "ok",
+  "started_at": "2026-10-22T18:18:51.005446+00:00",
+  "timing": {
+    "cache_creation_input_tokens": 17865,
+    "cache_read_input_tokens": 5370,
+    "call_seconds_max": 61.9,
+    "call_seconds_p50": 5.3,
+    "call_seconds_p90": 34.3,
+    "calls": 11,
+    "calls_over_240_seconds": 0,
+    "estimated_cost_usd": 0.6575,
+    "failed_attempts": 0,
+    "failure_causes": {},
+    "input_tokens": 239273,
+    "local_seconds": 29.8,
+    "output_tokens": 17973,
+    "per_call": [
+      {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1790,
+        "error": null,
+        "estimated_cost_usd": 0.034,
+        "first_token_seconds": 2.4,
+        "generation_seconds": 2.9,
+        "input_tokens": 15241,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 673,
+        "seconds": 5.2,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1790,
+        "error": null,
+        "estimated_cost_usd": 0.0458,
+        "first_token_seconds": 2.6,
+        "generation_seconds": 2.9,
+        "input_tokens": 21201,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 664,
+        "seconds": 5.5,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1790,
+        "error": null,
+        "estimated_cost_usd": 0.0088,
+        "first_token_seconds": 2.3,
+        "generation_seconds": 0.0,
+        "input_tokens": 5953,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 10,
+        "seconds": 2.3,
+        "stage": "identity"
+      },
+      {
+        "cache_creation_input_tokens": 3281,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.1004,
+        "first_token_seconds": 22.1,
+        "generation_seconds": 12.2,
+        "input_tokens": 23972,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 5085,
+        "seconds": 34.3,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 3371,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.177,
+        "first_token_seconds": 43.4,
+        "generation_seconds": 18.5,
+        "input_tokens": 41856,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 9160,
+        "seconds": 61.9,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 3317,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.028,
+        "first_token_seconds": 5.3,
+        "generation_seconds": 0.0,
+        "input_tokens": 13058,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 24,
+        "seconds": 5.3,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1362,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0431,
+        "first_token_seconds": 5.1,
+        "generation_seconds": 0.0,
+        "input_tokens": 20766,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 87,
+        "seconds": 5.2,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1473,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0874,
+        "first_token_seconds": 7.8,
+        "generation_seconds": 1.7,
+        "input_tokens": 39426,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 781,
+        "seconds": 9.5,
+        "stage": "propositions"
+      },
+      {
+        "cache_creation_input_tokens": 1651,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0425,
+        "first_token_seconds": 3.0,
+        "generation_seconds": 0.9,
+        "input_tokens": 19685,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 227,
+        "seconds": 3.9,
+        "stage": "relationships"
+      },
+      {
+        "cache_creation_input_tokens": 1735,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0644,
+        "first_token_seconds": 1.7,
+        "generation_seconds": 5.0,
+        "input_tokens": 26493,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 1058,
+        "seconds": 6.7,
+        "stage": "relationships"
+      },
+      {
+        "cache_creation_input_tokens": 1675,
+        "cache_read_input_tokens": 0,
+        "error": null,
+        "estimated_cost_usd": 0.0261,
+        "first_token_seconds": 4.1,
+        "generation_seconds": 0.1,
+        "input_tokens": 11622,
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 204,
+        "seconds": 4.3,
+        "stage": "relationships"
+      }
+    ],
+    "post_extraction_seconds": 23.1,
+    "provider_call_seconds_total": 144.1,
+    "provider_seconds": 89.5,
+    "repeated_identical_requests": 0,
+    "setup_seconds": 0.2,
+    "wall_seconds": 119.3
+  },
+  "uncommitted_src_changes": false,
+  "validation_errors": [
+    "Original PDF quantities retain unresolved role and experimental scope for scientific review",
+    "Scientific preparation review dependency: AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+    "Scientific preparation review dependency: CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+    "Scientific preparation review dependency: CITED_TABLE_READING_IS_NOT_CURRENT_OBSERVATION",
+    "Scientific preparation review dependency: CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: CONFIGURATION_STATEMENT_STATES_A_CRITERION",
+    "Scientific preparation review dependency: CROSS_PAGE_SENTENCE_CONTINUATION_REQUIRES_REVIEW",
+    "Scientific preparation review dependency: CURRENT_OR_CITED_STUDY_UNRESOLVED",
+    "Scientific preparation review dependency: DERIVATION_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+    "Scientific preparation review dependency: DERIVED_CONTEXT_IS_NOT_DIRECT_OBSERVATION",
+    "Scientific preparation review dependency: INTERPRETATION_DESCRIBES_A_PROCEDURE",
+    "Scientific preparation review dependency: INTERPRETATION_STATES_A_VALIDITY_CAVEAT",
+    "Scientific preparation review dependency: QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_REQUIRES_EXPERIMENTAL_SCOPE_NOT_MATERIAL_CONCEPT",
+    "Scientific preparation review dependency: QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "Scientific preparation review dependency: QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "Scientific preparation review dependency: QUANTITY_UNIT_UNSPECIFIED",
+    "Scientific preparation review dependency: QUANTITY_VALUE_PRESERVED_SUBJECT_UNRESOLVED",
+    "Scientific preparation review dependency: SOURCE_PRINTS_CONFLICTING_COUNTS",
+    "Scientific preparation review dependency: STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE",
+    "Scientific preparation review dependency: STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "Scientific preparation review dependency: STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "Scientific preparation review dependency: TABLE_VALUE_ROW_WITHIN_GROUP_AMBIGUOUS",
+    "Scientific preparation review dependency: TEST_MEDIUM_IS_NOT_A_TESTED_MATERIAL",
+    "Scientific quantity native representation deferred; original literal retained: proposal-07e23be119e2715a55988fa7",
+    "Scientific quantity native representation deferred; original literal retained: proposal-1c28e5a518846192cc807a05",
+    "Scientific quantity native representation deferred; original literal retained: proposal-26cc3cb53960b0ab36e38b1e",
+    "Scientific quantity native representation deferred; original literal retained: proposal-2d144dd0ae83e4dee1e86aee",
+    "Scientific quantity native representation deferred; original literal retained: proposal-45cc801f1be4054247e114e2",
+    "Scientific quantity native representation deferred; original literal retained: proposal-68f9e5b215e8abebcc313b53",
+    "Scientific quantity native representation deferred; original literal retained: proposal-6a4477626f0d6bd57394b319",
+    "Scientific quantity native representation deferred; original literal retained: proposal-6efd6568b8b3b9a94165079e",
+    "Scientific quantity native representation deferred; original literal retained: proposal-8338b3c13f47e65f0dd44419",
+    "Scientific quantity native representation deferred; original literal retained: proposal-8af0b568db7ebf97c90164e3",
+    "Scientific quantity native representation deferred; original literal retained: proposal-aef5a563f722944c518d3b2c",
+    "Scientific quantity native representation deferred; original literal retained: proposal-b44d2be2a9b0d66727737f15",
+    "Scientific quantity native representation deferred; original literal retained: proposal-b6f21017db0a9580092cd80f",
+    "Scientific quantity native representation deferred; original literal retained: proposal-d2e3c567c8673f6fcb14829f",
+    "Scientific quantity native representation deferred; original literal retained: proposal-f76f4960a70216ad78ab3792",
+    "Scientific quantity native representation deferred; original literal retained: proposal-fafe5b9d6251e5eb896213f6",
+    "Scientific review required: relationship investigation needs original experimental applicability for research-ec42a926a29616a70757:entity:d10d11b9058a9bd09f7c",
+    "Select source-supported scope for proposal-618ad0537e43ee282ef40caa",
+    "Select source-supported scope for proposal-72f4d0cd609978770c59f7be",
+    "Select source-supported scope for proposal-97a424a6019d16958100cc51",
+    "Select source-supported scope for proposal-9c058894bcff15aea177b799",
+    "Select source-supported scope for proposal-bdd179106ad5d787f2c0450b",
+    "Select source-supported scope for research-ec42a926a29616a70757:c9de8948bdf14643:statement:4bc799d6dfe970df",
+    "Which identified runs do these author reported conclusion statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context.",
+    "Which identified runs do these documentary context statements apply to? Review cited-study attribution and use individual scope controls for exceptions, or retain documentary context."
+  ]
+}

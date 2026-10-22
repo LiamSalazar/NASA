@@ -77,7 +77,7 @@ def prior_runs(source):
 def package4_runs(source, prepared):
     """Earlier package 4 runs of the source, with their final verdicts."""
     runs = []
-    for verdicts in sorted(glob.glob(f"../nasa-live/pkg4-*/review/{source}_r*_verdicts.json")):
+    for verdicts in sorted(glob.glob(f"../nasa-live/pkg[45]-*/review/{source}_r*_verdicts.json")):
         folder, name = os.path.split(verdicts)
         commit = folder.replace("\\", "/").split("/")[-2][len("pkg4-"):]
         rnd = name[len(source) + 2 : -len("_verdicts.json")]

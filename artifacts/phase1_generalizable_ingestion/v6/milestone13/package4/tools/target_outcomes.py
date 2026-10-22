@@ -7,9 +7,9 @@ record of the same kind overlapping the target span: UNRESOLVED -> unresolved,
 REJECTED or a supported record not judged correct -> incorrect_or_rejected,
 none -> omitted (the point A rule).
 """
-import collections, gzip, json, sys
+import collections, gzip, json, os, sys
 commit, rnd, out = sys.argv[1:4]
-B = f"../nasa-live/pkg4-{commit}"
+B = os.environ.get("PKG_DIR", f"../nasa-live/pkg4-{commit}")
 A = "artifacts/phase1_generalizable_ingestion"
 results = json.load(open(f"{B}/review/round{rnd}_results.json", encoding="utf-8"))
 

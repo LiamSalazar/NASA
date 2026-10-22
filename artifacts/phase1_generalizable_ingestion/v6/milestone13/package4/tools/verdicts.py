@@ -2,9 +2,9 @@
 
     python verdicts.py COMMIT SOURCE ROUND
 """
-import json, sys
+import json, os, sys
 commit, source, rnd = sys.argv[1:4]
-review = f"../nasa-live/pkg4-{commit}/review"
+review = os.environ.get("PKG_DIR", f"../nasa-live/pkg4-{commit}") + "/review"
 carry = json.load(open(f"{review}/{source}_r{rnd}_carry.json", encoding="utf-8"))
 manual = json.load(open(f"{review}/{source}_manual.json", encoding="utf-8"))
 out = {k: [v[0], v[1]] for k, v in carry["carried"].items()}

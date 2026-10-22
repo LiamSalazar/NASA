@@ -1,7 +1,7 @@
 #!/bin/sh
 # score_ptfe.sh ROUND  (repo root) -> review/ptfe_rN_{judgments,review,metrics}.json
 set -e
-R=$1; C=${PKG_COMMIT:-dc6f342}; B=../nasa-live/pkg4-$C; RUN=$B/r$R/ptfe_sonnet_${C}_r$R; T=../nasa-live/pkg4-dc6f342/tools
+R=$1; C=${PKG_COMMIT:-dc6f342}; B=${PKG_DIR:-../nasa-live/pkg4-$C}; RUN=$B/r$R/ptfe_sonnet_${C}_r$R; T=../nasa-live/pkg4-dc6f342/tools
 python $T/carry.py ptfe $RUN/prepared.json.gz $B/review/ptfe_r${R}_carry.json
 python - "$B/review/ptfe_r${R}_carry.json" "$B/review/ptfe_manual.json" "$B/review/ptfe_r${R}_judgments.json" <<'PY'
 import json, sys

@@ -2,9 +2,9 @@
 
     python results.py COMMIT ROUND TARGETS.json   (TARGETS: {source: [correct target ids]})
 """
-import json, sys
+import json, os, sys
 commit, rnd, targets = sys.argv[1:4]
-B = f"../nasa-live/pkg4-{commit}"
+B = os.environ.get("PKG_DIR", f"../nasa-live/pkg4-{commit}")
 accessible = {"ignition": 29, "regulator": 32, "textiles": 29}
 out = {}
 for source, correct in json.load(open(targets, encoding="utf-8")).items():
