@@ -284,6 +284,8 @@ def page_continuation_context(spans, evidence):
 def consolidate_validated_variants(records, entities, evidence, document):
     """One active exact assertion; original inference variants remain auditable."""
     primary = {}
+    # A printed value already owned by a quantity, and an entity's exact support.
+    value_owner, entity_by_support = {}, {}
     # A proposal with a known study owns its duplicates before one whose study
     # is unknown.
     for record in sorted(
@@ -380,19 +382,48 @@ def consolidate_validated_variants(records, entities, evidence, document):
             # quantity, whatever each proposal called it ("O2" and "oxygen
             # concentration" for one printed "37% O2"): one printed value names
             # one quantity.
-            key = (
+            base = (
                 kind,
                 record["status"],
                 record.get("subject"),
                 item["expression"],
                 item["unit"],
                 item["epistemic"],
-                tuple(
-                    (v["evidence_id"], v["start"], v["end"]) for v in record["quantity_value_spans"]
-                ),
                 tuple(sorted(record["reasons"])),
             )
+            values = [
+                (v["evidence_id"], v["start"], v["end"]) for v in record["quantity_value_spans"]
+            ]
+            key = (*base, tuple(values))
+            # A proposal that shares one printed value with another names the same
+            # quantity, though either cites the value in more places.
+            key = next((value_owner[(base, v)] for v in values if (base, v) in value_owner), key)
+            for v in values:
+                value_owner.setdefault((base, v), key)
         if key is None and kind == "entities" and record.get("entity_id"):
+            same_support = (
+                norm(item.get("label", "")),
+                item.get("class_id"),
+                tuple(
+                    sorted(
+                        (s["evidence_id"], s["start"], s["end"]) for s in record["support_spans"]
+                    )
+                ),
+            )
+            other = entity_by_support.get(same_support)
+            studies = {item.get("study"), (other or {}).get("proposal", {}).get("study")}
+            if other is not None and "cited" in studies and len(studies) > 1:
+                # One printed name read as both the current and a cited study's:
+                # the source span does not decide which, so one entity stays open.
+                record["duplicate_of"] = other["id"]
+                record["active_proposal"] = False
+                other.setdefault("validated_variant_ids", []).append(record["id"])
+                if other["status"] == "SOURCE_SUPPORTED":
+                    other["status"] = "UNRESOLVED"
+                if "CURRENT_OR_CITED_STUDY_CONFLICT_FOR_SAME_SOURCE_SPAN" not in other["reasons"]:
+                    other["reasons"].append("CURRENT_OR_CITED_STUDY_CONFLICT_FOR_SAME_SOURCE_SPAN")
+                continue
+            entity_by_support.setdefault(same_support, record)
             # Two proposals that resolve to the same entity, class and study are one
             # entity ("Polycarbonate" and "polycarbonate"); an unknown study does not
             # make another entity of a current one. A cited proposal stays separate.
