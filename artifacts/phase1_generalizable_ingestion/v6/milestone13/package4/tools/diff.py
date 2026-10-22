@@ -1,10 +1,13 @@
 """Records whose status or text changed between two replays of the same inputs.
 
-    python diff.py BASE_DIR NEW_DIR
+    python diff.py BASE_DIR NEW_DIR [OUT.txt]
+
+With OUT, the listing is written there with LF line endings on every platform.
 """
 import gzip, json, os, sys
 sys.stdout.reconfigure(encoding="utf-8")
 base, new = sys.argv[1:3]
+out = open(sys.argv[3], "w", encoding="utf-8", newline="\n") if len(sys.argv) > 3 else sys.stdout
 for run in sorted(os.listdir(new)):
     p = os.path.join(new, run, "prepared.json.gz")
     if not os.path.exists(p):
@@ -21,6 +24,6 @@ for run in sorted(os.listdir(new)):
         if sx != sy or tx != ty:
             changes.append((rid[-8:], (y or x)["kind"], sx, sy, " ".join((ty or tx or "").split())[:150], (y or {}).get("reasons", [])[:2]))
     active = lambda d: sum(r["status"] == "SOURCE_SUPPORTED" and not r.get("duplicate_of") for r in d.values())
-    print(f"## {run}: active {active(a)} -> {active(b)}, changed {len(changes)}")
+    print(f"## {run}: active {active(a)} -> {active(b)}, changed {len(changes)}", file=out)
     for c in changes:
-        print("  ", *c)
+        print("  ", *c, file=out)
