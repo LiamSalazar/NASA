@@ -116,7 +116,10 @@ def main():
         "per_category_recall": per_category,
         "run_to_run_recall_m12_live": variability,
     }
-    Path(sys.argv[1]).write_text(json.dumps(result, indent=1, ensure_ascii=False), encoding="utf-8")
+    # LF on every platform, whatever the local default.
+    Path(sys.argv[1]).write_text(
+        json.dumps(result, indent=1, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n"
+    )
     for src, d in per_doc.items():
         print(
             src,
