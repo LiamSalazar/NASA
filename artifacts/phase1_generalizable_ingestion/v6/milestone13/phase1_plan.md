@@ -1,72 +1,84 @@
-# Phase 1: what remains, how metrics rise, and how the phase closes
+# Phase 1: canonical record (requirements, state, evidence, next action)
 
-Written on 2026-10-22 from the milestone 7 to 13 READMEs, the target miss diagnosis, the precision breakdown of round B, the Sonnet/Opus pilot and the paused batch 2. Every item below was planned or found and is not yet done. Each line names where it came from.
+This is the single canonical record of Phase 1 work. Do not create competing plans: update this file and `CONTINUATION.md` (repo root) at the end of every work package. The requirements come from `docs/PHASE1_MASTER_DIRECTIVE.md` (master directive and addendum) and `docs/NASA_FIRE_AI_MASTER_PLAN_2026-10-14.pdf`. Repository rules are in `CLAUDE.md` and `AGENTS.md`.
 
-## Where Phase 1 stands
+**States:** `implemented-verified`, `in progress`, `blocked` (reason given), `pending`.
+
+**Protocol per package:**
+1. Tests and ruff green.
+2. One commit as Diegomed11, without trailers.
+3. Push to `diego/research`.
+4. Update this table and `CONTINUATION.md`.
+5. Short report to Diego.
+
+A cut session resumes at the first package not done.
+
+**Cost policy:**
+- No live runs unless truly necessary and authorized.
+- The free full replay (46 saved inputs, 29 historical negatives) runs only at measurement point A, at the end of block 3, not per rule.
+
+## Where Phase 1 stands (2026-10-22, HEAD `c780d00`)
 
 - §13 gate: recall ≥ 0.80 stable across several sources, precision ≥ 0.95 and 0 critical errors. It is **not met**.
-- Latest live recall (Sonnet pilot and round B):
+- Latest live recall:
   - PTFE 28/34 (0.82);
-  - ignition 14–15/29 (0.48–0.52);
-  - regulator 10/32 (0.31, NVIDIA only);
-  - textiles 9/29 (0.31).
+  - ignition 14–15/29;
+  - regulator 10/32 (NVIDIA only);
+  - textiles 9/29.
 - Precision: 0.70–0.99. Critical errors: 0 in every run.
-- Development model: `claude-sonnet-5-5` (pilot decision; making it the primary model waits for Liam).
-- The frozen holdout (NTRS 20170004702) stays unacquired until the gate is met.
+- Development model: `claude-sonnet-5-5` (pilot, `pilot_anthropic/README.md`). NVIDIA stays the default provider; changing the primary model waits for Liam.
+- Holdout NTRS 20170004702 stays unacquired.
+- Round B miss causes (104 target-run pairs, `target_miss_diagnosis.md`):
+  - rejected by a rule: 69 (66 %);
+  - accepted but graded wrong: 22 (21 %);
+  - not proposed: 13 (12 %);
+  - lost window: 0.
 
-## How metrics rise: the misses by cause
+## Work packages
 
-Round B diagnosis (`target_miss_diagnosis.md`, and the same tool for round B): 66 % of missed targets were proposed by the model and rejected by a rule, 21 % were accepted but graded wrong, 12 % were not proposed, and 0 % were lost windows. So most of the gain is in general criteria, measured for free by replay; only "not proposed" needs model calls.
+| id | requirement (directive §) | state | evidence | next action |
+|---|---|---|---|---|
+| 0.1 | Save the directive and master plan in the repo | implemented-verified | `docs/PHASE1_MASTER_DIRECTIVE.md`, `docs/NASA_FIRE_AI_MASTER_PLAN_2026-10-14.pdf` | — |
+| 0.2 | Root `CLAUDE.md`: vision, six phases, F1/F2 boundary, immutable vs adaptive contracts, LLM limits, scientist role, no overfitting, inspect first, assistants not runtime deps, links (§1, addendum §8) | implemented-verified | `CLAUDE.md` | — |
+| 0.3 | This file as the single canonical record; `CONTINUATION.md` | implemented-verified | this file, `CONTINUATION.md` | — |
+| 1.1 | Capability table against real code: SemanticRegistry, scientific proposals, semantic and composition modules, extension staging, SHACL, resolvers, quantities and units, validators, CurationService, coverage. Each verified, defective, partial, missing or dependent on scientific authority (§6, §8) | pending | — | read the modules and tests; write `capabilities.md` beside this file |
+| 1.2 | Classify the 69 rejected target-run pairs (addendum §1) as A (must stay rejected), B (contract too rigid) or C (valid evidence, incomplete association), from saved receipts | pending | — | rejected records of round B and milestone 12 runs, against the source text |
+| 1.3 | Does the scorer distinguish complete staged extraction, proposed extension, ambiguity, uninterpreted evidence and publication? If it requires global publication, write a correction proposal for Liam; never change the scorer (addendum §3) | pending | — | read `scripts/score_scientific_review.py` and `review_tools` |
+| 2.1 | Unknown property, relation or concept becomes a versioned extension proposal, validated in isolation, with the five states separate; reuse milestone 1 staging and milestone 6 composition (§5, §6, addendum §2) | pending | — | after 1.1 |
+| 2.2 | Directive §6 distinctions: class vs instance, subclass vs attribute, equivalent vs similar, material vs specimen, component vs formulation, configuration vs observation, measurement vs derived, property vs unit, new relation vs qualified existing one | pending | — | after 1.1 |
+| 2.3 | Tests: reuse, partial extension, new concept, with no paper-specific code (§12, deliverable C) | pending | — | with 2.1 and 2.2 |
+| 3.1 | Quantity names from the printed clause, not rigid linguistic rules ("was set to" by context). Batch 2 drafted `PRINTED_SETTING_VERB_NAMES_VALUE` with 8 tests (worktree `nasa-batch14`, commits `2a94309` and `1a31301`); review it against addendum §6 (addendum §6) | in progress (paused) | batch 2 commits | review the rule against "no rigid linguistic rules" before landing |
+| 3.2 | Experimental scope and missing subjects (category C): `STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED`, `STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE` (addendum §6) | pending | miss diagnosis | after 1.2 |
+| 3.3 | Units disconnected from values; relations needing reconstructed source context; table headers and slide footers inside statements (addendum §6) | pending | miss diagnosis codes | after 1.2 |
+| 3.4 | Precision by structure: Materials only mentioned (10 of 48 round B errors); counts read as groups ("Sixty test runs"); planned procedures read as executed groups or interventions; group restatements (addendum §6) | pending | precision breakdown, pilot | after 1.2 |
+| 3.5 | Targeted recovery from tables and narrative for source-backed content the model omits (§9, addendum §8) | pending | milestone 7–8 Next | after 3.1–3.4 |
+| A | Measurement point A: 46-input replay, 29 negatives, PTFE ≥ 27/34, 0 critical (free) | pending | — | after block 3 |
+| 4 | One Sonnet round on the four sources, only if 2.1 or 3.5 change the model request; the cost is announced first (addendum §5) | pending | — | needs authorization |
+| 5 | Main Phase 1 report updated with milestones 9–13, pilot and orchestration; metrics with denominators and intervals per investigation and category (addendum §8, §11) | pending | — | after A |
+| 6 | Stability, leave-one-source-out, heterogeneous independent evaluation, freeze, holdout, deliverables A–J (§12, §18, §19) | pending | — | later |
 
-### A. Rejected proposals: general criteria, measured by replay (free)
+## Already done in milestone 13 (evidence)
 
-1. `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT`, the leading code. Example: "the chamber was rotated at 20.4 RPM".
-   - The model almost never fills `printed_name` (0–2 proposals per run).
-   - The rule `PRINTED_SETTING_VERB_NAMES_VALUE` is written with 8 tests in batch 2 (worktree `nasa-batch14`, commit `2a94309`, paused); its replay was not completed.
-   - Origin: milestone 9 Next, milestone 13 Pending, batch 2.
-2. `STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED` (7 target-run pairs in round B) and `STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE`. Origin: miss diagnosis.
-3. `QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION` and `QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED`. Origin: milestone 9 Next, miss diagnosis.
-4. `RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE`. Origin: miss diagnosis.
-5. `STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER`: slide footers inside statements. Origin: miss diagnosis, milestone 7 Next (slide decks).
+- Precision by printed structure: background, theory and analysis holds (`527605b`).
+- One statement per printed sentence across windows (`4b18bf5`).
+- Model-copied `printed_name` (`18b73d9`).
+- Orchestration:
+  - local recomputation once per document (`ae420ab`);
+  - per-call timing and per-run summary (`ae642ed`);
+  - window prefetch (`3e746b1`);
+  - validation reuse (`24f09e3`).
+- Anthropic transport (`09bef51`) and token ceiling as a spending brake (`0a88478`).
+- Duplicates: shared printed value and current/cited conflict (`4b189de`).
+- Pilot Sonnet against Opus (`5ebec7b`, `2306d58`).
+- Receipts: `README.md`, `evaluation_b.json`, `target_miss_diagnosis.md`, `pilot_anthropic/`.
 
-### B. Accepted but graded wrong: precision by structure (free, by replay)
+## Detected and not yet addressed (feeds the packages above)
 
-6. A Material with no measurement, condition or configuration of its own in the current study is not an entity of the study.
-   - 10 of 48 errors in round B: Nomex, Kevlar, WD-40, Fomblin, Sebacate, Apollo-era fibres.
-   - Origin: precision breakdown, coordinator note of 2026-10-21 23:54.
-7. A count before "tests" or "runs" ("Sixty test runs") does not name a group. The current rule `PRINTED_NAME_OF_SEVERAL_TESTS_IS_A_GROUP` accepts it. Origin: same breakdown.
-8. Statement roles (observation, conclusion, experimental condition) require their printed signal; planned strategy phases are neither executed groups nor interventions.
-   - About 25 of 48 errors, plus the strategy phases Sonnet typed in textiles.
-   - Origin: breakdown and pilot.
-9. Group restatements ("1-g testing", "lunar-g testing") duplicating a named group. Origin: breakdown.
+- `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT` is the leading rejection; the model almost never fills `printed_name`. → 3.1
+- Strategy phases and author claims typed as executed groups, interventions or documentary context (Sonnet textiles). → 3.4
+- Regulator has never run on Sonnet. → 4
+- Not measured live: the validation reuse (`24f09e3`) and the prefetch gain on long sources. → 4
 
-### C. Not proposed: directed model calls (costs API, small)
+## Pending verifications (only when Diego asks)
 
-10. Subsection- and slide-directed calls for groups whose subsection prints values the model did not propose. Origin: milestone 8 Next (items 1–2), milestone 7 Next (items 1–2).
-
-### D. Verifications pending (deferred by Diego; run only when asked)
-
-11. The 29 historical negatives and the full 46-input replay with the duplicate change (`4b189de`).
-12. A live measurement of the validation reuse (`24f09e3`).
-13. Record-by-record precision review on regulator with Sonnet: regulator has never run on Sonnet. Origin: milestone 7–8 Next.
-
-## How Phase 1 closes
-
-1. **Batches of general criteria, one commit each.** Each rule is classified under the addendum, with its motivating source and its effect on the other three sources, plus metamorphic and negative tests.
-   - Measured by the 46-input replay: free, about 5 minutes since `ae420ab`.
-   - Guards: 29 negatives with 0 critical, PTFE not below 27/34.
-   - Order: A1 (batch 2), A2, B6–B8, then A3–A5.
-2. **After each batch, one Sonnet evaluation B round** on the four sources: about $3–5, about 15 minutes in pairs. All runs are reported, with the causes of variation.
-3. **When a round reaches the gate on the four sources,** a second round confirms stability, so the result does not rest on one good generation. Then the leave-one-source-out check (milestone 8–9 Next).
-4. **Freeze the code**, then acquire and run the holdout NTRS 20170004702 once, with Opus optionally as a confirmation.
-
-Budget: about $5 per batch round. Three to five batches plus confirmation and holdout come to about $30–40 of the monthly $100, with $96 left today.
-
-## Decisions waiting on someone
-
-- **Liam:**
-  - Sonnet 5.5 as the primary model. The pilot recommends it: faster, no failures, higher precision.
-  - Whether a rule family needs his review before it lands.
-- **Diego:**
-  - when to resume batch 2;
-  - when to run the deferred verifications (D11–D13).
+- The 29 historical negatives and the full 46-input replay with the duplicate change. → A
