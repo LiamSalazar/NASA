@@ -1017,9 +1017,10 @@ def original_research_passage(spans, document):
 
     return (
         not re.search(
-            # "prior to ignition" orders a procedure; "prior work" or "prior to
-            # this study" points at earlier research.
-            r"\b(?:prior(?!\s+to\s+(?:ignition|testing|impact|pressuriz\w*|heat\w*|load\w*|cool\w*|fill\w*|exposure|each\b|every\b|the\s+(?:test|drop|run|impact|burn|sample|chamber)\b))|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
+            # "prior to ignition" or "prior to re-connecting" (any verb of a
+            # step) orders a procedure; "prior work" or "prior to this study"
+            # points at earlier research.
+            r"\b(?:prior(?!\s+to\s+(?:[a-z]+(?:-[a-z]+)*ing\b|ignition|testing|impact|pressuriz\w*|heat\w*|load\w*|cool\w*|fill\w*|exposure|each\b|every\b|the\s+(?:test|drop|run|impact|burn|sample|chamber)\b))|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
             text,
             re.IGNORECASE,
         )
