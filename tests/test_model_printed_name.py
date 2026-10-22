@@ -24,7 +24,9 @@ def quantity_record(service, printed_name, label="rotation rate"):
             "label": label,
             "expression": "20.4",
             "unit": "RPM",
-            "epistemic": "experimental_configuration",
+            # A reported value: for a configuration the setting verb itself names it
+            # (PRINTED_SETTING_VERB_NAMES_VALUE, tests/test_setting_verb_name.py).
+            "epistemic": "reported_quantity",
             "support": support(p, TEXT.split("\n")[1]),
             "printed_name": printed_name,
         }
