@@ -47,6 +47,31 @@ def load(path):
         return json.load(handle)
 
 
+# Public list prices in USD per million tokens (input, output, cache read, cache
+# write), for the receipt's cost estimate only; NVIDIA's endpoint is not billed here.
+PRICES = {
+    "claude-sonnet-5-5": (2.0, 10.0, 0.20, 2.50),
+    "claude-opus-5-5": (4.0, 20.0, 0.20, 5.00),
+}
+
+
+def estimated_cost(model, usage):
+    price = PRICES.get(model)
+    if not price or not usage:
+        return 0.0
+    plain = usage.get("input_tokens", usage.get("prompt_tokens") or 0)
+    if "input_tokens" not in usage:
+        plain -= (usage.get("cache_read_input_tokens") or 0) + (
+            usage.get("cache_creation_input_tokens") or 0
+        )
+    return (
+        max(0, plain) * price[0]
+        + (usage.get("completion_tokens") or 0) * price[1]
+        + (usage.get("cache_read_input_tokens") or 0) * price[2]
+        + (usage.get("cache_creation_input_tokens") or 0) * price[3]
+    ) / 1e6
+
+
 def timing_summary(attempts, started, completed):
     """Where a run's time went: provider calls, local work between them, failed attempts.
 
@@ -56,7 +81,7 @@ def timing_summary(attempts, started, completed):
     from datetime import datetime
 
     wall = (datetime.fromisoformat(completed) - datetime.fromisoformat(started)).total_seconds()
-    calls, intervals, causes = [], [], Counter()
+    calls, intervals, causes, requests = [], [], Counter(), Counter()
     for attempt in attempts:
         outcome = attempt.get("outcome") or {}
         transport = outcome.get("transport") or {}
@@ -65,6 +90,13 @@ def timing_summary(attempts, started, completed):
         usage = outcome.get("usage") or {}
         if outcome.get("error_type"):
             causes[outcome["error_type"]] += 1
+        requests[
+            hashlib.sha256(
+                json.dumps(
+                    [attempt.get("requested_model"), attempt.get("request")], sort_keys=True
+                ).encode()
+            ).hexdigest()
+        ] += 1
         calls.append(
             {
                 "stage": attempt.get("stage"),
@@ -74,6 +106,11 @@ def timing_summary(attempts, started, completed):
                 "generation_seconds": None if first is None else round(duration - first, 1),
                 "input_tokens": usage.get("prompt_tokens"),
                 "output_tokens": usage.get("completion_tokens"),
+                "cache_read_input_tokens": usage.get("cache_read_input_tokens"),
+                "cache_creation_input_tokens": usage.get("cache_creation_input_tokens"),
+                "estimated_cost_usd": round(
+                    estimated_cost(attempt.get("requested_model"), usage), 4
+                ),
                 "error": outcome.get("error_type"),
             }
         )
@@ -111,6 +148,11 @@ def timing_summary(attempts, started, completed):
         "calls_over_240_seconds": sum(s > 240 for s in seconds),
         "input_tokens": sum(c["input_tokens"] or 0 for c in calls),
         "output_tokens": sum(c["output_tokens"] or 0 for c in calls),
+        "cache_read_input_tokens": sum(c["cache_read_input_tokens"] or 0 for c in calls),
+        "cache_creation_input_tokens": sum(c["cache_creation_input_tokens"] or 0 for c in calls),
+        "estimated_cost_usd": round(sum(c["estimated_cost_usd"] for c in calls), 4),
+        # The same request sent more than once (retries after a failure included).
+        "repeated_identical_requests": sum(n - 1 for n in requests.values() if n > 1),
         "per_call": calls,
     }
 
@@ -144,6 +186,9 @@ def main():
     parser.add_argument("--directory", type=Path, required=True)
     parser.add_argument("--timeout-seconds", type=float)
     parser.add_argument("--max-model-calls", type=int)
+    # A hard ceiling on a run's input plus output tokens: calls that would pass it
+    # are not sent and stay recorded as deferred by the budget.
+    parser.add_argument("--max-total-tokens", type=int)
     parser.add_argument("--request-timeout-seconds", type=float)
     args = parser.parse_args()
 
@@ -204,6 +249,7 @@ def main():
             model_enabled=True,
             budget=ExtractionBudget(
                 max_model_calls=args.max_model_calls,
+                max_total_tokens=args.max_total_tokens,
                 timeout_seconds=args.timeout_seconds,
                 call_timeout_seconds=args.request_timeout_seconds,
             ),
@@ -239,6 +285,7 @@ def main():
                 "provider_envelope": asdict(ProviderEnvelope()),
                 "timeout_seconds": args.timeout_seconds,
                 "max_model_calls": args.max_model_calls,
+                "max_total_tokens": args.max_total_tokens,
             },
             "digest": prepared["digest"],
             "processing": prepared["processing"],

@@ -52,3 +52,29 @@ def test_overlapping_calls_count_once():
     )
     assert timing["provider_seconds"] == 10 and timing["provider_call_seconds_total"] == 16
     assert timing["local_seconds"] == 2
+
+
+def test_cost_counts_cache_reads_and_writes_at_their_own_price():
+    script = live_run_script()
+    usage = {
+        "prompt_tokens": 1_000_000 + 2_000_000 + 400_000,
+        "input_tokens": 1_000_000,
+        "completion_tokens": 100_000,
+        "cache_read_input_tokens": 2_000_000,
+        "cache_creation_input_tokens": 400_000,
+    }
+    # 1M plain at $2, 0.1M out at $10, 2M read at $0.20, 0.4M written at $2.50.
+    assert round(script.estimated_cost("claude-sonnet-5-5", usage), 4) == 2.0 + 1.0 + 0.4 + 1.0
+    # NVIDIA's endpoint is not billed in the receipt.
+    assert script.estimated_cost("nvidia/nemotron-3.5-super-vl-120b-a12b", usage) == 0.0
+
+
+def test_a_request_sent_twice_is_counted_as_repeated():
+    same = attempt(0, 1)
+    same["request"] = {"stage": "identity", "segments": ["S1"]}
+    other = attempt(2, 1)
+    other["request"] = {"stage": "identity", "segments": ["S2"]}
+    timing = live_run_script().timing_summary(
+        [same, dict(same), other], "2026-01-01T00:00:00+00:00", "2026-01-01T00:00:10+00:00"
+    )
+    assert timing["repeated_identical_requests"] == 1
