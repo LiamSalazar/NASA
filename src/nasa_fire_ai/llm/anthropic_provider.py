@@ -7,6 +7,7 @@ ingestion service validates its output exactly as before.
 
 import copy
 import json
+import os
 import re
 import threading
 import time
@@ -24,7 +25,9 @@ from nasa_fire_ai.llm.scientific_provider import (
 
 # Adaptive thinking spends output tokens before the JSON, so the stage's own
 # output capacity is a floor, not the request's max_tokens.
-MIN_MAX_TOKENS = 64000
+# Configurable: the largest Sonnet output seen was 9,463 tokens with thinking, and
+# below the stage capacity the truncation ladder (doubling max_tokens) can work.
+MIN_MAX_TOKENS = int(os.getenv("ANTHROPIC_SCIENCE_MIN_MAX_TOKENS", "32768"))
 FINISH = {"end_turn": "stop", "stop_sequence": "stop", "max_tokens": "length"}
 # Constraints structured outputs does not accept; the service validates them itself.
 UNSUPPORTED_SCHEMA_KEYS = {

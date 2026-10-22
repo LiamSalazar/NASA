@@ -140,3 +140,24 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
   - Negative: a read error, a protocol error, a timeout.
   - Unit: the error-chain check.
 - **Effect on ignition r2:** its two network failures (38 s each, no detail recorded) would not be proven unsent, so they would keep their reservation as before. The deferred window there is not recovered by this fix.
+
+## Anthropic request size and output floor (Diego's decision, 2026-10-22 17:18 UTC)
+
+- **Request size** (`5c4676b`). Anthropic requests get their own limit before a window is split: `request_context_limit`, 96,000 estimated tokens by default, overridable with `ANTHROPIC_SCIENCE_REQUEST_CONTEXT_TOKENS`.
+  - Windows (`segment_size`), shared context and NVIDIA's `ProviderEnvelope` are unchanged, so every unsplit request is byte-identical. Only the split decision changes.
+  - Every split window of the 15 Anthropic runs was estimated at 68k–78k tokens (maximum 77,517), so all of them now go whole.
+  - The coordinator's simulation of the same decision at 131,072 found:
+    - the 8 context splits per round disappear (PTFE 2, ignition 3, regulator 3);
+    - calls fall from 39 to 33;
+    - cost falls by about 0.10 USD per round (about 2.17–2.19 USD);
+    - the brake counter peaks at about 337k of 500k.
+  - 96,000 gives the same outcome on these sources, with a lower cap.
+  - The limit is recorded as `resource_policy.request_context_tokens` and in the live-run receipt.
+- **Output floor** (this commit). `MIN_MAX_TOKENS` comes from `ANTHROPIC_SCIENCE_MIN_MAX_TOKENS`, default 32,768 instead of 64,000.
+  - The largest Sonnet output seen was 9,463 tokens with thinking, and 0 of 126 attempts were cut for length.
+  - Below the stage capacity, the truncation ladder (doubling `max_tokens`) can work again.
+  - The worst-case cost per call falls from about 0.64 to about 0.33 USD.
+- **Discarded prefetches** (this commit). A request sent ahead whose answer is not used is now recorded in the attempts with its usage, and counts toward the brake (`record_discarded_prefetch`). One never sent is cancelled and not recorded. The cost in receipts is then complete; ignition at `dc6f342` probably had 2 unrecorded.
+- **Unchanged:** the envelope's output tokens (32,768), the per-run brake (500,000) and NVIDIA's defaults.
+- **Replay:** the 12 saved packages give 0 record changes.
+- **Tests:** `tests/test_request_context_limit.py` (3), `tests/test_discarded_prefetch.py` (3), `tests/test_anthropic_provider.py` (floor).

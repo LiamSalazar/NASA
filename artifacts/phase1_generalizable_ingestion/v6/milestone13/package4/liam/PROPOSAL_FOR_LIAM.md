@@ -65,12 +65,13 @@ PTFE is scored by the official scorer with record finders (`review_tools/build_r
 
 Please review, correct and freeze them. We will not change the scorer or the targets.
 
-## (f) Anthropic request size (a change being made, not a question)
+## (f) Anthropic request size (a change made by Diego's decision, not a question)
 
-Anthropic requests ran under the NVIDIA envelope (65,536 context tokens). Large windows were therefore split or deferred, and ignition r2 lost two propositions windows.
-- Diego decided at 17:18 UTC to raise it within a low spend.
-- It will be a separate Anthropic envelope that leaves NVIDIA's defaults untouched.
-- The values come from the receipts of the nine Sonnet runs and will be recorded with the change.
+Anthropic requests had run under the NVIDIA envelope (65,536 context tokens). Every window estimated at 68k–78k tokens was split, or its split deferred, and ignition r2 lost two propositions windows. On 2026-10-22 at 17:18 UTC Diego decided to raise it at low spend. Done in `5c4676b` and the following commit (`package4/fixes.md`):
+- **Request limit:** Anthropic requests have their own limit before a split (96,000 estimated tokens, configurable). Windows, shared context and NVIDIA's envelope are unchanged, so unsplit requests stay byte-identical.
+- **Output floor:** the Anthropic `max_tokens` floor is 32,768 (it was 64,000; the largest output seen was 9,463).
+- **Discarded prefetches:** requests sent ahead and then discarded are now recorded with their usage.
+- **Expected per round:** no context splits, about 6 fewer calls and about 0.10 USD less. The brake stays at 500,000 per run.
 
 ## (g) Notice B8: a request example near a frozen quote
 

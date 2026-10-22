@@ -9,6 +9,7 @@ import httpx2
 import pytest
 
 from nasa_fire_ai.config import Settings
+from nasa_fire_ai.llm import anthropic_provider
 from nasa_fire_ai.llm.anthropic_provider import AnthropicScientificClient, structured_schema
 from nasa_fire_ai.llm.scientific_provider import (
     ScientificTransportError,
@@ -137,7 +138,8 @@ def test_one_call_returns_the_nvidia_shaped_response():
     (request,) = c.client.requests
     # Adaptive thinking is on by default: no thinking, temperature or sampling sent.
     assert not {"thinking", "temperature", "top_p", "top_k"} & set(request)
-    assert request["max_tokens"] >= 64000
+    # The stage asked for 10,240; the floor (default 32,768) leaves room for thinking.
+    assert request["max_tokens"] == max(10240, anthropic_provider.MIN_MAX_TOKENS)
     assert request["system"][0]["cache_control"] == {"type": "ephemeral"}
     assert request["output_config"]["effort"] == "high"
     assert request["fallbacks"] == "default"

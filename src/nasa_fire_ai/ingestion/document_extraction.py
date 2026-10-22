@@ -7262,6 +7262,41 @@ def table_row_roles(package):
     ]
 
 
+def record_discarded_prefetch(registry, stage, call, ahead):
+    """Record a request sent ahead whose answer was not used; return its billed tokens.
+
+    A request that could still be cancelled was never sent and is not recorded.
+    One already sent is waited for, so its usage reaches the receipts and the
+    spending brake like any other call.
+    """
+    if ahead.cancel():
+        return 0
+    try:
+        response = ahead.result()
+        usage, transport = response.usage, response.metadata
+    except ScientificTransportError as error:
+        usage, transport = None, {**error.metadata, "error_type": error.kind}
+    except Exception as error:  # noqa: BLE001 - any failure is recorded, never raised here
+        usage, transport = None, {"error_type": type(error).__name__}
+    registry.set_phase3_cache(
+        identity(["prefetch-discarded", call, time.time_ns()]),
+        "scientific_document_attempt",
+        {
+            "contract": CONTRACT,
+            "stage": stage,
+            "requested_model": call.get("model"),
+            "state": "FINISHED",
+            "outcome": {
+                "model": "PREFETCH_DISCARDED",
+                "prefetch": "DISCARDED",
+                "usage": usage,
+                "transport": transport,
+            },
+        },
+    )
+    return (usage or {}).get("total_tokens") or 0
+
+
 def request_context_limit(settings, envelope):
     """The largest request, in estimated context tokens, sent before a window is split.
 
@@ -7437,6 +7472,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
     # ahead of their turn, and each answer is still merged in window order.
     concurrency = max(1, int(os.getenv("SCIENCE_WINDOW_CONCURRENCY", "3")))
     prefetched, prefetch_counts = {}, {"concurrency": concurrency, "sent": 0, "used": 0}
+    prefetch_plans = {}
     pool = ThreadPoolExecutor(concurrency) if concurrency > 1 else None
 
     def rate_limited(ahead):
@@ -7468,12 +7504,15 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 stream=budget.stream and getattr(client, "supports_streaming", False) is True,
             )
             prefetched[identity(planned["call"])].add_done_callback(rate_limited)
+            prefetch_plans[identity(planned["call"])] = (stage, planned["call"])
             prefetch_counts["sent"] += 1
 
     def settle_prefetch():
-        """Unused requests are cancelled if not yet sent, and counted."""
-        for ahead in prefetched.values():
-            ahead.cancel()
+        """Unused requests are cancelled if not yet sent; sent ones are recorded and counted."""
+        nonlocal tokens
+        for ref, ahead in prefetched.items():
+            stage, call = prefetch_plans.get(ref, (None, {}))
+            tokens += record_discarded_prefetch(service.registry, stage, call, ahead)
         prefetch_counts["discarded"] = prefetch_counts.get("discarded", 0) + len(prefetched)
         prefetched.clear()
 

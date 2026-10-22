@@ -33,8 +33,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from nasa_fire_ai.config import Settings
 from nasa_fire_ai.evidence import EvidenceRegistry
-from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget
+from nasa_fire_ai.ingestion.document_extraction import ExtractionBudget, request_context_limit
 from nasa_fire_ai.ingestion.extraction_resources import ProviderEnvelope
+from nasa_fire_ai.llm import anthropic_provider
 from nasa_fire_ai.llm.scientific_provider import redact_provider_text
 from nasa_fire_ai.services.curation import CurationService
 
@@ -283,6 +284,12 @@ def main():
                 if settings.science_provider == "anthropic"
                 else settings.nvidia_base_url or "https://integrate.api.nvidia.com/v1",
                 "provider_envelope": asdict(ProviderEnvelope()),
+                "request_context_tokens": request_context_limit(settings, ProviderEnvelope()),
+                **(
+                    {"anthropic_min_max_tokens": anthropic_provider.MIN_MAX_TOKENS}
+                    if settings.science_provider == "anthropic"
+                    else {}
+                ),
                 "timeout_seconds": args.timeout_seconds,
                 "max_model_calls": args.max_model_calls,
                 "max_total_tokens": args.max_total_tokens,
