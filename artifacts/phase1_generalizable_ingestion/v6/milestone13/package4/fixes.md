@@ -207,3 +207,22 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
   - `tests/test_frozen_inference_configuration.py` (4).
 - **Equivalence with `effcb21`:** the synthetic run with an unreached brake gives byte-identical records and the same request multiset at concurrency 1 and 3, on both commits.
 - **Replay:** no effect by construction, since validation is unchanged.
+
+## Spending brake: requests sent ahead yield to an earlier window (2026-10-22)
+
+- **Problem (at `824af5f`):** a request sent ahead kept its full reservation until the foreground reached its window, even after it had finished with a known usage. A retry or repair of an earlier window then competed with those reservations and ended in `DEFERRED_BUDGET` or `FAILED` where concurrency 1 would have sent it.
+  - Synthetic run (12 sections, 10,000 tokens per call, one connection reset in relationships window 1, brake = the concurrency-1 run's billing plus its largest reservation): concurrency 1 completes the window on retry; `824af5f` at concurrency 3 leaves it `FAILED`.
+- **Fix** (orchestration, `make_room`): before the brake refuses a foreground request not sent ahead, the requests sent ahead
+  1. that have not left are cancelled, releasing their reservation (they are sent normally at their turn);
+  2. that finished with a known usage are counted at that usage;
+  3. that are in flight are waited for and counted the same way;
+  4. then the brake is checked again. A request that still does not fit is `DEFERRED_BUDGET` as before.
+  - `ahead_reserved` holds what each request sent ahead is counted at now; when the foreground uses one already counted at its usage, the final adjustment starts from that value.
+  - The brake is not raised; only the token brake triggers this.
+- **Tests** (`tests/test_prefetch_make_room.py`, 8, network-free):
+  - a retry in window 1 (relationships, propositions) completes at concurrency 3 with the same decisions, records and requests as concurrency 1;
+  - billing stays under the brake, and `tokens_consumed_or_reserved` equals billing plus the reservations kept for sent requests that failed without usage;
+  - with failures at five sets of positions, a brake with room for the run's billing plus its largest reservation gives concurrency 3 the decisions of concurrency 1.
+  - The relationships cases fail on `824af5f`.
+  - The unreached-brake equivalence (`tests/test_prefetch_brake.py`) is unchanged and now asserts its 63 requests.
+- **Replay:** no effect by construction, since validation is unchanged. No live run.

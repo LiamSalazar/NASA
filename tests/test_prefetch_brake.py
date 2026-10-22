@@ -101,6 +101,7 @@ def test_an_unreached_brake_gives_the_same_package_at_any_concurrency(tmp_path, 
     # The same multiset of requests: sending ahead adds no request and drops none
     # (repeats the stage loop itself makes appear at both concurrencies).
     assert sent_one == sent_three
+    assert len(sent_one) == 63
     records = [
         json.dumps(r["package"]["scientific_extraction"]["records"], sort_keys=True)
         for r in (one, three)

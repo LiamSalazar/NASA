@@ -10,7 +10,7 @@ import os
 import re
 import time
 import unicodedata
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, wait
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
@@ -7607,6 +7607,40 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             prefetched.pop(ref)
             prefetch_counts["cancelled"] = prefetch_counts.get("cancelled", 0) + 1
 
+    def count_usage(ref):
+        """Count a finished request sent ahead at its billed usage instead of its reservation."""
+        nonlocal tokens
+        ahead = prefetched[ref]
+        if not ahead.done() or ahead.cancelled() or ahead.exception() is not None:
+            return
+        usage = ahead.result().usage
+        if usage:
+            tokens += usage["total_tokens"] - ahead_reserved[ref]
+            ahead_reserved[ref] = usage["total_tokens"]
+
+    def make_room(reserve):
+        """Before the brake refuses the foreground, release what requests sent ahead hold.
+
+        The earlier window has priority: requests not yet sent are cancelled (they are
+        sent normally at their turn), finished ones are counted at their billed usage,
+        and those in flight are waited for and counted the same way.
+        """
+        if (
+            budget.max_total_tokens is None
+            or tokens + reserve <= budget.max_total_tokens
+            or not prefetched
+        ):
+            return
+        for ref in list(prefetched):
+            cancel_ahead(ref)
+        for ref in prefetched:
+            count_usage(ref)
+        if tokens + reserve <= budget.max_total_tokens:
+            return
+        wait(list(prefetched.values()))
+        for ref in prefetched:
+            count_usage(ref)
+
     def settle_prefetch():
         """Unused requests: never sent are released; sent ones are recorded and stay counted.
 
@@ -8178,6 +8212,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 # The identical request already sent ahead was counted when it left.
                 sent_ahead = identity(planned_call) in ahead_reserved
                 if not sent_ahead and not available(reserve):
+                    make_room(reserve)
+                if not sent_ahead and not available(reserve):
                     if provider_blocked[0]:
                         outcome["model"] = "PROVIDER_BLOCKED"
                     break
@@ -8255,7 +8291,9 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         "images": images,
                     }
                     ahead = prefetched.pop(identity(call), None)
-                    ahead_reserved.pop(identity(call), None)
+                    # What this request is counted at now: its reservation, or its
+                    # billed usage if it was already counted at that.
+                    counted = ahead_reserved.pop(identity(call), reserve)
                     if prefetch_counts.get("rate_limited"):
                         for ref in list(prefetched):
                             cancel_ahead(ref)
@@ -8287,7 +8325,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     raw, finish, usage = response.content, response.finish_reason, response.usage
                     outcome.update(finish_reason=finish, usage=usage, transport=response.metadata)
                     if usage:
-                        tokens += usage["total_tokens"] - reserve
+                        tokens += usage["total_tokens"] - (reserve if ahead is None else counted)
                     if focus:
                         focused = (
                             completed_json_prefix(raw)
