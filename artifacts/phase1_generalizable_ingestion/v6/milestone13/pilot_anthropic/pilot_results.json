@@ -151,6 +151,119 @@
      "used": 5
     }
    }
+  },
+  "textiles_opus_c3": {
+   "recall": "9/29",
+   "correct": [
+    "entities-01",
+    "entities-03",
+    "entities-04",
+    "quantities-12",
+    "quantities-13",
+    "quantities-14",
+    "quantities-15",
+    "statements-20",
+    "statements-25"
+   ],
+   "precision": "22/28",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "4b4f7f7f": "slide bullet describing a developed solution typed as publication",
+    "afbfa18e": "current implementation claim typed documentary context",
+    "5fb6d176": "stated goal typed documentary context",
+    "1a8e9ea9": "historical Apollo-era material typed a material of this study",
+    "52e32be9": "historical Apollo-era material typed a material of this study",
+    "699788a1": "historical Apollo-era material typed a material of this study"
+   },
+   "timing": {
+    "wall_seconds": 135.2,
+    "provider_seconds": 81.7,
+    "local_seconds": 53.5,
+    "post_extraction_seconds": 4.5,
+    "calls": 5,
+    "failed_attempts": 0,
+    "call_seconds_p50": 8.4,
+    "call_seconds_p90": 44.9,
+    "call_seconds_max": 44.9,
+    "input_tokens": 70154,
+    "output_tokens": 7908,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 8291,
+    "estimated_cost_usd": 0.4471,
+    "repeated_identical_requests": 0,
+    "window_prefetch": {
+     "concurrency": 3,
+     "discarded": 0,
+     "sent": 3,
+     "used": 3
+    }
+   },
+   "code": "5ebec7b (same source code as 0a88478)"
+  },
+  "ignition_opus_c3": {
+   "recall": "15/29",
+   "correct": [
+    "entities-01",
+    "entities-02",
+    "entities-03",
+    "entities-04",
+    "quantities-05",
+    "quantities-06",
+    "quantities-09",
+    "quantities-10",
+    "quantities-11",
+    "quantities-12",
+    "quantities-15",
+    "statements-23",
+    "statements-24",
+    "statements-25",
+    "relations-27"
+   ],
+   "precision": "99/116",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "491881c5": "test criterion phrase typed ExperimentFamily",
+    "ef33d1bd": "'cotton t-shirt material' duplicating the Beefy-T material",
+    "6fae3157": "fragment joined with a figure caption",
+    "f1d45bf2": "camera setup typed observation",
+    "93638799": "running page header",
+    "6c067340": "method description typed measured observation",
+    "8dbdffee": "sentence cut at 'I.D.'",
+    "d61f98f0": "analysis reference-property assumption typed experimental configuration",
+    "5113e4b0": "derived worst-case delta typed observation",
+    "e9fc64d3": "duplicate conclusion of a9a4aa60",
+    "c2b600dd": "condition entity as subject of its own magnitude (odd subject)",
+    "5d82ed55": "background mention typed a material of the study",
+    "7c1aed4e": "background mention typed a material of the study",
+    "753490e3": "theory concept from an explanation typed a phenomenon of this study",
+    "38db0daf": "duplicate name of the cited low-gravity tests",
+    "fe8514c8": "relation from a criterion phrase typed a group",
+    "3ff48f57": "flow condition given itself as the subject of its value"
+   },
+   "timing": {
+    "wall_seconds": 462.7,
+    "provider_seconds": 321.5,
+    "local_seconds": 141.2,
+    "post_extraction_seconds": 21.3,
+    "calls": 13,
+    "failed_attempts": 0,
+    "call_seconds_p50": 21.0,
+    "call_seconds_p90": 64.1,
+    "call_seconds_max": 65.5,
+    "input_tokens": 308559,
+    "output_tokens": 38908,
+    "cache_read_input_tokens": 6120,
+    "cache_creation_input_tokens": 17650,
+    "estimated_cost_usd": 2.0069,
+    "repeated_identical_requests": 0,
+    "window_prefetch": {
+     "concurrency": 3,
+     "discarded": 0,
+     "sent": 5,
+     "used": 5
+    }
+   },
+   "code": "5ebec7b (same source code as 0a88478)"
   }
  },
  "baseline_round_b_b4be17d": {
@@ -245,6 +358,20 @@
    }
   }
  },
- "total_estimated_cost_usd": 1.2221,
- "key_check": "one Messages call, 18 input and 4 output tokens"
+ "total_estimated_cost_usd": 3.6761,
+ "key_check": "one Messages call, 18 input and 4 output tokens",
+ "opus_comparison": {
+  "decision_rule": "Opus becomes the development model only if it gains 3 or more targets over the two sources without lower precision than Sonnet",
+  "targets_gained_over_sonnet": {
+   "textiles": 0,
+   "ignition": 1,
+   "total": 1
+  },
+  "precision_vs_sonnet": {
+   "textiles": "22/28 (0.79) vs 16/19 (0.84)",
+   "ignition": "99/116 (0.85) vs 68/83 (0.82)"
+  },
+  "decision": "Sonnet stays the development model",
+  "opus_cost_usd": 2.454
+ }
 }

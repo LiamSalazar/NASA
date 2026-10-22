@@ -98,3 +98,25 @@ These are general, and none changes a criterion, prompt, scorer, ontology or tar
   - The 1,390 s textiles spent after its NVIDIA extraction is not counted on either side. The same steps take 11 s when reproduced, so it was a stalled process, not a measurement of either model.
 
 **Attribution of quality:** the model alone, since the orchestration changes are output-identical by construction.
+
+## Opus 5.5 comparison (same plan, same code)
+
+Each source was run once with `claude-opus-5-5`, at concurrency 3 and under the same 500,000-token ceiling, at `5ebec7b`; its source code is identical to `0a88478`. Scoring uses the same frozen targets and the same adjudication, and no run was repeated.
+
+| run | recall | precision | critical | total time | model / local | input / output tokens | cost |
+|---|---|---|---|---|---|---|---|
+| textiles, Sonnet | 9/29 | 16/19 (0.84) | 0 | 70 s | 51 s / 15 s | 69,877 / 5,046 | $0.19 |
+| textiles, Opus | 9/29 | 22/28 (0.79) | 0 | 140 s | 82 s / 54 s | 70,154 / 7,908 | $0.45 |
+| ignition, Sonnet | 14/29 | 68/83 (0.82) | 0 | 280 s | 167 s / 95 s | 308,475 / 22,286 | $0.84 |
+| ignition, Opus | 15/29 | 99/116 (0.85) | 0 | 484 s | 321 s / 141 s | 308,559 / 38,908 | $2.01 |
+
+- **Textiles:** Opus finds the same 9 targets as Sonnet. It adds the PBI material and the upward flame propagation, but also three Apollo-era historical materials typed as materials of the study.
+- **Ignition:** Opus adds the WSTF chamber pressure (quantities-06). It proposes more records (116 against 83), many of them cited-study entities correctly marked as cited, with higher precision.
+- **Reliability:** neither model had a failed or repeated call.
+- **Cost and time:** Opus's calls are about three times slower (p50 21 s against 7 s on ignition), and it costs 2.3 to 2.4 times as much.
+
+**Decision rule, agreed before the runs:** Opus becomes the development model only if it gains 3 or more targets over the two sources without lower precision than Sonnet.
+- Result: it gains 1 target (textiles 0, ignition +1), with lower precision on textiles and higher on ignition.
+- **Sonnet 5.5 stays the development model.** Opus remains an option for a final confirmation run.
+
+**Cost:** the Opus comparison cost $2.45; the whole pilot cost $3.68.
