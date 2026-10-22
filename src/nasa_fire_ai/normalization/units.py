@@ -43,6 +43,11 @@ TABLE = {
     "in.": (0.0254, "m", "length"),
     "inch": (0.0254, "m", "length"),
     "inches": (0.0254, "m", "length"),
+    # The inch mark printed after a number ('6"', "6″", or a typeset "6”"); the
+    # binding check rejects it when it closes a quotation instead.
+    '"': (0.0254, "m", "length"),
+    "″": (0.0254, "m", "length"),
+    "”": (0.0254, "m", "length"),
     "w": (1, "W", "power"),
     "k": (1, "K", "temperature"),
     "s": (1, "s", "time"),

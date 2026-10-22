@@ -329,6 +329,85 @@ def running_headers(evidence):
     return sorted(line for line, n in counts.items() if n >= floor and line)
 
 
+PRINTED_CAPTION_LINE = re.compile(r"\s*(?:Figure|Fig\.|Table)\s+\d+[A-Za-z]?\s*[-–—:.]\s*\S")
+
+
+def previous_page_ends_a_sentence(spans, evidence):
+    """Whether the body of the page before each span's page ends with a full stop."""
+    headers = set(running_headers(evidence))
+    for span in spans:
+        current = evidence[span["evidence_id"]]
+        previous = [
+            p
+            for p in evidence.values()
+            if p["source_id"] == current["source_id"]
+            and current.get("page") is not None
+            and p.get("page") == current["page"] - 1
+        ]
+        if len(previous) != 1:
+            continue
+        lines = [line.strip() for line in previous[0]["text"].splitlines() if line.strip()]
+        while lines:
+            if re.fullmatch(r"\d{1,4}", lines[-1]) or (
+                normalized(re.sub(r"\d+", " ", lines[-1])) in headers
+            ):
+                lines.pop()
+                continue
+            # A figure caption at the foot of the page, with its wrapped line.
+            caption = [
+                i
+                for i in range(max(0, len(lines) - 2), len(lines))
+                if PRINTED_CAPTION_LINE.match(lines[i])
+            ]
+            if not caption:
+                break
+            del lines[caption[-1] :]
+        if lines and lines[-1][-1] not in ".!?:":
+            return False
+    return True
+
+
+def page_edge_prefix(text, evidence, spans=()):
+    """The running header, page number and caption lines that open a passage, if any.
+
+    Only a prefix that starts with a running header of the document counts, and a
+    whole sentence of at least five words must follow it, not the rest of one
+    begun on the previous page.
+    """
+    headers = set(running_headers(evidence))
+    lines = text.split("\n")
+    consumed, header_seen = 0, False
+    for line in lines[:-1]:
+        stripped = line.strip()
+        if not stripped or re.fullmatch(r"\d{1,4}", stripped):
+            consumed += 1
+        elif normalized(re.sub(r"\d+", " ", stripped)) in headers:
+            consumed += 1
+            header_seen = True
+        elif header_seen and PRINTED_CAPTION_LINE.match(stripped):
+            consumed += 1
+        else:
+            break
+    if not header_seen:
+        return ""
+    prefix = "\n".join(lines[:consumed]) + "\n"
+    rest = text[len(prefix) :]
+    lead = len(rest) - len(rest.lstrip())
+    # A lowercase start continues a sentence from the previous page, and a caption
+    # alone is no sentence: both keep the header hold.
+    # 'Heat Delivery System” (CHDS)': a quotation closed before it opens.
+    closes_first = "”" in rest and ("“" not in rest or rest.find("”") < rest.find("“"))
+    if (
+        len(re.findall(r"[A-Za-z]{2,}", rest)) < 5
+        or not re.match(r"[A-Z]", rest.lstrip())
+        or PRINTED_CAPTION_LINE.match(rest)
+        or closes_first
+        or not previous_page_ends_a_sentence(spans, evidence)
+    ):
+        return ""
+    return prefix + rest[:lead]
+
+
 def acronym_printed_form(label, quotes):
     """The printed name a label abbreviates with its acronym, if a quote prints it.
 
@@ -3059,6 +3138,13 @@ def validate_quantity_subject(
         if not inherited:
             raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
         record["unit_binding"] = inherited
+    if (item["unit"] or "").strip() in {'"', "″", "”"} and all(
+        # A quotation mark that closes a quoted number ("the “6”") is no inch mark.
+        quote[: match.start()].count("“") > quote[: match.start()].count("”")
+        or quote[: match.start()].count('"') % 2
+        for match, quote in candidates
+    ):
+        raise ValueError("QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION")
     section_proof = group_section_support(item["subject"], spans, entities, document)
     figure_proof = figure_group_support(item["subject"], spans, entities, document)
     if figure_proof:
@@ -5562,6 +5648,21 @@ def validated_output(output, package, document, semantic, recover_roles=True):
                 elif kind == "statements":
                     from nasa_fire_ai.ingestion.scientific_scope import page_continuation_context
 
+                    edge = page_edge_prefix(item["text"], evidence, spans)
+                    if edge:
+                        # "International Conference on Environmental Systems 12
+                        # Figure 12 - ... Functional testing ...": the page edge
+                        # and a caption line before the sentence are not part of
+                        # it; the sentence and its support start after them.
+                        item["text"] = item["text"][len(edge) :]
+                        for s in spans:
+                            at = s["quote"].find(item["text"][:40])
+                            if at > 0:
+                                s.update(start=s["start"] + at, quote=s["quote"][at:])
+                        record["page_edge_removed"] = {
+                            "removed": edge,
+                            "basis": "RUNNING_PAGE_HEADER_BEFORE_SENTENCE",
+                        }
                     continuation = page_continuation_context(spans, evidence)
                     if continuation and item["epistemic"] != "documentary_context":
                         record["status"] = "UNRESOLVED"

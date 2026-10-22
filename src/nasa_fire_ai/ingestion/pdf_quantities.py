@@ -23,15 +23,50 @@ def original_table_unit(header, row):
                     "recognized_unit_syntax": bool(re.fullmatch(syntax, literal.strip())),
                 }
             )
+    # A percent sign glued to a quantity symbol ("O2%", "wt%") states the column's
+    # unit; a number with a percent sign ("95% confidence") is a value, not a unit.
+    for match in re.finditer(r"(?<!\S)\S*[A-Za-z]\S*?%(?=[\s)]|$)", header or ""):
+        candidates.append(
+            {
+                "axis": "column",
+                "literal": "%",
+                "recognized_unit_syntax": True,
+                "basis": "PERCENT_GLUED_TO_QUANTITY_SYMBOL",
+                "printed": match.group(0),
+            }
+        )
     units = {c["literal"] for c in candidates if c["recognized_unit_syntax"]}
     return (next(iter(units)) if len(units) == 1 else None), candidates
+
+
+def column_header(row, column, document):
+    """A column's printed header, including the text-only header rows below the first.
+
+    A table may print a spanning title as its first row and the column names under
+    it; every row above the cell's own row that holds no bare number is a header row.
+    """
+    tables = document.get("detected_tables") or []
+    table = tables[row["table_index"]] if row["table_index"] < len(tables) else {}
+    first = row["original_headers"][column] if column < len(row["original_headers"]) else None
+    lines = [first or ""]
+    if not table.get("header_external"):
+        for above in (table.get("cells") or [])[1 : row["row_index"]]:
+            if any(
+                isinstance(c, str) and re.fullmatch(r"[^A-Za-z]*\d[^A-Za-z]*", c.strip())
+                for c in above
+            ):
+                break
+            if column < len(above) and above[column]:
+                lines.append(above[column])
+    return "\n".join(line for line in lines if line)
 
 
 def header_unit_binding(expression, unit, spans, document):
     """Bind a table value to a unit stated literally in its own column header.
 
-    A cell inherits a unit only from "(unit)" in the header of the column that
-    contains that exact original value on a supporting page. A unit elsewhere in
+    A cell inherits a unit only from "(unit)", or a percent sign glued to the
+    quantity symbol, in the header of the column that contains that exact original
+    value on a supporting page. A unit elsewhere in
     the table, caption or text does not bind. No conversion happens here.
     """
     from nasa_fire_ai.ingestion.numeric_expressions import same_expression, same_unit
@@ -44,7 +79,7 @@ def header_unit_binding(expression, unit, spans, document):
             value = (cell.get("original_value") or "").strip()
             if not value or not same_expression(value, expression):
                 continue
-            header = cell.get("header") or ""
+            header = column_header(row, cell["column_index"], document)
             _, candidates = original_table_unit(header, [])
             if any(c["axis"] == "column" and same_unit(c["literal"], unit) for c in candidates):
                 return {
