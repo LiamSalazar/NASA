@@ -223,10 +223,34 @@ Return root arrays statements, quantities and concepts, following their schemas.
 For a statement select its original source anchor with statement_eligible=true;
 identity/context anchors are not statement choices. Do not rewrite the sentence.
 A statement item is {"anchor":"A1","epistemic":"measured_observation","subjects":["K1"],"study":"current"}.
-Classify each scientifically relevant original sentence accurately: observations,
-configurations, author conclusions, tentative interpretations, hypotheses, open
-questions, normative requirements, guidance, derived results or documentary context.
-Do not classify titles, author lists, future plans or methods as observations.
+Classify each scientifically relevant original sentence by what it asserts, not by
+its wording. The ten statement roles (examples are invented, not from any source):
+- measured_observation: what this study saw or measured in its own tests
+  ("The third coupon charred along its upper edge.").
+- author_reported_conclusion: what the authors conclude from their own work, stated
+  as established ("The coated foam therefore resists ignition better than bare foam.").
+- tentative_interpretation: a hedged reading of results, including one that offers
+  an answer while asking for more work to settle it ("Airflow may govern the
+  charring, but more drops would have to confirm it.").
+- hypothesis: a proposition put forward to be tested, not yet a result
+  ("Thinner panels are expected to burn faster.").
+- open_question: what the source says is not known ("The gas speed beside the panel
+  during the drop is not known.").
+- normative_requirement: a requirement or pass criterion the source states
+  ("Each panel shall self-extinguish within ten seconds.").
+- guidance: a recommendation the source itself gives ("Inspect each seal before use.").
+- experimental_configuration: how this study's tests were set up or run, including
+  executed procedure steps ("The panels were mounted upright above the igniter.").
+- derived_quantity: a result computed from data, such as a fit, difference or margin
+  ("The fitted slope leaves a margin of two percent.").
+- documentary_context: what the document is or points to, such as its scope, a
+  figure or table pointer, or where its data come from ("Table 2 lists the panel
+  thicknesses.").
+A plan, a goal or a status claim is never documentary_context; propose it only when
+another role fits what it asserts. What the source says is not known is open_question.
+An answer it offers while asking for more work is tentative_interpretation. A
+conclusion about the authors' own work is author_reported_conclusion. Titles, author
+lists, future plans and methods are never observations.
 Use justified known_entities subject keys; subjects=[] preserves an unresolved scope.
 An anchor's group key, when present, names the group whose printed heading it sits
 under: the narrowest subject for configurations and conditions printed there,
@@ -1253,6 +1277,41 @@ def hold_mentioned_only_materials(records, document):
         ):
             record["status"] = "UNRESOLVED"
             record["reasons"].append("MATERIAL_ONLY_MENTIONED_OUTSIDE_OWN_RESEARCH")
+
+
+# Narrowest first: one run, its specimens, their group, the material, the study.
+SUBJECT_BREADTH = {
+    "ExperimentalRun": 0,
+    "Sample": 1,
+    "ExperimentFamily": 2,
+    "Material": 3,
+    "Investigation": 4,
+}
+
+
+def admissible_statement_subjects(spans, entities, document):
+    """Known subjects a statement's own passage admits, narrowest first.
+
+    The same tests the validator applies to a proposed subject: an independently
+    readable anchor for it (``applicable``), or the paper's own research passage
+    for its investigation (``document_statement_scope``).
+    """
+    keys = [
+        key
+        for key, entity in entities.items()
+        if entity.get("validation_status") == "SOURCE_SUPPORTED"
+        and (
+            applicable(key, spans, entities, document)
+            or document_statement_scope(key, spans, entities, document)
+        )
+    ]
+    return sorted(
+        keys,
+        key=lambda k: (
+            SUBJECT_BREADTH.get(entities[k]["class_id"], len(SUBJECT_BREADTH)),
+            normalized(entities[k]["label"]),
+        ),
+    )
 
 
 def document_statement_scope(subject, spans, entities, document, cited_named=False):
@@ -7495,6 +7554,25 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             ],
             "schema": stage_schema(stage, compact=True),
         }
+        if stage == "propositions" and os.getenv("SCIENCE_ADMISSIBLE_SUBJECTS", "0") == "1":
+            # Each statement anchor lists the known subjects its own passage admits,
+            # narrowest first, by the same tests the validator applies. Off by
+            # default: the free prejudgment did not meet the PTFE precision bar.
+            checked = validate_output(output, package, document, semantic)["entities_by_key"]
+            refs = {key: ref for ref, key in wire_entities.items() if key in checked}
+            for anchor in request["source_anchors"]:
+                if anchor["statement_eligible"] and anchor["in_task"]:
+                    anchor["admissible_subjects"] = [
+                        refs[key]
+                        for key in admissible_statement_subjects(
+                            [wire_anchors[anchor["id"]]], checked, document
+                        )
+                        if key in refs
+                    ]
+            request["subject_menu"] = (
+                "Choose a statement's subjects from its anchor's admissible_subjects: "
+                "the narrowest the sentence describes. An empty list keeps subjects=[]."
+            )
         source_checksums = {e["evidence_id"]: e["checksum"] for e in package["evidence"]}
         local_pages = {(m["page"], source_checksums[m["evidence_id"]]) for m in window["members"]}
         original_tables = [
