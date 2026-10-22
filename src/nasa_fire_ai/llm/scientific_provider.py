@@ -20,6 +20,24 @@ from openai import APIConnectionError, APIError, APIStatusError, APITimeoutError
 ACCOUNT_IDENTIFIER = re.compile(r"""(\baccount\s*['"])([^'"\s]+)(['"])""", re.IGNORECASE)
 
 
+def request_never_sent(error):
+    """Whether a transport failure proves the request never left this machine.
+
+    A failure to connect (name resolution, a refused connection, a TLS handshake
+    that failed) happens before the request body is sent, so nothing can be billed.
+    A reset, a read error or a timeout after connecting may follow a request the
+    provider received and processed.
+    """
+    seen = set()
+    while error is not None and id(error) not in seen:
+        seen.add(id(error))
+        name = f"{type(error).__module__}.{type(error).__name__}"
+        if name in {"httpx.ConnectError", "httpcore.ConnectError"}:
+            return True
+        error = error.__cause__ or error.__context__
+    return False
+
+
 def redact_provider_text(text, key=None):
     """The provider text with the API key and any account identifier replaced."""
     if not text:
@@ -270,6 +288,8 @@ def complete_scientific(
                 ),
                 None,
             )
+            if kind == "network" and request_never_sent(error):
+                metadata["request_not_sent"] = True
         metadata.update(
             duration_seconds=time.monotonic() - started,
             served_models=sorted(served_models),

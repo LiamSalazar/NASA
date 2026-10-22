@@ -19,6 +19,7 @@ from nasa_fire_ai.llm.scientific_provider import (
     ScientificResponse,
     ScientificTransportError,
     redact_provider_text,
+    request_never_sent,
 )
 
 # Adaptive thinking spends output tokens before the JSON, so the stage's own
@@ -223,6 +224,8 @@ def complete_scientific_anthropic(
             kind, retry_after = "timeout", None
         elif isinstance(error, anthropic.APIConnectionError):
             kind, retry_after = "network", None
+            if request_never_sent(error):
+                metadata["request_not_sent"] = True
         elif isinstance(error, anthropic.APIError):
             kind, retry_after = "provider_stream_error", None
             metadata["provider_message"] = redact_provider_text(str(error.message), key)[:1600]

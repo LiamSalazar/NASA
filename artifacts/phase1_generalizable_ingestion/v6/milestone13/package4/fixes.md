@@ -129,3 +129,14 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
 - Textiles is at 0.38–0.41 recall and 0.81–0.95 precision.
 - So no live run is proposed.
 - Fixes 1, 2 and 3 each help only the source that motivated them (marked "single-source, suspect"). The remaining gap is mostly model-side: roles, group equivalence, and values without an eligible subject (`target_miss_diagnosis.md`).
+
+### Fix 5, restricted (after the independent review)
+
+"No response arrived" does not prove "not billed": the provider may have received and processed a request whose connection was then reset or cut.
+- **New rule:** the reservation is released only when the error chain proves the request never left this machine. That means an `httpx.ConnectError` or `httpcore.ConnectError` (name resolution, a refused connection, a TLS handshake failure), all raised before the body is sent. Both providers then record `request_not_sent` (`scientific_provider.request_never_sent`).
+- **Kept:** a reset, a read or protocol error after connecting, and a timeout all keep the reservation, even with no response byte. A refusal before processing (HTTP 400) still releases it.
+- **Tests:** `tests/test_request_schema_references.py`.
+  - Positive: a connect error.
+  - Negative: a read error, a protocol error, a timeout.
+  - Unit: the error-chain check.
+- **Effect on ignition r2:** its two network failures (38 s each, no detail recorded) would not be proven unsent, so they would keep their reservation as before. The deferred window there is not recovered by this fix.

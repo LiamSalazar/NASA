@@ -5,6 +5,7 @@ import json
 
 import httpx
 import openai
+import pytest
 from test_document_extraction import client_for, entity, submitted
 from test_document_extraction import service as _service
 
@@ -147,13 +148,30 @@ def test_the_brake_still_defers_a_request_it_cannot_afford(service):
     assert {x["model"] for x in result["processing"]["outcomes"]} == {"DEFERRED_BUDGET"}
 
 
-def test_a_connection_that_failed_before_any_response_releases_its_reservation(service):
-    dropped = openai.APIConnectionError(
-        request=httpx.Request("POST", "https://example.invalid"),
-    )
-    processing, _sent = run(service, dropped, with_entity=False)
+def connection_error(cause):
+    error = openai.APIConnectionError(request=httpx.Request("POST", "https://example.invalid"))
+    error.__cause__ = cause
+    return error
+
+
+def test_a_connection_that_never_opened_releases_its_reservation(service):
+    # Name resolution, a refused connection or a TLS failure: httpx.ConnectError,
+    # raised before the request body is sent.
+    never_sent = connection_error(httpx.ConnectError("[Errno 11001] getaddrinfo failed"))
+    processing, _sent = run(service, never_sent, with_entity=False)
     assert [o["attempts"] for o in processing["outcomes"]] == [2, 1, 1]
     assert processing["tokens_consumed_or_reserved"] == counted(processing)
+
+
+@pytest.mark.parametrize(
+    "cause", [httpx.ReadError("connection reset by peer"), httpx.RemoteProtocolError("cut")]
+)
+def test_a_connection_cut_after_sending_keeps_its_reservation(service, cause):
+    # Negative: a reset or a protocol error after the request went out may be billed,
+    # even when no response byte arrived.
+    processing, _sent = run(service, connection_error(cause), with_entity=False)
+    assert [o["attempts"] for o in processing["outcomes"]] == [2, 1, 1]
+    assert processing["tokens_consumed_or_reserved"] > counted(processing)
 
 
 def test_a_timeout_keeps_its_reservation(service):
@@ -162,3 +180,11 @@ def test_a_timeout_keeps_its_reservation(service):
     processing, _sent = run(service, timed_out, with_entity=False)
     assert [o["attempts"] for o in processing["outcomes"]] == [2, 1, 1]
     assert processing["tokens_consumed_or_reserved"] > counted(processing)
+
+
+def test_only_a_connect_error_in_the_chain_proves_the_request_never_left():
+    from nasa_fire_ai.llm.scientific_provider import request_never_sent
+
+    assert request_never_sent(connection_error(httpx.ConnectError("refused")))
+    assert not request_never_sent(connection_error(httpx.ReadError("reset")))
+    assert not request_never_sent(connection_error(None))

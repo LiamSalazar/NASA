@@ -8136,13 +8136,14 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         provider_blocked[0] = True
                     if not usage and (
                         error.kind == "request_rejected"
-                        or (error.kind == "network" and not error.content)
+                        or (error.kind == "network" and error.metadata.get("request_not_sent"))
                     ):
-                        # Refused before processing, or a connection that failed before
-                        # any response arrived: nothing was received, so the reservation
-                        # is released and the spending brake counts only real use. A
-                        # failure after part of a response, or a timeout, may be billed
-                        # and keeps it.
+                        # Refused before processing, or a connection that never opened
+                        # (name resolution, refused, TLS before the body): the request
+                        # was never processed, so the reservation is released and the
+                        # spending brake counts only real use. "No response arrived" does
+                        # not prove "not billed": a reset or a cut after sending, or a
+                        # timeout, keeps the reservation.
                         tokens -= reserve
                     if error.kind == "request_rejected" and format_mode["type"] == "json_schema":
                         # A provider capability fallback is operational, never a schema relaxation.
