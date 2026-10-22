@@ -955,13 +955,15 @@ def titled_pages(document):
     pages = list(_page_texts(document))
     if len(pages) < 4:
         return False
-    titled = 0
+    titles = set()
     for evidence_id in pages:
         title = page_title({"evidence_id": evidence_id}, document)
         words = re.findall(r"[A-Za-z]{2,}", title)
         if title and 1 <= len(words) <= 6 and not title.rstrip().endswith("."):
-            titled += 1
-    return titled >= 0.6 * len(pages)
+            titles.add(normalized(title))
+    # The same short line atop every page is a running header (a paper's number),
+    # not a slide title: slides have titles of their own.
+    return len(titles) >= 0.6 * len(pages)
 
 
 def _page_texts(document):
@@ -983,6 +985,11 @@ RESEARCH_SECTION = re.compile(
 NON_RESEARCH_SECTION = re.compile(
     r"\b(?:prior|historical|literature|background|introduction|references)\b", re.IGNORECASE
 )
+# Slides that frame a talk rather than report its work.
+PRESENTATION_FRAME = re.compile(
+    r"\b(?:questions?|feedback|acknowledg\w*|agenda|outline|contents|thank\s+you)\b",
+    re.IGNORECASE,
+)
 
 
 def original_research_passage(spans, document):
@@ -992,14 +999,15 @@ def original_research_passage(spans, document):
         section = section_for_span(span, document)
         if RESEARCH_SECTION.search(section) and not NON_RESEARCH_SECTION.search(section):
             return True
-        # A slide titled "Testing Methodology" in a deck whose structure has no
-        # recognized research section of its own.
-        title = page_title(span, document)
+        # A slide deck is the presenter's own account: a slide reports their work
+        # unless its own title names background or prior work, or frames the talk
+        # (the title slide, an agenda, questions). Cited work is excluded below.
         return bool(
             slide_deck(document)
-            and title
-            and RESEARCH_SECTION.search(title)
-            and not NON_RESEARCH_SECTION.search(title)
+            and section != "UNSPECIFIED"
+            and not NON_RESEARCH_SECTION.search(section)
+            and not PRESENTATION_FRAME.search(section)
+            and span["evidence_id"] != next(iter(_page_texts(document)), None)
         )
 
     if not spans or not all(research(s) for s in spans):
@@ -1345,6 +1353,18 @@ def applicable(subject, spans, entities, document):
 def section_for_span(span, document):
     from nasa_fire_ai.ingestion.scientific_scope import logical_section
 
+    if slide_deck(document):
+        # A slide's number printed before its title ("2 Background") is not an
+        # outline number: a heading governs its own slide only, and a slide
+        # without one is the section its own title names.
+        own = [
+            h
+            for h in document.get("sections", [])
+            if h["evidence_id"] == span["evidence_id"] and h["start"] <= span.get("start", 0)
+        ]
+        if own:
+            return max(own, key=lambda h: h["start"])["title"]
+        return page_title(span, document) or "UNSPECIFIED"
     return logical_section(span, document)
 
 
