@@ -7324,6 +7324,18 @@ def table_row_roles(package):
     ]
 
 
+def never_billed(error):
+    """Whether a transport failure proves the request was never processed, so never billed.
+
+    Refused before processing, or a connection that never opened (name resolution,
+    refused, TLS before the body). "No response arrived" does not prove "not billed":
+    a reset or a cut after sending, or a timeout, keeps the reservation.
+    """
+    return error.kind == "request_rejected" or (
+        error.kind == "network" and bool(error.metadata.get("request_not_sent"))
+    )
+
+
 def record_discarded_prefetch(registry, stage, call, ahead):
     """Record a request sent ahead whose answer was not used; return how it settled.
 
@@ -7608,10 +7620,19 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             prefetch_counts["cancelled"] = prefetch_counts.get("cancelled", 0) + 1
 
     def count_usage(ref):
-        """Count a finished request sent ahead at its billed usage instead of its reservation."""
+        """Count a finished request sent ahead at its billed usage instead of its reservation.
+
+        A failure that proves the request was never billed releases its reservation.
+        """
         nonlocal tokens
         ahead = prefetched[ref]
-        if not ahead.done() or ahead.cancelled() or ahead.exception() is not None:
+        if not ahead.done() or ahead.cancelled():
+            return
+        error = ahead.exception()
+        if error is not None:
+            if isinstance(error, ScientificTransportError) and never_billed(error):
+                tokens -= ahead_reserved[ref]
+                ahead_reserved[ref] = 0
             return
         usage = ahead.result().usage
         if usage:
@@ -8275,6 +8296,9 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
 
                 transient, truncated = False, False
                 retry_after = None
+                # What this request is counted at now: its reservation, or, for one
+                # sent ahead, its billed usage or 0 if that was already settled.
+                counted = reserve
                 try:
                     remaining = (
                         float("inf")
@@ -8291,8 +8315,6 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         "images": images,
                     }
                     ahead = prefetched.pop(identity(call), None)
-                    # What this request is counted at now: its reservation, or its
-                    # billed usage if it was already counted at that.
                     counted = ahead_reserved.pop(identity(call), reserve)
                     if prefetch_counts.get("rate_limited"):
                         for ref in list(prefetched):
@@ -8325,7 +8347,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     raw, finish, usage = response.content, response.finish_reason, response.usage
                     outcome.update(finish_reason=finish, usage=usage, transport=response.metadata)
                     if usage:
-                        tokens += usage["total_tokens"] - (reserve if ahead is None else counted)
+                        tokens += usage["total_tokens"] - counted
                     if focus:
                         focused = (
                             completed_json_prefix(raw)
@@ -8426,17 +8448,10 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     }
                     if error.kind in {"access_denied", "interrupted"}:
                         provider_blocked[0] = True
-                    if not usage and (
-                        error.kind == "request_rejected"
-                        or (error.kind == "network" and error.metadata.get("request_not_sent"))
-                    ):
-                        # Refused before processing, or a connection that never opened
-                        # (name resolution, refused, TLS before the body): the request
-                        # was never processed, so the reservation is released and the
-                        # spending brake counts only real use. "No response arrived" does
-                        # not prove "not billed": a reset or a cut after sending, or a
-                        # timeout, keeps the reservation.
-                        tokens -= reserve
+                    if not usage and never_billed(error):
+                        # The request was never processed, so what it is counted at is
+                        # released and the spending brake counts only real use.
+                        tokens -= counted
                     if error.kind == "request_rejected" and format_mode["type"] == "json_schema":
                         # A provider capability fallback is operational, never a schema relaxation.
                         format_mode = {"type": "json_object"}

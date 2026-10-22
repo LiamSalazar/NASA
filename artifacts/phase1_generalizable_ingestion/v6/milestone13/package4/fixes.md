@@ -226,3 +226,20 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
   - The relationships cases fail on `824af5f`.
   - The unreached-brake equivalence (`tests/test_prefetch_brake.py`) is unchanged and now asserts its 63 requests.
 - **Replay:** no effect by construction, since validation is unchanged. No live run.
+
+## Spending brake: a request sent ahead that was never billed releases its reservation in `make_room` (2026-10-22)
+
+- **Gap (at `4ba8a23`, found by review):** `count_usage` returned without doing anything when the request sent ahead had failed. A request that failed without being billed therefore kept its full reservation inside `make_room`, so a retry of an earlier window could end in `DEFERRED_BUDGET` with room to spare. This happened with a refused connection (`request_not_sent`) or a 400 (`request_rejected`).
+  - Synthetic run (relationships billing 100 tokens per call, window 2 refused or rejected, window 1 reset once, brake = the concurrency-1 run's billing plus its largest reservation): concurrency 1 completes; `4ba8a23` at concurrency 3 leaves window 1 `FAILED`.
+- **Fix:**
+  - `never_billed(error)` is the one rule for "never processed, so never billed": `request_rejected`, or `network` with `request_not_sent`. The foreground and `count_usage` both use it.
+  - `count_usage` subtracts that request's current count and sets `ahead_reserved[ref]` to 0.
+  - **No double release:**
+    - when the foreground uses a request sent ahead and its error releases the reservation, it subtracts `counted` (what the request is counted at now), not `reserve`;
+    - `settle_prefetch` already uses the current value of `ahead_reserved`;
+    - the call count is adjusted only where it was before.
+- **Tests** (`tests/test_prefetch_make_room.py`, 5 more, 13 in all):
+  - refused and 400 sent ahead: the retry of window 1 completes at concurrency 3 with concurrency 1's decisions, records and requests. Both fail on `4ba8a23`.
+  - with refused, 400 and reset failures in three sets of positions, with and without a brake, `tokens_consumed_or_reserved` is never negative and equals billing plus kept reservations.
+  - the 8 tests from `4ba8a23` pass unchanged.
+- **Replay:** no effect by construction. No live run.

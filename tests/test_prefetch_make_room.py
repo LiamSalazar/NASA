@@ -1,8 +1,8 @@
 """Requests sent ahead yield to an earlier window's retry before the brake refuses it.
 
 Network-free: a fake client bills a fixed usage per request and fails chosen
-requests once with a connection reset (sent, billing unknown, so the reservation
-is kept). A brake with room for the whole run's billing plus its largest
+requests once: a connection reset (sent, billing unknown, so the reservation is
+kept), a refused connection or a 400 (never billed, so it is released). A brake with room for the whole run's billing plus its largest
 reservation leaves every decision of concurrency 1 unchanged at concurrency 3.
 """
 
@@ -14,6 +14,7 @@ from unittest.mock import Mock
 
 import httpx
 import pytest
+from openai import APIStatusError
 from test_document_extraction import submitted
 from test_prefetch_brake import TEXT, USAGE, fresh_service
 
@@ -22,8 +23,26 @@ from nasa_fire_ai.ingestion import document_extraction
 from nasa_fire_ai.ingestion.document_extraction import STAGES, ExtractionBudget
 
 
-def failing_client(failures):
-    """Bill USAGE per answered request; fail once each (stage, run) in ``failures``."""
+def failure(kind):
+    request = httpx.Request("POST", "https://provider.invalid/v1/chat/completions")
+    if kind == "refused":
+        return httpx.ConnectError("connection refused", request=request)
+    if kind == "rejected":
+        response = httpx.Response(400, request=request)
+        return APIStatusError("bad request", response=response, body=None)
+    return httpx.ReadError("connection reset after the request was sent", request=request)
+
+
+CHEAP = 100
+
+
+def price(stage, cheap):
+    return CHEAP if stage in cheap else USAGE
+
+
+def failing_client(failures, cheap=()):
+    """Bill USAGE per answered request (CHEAP in ``cheap`` stages); fail once each
+    (stage, run[, kind]) in ``failures``."""
     client, lock = Mock(), threading.Lock()
     sent, pending = [], set(failures)
 
@@ -42,8 +61,14 @@ def failing_client(failures):
             )
             pending.discard(hit)
         if hit:
-            raise httpx.ReadError("connection reset after the request was sent")
+            kind = hit[2] if len(hit) > 2 else "reset"
+            if kind == "reset":
+                # A reset comes after the request was sent: it takes a while, and the
+                # requests sent ahead of it finish meanwhile. (time.sleep is patched.)
+                threading.Event().wait(0.5)
+            raise failure(kind)
         result = {k: [] for k in STAGES[payload["stage"]]}
+        total = price(payload["stage"], cheap)
         return SimpleNamespace(
             choices=[
                 SimpleNamespace(
@@ -52,9 +77,9 @@ def failing_client(failures):
             ],
             usage=SimpleNamespace(
                 model_dump=lambda: {
-                    "prompt_tokens": USAGE - 100,
-                    "completion_tokens": 100,
-                    "total_tokens": USAGE,
+                    "prompt_tokens": total - 50,
+                    "completion_tokens": 50,
+                    "total_tokens": total,
                 }
             ),
         )
@@ -63,13 +88,13 @@ def failing_client(failures):
     return client, sent
 
 
-def run(tmp_path, monkeypatch, name, concurrency, brake, failures=()):
+def run(tmp_path, monkeypatch, name, concurrency, brake, failures=(), cheap=()):
     monkeypatch.setenv("SCIENCE_WINDOW_CONCURRENCY", str(concurrency))
     # Retries wait Retry-After style backoff; the test does not need the wall time.
     monkeypatch.setattr(document_extraction.time, "sleep", lambda seconds: None)
     service = fresh_service(tmp_path / name)
     package = submitted(service, TEXT)
-    client, sent = failing_client(failures)
+    client, sent = failing_client(failures, cheap)
     result = service.prepare_scientific(
         package["id"],
         Settings(root=service.root),
@@ -115,8 +140,9 @@ def retained_reservations(attempts):
     )
 
 
-def billed(sent, failures):
-    return (len(sent) - len(failures)) * USAGE
+def billed(sent, failures, cheap=()):
+    every = sum(price(json.loads(content)["stage"], cheap) for content in sent)
+    return every - sum(price(f[0], cheap) for f in failures)
 
 
 @pytest.mark.parametrize("stage", ["relationships", "propositions"])
@@ -168,3 +194,48 @@ def test_a_brake_with_room_for_the_run_decides_as_concurrency_one(tmp_path, monk
     assert decisions(three) == decisions(one)
     assert records(three) == records(one)
     assert sorted(sent_three) == sorted(sent_one)
+
+
+@pytest.mark.parametrize("kind", ["refused", "rejected"])
+def test_a_request_sent_ahead_that_was_never_billed_makes_room_for_window_one(
+    tmp_path, monkeypatch, kind
+):
+    # Window 2 (run A3; window 1 holds A1 and A2) is sent ahead and fails without
+    # being billed; window 1 is retried.
+    # Relationships bill little, so the brake with room for the run is tight there:
+    # the retry fits only once window 2's reservation is released.
+    failures = [("relationships", "A3", kind), ("relationships", "A1")]
+    cheap = ("relationships",)
+    reference, _, _ = run(tmp_path, monkeypatch, "free", 1, None, failures, cheap)
+    brake = roomy_brake(reference)
+    one, sent_one, _ = run(tmp_path, monkeypatch, "one", 1, brake, failures, cheap)
+    three, sent_three, attempts = run(tmp_path, monkeypatch, "three", 3, brake, failures, cheap)
+    assert decisions(one) == decisions(reference)
+    assert "DEFERRED_BUDGET" not in {model for _, model, _ in decisions(three)}
+    assert decisions(three) == decisions(one)
+    assert records(three) == records(one)
+    assert sorted(sent_three) == sorted(sent_one)
+    counter = three["processing"]["tokens_consumed_or_reserved"]
+    assert counter >= 0
+    assert counter == billed(sent_three, failures, cheap) + retained_reservations(attempts)
+
+
+@pytest.mark.parametrize(
+    "failures",
+    [
+        [("relationships", "A2", "refused"), ("relationships", "A3", "rejected")],
+        [("identity", "A2", "rejected"), ("relationships", "A1", "refused")],
+        [("propositions", "A2", "refused"), ("relationships", "A1"), ("identity", "A5")],
+    ],
+)
+def test_the_counter_never_goes_negative_and_is_billing_plus_kept_reservations(
+    tmp_path, monkeypatch, failures
+):
+    reference, _, _ = run(tmp_path, monkeypatch, "free", 1, None, failures)
+    for brake in (None, roomy_brake(reference)):
+        result, sent, attempts = run(tmp_path, monkeypatch, f"c3_{brake}", 3, brake, failures)
+        counter = result["processing"]["tokens_consumed_or_reserved"]
+        assert counter >= 0
+        assert counter == billed(sent, failures) + retained_reservations(attempts)
+        if brake is not None:
+            assert decisions(result) == decisions(reference)
