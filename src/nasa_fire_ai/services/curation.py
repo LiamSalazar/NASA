@@ -1010,7 +1010,9 @@ class CurationService:
                         "raw_label": row[label],
                         "source_id": sources.get(evidence_id),
                         "evidence_id": evidence_id,
-                        "resolution_status": "CANDIDATE_RELATION",
+                        "resolution_status": "CANDIDATE_NEW_CONCEPT"
+                        if row.get("kind") in {"class", "information_class"}
+                        else "CANDIDATE_RELATION",
                         "review_status": "PENDING",
                         "proposal": {
                             "contract": extraction["contract"],
