@@ -161,3 +161,22 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
 - **Unchanged:** the envelope's output tokens (32,768), the per-run brake (500,000) and NVIDIA's defaults.
 - **Replay:** the 12 saved packages give 0 record changes.
 - **Tests:** `tests/test_request_context_limit.py` (3), `tests/test_discarded_prefetch.py` (3), `tests/test_anthropic_provider.py` (floor).
+
+## Fix 8: a heading's outline marker copied into a label is not part of the name
+
+- **Classification:** document structure.
+- **Motivating source:** ignition, package 5 round 1. The model labelled the GRC group "B. NASA Glenn Research Center (GRC) Partial Gravity Testing", copying the heading's outline letter. The label was not in its support (`ENTITY_LABEL_ABSENT_FROM_SUPPORT`), so the group was rejected.
+- **Rule** (`heading_outline_name`):
+  - When a label equals a printed heading with its outline marker ("B.", "2.1", "IV."), the record keeps the printed name without the marker (`label_normalization`, basis `HEADING_OUTLINE_MARKER_IS_NOT_PART_OF_THE_NAME`).
+  - The marker counts only if another heading of the document has a marker of the same kind (A./B., 2.1/2.2, III./IV.). A lone initial ("J. Smith Apparatus") or a letter inside the name ("Type A Tests") is kept.
+  - A marker the heading does not print is never dropped.
+  - No label is invented.
+- **Tests:** `tests/test_heading_outline_marker.py` (5).
+  - Metamorphic: B., 2.1 and IV., with and without the marker.
+  - Negative: a lone initial, a letter inside a name, a marker not printed.
+- **Replay:** all 20 saved packages (package 4 Sonnet, round B NVIDIA, package 5 Sonnet); only ignition changes.
+  - **Package 5 r1:** the GRC group is accepted, which recovers **entities-02**. The WSTF group labelled "A. ..." becomes one record with the unlettered one. Recall 9 → 10/29, precision 75/90 → 76/91. The GRC chamber values stay on the investigation, because the model proposed them there, so quantities-11, -12, -15 and relations-27 are not recovered.
+  - **Package 5 r2 and package 4 r1:** the lettered copies merge with the unlettered groups. The active set is unchanged.
+  - Other sources: 0 changes.
+- **29 historical negatives:** 0 critical regressions, 1 known non-critical (`../package5/historical_negatives_outline.json`).
+- **Mark: single-source, suspect.**

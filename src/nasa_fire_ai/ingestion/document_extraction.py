@@ -534,6 +534,42 @@ def page_edge_suffix(text, evidence):
     return ""
 
 
+OUTLINE_MARKER = re.compile(r"^((?:\d+(?:\.\d+)*[.)]?)|(?:[A-Z][.)])|(?:[IVXLCDM]+[.)]))\s+(\S.*)$")
+
+
+def outline_marker_kind(marker):
+    if re.fullmatch(r"\d+(?:\.\d+)*[.)]?", marker):
+        return "number"
+    if re.fullmatch(r"[IVXLCDM]+[.)]", marker):
+        return "roman"
+    return "letter"
+
+
+def heading_outline_name(label, document):
+    """The printed name of a label that copies its heading's outline marker, if any.
+
+    "B. NASA Glenn Research Center (GRC) Partial Gravity Testing" for the printed
+    heading "B. NASA Glenn ...": the marker numbers the heading, it is not part of
+    the name. Only a marker that is printed on the heading, and that another
+    heading of the document continues as a sequence (A./B., 2.1/2.2, III./IV.),
+    counts; a lone initial ("J. Smith Apparatus") is part of a name.
+    """
+    sections = [h.get("title", "").strip() for h in document.get("sections", [])]
+    for title in sections:
+        m = OUTLINE_MARKER.match(title)
+        if not m or normalized(title) != normalized(label):
+            continue
+        kind = outline_marker_kind(m.group(1))
+        siblings = [
+            o.group(1)
+            for other in sections
+            if other != title and (o := OUTLINE_MARKER.match(other))
+        ]
+        if any(outline_marker_kind(x) == kind and x != m.group(1) for x in siblings):
+            return re.sub(r"\s+", " ", m.group(2)).strip()
+    return None
+
+
 def acronym_printed_form(label, quotes):
     """The printed name a label abbreviates with its acronym, if a quote prints it.
 
@@ -5684,6 +5720,20 @@ def validated_output(output, package, document, semantic, recover_roles=True):
                             ),
                             None,
                         )
+                        outline = None if heading else heading_outline_name(item["label"], document)
+                        if outline:
+                            # The model copied the heading's outline marker ("B. ...");
+                            # the record keeps the printed name without it.
+                            heading = next(
+                                h
+                                for h in document.get("sections", [])
+                                if normalized(h.get("title", "")) == normalized(item["label"])
+                            )
+                            record["label_normalization"] = {
+                                "printed_label": item["label"],
+                                "basis": "HEADING_OUTLINE_MARKER_IS_NOT_PART_OF_THE_NAME",
+                            }
+                            item["label"] = outline
                         # "POR 2.0, s/n 003" for the printed "Primary Oxygen
                         # Regulator (POR) 2.0, s/n 003".
                         acronym = (
