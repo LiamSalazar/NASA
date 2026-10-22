@@ -2198,6 +2198,79 @@ def printed_value_name(label, expression, unit, spans, epistemic=None):
     return None
 
 
+# A setting printed with its own verb: "the chamber was rotated at 20.4 RPM",
+# "20uL was injected". The verb is the printed name of what was set.
+SETTING_VERB_BEFORE = re.compile(r"\b([A-Za-z]{5,}ed)\s+(?:at|to)\s*[~≈]?\s*$", re.IGNORECASE)
+SETTING_VERB_AFTER = re.compile(
+    r"^\s*(?:of\s+[A-Za-z-]+\s+)?(?:was|were|is|are)\s+([A-Za-z]{5,}ed)\b", re.IGNORECASE
+)
+CONDITION_CLAUSE = re.compile(r"^\W*(?:if|unless|whether|when|whenever)\b", re.IGNORECASE)
+
+
+def shared_stem(a, b):
+    """Two forms of one word ("rotation", "rotated"): a common start of five letters or more."""
+    size = 0
+    for x, y in zip(a, b):
+        if x != y:
+            break
+        size += 1
+    return size >= 5
+
+
+def printed_setting_name(label, expression, unit, spans, epistemic):
+    """The verb that sets a configuration value names it, when the label only spells it out.
+
+    Every label word must be printed in the value's own clause, be a form of that
+    verb, or be a noun of the unit's own dimension; a qualifier the clause does not
+    print ("centrifuge rotation rate") leaves the name unprinted. Times and
+    percentages are excluded: there the verb states a criterion or a composition.
+    """
+    from nasa_fire_ai.normalization.units import interpret
+
+    meaning = interpret(unit) if unit else None
+    if (
+        epistemic != "experimental_configuration"
+        or not meaning
+        or not expression
+        or meaning["dimension"] in {"time", "fraction"}
+    ):
+        return None
+    nouns = DIMENSION_NOUNS.get(meaning["dimension"], set())
+    words = [w for w in normalized(label).split() if w not in NAME_STOP_WORDS]
+    if not words:
+        return None
+    value = r"(?<![\w.])" + re.escape(expression) + r"\s*[-‑]?\s*" + re.escape(unit) + r"(?![\w])"
+    for span in spans:
+        quote = span["quote"]
+        for match in re.finditer(value, quote):
+            start = max(
+                quote.rfind(". ", 0, match.start()) + 1, quote.rfind(";", 0, match.start()) + 1, 0
+            )
+            end = min(
+                [i for i in (quote.find(". ", match.end()), quote.find(";", match.end())) if i >= 0]
+                or [len(quote)]
+            )
+            clause = quote[start:end]
+            if CONDITION_CLAUSE.match(clause):
+                continue
+            verb = SETTING_VERB_BEFORE.search(
+                quote[start : match.start()]
+            ) or SETTING_VERB_AFTER.match(quote[match.end() : end])
+            if not verb:
+                continue
+            form = verb.group(1).lower()
+            if not any(shared_stem(w, form) for w in words):
+                continue
+            if all(w in nouns or shared_stem(w, form) or mentions(w, clause) for w in words):
+                return {
+                    "basis": "PRINTED_SETTING_VERB_NAMES_VALUE",
+                    "printed_name": form,
+                    "label_words_from_unit_dimension": [w for w in words if w in nouns],
+                    "global_alias_activation": "NONE",
+                }
+    return None
+
+
 def model_printed_name(item, spans):
     """The model's printed_name, when the support prints it in the value's own clause.
 
@@ -2459,6 +2532,7 @@ def staged_name_syntax(label, record, evidence):
         "EXPLICIT_POST_VALUE_DIMENSIONAL_ADJECTIVE",
         "SAME_SUBJECT_VALUE_UNDER_DOCUMENT_TABLE_COLUMN",
         "PRINTED_NAME_AFTER_VALUE",
+        "PRINTED_SETTING_VERB_NAMES_VALUE",
     }:
         return basis
     if basis == "NAME_BEFORE_PAGE_BREAK_OF_SAME_SENTENCE" and record.get("sentence_continuation"):
@@ -3112,6 +3186,11 @@ def validate_quantity_subject(
             # The label is the model's; the name it is checked against is printed.
             labels.append(printed["printed_name"])
             record["quantity_name_support"] = printed
+        elif setting := printed_setting_name(
+            item["label"], item["expression"], item["unit"], spans, item.get("epistemic")
+        ):
+            labels.append(setting["printed_name"])
+            record["quantity_name_support"] = setting
         elif proposed := model_printed_name(item, spans):
             # The model names the printed words; they must name this value in its clause.
             labels.append(proposed["printed_name"])
