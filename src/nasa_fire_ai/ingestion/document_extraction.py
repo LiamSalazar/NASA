@@ -4358,6 +4358,54 @@ def structure_entity_candidates(output, package, document):
             # the model proposed it as cited work.
             known.discard((normalized(re.sub(r"\s+", " ", label)), "Material"))
             add(re.sub(r"\s+", " ", label), "Material", page["evidence_id"], position, printed)
+    # "Figure 11 - Interstage Pressures During the First Wetted Impact Test
+    # Series (~140 msec ...)": a caption that prints the data as taken during a
+    # named series of tests names that group of this study's experiments. A
+    # caption that cites its source ("excerpted from (3)", "[2]", "et al.")
+    # names another study's work. A group already proposed keeps its record,
+    # unless captions print two or more series that its name only shares in
+    # ("First ... Test Series", "second ... Test Series"): those are distinct.
+    series = []
+    for e in package["evidence"]:
+        lines = e["text"].split("\n")
+        for index, line in enumerate(lines):
+            if not PRINTED_CAPTION_LINE.match(line):
+                continue
+            # A caption wrapped onto its next line, unless that line opens another.
+            following = lines[index + 1] if index + 1 < len(lines) else ""
+            caption = line
+            if following.strip() and not PRINTED_CAPTION_LINE.match(following):
+                caption = line + "\n" + following
+            if re.search(
+                r"\b(?:from|after|courtesy\s+of)\s*[\[(]\d|\[\d+\]|\(\d+\)|\bet\s+al\b",
+                caption,
+                re.IGNORECASE,
+            ):
+                continue
+            m = re.search(
+                r"\bDuring\s+(?:the\s+)?((?:[\w#&/-]+\s+){1,9}?(?:Test\s+Series|Series|Tests|Runs))\b",
+                caption,
+                re.IGNORECASE,
+            )
+            if not m or len(m.group(1).split()) < 3:
+                continue
+            at = e["text"].find(caption)
+            series.append(
+                (
+                    re.sub(r"\s+", " ", m.group(1)),
+                    e["evidence_id"],
+                    at + len(caption) - len(caption.lstrip()),
+                    caption.strip(),
+                )
+            )
+    for label, evidence_id, start, quote in series:
+        if any(mentions(label, s) for s in subjects) or any(
+            mentions(s, label) and sum(mentions(s, other[0]) for other in series) < 2
+            for s in subjects
+        ):
+            continue
+        add(label, "ExperimentFamily", evidence_id, start, quote)
+        subjects.append(label)
     groups = {
         _key(v)
         for g in output["entities"] + candidates

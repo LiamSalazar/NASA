@@ -63,3 +63,29 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
 - **Replay effect:** none by construction. The replay calls no provider, so 0 records change.
 - **Expected live effect, not measured:** with the two reservations released, ignition r2 would have been at about 320k when it reached the deferred window, and the 71k window would have been sent. Whether statements-23 and -25 are then recovered depends on the model, as in r1, where they were. A live run is needed to measure it, and Diego's rule leaves that until the replay passes.
 - **Caveat:** a connection that dropped while the provider was still reading the input could in principle be billed for input tokens. The receipts record the reservation released and the real usage, so any difference would show in the per-call cost.
+
+## Fix 1: a caption that prints its data as taken during a named test series names that group
+
+- **Classification:** document structure (a printed-structure candidate, as in milestone 8).
+- **Motivating source:** regulator. Sonnet proposes the test article (POR s/n 003) and one dry group, but not the printed series, which NVIDIA did propose.
+  - The diagnosis shows its values and statements held by the specimen applicability contract.
+  - The series are named in figure captions: "Figure 11 - ... During the First Dodecane Wetted POR Interstage Impact Test Series".
+- **Rule** (`structure_entity_candidates`):
+  - A figure or table caption (`PRINTED_CAPTION_LINE`, with its wrapped next line) that prints "During (the) <three or more words> Series/Test Series/Tests/Runs" proposes that phrase as a current `ExperimentFamily` candidate, supported by the caption.
+  - A caption that cites a source ("(3)", "[2]", "from (", "et al.") proposes nothing.
+  - A group already proposed keeps its record, unless its name is shared by two or more printed series ("Wetted … Test Series" inside "First …" and "second …"). In that case the printed series are distinct and both are proposed.
+  - Candidates are validated like any proposal and never become facts by themselves. No source name or value is listed.
+- **Tests:** `tests/test_caption_test_series.py` (4).
+  - Positive: three series, one of them wrapped onto the next line.
+  - Negative: a cited caption, a caption without "During", a two-word name.
+  - A proposed group keeps its record.
+  - Metamorphic: a name two series share against a name only one contains.
+- **Replay effect (against fix 3):** only regulator Sonnet changes. 0 records change on the other 9 packages, including NVIDIA's regulator, whose own series groups make the candidates redundant.
+  - **r1:** +3 groups (the dry series, the first and the second wet series). The existing figure-reference scoping (`EXPLICIT_ORIGINAL_FIGURE_GROUP_REFERENCE`) then binds three impact-time values to their own series: ~360 msec dry, 137–148 msec first wet, 46–49 msec second wet. All six are correct.
+  - **r2:** +3 groups and the dry ~360 msec value, all correct. Three records the adjudication judged incorrect leave the active set, because their subject was the model's group merging both wet series: two impact-time values and "The impact times ranged from 137-148 msec (Figure 11)". The merged group itself stays active and incorrect.
+  - **Judged strictly:** the model's "60 dry pneumatic impact tests" is now a duplicate name of the printed "Sixty O2 Wetting Dry Impact Tests" in both runs, so it counts as incorrect.
+- **Result:**
+  - regulator recall 9 → 14/32 (r1: entities-05 and -06, quantities-11, -13 and -14) and 8 → 11/32 (r2: entities-05 and -06, quantities-11);
+  - precision 31/34 → 36/40 (r1) and 29/36 → 32/37 (r2);
+  - 0 critical.
+- **Mark: single-source, suspect.** No other development source prints a test series in a caption, and the other 9 packages are unchanged.
