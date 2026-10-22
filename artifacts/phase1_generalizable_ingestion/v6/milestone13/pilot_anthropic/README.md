@@ -120,3 +120,34 @@ Each source was run once with `claude-opus-5-5`, at concurrency 3 and under the 
 - **Sonnet 5.5 stays the development model.** Opus remains an option for a final confirmation run.
 
 **Cost:** the Opus comparison cost $2.45; the whole pilot cost $3.68.
+
+## Orchestration and duplicates after the pilot (no new runs)
+
+Per Diego, no live run and no full replay was made for these changes. They are checked by pytest and by replaying the four round B inputs (seconds per input).
+
+**Inventory from the saved `timing` blocks.**
+- **Sequential chains.** Calls by stage in the Sonnet ignition run: identity 2, focused entities 2, propositions 3, quantity recovery 4, relationships 2, subsection recovery 1.
+  - The quantity and entity recoveries depend on the coverage left by the previous round, so they stay sequential.
+  - Parallelizing the remaining independent calls would save under 40 s per run.
+- **Local time inside a live run:** Sonnet 95 s and Opus 141 s on ignition; Sonnet 15 s and Opus 54 s on textiles.
+  - Opus validated more records (79 against 58 on textiles), and each validation pass grows with them.
+  - Post-extraction: 3–21 s.
+
+**Changes:**
+
+| change | before | after | check |
+|---|---|---|---|
+| `24f09e3` reuse the last validation of an unchanged output (by its digest; each caller gets its own copy; never reused if the validation changed its input) | the extraction re-validated an unchanged output between identity and its focused pass, between recovery rounds, and twice at the end of a recovery | validated once | unit test; textiles and ignition replays identical, 2/2. The gain inside a live run is not measured (no run made). |
+| `4b189de` one quantity per shared printed value (same subject, value, unit, role and reasons) | 98 J of Brass-filled PTFE active three times; 10,000 psia twice | one each | PTFE official scorer on the round B input: recall 28/34 before and after, precision 137/139 to 134/136 (the removed records were correct duplicates), 0 critical |
+| `4b189de` one open entity for a printed name read as both current and cited from the same span | Nomex and Kevlar active twice each, both judged incorrect | one UNRESOLVED entity each (`CURRENT_OR_CITED_STUDY_CONFLICT_FOR_SAME_SOURCE_SPAN`) | ignition precision 86/115 (0.75) to 86/111 (0.77); textiles and regulator unchanged |
+
+**Tests:** `tests/test_validation_reuse.py` and `tests/test_duplicate_consolidation.py`.
+- **Positive:** shared value merged; one open entity.
+- **Negative:** the same value printed in two places without overlap stays two; a cited and a current name printed in different places stay two.
+
+**Prefix cache, documented and not changed.** Sending one window of a stage first, so the others read its cached instructions, would save about 1,300–2,700 cached input tokens per later call. That is about $0.003 per call at Sonnet's price, while it gives up the prefetch overlap. It does not pay off at this scale.
+
+**Pending until Diego asks:**
+- the 29 historical negatives;
+- the full 46-input replay with the duplicate change;
+- a live measurement of the validation reuse.
