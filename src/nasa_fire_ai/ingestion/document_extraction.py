@@ -93,12 +93,26 @@ class Span(Strict):
     start: int | None = None
 
 
+class ProposedTerm(Strict):
+    """A term the approved vocabulary lacks, with the approved term it refines."""
+
+    term: str = Field(pattern=r"^[A-Za-z][A-Za-z0-9]*$")
+    parent: str
+
+
+# Chosen instead of an approved term when none fits; the proposed term is then
+# staged for ontology review, never used as approved vocabulary.
+PROPOSE_NEW_CLASS = "PROPOSE_NEW_CLASS"
+PROPOSE_NEW_RELATION = "PROPOSE_NEW_RELATION"
+
+
 class Entity(Strict):
     key: str
     label: str = Field(min_length=1)
     class_id: str
     study: Literal["current", "cited", "unknown"] = "unknown"
     support: list[Span] = Field(min_length=1)
+    proposed_class: ProposedTerm | None = None
 
 
 class Statement(Strict):
@@ -126,6 +140,7 @@ class Relation(Strict):
     relation: str
     object: str
     support: list[Span] = Field(min_length=1)
+    proposed_relation: ProposedTerm | None = None
 
 
 class Quantity(Strict):
@@ -327,6 +342,38 @@ def running_headers(evidence):
         counts.update(edge)
     floor = max(3, int(0.4 * len(pages)))
     return sorted(line for line, n in counts.items() if n >= floor and line)
+
+
+def adopt_proposed_term(kind, item, record, semantic):
+    """Use the model's explicitly proposed term in place of the sentinel.
+
+    The term is then unregistered, so validation stages it as an ontology extension
+    proposal; the parent must be approved vocabulary ("NONE" for a relation that
+    qualifies no approved relation). A sentinel without a term names nothing.
+    """
+    field, sentinel, slot, approved = {
+        "entities": ("proposed_class", PROPOSE_NEW_CLASS, "class_id", semantic.class_metadata),
+        "relations": ("proposed_relation", PROPOSE_NEW_RELATION, "relation", semantic.relations),
+    }.get(kind, (None, None, None, None))
+    if field is None or item.get(slot) != sentinel:
+        return
+    proposed = item.get(field)
+    if not proposed:
+        raise ValueError("PROPOSED_TERM_NOT_NAMED")
+    if proposed["term"] in approved:
+        # An approved term chosen through the sentinel is just that term.
+        item[slot] = proposed["term"]
+        return
+    if proposed["parent"] not in approved and not (
+        kind == "relations" and proposed["parent"] == "NONE"
+    ):
+        raise ValueError("PROPOSED_TERM_PARENT_NOT_APPROVED")
+    item[slot] = proposed["term"]
+    record["proposed_term"] = {
+        "term": proposed["term"],
+        "parent": None if proposed["parent"] == "NONE" else proposed["parent"],
+        "basis": "MODEL_PROPOSED_TERM_WITH_APPROVED_PARENT",
+    }
 
 
 PRINTED_CAPTION_LINE = re.compile(r"\s*(?:Figure|Fig\.|Table)\s+\d+[A-Za-z]?\s*[-–—:.]\s*\S")
@@ -5181,6 +5228,7 @@ def validated_output(output, package, document, semantic, recover_roles=True):
             try:
                 spans = locate(item["support"], evidence)
                 record["support_spans"] = spans
+                adopt_proposed_term(kind, item, record, semantic)
                 if kind == "entities":
                     if item["key"] in ambiguous_keys:
                         raise ValueError("AMBIGUOUS_ENTITY_KEY")
@@ -7461,7 +7509,15 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 for c in semantic.class_metadata
                 if any(has_class(c, base, semantic) for base in bases)
             ]
-            schema["$defs"]["Entity"]["properties"]["class_id"]["enum"] = sorted(entity_classes)
+            schema["$defs"]["Entity"]["properties"]["class_id"]["enum"] = sorted(entity_classes) + [
+                PROPOSE_NEW_CLASS
+            ]
+            request["vocabulary_extension"] = (
+                "When no listed class fits a source-supported entity, set class_id to "
+                f"{PROPOSE_NEW_CLASS} and give proposed_class: a new CamelCase term and the "
+                "listed class it refines as parent. It is staged for ontology review, "
+                "never approved. Prefer a listed class whenever one is equivalent."
+            )
         for definition in schema["$defs"].values():
             # Strict shape enforcement is useful; a huge per-token anchor enum can
             # make hosted constrained decoding slow. The independent resolver
@@ -7542,6 +7598,13 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
         if "Relation" in schema["$defs"]:
             schema["$defs"]["Relation"]["properties"]["relation"]["enum"] = sorted(
                 semantic.relations
+            ) + [PROPOSE_NEW_RELATION]
+            request["vocabulary_extension"] = (
+                "When no listed relation states what the source prints between two entities, "
+                f"set relation to {PROPOSE_NEW_RELATION} and give proposed_relation: a new "
+                "camelCase term and, as parent, the listed relation it qualifies or NONE. It is "
+                "staged for ontology review, never approved. Prefer a listed relation "
+                "whenever one is equivalent."
             )
             request["relation_signatures"] = {
                 relation: {

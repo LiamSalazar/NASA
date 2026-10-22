@@ -215,6 +215,15 @@ def vocabulary_extension_proposals(records, entity_classes, approved=None):
                 },
             )
             proposal["supporting_records"].append(record["id"])
+            parent = (record.get("proposed_term") or {}).get("parent")
+            if parent and parent not in proposal.setdefault("proposed_parents", []):
+                # The approved term the model said this one refines: a candidate
+                # placement for review, never a decided one.
+                proposal["proposed_parents"].append(parent)
+                if kind != "relation" and len(proposal["proposed_parents"]) == 1:
+                    proposal["parent"] = parent
+                elif kind != "relation":
+                    proposal.pop("parent", None)
             label = item.get("label") or item.get("text") or ""
             if label and kind != "relation" and label not in proposal["instances"]:
                 proposal["instances"].append(" ".join(label.split())[:160])
