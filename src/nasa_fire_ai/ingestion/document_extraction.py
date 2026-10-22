@@ -4859,7 +4859,45 @@ def state_settled_roles(records, held):
     return settled
 
 
+# The last validations, by the digest of what was validated: the extraction
+# validates an unchanged output again between stages and recovery rounds.
+_VALIDATIONS = {}
+
+
 def validate_output(output, package, document, semantic, recover_roles=True):
+    """The validation of this output, recomputed only when the output has changed.
+
+    Callers receive their own copy. A validation that changed the output it was
+    given is never reused.
+    """
+    import hashlib
+
+    def digest():
+        return hashlib.sha256(
+            json.dumps(output, sort_keys=True, ensure_ascii=False, default=str).encode()
+        ).hexdigest()
+
+    key = (
+        id(package),
+        id(package.get("evidence")),
+        len(package.get("evidence") or []),
+        id(document),
+        id(semantic),
+        recover_roles,
+        digest(),
+    )
+    cached = _VALIDATIONS.get(key)
+    if cached and cached[0] is package and cached[1] is document and cached[2] is semantic:
+        return copy.deepcopy(cached[3])
+    result = validated_output(output, package, document, semantic, recover_roles)
+    if digest() == key[-1]:
+        if len(_VALIDATIONS) > 8:
+            _VALIDATIONS.clear()
+        _VALIDATIONS[key] = (package, document, semantic, copy.deepcopy(result))
+    return result
+
+
+def validated_output(output, package, document, semantic, recover_roles=True):
     """Independent validation recomputed from source text and approved contracts.
 
     SOURCE_SUPPORTED is a bounded lexical/structural validation status, never
