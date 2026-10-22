@@ -1,0 +1,557 @@
+{
+ "basis": "Package 1.2: the 69 proposed-and-rejected target-run pairs of the milestone 12 runs (target_miss_diagnosis.json), each classified by the branch author against the printed source: A unsupported as proposed (must stay rejected), B source-supported but rejected by an over-restrictive contract, C valid evidence whose association (subject, scope, role, applicable context) is incomplete.",
+ "pairs_by_class": {
+  "C": 30,
+  "B": 20,
+  "A": 19
+ },
+ "targets_by_class": {
+  "C": 19,
+  "B": 12,
+  "A": 12
+ },
+ "targets": [
+  {
+   "source": "ignition",
+   "target": "quantities-06",
+   "kind": "quantities",
+   "runs": [
+    "r1"
+   ],
+   "class": "C",
+   "governing_code": "CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+   "reason": "two proposals give the same printed value both roles; the configuration reading is held by the role conflict",
+   "printed": "chamber that could provide continuous operation at 57 kPa."
+  },
+  {
+   "source": "ignition",
+   "target": "quantities-14",
+   "kind": "quantities",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+   "reason": "correct configuration and subject; the label is not printed, the clause prints 'rotated at'",
+   "printed": "the chamber was rotated at 20.4 RPM for several minutes before the drop"
+  },
+  {
+   "source": "ignition",
+   "target": "quantities-15",
+   "kind": "quantities",
+   "runs": [
+    "r1"
+   ],
+   "class": "B",
+   "governing_code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+   "reason": "correct value and subject; the printed name is 'slow flow', the label 'ignition flow velocity' is not printed",
+   "printed": "The ignition region of the sample was exposed to a slow flow (~30 cm/s) of gas"
+  },
+  {
+   "source": "ignition",
+   "target": "quantities-16",
+   "kind": "quantities",
+   "runs": [
+    "r1"
+   ],
+   "class": "A",
+   "governing_code": "EXPLICIT_DERIVATION_IS_NOT_REPORTED_MEASUREMENT",
+   "reason": "a cited 1-g estimate proposed as a reported quantity of the study; rejection correct",
+   "printed": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s, but the lunar gravity velocity is not known."
+  },
+  {
+   "source": "ignition",
+   "target": "statements-18",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+   "reason": "a printed execution configuration (two samples per drop) held as a changing observation",
+   "printed": "To increase the number of tests for repeatability, two samples were ignited and tested in each drop."
+  },
+  {
+   "source": "ignition",
+   "target": "statements-19",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+   "reason": "experiment coverage sentence; subject and role left open",
+   "printed": "Five materials were tested in both facilities."
+  },
+  {
+   "source": "ignition",
+   "target": "statements-20",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "A",
+   "governing_code": "DERIVED_IS_NOT_OBSERVATION",
+   "reason": "the proposal is another sentence (plot description) typed observation; the target sentence was not proposed as such",
+   "printed": "the actual velocity (induced by the simulated gravity) is not known."
+  },
+  {
+   "source": "ignition",
+   "target": "statements-22",
+   "kind": "statements",
+   "runs": [
+    "r1"
+   ],
+   "class": "A",
+   "governing_code": "OPEN_QUESTION_NOT_EXPLICIT_IN_SOURCE",
+   "reason": "a tentative, non-causal statement proposed as an open question",
+   "printed": "Various differences in the test methods have been considered (turbulence at high flow rates, ignition times, delay after ignition before initiating the test, oxygen augmentation during ignition, and buoyancy-enhanced ign"
+  },
+  {
+   "source": "ignition",
+   "target": "statements-25",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+   "reason": "tentative conclusion proposed with the right role in one reading; its subject applicability is unresolved",
+   "printed": "This suggests that increased flammability at lunar conditions may not be a universal issue, however further research is needed to validate this possibility."
+  },
+  {
+   "source": "ignition",
+   "target": "quantities-28",
+   "kind": "quantities",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION",
+   "reason": "table cell whose unit is printed in its column header (rho (kg/m3)); the unit is not bound to the cell value",
+   "printed": "1190"
+  },
+  {
+   "source": "ignition",
+   "target": "quantities-29",
+   "kind": "quantities",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION",
+   "reason": "table cell whose unit is printed in its column header; the unit is not bound",
+   "printed": "2.3"
+  },
+  {
+   "source": "ignition",
+   "target": "statements-21",
+   "kind": "statements",
+   "runs": [
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "DERIVED_IS_NOT_OBSERVATION",
+   "reason": "a reported comparison of a measured limit with an extrapolated one, held as derived rather than observed",
+   "printed": "In figures 7, 8 and 9, the lunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the WSTF testing."
+  },
+  {
+   "source": "regulator",
+   "target": "quantities-07",
+   "kind": "quantities",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+   "reason": "model prediction proposed as derived with the right role; its subject is not in the applicable source",
+   "printed": "Maximum gas temperature = 580-674F"
+  },
+  {
+   "source": "regulator",
+   "target": "quantities-09",
+   "kind": "quantities",
+   "runs": [
+    "r1"
+   ],
+   "class": "B",
+   "governing_code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+   "reason": "correct configuration and subject; the label is not printed, the clause prints 'was injected'",
+   "printed": "20uL was injected"
+  },
+  {
+   "source": "regulator",
+   "target": "quantities-10",
+   "kind": "quantities",
+   "runs": [
+    "r1"
+   ],
+   "class": "C",
+   "governing_code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+   "reason": "printed 'film coating' value preserved; its subject is unresolved",
+   "printed": "seeking to achieve ~100 mg/ft2 film coating"
+  },
+  {
+   "source": "regulator",
+   "target": "statements-15",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+   "reason": "a cited partial test with a tentative reading; current or cited scope unresolved",
+   "printed": "A partial test at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was damaged during the testing and additional testing will be required to confirm this result."
+  },
+  {
+   "source": "regulator",
+   "target": "statements-16",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+   "reason": "configuration sentence (dodecane chosen); experimental scope unresolved",
+   "printed": "pure dodecane was used instead so that the materials properties would be known and the composition could be repeatable and known."
+  },
+  {
+   "source": "regulator",
+   "target": "statements-19",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+   "reason": "system-only measurement before reconnection; its subject must be the test system, unresolved",
+   "printed": "Impact times of 80-93 msec were measured after adjustments and prior to re-connecting the POR test article to the test system."
+  },
+  {
+   "source": "regulator",
+   "target": "statements-20",
+   "kind": "statements",
+   "runs": [
+    "r1"
+   ],
+   "class": "A",
+   "governing_code": "UNCERTAINTY_CANNOT_BECOME_CONFIRMED",
+   "reason": "a tentative explanation proposed as a confirmed conclusion or observation; rejection correct",
+   "printed": "appeared to have softened the seal resulting in a leak."
+  },
+  {
+   "source": "regulator",
+   "target": "statements-22",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+   "reason": "correct observation sentence held because the running page header and a figure caption were included in the span",
+   "printed": "Functional testing performed after the initial wet impact testing demonstrated nominal POR operation"
+  },
+  {
+   "source": "regulator",
+   "target": "statements-24",
+   "kind": "statements",
+   "runs": [
+    "r1"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+   "reason": "separate demonstration after disconnection; subject and role conflict unresolved",
+   "printed": "Upon impact, a small, brief flame was generated from the impact demonstrating that the adiabatic compression conditions were adequate to ignite the dodecane contaminant."
+  },
+  {
+   "source": "regulator",
+   "target": "statements-25",
+   "kind": "statements",
+   "runs": [
+    "r1"
+   ],
+   "class": "C",
+   "governing_code": "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+   "reason": "measurement limitation; author role and subject unresolved",
+   "printed": "SEM analysis could not verify this as the quantity was too small."
+  },
+  {
+   "source": "regulator",
+   "target": "statements-26",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+   "reason": "correct finding held because the running page header was included",
+   "printed": "SEM of the filter found carbon"
+  },
+  {
+   "source": "regulator",
+   "target": "statements-28",
+   "kind": "statements",
+   "runs": [
+    "r1"
+   ],
+   "class": "C",
+   "governing_code": "CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN",
+   "reason": "author conclusion proposed as both conclusion and observation; held by the role conflict",
+   "printed": "evidence of dodecane combustion was found in the regulator but did not result in any functional degradation."
+  },
+  {
+   "source": "regulator",
+   "target": "relations-30",
+   "kind": "relations",
+   "runs": [
+    "r1"
+   ],
+   "class": "C",
+   "governing_code": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+   "reason": "the series hasMaterial dodecane is printed; the applicable source context was not reconstructed",
+   "printed": "For the dodecane runs, 20uL was injected at the insterstage port using a syringe"
+  },
+  {
+   "source": "regulator",
+   "target": "relations-31",
+   "kind": "relations",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+   "reason": "first wet series with dodecane; applicable context not reconstructed",
+   "printed": "Five impacts were then executed with the dodecane load in the POR interstage port."
+  },
+  {
+   "source": "regulator",
+   "target": "relations-32",
+   "kind": "relations",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE",
+   "reason": "second wet series with its own injection; applicable context not reconstructed",
+   "printed": "A final series of 5 wet impacts was executed after the test cell was adjusted to further reduce impact times and another 20 µL of dodecane was injected"
+  },
+  {
+   "source": "regulator",
+   "target": "statements-21",
+   "kind": "statements",
+   "runs": [
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+   "reason": "a printed controlled adjustment (configuration change) held because the configuration role is not established",
+   "printed": "the CHDS was adjusted to reduce POR body temperatures for the remaining three test runs."
+  },
+  {
+   "source": "regulator",
+   "target": "statements-27",
+   "kind": "statements",
+   "runs": [
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW",
+   "reason": "post-test model result; its author role is unresolved",
+   "printed": "The model confirmed that for both the 150 msec and 60 msec pressurization cases tested, the lag was negligible"
+  },
+  {
+   "source": "textiles",
+   "target": "quantities-05",
+   "kind": "quantities",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "A",
+   "governing_code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+   "reason": "a proposed atmosphere proposed as a reported measurement; rejection correct",
+   "printed": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+  },
+  {
+   "source": "textiles",
+   "target": "quantities-06",
+   "kind": "quantities",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "A",
+   "governing_code": "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT",
+   "reason": "a proposed atmosphere proposed as a reported measurement; rejection correct",
+   "printed": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+  },
+  {
+   "source": "textiles",
+   "target": "quantities-07",
+   "kind": "quantities",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "A",
+   "governing_code": "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT",
+   "reason": "a contingency test concentration proposed as a reported measurement; rejection correct",
+   "printed": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+  },
+  {
+   "source": "textiles",
+   "target": "quantities-10",
+   "kind": "quantities",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION",
+   "reason": "normative bound with an inch glyph that the unit reader does not bind",
+   "printed": "Burn length < 6”"
+  },
+  {
+   "source": "textiles",
+   "target": "statements-18",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+   "reason": "qualified state-of-art claim; scope and subject unresolved",
+   "printed": "Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% O2 environments"
+  },
+  {
+   "source": "textiles",
+   "target": "statements-19",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "B",
+   "governing_code": "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE",
+   "reason": "a criterion printed as an item of a test-criteria list; its normative role comes from that list structure, which the rule does not read",
+   "printed": "No transfer of burning debris (melt / drip)"
+  },
+  {
+   "source": "textiles",
+   "target": "statements-21",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "A",
+   "governing_code": "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE",
+   "reason": "a permitted method proposed as an experimental condition; rejection correct",
+   "printed": "Metal fixture can be used to shield the vertical raw edges"
+  },
+  {
+   "source": "textiles",
+   "target": "statements-22",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+   "reason": "author-reported comparison; experimental scope unresolved",
+   "printed": "Coupon-level flammability testing at 37% O2 shows increased propagation with configuration and layup testing as compared with single material tests"
+  },
+  {
+   "source": "textiles",
+   "target": "statements-23",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+   "reason": "development activity statement; subject unresolved",
+   "printed": "NASA’s textile engineering and development team has been sourcing existing COTS textile products, modifying COTS textiles, and developing custom fire-resistant solutions"
+  },
+  {
+   "source": "textiles",
+   "target": "statements-24",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "A",
+   "governing_code": "GUIDANCE_NOT_EXPLICIT_IN_SOURCE",
+   "reason": "a future certification plan proposed as guidance or an experimental condition; rejection correct",
+   "printed": "Certification testing will be performed at White Sands Test Facility (WSTF)"
+  },
+  {
+   "source": "textiles",
+   "target": "statements-27",
+   "kind": "statements",
+   "runs": [
+    "r1",
+    "r2"
+   ],
+   "class": "A",
+   "governing_code": "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT",
+   "reason": "a stated goal proposed as an established conclusion; rejection correct",
+   "printed": "Goal to systematically mature materials that enable safer and more sustainable human exploration missions"
+  },
+  {
+   "source": "textiles",
+   "target": "relations-28",
+   "kind": "relations",
+   "runs": [
+    "r1"
+   ],
+   "class": "A",
+   "governing_code": "LOCAL_SUBJECT_BINDING_UNRESOLVED",
+   "reason": "the material relation proposed from the investigation, not from the fabric sample; rejection correct",
+   "printed": "100% PBI knit fabric for crew clothing next-to-skin shirt"
+  },
+  {
+   "source": "textiles",
+   "target": "quantities-16",
+   "kind": "quantities",
+   "runs": [
+    "r2"
+   ],
+   "class": "A",
+   "governing_code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+   "reason": "a minimum target environment proposed as a reported measurement; rejection correct",
+   "printed": "a minimum of 37% O2 at 8.2 psia"
+  },
+  {
+   "source": "textiles",
+   "target": "quantities-17",
+   "kind": "quantities",
+   "runs": [
+    "r2"
+   ],
+   "class": "C",
+   "governing_code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+   "reason": "target pressure preserved; its subject unresolved",
+   "printed": "a minimum of 37% O2 at 8.2 psia"
+  }
+ ]
+}
