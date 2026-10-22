@@ -6497,6 +6497,13 @@ def validated_output(output, package, document, semantic, recover_roles=True):
         "review_requirements": list(issues.values()),
         "entities_by_key": entities,
     }
+    from nasa_fire_ai.ingestion.proposal_states import (
+        proposal_state,
+        vocabulary_extension_proposals,
+    )
+
+    for record in records:
+        record["proposal_state"] = proposal_state(record)
     if recover_roles:
         from nasa_fire_ai.ingestion.composition import (
             composition_assertions,
@@ -6522,9 +6529,16 @@ def validated_output(output, package, document, semantic, recover_roles=True):
         for assertion in assertions:
             assertion["explanation"] = explain(assertion)
         result["composition_proposals"] = assertions
+        # The vocabulary the document's own supported records need and the
+        # approved ontology lacks, staged beside them; never activated here.
+        entity_classes = {
+            r["entity_id"]: r["proposal"]["class_id"]
+            for r in records
+            if r["kind"] == "entities" and r.get("entity_id")
+        }
         result["ontology_extension_proposals"] = ontology_extension_proposals(
             assertions, semantic.relations
-        )
+        ) + vocabulary_extension_proposals(records, entity_classes)
     return result
 
 
