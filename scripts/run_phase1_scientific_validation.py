@@ -116,6 +116,14 @@ def main():
             "endpoint": settings.nvidia_base_url or "https://integrate.api.nvidia.com/v1",
             "provider_envelope": asdict(ProviderEnvelope()),
         }
+        if settings.science_provider == "anthropic":
+            # The Anthropic request limit and output floor are environment settings too;
+            # a change to either must stop a frozen run like any other configuration.
+            from nasa_fire_ai.ingestion.document_extraction import request_context_limit
+            from nasa_fire_ai.llm import anthropic_provider
+
+            actual["request_context_tokens"] = request_context_limit(settings, ProviderEnvelope())
+            actual["anthropic_min_max_tokens"] = anthropic_provider.MIN_MAX_TOKENS
         if actual != freeze["configuration"]:
             raise ValueError("Frozen inference configuration changed")
     if args.source == "holdout":

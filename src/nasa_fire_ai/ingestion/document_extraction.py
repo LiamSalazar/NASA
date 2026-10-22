@@ -7359,6 +7359,9 @@ def record_discarded_prefetch(registry, stage, call, ahead):
     return (usage or {}).get("total_tokens") or 0
 
 
+ANTHROPIC_REQUEST_CONTEXT_CEILING = 131072
+
+
 def request_context_limit(settings, envelope):
     """The largest request, in estimated context tokens, sent before a window is split.
 
@@ -7369,7 +7372,14 @@ def request_context_limit(settings, envelope):
     that fewer are split. NVIDIA keeps its envelope.
     """
     if getattr(settings, "science_provider", "nvidia") == "anthropic":
-        return int(os.getenv("ANTHROPIC_SCIENCE_REQUEST_CONTEXT_TOKENS", "96000"))
+        limit = int(os.getenv("ANTHROPIC_SCIENCE_REQUEST_CONTEXT_TOKENS", "96000"))
+        # A spending guard: past 131,072 one request could cost about 2 USD of input.
+        if not 4096 <= limit <= ANTHROPIC_REQUEST_CONTEXT_CEILING:
+            raise ValueError(
+                "ANTHROPIC_SCIENCE_REQUEST_CONTEXT_TOKENS must be between 4096 and "
+                f"{ANTHROPIC_REQUEST_CONTEXT_CEILING}, got {limit}"
+            )
+        return limit
     return envelope.context_tokens
 
 

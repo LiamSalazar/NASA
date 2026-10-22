@@ -49,6 +49,14 @@ Under `07709c0` the same windows, estimated at 71k–78k tokens, went whole unde
 - the brake counter peaked at 346k of 500k;
 - the other requests are byte-identical in construction.
 
+**No request was paid twice.** Every top-level propositions window of the 8 runs ended `COMPLETE` or `COMPLETE_WITH_REJECTIONS`. None ended `RECOVERED_BY_SPLIT`, `SPLIT_TRUNCATED_TASK`, `EMPTY_WITH_SOURCE_CANDIDATES` or `PARTIAL_*`, so no whole request was paid and then its halves (0 of 12 windows).
+
+**Hardening after the review:**
+- `ANTHROPIC_SCIENCE_REQUEST_CONTEXT_TOKENS` is refused outside 4,096–131,072.
+- The frozen-configuration check of `run_phase1_scientific_validation.py` also covers, for Anthropic only, the request limit and the `max_tokens` floor. NVIDIA's dictionary is unchanged.
+- The live launcher uses a 500,000-token brake for Anthropic when none is given.
+- `tests/test_request_context_limit.py` no longer depends on the environment, and includes the negative case: an Anthropic request over the limit is still split.
+
 ## Causes of the variation
 
 **Between the rounds (same code, so the model):**

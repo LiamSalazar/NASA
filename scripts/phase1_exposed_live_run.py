@@ -209,6 +209,9 @@ def main():
             shutil.copytree(ROOT / name, workspace / name)
 
     settings = Settings(root=workspace)
+    if settings.science_provider == "anthropic" and args.max_total_tokens is None:
+        # A billed provider never runs without the per-run spending brake.
+        args.max_total_tokens = 500000
     if not settings.science_api_key:
         raise RuntimeError(
             ("ANTHROPIC" if settings.science_provider == "anthropic" else "NVIDIA")
