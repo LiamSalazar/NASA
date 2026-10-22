@@ -3,9 +3,9 @@
 Updated at the end of every work package. A new session reads `CLAUDE.md`, then this file, then the canonical record `artifacts/phase1_generalizable_ingestion/v6/milestone13/phase1_plan.md`.
 
 - **Branch:** `diego/research` (never `main`).
-- **Last package closed:** 3.1 (quantity names from the printed setting verb; measured at point A).
-- **Next package:** 3.2, experimental scope and missing subjects (class C of `rejected_classification.md`), no model, no runs.
-- **Open worktrees:** `../nasa-p21` (working worktree). `../nasa-batch14` is superseded by 3.1 and can be removed.
+- **Last package closed:** 3.2 (slide-deck sections and "prior to" + step, `d81098d`, `b0ad37b`; measured at point A).
+- **Next package:** 3.3, loose units, relations needing reconstructed source context, headers and footers inside statements; no model, no runs.
+- **Open worktrees:** `../nasa-p21` (idle). Run the full pytest in the main checkout: the worktree lacks ignored local data (`artifacts/phase3c_*`, sqlite), and 36 tests fail there for that reason only.
 - **Runs in progress:** none.
 - **Spend:** Anthropic pilot $3.68 of the monthly $100; next monthly credit on 2026-11-02.
 - **Waiting on:**
