@@ -1,4 +1,4 @@
-"""Target-by-target miss diagnosis for the milestone 12 runs (and their milestone 13 replays).
+"""Target-by-target miss diagnosis of live runs against their adjudication (and replays).
 
     python miss_diag.py REPO NFA_REPLAY_DIR OUT_JSON [MILESTONE TAG RUN,RUN]
 
@@ -7,10 +7,15 @@ r1,r2) name the live runs and the evaluation_b.json whose adjudication is used
 (MILESTONE may be a subfolder, for example milestone13/package4).
 
 Each accessible frozen target that the run's adjudication did not count correct is put in one class:
-  WINDOW_LOST            no finished model attempt carried the target's evidence
+  WINDOW_LOST            no finished attempt of the stage that proposes the target's kind
+                         (identity, propositions, relationships) carried its evidence
+                         (a window deferred by the token brake or never split counts here)
   NOT_PROPOSED           no record of the target's kind overlaps the target span
   PROPOSED_REJECTED      records of the kind overlap it, none SOURCE_SUPPORTED (first reason codes kept)
   ACCEPTED_MISGRADED     a SOURCE_SUPPORTED record overlaps it, but the adjudication did not count it correct
+
+A quantity overlaps a target by its printed value span, not its whole supporting
+sentence; table-cell quantity proposals (pdf_table_quantity_proposals) count too.
 """
 
 import collections
@@ -31,8 +36,17 @@ def load(path):
     return json.load(gzip.open(path, "rt", encoding="utf-8"))
 
 
+STAGE = {"entities": "identity", "quantities": "propositions", "statements": "propositions",
+         "relations": "relationships"}
+
+
 def overlaps(record, target):
-    for s in (record.get("quantity_value_spans") or []) + (record.get("support_spans") or []):
+    # A quantity is its printed value: "5.2 cm by 14.0 cm" does not overlap the 7.4 cm
+    # of the same sentence.
+    spans = (record.get("quantity_value_spans") if record["kind"] == "quantities" else None) or (
+        record.get("support_spans") or []
+    )
+    for s in spans:
         if (
             s.get("evidence_id") == target["evidence_id"]
             and s.get("start") is not None
@@ -50,11 +64,33 @@ def reason(record):
     return str(r).split(";")[0][:90]
 
 
-def classify(target, records, carried, correct):
+LOST = {"DEFERRED_BUDGET", "NEEDS_CONTEXT_SPLIT", "PROVIDER_BLOCKED", "FAILED"}
+
+
+def lost_window(target, outcomes):
+    """The stage's own windows that cover the target, when none of them was answered."""
+    covering = [
+        o
+        for o in outcomes
+        if o.get("stage") == STAGE[target["kind"]]
+        and not o.get("focus")
+        and any(
+            m["evidence_id"] == target["evidence_id"] and m["start"] <= target["start"] < m["end"]
+            for m in o.get("members", [])
+        )
+    ]
+    if covering and all(o.get("model") in LOST for o in covering):
+        return [{"window": o.get("segment_id"), "model": o.get("model")} for o in covering]
+    return None
+
+
+def classify(target, records, carried, correct, outcomes=()):
     if target["id"] in correct:
         return None
-    if target["id"] not in carried:
-        return {"class": "WINDOW_LOST"}
+    if target["id"] not in carried[STAGE[target["kind"]]]:
+        return {"class": "WINDOW_LOST", "stage": STAGE[target["kind"]]}
+    if lost := lost_window(target, outcomes):
+        return {"class": "WINDOW_LOST", "stage": STAGE[target["kind"]], "windows": lost}
     same = [r for r in records if r["kind"] == target["kind"] and overlaps(r, target)]
     other = sorted({r["kind"] for r in records if r["kind"] != target["kind"] and overlaps(r, target)})
     if not same:
@@ -92,30 +128,39 @@ for source in ("ignition", "regulator", "textiles"):
         if not os.path.exists(folder):  # package 4 names its Sonnet runs this way
             folder = os.path.join(M12, f"{source}_sonnet_{TAG}_{run}")
         attempts = load(os.path.join(folder, "attempts.json.gz"))["attempts"]
+        summary_path = os.path.join(folder, "summary.json")
+        outcomes = (
+            json.load(open(summary_path, encoding="utf-8"))["processing"]["outcomes"]
+            if os.path.exists(summary_path)
+            else []
+        )
         # Requests carry text in segments of their own ids, so a target's evidence
         # counts as sent when its printed words reach a finished request.
-        sent = []
+        sent = collections.defaultdict(list)
 
-        def strings(x):
+        def strings(x, into):
             if isinstance(x, str):
-                sent.append(x)
+                into.append(x)
             elif isinstance(x, dict):
                 for v in x.values():
-                    strings(v)
+                    strings(v, into)
             elif isinstance(x, list):
                 for v in x:
-                    strings(v)
+                    strings(v, into)
 
         for a in attempts:
-            if a.get("state") == "FINISHED":
-                strings(a.get("request"))
-        text = " ".join(" ".join(sent).split()).lower()
-        carried = set()
-        for t in targets:
-            words = " ".join(t["quote"].split()).lower()
-            pieces = [words[i : i + 30] for i in range(0, max(1, len(words) - 29), 15)]
-            if any(piece in text for piece in pieces):
-                carried.add(t["id"])
+            # A refused or failed attempt carried nothing the model answered.
+            if a.get("state") == "FINISHED" and not (a.get("outcome") or {}).get("error_type"):
+                strings(a.get("request"), sent[a.get("stage")])
+        carried = {}
+        for stage in set(STAGE.values()):
+            text = " ".join(" ".join(sent[stage]).split()).lower()
+            carried[stage] = set()
+            for t in targets:
+                words = " ".join(t["quote"].split()).lower()
+                pieces = [words[i : i + 30] for i in range(0, max(1, len(words) - 29), 15)]
+                if any(piece in text for piece in pieces):
+                    carried[stage].add(t["id"])
         correct = set(evaluation["runs"][f"{source}_{run}"]["correct"])
         for label, path in (
             ("live", os.path.join(folder, "prepared.json.gz")),
@@ -123,10 +168,15 @@ for source in ("ignition", "regulator", "textiles"):
         ):
             if not os.path.exists(path):
                 continue
-            records = [r for r in load(path)["package"]["scientific_extraction"]["records"] if not r.get("duplicate_of")]
+            extraction = load(path)["package"]["scientific_extraction"]
+            records = [
+                r
+                for r in extraction["records"] + extraction.get("pdf_table_quantity_proposals", [])
+                if not r.get("duplicate_of")
+            ]
             rows = {}
             for t in targets:
-                c = classify(t, records, carried, correct)
+                c = classify(t, records, carried, correct, outcomes if label == "live" else ())
                 if c:
                     c.update(kind=t["kind"], quote=" ".join(t["quote"].split())[:160])
                     rows[t["id"]] = c

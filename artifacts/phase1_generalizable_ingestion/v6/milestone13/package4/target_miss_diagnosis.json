@@ -1,14 +1,14 @@
 {
- "basis": "Target-by-target miss diagnosis for the milestone 12 runs (and their milestone 13 replays).",
+ "basis": "Target-by-target miss diagnosis of live runs against their adjudication (and replays).",
  "runs": {
   "ignition_r1_live": {
    "accessible": 29,
    "correct": 13,
    "missed": 16,
    "by_class": {
-    "PROPOSED_REJECTED": 11,
-    "ACCEPTED_MISGRADED": 3,
-    "NOT_PROPOSED": 2
+    "PROPOSED_REJECTED": 14,
+    "ACCEPTED_MISGRADED": 1,
+    "NOT_PROPOSED": 1
    },
    "targets": {
     "quantities-05": {
@@ -25,35 +25,37 @@
     "quantities-06": {
      "class": "PROPOSED_REJECTED",
      "statuses": {
-      "UNRESOLVED": 2
+      "UNRESOLVED": 1
      },
      "reasons": {
-      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
      },
      "kind": "quantities",
      "quote": "chamber that could provide continuous operation at 57 kPa."
     },
     "quantities-07": {
-     "class": "ACCEPTED_MISGRADED",
-     "supported": [
-      {
-       "id": "0a66c72f",
-       "label": "ID",
-       "type": "experimental_configuration"
-      }
-     ],
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2,
+      "REJECTED": 1
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2,
+      "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION": 1
+     },
      "kind": "quantities",
      "quote": "where the 5.2 cm by 14.0 cm samples were tested."
     },
     "quantities-08": {
-     "class": "ACCEPTED_MISGRADED",
-     "supported": [
-      {
-       "id": "0a66c72f",
-       "label": "ID",
-       "type": "experimental_configuration"
-      }
-     ],
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2,
+      "REJECTED": 1
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2,
+      "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION": 1
+     },
      "kind": "quantities",
      "quote": "where the 5.2 cm by 14.0 cm samples were tested."
     },
@@ -178,22 +180,25 @@
      "class": "PROPOSED_REJECTED",
      "statuses": {
       "REJECTED": 16,
-      "UNRESOLVED": 2
+      "UNRESOLVED": 21
      },
      "reasons": {
+      "ORIGINAL_TABLE_QUANTITY_ROLE_AND_EXPERIMENTAL_SCOPE_REQUIRE_REVIEW": 21,
       "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION": 8,
       "QUANTITY_EXPRESSION_ABSENT": 6,
-      "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT": 2,
-      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+      "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT": 2
      },
      "kind": "quantities",
      "quote": "1190"
     },
     "quantities-29": {
-     "class": "NOT_PROPOSED",
-     "other_kinds_overlapping": [
-      "entities"
-     ],
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 18
+     },
+     "reasons": {
+      "ORIGINAL_TABLE_QUANTITY_ROLE_AND_EXPERIMENTAL_SCOPE_REQUIRE_REVIEW": 18
+     },
      "kind": "quantities",
      "quote": "2.3"
     }
@@ -204,43 +209,46 @@
    "correct": 12,
    "missed": 17,
    "by_class": {
-    "PROPOSED_REJECTED": 5,
-    "ACCEPTED_MISGRADED": 5,
-    "NOT_PROPOSED": 7
+    "PROPOSED_REJECTED": 7,
+    "ACCEPTED_MISGRADED": 3,
+    "WINDOW_LOST": 6,
+    "NOT_PROPOSED": 1
    },
    "targets": {
     "quantities-06": {
      "class": "PROPOSED_REJECTED",
      "statuses": {
-      "UNRESOLVED": 2
+      "UNRESOLVED": 1
      },
      "reasons": {
-      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
      },
      "kind": "quantities",
      "quote": "chamber that could provide continuous operation at 57 kPa."
     },
     "quantities-07": {
-     "class": "ACCEPTED_MISGRADED",
-     "supported": [
-      {
-       "id": "0a66c72f",
-       "label": "ID",
-       "type": "experimental_configuration"
-      }
-     ],
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2,
+      "REJECTED": 1
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2,
+      "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION": 1
+     },
      "kind": "quantities",
      "quote": "where the 5.2 cm by 14.0 cm samples were tested."
     },
     "quantities-08": {
-     "class": "ACCEPTED_MISGRADED",
-     "supported": [
-      {
-       "id": "0a66c72f",
-       "label": "ID",
-       "type": "experimental_configuration"
-      }
-     ],
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2,
+      "REJECTED": 1
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2,
+      "QUANTITY_NOT_ORIGINAL_NUMERIC_EXPRESSION": 1
+     },
      "kind": "quantities",
      "quote": "where the 5.2 cm by 14.0 cm samples were tested."
     },
@@ -275,16 +283,34 @@
      "quote": "the chamber was rotated at 20.4 RPM for several minutes before the drop"
     },
     "quantities-16": {
-     "class": "NOT_PROPOSED",
-     "other_kinds_overlapping": [
-      "entities"
+     "class": "WINDOW_LOST",
+     "stage": "propositions",
+     "windows": [
+      {
+       "window": "window-6574c9398481a96202c5fb0e",
+       "model": "NEEDS_CONTEXT_SPLIT"
+      },
+      {
+       "window": "window-8d3ec845a28384ff9cba3ffd",
+       "model": "DEFERRED_BUDGET"
+      }
      ],
      "kind": "quantities",
      "quote": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s, but the lunar gravity velocity is not known."
     },
     "quantities-17": {
-     "class": "NOT_PROPOSED",
-     "other_kinds_overlapping": [],
+     "class": "WINDOW_LOST",
+     "stage": "propositions",
+     "windows": [
+      {
+       "window": "window-6574c9398481a96202c5fb0e",
+       "model": "NEEDS_CONTEXT_SPLIT"
+      },
+      {
+       "window": "window-8d3ec845a28384ff9cba3ffd",
+       "model": "DEFERRED_BUDGET"
+      }
+     ],
      "kind": "quantities",
      "quote": "The worst-case delta for these materials can be seen to be 2.3%."
     },
@@ -324,30 +350,57 @@
     },
     "statements-21": {
      "class": "NOT_PROPOSED",
-     "other_kinds_overlapping": [],
+     "other_kinds_overlapping": [
+      "quantities"
+     ],
      "kind": "statements",
      "quote": "In figures 7, 8 and 9, the lunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the WSTF testing."
     },
     "statements-22": {
-     "class": "NOT_PROPOSED",
-     "other_kinds_overlapping": [],
+     "class": "WINDOW_LOST",
+     "stage": "propositions",
+     "windows": [
+      {
+       "window": "window-6574c9398481a96202c5fb0e",
+       "model": "NEEDS_CONTEXT_SPLIT"
+      },
+      {
+       "window": "window-8d3ec845a28384ff9cba3ffd",
+       "model": "DEFERRED_BUDGET"
+      }
+     ],
      "kind": "statements",
      "quote": "Various differences in the test methods have been considered (turbulence at high flow rates, ignition times, delay after ignition before initiating the test, ox"
     },
     "statements-23": {
-     "class": "NOT_PROPOSED",
-     "other_kinds_overlapping": [],
+     "class": "WINDOW_LOST",
+     "stage": "propositions",
+     "windows": [
+      {
+       "window": "window-6574c9398481a96202c5fb0e",
+       "model": "NEEDS_CONTEXT_SPLIT"
+      },
+      {
+       "window": "window-8d3ec845a28384ff9cba3ffd",
+       "model": "DEFERRED_BUDGET"
+      }
+     ],
      "kind": "statements",
      "quote": "One possible explanation for this is that the quench boundary for these materials shift to higher velocities than seen in the lunar-g tests, putting the lunar-g"
     },
     "statements-25": {
-     "class": "PROPOSED_REJECTED",
-     "statuses": {
-      "REJECTED": 1
-     },
-     "reasons": {
-      "OPEN_QUESTION_NOT_EXPLICIT_IN_SOURCE": 1
-     },
+     "class": "WINDOW_LOST",
+     "stage": "propositions",
+     "windows": [
+      {
+       "window": "window-6574c9398481a96202c5fb0e",
+       "model": "NEEDS_CONTEXT_SPLIT"
+      },
+      {
+       "window": "window-8d3ec845a28384ff9cba3ffd",
+       "model": "DEFERRED_BUDGET"
+      }
+     ],
      "kind": "statements",
      "quote": "This suggests that increased flammability at lunar conditions may not be a universal issue, however further research is needed to validate this possibility."
     },
@@ -364,18 +417,29 @@
      "quote": "The WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) chamber that could provide continuous operation at 57 kPa."
     },
     "quantities-28": {
-     "class": "NOT_PROPOSED",
-     "other_kinds_overlapping": [
-      "entities"
+     "class": "WINDOW_LOST",
+     "stage": "propositions",
+     "windows": [
+      {
+       "window": "window-6574c9398481a96202c5fb0e",
+       "model": "NEEDS_CONTEXT_SPLIT"
+      },
+      {
+       "window": "window-8d3ec845a28384ff9cba3ffd",
+       "model": "DEFERRED_BUDGET"
+      }
      ],
      "kind": "quantities",
      "quote": "1190"
     },
     "quantities-29": {
-     "class": "NOT_PROPOSED",
-     "other_kinds_overlapping": [
-      "entities"
-     ],
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 18
+     },
+     "reasons": {
+      "ORIGINAL_TABLE_QUANTITY_ROLE_AND_EXPERIMENTAL_SCOPE_REQUIRE_REVIEW": 18
+     },
      "kind": "quantities",
      "quote": "2.3"
     }
@@ -405,11 +469,10 @@
     "quantities-07": {
      "class": "PROPOSED_REJECTED",
      "statuses": {
-      "UNRESOLVED": 5
+      "UNRESOLVED": 1
      },
      "reasons": {
-      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 4,
-      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
      },
      "kind": "quantities",
      "quote": "Maximum gas temperature = 580-674F"
@@ -417,10 +480,10 @@
     "quantities-09": {
      "class": "PROPOSED_REJECTED",
      "statuses": {
-      "UNRESOLVED": 2
+      "UNRESOLVED": 1
      },
      "reasons": {
-      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
      },
      "kind": "quantities",
      "quote": "20uL was injected"
@@ -428,10 +491,10 @@
     "quantities-10": {
      "class": "PROPOSED_REJECTED",
      "statuses": {
-      "UNRESOLVED": 2
+      "UNRESOLVED": 1
      },
      "reasons": {
-      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
      },
      "kind": "quantities",
      "quote": "seeking to achieve ~100 mg/ft2 film coating"
@@ -663,12 +726,11 @@
     "quantities-07": {
      "class": "PROPOSED_REJECTED",
      "statuses": {
-      "UNRESOLVED": 5,
+      "UNRESOLVED": 1,
       "REJECTED": 1
      },
      "reasons": {
-      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 4,
-      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1,
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1,
       "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT": 1
      },
      "kind": "quantities",
@@ -677,11 +739,10 @@
     "quantities-09": {
      "class": "PROPOSED_REJECTED",
      "statuses": {
-      "UNRESOLVED": 2
+      "UNRESOLVED": 1
      },
      "reasons": {
-      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1,
-      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1
      },
      "kind": "quantities",
      "quote": "20uL was injected"
@@ -689,10 +750,9 @@
     "quantities-10": {
      "class": "PROPOSED_REJECTED",
      "statuses": {
-      "UNRESOLVED": 2
+      "UNRESOLVED": 1
      },
      "reasons": {
-      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1,
       "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
      },
      "kind": "quantities",
@@ -1006,11 +1066,6 @@
        "type": "experimental_configuration"
       },
       {
-       "id": "de61708f",
-       "label": "O2",
-       "type": "experimental_configuration"
-      },
-      {
        "id": "d203378f",
        "label": "pressure",
        "type": "experimental_configuration"
@@ -1207,11 +1262,6 @@
      "class": "ACCEPTED_MISGRADED",
      "supported": [
       {
-       "id": "30fdb032",
-       "label": "O2",
-       "type": "experimental_configuration"
-      },
-      {
        "id": "d0da3a6f",
        "label": "O2",
        "type": "experimental_configuration"
@@ -1350,9 +1400,10 @@
   }
  },
  "summary_live": {
-  "ignition/ACCEPTED_MISGRADED": 8,
-  "ignition/NOT_PROPOSED": 9,
-  "ignition/PROPOSED_REJECTED": 16,
+  "ignition/ACCEPTED_MISGRADED": 4,
+  "ignition/NOT_PROPOSED": 2,
+  "ignition/PROPOSED_REJECTED": 21,
+  "ignition/WINDOW_LOST": 6,
   "regulator/ACCEPTED_MISGRADED": 4,
   "regulator/NOT_PROPOSED": 5,
   "regulator/PROPOSED_REJECTED": 38,
