@@ -145,3 +145,20 @@ def test_the_brake_still_defers_a_request_it_cannot_afford(service):
         client=client_for(o),
     )
     assert {x["model"] for x in result["processing"]["outcomes"]} == {"DEFERRED_BUDGET"}
+
+
+def test_a_connection_that_failed_before_any_response_releases_its_reservation(service):
+    dropped = openai.APIConnectionError(
+        request=httpx.Request("POST", "https://example.invalid"),
+    )
+    processing, _sent = run(service, dropped, with_entity=False)
+    assert [o["attempts"] for o in processing["outcomes"]] == [2, 1, 1]
+    assert processing["tokens_consumed_or_reserved"] == counted(processing)
+
+
+def test_a_timeout_keeps_its_reservation(service):
+    # Negative: a request that timed out may have been processed and billed.
+    timed_out = openai.APITimeoutError(request=httpx.Request("POST", "https://example.invalid"))
+    processing, _sent = run(service, timed_out, with_entity=False)
+    assert [o["attempts"] for o in processing["outcomes"]] == [2, 1, 1]
+    assert processing["tokens_consumed_or_reserved"] > counted(processing)

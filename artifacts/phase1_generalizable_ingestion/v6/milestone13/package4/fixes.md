@@ -47,3 +47,19 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
   - ignition recall 13 → 14/29 (r1) and 12 → 13/29 (r2); precision 71/85 → 72/86 and 63/76 → 64/77;
   - other sources unchanged; 0 critical.
 - **Mark: single-source, suspect.** No other source has a value labelled by its own setting verb. Regulator's "20uL was injected" is not named, because "injected" is no form of a volume noun, and it stays held by its subject anyway.
+
+## Fix 5: the token brake releases a connection that failed before any response
+
+- **Classification:** orchestration (spending brake). No scientific rule changes.
+- **Motivating run:** ignition `a6d967b` r2.
+  - Two identity calls failed on the network after 38 s, with no content and no usage.
+  - Their reservations stayed counted: 435,595 tokens reserved against 320,168 used.
+  - A propositions window (71k reserved) was then `DEFERRED_BUDGET`, and statements-23 and -25 were lost.
+- **Rule:** a failure of kind `network` with no usage and no received content releases its reservation, as a refusal before processing already does (`a6d967b`).
+  - Any failure that received part of a response keeps its reservation, since it may be billed.
+  - So do timeouts and every other kind.
+  - The brake stays a spending ceiling and never truncates a request.
+- **Tests:** `tests/test_request_schema_references.py` (+2). Positive: a connection error before any response frees its reservation. Negative: a timeout keeps it. Existing negative: other failures keep it.
+- **Replay effect:** none by construction. The replay calls no provider, so 0 records change.
+- **Expected live effect, not measured:** with the two reservations released, ignition r2 would have been at about 320k when it reached the deferred window, and the 71k window would have been sent. Whether statements-23 and -25 are then recovered depends on the model, as in r1, where they were. A live run is needed to measure it, and Diego's rule leaves that until the replay passes.
+- **Caveat:** a connection that dropped while the provider was still reading the input could in principle be billed for input tokens. The receipts record the reservation released and the real usage, so any difference would show in the per-call cost.

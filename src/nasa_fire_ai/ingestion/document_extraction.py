@@ -8086,9 +8086,15 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     }
                     if error.kind in {"access_denied", "interrupted"}:
                         provider_blocked[0] = True
-                    if error.kind == "request_rejected" and not usage:
-                        # Refused before processing, nothing billed: the reservation is
-                        # released so the spending brake counts only real use.
+                    if not usage and (
+                        error.kind == "request_rejected"
+                        or (error.kind == "network" and not error.content)
+                    ):
+                        # Refused before processing, or a connection that failed before
+                        # any response arrived: nothing was received, so the reservation
+                        # is released and the spending brake counts only real use. A
+                        # failure after part of a response, or a timeout, may be billed
+                        # and keeps it.
                         tokens -= reserve
                     if error.kind == "request_rejected" and format_mode["type"] == "json_schema":
                         # A provider capability fallback is operational, never a schema relaxation.
