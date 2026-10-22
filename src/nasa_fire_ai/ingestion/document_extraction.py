@@ -7262,12 +7262,27 @@ def table_row_roles(package):
     ]
 
 
+def request_context_limit(settings, envelope):
+    """The largest request, in estimated context tokens, sent before a window is split.
+
+    Anthropic's models take far more context than NVIDIA's conservative envelope,
+    so their requests get their own limit (Diego, 2026-10-22: the largest Sonnet
+    window so far was about 77,500 tokens). Windows, shared context and output
+    sizes stay those of the provider envelope, so requests are unchanged except
+    that fewer are split. NVIDIA keeps its envelope.
+    """
+    if getattr(settings, "science_provider", "nvidia") == "anthropic":
+        return int(os.getenv("ANTHROPIC_SCIENCE_REQUEST_CONTEXT_TOKENS", "96000"))
+    return envelope.context_tokens
+
+
 def extract_package(service, package, settings, budget, model_enabled=False, client=None):
     """Checkpoint after each successful segment. Failed calls remain retryable."""
     from nasa_fire_ai.ingestion.scientific_coverage import coverage
 
     started = time.monotonic()
     envelope = ProviderEnvelope()
+    request_limit = request_context_limit(settings, envelope)
     chars = segment_size(package, budget, envelope)
     document = structure(package, service.root, chars)
     semantic = extraction_semantic(service, package)
@@ -7911,7 +7926,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 + capacity
                 + len(images) * 4096
             )
-            if (reserve - capacity) // 2 + capacity + 512 > envelope.context_tokens:
+            if (reserve - capacity) // 2 + capacity + 512 > request_limit:
                 return None
             return {
                 "call": {
@@ -8002,7 +8017,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 # reservation. English scientific text/IDs are not one token per byte.
                 context_estimate = (reserve - capacity) // 2 + capacity + 512
                 outcome["context_token_estimate"] = context_estimate
-                if context_estimate > envelope.context_tokens:
+                if context_estimate > request_limit:
                     outcome["model"] = "NEEDS_CONTEXT_SPLIT"
                     break
                 if not available(reserve):
@@ -8636,6 +8651,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             "budget": {**asdict(budget), "segment_chars": chars},
             "resource_policy": {
                 "provider_envelope": asdict(envelope),
+                "request_context_tokens": request_limit,
                 "scientific_item_ceiling": None,
                 "adaptive": True,
             },
