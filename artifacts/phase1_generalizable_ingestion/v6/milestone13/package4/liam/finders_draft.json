@@ -1,0 +1,797 @@
+{
+ "ignition": {
+  "entities-01": {
+   "kind": "entities",
+   "page": 6,
+   "quote": "NASA White Sands Test Facility (WSTF) Upward High-flow Oxygen Index Testing",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-02": {
+   "kind": "entities",
+   "page": 7,
+   "quote": "NASA Glenn Research Center (GRC) Partial Gravity Testing",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-03": {
+   "kind": "entities",
+   "page": 8,
+   "quote": "PMMA",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-04": {
+   "kind": "entities",
+   "page": 8,
+   "quote": "Nomex Velcro",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "quantities-05": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "the planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia)",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "56.5",
+    "8.2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "test-program pressure context; experimental configuration, not a newly measured habitat condition"
+  },
+  "quantities-06": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "chamber that could provide continuous operation at 57 kPa.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "57"
+   ]
+  },
+  "quantities-07": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "where the 5.2 cm by 14.0 cm samples were tested.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "5.2",
+    "14.0"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "WSTF specimen dimension, not the GRC chamber dimension or a burn-spread measurement"
+  },
+  "quantities-08": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "where the 5.2 cm by 14.0 cm samples were tested.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "5.2",
+    "14.0"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "second WSTF specimen dimension; preserve original expression and dimension ambiguity if necessary"
+  },
+  "quantities-09": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "The igniter was a retractable 2.2 mm OD ceramic rod",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "2.2"
+   ]
+  },
+  "quantities-10": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "the sample was exposed to a 10 cm/s primer flow at the target oxygen concentration.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "10"
+   ]
+  },
+  "quantities-11": {
+   "kind": "quantities",
+   "page": 7,
+   "quote": "The chamber is 299 l in volume with an I.D. of 81.2 cm and an internal height if 30.5 cm.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "299",
+    "81.2",
+    "30.5"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "GRC chamber volume; preserve original l and experimental group"
+  },
+  "quantities-12": {
+   "kind": "quantities",
+   "page": 7,
+   "quote": "The chamber is 299 l in volume with an I.D. of 81.2 cm and an internal height if 30.5 cm.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "299",
+    "81.2",
+    "30.5"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "GRC chamber internal diameter, not WSTF quartz-tube diameter"
+  },
+  "quantities-13": {
+   "kind": "quantities",
+   "page": 7,
+   "quote": "The chamber is 299 l in volume with an I.D. of 81.2 cm and an internal height if 30.5 cm.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "299",
+    "81.2",
+    "30.5"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "GRC chamber internal height; original typo if is preserved as source text"
+  },
+  "quantities-14": {
+   "kind": "quantities",
+   "page": 7,
+   "quote": "the chamber was rotated at 20.4 RPM for several minutes before the drop",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "20.4"
+   ]
+  },
+  "quantities-15": {
+   "kind": "quantities",
+   "page": 7,
+   "quote": "The ignition region of the sample was exposed to a slow flow (~30 cm/s) of gas",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "~30"
+   ]
+  },
+  "quantities-16": {
+   "kind": "quantities",
+   "page": 10,
+   "quote": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s, but the lunar gravity velocity is not known.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "1",
+    "16",
+    "35"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "cited estimate for 1-g; never a current measured or known lunar-g velocity"
+  },
+  "quantities-17": {
+   "kind": "quantities",
+   "page": 10,
+   "quote": "The worst-case delta for these materials can be seen to be 2.3%.",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "2.3"
+   ]
+  },
+  "statements-18": {
+   "kind": "statements",
+   "page": 7,
+   "quote": "To increase the number of tests for repeatability, two samples were ignited and tested in each drop.",
+   "match": "statement text contains this fragment",
+   "fragment": "To increase the number of tests for repeatability, two samples"
+  },
+  "statements-19": {
+   "kind": "statements",
+   "page": 8,
+   "quote": "Five materials were tested in both facilities.",
+   "match": "statement text contains this fragment",
+   "fragment": "Five materials were tested in both facilities."
+  },
+  "statements-20": {
+   "kind": "statements",
+   "page": 8,
+   "quote": "the actual velocity (induced by the simulated gravity) is not known.",
+   "match": "statement text contains this fragment",
+   "fragment": "the actual velocity (induced by the simulated gravity) is not"
+  },
+  "statements-21": {
+   "kind": "statements",
+   "page": 9,
+   "quote": "In figures 7, 8 and 9, the lunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the WSTF testing.",
+   "match": "statement text contains this fragment",
+   "fragment": "In figures 7, 8 and 9, the lunar-g buoyant limit"
+  },
+  "statements-22": {
+   "kind": "statements",
+   "page": 9,
+   "quote": "Various differences in the test methods have been considered (turbulence at high flow rates, ignition times, delay after ignition before initiating the test, oxygen augmentation during ignition, and buoyancy-enhanced ignition heat transfer to the unburned fuel due to the sample orientation with respect to gravity) but have not been definitively found to be the cause.",
+   "match": "statement text contains this fragment",
+   "fragment": "Various differences in the test methods have been considered (turbulence"
+  },
+  "statements-23": {
+   "kind": "statements",
+   "page": 11,
+   "quote": "One possible explanation for this is that the quench boundary for these materials shift to higher velocities than seen in the lunar-g tests, putting the lunar-gravity tests on the quenching (HTL) branch.",
+   "match": "statement text contains this fragment",
+   "fragment": "One possible explanation for this is that the quench boundary"
+  },
+  "statements-24": {
+   "kind": "statements",
+   "page": 11,
+   "quote": "Comparative testing in 1-g under forced flow and buoyant flow at lunar-g conditions has demonstrated that for some materials, there is a clear increased flammability at lunar gravity conditions.",
+   "match": "statement text contains this fragment",
+   "fragment": "Comparative testing in 1-g under forced flow and buoyant flow"
+  },
+  "statements-25": {
+   "kind": "statements",
+   "page": 11,
+   "quote": "This suggests that increased flammability at lunar conditions may not be a universal issue, however further research is needed to validate this possibility.",
+   "match": "statement text contains this fragment",
+   "fragment": "This suggests that increased flammability at lunar conditions may not"
+  },
+  "relations-26": {
+   "kind": "relations",
+   "page": 6,
+   "quote": "The WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) chamber that could provide continuous operation at 57 kPa.",
+   "match": "relation whose endpoints the expectation names",
+   "needs_decision": "the quote does not print both endpoints; Liam to name subject, relation and object",
+   "expectation": "WSTF testing group has its documented pressure/configuration; not GRC attribution."
+  },
+  "relations-27": {
+   "kind": "relations",
+   "page": 7,
+   "quote": "The GRC testing was conducted using the centrifuge test facility in the ZGRF 5.2 second drop tower (Fig. 6).3",
+   "match": "relation whose endpoints the expectation names",
+   "needs_decision": "the quote does not print both endpoints; Liam to name subject, relation and object",
+   "expectation": "GRC group has its centrifuge/partial-gravity experimental condition; not all WSTF tests."
+  },
+  "quantities-28": {
+   "kind": "quantities",
+   "page": 9,
+   "quote": "1190",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "1190"
+   ]
+  },
+  "quantities-29": {
+   "kind": "quantities",
+   "page": 11,
+   "quote": "2.3",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "2.3"
+   ]
+  }
+ },
+ "regulator": {
+  "entities-01": {
+   "kind": "entities",
+   "page": 1,
+   "quote": "Oxygen Compatibility and Challenge Testing of the PLSS Variable Oxygen Regulator (VOR) for the Advanced EMU",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-02": {
+   "kind": "entities",
+   "page": 6,
+   "quote": "Primary Oxygen Regulator (POR) 2.0, s/n 003",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-03": {
+   "kind": "entities",
+   "page": 5,
+   "quote": "pure dodecane",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-04": {
+   "kind": "entities",
+   "page": 10,
+   "quote": "Sixty O2 Wetting Dry Impact Tests",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-05": {
+   "kind": "entities",
+   "page": 11,
+   "quote": "First Dodecane Wetted POR Interstage Impact Test Series",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-06": {
+   "kind": "entities",
+   "page": 13,
+   "quote": "second Dodecane Wetted POR Interstage Impact Test Series",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "quantities-07": {
+   "kind": "quantities",
+   "page": 4,
+   "quote": "Maximum gas temperature = 580-674F",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "580-674"
+   ]
+  },
+  "quantities-08": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "3750 psia supply pressure",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "3750"
+   ]
+  },
+  "quantities-09": {
+   "kind": "quantities",
+   "page": 8,
+   "quote": "20uL was injected",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "20"
+   ]
+  },
+  "quantities-10": {
+   "kind": "quantities",
+   "page": 8,
+   "quote": "seeking to achieve ~100 mg/ft2 film coating",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "~100",
+    "2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Target coating loading, not independently measured uniform thickness."
+  },
+  "quantities-11": {
+   "kind": "quantities",
+   "page": 9,
+   "quote": "typical impact times during this test sequence of ~360 msec",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "~360"
+   ]
+  },
+  "quantities-12": {
+   "kind": "quantities",
+   "page": 10,
+   "quote": "maintained its 4.05 psid setpoint with approximately 1 pph demand",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "4.05",
+    "1"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Dry functional/operating pressure condition with differential pressure unit preserved, not3750psia supply."
+  },
+  "quantities-13": {
+   "kind": "quantities",
+   "page": 11,
+   "quote": "The impact times ranged from 137-148 msec",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "137-148"
+   ]
+  },
+  "quantities-14": {
+   "kind": "quantities",
+   "page": 12,
+   "quote": "impact times ranging from 46-49 msec",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "46-49"
+   ]
+  },
+  "statements-15": {
+   "kind": "statements",
+   "page": 4,
+   "quote": "A partial test at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was damaged during the testing and additional testing will be required to confirm this result.",
+   "match": "statement text contains this fragment",
+   "fragment": "A partial test at WSTF at 1500 psia and 100%"
+  },
+  "statements-16": {
+   "kind": "statements",
+   "page": 5,
+   "quote": "pure dodecane was used instead so that the materials properties would be known and the composition could be repeatable and known.",
+   "match": "statement text contains this fragment",
+   "fragment": "pure dodecane was used instead so that the materials properties"
+  },
+  "statements-17": {
+   "kind": "statements",
+   "page": 9,
+   "quote": "Sixty test runs were executed with typical impact times during this test sequence of ~360 msec",
+   "match": "statement text contains this fragment",
+   "fragment": "Sixty test runs were executed with typical impact times during"
+  },
+  "statements-18": {
+   "kind": "statements",
+   "page": 10,
+   "quote": "Nitrogen functional testing performed after the dry impact testing showed nominal POR performance",
+   "match": "statement text contains this fragment",
+   "fragment": "Nitrogen functional testing performed after the dry impact testing showed"
+  },
+  "statements-19": {
+   "kind": "statements",
+   "page": 10,
+   "quote": "Impact times of 80-93 msec were measured after adjustments and prior to re-connecting the POR test article to the test system.",
+   "match": "statement text contains this fragment",
+   "fragment": "Impact times of 80-93 msec were measured after adjustments and"
+  },
+  "statements-20": {
+   "kind": "statements",
+   "page": 11,
+   "quote": "appeared to have softened the seal resulting in a leak.",
+   "match": "statement text contains this fragment",
+   "fragment": "appeared to have softened the seal resulting in a leak."
+  },
+  "statements-21": {
+   "kind": "statements",
+   "page": 11,
+   "quote": "the CHDS was adjusted to reduce POR body temperatures for the remaining three test runs.",
+   "match": "statement text contains this fragment",
+   "fragment": "the CHDS was adjusted to reduce POR body temperatures for"
+  },
+  "statements-22": {
+   "kind": "statements",
+   "page": 12,
+   "quote": "Functional testing performed after the initial wet impact testing demonstrated nominal POR operation",
+   "match": "statement text contains this fragment",
+   "fragment": "Functional testing performed after the initial wet impact testing demonstrated"
+  },
+  "statements-23": {
+   "kind": "statements",
+   "page": 14,
+   "quote": "No issues were noted as the regulator still met specifications",
+   "match": "statement text contains this fragment",
+   "fragment": "No issues were noted as the regulator still met specifications"
+  },
+  "statements-24": {
+   "kind": "statements",
+   "page": 14,
+   "quote": "Upon impact, a small, brief flame was generated from the impact demonstrating that the adiabatic compression conditions were adequate to ignite the dodecane contaminant.",
+   "match": "statement text contains this fragment",
+   "fragment": "Upon impact, a small, brief flame was generated from the"
+  },
+  "statements-25": {
+   "kind": "statements",
+   "page": 15,
+   "quote": "SEM analysis could not verify this as the quantity was too small.",
+   "match": "statement text contains this fragment",
+   "fragment": "SEM analysis could not verify this as the quantity was"
+  },
+  "statements-26": {
+   "kind": "statements",
+   "page": 16,
+   "quote": "SEM of the filter found carbon",
+   "match": "statement text contains this fragment",
+   "fragment": "SEM of the filter found carbon"
+  },
+  "statements-27": {
+   "kind": "statements",
+   "page": 18,
+   "quote": "The model confirmed that for both the 150 msec and 60 msec pressurization cases tested, the lag was negligible",
+   "match": "statement text contains this fragment",
+   "fragment": "The model confirmed that for both the 150 msec and"
+  },
+  "statements-28": {
+   "kind": "statements",
+   "page": 19,
+   "quote": "evidence of dodecane combustion was found in the regulator but did not result in any functional degradation.",
+   "match": "statement text contains this fragment",
+   "fragment": "evidence of dodecane combustion was found in the regulator but"
+  },
+  "relations-29": {
+   "kind": "relations",
+   "page": 6,
+   "quote": "The regulator tested was the Primary Oxygen Regulator (POR) 2.0, s/n 003",
+   "match": "relation whose endpoints the expectation names",
+   "needs_decision": "the quote does not print both endpoints; Liam to name subject, relation and object",
+   "expectation": "Current investigation uses its actual POR2.0serial003 specimen, not another prototype."
+  },
+  "relations-30": {
+   "kind": "relations",
+   "page": 8,
+   "quote": "For the dodecane runs, 20uL was injected at the insterstage port using a syringe",
+   "match": "relation whose endpoints the expectation names",
+   "needs_decision": "the quote does not print both endpoints; Liam to name subject, relation and object",
+   "expectation": "Wet-series contaminant intervention/condition uses dodecane. Preserve originaltypo insterstage and no dry-series contamination."
+  },
+  "relations-31": {
+   "kind": "relations",
+   "page": 11,
+   "quote": "Five impacts were then executed with the dodecane load in the POR interstage port.",
+   "match": "relation whose endpoints the expectation names",
+   "needs_decision": "the quote does not print both endpoints; Liam to name subject, relation and object",
+   "expectation": "First wet group has dodecane condition, not the dry oxygen wetting group."
+  },
+  "relations-32": {
+   "kind": "relations",
+   "page": 12,
+   "quote": "A final series of 5 wet impacts was executed after the test cell was adjusted to further reduce impact times and another 20 µL of dodecane was injected",
+   "match": "relation whose endpoints the expectation names",
+   "needs_decision": "the quote does not print both endpoints; Liam to name subject, relation and object",
+   "expectation": "Second wet group has its own injection/intervention and faster impact setup; not first-series identity."
+  }
+ },
+ "textiles": {
+  "entities-01": {
+   "kind": "entities",
+   "page": 1,
+   "quote": "Fire-resistant Textile Development",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-02": {
+   "kind": "entities",
+   "page": 6,
+   "quote": "PBI",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-03": {
+   "kind": "entities",
+   "page": 6,
+   "quote": "100% PBI knit fabric coupons",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "entities-04": {
+   "kind": "entities",
+   "page": 6,
+   "quote": "Custom fire-resistant patches sewn to outer jacket fabric",
+   "match": "entity label equals the quote, case and spacing normalized"
+  },
+  "quantities-05": {
+   "kind": "quantities",
+   "page": 2,
+   "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "8.2",
+    "34",
+    "2",
+    "2",
+    "37",
+    "2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Proposed Artemis IV+ atmosphere pressure, not measured test result or all textile tests."
+  },
+  "quantities-06": {
+   "kind": "quantities",
+   "page": 2,
+   "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "8.2",
+    "34",
+    "2",
+    "2",
+    "37",
+    "2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Proposed oxygen concentration with original ±2 uncertainty, not a measured current NASA environment."
+  },
+  "quantities-07": {
+   "kind": "quantities",
+   "page": 2,
+   "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "8.2",
+    "34",
+    "2",
+    "2",
+    "37",
+    "2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Contingency test concentration, distinct from proposed 34±2% atmosphere."
+  },
+  "quantities-08": {
+   "kind": "quantities",
+   "page": 2,
+   "quote": "Apollo (100% O2) and Skylab (70% O2)",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "100",
+    "2",
+    "70",
+    "2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Historical Apollo atmosphere, not current textile sample composition or a new observation."
+  },
+  "quantities-09": {
+   "kind": "quantities",
+   "page": 2,
+   "quote": "Apollo (100% O2) and Skylab (70% O2)",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "100",
+    "2",
+    "70",
+    "2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Historical Skylab atmosphere; original slide says70, do not silently substitute abstract >70."
+  },
+  "quantities-10": {
+   "kind": "quantities",
+   "page": 3,
+   "quote": "Burn length < 6”",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "< 6"
+   ]
+  },
+  "quantities-11": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "100% PBI knit fabric coupons tested at 48% O2 and 8.2 psia",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "100",
+    "48",
+    "2",
+    "8.2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "PBI specimen composition; not test chamber oxygen concentration."
+  },
+  "quantities-12": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "100% PBI knit fabric coupons tested at 48% O2 and 8.2 psia",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "100",
+    "48",
+    "2",
+    "8.2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "PBI coupon oxygen test configuration; never transfer to custom patches."
+  },
+  "quantities-13": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "100% PBI knit fabric coupons tested at 48% O2 and 8.2 psia",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "100",
+    "48",
+    "2",
+    "8.2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "PBI coupon test pressure; not a measured derived result."
+  },
+  "quantities-14": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "Custom fire-resistant patches sewn to outer jacket fabric tested at 37% O2 and 8.2 psia",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "37",
+    "2",
+    "8.2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Custom patch/jacket test oxygen concentration, distinct from48% PBI coupon test."
+  },
+  "quantities-15": {
+   "kind": "quantities",
+   "page": 6,
+   "quote": "Custom fire-resistant patches sewn to outer jacket fabric tested at 37% O2 and 8.2 psia",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "37",
+    "2",
+    "8.2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Patch/jacket test pressure with specimen scope retained."
+  },
+  "quantities-16": {
+   "kind": "quantities",
+   "page": 7,
+   "quote": "a minimum of 37% O2 at 8.2 psia",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "37",
+    "2",
+    "8.2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "Minimum NESC assessment target environment; preserve lower bound and normative/goal role."
+  },
+  "quantities-17": {
+   "kind": "quantities",
+   "page": 7,
+   "quote": "a minimum of 37% O2 at 8.2 psia",
+   "match": "quantity expression equals one printed value on this page",
+   "values_in_quote": [
+    "37",
+    "2",
+    "8.2"
+   ],
+   "needs_decision": "the quote prints several values; the expectation must name which",
+   "expectation": "NESC assessment target pressure, not newly measured spacecraft condition."
+  },
+  "statements-18": {
+   "kind": "statements",
+   "page": 2,
+   "quote": "Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% O2 environments",
+   "match": "statement text contains this fragment",
+   "fragment": "Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified"
+  },
+  "statements-19": {
+   "kind": "statements",
+   "page": 3,
+   "quote": "No transfer of burning debris (melt / drip)",
+   "match": "statement text contains this fragment",
+   "fragment": "No transfer of burning debris (melt / drip)"
+  },
+  "statements-20": {
+   "kind": "statements",
+   "page": 4,
+   "quote": "Most textiles are tested in a “J- configuration”",
+   "match": "statement text contains this fragment",
+   "fragment": "Most textiles are tested in a “J- configuration”"
+  },
+  "statements-21": {
+   "kind": "statements",
+   "page": 4,
+   "quote": "Metal fixture can be used to shield the vertical raw edges",
+   "match": "statement text contains this fragment",
+   "fragment": "Metal fixture can be used to shield the vertical raw"
+  },
+  "statements-22": {
+   "kind": "statements",
+   "page": 5,
+   "quote": "Coupon-level flammability testing at 37% O2 shows increased propagation with configuration and layup testing as compared with single material tests",
+   "match": "statement text contains this fragment",
+   "fragment": "Coupon-level flammability testing at 37% O2 shows increased propagation with"
+  },
+  "statements-23": {
+   "kind": "statements",
+   "page": 6,
+   "quote": "NASA’s textile engineering and development team has been sourcing existing COTS textile products, modifying COTS textiles, and developing custom fire-resistant solutions",
+   "match": "statement text contains this fragment",
+   "fragment": "NASA’s textile engineering and development team has been sourcing existing"
+  },
+  "statements-24": {
+   "kind": "statements",
+   "page": 8,
+   "quote": "Certification testing will be performed at White Sands Test Facility (WSTF)",
+   "match": "statement text contains this fragment",
+   "fragment": "Certification testing will be performed at White Sands Test Facility"
+  },
+  "statements-25": {
+   "kind": "statements",
+   "page": 8,
+   "quote": "If no COTS solution can meet NASA-STD-6001B Test 1 but a relatively low effort can be done to modify the COTS and increase the chance of passing, it is recommended to pursue the incremental improvement/modification on the COTS solution and assess the performance again",
+   "match": "statement text contains this fragment",
+   "fragment": "If no COTS solution can meet NASA-STD-6001B Test 1 but"
+  },
+  "statements-26": {
+   "kind": "statements",
+   "page": 9,
+   "quote": "NASA’s textile engineering and development team is actively implementing the NESC’s 3-phase strategy",
+   "match": "statement text contains this fragment",
+   "fragment": "NASA’s textile engineering and development team is actively implementing the"
+  },
+  "statements-27": {
+   "kind": "statements",
+   "page": 9,
+   "quote": "Goal to systematically mature materials that enable safer and more sustainable human exploration missions",
+   "match": "statement text contains this fragment",
+   "fragment": "Goal to systematically mature materials that enable safer and more"
+  },
+  "relations-28": {
+   "kind": "relations",
+   "page": 6,
+   "quote": "100% PBI knit fabric for crew clothing next-to-skin shirt",
+   "match": "relation whose endpoints the expectation names",
+   "needs_decision": "the quote does not print both endpoints; Liam to name subject, relation and object",
+   "expectation": "Sample/fabric hasMaterial PBI, not PBI oxygen atmosphere and not patch composition."
+  },
+  "relations-29": {
+   "kind": "relations",
+   "page": 6,
+   "quote": "Custom fire-resistant patches sewn to outer jacket fabric tested at 37% O2 and 8.2 psia",
+   "match": "relation whose endpoints the expectation names",
+   "needs_decision": "the quote does not print both endpoints; Liam to name subject, relation and object",
+   "expectation": "Patch/jacket specimen has documented37%O2 condition; no48% transfer from neighboring PBI specimen."
+  }
+ }
+}
