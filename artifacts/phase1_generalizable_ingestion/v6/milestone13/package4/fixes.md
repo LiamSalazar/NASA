@@ -89,3 +89,43 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
   - precision 31/34 → 36/40 (r1) and 29/36 → 32/37 (r2);
   - 0 critical.
 - **Mark: single-source, suspect.** No other development source prints a test series in a caption, and the other 9 packages are unchanged.
+
+## Fixes 4 and 6: not implemented, with reason
+
+- **Fix 4** (dimension notation "A by B object", ignition quantities-07 and -08). Sonnet labels both values "samples", which names the object, not the dimension.
+  - A rule could recognize the notation, but the value would then stand under a label that names no quantity.
+  - Recovering the targets would need an unprinted name ("width", "length") written in for the model, which the contracts forbid.
+  - The earlier adjudication judged such labels incorrect ("label 'OD ceramic rod' (fragment)"), so the targets would stay missed.
+- **Fix 6** (math-font glyphs in table labels, ignition quantities-28). Table 1 prints model inputs from cited literature ("PMMA 21,22", "Nomex 23"). Sonnet proposes them as current reported quantities of the study's PMMA.
+  - Repairing the glyphs would let the units bind, but the role would still be wrong. The best correct outcome is a hold, not recall.
+  - The glyph repair itself would need a table specific to one font's broken mapping (Ethiopic syllables for brackets, Oriya letters for superscript digits), which is an overfitting risk.
+  - Left as a detected, unaddressed item.
+
+## Replay after fixes 2, 3, 1 (and 5): before and after, per source
+
+- **Same inputs, 0 model calls.**
+  - "Before" is the replay at `a72a0cb`, which is identical record for record to the live `a6d967b` packages (0 changes on all 8).
+  - "After" is HEAD with fixes 2, 3, 1 and 5. Fix 5 has no replay effect.
+- **Precision** is the record-by-record adjudication with the changed records judged above.
+- **PTFE** is unchanged in every package, so its official scorer figures stand.
+- **NVIDIA round B** changes only in the text of textiles statements, with no status change, so its point A adjudication stands.
+- **Record changes:** `replay_fixes/record_changes_a72a0cb_to_fixes.txt`.
+
+| source | Sonnet r1 before → after | Sonnet r2 before → after | NVIDIA round B (point A) before → after |
+|---|---|---|---|
+| PTFE | 28/34, 100/101 → same | 28/34, 117/119 → same | 28/34, 134/136 → same |
+| ignition | 13/29, 71/85 → **14/29, 72/86** | 12/29, 63/76 → **13/29, 64/77** | 16/29, 86/114 → same |
+| regulator | 9/32, 31/34 → **14/32, 36/40** | 8/32, 29/36 → **11/32, 32/37** | 11/32, 21/30 → same |
+| textiles | 10/29, 20/22 → **11/29, 21/22** | 10/29, 20/27 → **12/29, 22/27** | 8/29, 19/23 → same |
+| pooled recall | 60/124 = 0.48 → 67/124 = 0.54 | 58/124 = 0.47 → 64/124 = 0.52 | 63/124 = 0.51 → same |
+| critical | 0 → 0 | 0 → 0 | 0 → 0 |
+
+**Historical negatives** (`replay_fixes/historical_negatives_receipt.json`, `review_tools/exposed_compare.py` on the seven v4/v5 receipts replayed at HEAD): 29 checked, 0 critical regressions, 1 known non-critical still supported. Unchanged from point A.
+
+**Threshold under Diego's rule** (recall ≥ 0.80 and precision ≥ 0.95 per source, 0 critical): **not met.**
+- Only PTFE passes: 0.82 recall; 0.99 and 0.98 precision.
+- Ignition is at 0.45–0.48 recall and 0.83–0.84 precision.
+- Regulator is at 0.34–0.44 recall and 0.86–0.90 precision.
+- Textiles is at 0.38–0.41 recall and 0.81–0.95 precision.
+- So no live run is proposed.
+- Fixes 1, 2 and 3 each help only the source that motivated them (marked "single-source, suspect"). The remaining gap is mostly model-side: roles, group equivalence, and values without an eligible subject (`target_miss_diagnosis.md`).

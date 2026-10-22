@@ -97,6 +97,12 @@ A cut session resumes at the first package not done.
     5. brake release for a failure that received nothing;
     6. math-font glyphs.
   - Together about 21 pairs, ≈ 13 targets. The gate stays unmet. → next package (block 3b), not package 6
+- **Block 3b done** (`package4/fixes.md`):
+  - fixes 2 (`9e9a9b1`), 3 (`544fddd`), 5 (`d48fa0e`) and 1 (`aae1ef9`) are in, each "single-source, suspect" except 5, which has no replay effect;
+  - fixes 4 and 6 are not implemented (they would need an unprinted name, or a font-specific glyph table plus the wrong role);
+  - fix 7 waits for Liam.
+  - Replay after the fixes: Sonnet pooled recall 0.48 → 0.54 (r1) and 0.47 → 0.52 (r2); NVIDIA round B and PTFE unchanged; 29 negatives, 0 critical.
+  - The per-source threshold is met only by PTFE, so no live run is proposed.
 - On ignition the 500,000-token brake binds: two network failures keep their reservation (correct, they may be billed) and one window was deferred in `a6d967b` r2. → 6
 - The regulator wet series are sometimes merged into one group by the model (`a6d967b` r2). → 6
 
