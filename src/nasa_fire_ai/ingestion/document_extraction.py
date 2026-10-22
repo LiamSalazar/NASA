@@ -329,16 +329,6 @@ def running_headers(evidence):
     return sorted(line for line, n in counts.items() if n >= floor and line)
 
 
-NUMBER_WORD = (
-    r"(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|\w+teen"
-    r"|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)"
-)
-# "Sixty test runs", "the five impacts", "60 dry pneumatic impact tests".
-COUNT_OF_TESTS = re.compile(
-    rf"(?:the\s+)?{NUMBER_WORD}(?:[\s-]+{NUMBER_WORD})?\s+(?:[a-z]+\s+){{0,3}}"
-    r"(?:tests?|runs?|impacts?|drops?|burns?|trials?|experiments?)",
-    re.IGNORECASE,
-)
 PRINTED_CAPTION_LINE = re.compile(r"\s*(?:Figure|Fig\.|Table)\s+\d+[A-Za-z]?\s*[-–—:.]\s*\S")
 
 
@@ -5646,13 +5636,6 @@ def validated_output(output, package, document, semantic, recover_roles=True):
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("EXECUTION_NOT_DOCUMENTED")
-                    if item["class_id"] in {"ExperimentFamily", "ExperimentalRun"} and (
-                        COUNT_OF_TESTS.fullmatch(" ".join(item["label"].split()))
-                    ):
-                        # "Sixty test runs were executed": a count of tests says how
-                        # many, it does not name the group they form.
-                        record["status"] = "UNRESOLVED"
-                        record["reasons"].append("COUNT_OF_TESTS_IS_NOT_A_GROUP_NAME")
                     if item["study"] == "unknown" and item["class_id"] not in {
                         "Material",
                         "GravityCondition",
