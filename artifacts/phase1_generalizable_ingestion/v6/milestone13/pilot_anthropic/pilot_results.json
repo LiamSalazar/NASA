@@ -1,0 +1,250 @@
+{
+ "kind": "PHASE1_V6_M13_PILOT_ANTHROPIC",
+ "code": "0a88478 (ee5082c plus the token ceiling and cost receipt)",
+ "membership": "PILOT_OUTSIDE_EVALUATION_B",
+ "model": "claude-sonnet-5-5 (effort high, adaptive thinking, structured output, refusal fallback on)",
+ "token_ceiling_per_run": 500000,
+ "runs": {
+  "textiles_sonnet_c3": {
+   "recall": "9/29",
+   "correct": [
+    "entities-01",
+    "entities-03",
+    "entities-04",
+    "quantities-12",
+    "quantities-13",
+    "quantities-14",
+    "quantities-15",
+    "statements-20",
+    "statements-25"
+   ],
+   "precision": "16/19",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "4b4f7f7f": "slide bullet describing a developed solution typed as publication",
+    "d14349d7": "planned strategy phase typed an executed experiment family",
+    "afbfa18e": "current implementation claim typed documentary context"
+   },
+   "timing": {
+    "wall_seconds": 66.0,
+    "provider_seconds": 51.3,
+    "local_seconds": 14.7,
+    "post_extraction_seconds": 3.4,
+    "calls": 5,
+    "failed_attempts": 0,
+    "call_seconds_p50": 7.2,
+    "call_seconds_p90": 24.2,
+    "call_seconds_max": 24.2,
+    "input_tokens": 69877,
+    "output_tokens": 5046,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 8237,
+    "estimated_cost_usd": 0.1943,
+    "repeated_identical_requests": 0,
+    "window_prefetch": {
+     "concurrency": 3,
+     "discarded": 0,
+     "sent": 3,
+     "used": 3
+    }
+   }
+  },
+  "textiles_sonnet_c1": {
+   "recall": "9/29",
+   "correct": [
+    "entities-01",
+    "entities-03",
+    "entities-04",
+    "quantities-12",
+    "quantities-13",
+    "quantities-14",
+    "quantities-15",
+    "statements-20",
+    "statements-25"
+   ],
+   "precision": "14/20",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "4b4f7f7f": "slide bullet describing a developed solution typed as publication",
+    "afbfa18e": "current implementation claim typed documentary context",
+    "1eed98cf": "planned strategy phase typed intervention",
+    "2c653c8f": "planned strategy phase typed intervention",
+    "bc567c3a": "planned strategy phase typed intervention",
+    "5fb6d176": "stated goal typed documentary context"
+   },
+   "timing": {
+    "wall_seconds": 60.9,
+    "provider_seconds": 46.5,
+    "local_seconds": 14.4,
+    "post_extraction_seconds": 3.5,
+    "calls": 5,
+    "failed_attempts": 0,
+    "call_seconds_p50": 5.1,
+    "call_seconds_p90": 26.2,
+    "call_seconds_max": 26.2,
+    "input_tokens": 69808,
+    "output_tokens": 4959,
+    "cache_read_input_tokens": 1530,
+    "cache_creation_input_tokens": 6711,
+    "estimated_cost_usd": 0.1899,
+    "repeated_identical_requests": 0,
+    "window_prefetch": null
+   }
+  },
+  "ignition_sonnet_c3": {
+   "recall": "14/29",
+   "correct": [
+    "entities-01",
+    "entities-02",
+    "entities-03",
+    "entities-04",
+    "quantities-05",
+    "quantities-09",
+    "quantities-10",
+    "quantities-11",
+    "quantities-12",
+    "quantities-15",
+    "statements-23",
+    "statements-24",
+    "statements-25",
+    "relations-27"
+   ],
+   "precision": "68/83",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "0be56fde": "duplicate microgravity (study unknown)",
+    "9f00ca40": "generic phenomenon 'extinction' typed a current entity",
+    "ef33d1bd": "'cotton t-shirt material' duplicating the Beefy-T material",
+    "6fae3157": "fragment joined with a figure caption",
+    "f1d45bf2": "camera setup typed observation",
+    "070d8288": "running page header",
+    "8dbdffee": "sentence cut at 'I.D.'",
+    "ec1f6fbd": "caption mixed with body text",
+    "5113e4b0": "derived worst-case delta typed observation",
+    "f47c8e6e": "duplicate conclusion of a9a4aa60",
+    "874b7cbe": "label 'OD ceramic rod' (fragment)",
+    "260c6ea4": "standard test method typed an experiment family of this study",
+    "d57a687d": "condition label carries its value",
+    "6c067340": "method description typed measured observation",
+    "5b9791a3": "description of a fit typed tentative interpretation"
+   },
+   "timing": {
+    "wall_seconds": 262.5,
+    "provider_seconds": 167.4,
+    "local_seconds": 95.1,
+    "post_extraction_seconds": 16.9,
+    "calls": 14,
+    "failed_attempts": 0,
+    "call_seconds_p50": 7.2,
+    "call_seconds_p90": 35.4,
+    "call_seconds_max": 40.7,
+    "input_tokens": 308475,
+    "output_tokens": 22286,
+    "cache_read_input_tokens": 6120,
+    "cache_creation_input_tokens": 18122,
+    "estimated_cost_usd": 0.8378,
+    "repeated_identical_requests": 0,
+    "window_prefetch": {
+     "concurrency": 3,
+     "discarded": 0,
+     "sent": 5,
+     "used": 5
+    }
+   }
+  }
+ },
+ "baseline_round_b_b4be17d": {
+  "textiles_nvidia_round_b": {
+   "recall": "7/29",
+   "correct": [
+    "entities-01",
+    "entities-03",
+    "quantities-12",
+    "quantities-13",
+    "statements-20",
+    "statements-25",
+    "statements-26"
+   ],
+   "precision": "17/22",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "52746226": "fragment '• NASA-STD-6001, Test 1' typed publication",
+    "3047b24d": "statement carrying slide labels and the running footer",
+    "b02bc439": "slide heading 'Fire-resistant textile development:' typed conclusion",
+    "e126d7f3": "author-name fragment 'Mary L.' typed publication",
+    "f05182b8": "specimen configuration typed Material"
+   },
+   "timing": {
+    "extract_seconds": 331,
+    "provider_seconds": 285,
+    "local_seconds": 46,
+    "post_extraction_seconds": 1390,
+    "calls": 5,
+    "failed": "1 deadline, 1 window answered by the 30b fallback"
+   }
+  },
+  "ignition_nvidia_round_b": {
+   "recall": "15/29",
+   "correct": [
+    "entities-01",
+    "entities-02",
+    "entities-03",
+    "entities-04",
+    "quantities-05",
+    "quantities-06",
+    "quantities-09",
+    "quantities-10",
+    "quantities-11",
+    "quantities-12",
+    "quantities-15",
+    "relations-27",
+    "statements-22",
+    "statements-23",
+    "statements-24"
+   ],
+   "precision": "86/115",
+   "critical": 0,
+   "incorrect_noncritical": {
+    "da15e7c0": "'1-g testing' duplicating the WSTF group",
+    "f9947abd": "'lunar-g testing' duplicating the GRC group",
+    "f7d4d4ae": "ExperimentFamily duplicating the WSTF group",
+    "a4708738": "P213 Tape duplicated with its parenthetical description",
+    "39aadeb7": "'cotton t-shirt material' duplicating the Beefy-T material",
+    "e257404a": "Sample named by its dimensions",
+    "2d1bc11a": "Nomex (the cited fabric) typed current",
+    "65b003d6": "Kevlar (background mention) typed current",
+    "24f45a81": "generic 'cellulosic materials' from the theory section typed current",
+    "7a9c904c": "ExperimentFamily duplicating the WSTF group from the introduction",
+    "491881c5": "test criterion phrase typed ExperimentFamily",
+    "6fae3157": "fragment joined with a figure caption",
+    "f1d45bf2": "camera setup typed observation",
+    "8b843801": "method rationale typed conclusion",
+    "3ef172e0": "sentence joined with a figure reference",
+    "8dbdffee": "sentence cut at 'I.D.'",
+    "30899fcf": "plot axis description typed experimental condition",
+    "3accb9d4": "plot description and its uncertainty typed experimental condition",
+    "3ec1bddb": "fit line description typed measurement",
+    "783d4ea4": "cited estimate (ref. 20) typed current conclusion",
+    "5113e4b0": "derived worst-case delta typed observation",
+    "d7859bf1": "duplicate conclusion of a9a4aa60",
+    "be87a733": "running page header",
+    "78b1162f": "condition entity as subject of its own magnitude (odd subject)",
+    "874b7cbe": "label 'OD ceramic rod' (fragment)",
+    "fbd73802": "burn criterion of the standard test, which this testing did not use",
+    "30f9954f": "documentary sentence about plots typed experimental configuration",
+    "d61f98f0": "analysis reference-property assumption typed experimental configuration",
+    "54c7d23c": "support does not print the flow sentence"
+   },
+   "timing": {
+    "extract_seconds": 1683,
+    "provider_seconds": 500,
+    "local_seconds": 1183,
+    "post_extraction_seconds": 77,
+    "calls": 16,
+    "failed": "none"
+   }
+  }
+ },
+ "total_estimated_cost_usd": 1.2221,
+ "key_check": "one Messages call, 18 input and 4 output tokens"
+}
