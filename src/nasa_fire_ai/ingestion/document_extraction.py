@@ -1869,6 +1869,36 @@ def source_anchors(window, context, known, package):
     return anchors
 
 
+def referenced_definitions(definitions, names):
+    """The named definitions and every definition they reference, however nested."""
+    keep, pending = set(), list(names)
+    while pending:
+        name = pending.pop()
+        if name in keep:
+            continue
+        keep.add(name)
+        stack = [definitions[name]]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, dict):
+                ref = node.get("$ref")
+                if isinstance(ref, str) and ref.startswith("#/$defs/"):
+                    pending.append(ref.rsplit("/", 1)[1])
+                stack.extend(node.values())
+            elif isinstance(node, list):
+                stack.extend(node)
+    return {k: v for k, v in definitions.items() if k in keep}
+
+
+def focused_schema(schema, focus):
+    """Narrow a stage schema in place to one root key and the definitions it uses."""
+    schema["properties"] = {focus: schema["properties"][focus]}
+    schema["required"] = [focus]
+    definition_name = schema["properties"][focus]["items"]["$ref"].rsplit("/", 1)[1]
+    schema["$defs"] = referenced_definitions(schema["$defs"], [definition_name])
+    return schema
+
+
 def stage_schema(stage, compact=False):
     """Small wire contract: source IDs replace repeated model-written evidence text."""
     schema = copy.deepcopy(Output.model_json_schema())
@@ -1887,7 +1917,7 @@ def stage_schema(stage, compact=False):
             "minItems": 1,
         }
         item["required"] = list(item["properties"])
-    schema["$defs"] = {k: v for k, v in schema["$defs"].items() if k in needed}
+    schema["$defs"] = referenced_definitions(schema["$defs"], needed)
     if compact and "Statement" in schema["$defs"]:
         item = schema["$defs"]["Statement"]
         item["properties"] = {
@@ -7459,10 +7489,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 )
             ]
         if focus:
-            schema["properties"] = {focus: schema["properties"][focus]}
-            schema["required"] = [focus]
-            definition_name = schema["properties"][focus]["items"]["$ref"].rsplit("/", 1)[1]
-            schema["$defs"] = {definition_name: schema["$defs"][definition_name]}
+            focused_schema(schema, focus)
             request["task"] = (
                 "Extract all source-backed " + focus + " in the task source anchors. "
                 "Return ONLY the root key " + focus + ". The wider stage example "
@@ -7969,6 +7996,10 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                     }
                     if error.kind in {"access_denied", "interrupted"}:
                         provider_blocked[0] = True
+                    if error.kind == "request_rejected" and not usage:
+                        # Refused before processing, nothing billed: the reservation is
+                        # released so the spending brake counts only real use.
+                        tokens -= reserve
                     if error.kind == "request_rejected" and format_mode["type"] == "json_schema":
                         # A provider capability fallback is operational, never a schema relaxation.
                         format_mode = {"type": "json_object"}
