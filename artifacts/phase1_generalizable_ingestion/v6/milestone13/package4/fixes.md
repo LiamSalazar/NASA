@@ -180,3 +180,30 @@ Ranked in `target_miss_diagnosis.md`. Diego's working rule applies: no live runs
   - Other sources: 0 changes.
 - **29 historical negatives:** 0 critical regressions, 1 known non-critical (`../package5/historical_negatives_outline.json`).
 - **Mark: single-source, suspect.**
+
+## Spending brake: requests sent ahead obey it (independent review, 2026-10-22)
+
+- **Problem:** `prefetch()` sent the first request of each window of a stage without `available()`. It reserved no tokens and counted no call when it sent, so the per-run brake stopped only the foreground.
+  - With a network-free client billing 10,000 tokens per call, 12 sections, `segment_chars=1000` and `max_total_tokens=30000`, concurrency 3 sent 72 calls (720,000 tokens) where concurrency 1 sent 2.
+  - The tests did not see it because `tests/conftest.py` sets concurrency 1.
+  - Live runs did not reach it: the peak was 346k of 500k.
+- **Fix** (orchestration):
+  - **Sending ahead:** a request goes ahead only if `available()` admits it, and its reservation and call are counted when it is sent. At the brake or the call limit nothing more is sent ahead.
+  - **Its own turn:** the foreground recognizes the identical request already sent (`ahead_reserved`) and does not count it again.
+  - **Cancelling:** a request sent ahead and cancelled before leaving releases its reservation.
+  - **Discarding:** a discarded request that left keeps its reservation, adjusted to its billed usage when known. A failure keeps it (it may have been billed) unless the error proves it never left (`request_not_sent`). `record_discarded_prefetch` now returns how the request settled.
+  - **Anthropic reservation:** the reserved output is `max(capacity, MIN_MAX_TOKENS)`, which is what is sent as `max_tokens`. NVIDIA is unchanged. The context estimate, and so the split decision, is unchanged.
+- **Frozen check** (`scripts/run_phase1_scientific_validation.py`, `inference_configuration`):
+  - For Anthropic it records Anthropic's model, fallbacks, effort, endpoint (`ANTHROPIC_BASE_URL`), request limit and `max_tokens` floor, so an Opus fallback or a higher effort stops a frozen run and an NVIDIA-only change does not.
+  - NVIDIA's dictionary is unchanged.
+  - The script gains `--max-total-tokens`, 500,000 by default for Anthropic, recorded in its summary.
+- **Tests:**
+  - `tests/test_prefetch_brake.py` (3):
+    - at concurrency 3 the billed total stays under the brake;
+    - nothing is sent ahead at the brake;
+    - with an unreached brake, concurrency 1 and 3 send the same requests and give the same records.
+    - The first two fail on `effcb21`.
+  - `tests/test_discarded_prefetch.py` (4).
+  - `tests/test_frozen_inference_configuration.py` (4).
+- **Equivalence with `effcb21`:** the synthetic run with an unreached brake gives byte-identical records and the same request multiset at concurrency 1 and 3, on both commits.
+- **Replay:** no effect by construction, since validation is unchanged.

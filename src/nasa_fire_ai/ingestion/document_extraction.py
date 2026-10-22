@@ -7325,19 +7325,22 @@ def table_row_roles(package):
 
 
 def record_discarded_prefetch(registry, stage, call, ahead):
-    """Record a request sent ahead whose answer was not used; return its billed tokens.
+    """Record a request sent ahead whose answer was not used; return how it settled.
 
-    A request that could still be cancelled was never sent and is not recorded.
-    One already sent is waited for, so its usage reaches the receipts and the
-    spending brake like any other call.
+    Returns None for a request still cancellable, which was never sent and is not
+    recorded. Otherwise the request is waited for and recorded, and the result is
+    ``{"usage_tokens": billed or None, "never_sent": bool}``: a failure keeps its
+    reservation (it may have been billed) unless the error proves it never left.
     """
     if ahead.cancel():
-        return 0
+        return None
+    never_sent = False
     try:
         response = ahead.result()
         usage, transport = response.usage, response.metadata
     except ScientificTransportError as error:
         usage, transport = None, {**error.metadata, "error_type": error.kind}
+        never_sent = bool(error.metadata.get("request_not_sent"))
     except Exception as error:  # noqa: BLE001 - any failure is recorded, never raised here
         usage, transport = None, {"error_type": type(error).__name__}
     registry.set_phase3_cache(
@@ -7356,7 +7359,7 @@ def record_discarded_prefetch(registry, stage, call, ahead):
             },
         },
     )
-    return (usage or {}).get("total_tokens") or 0
+    return {"usage_tokens": (usage or {}).get("total_tokens"), "never_sent": never_sent}
 
 
 ANTHROPIC_REQUEST_CONTEXT_CEILING = 131072
@@ -7390,6 +7393,13 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
     started = time.monotonic()
     envelope = ProviderEnvelope()
     request_limit = request_context_limit(settings, envelope)
+    # What a request may be billed for as output: Anthropic sends at least its
+    # max_tokens floor whatever the stage capacity, so the brake reserves that.
+    output_floor = 0
+    if getattr(settings, "science_provider", "nvidia") == "anthropic":
+        from nasa_fire_ai.llm.anthropic_provider import MIN_MAX_TOKENS
+
+        output_floor = MIN_MAX_TOKENS
     chars = segment_size(package, budget, envelope)
     document = structure(package, service.root, chars)
     semantic = extraction_semantic(service, package)
@@ -7544,7 +7554,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
     # ahead of their turn, and each answer is still merged in window order.
     concurrency = max(1, int(os.getenv("SCIENCE_WINDOW_CONCURRENCY", "3")))
     prefetched, prefetch_counts = {}, {"concurrency": concurrency, "sent": 0, "used": 0}
-    prefetch_plans = {}
+    # Requests sent ahead, with the reservation counted against the brake when sent.
+    prefetch_plans, ahead_reserved = {}, {}
     pool = ThreadPoolExecutor(concurrency) if concurrency > 1 else None
 
     def rate_limited(ahead):
@@ -7555,6 +7566,7 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             prefetch_counts["rate_limited"] = True
 
     def prefetch(stage_windows, stage):
+        nonlocal calls, tokens
         if pool is None or not (model_enabled and client) or recovery_only:
             return
         for window in stage_windows:
@@ -7563,6 +7575,13 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             planned = process_stage(window, stage, probe=True)
             if planned is None or identity(planned["call"]) in prefetched:
                 continue
+            # A request goes ahead only if its own turn would send it: at the
+            # spending brake or the call limit, nothing more is sent ahead.
+            if not available(planned["reserve"]):
+                return
+            calls += 1
+            tokens += planned["reserve"]
+            ahead_reserved[identity(planned["call"])] = planned["reserve"]
             remaining = (
                 float("inf")
                 if budget.timeout_seconds is None
@@ -7579,12 +7598,31 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             prefetch_plans[identity(planned["call"])] = (stage, planned["call"])
             prefetch_counts["sent"] += 1
 
+    def cancel_ahead(ref):
+        """Cancel a request sent ahead if it has not left; its reservation is released."""
+        nonlocal calls, tokens
+        if prefetched[ref].cancel():
+            tokens -= ahead_reserved.pop(ref, 0)
+            calls -= 1
+            prefetched.pop(ref)
+            prefetch_counts["cancelled"] = prefetch_counts.get("cancelled", 0) + 1
+
     def settle_prefetch():
-        """Unused requests are cancelled if not yet sent; sent ones are recorded and counted."""
-        nonlocal tokens
-        for ref, ahead in prefetched.items():
+        """Unused requests: never sent are released; sent ones are recorded and stay counted.
+
+        A sent request keeps its reservation, adjusted to its billed usage when known,
+        unless its error proves it never left this machine.
+        """
+        nonlocal calls, tokens
+        for ref, ahead in list(prefetched.items()):
             stage, call = prefetch_plans.get(ref, (None, {}))
-            tokens += record_discarded_prefetch(service.registry, stage, call, ahead)
+            reserved = ahead_reserved.pop(ref, 0)
+            settled = record_discarded_prefetch(service.registry, stage, call, ahead)
+            if settled is None or settled["never_sent"]:
+                tokens -= reserved
+                calls -= 1
+            elif settled["usage_tokens"] is not None:
+                tokens += settled["usage_tokens"] - reserved
         prefetch_counts["discarded"] = prefetch_counts.get("discarded", 0) + len(prefetched)
         prefetched.clear()
 
@@ -8035,14 +8073,11 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
             if not (model_enabled and client) or replay or partial:
                 return None
             payload = json.dumps(request, ensure_ascii=False, separators=(",", ":"))
-            reserve = (
-                len((prompt + payload + json.dumps(format_mode)).encode())
-                + capacity
-                + len(images) * 4096
-            )
-            if (reserve - capacity) // 2 + capacity + 512 > request_limit:
+            sent_bytes = len((prompt + payload + json.dumps(format_mode)).encode())
+            if (sent_bytes + len(images) * 4096) // 2 + capacity + 512 > request_limit:
                 return None
             return {
+                "reserve": sent_bytes + max(capacity, output_floor) + len(images) * 4096,
                 "call": {
                     "model": task_model,
                     "system": prompt,
@@ -8117,11 +8152,8 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 body = {**request, **({"validation_feedback": feedback} if feedback else {})}
                 payload = json.dumps(body, ensure_ascii=False, separators=(",", ":"))
                 # UTF-8 bytes are a conservative tokenizer upper bound, not billed usage.
-                reserve = (
-                    len((prompt + payload + json.dumps(format_mode)).encode())
-                    + capacity
-                    + len(images) * 4096
-                )
+                sent_bytes = len((prompt + payload + json.dumps(format_mode)).encode())
+                reserve = sent_bytes + max(capacity, output_floor) + len(images) * 4096
                 outcome.update(
                     request_bytes=len(payload.encode()),
                     reserved_tokens_per_attempt=reserve,
@@ -8129,17 +8161,29 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                 )
                 # Scheduling estimate is distinct from conservative unknown-billing
                 # reservation. English scientific text/IDs are not one token per byte.
-                context_estimate = (reserve - capacity) // 2 + capacity + 512
+                context_estimate = (sent_bytes + len(images) * 4096) // 2 + capacity + 512
                 outcome["context_token_estimate"] = context_estimate
                 if context_estimate > request_limit:
                     outcome["model"] = "NEEDS_CONTEXT_SPLIT"
                     break
-                if not available(reserve):
+                planned_call = {
+                    "model": model_options[model_index],
+                    "system": prompt,
+                    "payload": payload,
+                    "max_tokens": capacity,
+                    "response_format": format_mode,
+                    "reasoning_budget": reasoning,
+                    "images": images,
+                }
+                # The identical request already sent ahead was counted when it left.
+                sent_ahead = identity(planned_call) in ahead_reserved
+                if not sent_ahead and not available(reserve):
                     if provider_blocked[0]:
                         outcome["model"] = "PROVIDER_BLOCKED"
                     break
-                calls += 1
-                tokens += reserve
+                if not sent_ahead:
+                    calls += 1
+                    tokens += reserve
                 outcome["attempts"] += 1
                 started_provider = True
                 raw, usage, parsed, finish = None, None, Output().model_dump(), None
@@ -8211,12 +8255,10 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         "images": images,
                     }
                     ahead = prefetched.pop(identity(call), None)
+                    ahead_reserved.pop(identity(call), None)
                     if prefetch_counts.get("rate_limited"):
-                        for other in prefetched.values():
-                            other.cancel()
-                    if ahead is not None and ahead.cancelled():
-                        ahead = None
-                        prefetch_counts["cancelled"] = prefetch_counts.get("cancelled", 0) + 1
+                        for ref in list(prefetched):
+                            cancel_ahead(ref)
                     if ahead is not None:
                         # The identical request was sent ahead of its turn; its
                         # answer is used exactly as a live one would be.

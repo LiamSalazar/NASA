@@ -7,6 +7,7 @@ The optional final investigation requires a prospectively frozen v3 contract.
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import sys
 from dataclasses import asdict
@@ -33,6 +34,38 @@ SOURCES = {
 def write(path, value):
     with path.open("x") as f:
         json.dump(value, f, indent=2, ensure_ascii=False)
+
+
+def inference_configuration(settings):
+    """What a frozen run's inference depends on, for the configured provider.
+
+    NVIDIA's dictionary is the one existing freezes record. Anthropic's records its
+    own model, fallbacks, effort, endpoint, request limit and max_tokens floor, so
+    a change to any of them (an Opus fallback, a higher effort) stops a frozen run,
+    and a change to NVIDIA settings alone does not.
+    """
+    if settings.science_provider == "anthropic":
+        from nasa_fire_ai.ingestion.document_extraction import request_context_limit
+        from nasa_fire_ai.llm import anthropic_provider
+
+        return {
+            "provider": "anthropic",
+            "model": settings.scientific_model,
+            "fallback_models": list(settings.anthropic_science_fallback_models),
+            "vision_model": settings.science_vision_model,
+            "effort": settings.anthropic_science_effort,
+            "endpoint": os.getenv("ANTHROPIC_BASE_URL") or "https://api.anthropic.com",
+            "provider_envelope": asdict(ProviderEnvelope()),
+            "request_context_tokens": request_context_limit(settings, ProviderEnvelope()),
+            "anthropic_min_max_tokens": anthropic_provider.MIN_MAX_TOKENS,
+        }
+    return {
+        "model": settings.scientific_model,
+        "fallback_models": list(settings.nvidia_science_fallback_models),
+        "vision_model": settings.nvidia_science_vision_model,
+        "endpoint": settings.nvidia_base_url or "https://integrate.api.nvidia.com/v1",
+        "provider_envelope": asdict(ProviderEnvelope()),
+    }
 
 
 def commit_source_reference(directory, freeze, package, attempt_count):
@@ -84,6 +117,13 @@ def commit_source_reference(directory, freeze, package, attempt_count):
         )
 
 
+def default_token_brake(max_total_tokens, settings):
+    """The run's token brake: as given, or 500,000 for a billed provider (Anthropic)."""
+    if max_total_tokens is None and settings.science_provider == "anthropic":
+        return 500000
+    return max_total_tokens
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", choices=[*SOURCES, "holdout", "reserved"])
@@ -93,6 +133,8 @@ def main():
     parser.add_argument("--timeout-seconds", type=float)
     parser.add_argument("--recover", action="store_true")
     parser.add_argument("--max-model-calls", type=int)
+    # The per-run spending brake; a billed provider defaults to 500,000 tokens.
+    parser.add_argument("--max-total-tokens", type=int)
     parser.add_argument("--ntrs-id")
     parser.add_argument("--freeze", type=Path)
     parser.add_argument("--acquire-only", action="store_true")
@@ -109,22 +151,7 @@ def main():
             if hashlib.sha256((ROOT / name).read_bytes()).hexdigest() != sha:
                 raise ValueError("Frozen implementation changed: " + name)
         settings = Settings()
-        actual = {
-            "model": settings.scientific_model,
-            "fallback_models": list(settings.nvidia_science_fallback_models),
-            "vision_model": settings.nvidia_science_vision_model,
-            "endpoint": settings.nvidia_base_url or "https://integrate.api.nvidia.com/v1",
-            "provider_envelope": asdict(ProviderEnvelope()),
-        }
-        if settings.science_provider == "anthropic":
-            # The Anthropic request limit and output floor are environment settings too;
-            # a change to either must stop a frozen run like any other configuration.
-            from nasa_fire_ai.ingestion.document_extraction import request_context_limit
-            from nasa_fire_ai.llm import anthropic_provider
-
-            actual["request_context_tokens"] = request_context_limit(settings, ProviderEnvelope())
-            actual["anthropic_min_max_tokens"] = anthropic_provider.MIN_MAX_TOKENS
-        if actual != freeze["configuration"]:
+        if inference_configuration(settings) != freeze["configuration"]:
             raise ValueError("Frozen inference configuration changed")
     if args.source == "holdout":
         freeze = json.loads(
@@ -197,12 +224,14 @@ def main():
     }
     if args.source == "reserved" and not args.offline:
         commit_source_reference(out, freeze, submission["package"], len(earlier_attempts))
+    max_total_tokens = default_token_brake(args.max_total_tokens, settings)
     prepared = service.prepare_scientific(
         submission["package"]["id"],
         settings,
         model_enabled=not args.offline,
         budget=ExtractionBudget(
             max_model_calls=args.max_model_calls,
+            max_total_tokens=max_total_tokens,
             timeout_seconds=args.timeout_seconds,
             recovery_only=args.recover,
             call_timeout_seconds=args.request_timeout_seconds,
@@ -233,6 +262,7 @@ def main():
         {
             "source": args.source,
             "package_id": submission["package"]["id"],
+            "max_total_tokens": max_total_tokens,
             "digest": prepared["digest"],
             "processing": prepared["processing"],
             "scientific_coverage": prepared["package"]["scientific_extraction"][
