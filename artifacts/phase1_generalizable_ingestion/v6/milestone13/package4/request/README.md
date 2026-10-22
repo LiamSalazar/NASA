@@ -35,3 +35,25 @@ With `SCIENCE_ADMISSIBLE_SUBJECTS=1`, each in-task statement anchor carries `adm
 ## Anthropic request size
 
 Not changed here. Diego decided it at 17:18 UTC, and the coordinator is computing the values; it is to be a separate Anthropic envelope that does not touch NVIDIA's defaults.
+
+## Role-dependent order (second prejudgment, still **off**)
+
+`admissible_statement_subjects(..., epistemic)` now orders the menu by the statement's role. Documentary context, author conclusions, guidance and requirements are offered the study's investigation first; observations, configurations and the other roles the narrowest subject first. The request instruction says the same.
+
+**Free prejudgment** on all 20 saved packages, including the two package 5 rounds (`prejudge_admissible_subjects_by_role.json`). The bar was agreed before: PTFE precision ≥ 0.978 and no more than one new error per run.
+
+| PTFE package | freed | new errors | precision after |
+|---|---|---|---|
+| Sonnet `a6d967b` r1 | 6 | 0 | 106/107 |
+| Sonnet `a6d967b` r2 | 6 | 1 | 122/125 = **0.976** |
+| NVIDIA round B | 6 | 4 | 136/142 = **0.958** |
+| Sonnet `07709c0` r1 | 6 | 1 | 126/128 |
+| Sonnet `07709c0` r2 | 3 | 1 | 111/114 = **0.974** |
+
+- **Recurring new error:** "Polymeric materials, such as TFE-Teflon® (PTFE), have proven to be reliable ..." is an introduction claim. Typed an author conclusion, it would be freed at study scope.
+- **NVIDIA package:** it also frees the comparison sentence on Algoflon®, the "Existing Data Library" sentence with its heading, and "two types of Algoflon® were tested" as documentary context.
+- **Regulator statements-19** ("Impact times of 80-93 msec were measured ... prior to re-connecting the POR test article") would be freed at study scope in 4 packages, which the review asked to avoid.
+
+**Result:** the bar fails, so **the menu stays off** (`SCIENCE_ADMISSIBLE_SUBJECTS=0`).
+- Both failures come from statements the validator already accepts at study scope once a subject is given: introduction claims, and a measurement before the test article was connected. A menu can only expose them.
+- Fixing them would be a validator rule, not a menu change.

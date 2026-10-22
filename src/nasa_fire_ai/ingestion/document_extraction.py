@@ -1325,8 +1325,17 @@ SUBJECT_BREADTH = {
 }
 
 
-def admissible_statement_subjects(spans, entities, document):
-    """Known subjects a statement's own passage admits, narrowest first.
+# Roles that speak for the paper as a whole offer its investigation first.
+STUDY_FIRST_ROLES = frozenset(
+    {"documentary_context", "author_reported_conclusion", "guidance", "normative_requirement"}
+)
+
+
+def admissible_statement_subjects(spans, entities, document, epistemic=None):
+    """Known subjects a statement's own passage admits, ordered for its role.
+
+    Narrowest first (observations, configurations and the other roles); the
+    study's investigation first for roles that speak for the paper as a whole.
 
     The same tests the validator applies to a proposed subject: an independently
     readable anchor for it (``applicable``), or the paper's own research passage
@@ -1341,13 +1350,16 @@ def admissible_statement_subjects(spans, entities, document):
             or document_statement_scope(key, spans, entities, document)
         )
     ]
-    return sorted(
+    ordered = sorted(
         keys,
         key=lambda k: (
             SUBJECT_BREADTH.get(entities[k]["class_id"], len(SUBJECT_BREADTH)),
             normalized(entities[k]["label"]),
         ),
     )
+    if epistemic in STUDY_FIRST_ROLES:
+        ordered.sort(key=lambda k: entities[k]["class_id"] != "Investigation")
+    return ordered
 
 
 def document_statement_scope(subject, spans, entities, document, cited_named=False):
@@ -7679,8 +7691,11 @@ def extract_package(service, package, settings, budget, model_enabled=False, cli
                         if key in refs
                     ]
             request["subject_menu"] = (
-                "Choose a statement's subjects from its anchor's admissible_subjects: "
-                "the narrowest the sentence describes. An empty list keeps subjects=[]."
+                "Choose a statement's subjects from its anchor's admissible_subjects, which "
+                "list the narrowest first. For an observation or a configuration take the "
+                "narrowest the sentence describes; for documentary context, an author "
+                "conclusion, guidance or a requirement take the study's investigation. An "
+                "empty list keeps subjects=[]."
             )
         source_checksums = {e["evidence_id"]: e["checksum"] for e in package["evidence"]}
         local_pages = {(m["page"], source_checksums[m["evidence_id"]]) for m in window["members"]}

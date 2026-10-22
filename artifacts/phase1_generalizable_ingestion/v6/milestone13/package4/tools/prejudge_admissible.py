@@ -3,8 +3,8 @@
     uv run python prejudge_admissible.py OUT.json PREPARED.json.gz [...]   (repo root)
 
 For each saved package: replay it, then for each statement held only because its
-proposed subject is not shown to apply to its passage, take the narrowest subject
-the passage admits (admissible_statement_subjects) as if the model had picked it
+proposed subject is not shown to apply to its passage, take the first subject the
+passage admits for its role (admissible_statement_subjects) as if the model had picked it
 from the menu, revalidate, and list the statements that become SOURCE_SUPPORTED.
 Nothing is judged here; the list is for record-by-record adjudication.
 """
@@ -49,7 +49,9 @@ def main():
                 if not HELD & set(record["reasons"]) or set(record["reasons"]) - HELD:
                     continue  # held for another reason too: a subject alone cannot free it
                 spans = record.get("support_spans") or locate(record["proposal"]["support"], evidence)
-                menu = admissible_statement_subjects(spans, entities, document)
+                menu = admissible_statement_subjects(
+                    spans, entities, document, record["proposal"]["epistemic"]
+                )
                 if not menu:
                     continue
                 for item in raw["statements"]:
