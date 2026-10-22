@@ -455,6 +455,61 @@ def page_edge_prefix(text, evidence, spans=()):
     return prefix + rest[:lead]
 
 
+def page_edge_lines(evidence):
+    """Lines of any length a document prints at the edge of most of its pages.
+
+    Compared without digits, so a date or page number does not make them differ;
+    used only next to a running header, where a short date line is page furniture.
+    """
+    from collections import Counter
+
+    pages = list(evidence.values())
+    counts = Counter()
+    for page in pages:
+        lines = [line.strip() for line in page.get("text", "").splitlines() if line.strip()]
+        counts.update(
+            {
+                normalized(re.sub(r"\d+", " ", line))
+                for line in lines[:3] + lines[-3:]
+                if re.search(r"[A-Za-z]{2,}", line)
+            }
+        )
+    floor = max(3, int(0.4 * len(pages)))
+    return {line for line, n in counts.items() if n >= floor and line}
+
+
+def page_edge_suffix(text, evidence):
+    """The running footer and what follows it, when they close a passage after its sentence.
+
+    "• Coupon-level flammability testing ... single material tests / 55th
+    International Conference on Environmental Systems / July 12-16, 2026 / 5 /
+    Examples of ...": the footer, its date and page number end the sentence, and
+    the slide's next block is not part of it. A sentence that continues after the
+    footer (a lowercase word, as across a page break) is not cut.
+    """
+    headers = set(running_headers(evidence))
+    lines = text.split("\n")
+    for index in range(1, len(lines)):
+        if normalized(re.sub(r"\d+", " ", lines[index].strip())) not in headers:
+            continue
+        before = "\n".join(lines[:index])
+        if len(re.findall(r"[A-Za-z]{2,}", before)) < 5:
+            return ""
+        edge = page_edge_lines(evidence)
+        after = index + 1
+        while after < len(lines) and (
+            not lines[after].strip()
+            or re.fullmatch(r"\d{1,4}", lines[after].strip())
+            or normalized(re.sub(r"\d+", " ", lines[after].strip())) in headers | edge
+        ):
+            after += 1
+        rest = "\n".join(lines[after:]).strip()
+        if rest and not re.match(r"[A-Z•\-–]", rest):
+            return ""
+        return text[len(before.rstrip()) :]
+    return ""
+
+
 def acronym_printed_form(label, quotes):
     """The printed name a label abbreviates with its acronym, if a quote prints it.
 
@@ -5781,6 +5836,22 @@ def validated_output(output, package, document, semantic, recover_roles=True):
                         record["page_edge_removed"] = {
                             "removed": edge,
                             "basis": "RUNNING_PAGE_HEADER_BEFORE_SENTENCE",
+                        }
+                    tail = page_edge_suffix(item["text"], evidence)
+                    if tail:
+                        # The running footer, its date and page number, and the
+                        # page's next block after a whole sentence are not part of
+                        # it; the sentence and its support end before them.
+                        item["text"] = item["text"][: len(item["text"]) - len(tail)]
+                        footer = tail.strip().split("\n")[0].strip()
+                        for s in spans:
+                            at = s["quote"].find(footer)
+                            if at > 0:
+                                kept = s["quote"][:at].rstrip()
+                                s.update(end=s["start"] + len(kept), quote=kept)
+                        record["page_edge_removed_after"] = {
+                            "removed": tail,
+                            "basis": "RUNNING_PAGE_FOOTER_AFTER_SENTENCE",
                         }
                     continuation = page_continuation_context(spans, evidence)
                     if continuation and item["epistemic"] != "documentary_context":

@@ -15,6 +15,7 @@ A cut session resumes at the first package not done.
 
 **Cost policy:**
 - No live runs unless truly necessary and authorized.
+- **Working rule (Diego, 2026-10-22):** no live runs until the replay meets the threshold, i.e. recall ≥ 0.80 and precision ≥ 0.95 per source with 0 critical errors. Everything is measured by replay and tests. A run is proposed only once the replay passes, with Diego's written authorization.
 - The free full replay (46 saved inputs, 29 historical negatives) runs only at measurement point A, at the end of block 3, not per rule.
 
 ## Where Phase 1 stands (2026-10-22, code `a6d967b`)

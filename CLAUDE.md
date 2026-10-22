@@ -72,6 +72,7 @@ Metrics measure implementation quality; they are not the objective. The targets 
   - Do not change the production model or provider without authorization.
 - **Runs cost time and credits.** Do not launch live runs unless they are truly necessary and authorized. Prefer pytest, unit, metamorphic and negative tests, and quick replays of saved outputs. Full replays and live rounds happen only at agreed measurement points.
   - The per-run `--max-total-tokens` ceiling is a spending brake: a call that would pass it is not sent and is recorded as deferred. It never truncates scientific content inside a request.
+  - **No more live runs until the replay meets the threshold** (Diego, 2026-10-22): recall ≥ 0.80 and precision ≥ 0.95 per source, with 0 critical errors. Until then everything is measured by replay and tests. A live run is proposed only once the replay passes, and always needs Diego's written authorization.
 - **Branch and commits.** Work only on `diego/research`; never `main`, no PR without request.
   - Commits as Diegomed11, with no assistant trailers.
   - LF endings, no Windows-only fixes.
