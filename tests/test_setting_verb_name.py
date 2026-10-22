@@ -187,3 +187,10 @@ def test_a_printed_label_that_is_not_the_setting_verb_is_not_named_by_it(
     service, text, label, expression, unit, epistemic
 ):
     assert not named_by_verb(quantity(service, text, label, expression, unit, epistemic))
+
+
+def test_a_printed_noun_sharing_the_verbs_stem_is_not_named_by_the_verb(service):
+    # Negative: the rule applies only when the label is the verb itself; "rotation",
+    # printed elsewhere in the sentence, is left to the ordinary name syntax.
+    text = "The Alpha drum rotation began when the chamber was rotated at 20.4 RPM before the drop."
+    assert not named_by_verb(quantity(service, text, "rotation", "20.4", "RPM"))

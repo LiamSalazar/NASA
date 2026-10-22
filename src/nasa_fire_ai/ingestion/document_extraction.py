@@ -3564,7 +3564,12 @@ def validate_quantity_subject(
         setting := printed_setting_name(
             item["label"], item["expression"], item["unit"], spans, item.get("epistemic")
         )
-    ) and setting_verb_of_unit_dimension(setting["printed_name"], item["unit"]):
+    ) and (
+        # Only a label that is the verb itself: a printed noun sharing its stem
+        # ("rotation") is named, or not, by the ordinary name syntax.
+        normalized(item["label"]) == normalized(setting["printed_name"])
+        and setting_verb_of_unit_dimension(setting["printed_name"], item["unit"])
+    ):
         # "The chamber was rotated at 20.4 RPM" labelled "rotated": the label is
         # printed and is the verb that sets the value. A label that is the verb
         # cannot vouch for itself, so the verb must be a form of a noun of the
