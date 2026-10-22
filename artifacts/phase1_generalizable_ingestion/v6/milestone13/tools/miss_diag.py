@@ -24,12 +24,6 @@ import json
 import os
 import sys
 
-sys.stdout.reconfigure(encoding="utf-8")
-REPO, NFA, OUT = sys.argv[1:4]
-MILESTONE, TAG, RUNS = (sys.argv[4:7] + ["milestone12", "0a5a860", "r1,r2"][len(sys.argv[4:7]):])[:3]
-A = os.path.join(REPO, "artifacts/phase1_generalizable_ingestion")
-M12 = os.path.join(A, "v6", MILESTONE)
-evaluation = json.load(open(os.path.join(M12, "evaluation_b.json"), encoding="utf-8"))
 
 
 def load(path):
@@ -118,79 +112,108 @@ def classify(target, records, carried, correct, outcomes=()):
     }
 
 
-result = {"basis": __doc__.strip().splitlines()[0], "runs": {}}
-summary = collections.Counter()
-for source in ("ignition", "regulator", "textiles"):
-    review = json.load(open(os.path.join(A, f"v4/independent_{source}/source_review.json"), encoding="utf-8"))
-    targets = [t for t in review["targets"] if t["outcome"] != "inaccessible"]
-    for run in RUNS.split(","):
-        folder = os.path.join(M12, f"{source}_live_{TAG}_{run}")
-        if not os.path.exists(folder):  # package 4 names its Sonnet runs this way
-            folder = os.path.join(M12, f"{source}_sonnet_{TAG}_{run}")
-        attempts = load(os.path.join(folder, "attempts.json.gz"))["attempts"]
-        summary_path = os.path.join(folder, "summary.json")
-        outcomes = (
-            json.load(open(summary_path, encoding="utf-8"))["processing"]["outcomes"]
-            if os.path.exists(summary_path)
-            else []
-        )
-        # Requests carry text in segments of their own ids, so a target's evidence
-        # counts as sent when its printed words reach a finished request.
-        sent = collections.defaultdict(list)
+def carried_by_stage(folder, targets):
+    """Per stage, the targets whose printed words reached an answered request of it,
+    and the run's window outcomes."""
+    attempts = load(os.path.join(folder, "attempts.json.gz"))["attempts"]
+    summary_path = os.path.join(folder, "summary.json")
+    outcomes = []
+    if os.path.exists(summary_path):
+        with open(summary_path, encoding="utf-8") as handle:
+            outcomes = json.load(handle)["processing"]["outcomes"]
+    # Requests carry text in segments of their own ids, so a target's evidence
+    # counts as sent when its printed words reach a finished request.
+    sent = collections.defaultdict(list)
 
-        def strings(x, into):
-            if isinstance(x, str):
-                into.append(x)
-            elif isinstance(x, dict):
-                for v in x.values():
-                    strings(v, into)
-            elif isinstance(x, list):
-                for v in x:
-                    strings(v, into)
+    def strings(x, into):
+        if isinstance(x, str):
+            into.append(x)
+        elif isinstance(x, dict):
+            for v in x.values():
+                strings(v, into)
+        elif isinstance(x, list):
+            for v in x:
+                strings(v, into)
 
-        for a in attempts:
-            # A refused or failed attempt carried nothing the model answered.
-            if a.get("state") == "FINISHED" and not (a.get("outcome") or {}).get("error_type"):
-                strings(a.get("request"), sent[a.get("stage")])
-        carried = {}
-        for stage in set(STAGE.values()):
-            text = " ".join(" ".join(sent[stage]).split()).lower()
-            carried[stage] = set()
-            for t in targets:
-                words = " ".join(t["quote"].split()).lower()
-                pieces = [words[i : i + 30] for i in range(0, max(1, len(words) - 29), 15)]
-                if any(piece in text for piece in pieces):
-                    carried[stage].add(t["id"])
-        correct = set(evaluation["runs"][f"{source}_{run}"]["correct"])
-        for label, path in (
-            ("live", os.path.join(folder, "prepared.json.gz")),
-            ("replay_m13", os.path.join(NFA, f"m12_{source}_{run}", "prepared.json.gz")),
-        ):
-            if not os.path.exists(path):
-                continue
-            extraction = load(path)["package"]["scientific_extraction"]
-            records = [
-                r
-                for r in extraction["records"] + extraction.get("pdf_table_quantity_proposals", [])
-                if not r.get("duplicate_of")
-            ]
-            rows = {}
-            for t in targets:
-                c = classify(t, records, carried, correct, outcomes if label == "live" else ())
-                if c:
-                    c.update(kind=t["kind"], quote=" ".join(t["quote"].split())[:160])
-                    rows[t["id"]] = c
-                    if label == "live":
+    for a in attempts:
+        # A refused or failed attempt carried nothing the model answered.
+        if a.get("state") == "FINISHED" and not (a.get("outcome") or {}).get("error_type"):
+            strings(a.get("request"), sent[a.get("stage")])
+    carried = {}
+    for stage in set(STAGE.values()):
+        text = " ".join(" ".join(sent[stage]).split()).lower()
+        carried[stage] = set()
+        for t in targets:
+            words = " ".join(t["quote"].split()).lower()
+            pieces = [words[i : i + 30] for i in range(0, max(1, len(words) - 29), 15)]
+            if any(piece in text for piece in pieces):
+                carried[stage].add(t["id"])
+    return carried, outcomes
+
+
+def diagnose_records(path, targets, carried, correct, outcomes=()):
+    """Each missed target's class for one prepared package."""
+    extraction = load(path)["package"]["scientific_extraction"]
+    records = [
+        r
+        for r in extraction["records"] + extraction.get("pdf_table_quantity_proposals", [])
+        if not r.get("duplicate_of")
+    ]
+    rows = {}
+    for t in targets:
+        c = classify(t, records, carried, correct, outcomes)
+        if c:
+            c.update(kind=t["kind"], quote=" ".join(t["quote"].split())[:160])
+            rows[t["id"]] = c
+    return rows
+
+
+def main():
+    sys.stdout.reconfigure(encoding="utf-8")
+    repo, nfa, out = sys.argv[1:4]
+    milestone, tag, runs = (sys.argv[4:7] + ["milestone12", "0a5a860", "r1,r2"][len(sys.argv[4:7]) :])[:3]
+    a = os.path.join(repo, "artifacts/phase1_generalizable_ingestion")
+    m12 = os.path.join(a, "v6", milestone)
+    with open(os.path.join(m12, "evaluation_b.json"), encoding="utf-8") as handle:
+        evaluation = json.load(handle)
+    result = {"basis": __doc__.strip().splitlines()[0], "runs": {}}
+    summary = collections.Counter()
+    for source in ("ignition", "regulator", "textiles"):
+        with open(os.path.join(a, f"v4/independent_{source}/source_review.json"), encoding="utf-8") as handle:
+            review = json.load(handle)
+        targets = [t for t in review["targets"] if t["outcome"] != "inaccessible"]
+        for run in runs.split(","):
+            folder = os.path.join(m12, f"{source}_live_{tag}_{run}")
+            if not os.path.exists(folder):  # package 4 names its Sonnet runs this way
+                folder = os.path.join(m12, f"{source}_sonnet_{tag}_{run}")
+            carried, outcomes = carried_by_stage(folder, targets)
+            correct = set(evaluation["runs"][f"{source}_{run}"]["correct"])
+            for label, path in (
+                ("live", os.path.join(folder, "prepared.json.gz")),
+                ("replay_m13", os.path.join(nfa, f"m12_{source}_{run}", "prepared.json.gz")),
+            ):
+                if not os.path.exists(path):
+                    continue
+                rows = diagnose_records(
+                    path, targets, carried, correct, outcomes if label == "live" else ()
+                )
+                if label == "live":
+                    for c in rows.values():
                         summary[(source, c["class"])] += 1
-            result["runs"][f"{source}_{run}_{label}"] = {
-                "accessible": len(targets),
-                "correct": len(correct),
-                "missed": len(rows),
-                "by_class": dict(collections.Counter(r["class"] for r in rows.values())),
-                "targets": rows,
-            }
-result["summary_live"] = {f"{s}/{c}": n for (s, c), n in sorted(summary.items())}
-json.dump(result, open(OUT, "w", encoding="utf-8", newline="\n"), indent=1, ensure_ascii=False)
-for k, v in result["runs"].items():
-    print(k, v["correct"], "/", v["accessible"], v["by_class"])
-print(result["summary_live"])
+                result["runs"][f"{source}_{run}_{label}"] = {
+                    "accessible": len(targets),
+                    "correct": len(correct),
+                    "missed": len(rows),
+                    "by_class": dict(collections.Counter(r["class"] for r in rows.values())),
+                    "targets": rows,
+                }
+    result["summary_live"] = {f"{s}/{c}": n for (s, c), n in sorted(summary.items())}
+    with open(out, "w", encoding="utf-8", newline="\n") as handle:
+        json.dump(result, handle, indent=1, ensure_ascii=False)
+    for k, v in result["runs"].items():
+        print(k, v["correct"], "/", v["accessible"], v["by_class"])
+    print(result["summary_live"])
+
+
+if __name__ == "__main__":
+    main()

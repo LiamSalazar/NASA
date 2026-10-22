@@ -1,0 +1,1733 @@
+{
+ "ignition": {
+  "accessible": 29,
+  "runs": [
+   "nvidia milestone10 ignition_r1",
+   "nvidia milestone11 ignition_r1",
+   "nvidia milestone11 ignition_r2",
+   "nvidia milestone12 ignition_r1",
+   "nvidia milestone12 ignition_r2",
+   "nvidia milestone13 ignition_r1",
+   "pilot ignition_sonnet_c3",
+   "pilot ignition_opus_c3",
+   "sonnet package4 dc6f342 r1",
+   "sonnet package4 a6d967b r1",
+   "sonnet package4 a6d967b r2"
+  ],
+  "counts": {
+   "reached live": 16,
+   "rejection": 8,
+   "reached in replay": 1,
+   "wrong role": 3,
+   "wrong subject": 1
+  },
+  "ceilings": {
+   "live_union": 16,
+   "live_and_replay_union": 17,
+   "plus_every_rejection": 25,
+   "plus_every_model_side_miss": 29,
+   "needs_liam": 0
+  },
+  "targets": [
+   {
+    "target": "entities-01",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "A current experimental testing group, not a single executed run or an author institution."
+   },
+   {
+    "target": "entities-02",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "A distinct current partial-gravity experimental group, not the WSTF tests."
+   },
+   {
+    "target": "entities-03",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "Material identity; not a run or an unapproved new global material definition."
+   },
+   {
+    "target": "entities-04",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "Material/product identity distinct from cited Nomex fabric; not a new NASA discovery."
+   },
+   {
+    "target": "quantities-05",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 10 of 11 runs",
+    "expectation": "test-program pressure context; experimental configuration, not a newly measured habitat condition"
+   },
+   {
+    "target": "quantities-06",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_opus_c3"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 6 of 11 runs",
+    "expectation": "WSTF chamber capability/configuration; preserve 57 without replacing it with the separate 56.5 kPa expression"
+   },
+   {
+    "target": "quantities-07",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+    "note": "the dimensions are labelled with the object ('samples'); no dimension name is printed",
+    "expectation": "WSTF specimen dimension, not the GRC chamber dimension or a burn-spread measurement"
+   },
+   {
+    "target": "quantities-08",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+    "note": "as quantities-07",
+    "expectation": "second WSTF specimen dimension; preserve original expression and dimension ambiguity if necessary"
+   },
+   {
+    "target": "quantities-09",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 5 of 11 runs",
+    "expectation": "WSTF igniter outside diameter, not a fuel specimen diameter"
+   },
+   {
+    "target": "quantities-10",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "WSTF primer-flow configuration, not all WSTF test velocities and not GRC ignition flow"
+   },
+   {
+    "target": "quantities-11",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "GRC chamber volume; preserve original l and experimental group"
+   },
+   {
+    "target": "quantities-12",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "GRC chamber internal diameter, not WSTF quartz-tube diameter"
+   },
+   {
+    "target": "quantities-13",
+    "kind": "quantities",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "note": "the printed typo 'internal height if 30.5 cm' leaves the value unnamed; the validator is stricter than the expectation",
+    "expectation": "GRC chamber internal height; original typo if is preserved as source text"
+   },
+   {
+    "target": "quantities-14",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached in replay",
+    "code": "",
+    "note": "point A (3.1) and block 3b fix 3",
+    "expectation": "GRC rotation configuration before drop, not LUCI rocket rotation"
+   },
+   {
+    "target": "quantities-15",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 7 of 11 runs",
+    "expectation": "GRC ignition enhancement flow, not measured lunar buoyant velocity"
+   },
+   {
+    "target": "quantities-16",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "wrong role",
+    "code": "",
+    "note": "a cited estimate (Takahashi) proposed as a current reported quantity",
+    "expectation": "cited estimate for 1-g; never a current measured or known lunar-g velocity"
+   },
+   {
+    "target": "quantities-17",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "rejection",
+    "code": "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "note": "a derived delta with no eligible subject",
+    "expectation": "derived conservative compensation delta from fit/extrapolation/confidence assumptions, not directly observed flammability difference"
+   },
+   {
+    "target": "statements-18",
+    "kind": "statements",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION",
+    "note": "the execution step held as a changing observation",
+    "expectation": "Current GRC configuration/execution, not two invented named individual runs."
+   },
+   {
+    "target": "statements-19",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "wrong role",
+    "code": "",
+    "note": "test coverage typed documentary context",
+    "expectation": "Current experiment coverage; retain both WSTF and GRC comparison context."
+   },
+   {
+    "target": "statements-20",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone13 ignition_r1"
+    ],
+    "blocking_class": "wrong role",
+    "code": "",
+    "note": "explicit uncertainty typed a condition or a conclusion",
+    "expectation": "Explicit uncertainty for lunar-g flow; never replace with a measured velocity from a different condition."
+   },
+   {
+    "target": "statements-21",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "nvidia milestone12 ignition_r1"
+    ],
+    "blocking_class": "rejection",
+    "code": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "note": "the whole sentence held on three specimen subjects; the accepted record is a cut fragment",
+    "expectation": "Reported comparative result with an extrapolated comparator; retain comparison and assumed-flow qualification."
+   },
+   {
+    "target": "statements-22",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 4 of 11 runs",
+    "expectation": "Authors explicitly do not establish a cause; tentative interpretation/uncertainty, never causal finding."
+   },
+   {
+    "target": "statements-23",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 9 of 11 runs",
+    "expectation": "Tentative interpretation, not measured observation or confirmed explanation."
+   },
+   {
+    "target": "statements-24",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "Author conclusion scoped to some materials and comparison groups, never universal material flammability."
+   },
+   {
+    "target": "statements-25",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone11 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 4 of 11 runs",
+    "expectation": "Tentative author conclusion with explicit further-research need; not absence-of-evidence invented knowledge gap."
+   },
+   {
+    "target": "relations-26",
+    "kind": "relations",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "wrong subject",
+    "code": "",
+    "note": "WSTF hasCondition proposed to the primer flow, not the documented chamber configuration",
+    "expectation": "WSTF testing group has its documented pressure/configuration; not GRC attribution."
+   },
+   {
+    "target": "relations-27",
+    "kind": "relations",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 11 of 11 runs",
+    "expectation": "GRC group has its centrifuge/partial-gravity experimental condition; not all WSTF tests."
+   },
+   {
+    "target": "quantities-28",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "rejection",
+    "code": "ORIGINAL_TABLE_QUANTITY_ROLE_AND_EXPERIMENTAL_SCOPE_REQUIRE_REVIEW",
+    "note": "a cited model-input table cell; math-font glyphs also unbind its unit",
+    "expectation": "Original PMMA density model-input table cell with its printed density header/unit and cited literature role; not a new current NASA observation."
+   },
+   {
+    "target": "quantities-29",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 ignition_r1",
+     "nvidia milestone11 ignition_r1",
+     "nvidia milestone11 ignition_r2",
+     "nvidia milestone12 ignition_r1",
+     "nvidia milestone12 ignition_r2",
+     "nvidia milestone13 ignition_r1",
+     "pilot ignition_sonnet_c3",
+     "pilot ignition_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "ORIGINAL_TABLE_QUANTITY_ROLE_AND_EXPERIMENTAL_SCOPE_REQUIRE_REVIEW",
+    "note": "a derived table cell with its confidence role",
+    "expectation": "Polycarbonate table compensation delta with exact row/header and 95% confidence/extrapolation role; not direct measurement."
+   }
+  ]
+ },
+ "regulator": {
+  "accessible": 32,
+  "runs": [
+   "nvidia milestone10 regulator_r1",
+   "nvidia milestone11 regulator_r1",
+   "nvidia milestone11 regulator_r2",
+   "nvidia milestone12 regulator_r1",
+   "nvidia milestone12 regulator_r2",
+   "nvidia milestone13 regulator_r1",
+   "sonnet package4 dc6f342 r1",
+   "sonnet package4 a6d967b r1",
+   "sonnet package4 a6d967b r2"
+  ],
+  "counts": {
+   "reached live": 22,
+   "wrong role": 3,
+   "rejection": 7
+  },
+  "ceilings": {
+   "live_union": 22,
+   "live_and_replay_union": 22,
+   "plus_every_rejection": 29,
+   "plus_every_model_side_miss": 32,
+   "needs_liam": 0
+  },
+  "targets": [
+   {
+    "target": "entities-01",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 9 of 9 runs",
+    "expectation": "Current documentary investigation, not a named executed run."
+   },
+   {
+    "target": "entities-02",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 9 of 9 runs",
+    "expectation": "Actual tested hardware specimen; not all three prototypes or a fabricated individual run."
+   },
+   {
+    "target": "entities-03",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 9 of 9 runs",
+    "expectation": "Contaminant material identity; not WD-40 or unascertained mixture."
+   },
+   {
+    "target": "entities-04",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 8 of 9 runs",
+    "expectation": "Executed dry-impact group, not60 invented named run identities."
+   },
+   {
+    "target": "entities-05",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 5 of 9 runs",
+    "expectation": "First wet-impact group, distinct from dry and second wet series."
+   },
+   {
+    "target": "entities-06",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 4 of 9 runs",
+    "expectation": "Second wet-impact group with changed impact times; not identical to first wet series."
+   },
+   {
+    "target": "quantities-07",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "wrong role",
+    "code": "",
+    "note": "a transient model prediction typed a configuration or a measurement",
+    "expectation": "Transient model prediction, not measured POR gas temperature; originalF unchanged."
+   },
+   {
+    "target": "quantities-08",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 9 of 9 runs",
+    "expectation": "POR supply/MEOP configuration; not nominal interstage~200psia or post-test sweep setpoint."
+   },
+   {
+    "target": "quantities-09",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+    "note": "'20uL was injected': unprinted label, and the test article (POR) as subject",
+    "expectation": "First dodecane injection configuration, originaluL unit retained; not oil mass or measured film uniformity."
+   },
+   {
+    "target": "quantities-10",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT",
+    "note": "'~100 mg/ft2 film coating' as a target loading, on the test article",
+    "expectation": "Target coating loading, not independently measured uniform thickness."
+   },
+   {
+    "target": "quantities-11",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 4 of 9 runs",
+    "expectation": "Dry-impact series measurement, not wet-series time or an SI unit silently substituted."
+   },
+   {
+    "target": "quantities-12",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW",
+    "note": "the deliberate test-article alias hold",
+    "expectation": "Dry functional/operating pressure condition with differential pressure unit preserved, not3750psia supply."
+   },
+   {
+    "target": "quantities-13",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 4 of 9 runs",
+    "expectation": "First dodecane wet series, not80-93ms system-only adjustment or secondwet46-49."
+   },
+   {
+    "target": "quantities-14",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 4 of 9 runs",
+    "expectation": "Second wet series measured times; not firstwet137-148 or modeled60ms scenario."
+   },
+   {
+    "target": "statements-15",
+    "kind": "statements",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "wrong role",
+    "code": "",
+    "note": "a cited partial test typed a current observation",
+    "expectation": "Tentative separate partial AIT test and confirmation requirement, not confirmed POR prototype temperature."
+   },
+   {
+    "target": "statements-16",
+    "kind": "statements",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE",
+    "note": "the contaminant-selection configuration without a scope",
+    "expectation": "Reported contaminant-selection configuration; do not substitute WD-40 formulation."
+   },
+   {
+    "target": "statements-17",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 6 of 9 runs",
+    "expectation": "Actual dry series execution and time, not60 newly named runs or wet-series scope."
+   },
+   {
+    "target": "statements-18",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "INFERRED_INTERPRETATION_IS_NOT_DIRECT_OBSERVATION",
+    "note": "the post-dry functional result held as an interpretation",
+    "expectation": "Observed post-dry functional test, not evidence that no combustion occurred in any wet series."
+   },
+   {
+    "target": "statements-19",
+    "kind": "statements",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED",
+    "note": "a system-only adjustment: false on the POR, right at study scope",
+    "expectation": "System-only adjustment before POR connection. Never assign80-93ms as the actual POR wet-test times."
+   },
+   {
+    "target": "statements-20",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone12 regulator_r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 1 of 9 runs",
+    "expectation": "Tentative source explanation for firstwet leak, not confirmed causal mechanism."
+   },
+   {
+    "target": "statements-21",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone12 regulator_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 1 of 9 runs",
+    "expectation": "Controlled intervention during first wet series, not identical temperature for all5runs."
+   },
+   {
+    "target": "statements-22",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 2 of 9 runs",
+    "expectation": "Current observed post-firstwet operation; does not establish absence of combustion/carbon."
+   },
+   {
+    "target": "statements-23",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 3 of 9 runs",
+    "expectation": "Observed post-final GN2 functional sweeps, not universal reliability guarantee."
+   },
+   {
+    "target": "statements-24",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r2",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 7 of 9 runs",
+    "expectation": "Separate orifice demonstration AFTER POR disconnected; not a flame observed in the connected POR test."
+   },
+   {
+    "target": "statements-25",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone12 regulator_r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 2 of 9 runs",
+    "expectation": "Unverified sapphire-ball carbon witness interpretation/measurement limitation, not confirmed SEM identification."
+   },
+   {
+    "target": "statements-26",
+    "kind": "statements",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "STATEMENT_INCLUDES_A_RUNNING_PAGE_HEADER",
+    "note": "the running header glued to the sentence, or the test article as subject",
+    "expectation": "Positive filter SEM result, distinguish unverified ball evidence from filter detection."
+   },
+   {
+    "target": "statements-27",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone12 regulator_r1"
+    ],
+    "blocking_class": "wrong role",
+    "code": "",
+    "note": "a Thermal Desktop model result typed a measurement or a conclusion",
+    "expectation": "Post-test Thermal Desktop model result, never an observed pressure-sensor propagation measurement."
+   },
+   {
+    "target": "statements-28",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 8 of 9 runs",
+    "expectation": "Author conclusion with combustion AND no functional degradation; not no-combustion claim or autonomous recommendation."
+   },
+   {
+    "target": "relations-29",
+    "kind": "relations",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1",
+     "nvidia milestone11 regulator_r1",
+     "nvidia milestone11 regulator_r2",
+     "nvidia milestone12 regulator_r1",
+     "nvidia milestone12 regulator_r2",
+     "nvidia milestone13 regulator_r1",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 9 of 9 runs",
+    "expectation": "Current investigation uses its actual POR2.0serial003 specimen, not another prototype."
+   },
+   {
+    "target": "relations-30",
+    "kind": "relations",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone13 regulator_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 1 of 9 runs",
+    "expectation": "Wet-series contaminant intervention/condition uses dodecane. Preserve originaltypo insterstage and no dry-series contamination."
+   },
+   {
+    "target": "relations-31",
+    "kind": "relations",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 1 of 9 runs",
+    "expectation": "First wet group has dodecane condition, not the dry oxygen wetting group."
+   },
+   {
+    "target": "relations-32",
+    "kind": "relations",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 regulator_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 1 of 9 runs",
+    "expectation": "Second wet group has its own injection/intervention and faster impact setup; not first-series identity."
+   }
+  ]
+ },
+ "textiles": {
+  "accessible": 29,
+  "runs": [
+   "nvidia milestone10 textiles_r1",
+   "nvidia milestone11 textiles_r1",
+   "nvidia milestone11 textiles_r2",
+   "nvidia milestone12 textiles_r1",
+   "nvidia milestone12 textiles_r2",
+   "nvidia milestone13 textiles_r1",
+   "pilot textiles_sonnet_c3",
+   "pilot textiles_sonnet_c1",
+   "pilot textiles_opus_c3",
+   "sonnet package4 dc6f342 r1",
+   "sonnet package4 a6d967b r1",
+   "sonnet package4 a6d967b r2"
+  ],
+  "counts": {
+   "reached live": 12,
+   "wrong subject": 1,
+   "contract against target": 5,
+   "schema lacks the role": 6,
+   "rejection": 1,
+   "wrong role": 2,
+   "reached in replay": 2
+  },
+  "ceilings": {
+   "live_union": 12,
+   "live_and_replay_union": 14,
+   "plus_every_rejection": 15,
+   "plus_every_model_side_miss": 18,
+   "needs_liam": 11
+  },
+  "targets": [
+   {
+    "target": "entities-01",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 12 of 12 runs",
+    "expectation": "Current development project/investigation, not an executed individual run."
+   },
+   {
+    "target": "entities-02",
+    "kind": "entities",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "wrong subject",
+    "code": "",
+    "note": "the fabric ('100% PBI knit fabric') proposed instead of the PBI material identity",
+    "expectation": "Material identity; preserve acronym without fabricating an unapproved chemical definition."
+   },
+   {
+    "target": "entities-03",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 12 of 12 runs",
+    "expectation": "Named tested specimen/coupon group; not author institution or a distinct invented executed run."
+   },
+   {
+    "target": "entities-04",
+    "kind": "entities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 10 of 12 runs",
+    "expectation": "Distinct specimen configuration; not synonymous with the PBI knit coupons."
+   },
+   {
+    "target": "quantities-05",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "contract against target",
+    "code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "note": "the proposed Artemis atmosphere has no eligible experimental subject",
+    "expectation": "Proposed Artemis IV+ atmosphere pressure, not measured test result or all textile tests."
+   },
+   {
+    "target": "quantities-06",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "contract against target",
+    "code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "note": "as quantities-05",
+    "expectation": "Proposed oxygen concentration with original ±2 uncertainty, not a measured current NASA environment."
+   },
+   {
+    "target": "quantities-07",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "contract against target",
+    "code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "note": "as quantities-05",
+    "expectation": "Contingency test concentration, distinct from proposed 34±2% atmosphere."
+   },
+   {
+    "target": "quantities-08",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone11 textiles_r1"
+    ],
+    "blocking_class": "schema lacks the role",
+    "code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "note": "a historical mission atmosphere (Apollo): no historical-context subject or role",
+    "expectation": "Historical Apollo atmosphere, not current textile sample composition or a new observation."
+   },
+   {
+    "target": "quantities-09",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone11 textiles_r1"
+    ],
+    "blocking_class": "schema lacks the role",
+    "code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "note": "as quantities-08 (Skylab)",
+    "expectation": "Historical Skylab atmosphere; original slide says70, do not silently substitute abstract >70."
+   },
+   {
+    "target": "quantities-10",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 a6d967b r1"
+    ],
+    "blocking_class": "schema lacks the role",
+    "code": "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION",
+    "note": "a normative acceptance criterion value: quantities have no criterion role",
+    "expectation": "Original inch-glyph bound in NASA-STD-6001 Test1 criteria; normative acceptance criterion, not measured burn length."
+   },
+   {
+    "target": "quantities-11",
+    "kind": "quantities",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "rejection",
+    "code": "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED",
+    "note": "the specimen composition '100% PBI' held unnamed",
+    "expectation": "PBI specimen composition; not test chamber oxygen concentration."
+   },
+   {
+    "target": "quantities-12",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 12 of 12 runs",
+    "expectation": "PBI coupon oxygen test configuration; never transfer to custom patches."
+   },
+   {
+    "target": "quantities-13",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 12 of 12 runs",
+    "expectation": "PBI coupon test pressure; not a measured derived result."
+   },
+   {
+    "target": "quantities-14",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 10 of 12 runs",
+    "expectation": "Custom patch/jacket test oxygen concentration, distinct from48% PBI coupon test."
+   },
+   {
+    "target": "quantities-15",
+    "kind": "quantities",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 10 of 12 runs",
+    "expectation": "Patch/jacket test pressure with specimen scope retained."
+   },
+   {
+    "target": "quantities-16",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r2"
+    ],
+    "blocking_class": "schema lacks the role",
+    "code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "note": "an assessment target (design criterion) value",
+    "expectation": "Minimum NESC assessment target environment; preserve lower bound and normative/goal role."
+   },
+   {
+    "target": "quantities-17",
+    "kind": "quantities",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r2"
+    ],
+    "blocking_class": "schema lacks the role",
+    "code": "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE",
+    "note": "as quantities-16",
+    "expectation": "NESC assessment target pressure, not newly measured spacecraft condition."
+   },
+   {
+    "target": "statements-18",
+    "kind": "statements",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "contract against target",
+    "code": "SUPPORT_ONLY_IN_BACKGROUND_OR_ANALYSIS_SECTION",
+    "note": "held on the Background slide",
+    "expectation": "Qualified state-of-art claim, not categorical absence of all textiles or NASA knowledge gap."
+   },
+   {
+    "target": "statements-19",
+    "kind": "statements",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "contract against target",
+    "code": "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE",
+    "note": "a pass criterion the slide does not print as one",
+    "expectation": "Normative Test1 criterion, not observed absence of burning debris in all tests."
+   },
+   {
+    "target": "statements-20",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 12 of 12 runs",
+    "expectation": "Reported methodology with Most qualification, not universal specimen arrangement."
+   },
+   {
+    "target": "statements-21",
+    "kind": "statements",
+    "best_live_state": "PROPOSED_REJECTED",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "wrong role",
+    "code": "",
+    "note": "a permitted method typed guidance or configuration",
+    "expectation": "Permitted methodology, not evidence that every test used a shield."
+   },
+   {
+    "target": "statements-22",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached in replay",
+    "code": "",
+    "note": "point A (3.2) and block 3b fix 2",
+    "expectation": "Author-reported comparative testing result with37% oxygen and configuration-vs-single-material comparison retained; no unsupported causal explanation."
+   },
+   {
+    "target": "statements-23",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "wrong role",
+    "code": "",
+    "note": "current development activities typed documentary context",
+    "expectation": "Current development activities, not invented executed combustion runs."
+   },
+   {
+    "target": "statements-24",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached in replay",
+    "code": "",
+    "note": "block 3b fix 2",
+    "expectation": "Future planned certification, never already-executed WSTF run."
+   },
+   {
+    "target": "statements-25",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1",
+     "pilot textiles_sonnet_c3",
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 12 of 12 runs",
+    "expectation": "Explicit source recommendation conditional on failedCOTS and feasible modification; not assistant recommendation or measured efficacy."
+   },
+   {
+    "target": "statements-26",
+    "kind": "statements",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1",
+     "nvidia milestone11 textiles_r1",
+     "nvidia milestone11 textiles_r2",
+     "nvidia milestone12 textiles_r1",
+     "nvidia milestone12 textiles_r2",
+     "nvidia milestone13 textiles_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 6 of 12 runs",
+    "expectation": "Author conclusion/current implementation claim, not proof all3phases/testing are complete."
+   },
+   {
+    "target": "statements-27",
+    "kind": "statements",
+    "best_live_state": "ACCEPTED_MISGRADED",
+    "best_runs": [
+     "pilot textiles_sonnet_c1",
+     "pilot textiles_opus_c3",
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "schema lacks the role",
+    "code": "",
+    "note": "a stated goal: no goal or plan role",
+    "expectation": "Stated goal, not an established observed safety improvement."
+   },
+   {
+    "target": "relations-28",
+    "kind": "relations",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "sonnet package4 dc6f342 r1",
+     "sonnet package4 a6d967b r1",
+     "sonnet package4 a6d967b r2"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 3 of 12 runs",
+    "expectation": "Sample/fabric hasMaterial PBI, not PBI oxygen atmosphere and not patch composition."
+   },
+   {
+    "target": "relations-29",
+    "kind": "relations",
+    "best_live_state": "CORRECT",
+    "best_runs": [
+     "nvidia milestone10 textiles_r1"
+    ],
+    "blocking_class": "reached live",
+    "code": "",
+    "note": "correct in 1 of 12 runs",
+    "expectation": "Patch/jacket specimen has documented37%O2 condition; no48% transfer from neighboring PBI specimen."
+   }
+  ]
+ }
+}
