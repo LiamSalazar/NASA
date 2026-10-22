@@ -329,6 +329,16 @@ def running_headers(evidence):
     return sorted(line for line, n in counts.items() if n >= floor and line)
 
 
+NUMBER_WORD = (
+    r"(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|\w+teen"
+    r"|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)"
+)
+# "Sixty test runs", "the five impacts", "60 dry pneumatic impact tests".
+COUNT_OF_TESTS = re.compile(
+    rf"(?:the\s+)?{NUMBER_WORD}(?:[\s-]+{NUMBER_WORD})?\s+(?:[a-z]+\s+){{0,3}}"
+    r"(?:tests?|runs?|impacts?|drops?|burns?|trials?|experiments?)",
+    re.IGNORECASE,
+)
 PRINTED_CAPTION_LINE = re.compile(r"\s*(?:Figure|Fig\.|Table)\s+\d+[A-Za-z]?\s*[-–—:.]\s*\S")
 
 
@@ -1096,10 +1106,10 @@ def original_research_passage(spans, document):
 
     return (
         not re.search(
-            # "prior to ignition" or "prior to re-connecting" (any verb of a
-            # step) orders a procedure; "prior work" or "prior to this study"
-            # points at earlier research.
-            r"\b(?:prior(?!\s+to\s+(?:[a-z]+(?:-[a-z]+)*ing\b|ignition|testing|impact|pressuriz\w*|heat\w*|load\w*|cool\w*|fill\w*|exposure|each\b|every\b|the\s+(?:test|drop|run|impact|burn|sample|chamber)\b))|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
+            # "prior to ignition", "prior to re-connecting", "prior to initiation
+            # of the sequence" order a procedure; "prior work" or "prior to this
+            # study" points at earlier research.
+            r"\b(?:prior(?!\s+to\b(?!\s+(?:this|our|the\s+(?:present|current))\s+(?:study|work|investigation|research|paper|effort|program)))|previous|earlier|historical|reported\s+by|according\s+to)\b|\[\d",
             text,
             re.IGNORECASE,
         )
@@ -1110,6 +1120,47 @@ def original_research_passage(spans, document):
         # A results section can still report a cited study's data by name.
         and not cited_attribution_nearby(spans, document)
     )
+
+
+def outside_own_research(span, document):
+    """Printed in a known section that is not the study's own research text. The
+    study's own analysis is its research, and a passage under no recognized
+    section is not known to be outside it."""
+    return section_for_span(span, document) != "UNSPECIFIED" and not original_research_passage(
+        [span], document
+    )
+
+
+def hold_mentioned_only_materials(records, document):
+    """A material or specimen named only outside the study's own research text, and
+    used by no supported relation, quantity or statement, is a mention, not the
+    study's: "Fomblin" in the introduction, "WD-40 was initially chosen" but not used.
+    """
+    used = set()
+    for record in records:
+        if record["status"] != "SOURCE_SUPPORTED" or record.get("duplicate_of"):
+            continue
+        item = record["proposal"]
+        if record["kind"] == "relations":
+            used |= {item.get("subject"), item.get("object")}
+        elif record["kind"] == "quantities":
+            used.add(item.get("subject"))
+        elif record["kind"] == "statements":
+            used |= set(item.get("subjects") or []) | set(record.get("proposed_subjects") or [])
+    for record in records:
+        item = record["proposal"]
+        if (
+            record["kind"] == "entities"
+            and record["status"] == "SOURCE_SUPPORTED"
+            and not record.get("duplicate_of")
+            and item.get("class_id") in {"Material", "Sample"}
+            and item.get("study") == "current"
+            and item.get("key") not in used
+            and record["support_spans"]
+            and all(outside_own_research(s, document) for s in record["support_spans"])
+        ):
+            record["status"] = "UNRESOLVED"
+            record["reasons"].append("MATERIAL_ONLY_MENTIONED_OUTSIDE_OWN_RESEARCH")
 
 
 def document_statement_scope(subject, spans, entities, document, cited_named=False):
@@ -5595,6 +5646,13 @@ def validated_output(output, package, document, semantic, recover_roles=True):
                     ):
                         record["status"] = "UNRESOLVED"
                         record["reasons"].append("EXECUTION_NOT_DOCUMENTED")
+                    if item["class_id"] in {"ExperimentFamily", "ExperimentalRun"} and (
+                        COUNT_OF_TESTS.fullmatch(" ".join(item["label"].split()))
+                    ):
+                        # "Sixty test runs were executed": a count of tests says how
+                        # many, it does not name the group they form.
+                        record["status"] = "UNRESOLVED"
+                        record["reasons"].append("COUNT_OF_TESTS_IS_NOT_A_GROUP_NAME")
                     if item["study"] == "unknown" and item["class_id"] not in {
                         "Material",
                         "GravityCondition",
@@ -6630,6 +6688,7 @@ def validated_output(output, package, document, semantic, recover_roles=True):
             record["status"] = "UNRESOLVED"
             record["reasons"].append("CONFLICTING_ROLE_PROPOSALS_FOR_SAME_SOURCE_SPAN")
     consolidate_validated_variants(records, entities, evidence, document)
+    hold_mentioned_only_materials(records, document)
     # Group by underlying reason AND documentary source, not one question per assertion.
     issues = {}
     for record in records:

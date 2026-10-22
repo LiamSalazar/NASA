@@ -29,6 +29,7 @@ def results_passage(sentence):
         "Closure times of 40 ms were measured prior to re-connecting the valve to the manifold.",
         "Closure times of 40 ms were measured prior to opening the valve.",
         "Closure times of 40 ms were measured prior to ignition.",
+        "Closure times of 40 ms were measured prior to initiation of the impact sequence.",
     ],
 )
 def test_a_step_ordered_by_prior_to_is_the_papers_own_procedure(sentence):
@@ -40,6 +41,8 @@ def test_a_step_ordered_by_prior_to_is_the_papers_own_procedure(sentence):
     [
         "Closure times of 40 ms were measured in prior work.",
         "Closure times of 40 ms were measured prior to this study.",
+        "Closure times of 40 ms were measured prior to the present investigation.",
+        "Closure times of 40 ms were measured in prior tests.",
         "Closure times of 40 ms were measured in previous tests.",
     ],
 )
