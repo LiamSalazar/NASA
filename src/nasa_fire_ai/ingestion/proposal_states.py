@@ -52,6 +52,76 @@ def proposal_state(record):
 IDENTIFIER = r"[A-Za-z][A-Za-z0-9]*"
 
 
+def _words(term):
+    import re
+
+    return [w.lower() for w in re.findall(r"[A-Z]?[a-z]+|[A-Z]+(?![a-z])|\d+", term)]
+
+
+def _equivalence_key(term):
+    """Case, separators and a final plural do not make another term."""
+    import re
+
+    key = re.sub(r"[^a-z0-9]", "", term.lower())
+    return key[:-1] if key.endswith("s") and len(key) > 3 else key
+
+
+def reuse_analysis(proposal, approved):
+    """Directive cases A-C and the §6 distinctions, decided from the terms themselves.
+
+    A: the term is an approved term written differently: reuse it, never extend.
+    B: the term names an approved class with a qualifier (a subclass or a contextual
+       attribute of it), or a relation between endpoints an approved relation already
+       links (a new relation or that relation with qualifiers): review decides.
+    C: genuinely new vocabulary.
+    A term carrying digits, or a class named after its only instance, names an
+    instance, not a class.
+    """
+    kind, term = proposal.get("kind"), proposal.get("term") or ""
+    terms = approved.get(kind, set())
+    errors = []
+    equivalent = sorted(t for t in terms if _equivalence_key(t) == _equivalence_key(term))
+    if equivalent and term not in equivalent:
+        errors.append("TERM_EQUIVALENT_TO_AN_APPROVED_TERM")
+    analysis = {"equivalent_approved_terms": equivalent}
+    if kind != "relation":
+        words = _words(term)
+        if any(w.isdigit() for w in words) or (
+            len(proposal.get("instances") or []) == 1
+            and _equivalence_key(proposal["instances"][0]) == _equivalence_key(term)
+        ):
+            errors.append("TERM_NAMES_AN_INSTANCE")
+        qualified = sorted(
+            t
+            for t in terms
+            if len(_words(t)) < len(words) and words[-len(_words(t)) :] == _words(t)
+        )
+        analysis["approved_class_it_qualifies"] = qualified[-1] if qualified else None
+        analysis["similar_approved_terms"] = sorted(
+            t
+            for t in terms
+            if _words(t) and words and _words(t)[-1] == words[-1] and t not in qualified
+        )
+    else:
+        endpoints = approved.get("relation_endpoints", {})
+        domain, range_ = set(proposal.get("domain") or []), set(proposal.get("range") or [])
+        analysis["approved_relations_with_compatible_endpoints"] = sorted(
+            r
+            for r, (d, g) in endpoints.items()
+            if domain and range_ and (not d or domain & set(d)) and (not g or range_ & set(g))
+        )
+    if equivalent:
+        case = "A_REUSE_APPROVED_TERM"
+    elif analysis.get("approved_class_it_qualifies") or analysis.get(
+        "approved_relations_with_compatible_endpoints"
+    ):
+        case = "B_PARTIAL_EXTENSION_REVIEW"
+    else:
+        case = "C_NEW_VOCABULARY"
+    analysis["case"] = case
+    return analysis, errors
+
+
 def structural_validation(proposal, approved):
     """Whether a staged vocabulary proposal is well formed, checked apart from the baseline.
 
@@ -85,12 +155,24 @@ def structural_validation(proposal, approved):
         "definition_evidence"
     ):
         errors.append("DEFINITION_WITHOUT_SOURCE_EVIDENCE")
+    analysis, reuse_errors = reuse_analysis(proposal, approved)
+    errors += [e for e in reuse_errors if e not in errors]
+    if (
+        "TERM_ALREADY_APPROVED" in errors
+        or "TERM_DIFFERS_FROM_AN_APPROVED_TERM_ONLY_BY_CASE" in errors
+    ):
+        errors = [e for e in errors if e != "TERM_EQUIVALENT_TO_AN_APPROVED_TERM"]
+    parent = proposal.get("parent") or analysis.get("approved_class_it_qualifies")
     return {
         "well_formed": not errors,
         "errors": errors,
-        "placement": "PARENT_NOT_ESTABLISHED_REQUIRES_REVIEW"
-        if proposal.get("kind") != "relation" and not proposal.get("parent")
-        else "PARENT_PROPOSED",
+        "reuse_analysis": analysis,
+        "placement": "RELATION"
+        if proposal.get("kind") == "relation"
+        else "PARENT_CANDIDATE_REQUIRES_REVIEW"
+        if parent
+        else "PARENT_NOT_ESTABLISHED_REQUIRES_REVIEW",
+        **({"parent_candidate": parent} if parent and proposal.get("kind") != "relation" else {}),
     }
 
 

@@ -6545,6 +6545,10 @@ def validated_output(output, package, document, semantic, recover_roles=True):
                 "class": set(semantic.class_metadata),
                 "information_class": set(semantic.information_classes),
                 "relation": set(semantic.relations),
+                "relation_endpoints": {
+                    rid: (list(getattr(r, "domain", []) or []), list(getattr(r, "range", []) or []))
+                    for rid, r in semantic.relations.items()
+                },
             },
         )
     return result

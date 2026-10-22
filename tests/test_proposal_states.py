@@ -24,11 +24,9 @@ def proposal(**changes):
 
 def test_a_new_term_with_evidence_is_well_formed_and_awaits_placement():
     check = structural_validation(proposal(), APPROVED)
-    assert check == {
-        "well_formed": True,
-        "errors": [],
-        "placement": "PARENT_NOT_ESTABLISHED_REQUIRES_REVIEW",
-    }
+    assert check["well_formed"] and check["errors"] == []
+    assert check["placement"] == "PARENT_NOT_ESTABLISHED_REQUIRES_REVIEW"
+    assert check["reuse_analysis"]["case"] == "C_NEW_VOCABULARY"
 
 
 @pytest.mark.parametrize(
