@@ -1,0 +1,1363 @@
+{
+ "basis": "Target-by-target miss diagnosis for the milestone 12 runs (and their milestone 13 replays).",
+ "runs": {
+  "ignition_r1_live": {
+   "accessible": 29,
+   "correct": 13,
+   "missed": 16,
+   "by_class": {
+    "PROPOSED_REJECTED": 11,
+    "ACCEPTED_MISGRADED": 3,
+    "NOT_PROPOSED": 2
+   },
+   "targets": {
+    "quantities-05": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "QUANTITY_LOCAL_SUBJECT_BINDING_UNRESOLVED": 1
+     },
+     "kind": "quantities",
+     "quote": "the planned NASA lunar habitat pressure of 56.5 kPa (8.2 psia)"
+    },
+    "quantities-06": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+     },
+     "kind": "quantities",
+     "quote": "chamber that could provide continuous operation at 57 kPa."
+    },
+    "quantities-07": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "0a66c72f",
+       "label": "ID",
+       "type": "experimental_configuration"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "where the 5.2 cm by 14.0 cm samples were tested."
+    },
+    "quantities-08": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "0a66c72f",
+       "label": "ID",
+       "type": "experimental_configuration"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "where the 5.2 cm by 14.0 cm samples were tested."
+    },
+    "quantities-13": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "836face3",
+       "label": "volume",
+       "type": "experimental_configuration"
+      },
+      {
+       "id": "15cd1cbf",
+       "label": "I.D.",
+       "type": "experimental_configuration"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "The chamber is 299 l in volume with an I.D. of 81.2 cm and an internal height if 30.5 cm."
+    },
+    "quantities-14": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+     },
+     "kind": "quantities",
+     "quote": "the chamber was rotated at 20.4 RPM for several minutes before the drop"
+    },
+    "quantities-16": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "EXPLICIT_DERIVATION_IS_NOT_REPORTED_MEASUREMENT": 1
+     },
+     "kind": "quantities",
+     "quote": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s, but the lunar gravity velocity is not known."
+    },
+    "quantities-17": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
+     },
+     "kind": "quantities",
+     "quote": "The worst-case delta for these materials can be seen to be 2.3%."
+    },
+    "statements-18": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION": 1
+     },
+     "kind": "statements",
+     "quote": "To increase the number of tests for repeatability, two samples were ignited and tested in each drop."
+    },
+    "statements-19": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE": 1
+     },
+     "kind": "statements",
+     "quote": "Five materials were tested in both facilities."
+    },
+    "statements-20": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW": 1
+     },
+     "kind": "statements",
+     "quote": "the actual velocity (induced by the simulated gravity) is not known."
+    },
+    "statements-21": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1,
+      "REJECTED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1,
+      "STATEMENT_IS_NOT_WHOLE_SOURCE_SENTENCE": 1
+     },
+     "kind": "statements",
+     "quote": "In figures 7, 8 and 9, the lunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the WSTF testing."
+    },
+    "statements-22": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW": 1
+     },
+     "kind": "statements",
+     "quote": "Various differences in the test methods have been considered (turbulence at high flow rates, ignition times, delay after ignition before initiating the test, ox"
+    },
+    "relations-26": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities",
+      "quantities",
+      "statements"
+     ],
+     "kind": "relations",
+     "quote": "The WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) chamber that could provide continuous operation at 57 kPa."
+    },
+    "quantities-28": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 16,
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "QUANTITY_UNIT_NOT_BOUND_TO_EXPRESSION": 8,
+      "QUANTITY_EXPRESSION_ABSENT": 6,
+      "QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT": 2,
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+     },
+     "kind": "quantities",
+     "quote": "1190"
+    },
+    "quantities-29": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities"
+     ],
+     "kind": "quantities",
+     "quote": "2.3"
+    }
+   }
+  },
+  "ignition_r2_live": {
+   "accessible": 29,
+   "correct": 12,
+   "missed": 17,
+   "by_class": {
+    "PROPOSED_REJECTED": 5,
+    "ACCEPTED_MISGRADED": 5,
+    "NOT_PROPOSED": 7
+   },
+   "targets": {
+    "quantities-06": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+     },
+     "kind": "quantities",
+     "quote": "chamber that could provide continuous operation at 57 kPa."
+    },
+    "quantities-07": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "0a66c72f",
+       "label": "ID",
+       "type": "experimental_configuration"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "where the 5.2 cm by 14.0 cm samples were tested."
+    },
+    "quantities-08": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "0a66c72f",
+       "label": "ID",
+       "type": "experimental_configuration"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "where the 5.2 cm by 14.0 cm samples were tested."
+    },
+    "quantities-13": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "836face3",
+       "label": "volume",
+       "type": "experimental_configuration"
+      },
+      {
+       "id": "15cd1cbf",
+       "label": "I.D.",
+       "type": "experimental_configuration"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "The chamber is 299 l in volume with an I.D. of 81.2 cm and an internal height if 30.5 cm."
+    },
+    "quantities-14": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1,
+      "REJECTED": 1
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1,
+      "QUANTITY_VALUE_OR_UNIT_IS_NOT_A_QUANTITY_NAME": 1
+     },
+     "kind": "quantities",
+     "quote": "the chamber was rotated at 20.4 RPM for several minutes before the drop"
+    },
+    "quantities-16": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities"
+     ],
+     "kind": "quantities",
+     "quote": "The 1-g buoyant velocity was estimated by Takahashi16 to be 35 cm/s, but the lunar gravity velocity is not known."
+    },
+    "quantities-17": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "quantities",
+     "quote": "The worst-case delta for these materials can be seen to be 2.3%."
+    },
+    "statements-18": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "CHANGING_OBSERVATION_IS_NOT_ESTABLISHED_CONFIGURATION": 1
+     },
+     "kind": "statements",
+     "quote": "To increase the number of tests for repeatability, two samples were ignited and tested in each drop."
+    },
+    "statements-19": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "42f6d4fb",
+       "label": "Five materials were tested in both facilities.",
+       "type": "Publication"
+      }
+     ],
+     "kind": "statements",
+     "quote": "Five materials were tested in both facilities."
+    },
+    "statements-20": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "AUTHOR_ROLE_REQUIRES_CONTEXT_REVIEW": 1
+     },
+     "kind": "statements",
+     "quote": "the actual velocity (induced by the simulated gravity) is not known."
+    },
+    "statements-21": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "statements",
+     "quote": "In figures 7, 8 and 9, the lunar-g buoyant limit was found to be less than the extrapolated value (for any assumed buoyant velocity) from the WSTF testing."
+    },
+    "statements-22": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "statements",
+     "quote": "Various differences in the test methods have been considered (turbulence at high flow rates, ignition times, delay after ignition before initiating the test, ox"
+    },
+    "statements-23": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "statements",
+     "quote": "One possible explanation for this is that the quench boundary for these materials shift to higher velocities than seen in the lunar-g tests, putting the lunar-g"
+    },
+    "statements-25": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "OPEN_QUESTION_NOT_EXPLICIT_IN_SOURCE": 1
+     },
+     "kind": "statements",
+     "quote": "This suggests that increased flammability at lunar conditions may not be a universal issue, however further research is needed to validate this possibility."
+    },
+    "relations-26": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "482e8660",
+       "label": "",
+       "type": "hasCondition"
+      }
+     ],
+     "kind": "relations",
+     "quote": "The WSTF testing was conducted using a WSTF 1.4 m3 (50 ft3) chamber that could provide continuous operation at 57 kPa."
+    },
+    "quantities-28": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities"
+     ],
+     "kind": "quantities",
+     "quote": "1190"
+    },
+    "quantities-29": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities"
+     ],
+     "kind": "quantities",
+     "quote": "2.3"
+    }
+   }
+  },
+  "regulator_r1_live": {
+   "accessible": 32,
+   "correct": 9,
+   "missed": 23,
+   "by_class": {
+    "NOT_PROPOSED": 5,
+    "PROPOSED_REJECTED": 18
+   },
+   "targets": {
+    "entities-05": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "entities",
+     "quote": "First Dodecane Wetted POR Interstage Impact Test Series"
+    },
+    "entities-06": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "entities",
+     "quote": "second Dodecane Wetted POR Interstage Impact Test Series"
+    },
+    "quantities-07": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 5
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 4,
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1
+     },
+     "kind": "quantities",
+     "quote": "Maximum gas temperature = 580-674F"
+    },
+    "quantities-09": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+     },
+     "kind": "quantities",
+     "quote": "20uL was injected"
+    },
+    "quantities-10": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 2
+     },
+     "kind": "quantities",
+     "quote": "seeking to achieve ~100 mg/ft2 film coating"
+    },
+    "quantities-11": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1
+     },
+     "kind": "quantities",
+     "quote": "typical impact times during this test sequence of ~360 msec"
+    },
+    "quantities-12": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW": 2
+     },
+     "kind": "quantities",
+     "quote": "maintained its 4.05 psid setpoint with approximately 1 pph demand"
+    },
+    "quantities-13": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1
+     },
+     "kind": "quantities",
+     "quote": "The impact times ranged from 137-148 msec"
+    },
+    "quantities-14": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1
+     },
+     "kind": "quantities",
+     "quote": "impact times ranging from 46-49 msec"
+    },
+    "statements-15": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION": 1
+     },
+     "kind": "statements",
+     "quote": "A partial test at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was damaged during the testing and additio"
+    },
+    "statements-16": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE": 1
+     },
+     "kind": "statements",
+     "quote": "pure dodecane was used instead so that the materials properties would be known and the composition could be repeatable and known."
+    },
+    "statements-17": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "Sixty test runs were executed with typical impact times during this test sequence of ~360 msec"
+    },
+    "statements-18": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "INFERRED_INTERPRETATION_IS_NOT_DIRECT_OBSERVATION": 1
+     },
+     "kind": "statements",
+     "quote": "Nitrogen functional testing performed after the dry impact testing showed nominal POR performance"
+    },
+    "statements-19": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "Impact times of 80-93 msec were measured after adjustments and prior to re-connecting the POR test article to the test system."
+    },
+    "statements-20": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "appeared to have softened the seal resulting in a leak."
+    },
+    "statements-21": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "statements",
+     "quote": "the CHDS was adjusted to reduce POR body temperatures for the remaining three test runs."
+    },
+    "statements-23": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "No issues were noted as the regulator still met specifications"
+    },
+    "statements-25": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "SEM analysis could not verify this as the quantity was too small."
+    },
+    "statements-26": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "SEM of the filter found carbon"
+    },
+    "statements-27": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "The model confirmed that for both the 150 msec and 60 msec pressurization cases tested, the lag was negligible"
+    },
+    "relations-30": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE": 1
+     },
+     "kind": "relations",
+     "quote": "For the dodecane runs, 20uL was injected at the insterstage port using a syringe"
+    },
+    "relations-31": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "quantities",
+      "statements"
+     ],
+     "kind": "relations",
+     "quote": "Five impacts were then executed with the dodecane load in the POR interstage port."
+    },
+    "relations-32": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "quantities",
+      "statements"
+     ],
+     "kind": "relations",
+     "quote": "A final series of 5 wet impacts was executed after the test cell was adjusted to further reduce impact times and another 20 µL of dodecane was injected"
+    }
+   }
+  },
+  "regulator_r2_live": {
+   "accessible": 32,
+   "correct": 8,
+   "missed": 24,
+   "by_class": {
+    "ACCEPTED_MISGRADED": 4,
+    "PROPOSED_REJECTED": 20
+   },
+   "targets": {
+    "entities-05": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "1c10959b",
+       "label": "Dodecane Wetted POR Interstage Impact Test Series",
+       "type": "ExperimentFamily"
+      }
+     ],
+     "kind": "entities",
+     "quote": "First Dodecane Wetted POR Interstage Impact Test Series"
+    },
+    "entities-06": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "1c10959b",
+       "label": "Dodecane Wetted POR Interstage Impact Test Series",
+       "type": "ExperimentFamily"
+      }
+     ],
+     "kind": "entities",
+     "quote": "second Dodecane Wetted POR Interstage Impact Test Series"
+    },
+    "quantities-07": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 5,
+      "REJECTED": 1
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 4,
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1,
+      "CONFIGURATION_OR_DERIVED_IS_NOT_MEASUREMENT": 1
+     },
+     "kind": "quantities",
+     "quote": "Maximum gas temperature = 580-674F"
+    },
+    "quantities-09": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1,
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
+     },
+     "kind": "quantities",
+     "quote": "20uL was injected"
+    },
+    "quantities-10": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1,
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
+     },
+     "kind": "quantities",
+     "quote": "seeking to achieve ~100 mg/ft2 film coating"
+    },
+    "quantities-11": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1,
+      "REJECTED": 1
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 1,
+      "QUANTITY_NAME_VALUE_NOT_LOCALLY_BOUND": 1
+     },
+     "kind": "quantities",
+     "quote": "typical impact times during this test sequence of ~360 msec"
+    },
+    "quantities-12": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 2
+     },
+     "reasons": {
+      "TEST_ARTICLE_ALIAS_EXPERIMENTAL_GROUP_SCOPE_REQUIRES_REVIEW": 2
+     },
+     "kind": "quantities",
+     "quote": "maintained its 4.05 psid setpoint with approximately 1 pph demand"
+    },
+    "quantities-13": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "6ce046ba",
+       "label": "impact times",
+       "type": "reported_quantity"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "The impact times ranged from 137-148 msec"
+    },
+    "quantities-14": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "fded5398",
+       "label": "impact times",
+       "type": "reported_quantity"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "impact times ranging from 46-49 msec"
+    },
+    "statements-15": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "PLANNED_OR_COUNTERFACTUAL_IS_NOT_OBSERVATION": 1
+     },
+     "kind": "statements",
+     "quote": "A partial test at WSTF at 1500 psia and 100% O2 (9) seems to indicate an AIT around 400F as well but the test fixture was damaged during the testing and additio"
+    },
+    "statements-16": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_REQUIRES_EXPERIMENTAL_SCOPE": 1
+     },
+     "kind": "statements",
+     "quote": "pure dodecane was used instead so that the materials properties would be known and the composition could be repeatable and known."
+    },
+    "statements-17": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "Sixty test runs were executed with typical impact times during this test sequence of ~360 msec"
+    },
+    "statements-18": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "INFERRED_INTERPRETATION_IS_NOT_DIRECT_OBSERVATION": 1
+     },
+     "kind": "statements",
+     "quote": "Nitrogen functional testing performed after the dry impact testing showed nominal POR performance"
+    },
+    "statements-19": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "Impact times of 80-93 msec were measured after adjustments and prior to re-connecting the POR test article to the test system."
+    },
+    "statements-20": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "appeared to have softened the seal resulting in a leak."
+    },
+    "statements-21": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "CONFIGURATION_ROLE_NOT_ESTABLISHED_IN_ORIGINAL_PASSAGE": 1
+     },
+     "kind": "statements",
+     "quote": "the CHDS was adjusted to reduce POR body temperatures for the remaining three test runs."
+    },
+    "statements-22": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "Functional testing performed after the initial wet impact testing demonstrated nominal POR operation"
+    },
+    "statements-23": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "No issues were noted as the regulator still met specifications"
+    },
+    "statements-25": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "SEM analysis could not verify this as the quantity was too small."
+    },
+    "statements-26": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "SEM of the filter found carbon"
+    },
+    "statements-27": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "The model confirmed that for both the 150 msec and 60 msec pressurization cases tested, the lag was negligible"
+    },
+    "relations-30": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE": 1
+     },
+     "kind": "relations",
+     "quote": "For the dodecane runs, 20uL was injected at the insterstage port using a syringe"
+    },
+    "relations-31": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 2
+     },
+     "reasons": {
+      "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE": 2
+     },
+     "kind": "relations",
+     "quote": "Five impacts were then executed with the dodecane load in the POR interstage port."
+    },
+    "relations-32": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 2
+     },
+     "reasons": {
+      "RELATION_SUBJECT_OBJECT_NOT_IN_APPLICABLE_SOURCE": 2
+     },
+     "kind": "relations",
+     "quote": "A final series of 5 wet impacts was executed after the test cell was adjusted to further reduce impact times and another 20 µL of dodecane was injected"
+    }
+   }
+  },
+  "textiles_r1_live": {
+   "accessible": 29,
+   "correct": 10,
+   "missed": 19,
+   "by_class": {
+    "ACCEPTED_MISGRADED": 5,
+    "PROPOSED_REJECTED": 8,
+    "NOT_PROPOSED": 6
+   },
+   "targets": {
+    "entities-02": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "e94c3afa",
+       "label": "100% PBI knit fabric",
+       "type": "Material"
+      }
+     ],
+     "kind": "entities",
+     "quote": "PBI"
+    },
+    "quantities-05": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 3
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 3
+     },
+     "kind": "quantities",
+     "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+    },
+    "quantities-06": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 3
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 3
+     },
+     "kind": "quantities",
+     "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+    },
+    "quantities-07": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 3
+     },
+     "reasons": {
+      "QUANTITY_SUBJECT_NOT_IN_APPLICABLE_SOURCE": 3
+     },
+     "kind": "quantities",
+     "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+    },
+    "quantities-08": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities",
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "Apollo (100% O2) and Skylab (70% O2)"
+    },
+    "quantities-09": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities",
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "Apollo (100% O2) and Skylab (70% O2)"
+    },
+    "quantities-10": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "QUANTITY_SEMANTICS_OR_UNIT_UNRESOLVED": 1
+     },
+     "kind": "quantities",
+     "quote": "Burn length < 6”"
+    },
+    "quantities-11": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "f86cb451",
+       "label": "O2",
+       "type": "experimental_configuration"
+      },
+      {
+       "id": "de61708f",
+       "label": "O2",
+       "type": "experimental_configuration"
+      },
+      {
+       "id": "d203378f",
+       "label": "pressure",
+       "type": "experimental_configuration"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "100% PBI knit fabric coupons tested at 48% O2 and 8.2 psia"
+    },
+    "quantities-16": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "quantities",
+     "quote": "a minimum of 37% O2 at 8.2 psia"
+    },
+    "quantities-17": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "quantities",
+     "quote": "a minimum of 37% O2 at 8.2 psia"
+    },
+    "statements-18": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% O2 environments"
+    },
+    "statements-19": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE": 1
+     },
+     "kind": "statements",
+     "quote": "No transfer of burning debris (melt / drip)"
+    },
+    "statements-21": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "GUIDANCE_NOT_EXPLICIT_IN_SOURCE": 1
+     },
+     "kind": "statements",
+     "quote": "Metal fixture can be used to shield the vertical raw edges"
+    },
+    "statements-22": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "2f8bd3b1",
+       "label": "• Coupon-level flammability testing at 37% O2 shows increased propagation with configuration and lay",
+       "type": "ReportedObservation"
+      }
+     ],
+     "kind": "statements",
+     "quote": "Coupon-level flammability testing at 37% O2 shows increased propagation with configuration and layup testing as compared with single material tests"
+    },
+    "statements-23": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "statements",
+     "quote": "NASA’s textile engineering and development team has been sourcing existing COTS textile products, modifying COTS textiles, and developing custom fire-resistant "
+    },
+    "statements-24": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [],
+     "kind": "statements",
+     "quote": "Certification testing will be performed at White Sands Test Facility (WSTF)"
+    },
+    "statements-26": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "afbfa18e",
+       "label": "• NASA’s textile engineering and development team is actively implementing the NESC’s 3-phase strate",
+       "type": "Publication"
+      }
+     ],
+     "kind": "statements",
+     "quote": "NASA’s textile engineering and development team is actively implementing the NESC’s 3-phase strategy"
+    },
+    "statements-27": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "SOURCE_GOAL_IS_NOT_ESTABLISHED_RESULT": 1
+     },
+     "kind": "statements",
+     "quote": "Goal to systematically mature materials that enable safer and more sustainable human exploration missions"
+    },
+    "relations-29": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "13d93eb7",
+       "label": "",
+       "type": "madeOf"
+      }
+     ],
+     "kind": "relations",
+     "quote": "Custom fire-resistant patches sewn to outer jacket fabric tested at 37% O2 and 8.2 psia"
+    }
+   }
+  },
+  "textiles_r2_live": {
+   "accessible": 29,
+   "correct": 10,
+   "missed": 19,
+   "by_class": {
+    "ACCEPTED_MISGRADED": 8,
+    "NOT_PROPOSED": 8,
+    "PROPOSED_REJECTED": 3
+   },
+   "targets": {
+    "entities-02": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "59a44da1",
+       "label": "100% PBI knit fabric",
+       "type": "Material"
+      }
+     ],
+     "kind": "entities",
+     "quote": "PBI"
+    },
+    "quantities-05": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities",
+      "relations",
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+    },
+    "quantities-06": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities",
+      "relations",
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+    },
+    "quantities-07": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities",
+      "relations",
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "The proposed Artemis IV+ atmosphere is 8.2 psia and 34±2% O2 (testing at 37% O2 for contingency)"
+    },
+    "quantities-08": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities",
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "Apollo (100% O2) and Skylab (70% O2)"
+    },
+    "quantities-09": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "entities",
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "Apollo (100% O2) and Skylab (70% O2)"
+    },
+    "quantities-10": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "Burn length < 6”"
+    },
+    "quantities-11": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "30fdb032",
+       "label": "O2",
+       "type": "experimental_configuration"
+      },
+      {
+       "id": "d0da3a6f",
+       "label": "O2",
+       "type": "experimental_configuration"
+      },
+      {
+       "id": "d203378f",
+       "label": "pressure",
+       "type": "experimental_configuration"
+      }
+     ],
+     "kind": "quantities",
+     "quote": "100% PBI knit fabric coupons tested at 48% O2 and 8.2 psia"
+    },
+    "quantities-16": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "a minimum of 37% O2 at 8.2 psia"
+    },
+    "quantities-17": {
+     "class": "NOT_PROPOSED",
+     "other_kinds_overlapping": [
+      "statements"
+     ],
+     "kind": "quantities",
+     "quote": "a minimum of 37% O2 at 8.2 psia"
+    },
+    "statements-18": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "UNRESOLVED": 1
+     },
+     "reasons": {
+      "STATEMENT_SUBJECT_APPLICABILITY_UNRESOLVED": 1
+     },
+     "kind": "statements",
+     "quote": "Very limited existing Commercial Off-The-Shelf (COTS) textiles can be certified for use in up to 37% O2 environments"
+    },
+    "statements-19": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "NORMATIVE_ROLE_NOT_EXPLICIT_IN_SOURCE": 1
+     },
+     "kind": "statements",
+     "quote": "No transfer of burning debris (melt / drip)"
+    },
+    "statements-21": {
+     "class": "PROPOSED_REJECTED",
+     "statuses": {
+      "REJECTED": 1
+     },
+     "reasons": {
+      "GUIDANCE_NOT_EXPLICIT_IN_SOURCE": 1
+     },
+     "kind": "statements",
+     "quote": "Metal fixture can be used to shield the vertical raw edges"
+    },
+    "statements-22": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "2f8bd3b1",
+       "label": "• Coupon-level flammability testing at 37% O2 shows increased propagation with configuration and lay",
+       "type": "ReportedObservation"
+      }
+     ],
+     "kind": "statements",
+     "quote": "Coupon-level flammability testing at 37% O2 shows increased propagation with configuration and layup testing as compared with single material tests"
+    },
+    "statements-23": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "435a7bf8",
+       "label": "• NASA’s textile engineering and development team has been sourcing existing COTS textile products, ",
+       "type": "Publication"
+      }
+     ],
+     "kind": "statements",
+     "quote": "NASA’s textile engineering and development team has been sourcing existing COTS textile products, modifying COTS textiles, and developing custom fire-resistant "
+    },
+    "statements-24": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "71823c4e",
+       "label": "•Certification testing will be performed at White Sands Test Facility (WSTF) 55th International Conf",
+       "type": "Publication"
+      }
+     ],
+     "kind": "statements",
+     "quote": "Certification testing will be performed at White Sands Test Facility (WSTF)"
+    },
+    "statements-26": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "afbfa18e",
+       "label": "• NASA’s textile engineering and development team is actively implementing the NESC’s 3-phase strate",
+       "type": "Publication"
+      }
+     ],
+     "kind": "statements",
+     "quote": "NASA’s textile engineering and development team is actively implementing the NESC’s 3-phase strategy"
+    },
+    "statements-27": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "5fb6d176",
+       "label": "• Goal to systematically mature materials that enable safer and more sustainable human exploration m",
+       "type": "Publication"
+      }
+     ],
+     "kind": "statements",
+     "quote": "Goal to systematically mature materials that enable safer and more sustainable human exploration missions"
+    },
+    "relations-29": {
+     "class": "ACCEPTED_MISGRADED",
+     "supported": [
+      {
+       "id": "258cc350",
+       "label": "",
+       "type": "madeOf"
+      }
+     ],
+     "kind": "relations",
+     "quote": "Custom fire-resistant patches sewn to outer jacket fabric tested at 37% O2 and 8.2 psia"
+    }
+   }
+  }
+ },
+ "summary_live": {
+  "ignition/ACCEPTED_MISGRADED": 8,
+  "ignition/NOT_PROPOSED": 9,
+  "ignition/PROPOSED_REJECTED": 16,
+  "regulator/ACCEPTED_MISGRADED": 4,
+  "regulator/NOT_PROPOSED": 5,
+  "regulator/PROPOSED_REJECTED": 38,
+  "textiles/ACCEPTED_MISGRADED": 13,
+  "textiles/NOT_PROPOSED": 14,
+  "textiles/PROPOSED_REJECTED": 11
+ }
+}

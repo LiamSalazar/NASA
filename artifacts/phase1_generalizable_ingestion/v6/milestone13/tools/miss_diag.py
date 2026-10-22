@@ -3,7 +3,8 @@
     python miss_diag.py REPO NFA_REPLAY_DIR OUT_JSON [MILESTONE TAG RUN,RUN]
 
 MILESTONE (default milestone12), TAG (default 0a5a860) and the runs (default
-r1,r2) name the live runs and the evaluation_b.json whose adjudication is used.
+r1,r2) name the live runs and the evaluation_b.json whose adjudication is used
+(MILESTONE may be a subfolder, for example milestone13/package4).
 
 Each accessible frozen target that the run's adjudication did not count correct is put in one class:
   WINDOW_LOST            no finished model attempt carried the target's evidence
@@ -88,6 +89,8 @@ for source in ("ignition", "regulator", "textiles"):
     targets = [t for t in review["targets"] if t["outcome"] != "inaccessible"]
     for run in RUNS.split(","):
         folder = os.path.join(M12, f"{source}_live_{TAG}_{run}")
+        if not os.path.exists(folder):  # package 4 names its Sonnet runs this way
+            folder = os.path.join(M12, f"{source}_sonnet_{TAG}_{run}")
         attempts = load(os.path.join(folder, "attempts.json.gz"))["attempts"]
         # Requests carry text in segments of their own ids, so a target's evidence
         # counts as sent when its printed words reach a finished request.

@@ -83,7 +83,19 @@ A cut session resumes at the first package not done.
 
 - `QUANTITY_NAME_NOT_IN_SOURCE_SUPPORT` is the leading rejection; the model almost never fills `printed_name`. → 3.1
 - Strategy phases and author claims typed as executed groups, interventions or documentary context (Sonnet textiles). → 3.4
-- The 2.1b sentinels are offered in a valid schema and never chosen (12 live runs). The misses it targeted (historical and assessment values, subjects without an eligible class) remain. → decision for 2.1b
+- The 2.1b sentinels are offered in a valid schema and never chosen (12 live runs). The misses it targeted (historical and assessment values, subjects without an eligible class) remain. 2.1b stays as it is (staging only). → open point for Liam
+- Sonnet miss diagnosis at `a6d967b` (`package4/target_miss_diagnosis.md`, 118 target-run pairs):
+  - rejected 55 %, not proposed 24 %, accepted but graded wrong 21 %, window lost 0;
+  - regulator falls behind NVIDIA because Sonnet does not propose the printed test series as groups;
+  - 15 of the 61 missed targets are correct holds by contract.
+  - Ranked general fixes:
+    1. series named in captions as group candidates;
+    2. footer cut from a statement's end;
+    3. setting verb as the staged name;
+    4. A × B dimensions;
+    5. brake release for a failure that received nothing;
+    6. math-font glyphs.
+  - Together about 21 pairs, ≈ 13 targets. The gate stays unmet. → next package (block 3b), not package 6
 - On ignition the 500,000-token brake binds: two network failures keep their reservation (correct, they may be billed) and one window was deferred in `a6d967b` r2. → 6
 - The regulator wet series are sometimes merged into one group by the model (`a6d967b` r2). → 6
 
