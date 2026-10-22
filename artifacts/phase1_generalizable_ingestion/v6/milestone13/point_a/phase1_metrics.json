@@ -1,0 +1,391 @@
+{
+ "basis": "Evaluation A only (saved outputs revalidated at point A, 0 model calls). Development sources, so these are regression measurements, not evidence of generalization (directive §12, §19). UNRESOLVED never counts as recovered.",
+ "targets": {
+  "precision": 0.95,
+  "recall": 0.8,
+  "critical": 0
+ },
+ "per_document": {
+  "ptfe": {
+   "recall": {
+    "numerator": 28,
+    "denominator": 34,
+    "value": 0.824,
+    "ci95": [
+     0.665,
+     0.917
+    ]
+   },
+   "precision": {
+    "numerator": 134,
+    "denominator": 136,
+    "value": 0.985,
+    "ci95": [
+     0.948,
+     0.996
+    ]
+   },
+   "evidence_retention": {
+    "numerator": 32,
+    "denominator": 34,
+    "value": 0.941,
+    "ci95": [
+     0.809,
+     0.984
+    ]
+   },
+   "correctly_unresolved": {
+    "numerator": 1,
+    "denominator": 34,
+    "value": 0.029,
+    "ci95": [
+     0.005,
+     0.149
+    ]
+   },
+   "unresolved": {
+    "numerator": 4,
+    "denominator": 34,
+    "value": 0.118,
+    "ci95": [
+     0.047,
+     0.266
+    ]
+   },
+   "omissions": {
+    "numerator": 2,
+    "denominator": 34,
+    "value": 0.059,
+    "ci95": [
+     0.016,
+     0.191
+    ]
+   },
+   "critical": 0,
+   "by_kind": {
+    "entities": {
+     "correct": 8
+    },
+    "quantities": {
+     "correct": 7,
+     "omitted": 1,
+     "unresolved": 2
+    },
+    "statements": {
+     "correct": 10,
+     "unresolved": 2
+    },
+    "relations": {
+     "correct": 3,
+     "omitted": 1
+    },
+    "figures": {
+     "inaccessible": 2
+    }
+   }
+  },
+  "textiles": {
+   "recall": {
+    "numerator": 8,
+    "denominator": 29,
+    "value": 0.276,
+    "ci95": [
+     0.147,
+     0.457
+    ]
+   },
+   "precision": {
+    "numerator": 19,
+    "denominator": 23,
+    "value": 0.826,
+    "ci95": [
+     0.629,
+     0.93
+    ]
+   },
+   "evidence_retention": {
+    "numerator": 13,
+    "denominator": 29,
+    "value": 0.448,
+    "ci95": [
+     0.284,
+     0.625
+    ]
+   },
+   "correctly_unresolved": null,
+   "unresolved": {
+    "numerator": 5,
+    "denominator": 29,
+    "value": 0.172,
+    "ci95": [
+     0.076,
+     0.345
+    ]
+   },
+   "omissions": {
+    "numerator": 4,
+    "denominator": 29,
+    "value": 0.138,
+    "ci95": [
+     0.055,
+     0.306
+    ]
+   },
+   "critical": 0,
+   "by_kind": {
+    "entities": {
+     "correct": 2,
+     "incorrect_or_rejected": 1,
+     "unresolved": 1
+    },
+    "quantities": {
+     "incorrect_or_rejected": 6,
+     "omitted": 4,
+     "unresolved": 1,
+     "correct": 2
+    },
+    "statements": {
+     "unresolved": 3,
+     "incorrect_or_rejected": 3,
+     "correct": 4
+    },
+    "relations": {
+     "incorrect_or_rejected": 2
+    }
+   }
+  },
+  "regulator": {
+   "recall": {
+    "numerator": 11,
+    "denominator": 32,
+    "value": 0.344,
+    "ci95": [
+     0.204,
+     0.517
+    ]
+   },
+   "precision": {
+    "numerator": 21,
+    "denominator": 30,
+    "value": 0.7,
+    "ci95": [
+     0.521,
+     0.833
+    ]
+   },
+   "evidence_retention": {
+    "numerator": 20,
+    "denominator": 32,
+    "value": 0.625,
+    "ci95": [
+     0.453,
+     0.771
+    ]
+   },
+   "correctly_unresolved": null,
+   "unresolved": {
+    "numerator": 9,
+    "denominator": 32,
+    "value": 0.281,
+    "ci95": [
+     0.156,
+     0.454
+    ]
+   },
+   "omissions": {
+    "numerator": 2,
+    "denominator": 32,
+    "value": 0.062,
+    "ci95": [
+     0.017,
+     0.201
+    ]
+   },
+   "critical": 0,
+   "by_kind": {
+    "entities": {
+     "correct": 5,
+     "incorrect_or_rejected": 1
+    },
+    "quantities": {
+     "unresolved": 1,
+     "correct": 1,
+     "incorrect_or_rejected": 6
+    },
+    "statements": {
+     "unresolved": 8,
+     "correct": 3,
+     "incorrect_or_rejected": 3
+    },
+    "relations": {
+     "correct": 2,
+     "omitted": 2
+    }
+   }
+  },
+  "ignition": {
+   "recall": {
+    "numerator": 16,
+    "denominator": 29,
+    "value": 0.552,
+    "ci95": [
+     0.375,
+     0.716
+    ]
+   },
+   "precision": {
+    "numerator": 86,
+    "denominator": 114,
+    "value": 0.754,
+    "ci95": [
+     0.668,
+     0.824
+    ]
+   },
+   "evidence_retention": {
+    "numerator": 22,
+    "denominator": 29,
+    "value": 0.759,
+    "ci95": [
+     0.579,
+     0.878
+    ]
+   },
+   "correctly_unresolved": null,
+   "unresolved": {
+    "numerator": 6,
+    "denominator": 29,
+    "value": 0.207,
+    "ci95": [
+     0.098,
+     0.384
+    ]
+   },
+   "omissions": {
+    "numerator": 2,
+    "denominator": 29,
+    "value": 0.069,
+    "ci95": [
+     0.019,
+     0.22
+    ]
+   },
+   "critical": 0,
+   "by_kind": {
+    "entities": {
+     "correct": 4
+    },
+    "quantities": {
+     "correct": 8,
+     "unresolved": 3,
+     "incorrect_or_rejected": 2,
+     "omitted": 2
+    },
+    "statements": {
+     "unresolved": 2,
+     "incorrect_or_rejected": 3,
+     "correct": 3
+    },
+    "relations": {
+     "unresolved": 1,
+     "correct": 1
+    }
+   }
+  }
+ },
+ "pooled": {
+  "recall": {
+   "numerator": 63,
+   "denominator": 124,
+   "value": 0.508,
+   "ci95": [
+    0.421,
+    0.594
+   ]
+  },
+  "precision": {
+   "numerator": 260,
+   "denominator": 303,
+   "value": 0.858,
+   "ci95": [
+    0.814,
+    0.893
+   ]
+  },
+  "evidence_retention": {
+   "numerator": 87,
+   "denominator": 124,
+   "value": 0.702,
+   "ci95": [
+    0.616,
+    0.775
+   ]
+  },
+  "omissions": {
+   "numerator": 10,
+   "denominator": 124,
+   "value": 0.081,
+   "ci95": [
+    0.044,
+    0.142
+   ]
+  }
+ },
+ "critical_errors_total": 0,
+ "per_category_recall": {
+  "entities": {
+   "numerator": 19,
+   "denominator": 22,
+   "value": 0.864,
+   "ci95": [
+    0.667,
+    0.953
+   ]
+  },
+  "quantities": {
+   "numerator": 18,
+   "denominator": 46,
+   "value": 0.391,
+   "ci95": [
+    0.264,
+    0.535
+   ]
+  },
+  "statements": {
+   "numerator": 20,
+   "denominator": 44,
+   "value": 0.455,
+   "ci95": [
+    0.317,
+    0.599
+   ]
+  },
+  "relations": {
+   "numerator": 6,
+   "denominator": 12,
+   "value": 0.5,
+   "ci95": [
+    0.254,
+    0.746
+   ]
+  }
+ },
+ "run_to_run_recall_m12_live": {
+  "ignition": {
+   "r1": "11/29",
+   "r2": "14/29"
+  },
+  "regulator": {
+   "r1": "14/32",
+   "r2": "17/32"
+  },
+  "textiles": {
+   "r1": "10/29",
+   "r2": "10/29"
+  },
+  "ptfe": {
+   "r1": "27/34",
+   "r2": "28/34"
+  }
+ }
+}

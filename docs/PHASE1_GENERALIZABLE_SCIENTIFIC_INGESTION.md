@@ -1,3 +1,101 @@
+# Phase 1 scientific ingestion: v6 milestones 9–13, pilot, orchestration and point A on `diego/research`
+
+**PHASE1_COMPLETE = NO.**
+- The §13 gate is not met: recall ≥ 0.80 is reached only on PTFE.
+- The registered holdout (NTRS 20170004702) has not been acquired.
+- Code at point A: `377e013`, plus 2.1b (`c0acb35`), which changes only the model request.
+
+**Canonical record:** `artifacts/phase1_generalizable_ingestion/v6/milestone13/phase1_plan.md`.
+**Receipts:**
+- `v6/milestone9`–`milestone12/README.md`;
+- `milestone13/README.md`, `point_a.md`, `point_a/phase1_metrics.json` (built by `milestone13/tools/phase1_metrics.py`);
+- `pilot_anthropic/`, `evaluation_b.json`, `adjudication.json`, `target_miss_diagnosis.md`, `rejected_classification.md`, `capabilities.md`, `scorer_review.md`.
+
+## What changed since milestone 8
+
+- **Milestones 9–12** (NVIDIA live rounds and their corrections):
+  - evaluation B on the four development investigations;
+  - provider fallback and quantity validation;
+  - the two critical paths found in evaluation B, closed;
+  - printed structure settles a specimen line, a series' class and an unknown study.
+  Each milestone README lists its rules and receipts.
+- **Milestone 13, block 0–1:**
+  - the directive and master plan saved in the repo, plus `CLAUDE.md`;
+  - the capability table;
+  - the 69 rejected target-run pairs classified (A must stay rejected 19, B contract too rigid 20, C incomplete association 30);
+  - the scorer review: no publication requirement.
+- **Block 2 (adaptive semantics):**
+  - one proposal state per record;
+  - staged class, statement-class and relation proposals with isolated structural validation, reuse analysis (cases A–C) and placement;
+  - proposed-extension items kept in the package;
+  - review and publication states derived from curation.
+  - 2.1b: the model request may now propose a term the vocabulary lacks, with an approved parent; it is staged and never approved.
+- **Block 3 (validation rigidity and precision by structure):**
+  - quantity names from the printed setting verb;
+  - a slide's own title is its section;
+  - "prior to" a step orders a procedure;
+  - units printed apart from values (inch marks, multirow table headers, percent glued to the quantity symbol);
+  - running page headers cut off whole sentences;
+  - materials only mentioned outside the study's own research are held;
+  - a supported group the passage does not belong to scopes it to the study, never a run;
+  - set-up and planned steps are not observations.
+  Each rule is classified, has its motivating source and its effect on the other sources, and has metamorphic and negative tests.
+- **Model pilot and orchestration:**
+  - `claude-sonnet-5-5` is the development model (`pilot_anthropic/README.md`); Opus gave +1 target at 2.4–3× the cost.
+  - Per-document memo, window prefetch, validation reuse, per-call timing.
+  - A token ceiling that defers calls and never truncates.
+  - Local validation time per source fell to 6–42 s.
+  - NVIDIA stays the default provider; changing the primary model waits for Liam.
+
+## The nine §11 metrics at point A
+
+All of these are evaluation A: saved outputs revalidated with 0 model calls. They are development sources, so the figures measure regressions, not generalization (§12, §19).
+- PTFE is scored by the official scorer.
+- The other sources use the round B adjudication plus the point A judgments (`point_a.md`).
+- 95 % Wilson intervals. UNRESOLVED never counts as recovered.
+
+| source | recall | precision | evidence retention | unresolved | correctly unresolved | omissions | critical |
+|---|---|---|---|---|---|---|---|
+| ptfe | 28/34 = 0.82 [0.67, 0.92] | 134/136 = 0.98 [0.95, 1.00] | 32/34 = 0.94 [0.81, 0.98] | 4/34 = 0.12 [0.05, 0.27] | 1/34 = 0.03 [0.01, 0.15] | 2/34 = 0.06 [0.02, 0.19] | 0 |
+| ignition | 16/29 = 0.55 [0.38, 0.72] | 86/114 = 0.75 [0.67, 0.82] | 22/29 = 0.76 [0.58, 0.88] | 6/29 = 0.21 [0.10, 0.38] | — | 2/29 = 0.07 [0.02, 0.22] | 0 |
+| regulator | 11/32 = 0.34 [0.20, 0.52] | 21/30 = 0.70 [0.52, 0.83] | 20/32 = 0.62 [0.45, 0.77] | 9/32 = 0.28 [0.16, 0.45] | — | 2/32 = 0.06 [0.02, 0.20] | 0 |
+| textiles | 8/29 = 0.28 [0.15, 0.46] | 19/23 = 0.83 [0.63, 0.93] | 13/29 = 0.45 [0.28, 0.62] | 5/29 = 0.17 [0.08, 0.34] | — | 4/29 = 0.14 [0.06, 0.31] | 0 |
+| pooled | 63/124 = 0.51 [0.42, 0.59] | 260/303 = 0.86 [0.81, 0.89] | 87/124 = 0.70 [0.62, 0.78] | | | 10/124 = 0.08 [0.04, 0.14] | 0 |
+
+Correctly unresolved (a hold judged the right outcome) is assessed only in the PTFE review.
+
+**Recall by scientific category** (all four sources, accessible targets):
+
+| category | recall |
+|---|---|
+| entities | 19/22 = 0.86 [0.67, 0.95] |
+| quantities | 18/46 = 0.39 [0.26, 0.54] |
+| statements | 20/44 = 0.46 [0.32, 0.60] |
+| relations | 6/12 = 0.50 [0.25, 0.75] |
+
+**Run-to-run variability** (milestone 12 live rounds, same code, two runs per source):
+
+| source | r1 | r2 |
+|---|---|---|
+| ignition | 11/29 | 14/29 |
+| regulator | 14/32 | 17/32 |
+| textiles | 10/29 | 10/29 |
+| ptfe | 27/34 | 28/34 |
+
+Round B, on later code (`b4be17d`), gave regulator 10/32 and textiles 7/29. Across live rounds a source has therefore varied by up to 7 targets, part of it from code changes and part from the model, so one run is not a measurement of stability.
+
+## Reading
+
+- Precision rose on every source in block 3: pooled 0.86. Recall is the bottleneck: pooled 0.51 [0.42, 0.59].
+- Quantities and statements are the weakest categories.
+- Of the target-run misses in milestone 12 (`target_miss_diagnosis.md`):
+  - 66 % were rejected by a rule; block 3 addressed the class B and C ones that are general;
+  - 21 % were accepted but graded wrong;
+  - 12 % were never proposed.
+- The narrative values the model omits are already offered by the targeted recovery call. They lack an eligible experimental subject (historical missions, assessment targets), and only a staged class can supply one (2.1b).
+- None of this can be measured without a live round. Package 4 (one Sonnet round, about $3–4 USD) waits for Diego's authorization.
+- The §13 gate, then leave-one-source-out and the frozen holdout (§19) remain.
+
 # Phase 1 scientific ingestion — v6 milestone 8 on `diego/research` (candidates from document structure, under the generalization addendum)
 
 **PHASE1_COMPLETE = NO.** Receipts: `artifacts/phase1_generalizable_ingestion/v6/milestone8/`. Code `d7c4732`.
