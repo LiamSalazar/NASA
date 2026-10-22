@@ -52,9 +52,16 @@ def test_case_c_genuinely_new_vocabulary():
     "term,instances",
     [("Coil3", ["Coil 3"]), ("BetaIgniterCoil", ["Beta igniter coil"])],
 )
-def test_a_class_named_after_an_instance_is_an_instance(term, instances):
+def test_a_class_named_after_its_only_instance_is_an_instance(term, instances):
     result = check(term=term, instances=instances)
     assert "TERM_NAMES_AN_INSTANCE" in result["errors"]
+
+
+def test_digits_in_a_grade_or_alloy_class_ask_for_review_not_an_error():
+    # Negative: a class whose name carries a grade number is legitimate vocabulary.
+    result = check(term="Steel316", instances=["316 steel plate", "316 steel tube"])
+    assert result["well_formed"] and "TERM_NAMES_AN_INSTANCE" not in result["errors"]
+    assert result["reuse_analysis"]["warnings"] == ["TERM_MAY_NAME_AN_INSTANCE_REQUIRES_REVIEW"]
 
 
 def test_a_class_with_several_instances_is_not_an_instance():

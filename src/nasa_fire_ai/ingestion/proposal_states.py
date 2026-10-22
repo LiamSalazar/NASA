@@ -86,11 +86,14 @@ def reuse_analysis(proposal, approved):
     analysis = {"equivalent_approved_terms": equivalent}
     if kind != "relation":
         words = _words(term)
-        if any(w.isdigit() for w in words) or (
-            len(proposal.get("instances") or []) == 1
-            and _equivalence_key(proposal["instances"][0]) == _equivalence_key(term)
-        ):
+        if len(proposal.get("instances") or []) == 1 and _equivalence_key(
+            proposal["instances"][0]
+        ) == _equivalence_key(term):
             errors.append("TERM_NAMES_AN_INSTANCE")
+        elif any(w.isdigit() for w in words):
+            # Digits may name one item ("Coil3") or a legitimate grade or alloy class
+            # ("Steel316"): review decides; it is not an error by itself.
+            analysis["warnings"] = ["TERM_MAY_NAME_AN_INSTANCE_REQUIRES_REVIEW"]
         qualified = sorted(
             t
             for t in terms
